@@ -51,6 +51,11 @@ public:
 	{
 		fHHAT = HHAT;
 	}
+
+	inline void GetHhat(NRmatrix<Doub> &HHAT)
+	{
+		 HHAT=fHHAT;
+	}
 	//material GetMaterial();
 
 

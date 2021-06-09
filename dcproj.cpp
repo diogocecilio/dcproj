@@ -117,9 +117,9 @@ int main()
 	string namefolder3 = "D:/slope-results/GIM-Lx20-Ly2";
 
 	bool print = false;
-	slopeobj2.MonteCarloGIM(6, 2000, print, namefolder3);
+	//slopeobj2.MonteCarloGIM(27, 2200, print, namefolder3);
 
-	slopeobj2.MonteCarloSRM(0, 2000, print, namefolder2);
+	slopeobj2.MonteCarloSRM(122, 2000, print, namefolder2);
 
 	cout << "Hello CMake." << endl;
 	return 0;

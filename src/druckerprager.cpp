@@ -332,3 +332,21 @@ MatDoub druckerprager::P()
 
 	return P;
 }
+
+void druckerprager::updateatributes(NRvector<MatDoub> mult)
+{
+	Doub newcoesion = 0.;
+	Doub newphi = 0.;
+	//Doub multcoes = 0., multphi = 0.;
+	fyoung0 = fyoung;
+	fnu0 = fnu;
+	fcoesion0 = fcoesion;
+	fphi0 = fphi;
+	//Doub newyoung = fyoung + mult*fyoung;
+	//Doub newcoesion = fcoesion + mult[0][0][0]*fcoesion;
+	//Doub newphi = fphi + mult[1][0][0] * fphi;
+
+	newcoesion = mult[0][0][0];
+	newphi = mult[1][0][0];
+	setup(fyoung, fnu, newcoesion, newphi);
+}

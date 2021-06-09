@@ -651,8 +651,8 @@ void NRmatrix<T>::Dot(const NRmatrix &A, NRmatrix &B)
 template <class T>
 void NRmatrix<T>::CopyFromVector(const std::vector<std::vector<T>>&input)
 {
-	Int newn = input.size();
-	Int newm = input[0].size();
+	int newn = input.size();
+	int newm = input[0].size();
 	//v.resize(rows, cols);
 
 
@@ -673,7 +673,7 @@ void NRmatrix<T>::CopyFromVector(const std::vector<std::vector<T>>&input)
 
 	for (int i = 0; i < newn; i++)
 	{
-		for (Int j = 0;j < newm;j++)
+		for (int j = 0;j < newm;j++)
 		{
 			v[i][j] = input[i][j];
 		}

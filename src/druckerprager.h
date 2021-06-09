@@ -93,21 +93,8 @@ public:
 		fb = 0.;
 	}
 
-	inline void updateatributes(NRvector<MatDoub> mult)
-	{
-		fyoung0= fyoung;
-		fnu0 = fnu;
-		fcoesion0 = fcoesion;
-		fphi0 = fphi;
-		//Doub newyoung = fyoung + mult*fyoung;
-		//Doub newcoesion = fcoesion + mult[0][0][0]*fcoesion;
-		//Doub newphi = fphi + mult[1][0][0] * fphi;
+	void updateatributes(NRvector<MatDoub> mult);
 
-		Doub newcoesion = mult[0][0][0];
-		Doub newphi = mult[1][0][0] ;
-
-		setup(fyoung, fnu, newcoesion, newphi);
-	}
 	inline void restoreoriginalatributes()
 	{
 		setup(fyoung0, fnu0, fcoesion0, fphi0);
