@@ -4,7 +4,7 @@
 #include <chrono>
 #include <random>
 
-KLGalerkinRF::KLGalerkinRF( Int order, Doub Lx, Doub Ly, Doub sig, Int type, Int samples, Int expansionorder) {
+KLGalerkinRF::KLGalerkinRF( Int order, Doub Lx, Doub Ly,  Int type, Int samples, Int expansionorder) {
 //	fyoung = young;
 //	fnu = nu;
 //	fbodyforce = bodyforce;
@@ -13,7 +13,7 @@ KLGalerkinRF::KLGalerkinRF( Int order, Doub Lx, Doub Ly, Doub sig, Int type, Int
 	fOrder = order;
 	fLx = Lx;
 	fLy = Ly;
-	fsig = sig;
+	//fsig = sig;
 	ftype = type;
 	fsamples = samples;
 	fexpansionorder = expansionorder;
@@ -398,16 +398,22 @@ void KLGalerkinRF::GenerateNonGaussinRandomField(VecComplex& val, MatDoub& vec, 
 	//em cada coluna da hhatcoes tem um random field
 	cout << "\ n PRECISA MUDAR AQUI!!" << endl;
 	//Distribuição log-normal
-	Doub mean = 18.5633;
+	Doub mean = 10.;
 	Doub sdev = 0.3 * mean;
 	Doub xi = sqrt(log(1 + pow((sdev / mean) ,2) ));
 	Doub lambda = log(mean) - xi * xi / 2.;
 	for (int i = 0; i < hhatcoes.nrows();i++)for (int j = 0; j < hhatcoes.ncols(); j++)hhatcoes[i][j] = exp(lambda + xi * hhatcoes[i][j]);
 
+    mean = 30.*M_PI/180.;
+	sdev = 0.2 * mean;
+	xi = sqrt(log(1 + pow((sdev / mean), 2)));
+	lambda = log(mean) - xi * xi / 2.;
+	for (int i = 0; i < hhatphi.nrows(); i++)for (int j = 0; j < hhatphi.ncols(); j++)hhatphi[i][j] = exp(lambda + xi * hhatphi[i][j]);
+
 	//Distribuição normal
-	Doub meanphi = 20.*M_PI/180.;
-	Doub sdevphi = 0.3 * meanphi;
-	for (int i = 0; i < hhatphi.nrows(); i++)for (int j = 0; j < hhatphi.ncols(); j++)hhatphi[i][j] = meanphi+ sdevphi * hhatphi[i][j];
+	//Doub meanphi = 20.*M_PI/180.;
+	//Doub sdevphi = 0.3 * meanphi;
+	//for (int i = 0; i < hhatphi.nrows(); i++)for (int j = 0; j < hhatphi.ncols(); j++)hhatphi[i][j] = meanphi+ sdevphi * hhatphi[i][j];
 
 	HHAT[0][0] = hhatcoes;
 	HHAT[1][0] = hhatphi;
@@ -700,7 +706,7 @@ void KLGalerkinRF::ComputeVarianceError(VecComplex &val, MatDoub &vec, MatDoub &
 	//err2 = (sig ^ 2 - (Sum[val[[i]] vec[[i]] ^ 2, { i, 1, Length[val] }]));
 	int ndof = vec.nrows();
 	int ivec = vec.ncols();
-	MatDoub sig(ndof, 1, fsig*fsig);
+	MatDoub sig(ndof, 1, 0.);
 	error.assign(ndof, 1,0.);
 	for (Int i = 0;i < ivec; i++)
 	{
@@ -709,7 +715,7 @@ void KLGalerkinRF::ComputeVarianceError(VecComplex &val, MatDoub &vec, MatDoub &
 			error[j][0] += fabs(val[i].real())*pow(vec[j][i], 2);
 		}
 	}
-	error *= 1 / (fsig*fsig);
+//	error *= 1 / (fsig*fsig);
 	//sig -= error;
 	//error = sig;
 	Doub err = 0.;
@@ -717,8 +723,8 @@ void KLGalerkinRF::ComputeVarianceError(VecComplex &val, MatDoub &vec, MatDoub &
 	{
 		err += fabs(val[i].real()) ;
 	}
-	std::cout << " err / (fsig * fsig) = " <<err / (fsig * fsig) << std::endl;
-	std::cout << "mean error do 50x20 mesh = " <<1. - 1./(50.*20.-(30.+20.)*10./2.)*  err / (fsig * fsig) << std::endl;
+	//std::cout << " err / (fsig * fsig) = " <<err / (fsig * fsig) << std::endl;
+	std::cout << "mean error do 50x20 mesh = " <<1. - 1./(50.*20.-(30.+20.)*10./2.)*  err << std::endl;
 
 }
 

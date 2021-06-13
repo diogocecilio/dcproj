@@ -180,20 +180,43 @@ std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed(Doub fa
 	Doub c = matconsts[2];
 	Doub phi = matconsts[3];
 
-	Doub c0 = c;
-	Doub phi0 = phi;
-	c = c0 / fac;
-	phi = atan(tan(phi0 / fac));
-	matconsts[2] = c;
-	matconsts[3] = phi;
-	mat->SetMatConstants(matconsts);
-
-	NRmatrix<Doub> hhat0;
-	meshint->GetHhat(hhat0);
-
 	Doub res = 10, facn = 0, FS = fac, FSmin = 0, FSmax = 100000;
 	Doub norm = 100000.;
 	bool boll = false;
+
+	Doub c0 = c;
+	Doub phi0 = phi;
+
+	NRmatrix<Doub> hhat0;
+	meshint->GetHhat(hhat0);
+	NRmatrix<Doub> hhatcopy  = hhat0;
+
+
+
+	if (hhat0.nrows() != 0)
+	{
+		for (int irow = 0; irow < hhat0.nrows(); irow++)
+		{
+			hhatcopy[irow][0] = hhat0[irow][0] / FS;
+			hhatcopy[irow][1] = atan(tan(hhat0[irow][1]) / FS);
+		}
+		meshint->SetHhat(hhatcopy);
+		c = c0 / FS;
+		phi = atan(tan(phi0) / FS);
+		matconsts[2] = c;
+		matconsts[3] = phi;
+		mat->SetMatConstants(matconsts);
+	}
+	else {
+		c = c0 / FS;
+		phi = atan(tan(phi0) / FS);
+		matconsts[2] = c;
+		matconsts[3] = phi;
+		mat->SetMatConstants(matconsts);
+	}
+
+
+
 	do
 	{
 		Int counter = 0;
@@ -201,8 +224,8 @@ std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed(Doub fa
 		//material->UpdateDisplacement(displace);
 		sol.assign(sz, 1, 0.);
 		norm = 1000.;
+		
 		mat->ResetMat();
-	
 		do
 		{
 			FINT.assign(sz, 1, 0.);
@@ -224,7 +247,7 @@ std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed(Doub fa
 			postcounter++;
 
 
-		} while (norm > 0.01 && counter < 10 && norm < 10000.);
+		} while (norm > 0.01 && counter <20 && norm < 5000.);
 
 		res = (fac - facn) / fac;
 		if (R.NRmatrixNorm() > 1) {
@@ -234,8 +257,8 @@ std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed(Doub fa
 			FSmax = FS;
 			FS = (FSmin + FSmax) / 2.;
 			//fac = FS;
-			//material->ResetMat();
-			mat->UpdateDisplacement(displace0);
+			//mat->ResetMat();
+			//mat->UpdateDisplacement(displace0);
 			boll = true;
 		}
 		else {
@@ -246,6 +269,7 @@ std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed(Doub fa
 				FSmin = FS;
 				FS = 1. / ((1. / FSmin + 1. / FSmax) / 2.);
 				fac = FS;
+
 			}
 			else {
 				displace0 = displace;
@@ -258,8 +282,6 @@ std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed(Doub fa
 
 		}
 		//Caso tenha random field a reducao da resistencia tem que ser aplicada a todos os pontos
-		NRmatrix<Doub> hhatcopy;
-		meshint->GetHhat(hhatcopy);
 		if (hhat0.nrows() != 0)
 		{
 			for (int irow = 0; irow < hhat0.nrows(); irow++)
@@ -268,6 +290,11 @@ std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed(Doub fa
 				hhatcopy[irow][1] = atan(tan(hhat0[irow][1]) / FS);
 			}
 			meshint->SetHhat(hhatcopy);
+			c = c0 / FS;
+			phi = atan(tan(phi0) / FS);
+			matconsts[2] = c;
+			matconsts[3] = phi;
+			mat->SetMatConstants(matconsts);
 		}
 		else {
 			c = c0 / FS;
@@ -297,7 +324,7 @@ std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed(Doub fa
 		solpost2.push_back(uvf);
 		solpost.push_back(solcount);
 
-	} while ((FSmax - FSmin) / FS > tol );
+	}  while ((FSmax - FSmin) / FS > tol); //while ((FSmax - FSmin) / FS > tol && ( norm <1.e20));
 	std::cout << "FOS = " << FS << std::endl;
 	
 	if (false)
@@ -1192,22 +1219,25 @@ void slopeproject::MonteCarloSRM(int iter,int iter2, bool print, string writenam
 	int fail = 0;
 
 
-	std::vector<int> copyv = { 8, 27, 34, 49, 63, 80, 93, 151, 203, 229, 231, 301, 339, 346, 380, 
-400, 522, 530, 542, 609, 655, 669, 682, 868, 872, 916, 939, 941, 990, 
-1053, 1072, 1083, 1115, 1146, 1309, 1379, 1409, 1446, 1458, 1567, 
-1568, 1638, 1655, 1787, 1829, 1927, 1949, 1955, 1959, 1967, 1983, 
-2008, 2077 };
+//	std::vector<int> copyv = { 8, 27, 34, 49, 63, 80, 93, 151, 203, 229, 231, 301, 339, 346, 380, 
+//400, 522, 530, 542, 609, 655, 669, 682, 868, 872, 916, 939, 941, 990, 
+//1053, 1072, 1083, 1115, 1146, 1309, 1379, 1409, 1446, 1458, 1567, 
+//1568, 1638, 1655, 1787, 1829, 1927, 1949, 1955, 1959, 1967, 1983, 
+//2008, 2077 };
+
+//	std::vector<int> copyv = { 22, 32, 42, 70, 72, 162, 175, 207, 210, 330, 379, 421, 440 };
 
 
-	std::cout << " \n fail size = " <<copyv.size() << endl;
+	//std::cout << " \n fail size = " <<copyv.size() << endl;
 	int idfail = 0;
 	for (int i = iter; i < iter2; i++)
 	{
 			
 		
 		
-			idfail = *find(copyv.begin(), copyv.end(), i);
-			if (idfail!=0 &&fabs(idfail)<2000)
+			//idfail = *find(copyv.begin(), copyv.end(), i);
+			//if (idfail!=0 &&fabs(idfail)<2000)
+			if (false)
 			{
 				std::cout << " \n fail = "  << endl;
 				std::cout << " \n ID fail = " << idfail <<endl;
@@ -1230,8 +1260,8 @@ void slopeproject::MonteCarloSRM(int iter,int iter2, bool print, string writenam
 				mat->SetMemory(nglobalpts, sz);
 				mat->SetMatConstants(matconsts);
 				mat->UpdateBodyForce(bodyforce);
-				Doub tol = 0.02;
-				std::vector<std::vector<double>>  sol = IterativeProcessShearRed(0.5, 1.,tol);
+				Doub tol = 0.01;
+				std::vector<std::vector<double>>  sol = IterativeProcessShearRed(0.1,2.,tol);
 
 				MatDoub solpost23;
 				solpost23.CopyFromVector(sol);

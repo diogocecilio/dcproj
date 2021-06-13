@@ -39,7 +39,8 @@ int main()
 	std::ofstream filemesh2("meshtopology.txt");
 	OutPutPost(meshtopology, filemesh2);
 
-	Doub c = 18.5633, phi = 20 * M_PI / 180., gamma = -20.;//1.5
+	//Doub c = 18.5633, phi = 20 * M_PI / 180., gamma = -20.;//1.5
+	Doub c = 10., phi = 30 * M_PI / 180., gamma = -20.;//1.5
 
 	Doub thickness = 1.;
 	Doub young = 20000.;
@@ -67,12 +68,11 @@ int main()
 	mat->UpdateBodyForce(bodyforce);
 
 	Doub Lx = 20.;//(*Correlation length in x direction*)
-	Doub Ly = 2.;//(*Correlation length in y direction*)
+	Doub Ly =2.;//(*Correlation length in y direction*)
 
-	Int nsamples = 5000, expansionorder = 60;
-	Doub sig = 0.3;
-	Int type = 1;
-	KLGalerkinRF* objKLGalerkinRF = new KLGalerkinRF(order, Lx, Ly, sig, type, nsamples, expansionorder);
+	Int nsamples = 5000, expansionorder = 150;
+	Int type = 3;
+	KLGalerkinRF* objKLGalerkinRF = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
 	objKLGalerkinRF->SetMesh(mesh2);
 	slopeproject slopeobj = slopeproject(mesh2, objKLGalerkinRF);
 
@@ -92,13 +92,13 @@ int main()
 		soll = slopeobj.IterativeProcess(10, 0.2, 0.001, 30);
 	}
 
-	//string randomfieldfolder = "D:/slope-results/randomfielddataLx20-Ly2-lognormal";
+	//string randomfieldfolder = "D:/slope-results/cho-field";
 	//slopeobj.CreateRandomField(randomfieldfolder);
 
 	MatDoub coesionrandomfield, frictionrandomfield;
-	string filerf = "D:/slope-results/randomfielddataLx20-Ly2-lognormal/coesionfield.txt";
+	string filerf = "D:/slope-results/cho-field/coesionfield.txt";
 	ReadMatDoub(coesionrandomfield, filerf);
-	string filerff = "D:/slope-results/randomfielddataLx20-Ly2-lognormal/frictionfield.txt";
+	string filerff = "D:/slope-results/cho-field/frictionfield.txt";
 	ReadMatDoub(frictionrandomfield, filerff);
 
 	NRmatrix<MatDoub> randomfield(2, 1);
@@ -108,18 +108,14 @@ int main()
 	slopeproject slopeobj2 = slopeproject(mesh2, objKLGalerkinRF, randomfield);
 
 
-	//string namefolder2 = "D:/DClib/SRM-Lx1000-Ly1000";
+	string namefolder2 = "D:/slope-results/SRM-cho-field";
 
-	//string namefolder3 = "D:/DClib/GIM-Lx1000-Ly1000";
-
-	string namefolder2 = "D:/slope-results/SRM-Lx20-Ly2";
-
-	string namefolder3 = "D:/slope-results/GIM-Lx20-Ly2";
+	string namefolder3 = "D:/slope-results/GI-cho-field";
 
 	bool print = false;
-	//slopeobj2.MonteCarloGIM(27, 2200, print, namefolder3);
+	//slopeobj2.MonteCarloGIM(338, 5000, print, namefolder3);
 
-	slopeobj2.MonteCarloSRM(122, 2000, print, namefolder2);
+	slopeobj2.MonteCarloSRM(158, 5000, print, namefolder2);
 
 	cout << "Hello CMake." << endl;
 	return 0;
