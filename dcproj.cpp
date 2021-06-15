@@ -19,7 +19,7 @@ std::vector<Doub> vecstr_to_vecdoub(std::vector<string> vs);
 int main()
 {
 
-	cout << "HI "<< endl;
+	cout << "HIasd "<< endl;
 
 	//string nodestr = "D:/DClibrary/meshes/nos-414.txt";
 	//string elsstr = "D:/DClibrary/meshes/els-414.txt";

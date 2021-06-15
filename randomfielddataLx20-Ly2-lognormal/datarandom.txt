@@ -1,0 +1,2 @@
+ samples = 5000 | expansion order = 60 | func type = 1
+Lx = 20 | Ly = 2 variance = 0.3

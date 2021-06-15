@@ -1,0 +1,3 @@
+/home/joaohenrique/Documents/dcproj/buildrelease/CMakeFiles/rebuild_cache.dir
+/home/joaohenrique/Documents/dcproj/buildrelease/CMakeFiles/edit_cache.dir
+/home/joaohenrique/Documents/dcproj/buildrelease/CMakeFiles/dcproj.dir

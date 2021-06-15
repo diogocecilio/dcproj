@@ -1,0 +1,59 @@
+[Buildset]
+BuildItems=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x01\x00\x00\x00\x0b\x00\x00\x00\x00\x01\x00\x00\x00\x0c\x00d\x00c\x00p\x00r\x00o\x00j)
+
+[CMake]
+Build Directory Count=3
+Current Build Directory Index-Host System=2
+
+[CMake][CMake Build Directory 0]
+Build Directory Path=/home/joaohenrique/Documents/dcproj/build
+Build Type=\n
+CMake Binary=/usr/bin/cmake
+CMake Executable=/usr/bin/cmake
+Environment Profile=
+Extra Arguments=
+Install Directory=/usr/local
+Runtime=Host System
+
+[CMake][CMake Build Directory 1]
+Build Directory Path=/home/joaohenrique/Documents/dcproj/build
+Build Type=\n
+CMake Binary=/usr/bin/cmake
+CMake Executable=/usr/bin/cmake
+Environment Profile=
+Extra Arguments=
+Install Directory=
+
+[CMake][CMake Build Directory 2]
+Build Directory Path=/home/joaohenrique/Documents/dcproj/buildrelease
+Build Type=Release
+CMake Binary=/usr/bin/cmake
+CMake Executable=/usr/bin/cmake
+Environment Profile=
+Extra Arguments=
+Install Directory=/usr/local
+Runtime=Host System
+
+[Launch]
+Launch Configurations=Launch Configuration 0
+
+[Launch][Launch Configuration 0]
+Configured Launch Modes=execute
+Configured Launchers=nativeAppLauncher
+Name=New Compiled Binary Launcher (2)
+Type=Native Application
+
+[Launch][Launch Configuration 0][Data]
+Arguments=
+Dependencies=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x00)
+Dependency Action=Install
+EnvironmentGroup=
+Executable=file:///home/joaohenrique/Documents/dcproj
+External Terminal=konsole --noclose --workdir %workdir -e %exe
+Project Target=dcproj,dcproj
+Use External Terminal=false
+Working Directory=file:///home/joaohenrique/Documents/dcproj
+isExecutable=false
+
+[Project]
+VersionControlSupport=kdevgit
