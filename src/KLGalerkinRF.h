@@ -16,7 +16,7 @@
 
 class KLGalerkinRF : public elastmat2D {
 public:
-	KLGalerkinRF( Int order, Doub Lx, Doub Ly, Doub sig, Int type, Int samples, Int expansionorder);
+	KLGalerkinRF( Int order, Doub Lx, Doub Ly, Int type, Int samples, Int expansionorder);
 	~KLGalerkinRF();
 
 	void ContributeB(MatDoub &BE, Doub xi, Doub eta, Doub w, MatDoub elcoords);
@@ -66,7 +66,7 @@ public:
 	}
 	inline Doub GetSig()
 	{
-		return fsig;
+		return 0.;
 	}
 	inline Doub Getftype()
 	{
@@ -95,7 +95,7 @@ private:
 	Int fOrder;
 	Doub fLx;
 	Doub fLy;
-	Doub fsig;
+	//Doub fsig;
 	Int ftype;
 	Int fsamples;
 	Int fexpansionorder;

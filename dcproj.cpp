@@ -41,7 +41,8 @@ cout << "HI "<< endl;
 	std::ofstream filemesh2("meshtopology.txt");
 	OutPutPost(meshtopology, filemesh2);
 
-	Doub c = 18.5633, phi = 20 * M_PI / 180., gamma = -20.;//1.5
+	//Doub c = 18.5633, phi = 20 * M_PI / 180., gamma = -20.;//1.5
+	Doub c = 10., phi = 30 * M_PI / 180., gamma = -20.;//1.5
 
 	Doub thickness = 1.;
 	Doub young = 20000.;
@@ -69,12 +70,11 @@ cout << "HI "<< endl;
 	mat->UpdateBodyForce(bodyforce);
 
 	Doub Lx = 20.;//(*Correlation length in x direction*)
-	Doub Ly = 2.;//(*Correlation length in y direction*)
+	Doub Ly =2.;//(*Correlation length in y direction*)
 
-	Int nsamples = 5000, expansionorder = 60;
-	Doub sig = 0.3;
-	Int type = 1;
-	KLGalerkinRF* objKLGalerkinRF = new KLGalerkinRF(order, Lx, Ly, sig, type, nsamples, expansionorder);
+	Int nsamples = 5000, expansionorder = 150;
+	Int type = 3;
+	KLGalerkinRF* objKLGalerkinRF = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
 	objKLGalerkinRF->SetMesh(mesh2);
 	slopeproject * slopeobj = new slopeproject(mesh2, objKLGalerkinRF);
 //	
@@ -93,6 +93,7 @@ cout << "HI "<< endl;
 
 		//soll = slopeproject->IterativeProcess(10, 0.2, 0.001, 30);
 	}
+//<<<<<<< HEAD
 cout << "HI "<< endl;
 	//string randomfieldfolder = "/home/joaohenrique/Documents/dcproj/randomfielddataLx20-Ly2-lognormal";
     //slopeobj->CreateRandomField(randomfieldfolder);
@@ -102,6 +103,16 @@ cout << "HIsdsadasd "<< endl;
 	string filerf = "/home/joaohenrique/Documents/dcproj/randomfielddataLx20-Ly2-lognormal/coesionfield.txt";
 	ReadMatDoub(coesionrandomfield, filerf);
 	string filerff = "/home/joaohenrique/Documents/dcproj/randomfielddataLx20-Ly2-lognormal/frictionfield.txt";
+/*=======
+
+	//string randomfieldfolder = "D:/slope-results/cho-field";
+	//slopeobj.CreateRandomField(randomfieldfolder);
+
+	MatDoub coesionrandomfield, frictionrandomfield;
+	string filerf = "D:/slope-results/cho-field/coesionfield.txt";
+	ReadMatDoub(coesionrandomfield, filerf);
+	string filerff = "D:/slope-results/cho-field/frictionfield.txt";
+>>>>>>> 0a47a91b1b04350de1723735e0333d49bfddb34f*/
 	ReadMatDoub(frictionrandomfield, filerff);
 cout << "Hdasdasdasdasdasdadsadasda "<< endl;
 	NRmatrix<MatDoub> randomfield(2, 1);
@@ -111,8 +122,9 @@ cout << "Hdasdasdasdasdasdadsadasda "<< endl;
 	slopeproject * slopeobj2 = new slopeproject(mesh2, objKLGalerkinRF, randomfield);
 
 
-	//string namefolder2 = "D:/DClib/SRM-Lx1000-Ly1000";
+	//string namefolder2 = "D:/slope-results/SRM-cho-field";
 
+//<<<<<<< HEAD
 	//string namefolder3 = "D:/DClib/GIM-Lx1000-Ly1000";
 
 	string namefolder2 = "/home/joaohenrique/Documents/dcproj/SRM-Lx20-Ly2";
@@ -123,6 +135,14 @@ cout << "Hdasdasdasdasdasdadsadasda "<< endl;
 	slopeobj2->MonteCarloGIM(0, 2000, print, namefolder3);
 
 	//slopeobj2->MonteCarloSRM(0, 2000, print, namefolder2);
+/*=======
+	string namefolder3 = "D:/slope-results/GI-cho-field";
+
+	bool print = false;
+	//slopeobj2.MonteCarloGIM(338, 5000, print, namefolder3);
+
+	slopeobj2.MonteCarloSRM(158, 5000, print, namefolder2);
+>>>>>>> 0a47a91b1b04350de1723735e0333d49bfddb34f*/
 
 	cout << "Hello CMake." << endl;
 	return 0;

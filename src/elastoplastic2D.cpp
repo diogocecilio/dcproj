@@ -220,7 +220,7 @@ void elastoplastic2D<YC>::Contribute(MatDoub &ek, MatDoub &efint, MatDoub &efbod
 	//epst.Print();
 	//std::cout << "epsp = " << std::endl;
 	//epsp.Print();
-
+	//cout << "\n antes c  = " << fYC.GetCoes() << endl;
 	if (fhhatvel.size() != 0)
 	{
 		for (Int ivar = 0;ivar < fhhatvel.size();ivar++)
@@ -229,7 +229,7 @@ void elastoplastic2D<YC>::Contribute(MatDoub &ek, MatDoub &efint, MatDoub &efbod
 		}
 		fYC.updateatributes(hhat);
 	}
-	//cout << "E  = " << fYC.fyoung <<endl;
+	//cout << "\n c  = " << fYC.GetCoes() <<endl;
 
 	fYC.closestpointproj(epst,epsp,projstress,projstrain,Dep,projgamma);
 	if (fhhatvel.size() != 0)
