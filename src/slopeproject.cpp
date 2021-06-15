@@ -3,6 +3,10 @@
 
 #include "slopeproject.h"
 
+#ifdef _WIN32    /* _Win32 is usually defined by compilers targeting 32 or   64 bit Windows systems */
+#include <direct.h>
+#endif
+
 slopeproject::slopeproject()
 {
 
@@ -39,8 +43,11 @@ void slopeproject::CreateRandomField(string namefolder)
 
 	char* cstr = new char[namefolder.length() + 1];
 	strcpy(cstr, namefolder.c_str());
-
+#ifdef __unix__                    /* __unix__ is usually defined by compilers targeting Unix systems */
 	check = mkdir(cstr,777);
+#elif defined(_WIN32) || defined(WIN32)     /* _Win32 is usually defined by compilers targeting 32 or   64 bit Windows systems */
+	check = mkdir(cstr);
+#endif
 
 	string datafile = namefolder;
 	datafile += "/datarandom.txt";
@@ -1215,7 +1222,13 @@ void slopeproject::MonteCarloSRM(int iter,int iter2, bool print, string writenam
 	string namefolder = writenamefolder;
 	char* cstr = new char[namefolder.length() + 1];
 	strcpy(cstr, namefolder.c_str());
-	int check = mkdir(cstr,777);
+
+#ifdef __unix__                    /* __unix__ is usually defined by compilers targeting Unix systems */
+	int check = mkdir(cstr, 777);
+#elif defined(_WIN32) || defined(WIN32)     /* _Win32 is usually defined by compilers targeting 32 or   64 bit Windows systems */
+	int check = mkdir(cstr);
+#endif
+
 
 	std::vector<double> solvec;
 	int samples = frandomfield[0][0].ncols();
@@ -1407,13 +1420,18 @@ void slopeproject::MonteCarloGIM(int iter, int iter2, bool print, string writena
 
 	KLGalerkinRF* objKLGalerkinRF = fklgalerking;
 
-	int check;
+	
 	string namefolder = writenamefolder;
 
 	char* cstr = new char[namefolder.length() + 1];
 	strcpy(cstr, namefolder.c_str());
 
-	check = mkdir(cstr,777);
+
+#ifdef __unix__                    /* __unix__ is usually defined by compilers targeting Unix systems */
+    int	check = mkdir(cstr, 777);
+#elif defined(_WIN32) || defined(WIN32)     /* _Win32 is usually defined by compilers targeting 32 or   64 bit Windows systems */
+	int check = mkdir(cstr);
+#endif
 
 	string datafile = namefolder;
 	datafile += "/DATA.txt";

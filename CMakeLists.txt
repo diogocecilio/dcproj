@@ -4,7 +4,7 @@
 cmake_minimum_required (VERSION 3.8)
 
 project ("dcproj")
-
+#target_link_libraries (dcproj Eigen3::Eigen)
 # Add source to this project's executable.
 add_executable (dcproj
 "dcproj.cpp" "dcproj.h" 
@@ -24,12 +24,16 @@ src/eigen_unsym.cpp src/eigen_unsym.h
 
 src/eigen_sym.h src/cholesky.h src/nr3.h  src/roots.h src/mins_ndim.h  src/ludcmp.h
 )
+#find_package (Eigen3 3.3.9 REQUIRED NO_MODULE)
+ 
+
 
 include_directories('src')
 
 target_include_directories(dcproj PUBLIC ${PROJECT_SOURCE_DIR})
 target_include_directories(dcproj PUBLIC ${PROJECT_SOURCE_DIR}/src)
 target_include_directories(dcproj PUBLIC ${PROJECT_SOURCE_DIR}/eigen)
+target_include_directories(dcproj PUBLIC ${PROJECT_SOURCE_DIR}/eigen-3.3.9)
 
 set(HEADER_FILES ${PROJECT_SOURCE_DIR}/src)
 

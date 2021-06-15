@@ -16,26 +16,21 @@ void vecstr_to_vec(std::vector<std::string> vs, std::vector<T> &ret);
 std::vector<Int> vecstr_to_vecint(std::vector<string> vs);
 std::vector<Doub> vecstr_to_vecdoub(std::vector<string> vs);
 
-int main()
+void mainlinux()
 {
-
-	cout << "HIasd "<< endl;
-
-	//string nodestr = "D:/DClibrary/meshes/nos-414.txt";
-	//string elsstr = "D:/DClibrary/meshes/els-414.txt";
-
+	cout << "HIasd " << endl;
 
 	string nodestr = "/home/joaohenrique/Documents/dcproj/nos-132-c3.txt";
 	string elsstr = "/home/joaohenrique/Documents/dcproj/els-132-c3.txt";
 
 	MatDoub hhatinho;
-cout << "HI "<< endl;
+	cout << "HI " << endl;
 	MatDoub  meshcoords, elcoords;
 	MatInt meshtopology;
 	std::vector<std::vector<std::vector<Doub>>> allcoords;
 	ReadMesh(allcoords, meshcoords, meshtopology, elsstr, nodestr);
 
-cout << "HI "<< endl;
+	cout << "HI " << endl;
 	std::ofstream filemesh1("meshcoords.txt");
 	OutPutPost(meshcoords, filemesh1);
 	std::ofstream filemesh2("meshtopology.txt");
@@ -47,6 +42,8 @@ cout << "HI "<< endl;
 	Doub thickness = 1.;
 	Doub young = 20000.;
 	Doub nu = 0.49;
+	//Doub young = 100000.;
+	//Doub nu = 0.3;
 	Int planestress = 0;
 
 	MatDoub bodyforce(2, 1, 0.), newbodyforce;
@@ -70,62 +67,43 @@ cout << "HI "<< endl;
 	mat->UpdateBodyForce(bodyforce);
 
 	Doub Lx = 20.;//(*Correlation length in x direction*)
-	Doub Ly =2.;//(*Correlation length in y direction*)
+	Doub Ly = 2.;//(*Correlation length in y direction*)
 
 	Int nsamples = 5000, expansionorder = 150;
 	Int type = 3;
 	KLGalerkinRF* objKLGalerkinRF = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
 	objKLGalerkinRF->SetMesh(mesh2);
-	slopeproject * slopeobj = new slopeproject(mesh2, objKLGalerkinRF);
-//	
+	slopeproject* slopeobj = new slopeproject(mesh2, objKLGalerkinRF);
+	//	
 	bool deterministicsol = false;
 	if (deterministicsol == true)
 	{
 		int ndesirediters = 8, niter = 50;
 		Doub dlamb0 = 0.2, alphatol = 0.0001;
-		
-		Doub tol = 0.0001;
+
+		Doub tol = 0.001;
 		std::vector<std::vector<double>> soll;
-		//soll = slopeproject->IterativeProcessShearRed(0.5, 1., tol);
+		soll = slopeobj->IterativeProcessShearRed(0.01, 2., tol);
 		mat->fYC.setup(young, nu, c, phi);
 		mat->SetMemory(nglobalpts, sz);
 		mat->UpdateBodyForce(bodyforce);
 
 		//soll = slopeproject->IterativeProcess(10, 0.2, 0.001, 30);
 	}
-//<<<<<<< HEAD
-cout << "HI "<< endl;
-	//string randomfieldfolder = "/home/joaohenrique/Documents/dcproj/randomfielddataLx20-Ly2-lognormal";
-    //slopeobj->CreateRandomField(randomfieldfolder);
-	//slopeproject->CreateRandomField(randomfieldfolder);
-cout << "HIsdsadasd "<< endl;
+	cout << "HI " << endl;
+	cout << "HIsdsadasd " << endl;
 	MatDoub coesionrandomfield, frictionrandomfield;
 	string filerf = "/home/joaohenrique/Documents/dcproj/randomfielddataLx20-Ly2-lognormal/coesionfield.txt";
 	ReadMatDoub(coesionrandomfield, filerf);
 	string filerff = "/home/joaohenrique/Documents/dcproj/randomfielddataLx20-Ly2-lognormal/frictionfield.txt";
-/*=======
-
-	//string randomfieldfolder = "D:/slope-results/cho-field";
-	//slopeobj.CreateRandomField(randomfieldfolder);
-
-	MatDoub coesionrandomfield, frictionrandomfield;
-	string filerf = "D:/slope-results/cho-field/coesionfield.txt";
-	ReadMatDoub(coesionrandomfield, filerf);
-	string filerff = "D:/slope-results/cho-field/frictionfield.txt";
->>>>>>> 0a47a91b1b04350de1723735e0333d49bfddb34f*/
 	ReadMatDoub(frictionrandomfield, filerff);
-cout << "Hdasdasdasdasdasdadsadasda "<< endl;
+	cout << "Hdasdasdasdasdasdadsadasda " << endl;
+
 	NRmatrix<MatDoub> randomfield(2, 1);
 	randomfield[0][0] = coesionrandomfield;
 	randomfield[1][0] = frictionrandomfield;
 
-	slopeproject * slopeobj2 = new slopeproject(mesh2, objKLGalerkinRF, randomfield);
-
-
-	//string namefolder2 = "D:/slope-results/SRM-cho-field";
-
-//<<<<<<< HEAD
-	//string namefolder3 = "D:/DClib/GIM-Lx1000-Ly1000";
+	slopeproject* slopeobj2 = new slopeproject(mesh2, objKLGalerkinRF, randomfield);
 
 	string namefolder2 = "/home/joaohenrique/Documents/dcproj/SRM-Lx20-Ly2";
 
@@ -133,16 +111,113 @@ cout << "Hdasdasdasdasdasdadsadasda "<< endl;
 
 	bool print = false;
 	slopeobj2->MonteCarloGIM(0, 2000, print, namefolder3);
+}
 
-	//slopeobj2->MonteCarloSRM(0, 2000, print, namefolder2);
-/*=======
+
+void mainwindows()
+{
+	cout << "HIasd " << endl;
+
+	string nodestr = "D:/DClibrary/meshes/nos-132-c3.txt";
+	string elsstr = "D:/DClibrary/meshes/els-132-c3.txt";
+
+	MatDoub hhatinho;
+	cout << "HI " << endl;
+	MatDoub  meshcoords, elcoords;
+	MatInt meshtopology;
+	std::vector<std::vector<std::vector<Doub>>> allcoords;
+	ReadMesh(allcoords, meshcoords, meshtopology, elsstr, nodestr);
+
+	cout << "HI " << endl;
+	std::ofstream filemesh1("meshcoords.txt");
+	OutPutPost(meshcoords, filemesh1);
+	std::ofstream filemesh2("meshtopology.txt");
+	OutPutPost(meshtopology, filemesh2);
+
+	//Doub c = 18.5633, phi = 20 * M_PI / 180., gamma = -20.;//1.5
+	Doub c = 10., phi = 30 * M_PI / 180., gamma = -20.;//1.5
+
+	Doub thickness = 1.;
+	Doub young = 20000.;
+	Doub nu = 0.49;
+	//Doub young = 100000.;
+	//Doub nu = 0.3;
+	Int planestress = 0;
+
+	MatDoub bodyforce(2, 1, 0.), newbodyforce;
+	bodyforce[1][0] = gamma;
+	MatDoub ptsweigths;
+	int order = 2;
+	shapequad shape = shapequad(order, 1);
+	shape.pointsandweigths(ptsweigths);
+	Int npts = ptsweigths.nrows();
+	Int nglobalpts = meshtopology.nrows() * npts;
+	Int sz = 2 * meshcoords.nrows();
+
+	elastoplastic2D< druckerprager >* mat = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
+
+	mesh* mesh2 = new mesh(mat, allcoords, meshcoords, meshtopology, hhatinho);
+
+	int szdebug = mesh2->GetAllCoords().size();
+
+	mat->fYC.setup(young, nu, c, phi);
+	mat->SetMemory(nglobalpts, sz);
+	mat->UpdateBodyForce(bodyforce);
+
+	Doub Lx = 20.;//(*Correlation length in x direction*)
+	Doub Ly = 2.;//(*Correlation length in y direction*)
+
+	Int nsamples = 5000, expansionorder = 150;
+	Int type = 3;
+	KLGalerkinRF* objKLGalerkinRF = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
+	objKLGalerkinRF->SetMesh(mesh2);
+	slopeproject* slopeobj = new slopeproject(mesh2, objKLGalerkinRF);
+	//	
+	bool deterministicsol = false;
+	if (deterministicsol == true)
+	{
+		int ndesirediters = 8, niter = 50;
+		Doub dlamb0 = 0.2, alphatol = 0.0001;
+
+		Doub tol = 0.001;
+		std::vector<std::vector<double>> soll;
+		soll = slopeobj->IterativeProcessShearRed(0.01, 2., tol);
+		mat->fYC.setup(young, nu, c, phi);
+		mat->SetMemory(nglobalpts, sz);
+		mat->UpdateBodyForce(bodyforce);
+
+		//soll = slopeproject->IterativeProcess(10, 0.2, 0.001, 30);
+	}
+	cout << "HI " << endl;
+	cout << "HIsdsadasd " << endl;
+	MatDoub coesionrandomfield, frictionrandomfield;
+	string filerf = "D:/slope-results/cho-field/coesionfield.txt";
+	ReadMatDoub(coesionrandomfield, filerf);
+	string filerff = "D:/slope-results/cho-field/frictionfield.txt";
+	ReadMatDoub(frictionrandomfield, filerff);
+	cout << "Hdasdasdasdasdasdadsadasda " << endl;
+
+	NRmatrix<MatDoub> randomfield(2, 1);
+	randomfield[0][0] = coesionrandomfield;
+	randomfield[1][0] = frictionrandomfield;
+
+	slopeproject* slopeobj2 = new slopeproject(mesh2, objKLGalerkinRF, randomfield);
+
+	string namefolder2 = "D:/slope-results/SRM-cho-field";
+
 	string namefolder3 = "D:/slope-results/GI-cho-field";
 
 	bool print = false;
-	//slopeobj2.MonteCarloGIM(338, 5000, print, namefolder3);
+	slopeobj2->MonteCarloGIM(1900, 5000, print, namefolder3);
+}
 
-	slopeobj2.MonteCarloSRM(158, 5000, print, namefolder2);
->>>>>>> 0a47a91b1b04350de1723735e0333d49bfddb34f*/
+int main()
+{
+#ifdef __unix__                    /* __unix__ is usually defined by compilers targeting Unix systems */
+	mainlinux();
+#elif defined(_WIN32) || defined(WIN32)     /* _Win32 is usually defined by compilers targeting 32 or   64 bit Windows systems */
+	mainwindows();
+#endif
 
 	cout << "Hello CMake." << endl;
 	return 0;
@@ -154,7 +229,7 @@ void OutPutPost(NRmatrix<T>& postdata, std::ofstream& file)
 	file.clear();
 	for (Int i = 0; i < postdata.nrows(); i++)
 	{
-		for (Int j = 0; j < postdata.ncols(); j++)
+		for (Int j = 0; j < postdata.ncols();j++)
 		{
 			file << postdata[i][j] << " ";
 		}
