@@ -27,7 +27,7 @@ struct Unsymmeig {
 			sort();
 		}
 	}
-	inline void Unsymmeig::balance()
+	inline void balance()
 	{
 		const Doub RADIX = numeric_limits<Doub>::radix;
 		Bool done = false;
@@ -65,13 +65,13 @@ struct Unsymmeig {
 			}
 		}
 	}
-	inline void Unsymmeig::balbak()
+	inline void balbak()
 	{
 		for (Int i = 0;i<n;i++)
 			for (Int j = 0;j<n;j++)
 				zz[i][j] *= scale[i];
 	}
-	inline void Unsymmeig::elmhes()
+	inline void elmhes()
 	{
 		for (Int m = 1;m<n - 1;m++) {
 			Doub x = 0.0;
@@ -100,7 +100,7 @@ struct Unsymmeig {
 			}
 		}
 	}
-	inline void Unsymmeig::eltran()
+	inline void eltran()
 	{
 		for (Int mp = n - 2;mp>0;mp--) {
 			for (Int k = mp + 1;k<n;k++)
@@ -115,7 +115,7 @@ struct Unsymmeig {
 			}
 		}
 	}
-	inline void Unsymmeig::hqr()
+	inline void hqr()
 	{
 		Int nn, m, l, k, j, its, i, mmin;
 		Doub z, y, x, w, v, u, t, s, r, q, p, anorm = 0.0;
@@ -241,7 +241,7 @@ struct Unsymmeig {
 			} while (l + 1 < nn);
 		}
 	}
-	inline void Unsymmeig::hqr2()
+	inline void hqr2()
 	{
 		Int nn, m, l, k, j, its, i, mmin, na;
 		Doub z, y, x, w, v, u, t, s, r, q, p, anorm = 0.0, ra, sa, vr, vi;
@@ -517,7 +517,7 @@ struct Unsymmeig {
 				}
 		}
 	}
-	inline void Unsymmeig::sort()
+	inline void sort()
 	{
 		Int i;
 		for (Int j = 1;j<n;j++) {
@@ -529,7 +529,7 @@ struct Unsymmeig {
 			wri[i + 1] = x;
 		}
 	}
-	inline void Unsymmeig::sortvecs()
+	inline void sortvecs()
 	{
 		Int i;
 		VecDoub temp(n);

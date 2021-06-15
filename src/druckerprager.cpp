@@ -5,7 +5,7 @@
 #include <math.h>
 #include <cmath>
 #include "cholesky.h"
-#include "mins_ndim.h"
+class mins_ndim;
 //extern bool globalfail;
 druckerprager::druckerprager()
 {

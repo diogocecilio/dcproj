@@ -29,7 +29,7 @@ include_directories('src')
 
 target_include_directories(dcproj PUBLIC ${PROJECT_SOURCE_DIR})
 target_include_directories(dcproj PUBLIC ${PROJECT_SOURCE_DIR}/src)
-target_include_directories(dcproj PUBLIC ${PROJECT_SOURCE_DIR}/eigen-3.3.9)
+target_include_directories(dcproj PUBLIC ${PROJECT_SOURCE_DIR}/eigen)
 
 set(HEADER_FILES ${PROJECT_SOURCE_DIR}/src)
 

@@ -19,21 +19,23 @@ std::vector<Doub> vecstr_to_vecdoub(std::vector<string> vs);
 int main()
 {
 
+	cout << "HI "<< endl;
+
 	//string nodestr = "D:/DClibrary/meshes/nos-414.txt";
 	//string elsstr = "D:/DClibrary/meshes/els-414.txt";
 
 
-	string nodestr = "D:/DClibrary/meshes/nos-132-c3.txt";
-	string elsstr = "D:/DClibrary/meshes/els-132-c3.txt";
+	string nodestr = "/home/joaohenrique/Documents/dcproj/nos-132-c3.txt";
+	string elsstr = "/home/joaohenrique/Documents/dcproj/els-132-c3.txt";
 
 	MatDoub hhatinho;
-
+cout << "HI "<< endl;
 	MatDoub  meshcoords, elcoords;
 	MatInt meshtopology;
 	std::vector<std::vector<std::vector<Doub>>> allcoords;
 	ReadMesh(allcoords, meshcoords, meshtopology, elsstr, nodestr);
 
-
+cout << "HI "<< endl;
 	std::ofstream filemesh1("meshcoords.txt");
 	OutPutPost(meshcoords, filemesh1);
 	std::ofstream filemesh2("meshtopology.txt");
@@ -74,8 +76,8 @@ int main()
 	Int type = 1;
 	KLGalerkinRF* objKLGalerkinRF = new KLGalerkinRF(order, Lx, Ly, sig, type, nsamples, expansionorder);
 	objKLGalerkinRF->SetMesh(mesh2);
-	slopeproject slopeobj = slopeproject(mesh2, objKLGalerkinRF);
-
+	slopeproject * slopeobj = new slopeproject(mesh2, objKLGalerkinRF);
+//	
 	bool deterministicsol = false;
 	if (deterministicsol == true)
 	{
@@ -84,42 +86,43 @@ int main()
 		
 		Doub tol = 0.0001;
 		std::vector<std::vector<double>> soll;
-		soll = slopeobj.IterativeProcessShearRed(0.5, 1., tol);
+		//soll = slopeproject->IterativeProcessShearRed(0.5, 1., tol);
 		mat->fYC.setup(young, nu, c, phi);
 		mat->SetMemory(nglobalpts, sz);
 		mat->UpdateBodyForce(bodyforce);
 
-		soll = slopeobj.IterativeProcess(10, 0.2, 0.001, 30);
+		//soll = slopeproject->IterativeProcess(10, 0.2, 0.001, 30);
 	}
-
-	//string randomfieldfolder = "D:/slope-results/randomfielddataLx20-Ly2-lognormal";
-	//slopeobj.CreateRandomField(randomfieldfolder);
-
+cout << "HI "<< endl;
+	//string randomfieldfolder = "/home/joaohenrique/Documents/dcproj/randomfielddataLx20-Ly2-lognormal";
+    //slopeobj->CreateRandomField(randomfieldfolder);
+	//slopeproject->CreateRandomField(randomfieldfolder);
+cout << "HIsdsadasd "<< endl;
 	MatDoub coesionrandomfield, frictionrandomfield;
-	string filerf = "D:/slope-results/randomfielddataLx20-Ly2-lognormal/coesionfield.txt";
+	string filerf = "/home/joaohenrique/Documents/dcproj/randomfielddataLx20-Ly2-lognormal/coesionfield.txt";
 	ReadMatDoub(coesionrandomfield, filerf);
-	string filerff = "D:/slope-results/randomfielddataLx20-Ly2-lognormal/frictionfield.txt";
+	string filerff = "/home/joaohenrique/Documents/dcproj/randomfielddataLx20-Ly2-lognormal/frictionfield.txt";
 	ReadMatDoub(frictionrandomfield, filerff);
-
+cout << "Hdasdasdasdasdasdadsadasda "<< endl;
 	NRmatrix<MatDoub> randomfield(2, 1);
 	randomfield[0][0] = coesionrandomfield;
 	randomfield[1][0] = frictionrandomfield;
 
-	slopeproject slopeobj2 = slopeproject(mesh2, objKLGalerkinRF, randomfield);
+	slopeproject * slopeobj2 = new slopeproject(mesh2, objKLGalerkinRF, randomfield);
 
 
 	//string namefolder2 = "D:/DClib/SRM-Lx1000-Ly1000";
 
 	//string namefolder3 = "D:/DClib/GIM-Lx1000-Ly1000";
 
-	string namefolder2 = "D:/slope-results/SRM-Lx20-Ly2";
+	string namefolder2 = "/home/joaohenrique/Documents/dcproj/SRM-Lx20-Ly2";
 
-	string namefolder3 = "D:/slope-results/GIM-Lx20-Ly2";
+	string namefolder3 = "/home/joaohenrique/Documents/dcproj/GIM-Lx20-Ly2";
 
 	bool print = false;
-	slopeobj2.MonteCarloGIM(6, 2000, print, namefolder3);
+	slopeobj2->MonteCarloGIM(0, 2000, print, namefolder3);
 
-	slopeobj2.MonteCarloSRM(0, 2000, print, namefolder2);
+	//slopeobj2->MonteCarloSRM(0, 2000, print, namefolder2);
 
 	cout << "Hello CMake." << endl;
 	return 0;
@@ -397,6 +400,7 @@ std::vector<T> vecstr_to_vec(std::vector<string> vs)
 
 void ReadMatDoub(MatDoub& matdoub, std::string  file)
 {
+    
 	std::vector<std::vector<Doub>> coords;
 	string line2, temp2;
 	ifstream myfile2(file);
@@ -422,6 +426,5 @@ void ReadMatDoub(MatDoub& matdoub, std::string  file)
 	//	}
 	//	cout << endl;
 	//}
-
 	matdoub.CopyFromVector(coords);
 }

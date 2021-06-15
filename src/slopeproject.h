@@ -15,7 +15,7 @@
 #include <iostream>
 #include <Eigen/Dense>
 
-#include <direct.h>
+//#include <direct.h>
 #include "elastoplastic2D.h"
 #include "KLGalerkinRF.h"
 

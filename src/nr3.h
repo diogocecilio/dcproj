@@ -34,9 +34,21 @@
 using namespace std;
 
 
+
+#include <Eigen/Core>
+#include<Eigen/SparseCholesky>
+#include <Eigen/Dense>
+#include <Eigen/Sparse>
+
+using namespace Eigen;
+
+
 #define _USE_MATH_DEFINES
 
 #include <cmath>
+
+
+
 
 
 
@@ -102,8 +114,8 @@ inline void SWAP(T &a, T &b)
 // exception handling
 
 #ifndef _USENRERRORCLASS_
-#define throw(message) \
-{printf("ERROR: %s\n     in file %s at line %d\n", message,__FILE__,__LINE__); throw(1);}
+//#define throw(message) \
+//{printf("ERROR: %s\n     in file %s at line %d\n", message,__FILE__,__LINE__); throw(1);}
 #else
 struct NRerror {
 	char *message;
@@ -309,7 +321,7 @@ public:
 	NRmatrix(int n, int m, const T &a);	//Initialize to constant
 	NRmatrix(int n, int m, const T *a);	// Initialize to array
 	NRmatrix(const NRmatrix &rhs);		// Copy constructor
-	//NRmatrix(const std::vector<std::vector<T>>&input);		// Converto to MatDoub ou MatInt
+	//NRmatrix(const std::vector<std::vector<T>>&input);		// Converto to Matdouble ou Matint
 	NRmatrix & operator=(const NRmatrix &rhs);	//assignment
 	typedef T value_type; // make T available externally
 	inline T* operator[](const int i);	//subscripting: pointer to row i
@@ -367,7 +379,7 @@ public:
 	T NRmatrixNorm();
 	T Det();
 
-	void  CopyFromVecDoub(const  NRvector<T>&input);
+	void  CopyFromVecdouble(const  NRvector<T>&input);
 	//void Toboost( matrix<double> &boostmat);
 	//void Fromboost(matrix<double> &boostmat);
 
@@ -399,7 +411,7 @@ public:
 
 
 template <class T>
-void  NRmatrix<T>::CopyFromVecDoub(const  NRvector<T>&input)
+void  NRmatrix<T>::CopyFromVecdouble(const  NRvector<T>&input)
 {
 	this->assign(input.nrows(), 1, 0.);
 	for (int i = 0;i < this->nrows();i++)
@@ -423,10 +435,10 @@ void  NRmatrix<T>::FromFullToVoigt(NRmatrix<T> & voigt)
 template <class T>
 T NRmatrix<T>::NRmatrixNorm()
 {
-	Doub val = 0.;
-	for (Int i = 0;i < this->nrows();i++)
+	double val = 0.;
+	for (int i = 0;i < this->nrows();i++)
 	{
-		for (Int j = 0;j < this->ncols();j++)
+		for (int j = 0;j < this->ncols();j++)
 		{
 			val += v[i][j] * v[i][j];
 		}
@@ -491,26 +503,26 @@ T NRmatrix<T>::Det()
 //}
 
 
-//void NRmatrix<double>::FromFMatrixToMatDoub(TPZFMatrix<STATE> & tpzfmatrix, NRmatrix & matdoub)
+//void NRmatrix<double>::FromFMatrixToMatdouble(TPZFMatrix<STATE> & tpzfmatrix, NRmatrix & matdouble)
 //{
-//	matdoub.assign(tpzfmatrix.Rows(), tpzfmatrix.Cols(), 0.);
-//	for (Int i = 0;i <tpzfmatrix.Rows();i++)
+//	matdouble.assign(tpzfmatrix.Rows(), tpzfmatrix.Cols(), 0.);
+//	for (int i = 0;i <tpzfmatrix.Rows();i++)
 //	{
-//		for (Int j = 0;j <tpzfmatrix.Cols();j++)
+//		for (int j = 0;j <tpzfmatrix.Cols();j++)
 //		{
-//			matdoub[i][j] = tpzfmatrix(i,j);
+//			matdouble[i][j] = tpzfmatrix(i,j);
 //		}
 //	}
 //}
 //
-//void NRmatrix<double>::FromFMatrixToMatDoub(NRmatrix & matdoub, TPZFMatrix<STATE> & tpzfmatrix)
+//void NRmatrix<double>::FromFMatrixToMatdouble(NRmatrix & matdouble, TPZFMatrix<STATE> & tpzfmatrix)
 //{
-//	tpzfmatrix.Resize(matdoub.nrows(), matdoub.ncols());
-//	for (Int i = 0;i <matdoub.nrows();i++)
+//	tpzfmatrix.Resize(matdouble.nrows(), matdouble.ncols());
+//	for (int i = 0;i <matdouble.nrows();i++)
 //	{
-//		for (Int j = 0;j <matdoub.ncols();j++)
+//		for (int j = 0;j <matdouble.ncols();j++)
 //		{
-//			tpzfmatrix(i, j) = matdoub[i][j] ;
+//			tpzfmatrix(i, j) = matdouble[i][j] ;
 //		}
 //	}
 //}
@@ -518,9 +530,9 @@ T NRmatrix<T>::Det()
 template < class T >
 NRmatrix<T> & NRmatrix<T>::operator-=(NRmatrix &source)
 {
-	for (Int i = 0;i < this->nrows();i++)
+	for (int i = 0;i < this->nrows();i++)
 	{
-		for (Int j = 0;j < this->ncols();j++)
+		for (int j = 0;j < this->ncols();j++)
 		{
 			v[i][j] -= source[i][j];
 		}
@@ -531,9 +543,9 @@ NRmatrix<T> & NRmatrix<T>::operator-=(NRmatrix &source)
 template < class T >
 NRmatrix<T> & NRmatrix<T>::operator+=(NRmatrix &source)
 {
-	for (Int i = 0;i < this->nrows();i++)
+	for (int i = 0;i < this->nrows();i++)
 	{
-		for (Int j = 0;j < this->ncols();j++)
+		for (int j = 0;j < this->ncols();j++)
 		{
 			v[i][j] += source[i][j];
 		}
@@ -545,9 +557,9 @@ template < class T >
 NRmatrix<T> & NRmatrix<T>::operator*=(const T &multipl)
 {
 
-	for (Int i = 0;i < this->nrows();i++)
+	for (int i = 0;i < this->nrows();i++)
 	{
-		for (Int j = 0;j < this->ncols();j++)
+		for (int j = 0;j < this->ncols();j++)
 		{
 			v[i][j] *= multipl;
 		}
@@ -614,7 +626,7 @@ void NRmatrix<T>::Mult(const NRmatrix &A, NRmatrix &B)
 	{
 		for (int j = 0;j < A.ncols();j++)
 		{
-			for (Int k = 0;k < A.nrows();k++)
+			for (int k = 0;k < A.nrows();k++)
 			{
 				B[i][j] += v[i][k] * A[k][j];
 				//cout << "\n v[i][k]  = " << v[i][k] <<  " A[j][k] = " << A[k][j];
@@ -639,7 +651,7 @@ void NRmatrix<T>::Dot(const NRmatrix &A, NRmatrix &B)
 	{
 		for (int j = 0;j < A.ncols();j++)
 		{
-			for (Int k = 0;k < A.nrows();k++)
+			for (int k = 0;k < A.nrows();k++)
 			{
 				B[i][j] += v[i][k] * A[k][j];
 				//cout << "\n v[i][k]  = " << v[i][k] <<  " A[j][k] = " << A[k][j];
@@ -651,8 +663,8 @@ void NRmatrix<T>::Dot(const NRmatrix &A, NRmatrix &B)
 template <class T>
 void NRmatrix<T>::CopyFromVector(const std::vector<std::vector<T>>&input)
 {
-	Int newn = input.size();
-	Int newm = input[0].size();
+	int newn = input.size();
+	int newm = input[0].size();
 	//v.resize(rows, cols);
 
 
@@ -673,7 +685,7 @@ void NRmatrix<T>::CopyFromVector(const std::vector<std::vector<T>>&input)
 
 	for (int i = 0; i < newn; i++)
 	{
-		for (Int j = 0;j < newm;j++)
+		for (int j = 0;j < newm;j++)
 		{
 			v[i][j] = input[i][j];
 		}
@@ -1050,7 +1062,7 @@ void NRtensor<T>::CopyFromNRmatrix(NRmatrix<T> source)
 // NRtensor definitions
 
 template <class T>
-NRtensor<T>::NRtensor() : nn(6), v(new T[6]) { for (Int i = 0;i < 6;i++)v[i] = 0.; }
+NRtensor<T>::NRtensor() : nn(6), v(new T[6]) { for (int i = 0;i < 6;i++)v[i] = 0.; }
 
 template <class T>
 NRtensor<T>::NRtensor(const T& a) : nn(6), v(new T[6])
@@ -1061,7 +1073,7 @@ NRtensor<T>::NRtensor(const T& a) : nn(6), v(new T[6])
 template <class T>
 NRtensor<T>::NRtensor(const T *a) : nn(6), v(new T[6])
 {
-	for (int i = 0; i<n; i++) v[i] = *a++;
+	for (int i = 0; i<nn; i++) v[i] = *a++;
 }
 
 template <class T>
@@ -1286,22 +1298,9 @@ void  NRtensor<T>::FromTensorVoigtToFullTensor(NRmatrix<T> & full)
 
 }
 
-//autovetor em colunas
-template < class T >
-void  NRtensor<T>::EigenSystem(NRmatrix<T> & eigenvalues, NRmatrix<T> & eigenvectors)
-{
-	NRmatrix<T> fulltensor,internaleigenvectors;
-	this->FromTensorVoigtToFullTensor(fulltensor);
-	Jacobi* system = new Jacobi(fulltensor);
-	if (system->fail)
-	{
-		fail = true;
-	}
-	eigenvectors = system->v;
-	VecDoub valtemp = system->d;
-	eigenvalues.resize(valtemp.size(), 1);
-	for (Int i = 0; i < valtemp.size(); i++)eigenvalues[i][0] = valtemp[i];
-}
+
+
+
 
 template < class T >
 void NRtensor<T>::ComputeS(NRtensor<T> & out)
@@ -1342,9 +1341,9 @@ template <class T>
 NRmatrix3D<T>::NRmatrix3D(int n, int m, int k)
 {
 	value_type teste(n, m);
-	for (Int i = 0;i < teste.nrows();i++)
+	for (int i = 0;i < teste.nrows();i++)
 	{
-		for (Int j = 0;j < teste.ncols();j++) {
+		for (int j = 0;j < teste.ncols();j++) {
 			teste[i][j].assign(k, 0.);
 		}
 	}
@@ -1372,9 +1371,15 @@ NRmatrix3D<T>::NRmatrix3D(int n, int m, int k)
 
 
 
+
+
+
+
+
 // basic type names (redefine if your bit lengths don't match)
 
 typedef int Int; // 32 bit integer
+typedef double Doub; // default floating type
 typedef unsigned int Uint;
 
 #ifdef _MSC_VER
@@ -1388,7 +1393,7 @@ typedef unsigned long long int Ullong;
 typedef char Char; // 8 bit integer
 typedef unsigned char Uchar;
 
-typedef double Doub; // default floating type
+
 typedef long double Ldoub;
 
 typedef complex<double> Complex; // default complex type
@@ -1480,6 +1485,145 @@ typedef const NRmatrix3D<Doub> Matrix3DDoub_I;
 typedef NRmatrix3D<Doub> Matrix3DDoub, Matrix3DDoub_O, Matrix3DDoub_IO;
 
 
+
+//#include "eigen_unsym.h"
+//#include "eigen_sym.h"
+
+
+
+
+struct Jacobi {
+	bool fail = false;
+	const Int n;
+	MatDoub a, v;
+	VecDoub d;
+	Int nrot;
+	const Doub EPS;
+
+	Jacobi(MatDoub_I &aa) : n(aa.nrows()), a(aa), v(n, n), d(n), nrot(0),
+		EPS(numeric_limits<Doub>::epsilon())
+	{
+		Int i, j, ip, iq;
+		Doub tresh, theta, tau, t, sm, s, h, g, c;
+		VecDoub b(n), z(n);
+		for (ip = 0;ip < n;ip++) {
+			for (iq = 0;iq < n;iq++) v[ip][iq] = 0.0;
+			v[ip][ip] = 1.0;
+		}
+		for (ip = 0;ip < n;ip++) {
+			b[ip] = d[ip] = a[ip][ip];
+			z[ip] = 0.0;
+		}
+		for (i = 1;i <= 50;i++) {
+			sm = 0.0;
+			for (ip = 0;ip < n - 1;ip++) {
+				for (iq = ip + 1;iq < n;iq++)
+					sm += abs(a[ip][iq]);
+			}
+			if (sm == 0.0) {
+				eigsrt(d, &v);
+				return;
+			}
+			if (i < 4)
+				tresh = 0.2*sm / (n*n);
+			else
+				tresh = 0.0;
+			for (ip = 0;ip<n - 1;ip++) {
+				for (iq = ip + 1;iq < n;iq++) {
+					g = 100.0*abs(a[ip][iq]);
+					if (i > 4 && g <= EPS*abs(d[ip]) && g <= EPS*abs(d[iq]))
+						a[ip][iq] = 0.0;
+					else if (abs(a[ip][iq]) > tresh) {
+						h = d[iq] - d[ip];
+						if (g <= EPS*abs(h))
+							t = (a[ip][iq]) / h;
+						else {
+							theta = 0.5*h / (a[ip][iq]);
+							t = 1.0 / (abs(theta) + sqrt(1.0 + theta*theta));
+							if (theta < 0.0) t = -t;
+						}
+						c = 1.0 / sqrt(1 + t*t);
+						s = t*c;
+						tau = s / (1.0 + c);
+						h = t*a[ip][iq];
+						z[ip] -= h;
+						z[iq] += h;
+						d[ip] -= h;
+						d[iq] += h;
+						a[ip][iq] = 0.0;
+						for (j = 0;j < ip;j++)
+							rot(a, s, tau, j, ip, j, iq);
+						for (j = ip + 1;j < iq;j++)
+							rot(a, s, tau, ip, j, j, iq);
+						for (j = iq + 1;j < n;j++)
+							rot(a, s, tau, ip, j, iq, j);
+						for (j = 0;j < n;j++)
+							rot(v, s, tau, j, ip, j, iq);
+						++nrot;
+					}
+				}
+			}
+			for (ip = 0;ip < n;ip++) {
+				b[ip] += z[ip];
+				d[ip] = b[ip];
+				z[ip] = 0.0;
+			}
+		}
+		//throw("Too many iterations in routine jacobi");
+		//std::cout << "Too many iterations in routine jacobi! Critical error!" << std::endl;
+		fail = true;
+	}
+	inline void rot(MatDoub_IO &a, const Doub s, const Doub tau, const Int i,
+		const Int j, const Int k, const Int l)
+	{
+		Doub g = a[i][j];
+		Doub h = a[k][l];
+		a[i][j] = g - s*(h + g*tau);
+		a[k][l] = h + s*(g - h*tau);
+	}
+
+
+	inline void eigsrt(VecDoub_IO &d, MatDoub_IO *v = NULL)
+	{
+		Int k;
+		Int n = d.size();
+		for (Int i = 0;i < n - 1;i++) {
+			Doub p = d[k = i];
+			for (Int j = i;j < n;j++)
+				if (d[j] >= p) p = d[k = j];
+			if (k != i) {
+				d[k] = d[i];
+				d[i] = p;
+				if (v != NULL)
+					for (Int j = 0;j < n;j++) {
+						p = (*v)[j][i];
+						(*v)[j][i] = (*v)[j][k];
+						(*v)[j][k] = p;
+					}
+			}
+		}
+	}
+	
+};
+
+//autovetor em colunas
+template < class T >
+void  NRtensor<T>::EigenSystem(NRmatrix<T> & eigenvalues, NRmatrix<T> & eigenvectors)
+{
+	NRmatrix<T> fulltensor,internaleigenvectors;
+	this->FromTensorVoigtToFullTensor(fulltensor);
+	Jacobi* system = new Jacobi(fulltensor);
+	if (system->fail)
+	{
+		fail = true;
+	}
+	eigenvectors = system->v;
+	VecDoub valtemp = system->d;
+	eigenvalues.resize(valtemp.size(), 1);
+	for (int i = 0; i < valtemp.size(); i++)eigenvalues[i][0] = valtemp[i];
+}
+
+
 // Floating Point Exceptions for Microsoft compilers
 
 #ifdef _TURNONFPES_
@@ -1494,6 +1638,14 @@ struct turn_on_floating_exceptions {
 turn_on_floating_exceptions yes_turn_on_floating_exceptions;
 #endif /* _MSC_VER */
 #endif /* _TURNONFPES */
+
+
+
+
+
+
+
+
 
 #endif /* _NR3_H_ */
 

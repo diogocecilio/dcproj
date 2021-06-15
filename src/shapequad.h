@@ -17,7 +17,7 @@ public:
 
 	}
 
-	void shapequad::shapes(MatDoub&psis, MatDoub &gradpsis, Doub xi, Doub eta)
+	void shapes(MatDoub&psis, MatDoub &gradpsis, Doub xi, Doub eta)
 	{
 		switch (forder)
 		{
@@ -75,7 +75,7 @@ public:
 
 	}
 
-	void shapequad::shapes1D(MatDoub&psis, MatDoub &gradpsis, Doub xi)
+	void shapes1D(MatDoub&psis, MatDoub &gradpsis, Doub xi)
 	{
 		switch (forder)
 		{

@@ -40,7 +40,7 @@ void slopeproject::CreateRandomField(string namefolder)
 	char* cstr = new char[namefolder.length() + 1];
 	strcpy(cstr, namefolder.c_str());
 
-	check = mkdir(cstr);
+	check = mkdir(cstr,777);
 
 	string datafile = namefolder;
 	datafile += "/datarandom.txt";
@@ -114,27 +114,31 @@ void slopeproject::findbcids(mesh* gmesh, std::vector<std::vector<int>>& idsvect
 	b[0] = 50.; b[1] = 0;
 	Line(a, b, ndivs, pathbottom);
 	
-	FindIdsInPath(pathbottom, gmesh->GetAllCoords(), gmesh->GetMeshTopology(), idsbottom);
+	std::vector<std::vector<std::vector<double> > > ggmesh = gmesh->GetAllCoords();
+	
+	NRmatrix<int> meshtop = gmesh->GetMeshTopology();
+	
+	FindIdsInPath(pathbottom, ggmesh,meshtop, idsbottom);
 
 	idsvector.push_back(idsbottom);
 
 	a[0] = 0.; a[1] = 0.;
 	b[0] = 0.; b[1] = 20.;
 	Line(a, b, ndivs, pathleft);
-	FindIdsInPath(pathleft, gmesh->GetAllCoords(), gmesh->GetMeshTopology(), idsleft);
+	FindIdsInPath(pathleft, ggmesh,meshtop, idsleft);
 
 	idsvector.push_back(idsleft);
 	a[0] = 50.; a[1] = 0.;
 	b[0] = 50.; b[1] = 10;
 	Line(a, b, ndivs, pathright);
-	FindIdsInPath(pathright, gmesh->GetAllCoords(), gmesh->GetMeshTopology(), idsright);
+	FindIdsInPath(pathright, ggmesh,meshtop, idsright);
 
 	idsvector.push_back(idsright);
 
 	a[0] = 19.99; a[1] = 19.99;
 	b[0] = 20.; b[1] = 20.;
 	Line(a, b, ndivs, pathdisplace);
-	FindIdsInPath(pathdisplace, gmesh->GetAllCoords(), gmesh->GetMeshTopology(), iddisplace);
+	FindIdsInPath(pathdisplace,ggmesh,meshtop, iddisplace);
 
 	idsvector.push_back(iddisplace);
 
@@ -1173,7 +1177,7 @@ void slopeproject::MonteCarloSRM(int iter,int iter2, bool print, string writenam
 	string namefolder = writenamefolder;
 	char* cstr = new char[namefolder.length() + 1];
 	strcpy(cstr, namefolder.c_str());
-	int check = mkdir(cstr);
+	int check = mkdir(cstr,777);
 
 	std::vector<double> solvec;
 	int samples = frandomfield[0][0].ncols();
@@ -1364,7 +1368,7 @@ void slopeproject::MonteCarloGIM(int iter, int iter2, bool print, string writena
 	char* cstr = new char[namefolder.length() + 1];
 	strcpy(cstr, namefolder.c_str());
 
-	check = mkdir(cstr);
+	check = mkdir(cstr,777);
 
 	string datafile = namefolder;
 	datafile += "/DATA.txt";
@@ -1384,8 +1388,10 @@ void slopeproject::MonteCarloGIM(int iter, int iter2, bool print, string writena
 	Int postprintfreq = 50;
 	Doub sum = 0.;
 	NRmatrix<MatDoub> randomfield = frandomfield;
+    std::cout << "\n starasdasdasdasdting Monte Carlo " << endl;
 	int samples = randomfield[0][0].ncols();
 	MatDoub solpost(samples, 2, 0.), solpost2(samples, 1, 0.);
+    std::cout << "\n SSSSSSSSSSsdasdting Monte Carlo " << endl;
 	Doub soldatamin = 10.;
 	Doub soldatamax = -10;
 	std::vector<double> solvec;
