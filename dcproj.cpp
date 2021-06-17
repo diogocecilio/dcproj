@@ -12,7 +12,7 @@ void ReadMesh(std::vector<std::vector< std::vector<Doub > > >& allcoords, MatDou
 template <class T>
 void OutPutPost(NRmatrix<T>& postdata, std::ofstream& file);
 template <class T>
-void vecstr_to_vec(std::vector<std::string> vs, std::vector<T> &ret);
+void vecstr_to_vec(std::vector<std::string> vs, std::vector<T>& ret);
 std::vector<Int> vecstr_to_vecint(std::vector<string> vs);
 std::vector<Doub> vecstr_to_vecdoub(std::vector<string> vs);
 
@@ -188,14 +188,12 @@ void mainwindows()
 
 		//soll = slopeproject->IterativeProcess(10, 0.2, 0.001, 30);
 	}
-	cout << "HI " << endl;
-	cout << "HIsdsadasd " << endl;
+
 	MatDoub coesionrandomfield, frictionrandomfield;
-	string filerf = "D:/slope-results/cho-field/coesionfield.txt";
+	string filerf = "D:/slope-results/cho-field-Lx20-Ly4/coesionfield.txt";
 	ReadMatDoub(coesionrandomfield, filerf);
-	string filerff = "D:/slope-results/cho-field/frictionfield.txt";
+	string filerff = "D:/slope-results/cho-field-Lx20-Ly4/frictionfield.txt";
 	ReadMatDoub(frictionrandomfield, filerff);
-	cout << "Hdasdasdasdasdasdadsadasda " << endl;
 
 	NRmatrix<MatDoub> randomfield(2, 1);
 	randomfield[0][0] = coesionrandomfield;
@@ -203,12 +201,16 @@ void mainwindows()
 
 	slopeproject* slopeobj2 = new slopeproject(mesh2, objKLGalerkinRF, randomfield);
 
-	string namefolder2 = "D:/slope-results/SRM-cho-field";
+	string namefolder2 = "D:/slope-results/SRM-cho-field-Lx20-Ly4";
 
-	string namefolder3 = "D:/slope-results/GI-cho-field";
+	string namefolder3 = "D:/slope-results/GI-cho-field-Lx20-Ly4";
 
 	bool print = false;
-	slopeobj2->MonteCarloGIM(1900, 5000, print, namefolder3);
+	//slopeobj2->MonteCarloSRM(1900, 5000, print, namefolder2);
+
+	slopeobj2->MonteCarloGIM(1290, 5000, print, namefolder3);
+
+
 }
 
 int main()
@@ -229,7 +231,7 @@ void OutPutPost(NRmatrix<T>& postdata, std::ofstream& file)
 	file.clear();
 	for (Int i = 0; i < postdata.nrows(); i++)
 	{
-		for (Int j = 0; j < postdata.ncols();j++)
+		for (Int j = 0; j < postdata.ncols(); j++)
 		{
 			file << postdata[i][j] << " ";
 		}
@@ -495,7 +497,7 @@ std::vector<T> vecstr_to_vec(std::vector<string> vs)
 
 void ReadMatDoub(MatDoub& matdoub, std::string  file)
 {
-    
+
 	std::vector<std::vector<Doub>> coords;
 	string line2, temp2;
 	ifstream myfile2(file);
