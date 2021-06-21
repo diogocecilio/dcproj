@@ -23,6 +23,12 @@ slopeproject::slopeproject(mesh* inmesh, KLGalerkinRF* inklgalerking, NRmatrix<M
 	fklgalerking = inklgalerking;
 	frandomfield = randomfield;
 }
+slopeproject::slopeproject(mesh inmesh, KLGalerkinRF inklgalerking, NRmatrix<MatDoub> randomfield)
+{
+	fmesh = &inmesh;
+	fklgalerking = &inklgalerking;
+	frandomfield = randomfield;
+}
 slopeproject::~slopeproject()
 {
 
@@ -416,14 +422,14 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 	lamb = 0;
 	Doub scalar = 1.5;
 	Doub rtol = 0.5;
-	cout << " \n SYSTEM SIZE  = " << KG.nrows() << std::endl;
+	//cout << " \n SYSTEM SIZE  = " << KG.nrows() << std::endl;
 	Doub rnorm = 10., rnormn=10.;
 	do
 	{
 		std::clock_t start;
 		double duration;
 		start = std::clock();
-		std::cout << "load step = " << counterout << " | l = " << l << " | diff2 = " << diff2 << std::endl;
+		//std::cout << "load step = " << counterout << " | l = " << l << " | diff2 = " << diff2 << std::endl;
 		Int counter = 0, maxcount = 20;
 		Doub err1 = 10., err2 = 10., tol = 1.e-5;
 		Doub  lambn0 = lamb;
@@ -485,7 +491,7 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 		if (rnorm > 0.5)
 		{
 
-			std::cout << "Convergence failed. \n";
+			//std::cout << "Convergence failed. \n";
 
 			counterout++;
 			dws.assign(sz, 1, 0.), dwb.assign(sz, 1, 0.), dww.assign(sz, 1, 0.), R.assign(sz, 1, 0.), dw.assign(sz, 1, 0.), R.assign(sz, 1, 0.), FBODY.assign(sz, 1, 0.), FINT.assign(sz, 1, 0.);
@@ -556,7 +562,7 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 	} while (counterout <= niter && fabs(diff2) > alphatol );// while (counterout <= maxcountout && fabs(diff2) > 0.05);
 
 
-	if (true)
+	if (false)
 	{
 
 		//string names = "fxu";
@@ -598,6 +604,8 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 		OutPutPost(solx, file22);
 	}
 
+
+//	std::cout << "  Iteration number = " << counterout <<  " |  |R| = " << rnorm << " | lamb  = " << lamb << std::endl;
 	return solpost;
 
 }
@@ -1461,6 +1469,7 @@ void slopeproject::MonteCarloGIM(int iter, int iter2, bool print, string writena
 	std::cout << "\n samples " << samples << endl;
 	for (Int imc = iter; imc < iter2; imc++)
 	{
+		std::cout << "\n MC realization " << imc << endl;
 		MatDoub hhatinho = AssembleHhationho(imc);
 
 		std::clock_t start1;
@@ -1532,7 +1541,7 @@ void slopeproject::MonteCarloGIM(int iter, int iter2, bool print, string writena
 		fileinfo << "diff2 = " << solpost23[last][5] << std::endl;
 		fileinfo << "counterout = " << solpost23[last][6] << std::endl;
 
-		if (true) {
+		if (false) {
 
 
 			if (print) {

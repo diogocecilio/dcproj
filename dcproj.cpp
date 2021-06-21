@@ -3,7 +3,7 @@
 
 #include "dcproj.h"
 #include "mesh.h"
-
+#include <thread>
 
 using namespace std;
 
@@ -112,7 +112,12 @@ void mainlinux()
 	bool print = false;
 	slopeobj2->MonteCarloGIM(0, 2000, print, namefolder3);
 }
-
+void myTreads(int a, int b, slopeproject* slopeobj2, string traedN)
+{
+	string namefolder3 = "D:/slope-results/THREADS/GI-cho-field-Lx20-Ly4" + traedN;
+	slopeobj2->MonteCarloGIM(a, b, false, namefolder3);
+	
+}
 
 void mainwindows()
 {
@@ -154,24 +159,83 @@ void mainwindows()
 	Int nglobalpts = meshtopology.nrows() * npts;
 	Int sz = 2 * meshcoords.nrows();
 
-	elastoplastic2D< druckerprager >* mat = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
+	elastoplastic2D< druckerprager >* mat2 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
+	elastoplastic2D< druckerprager >* mat3 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
+	elastoplastic2D< druckerprager >* mat4 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
+	elastoplastic2D< druckerprager >* mat5 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
+	elastoplastic2D< druckerprager >* mat6 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
+	elastoplastic2D< druckerprager >* mat7 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
+	elastoplastic2D< druckerprager >* mat8 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
+	elastoplastic2D< druckerprager >* mat9 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
 
-	mesh* mesh2 = new mesh(mat, allcoords, meshcoords, meshtopology, hhatinho);
+	mesh* mesh2 = new mesh(mat2, allcoords, meshcoords, meshtopology, hhatinho);
+	mesh* mesh3 = new mesh(mat3, allcoords, meshcoords, meshtopology, hhatinho);
+	mesh* mesh4 = new mesh(mat4, allcoords, meshcoords, meshtopology, hhatinho);
+	mesh* mesh5 = new mesh(mat5, allcoords, meshcoords, meshtopology, hhatinho);
+	mesh* mesh6 = new mesh(mat6, allcoords, meshcoords, meshtopology, hhatinho);
+	mesh* mesh7 = new mesh(mat7, allcoords, meshcoords, meshtopology, hhatinho);
+	mesh* mesh8 = new mesh(mat8, allcoords, meshcoords, meshtopology, hhatinho);
+	mesh* mesh9 = new mesh(mat9, allcoords, meshcoords, meshtopology, hhatinho);
 
 	int szdebug = mesh2->GetAllCoords().size();
 
-	mat->fYC.setup(young, nu, c, phi);
-	mat->SetMemory(nglobalpts, sz);
-	mat->UpdateBodyForce(bodyforce);
+	mat2->fYC.setup(young, nu, c, phi);
+	mat2->SetMemory(nglobalpts, sz);
+	mat2->UpdateBodyForce(bodyforce);
+
+
+	mat3->fYC.setup(young, nu, c, phi);
+	mat3->SetMemory(nglobalpts, sz);
+	mat3->UpdateBodyForce(bodyforce);
+
+	mat4->fYC.setup(young, nu, c, phi);
+	mat4->SetMemory(nglobalpts, sz);
+	mat4->UpdateBodyForce(bodyforce);
+
+	mat5->fYC.setup(young, nu, c, phi);
+	mat5->SetMemory(nglobalpts, sz);
+	mat5->UpdateBodyForce(bodyforce);
+
+	mat6->fYC.setup(young, nu, c, phi);
+	mat6->SetMemory(nglobalpts, sz);
+	mat6->UpdateBodyForce(bodyforce);
+
+	mat7->fYC.setup(young, nu, c, phi);
+	mat7->SetMemory(nglobalpts, sz);
+	mat7->UpdateBodyForce(bodyforce);
+
+	mat8->fYC.setup(young, nu, c, phi);
+	mat8->SetMemory(nglobalpts, sz);
+	mat8->UpdateBodyForce(bodyforce);
+
+	mat9->fYC.setup(young, nu, c, phi);
+	mat9->SetMemory(nglobalpts, sz);
+	mat9->UpdateBodyForce(bodyforce);
 
 	Doub Lx = 20.;//(*Correlation length in x direction*)
 	Doub Ly = 2.;//(*Correlation length in y direction*)
 
 	Int nsamples = 5000, expansionorder = 150;
 	Int type = 3;
-	KLGalerkinRF* objKLGalerkinRF = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
-	objKLGalerkinRF->SetMesh(mesh2);
-	slopeproject* slopeobj = new slopeproject(mesh2, objKLGalerkinRF);
+	KLGalerkinRF* objKLGalerkinRF2 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
+	KLGalerkinRF* objKLGalerkinRF3 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
+	KLGalerkinRF* objKLGalerkinRF4 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
+	KLGalerkinRF* objKLGalerkinRF5 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
+	KLGalerkinRF* objKLGalerkinRF6 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
+	KLGalerkinRF* objKLGalerkinRF7 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
+	KLGalerkinRF* objKLGalerkinRF8 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
+	KLGalerkinRF* objKLGalerkinRF9 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
+
+	objKLGalerkinRF2->SetMesh(mesh2);
+	objKLGalerkinRF3->SetMesh(mesh3);
+	objKLGalerkinRF4->SetMesh(mesh4);
+	objKLGalerkinRF5->SetMesh(mesh5);
+	objKLGalerkinRF6->SetMesh(mesh6);
+	objKLGalerkinRF7->SetMesh(mesh7);
+	objKLGalerkinRF8->SetMesh(mesh8);
+	objKLGalerkinRF9->SetMesh(mesh9);
+	slopeproject* slopeobj = new slopeproject(mesh2, objKLGalerkinRF2);
+	//slopeproject* slopeobj3 = new slopeproject(mesh3, objKLGalerkinRF3);
 	//	
 	bool deterministicsol = false;
 	if (deterministicsol == true)
@@ -182,9 +246,9 @@ void mainwindows()
 		Doub tol = 0.001;
 		std::vector<std::vector<double>> soll;
 		soll = slopeobj->IterativeProcessShearRed(0.01, 2., tol);
-		mat->fYC.setup(young, nu, c, phi);
-		mat->SetMemory(nglobalpts, sz);
-		mat->UpdateBodyForce(bodyforce);
+		mat2->fYC.setup(young, nu, c, phi);
+		mat2->SetMemory(nglobalpts, sz);
+		mat2->UpdateBodyForce(bodyforce);
 
 		//soll = slopeproject->IterativeProcess(10, 0.2, 0.001, 30);
 	}
@@ -199,7 +263,14 @@ void mainwindows()
 	randomfield[0][0] = coesionrandomfield;
 	randomfield[1][0] = frictionrandomfield;
 
-	slopeproject* slopeobj2 = new slopeproject(mesh2, objKLGalerkinRF, randomfield);
+	slopeproject* slopeobj2 = new slopeproject(mesh2, objKLGalerkinRF2, randomfield);
+	slopeproject* slopeobj3 = new slopeproject(mesh3, objKLGalerkinRF3, randomfield);
+	slopeproject* slopeobj4 = new slopeproject(mesh4, objKLGalerkinRF4, randomfield);
+	slopeproject* slopeobj5 = new slopeproject(mesh5, objKLGalerkinRF5, randomfield);
+	slopeproject* slopeobj6 = new slopeproject(mesh6, objKLGalerkinRF6, randomfield);
+	slopeproject* slopeobj7 = new slopeproject(mesh7, objKLGalerkinRF7, randomfield);
+	slopeproject* slopeobj8 = new slopeproject(mesh8, objKLGalerkinRF8, randomfield);
+	slopeproject* slopeobj9 = new slopeproject(mesh9, objKLGalerkinRF9, randomfield);
 
 	string namefolder2 = "D:/slope-results/SRM-cho-field-Lx20-Ly4";
 
@@ -208,10 +279,25 @@ void mainwindows()
 	bool print = false;
 	//slopeobj2->MonteCarloSRM(1900, 5000, print, namefolder2);
 
-	slopeobj2->MonteCarloGIM(1290, 5000, print, namefolder3);
-
-
+	// slopeobj2->MonteCarloGIM(1290, 5000, print, namefolder3);
+	std::thread thread2(myTreads, 0,250, slopeobj2, "2");
+	std::thread thread3(myTreads, 251, 500, slopeobj3, "3");
+	std::thread thread4(myTreads, 501, 750, slopeobj4, "4");
+	std::thread thread5(myTreads, 751,1000, slopeobj5, "5");
+	std::thread thread6(myTreads, 1001, 1250, slopeobj6, "6");
+	std::thread thread7(myTreads, 1251,1500, slopeobj7, "7");
+	std::thread thread8(myTreads, 1501, 1750, slopeobj8, "8");
+	std::thread thread9(myTreads, 1751, 2000, slopeobj9, "9");
+	thread2.join();
+	thread3.join();
+	thread4.join();
+	thread5.join();
+	thread6.join();
+	thread7.join();
+	thread8.join();
+	thread9.join();
 }
+
 
 int main()
 {
