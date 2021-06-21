@@ -556,7 +556,7 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 	} while (counterout <= niter && fabs(diff2) > alphatol );// while (counterout <= maxcountout && fabs(diff2) > 0.05);
 
 
-	if (true)
+	if (false)
 	{
 
 		//string names = "fxu";
@@ -1451,10 +1451,8 @@ void slopeproject::MonteCarloGIM(int iter, int iter2, bool print, string writena
 	Int postprintfreq = 50;
 	Doub sum = 0.;
 	NRmatrix<MatDoub> randomfield = frandomfield;
-    std::cout << "\n starasdasdasdasdting Monte Carlo " << endl;
 	int samples = randomfield[0][0].ncols();
 	MatDoub solpost(samples, 2, 0.), solpost2(samples, 1, 0.);
-    std::cout << "\n SSSSSSSSSSsdasdting Monte Carlo " << endl;
 	Doub soldatamin = 10.;
 	Doub soldatamax = -10;
 	std::vector<double> solvec;
@@ -1482,7 +1480,6 @@ void slopeproject::MonteCarloGIM(int iter, int iter2, bool print, string writena
 		//cout << "all cc" << finemesh->GetAllCoords()[0].size() << endl;
 
 		finemesh->SetHhat(hhatinho);
-		start1 = std::clock();
 		//std::vector<std::vector<double>>  sol = IterativeProcessSlope(finemesh, hhatinho, material);//x = desloc y = loadfactor
 		//std::vector<std::vector<double>>  sol = IterativeProcess(finemesh, hhatinho, materialdp,10,1.);//x = desloc y = loadfactor
 		int maxiter = 20;
@@ -1531,8 +1528,9 @@ void slopeproject::MonteCarloGIM(int iter, int iter2, bool print, string writena
 		fileinfo << "diff= " << solpost23[last][4] << std::endl;
 		fileinfo << "diff2 = " << solpost23[last][5] << std::endl;
 		fileinfo << "counterout = " << solpost23[last][6] << std::endl;
+        fileinfo << "time = " << duration1 << std::endl;
 
-		if (true) {
+		if (false) {
 
 
 			if (print) {

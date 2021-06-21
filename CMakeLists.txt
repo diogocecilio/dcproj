@@ -26,6 +26,11 @@ src/eigen_sym.h src/cholesky.h src/nr3.h  src/roots.h src/mins_ndim.h  src/ludcm
 )
 #find_package (Eigen3 3.3.9 REQUIRED NO_MODULE)
  
+include_directories("/usr/include/eigen3")
+
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+find_package(Threads REQUIRED)
+target_link_libraries(dcproj Threads::Threads)
 
 
 include_directories('src')
