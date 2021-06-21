@@ -141,6 +141,7 @@ void mainlinux()
 	bool print = false;
 	slopeobj2->MonteCarloGIM(0, 2000, print, namefolder3);
 }
+//<<<<<<< HEAD
 void myTreads(int a, int b, slopeproject* slopeobj2,string namefolder3)
 {
 	slopeobj2->MonteCarloGIM(a, b, false, namefolder3);
@@ -367,6 +368,14 @@ writer1.someFunctionThatWritesToFile();
 //}
 
 
+//=======
+//void myTreads(int a, int b, slopeproject* slopeobj2, string traedN)
+//{
+//	string namefolder3 = "D:/slope-results/THREADS/GI-cho-field-Lx20-Ly4" + traedN;
+//	slopeobj2->MonteCarloGIM(a, b, false, namefolder3);
+	
+//}
+//>>>>>>> 14e0198f701fa2b9e6db01cad4c32dcab2efb000
 
 void mainwindows()
 {
@@ -539,6 +548,7 @@ void mainwindows()
 	std::thread thread7(myTreads, 1251,1500, slopeobj7, number);
 	std::thread thread8(myTreads, 1501, 1750, slopeobj8, number);
 	std::thread thread9(myTreads, 1751, 2000, slopeobj9, number);
+
 	thread2.join();
 	thread3.join();
 	thread4.join();

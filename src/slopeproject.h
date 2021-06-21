@@ -27,6 +27,7 @@ class slopeproject
 public:
 	slopeproject(mesh* inmesh,	KLGalerkinRF * inklgalerking);
 	slopeproject(mesh* inmesh, KLGalerkinRF* inklgalerking, NRmatrix<MatDoub> randomfield);
+	slopeproject(mesh inmesh, KLGalerkinRF inklgalerking, NRmatrix<MatDoub> randomfield);
 	slopeproject();
 	~slopeproject();
 	slopeproject(slopeproject& copy);
