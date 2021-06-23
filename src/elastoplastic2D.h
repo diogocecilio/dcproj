@@ -10,9 +10,9 @@ using namespace std;
 template <class YC>
 class elastoplastic2D : public material{
 public:
-	elastoplastic2D(Doub thickness, MatDoub bodyforce, Int planestress, Int order, MatDoub  HHAT);
-	elastoplastic2D(Doub thickness, MatDoub bodyforce, Int planestress, Int order);
-	elastoplastic2D(Doub young, Doub nu, Doub sigy, Doub thickness, MatDoub bodyforce, Int planestress, Int order, MatDoub  HHAT);
+	elastoplastic2D(Doub thickness, NRmatrix<Doub>  bodyforce, Int planestress, Int order, NRmatrix<Doub>   HHAT);
+	elastoplastic2D(Doub thickness, NRmatrix<Doub>  bodyforce, Int planestress, Int order);
+	elastoplastic2D(Doub young, Doub nu, Doub sigy, Doub thickness, NRmatrix<Doub>  bodyforce, Int planestress, Int order, NRmatrix<Doub>   HHAT);
 
 	elastoplastic2D(elastoplastic2D & copy);
 	elastoplastic2D();
@@ -23,30 +23,30 @@ public:
 //	elastmat2D();
 //	~elastmat2D();
 //
-	void Contribute(MatDoub &ek, MatDoub &efint, MatDoub &efbody, Doub xi, Doub eta, Doub w, MatDoub elcoords, MatDoub eldisplace);
-	void CacStiff(MatDoub &ek, MatDoub &efint, MatDoub &efbody, const MatDoub  &elcoords, MatDoub eldisplace);
-	void Assemble(std::vector<std::vector< std::vector<Doub > > > allcoords, MatDoub meshnodes, MatInt meshtopology, MatDoub &KG, MatDoub &Fint,MatDoub &Fbody);
+	void Contribute(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint, NRmatrix<Doub>  &efbody, Doub xi, Doub eta, Doub w, NRmatrix<Doub>  elcoords, NRmatrix<Doub>  eldisplace);
+	void CacStiff(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint, NRmatrix<Doub>  &efbody, const NRmatrix<Doub>   &elcoords, NRmatrix<Doub>  eldisplace);
+	void Assemble(std::vector<std::vector< std::vector<Doub > > > allcoords, NRmatrix<Doub>  meshnodes, MatInt meshtopology, NRmatrix<Doub>  &KG, NRmatrix<Doub>  &Fint,NRmatrix<Doub>  &Fbody);
 	//void Assemble(MatDoub &KG, MatDoub &Fint, MatDoub &Fbody);
-	void assembleBandN(MatDoub &B, MatDoub &N, const MatDoub &psis, const MatDoub &GradPhi);
+	void assembleBandN(NRmatrix<Doub>  &B, NRmatrix<Doub>  &N, const NRmatrix<Doub>  &psis, const NRmatrix<Doub>  &GradPhi);
 	void assembleConstitutiveMatrix(MatDoub &C, Doub mult);
 	void GetElCoords(std::vector<std::vector< std::vector<Doub > > > allcoords, Int el, MatDoub & elcoords);
-	void DirichletBC(MatDoub &KG, MatDoub & FG, std::vector<int> ids, Int  dir, Int val);
-	void ContributeLineNewan(MatDoub &KG, MatDoub & FG, std::vector<int> ids, Int  dir, Int val);
-	void ContributeCurvedLine(MatDoub &KG, MatDoub &FG, MatDoub meshnodes, MatInt linetopology, Doub force);
-	void SolPt(const std::vector<std::vector< std::vector<Doub > > > &allcoords,const MatInt &meshtopology, const Int &el, const  MatDoub &solG, const Doub &xi, const Doub &eta, MatDoub &xycoords, MatDoub &sol);
+	void DirichletBC(NRmatrix<Doub>  &KG, NRmatrix<Doub>  & FG, std::vector<int> ids, Int  dir, Int val);
+	void ContributeLineNewan(NRmatrix<Doub>  &KG, NRmatrix<Doub>  & FG, std::vector<int> ids, Int  dir, Int val);
+	void ContributeCurvedLine(NRmatrix<Doub>  &KG, NRmatrix<Doub>  &FG, NRmatrix<Doub>  meshnodes, MatInt linetopology, Doub force);
+	void SolPt(const std::vector<std::vector< std::vector<Doub > > > &allcoords,const MatInt &meshtopology, const Int &el, const  NRmatrix<Doub>  &solG, const Doub &xi, const Doub &eta, NRmatrix<Doub>  &xycoords, MatDoub &sol);
 //
-	void PostProcess(std::vector<std::vector< std::vector<Doub > > > allcoords, MatDoub meshnodes, MatInt meshtopology, const MatDoub & nodalsol, std::vector<std::vector<double>> &solx, std::vector<std::vector<double>> &soly);
-    void PostProcess(std::vector<std::vector< std::vector<Doub > > > allcoords, MatDoub meshnodes, MatInt meshtopology, Int var,const MatDoub & nodalsol, std::vector<std::vector<double>> &sol);
+	void PostProcess(std::vector<std::vector< std::vector<Doub > > > allcoords, NRmatrix<Doub>  meshnodes, MatInt meshtopology, const NRmatrix<Doub>  & nodalsol, std::vector<std::vector<double>> &solx, std::vector<std::vector<double>> &soly);
+    void PostProcess(std::vector<std::vector< std::vector<Doub > > > allcoords, NRmatrix<Doub>  meshnodes, MatInt meshtopology, Int var,const NRmatrix<Doub>  & nodalsol, std::vector<std::vector<double>> &sol);
 
-	void PostProcessIntegrationPointVar(std::vector<std::vector< std::vector<Doub > > > allcoords, MatDoub meshnodes, MatInt meshtopology, const MatDoub & nodalsol, std::vector<std::vector<double>> &sol);
+	void PostProcessIntegrationPointVar(std::vector<std::vector< std::vector<Doub > > > allcoords, NRmatrix<Doub>  meshnodes, MatInt meshtopology, const NRmatrix<Doub>  & nodalsol, std::vector<std::vector<double>> &sol);
 
 	//void SetMemory(MatDoub displace, NRvector<TensorDoub> epspvec, NRvector<TensorDoub>  epspsolitern, Int globalcounter);
-	void SetRandomField(MatDoub hhat);
-	void SetRandomFieldLocal(NRvector<MatDoub>  hhatvel);
+	void SetRandomField(NRmatrix<Doub>  hhat);
+	void SetRandomFieldLocal(NRvector<NRmatrix<Doub> >  hhatvel);
 	void SetMemory(Int ngloblapoints, Int systemsize);
-	void UpdateDisplacement(MatDoub displace);
+	void UpdateDisplacement(NRmatrix<Doub>  displace);
 	void UpdatePlasticStrain();
-	void UpdateBodyForce(MatDoub newbodyforce);
+	void UpdateBodyForce(NRmatrix<Doub>  newbodyforce);
 	void ResetPlasticStrain();
 	void ResetDisplacement();
 	void ResetMat();
@@ -74,7 +74,7 @@ public:
 
 	}
 
-	MatDoub GetBodyForce()
+	NRmatrix<Doub>  GetBodyForce()
 	{
 		return fbodyforce;
 	}
@@ -82,7 +82,7 @@ public:
 //
 private:
 
-	MatDoub fbodyforce;
+	NRmatrix<Doub>  fbodyforce;
 	Int fplanestress;
 	Doub fthickness;
 	Int fOrder;
@@ -91,12 +91,12 @@ private:
 
 
 public:
-	MatDoub fHHAT;
-	NRvector<MatDoub> fhhatvel;
+	NRmatrix<Doub>  fHHAT;
+	NRvector<NRmatrix<Doub> > fhhatvel;
 	YC fYC;
 
-	MatDoub fdisplace;
-	NRvector<TensorDoub> fepspvec, fepspsolitern;
+	NRmatrix<Doub>  fdisplace;
+	NRvector<NRtensor<Doub> > fepspvec, fepspsolitern;
 	Int fglobalcounter;
 
  

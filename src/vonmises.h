@@ -12,14 +12,14 @@ public:
 	vonmises();
 	~vonmises();
 
-	void closestpointproj(TensorDoub epst, TensorDoub epsp, TensorDoub & projstress, TensorDoub & projstrain, MatDoub & Dep, Doub & projgamma);
+	void closestpointproj(NRtensor<Doub>  epst, NRtensor<Doub>  epsp, NRtensor<Doub>  & projstress, NRtensor<Doub>  & projstrain, MatDoub & Dep, Doub & projgamma);
 	Doub yield(Doub J2);
 	MatDoub GetElasticMatrix();
 	MatDoub GetInverseElasticMatrix();
 	MatDoub F1HWCylVonMises(Doub xisol, Doub rho, Doub betasol);
 	MatDoub HW(MatDoub sig);
 	MatDoub stressrecosntruction(MatDoub val, MatDoub vec);
-	MatDoub dadsig(TensorDoub sigprojvoigt);
+	MatDoub dadsig(NRtensor<Doub>  sigprojvoigt);
 	MatDoub P();
 	inline void setup(Doub young, Doub nu, Doub sigy) {
 		fyoung = young;

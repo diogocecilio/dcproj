@@ -17,19 +17,19 @@ public:
 	druckerprager();
 	~druckerprager();
 
-	void closestpointproj(TensorDoub epst, TensorDoub epsp, TensorDoub & projstress, TensorDoub & projstrain, MatDoub & Dep, Doub & projgamma);
+	void closestpointproj(NRtensor<Doub>  epst, NRtensor<Doub>  epsp, NRtensor<Doub>  & projstress, NRtensor<Doub>  & projstrain, NRmatrix<Doub>  & Dep, Doub & projgamma);
 	Doub yield(Doub xi, Doub rho);
-	MatDoub GetElasticMatrix();
-	MatDoub GetInverseElasticMatrix();
-	MatDoub F1HWCylDruckerPragerSmoothPSMATCH(Doub xisol, Doub rho, Doub betasol);
-	MatDoub HW(MatDoub sig);
-	MatDoub stressrecosntruction(MatDoub val, MatDoub vec);
-	MatDoub dadsig(TensorDoub sigprojvoigt);
-	MatDoub P();
-	MatDoub avec(TensorDoub sigprojvoigt);
+	NRmatrix<Doub> GetElasticMatrix();
+	NRmatrix<Doub>  GetInverseElasticMatrix();
+	NRmatrix<Doub>  F1HWCylDruckerPragerSmoothPSMATCH(Doub xisol, Doub rho, Doub betasol);
+	NRmatrix<Doub>  HW(NRmatrix<Doub>  sig);
+	NRmatrix<Doub>  stressrecosntruction(NRmatrix<Doub>  val, NRmatrix<Doub>  vec);
+	NRmatrix<Doub>  dadsig(NRtensor<Doub>  sigprojvoigt);
+	NRmatrix<Doub>  P();
+	NRmatrix<Doub>  avec(NRtensor<Doub>  sigprojvoigt);
 
-	Doub FindMinimum(MatDoub pt,Doub xitrial,bool flag);
-	MatDoub ComputeQ(MatDoub fulltensorproj, MatDoub tempepsemat, TensorDoub & projstress, TensorDoub & projstrain, Doub & projgamma,MatDoub & nvec);
+	Doub FindMinimum(NRmatrix<Doub>  pt,Doub xitrial,bool flag);
+	MatDoub ComputeQ(NRmatrix<Doub>  fulltensorproj, NRmatrix<Doub>  tempepsemat, NRtensor<Doub>  & projstress, NRtensor<Doub>  & projstrain, Doub & projgamma,NRmatrix<Doub>  & nvec);
 	
 	// Doub func2(Doub xi)
 	//{
@@ -116,7 +116,7 @@ public:
 
 
 
-	inline Doub Det(MatDoub A)
+	inline Doub Det(NRmatrix<Doub>  A)
 	{
 
 		MatrixXd AA(A.nrows(), A.nrows());
@@ -131,7 +131,7 @@ public:
 		return det;
 	}
 
-	inline MatDoub Inverse(MatDoub A)
+	inline NRmatrix<Doub>  Inverse(NRmatrix<Doub>  A)
 	{
 		MatDoub InvOut(A.nrows(), A.nrows());
 		MatrixXd AA(A.nrows(), A.nrows()),Inv;
@@ -177,7 +177,7 @@ private:
 
 struct Funcstruct:druckerprager {
 
-	MatDoub pt;
+	NRmatrix<Doub>  pt;
 	Doub fyoung;
 	Doub fnu;
 	Doub fcoesion;
@@ -241,7 +241,7 @@ struct Funcstruct:druckerprager {
 	}
 
 
-	void setpt(MatDoub ptext, Doub young, Doub nu, Doub coesion, Doub frictionangle)
+	void setpt(NRmatrix<Doub>  ptext, Doub young, Doub nu, Doub coesion, Doub frictionangle)
 	{
 		pt = ptext;
 		setup(young,nu,coesion,frictionangle);
@@ -319,7 +319,7 @@ struct Funcd :druckerprager {
 			(pow(a, 2)*G*sqrt((pow(b, 2)*(-3 * pow(a, 2) + 3 * pow(apex, 2) - 2 * sqrt(3)*apex*xi + pow(xi, 2))) / pow(a, 2)))) / 108.;
 	}
 
-	void setpt(MatDoub ptext, Doub young, Doub nu, Doub coesion, Doub frictionangle)
+	void setpt(NRmatrix<Doub>  ptext, Doub young, Doub nu, Doub coesion, Doub frictionangle)
 	{
 		pt = ptext;
 		setup(young, nu, coesion, frictionangle);

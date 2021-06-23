@@ -23,9 +23,9 @@ vonmises::~vonmises()
 {
 }
 
-void vonmises::closestpointproj(TensorDoub epst, TensorDoub epsp, TensorDoub & projstress, TensorDoub & projstrain, MatDoub & Dep, Doub & projgamma)
+void vonmises::closestpointproj(NRtensor<Doub>  epst, NRtensor<Doub>  epsp, NRtensor<Doub>  & projstress, NRtensor<Doub>  & projstrain, MatDoub & Dep, Doub & projgamma)
 {
-	TensorDoub epse = epst - epsp;
+	NRtensor<Doub>  epse = epst - epsp;
 	MatDoub C = GetElasticMatrix();
 	//C.Print();
 	//epse.Print();
@@ -36,7 +36,7 @@ void vonmises::closestpointproj(TensorDoub epst, TensorDoub epsp, TensorDoub & p
 	//tempepsemat.Print();
 	C.Mult(tempepsemat, stresstrial);
 	//stresstrial.Print();
-	TensorDoub stresstrialtensor;
+	NRtensor<Doub>  stresstrialtensor;
 	epse.FromNRmatrixToTensor(stresstrial, stresstrialtensor);
 	Doub I1, J2;
 	J2= stresstrialtensor.J2();
@@ -80,7 +80,7 @@ void vonmises::closestpointproj(TensorDoub epst, TensorDoub epsp, TensorDoub & p
 		//std::cout << "projVoigtMat  = " << std::endl;
 		//projVoigtMat.Print();
 
-		TensorDoub voigtProjTensor,nvec, epsptensor;
+		NRtensor<Doub>  voigtProjTensor,nvec, epsptensor;
 		nvec.FromNRmatrixToTensor(projVoigtMat, voigtProjTensor);
 		projstress = voigtProjTensor;
 
@@ -161,7 +161,7 @@ void vonmises::closestpointproj(TensorDoub epst, TensorDoub epsp, TensorDoub & p
 	}
 
 }
-MatDoub vonmises::dadsig(TensorDoub sigprojvoigt)
+MatDoub vonmises::dadsig(NRtensor<Doub>  sigprojvoigt)
 {
 	Doub I1 = sigprojvoigt.I1();
 	Doub J2 = sigprojvoigt.J2();
@@ -169,7 +169,7 @@ MatDoub vonmises::dadsig(TensorDoub sigprojvoigt)
 	MatDoub  first = P();
 	first *= sqrt(3.) / (2 * sqrt(J2));
 	MatDoub second,Smat,SmatT;
-	TensorDoub S;
+	NRtensor<Doub>  S;
 	sigprojvoigt.ComputeS(S);
 	S.FromTensorToNRmatrix(Smat);
 	Smat.Transpose(SmatT);

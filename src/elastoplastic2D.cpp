@@ -3,7 +3,7 @@
 #include "druckerprager.h"
 
 template <class YC>
-elastoplastic2D<YC>::elastoplastic2D(Doub thickness, MatDoub bodyforce, Int planestress, Int order) 
+elastoplastic2D<YC>::elastoplastic2D(Doub thickness, NRmatrix<Doub>  bodyforce, Int planestress, Int order) 
 {
 	fbodyforce = bodyforce;
 	fplanestress = planestress;
@@ -15,7 +15,7 @@ elastoplastic2D<YC>::elastoplastic2D(Doub thickness, MatDoub bodyforce, Int plan
 }
 
 template <class YC>
-elastoplastic2D<YC>::elastoplastic2D(Doub young, Doub nu, Doub sigy, Doub thickness, MatDoub bodyforce, Int planestress, Int order, MatDoub  HHAT)
+elastoplastic2D<YC>::elastoplastic2D(Doub young, Doub nu, Doub sigy, Doub thickness, NRmatrix<Doub>  bodyforce, Int planestress, Int order, NRmatrix<Doub>   HHAT)
 {
 	fbodyforce = bodyforce;
 	fplanestress = planestress;
@@ -26,7 +26,7 @@ elastoplastic2D<YC>::elastoplastic2D(Doub young, Doub nu, Doub sigy, Doub thickn
 }
 
 template <class YC>
-elastoplastic2D<YC>::elastoplastic2D(Doub thickness, MatDoub bodyforce, Int planestress, Int order, MatDoub  HHAT) 
+elastoplastic2D<YC>::elastoplastic2D(Doub thickness, NRmatrix<Doub>  bodyforce, Int planestress, Int order, NRmatrix<Doub>   HHAT) 
 {
 
 	fbodyforce = bodyforce;
@@ -51,6 +51,7 @@ elastoplastic2D<YC>::elastoplastic2D()
 template <class YC>
 elastoplastic2D<YC>::~elastoplastic2D()
 {
+ 
 }
 
 template <class YC>
@@ -77,19 +78,19 @@ void elastoplastic2D<YC>::ResetMemory()
 }
 
 template <class YC>
-void elastoplastic2D<YC>::SetRandomField(MatDoub hhat)
+void elastoplastic2D<YC>::SetRandomField(NRmatrix<Doub>  hhat)
 {
 	fHHAT = hhat;
 }
 template <class YC>
-void elastoplastic2D<YC>::SetRandomFieldLocal(NRvector<MatDoub>  hhatvel)
+void elastoplastic2D<YC>::SetRandomFieldLocal(NRvector<NRmatrix<Doub> >  hhatvel)
 {
 	fhhatvel = hhatvel;
 }
 
 
 template <class YC>
-void elastoplastic2D<YC>::UpdateDisplacement(MatDoub displace)
+void elastoplastic2D<YC>::UpdateDisplacement(NRmatrix<Doub>  displace)
 {
 	fdisplace = displace;
 }
@@ -102,7 +103,7 @@ void elastoplastic2D<YC>::UpdatePlasticStrain()
 }
 
 template <class YC>
-void elastoplastic2D<YC>::UpdateBodyForce(MatDoub newbodyforce)
+void elastoplastic2D<YC>::UpdateBodyForce(NRmatrix<Doub>  newbodyforce)
 {
 	fbodyforce = newbodyforce;
 }
@@ -159,16 +160,16 @@ void elastoplastic2D<YC>::ResetDisplacement()
 
 
 template <class YC>
-void elastoplastic2D<YC>::Contribute(MatDoub &ek, MatDoub &efint, MatDoub &efbody, Doub xi, Doub eta, Doub w, MatDoub elcoords,MatDoub eldisplace)
+void elastoplastic2D<YC>::Contribute(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint, NRmatrix<Doub>  &efbody, Doub xi, Doub eta, Doub w, NRmatrix<Doub>  elcoords,NRmatrix<Doub>  eldisplace)
 {
 	int type = 1;
 	shapequad objshapes(fOrder, type);
 
-	MatDoub psis, GradPsi, elcoordst, xycoords, Jac, InvJac(2, 2), GradPhi, B, BT, N, NT, psist, C, BC, BCS, stress(3, 1, 0.), temp, CS, KSt;
+	NRmatrix<Doub>  psis, GradPsi, elcoordst, xycoords, Jac, InvJac(2, 2), GradPhi, B, BT, N, NT, psist, C, BC, BCS, stress(3, 1, 0.), temp, CS, KSt;
 	objshapes.shapes(psis, GradPsi, xi, eta);
 	psis.Transpose(psist);
 	psist.Mult(elcoords, xycoords);
-	NRvector<MatDoub> hhat(fhhatvel.size());
+	NRvector<NRmatrix<Doub> > hhat(fhhatvel.size());
 
 	if (fhhatvel.size() != 0)
 	{
@@ -200,7 +201,7 @@ void elastoplastic2D<YC>::Contribute(MatDoub &ek, MatDoub &efint, MatDoub &efbod
 	InvJac[0][0] = Jac[1][1] / DetJ;   InvJac[0][1] = -Jac[0][1] / DetJ;
 	InvJac[1][0] = -Jac[1][0] / DetJ;	InvJac[1][1] = Jac[0][0] / DetJ;
 	InvJac.Mult(GradPsi, GradPhi);
-	MatDoub gradu;
+	NRmatrix<Doub>  gradu;
 	GradPhi.Mult(eldisplace, gradu);
 
 	//{ {dudx, dudy}, { dvdx, dvdy }} = gradprevsol;
@@ -209,8 +210,9 @@ void elastoplastic2D<YC>::Contribute(MatDoub &ek, MatDoub &efint, MatDoub &efbod
 	Doub exy = (gradu[0][1] + gradu[1][0]);
 
 
-	TensorDoub  epst(0.), epsp(0.), projstress(0.), projstrain(0.), epspeint(0.);
-	MatDoub Dep;
+	NRtensor<Doub>   epst(0.), epsp(0.), projstress(0.), projstrain(0.), epspeint(0.);
+    
+	NRmatrix<Doub>  Dep;
 	Doub  projgamma=0.;
 	epst.XX() = ex;epst.YY() = ey;epst.XY() = exy;
 	//epsp = epspsoliternGLOBAL[globalcounter];
@@ -267,7 +269,7 @@ void elastoplastic2D<YC>::Contribute(MatDoub &ek, MatDoub &efint, MatDoub &efbod
 	efbody *= w*DetJ;
 }
 template <class YC>
-void elastoplastic2D<YC>::CacStiff(MatDoub &ek, MatDoub &efint, MatDoub &efbody, const MatDoub  &elcoords,MatDoub eldisplace)
+void elastoplastic2D<YC>::CacStiff(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint, NRmatrix<Doub>  &efbody, const NRmatrix<Doub>   &elcoords,NRmatrix<Doub>  eldisplace)
 {
 	MatDoub ptsweigths, ekt, eftint,eftbody;
 	Doub xi, eta, w;
@@ -387,7 +389,7 @@ void elastoplastic2D<YC>::CacStiff(MatDoub &ek, MatDoub &efint, MatDoub &efbody,
 
 
 template <class YC>
-void elastoplastic2D<YC>::Assemble(std::vector<std::vector< std::vector<Doub > > > allcoords, MatDoub meshnodes,MatInt meshtopology,MatDoub &KG, MatDoub &Fint, MatDoub &Fbody)
+void elastoplastic2D<YC>::Assemble(std::vector<std::vector< std::vector<Doub > > > allcoords, NRmatrix<Doub>  meshnodes,MatInt meshtopology,NRmatrix<Doub>  &KG, NRmatrix<Doub>  &Fint, NRmatrix<Doub>  &Fbody)
 {
 	//std::vector<std::vector< std::vector<Doub > > > allcoords = fmesh.GetAllCoords();
 	//MatDoub meshnodes = fmesh.GetMeshNodes();
@@ -395,7 +397,7 @@ void elastoplastic2D<YC>::Assemble(std::vector<std::vector< std::vector<Doub > >
 
 	//cout << "all cc" << allcoords[0].size() <<endl;
 
-	MatDoub ek, efint,efbody, elcoords, eltopology;
+	NRmatrix<Doub>  ek, efint,efbody, elcoords, eltopology;
 	GetElCoords(allcoords, 0, elcoords);
 	Int nnodes = meshnodes.nrows();
 	Int rows = elcoords.nrows();
@@ -445,7 +447,7 @@ void elastoplastic2D<YC>::Assemble(std::vector<std::vector< std::vector<Doub > >
 				}
 			}
 		}
-		MatDoub elementdisplace(elcoords.nrows(), 2,0.);
+		NRmatrix<Doub>  elementdisplace(elcoords.nrows(), 2,0.);
 		for (Int i = 0;i < elcoords.nrows(); i++)for (Int j = 0;j < 2;j++)elementdisplace[i][j] = uglob[iel][i][j];
 		GetElCoords(allcoords, iel, elcoords );
 		CacStiff(ek, efint,efbody, elcoords, elementdisplace);
@@ -472,7 +474,7 @@ void elastoplastic2D<YC>::Assemble(std::vector<std::vector< std::vector<Doub > >
 	fglobalcounter = 0;
 }
 template <class YC>
-void elastoplastic2D<YC>::assembleBandN(MatDoub &B, MatDoub &N, const MatDoub &psis, const MatDoub &GradPhi) 
+void elastoplastic2D<YC>::assembleBandN(NRmatrix<Doub>  &B, NRmatrix<Doub>  &N, const NRmatrix<Doub>  &psis, const NRmatrix<Doub>  &GradPhi) 
 {
 	B.assign(3, psis.nrows() * 2, 0.);
 	N.assign(2, psis.nrows() * 2, 0.);
@@ -504,7 +506,7 @@ void elastoplastic2D<YC>::assembleBandN(MatDoub &B, MatDoub &N, const MatDoub &p
 	}
 }
 template <class YC>
-void elastoplastic2D<YC>::assembleConstitutiveMatrix(MatDoub &C, Doub mult)
+void elastoplastic2D<YC>::assembleConstitutiveMatrix(NRmatrix<Doub>  &C, Doub mult)
 {
 	
 	Doub young = mult*fYC.fyoung, nu = fYC.fnu;
@@ -515,7 +517,7 @@ void elastoplastic2D<YC>::assembleConstitutiveMatrix(MatDoub &C, Doub mult)
 	C[2][0] = 0.;                    C[2][1] = 0.;                    C[2][2] = young / (2 * (1 + nu));
 }
 template <class YC>
-void elastoplastic2D<YC>::GetElCoords(std::vector<std::vector< std::vector<Doub > > > allcoords, Int el, MatDoub & elcoords) 
+void elastoplastic2D<YC>::GetElCoords(std::vector<std::vector< std::vector<Doub > > > allcoords, Int el, NRmatrix<Doub>  & elcoords) 
 {
 	elcoords.assign(allcoords[el].size(), 2, 0.);
 	for (Int j = 0; j < allcoords[el].size(); j++)
@@ -527,7 +529,7 @@ void elastoplastic2D<YC>::GetElCoords(std::vector<std::vector< std::vector<Doub 
 	}
 }
 template <class YC>
-void elastoplastic2D<YC>::DirichletBC(MatDoub &KG, MatDoub & FG, std::vector<int> ids, Int  dir, Int val)
+void elastoplastic2D<YC>::DirichletBC(NRmatrix<Doub>  &KG, NRmatrix<Doub>  & FG, std::vector<int> ids, Int  dir, Int val)
 {
 	Int nodes = ids.size();
 	Int sz = KG.nrows();
@@ -560,9 +562,9 @@ void elastoplastic2D<YC>::DirichletBC(MatDoub &KG, MatDoub & FG, std::vector<int
 	}
 }
 template <class YC>
-void elastoplastic2D<YC>::ContributeLineNewan(MatDoub &KG, MatDoub & FG, std::vector<int> ids, Int  dir, Int val)
+void elastoplastic2D<YC>::ContributeLineNewan(NRmatrix<Doub>  &KG, NRmatrix<Doub>  & FG, std::vector<int> ids, Int  dir, Int val)
 {
-	MatDoub psis, gradpsis, ptsws;
+	NRmatrix<Doub>  psis, gradpsis, ptsws;
 
 	int type = 1;
 	shapequad objshapes(fOrder, type);
@@ -571,7 +573,7 @@ void elastoplastic2D<YC>::ContributeLineNewan(MatDoub &KG, MatDoub & FG, std::ve
 	Int npts = ptsws.nrows();
 
 	Doub xi, w;
-	MatDoub DetJ;
+	NRmatrix<Doub>  DetJ;
 
 	for (Int ipt = 0;ipt < npts;ipt++)
 	{
@@ -585,7 +587,7 @@ void elastoplastic2D<YC>::ContributeLineNewan(MatDoub &KG, MatDoub & FG, std::ve
 }
 
 template <class YC>
-void elastoplastic2D<YC>::ContributeCurvedLine(MatDoub &KG, MatDoub &FG, MatDoub meshnodes, MatInt linetopology,Doub force)
+void elastoplastic2D<YC>::ContributeCurvedLine(NRmatrix<Doub>  &KG, NRmatrix<Doub>  &FG, NRmatrix<Doub>  meshnodes, MatInt linetopology,Doub force)
 {
 	int type = 1;
 	shapequad objshapes(fOrder, type);
@@ -657,7 +659,7 @@ void elastoplastic2D<YC>::ContributeCurvedLine(MatDoub &KG, MatDoub &FG, MatDoub
 }
 
 template <class YC>
-void elastoplastic2D<YC>::SolPt(const std::vector<std::vector< std::vector<Doub > > > &allcoords, const MatInt &meshtopology, const Int &el, const  MatDoub &solG, const Doub &xi, const Doub &eta, MatDoub &xycoords, MatDoub &sol)
+void elastoplastic2D<YC>::SolPt(const std::vector<std::vector< std::vector<Doub > > > &allcoords, const MatInt &meshtopology, const Int &el, const  NRmatrix<Doub>  &solG, const Doub &xi, const Doub &eta, NRmatrix<Doub>  &xycoords, NRmatrix<Doub>  &sol)
 {
 	MatDoub psis, GradPsi, elcoords, psist, solel;
 	GetElCoords(allcoords, el, elcoords);
@@ -681,7 +683,7 @@ void elastoplastic2D<YC>::SolPt(const std::vector<std::vector< std::vector<Doub 
 
 template <class YC>
 //void elastoplastic2D<YC>::PostProcess(mesh & inmesh, const MatDoub & nodalsol, std::vector<std::vector<double>> &solx, std::vector<std::vector<double>> &soly)
-void elastoplastic2D<YC>::PostProcess(std::vector<std::vector< std::vector<Doub > > > allcoords, MatDoub meshnode, MatInt meshtopology, const MatDoub & nodalsol, std::vector<std::vector<double>> &solx, std::vector<std::vector<double>> &soly)
+void elastoplastic2D<YC>::PostProcess(std::vector<std::vector< std::vector<Doub > > > allcoords, NRmatrix<Doub>  meshnode, MatInt meshtopology, const NRmatrix<Doub>  & nodalsol, std::vector<std::vector<double>> &solx, std::vector<std::vector<double>> &soly)
 {
 	int type = 1;
 	shapequad objshapes(fOrder, type);
@@ -725,14 +727,14 @@ void elastoplastic2D<YC>::PostProcess(std::vector<std::vector< std::vector<Doub 
 }
 template <class YC>
 //void elastoplastic2D<YC>::PostProcess(mesh & inmesh,Int var,const MatDoub & nodalsol, std::vector<std::vector<double>> &sol)
-void elastoplastic2D<YC>::PostProcess(std::vector<std::vector< std::vector<Doub > > > allcoords, MatDoub meshnode, MatInt meshtopology, Int var, const MatDoub & nodalsol, std::vector<std::vector<double>> &sol)
+void elastoplastic2D<YC>::PostProcess(std::vector<std::vector< std::vector<Doub > > > allcoords, NRmatrix<Doub>  meshnode, MatInt meshtopology, Int var, const NRmatrix<Doub>  & nodalsol, std::vector<std::vector<double>> &sol)
 {
 	int type = 1;
 	shapequad objshapes(fOrder, type);
 	//std::vector<std::vector< std::vector<Doub > > > allcoords = inmesh.GetAllCoords();
 	//MatDoub meshnodes = inmesh.GetMeshNodes();
 	//MatInt meshtopology = inmesh.GetMeshTopology();
-	MatDoub elcoords, eltopology, psis, gradpsis, xycoords, psist;
+	NRmatrix<Doub>  elcoords, eltopology, psis, gradpsis, xycoords, psist;
 	GetElCoords(allcoords, 0, elcoords);
 	Int rows = elcoords.nrows();
 	Int cols = rows;
@@ -767,7 +769,7 @@ void elastoplastic2D<YC>::PostProcess(std::vector<std::vector< std::vector<Doub 
 
 template <class YC>
 //void elastoplastic2D<YC>::PostProcessIntegrationPointVar(mesh & inmesh, const MatDoub & nodalsol, std::vector<std::vector<double>> &sol)
-void elastoplastic2D<YC>::PostProcessIntegrationPointVar(std::vector<std::vector< std::vector<Doub > > > allcoords, MatDoub meshnode, MatInt meshtopology, const MatDoub & nodalsol, std::vector<std::vector<double>> &sol)
+void elastoplastic2D<YC>::PostProcessIntegrationPointVar(std::vector<std::vector< std::vector<Doub > > > allcoords, NRmatrix<Doub>  meshnode, MatInt meshtopology, const NRmatrix<Doub>  & nodalsol, std::vector<std::vector<double>> &sol)
 {
 //	std::vector<std::vector< std::vector<Doub > > > allcoords = inmesh.GetAllCoords();
 //	MatDoub meshnodes = inmesh.GetMeshNodes();
@@ -775,13 +777,13 @@ void elastoplastic2D<YC>::PostProcessIntegrationPointVar(std::vector<std::vector
 	int type = 1;
 	shapequad objshapes(fOrder, type);
 
-	MatDoub ptsweigths,psis,psist,GradPsi,xycoords;
+	NRmatrix<Doub>  ptsweigths,psis,psist,GradPsi,xycoords;
 	Doub xi, eta;
 	shapequad shape = shapequad(fOrder, 1);
 	shape.pointsandweigths(ptsweigths);
 	Int npts = ptsweigths.nrows();
 	Int nels = meshtopology.nrows();
-	MatDoub elcoords;
+	NRmatrix<Doub>  elcoords;
 	Int counter=0;
 	for (Int iel = 0;iel < nels;iel++)
 	{

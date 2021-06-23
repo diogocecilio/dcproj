@@ -31,7 +31,8 @@ slopeproject::slopeproject(mesh inmesh, KLGalerkinRF inklgalerking, NRmatrix<Mat
 }
 slopeproject::~slopeproject()
 {
-
+	delete[] fmesh;
+	delete[] fklgalerking;
 }
 
 slopeproject::slopeproject(slopeproject& copy)
@@ -378,26 +379,26 @@ void myTreads2(int a, int b, slopeproject* slopeobj2, string traedN)
 
 std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Doub dlamb0,Doub alphatol, int niter)
 {
-	mesh* mesh = fmesh;
+	
 	std::vector<int>  idsbottom, idsleft, idsright, iddisplace;
 	std::vector<std::vector<int>> idsvector;
 
-	findbcids(mesh, idsvector);
+	findbcids(fmesh, idsvector);
 
 	idsbottom = idsvector[0];
 	idsleft = idsvector[1];
 	idsright = idsvector[2];
 	iddisplace = idsvector[3];
 
-	Int sz = 2 * mesh->GetMeshNodes().nrows();
+	Int sz = 2 * fmesh->GetMeshNodes().nrows();
 	MatDoub KG(sz, sz, 0.), FBODY(sz, 1, 0.), FINT(sz, 1, 0.), ptsweigths;
 	Doub rtemp = 10.;
 
-	material* mat = mesh->fmaterial;
+	//material* mat = fmesh->fmaterial;
 
-	mat->ResetPlasticStrain();
-	mat->ResetDisplacement();
-	mat->ResetMat();
+	fmesh->fmaterial->ResetPlasticStrain();
+	fmesh->fmaterial->ResetDisplacement();
+	fmesh->fmaterial->ResetMat();
 
 	MatDoub displace, displace0;
 	displace.assign(sz, 1, 0.);
@@ -411,12 +412,12 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 
 	MatDoub dws(sz, 1, 0.), dwb(sz, 1, 0.), dww(sz, 1, 0.), dw(sz, 1, 0.), R;
 	//mesh->fmaterial->Assemble(mesh->GetAllCoords(), mesh->GetMeshNodes(), mesh->GetMeshTopology(), KG, FINT, FBODY);
-	mesh->Assemble(KG, FINT, FBODY);
+	fmesh->Assemble(KG, FINT, FBODY);
 	R = FBODY;
 	R *= lamb;
 	R -= FINT;
 	bool check = false;
-	InserBC(KG, R, FBODY, idsbottom, idsright, idsleft, mat);
+	InserBC(KG, R, FBODY, idsbottom, idsright, idsleft, fmesh->fmaterial);
 	SolveEigen(KG, R, dws);
 	SolveEigen(KG, FBODY, dwb);
 	MatDoub dwbt, mult;
@@ -429,29 +430,30 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 	Doub scalar = 1.5;
 	Doub rtol = 0.5;
 	//cout << " \n SYSTEM SIZE  = " << KG.nrows() << std::endl;
-	Doub rnorm = 10., rnormn=10.;
+	Doub rnorm = 10., rnormn=10.,lambn0=0.;
+    Int counter = 0, maxcount = 20;
 	do
 	{
-		std::clock_t start;
+		std::clock_t start,startout;
 		double duration;
-		start = std::clock();
-		//std::cout << "load step = " << counterout << " | l = " << l << " | diff2 = " << diff2 << std::endl;
-		Int counter = 0, maxcount = 20;
+        startout = std::clock();
 		Doub err1 = 10., err2 = 10., tol = 1.e-5;
-		Doub  lambn0 = lamb;
+        if(counter<maxcount)lambn0 = lamb;
 		diff = 10;
 		displace0 = displace;
 		rnorm = 10.;
+        Doub meantime=0.;
+        counter = 0;
 		do
 		{
-
+            start = std::clock();
 			//mat->Assemble(mesh->GetAllCoords(), mesh->GetMeshNodes(), mesh->GetMeshTopology(), KG, FINT, FBODY);
-			mesh->Assemble(KG, FINT, FBODY);
+			fmesh->Assemble(KG, FINT, FBODY);
 			R = FBODY;
 			R *= lamb;
 			R -= FINT;
 
-			InserBC(KG, R, FBODY, idsbottom, idsright, idsleft, mat);
+			InserBC(KG, R, FBODY, idsbottom, idsright, idsleft, fmesh->fmaterial);
 			//SolveNR3(KG, R, dws);
 			//SolveNR3(KG, FBODY, dwb);
 			SolveEigen(KG, R, dws);
@@ -473,7 +475,7 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 			dw += dww;
 
 			displace += dww;
-			mat->UpdateDisplacement(displace);
+			fmesh->fmaterial->UpdateDisplacement(displace);
 
 			rnorm = R.NRmatrixNorm();
 			Doub normdw = dww.NRmatrixNorm();
@@ -484,16 +486,20 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 
 			Doub duration1 = (std::clock() - start) / (double)CLOCKS_PER_SEC;
 
-			std::cout << " Iteration number = " << counter << " |  |R|/FE = " << err1 << " |  |R| = " << rnorm << " | Unrom  = " << unorm << " | lamb  = " << lamb << " | time =  <<" << duration1 << std::endl;
+			//std::cout << " Iteration number = " << counter << " |  |R|/FE = " << err1 << " |  |R| = " << rnorm << " | Unrom  = " << unorm << " | lamb  //= " << lamb << " | time =  <<" << duration1 << std::endl;
+            //std::cout << " | time =  <<" << duration1 << std::endl;
 			counter++;
-
+            meantime+=duration1;
 			rtemp = rnorm;
 			if (counter == 1)rnorm = 10;
 
 
 		} while (counter < maxcount && rnorm > rtol);
-
-
+        meantime/=counter;
+        Doub outtime = (std::clock() - startout) / (double)CLOCKS_PER_SEC;
+       // diff2= fabs(lambn0- lamb);
+        std::cout << " exter iter = " << counterout << "  | newton iters = " << counter  << " |  |R| = " << rnorm << " |  lamb  = " <<lamb << " | dlamb  = " <<diff2 << "| mean time in "<< meantime <<" | total time (s) = " << outtime << std::endl;
+        
 		if (rnorm > 0.5)
 		{
 
@@ -502,7 +508,7 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 			counterout++;
 			dws.assign(sz, 1, 0.), dwb.assign(sz, 1, 0.), dww.assign(sz, 1, 0.), R.assign(sz, 1, 0.), dw.assign(sz, 1, 0.), R.assign(sz, 1, 0.), FBODY.assign(sz, 1, 0.), FINT.assign(sz, 1, 0.);
 
-			mat->UpdateDisplacement(displace0);
+			fmesh->fmaterial->UpdateDisplacement(displace0);
 			displace = displace0;
 			//ndesi--;//74 s 0.497378 1.35437
 				if (check==true)
@@ -525,11 +531,11 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 			dws.assign(sz, 1, 0.), dwb.assign(sz, 1, 0.), dww.assign(sz, 1, 0.), R.assign(sz, 1, 0.), dw.assign(sz, 1, 0.), R.assign(sz, 1, 0.), FBODY.assign(sz, 1, 0.), FINT.assign(sz, 1, 0.);
 
 			//mat->Assemble(mesh->GetAllCoords(), mesh->GetMeshNodes(), mesh->GetMeshTopology(), KG, FINT, FBODY);
-			mesh->Assemble(KG, FINT, FBODY);
+			fmesh->Assemble(KG, FINT, FBODY);
 			R = FBODY;
 			R *= lamb;
 			R -= FINT;
-			InserBC(KG, R, FBODY, idsbottom, idsright, idsleft, mat);
+			InserBC(KG, R, FBODY, idsbottom, idsright, idsleft, fmesh->fmaterial);
 			SolveEigen(KG, R, dws);
 			SolveEigen(KG, FBODY, dwb);
 			dwb.Transpose(dwbt);
@@ -544,7 +550,7 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 			l *= Doub(ndesi) / Doub(counter);
 			if (l > 10.)l = 10.;
 			diff2 = fabs(lambn0 - lamb);
-			mat->UpdatePlasticStrain();
+			fmesh->fmaterial->UpdatePlasticStrain();
 		}
 
 		counterout++;
@@ -592,7 +598,7 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 
 
 		std::vector<std::vector<double>> epsppost;
-		mat->PostProcessIntegrationPointVar(mesh->GetAllCoords(), mesh->GetMeshNodes(), mesh->GetMeshTopology(), mat->GetSolution(), epsppost);
+		fmesh->fmaterial->PostProcessIntegrationPointVar(fmesh->GetAllCoords(), fmesh->GetMeshNodes(), fmesh->GetMeshTopology(), fmesh->fmaterial->GetSolution(), epsppost);
 		string name3 = "epsppostnew";
 		string ext3 = ".txt";
 		name3 += ext3;
@@ -601,7 +607,7 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 
 		string filename;
 		std::vector<std::vector<double>> solx, soly;
-		mat->PostProcess(mesh->GetAllCoords(), mesh->GetMeshNodes(), mesh->GetMeshTopology(), mat->GetSolution(), solx, soly);
+		fmesh->fmaterial->PostProcess(fmesh->GetAllCoords(), fmesh->GetMeshNodes(), fmesh->GetMeshTopology(), fmesh->fmaterial->GetSolution(), solx, soly);
 		filename = "soly.txt";
 		std::ofstream file2(filename);
 		OutPutPost(soly, file2);
@@ -609,7 +615,6 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 		std::ofstream file22(filename);
 		OutPutPost(solx, file22);
 	}
-
 
 //	std::cout << "  Iteration number = " << counterout <<  " |  |R| = " << rnorm << " | lamb  = " << lamb << std::endl;
 	return solpost;
@@ -1213,25 +1218,25 @@ return hhatinho;
 
 void slopeproject::MonteCarloSRM(int iter,int iter2, bool print, string writenamefolder) {
 
-	mesh* mesh2 = fmesh;
+	//mesh* mesh2 = fmesh;
 	MatDoub ptsweigths;
 	int order = 2;
 	shapequad shape = shapequad(order, 1);
 	shape.pointsandweigths(ptsweigths);
 	Int npts = ptsweigths.nrows();
-	Int nglobalpts = mesh2->GetMeshTopology().nrows() * npts;
-	Int sz = 2 * mesh2->GetMeshNodes().nrows();
+	Int nglobalpts = fmesh->GetMeshTopology().nrows() * npts;
+	Int sz = 2 * fmesh->GetMeshNodes().nrows();
 
-	material* mat = mesh2->fmaterial;
+	//material* mat = fmesh->fmaterial;
 
 
 	NRvector<Doub> matconsts(4, 0.);
-	mat->GetMatConstants(matconsts);
+	fmesh->fmaterial->GetMatConstants(matconsts);
 	Doub  young = matconsts[0];
 	Doub nu = matconsts[1];
 	Doub c = matconsts[2];
 	Doub phi = matconsts[3];
-	MatDoub bodyforce = mat->GetBodyForce();
+	MatDoub bodyforce = fmesh->fmaterial->GetBodyForce();
 
 	string namefolder = writenamefolder;
 	char* cstr = new char[namefolder.length() + 1];
@@ -1286,11 +1291,11 @@ void slopeproject::MonteCarloSRM(int iter,int iter2, bool print, string writenam
 				start = std::clock();
 
 				MatDoub hhatinho = AssembleHhationho(i);
-				mat->ResetMat();
-				mesh2->SetHhat(hhatinho);
-				mat->SetMemory(nglobalpts, sz);
-				mat->SetMatConstants(matconsts);
-				mat->UpdateBodyForce(bodyforce);
+				fmesh->fmaterial->ResetMat();
+				fmesh->SetHhat(hhatinho);
+				fmesh->fmaterial->SetMemory(nglobalpts, sz);
+				fmesh->fmaterial->SetMatConstants(matconsts);
+				fmesh->fmaterial->UpdateBodyForce(bodyforce);
 				Doub tol = 0.01;
 				std::vector<std::vector<double>>  sol = IterativeProcessShearRed(0.1,2.,tol);
 
@@ -1317,10 +1322,10 @@ void slopeproject::MonteCarloSRM(int iter,int iter2, bool print, string writenam
 				fileinfo << "diff= " << solpost23[last][4] << std::endl;
 				fileinfo << "diff2 = " << solpost23[last][5] << std::endl;
 				fileinfo << "counterout = " << solpost23[last][6] << std::endl;
-
+if (print) {
 				filename = namefolder;
 				std::vector<std::vector<double>> solx, soly;
-				mat->PostProcess(mesh2->GetAllCoords(), mesh2->GetMeshNodes(), mesh2->GetMeshTopology(), mat->GetSolution(), solx, soly);
+				fmesh->fmaterial->PostProcess(fmesh->GetAllCoords(), fmesh->GetMeshNodes(), fmesh->GetMeshTopology(), fmesh->fmaterial->GetSolution(), solx, soly);
 				string name2 = "/soly";
 				string ext2 = ".txt";
 				filename += name2;
@@ -1342,7 +1347,7 @@ void slopeproject::MonteCarloSRM(int iter,int iter2, bool print, string writenam
 
 				filename = namefolder;
 				std::vector<std::vector<double>> epsppost;
-				mat->PostProcessIntegrationPointVar(mesh2->GetAllCoords(), mesh2->GetMeshNodes(), mesh2->GetMeshTopology(), mat->GetSolution(), epsppost);
+				fmesh->fmaterial->PostProcessIntegrationPointVar(fmesh->GetAllCoords(), fmesh->GetMeshNodes(), fmesh->GetMeshTopology(),fmesh->fmaterial->GetSolution(), epsppost);
 				string name3 = "/plasticsqrtj2";
 				string ext3 = ".txt";
 				filename += name3;
@@ -1356,7 +1361,7 @@ void slopeproject::MonteCarloSRM(int iter,int iter2, bool print, string writenam
 				std::ofstream file23(filename2);
 				OutPutFile1var(solpost2, file23);
 
-				if (print) {
+				
 					filename = namefolder;
 					std::vector<std::vector<double>> hhatx;
 					string name = "/Coesao";
@@ -1365,7 +1370,7 @@ void slopeproject::MonteCarloSRM(int iter,int iter2, bool print, string writenam
 					s = std::to_string(i);
 					filename += s;
 					filename += ext;
-					mat->PostProcess(mesh2->GetAllCoords(), mesh2->GetMeshNodes(), mesh2->GetMeshTopology(), 0, hhatinho, hhatx);
+					fmesh->fmaterial->PostProcess(fmesh->GetAllCoords(), fmesh->GetMeshNodes(), fmesh->GetMeshTopology(), 0, hhatinho, hhatx);
 					std::ofstream file(filename);
 					OutPutPost(hhatx, file);
 
@@ -1378,7 +1383,7 @@ void slopeproject::MonteCarloSRM(int iter,int iter2, bool print, string writenam
 					auto sss = std::to_string(i);
 					filename += sss;
 					filename += ext;
-					mat->PostProcess(mesh2->GetAllCoords(), mesh2->GetMeshNodes(), mesh2->GetMeshTopology(), 1, hhatinho, hhatx2);
+					fmesh->fmaterial->PostProcess(fmesh->GetAllCoords(), fmesh->GetMeshNodes(), fmesh->GetMeshTopology(), 1, hhatinho, hhatx2);
 					std::ofstream filesss(filename);
 					OutPutPost(hhatx2, filesss);
 				}
@@ -1399,7 +1404,9 @@ void slopeproject::MonteCarloSRM(int iter,int iter2, bool print, string writenam
 
 			}
 	}
-
+	//delete mesh2;
+    //delete objKLGalerkinRF;
+   // delete mat;
 }
 
 
@@ -1407,26 +1414,26 @@ void slopeproject::MonteCarloSRM(int iter,int iter2, bool print, string writenam
 void slopeproject::MonteCarloGIM(int iter, int iter2, bool print, string writenamefolder)
 {
 
-	mesh* finemesh = fmesh;
+	//mesh* finemesh = fmesh;
 
 	MatDoub ptsweigths;
 	int order = 2;
 	shapequad shape = shapequad(order, 1);
 	shape.pointsandweigths(ptsweigths);
 	Int npts = ptsweigths.nrows();
-	Int nglobalpts = finemesh->GetMeshTopology().nrows() * npts;
-	Int sz = 2 * finemesh->GetMeshNodes().nrows();
+	Int nglobalpts = fmesh->GetMeshTopology().nrows() * npts;
+	Int sz = 2 * fmesh->GetMeshNodes().nrows();
 
 
-	material* materialdp = finemesh->fmaterial;
+	//material* materialdp = finemesh->fmaterial;
 
 	NRvector<Doub> matconsts(4, 0.);
-	materialdp->GetMatConstants(matconsts);
+	fmesh->fmaterial->GetMatConstants(matconsts);
 	Doub  young = matconsts[0];
 	Doub nu = matconsts[1];
 	Doub c = matconsts[2];
 	Doub phi = matconsts[3];
-	MatDoub bodyforce = materialdp->GetBodyForce();
+	MatDoub bodyforce = fmesh->fmaterial->GetBodyForce();
 	std::clock_t start;
 	double duration;
 	start = std::clock();
@@ -1486,18 +1493,18 @@ void slopeproject::MonteCarloGIM(int iter, int iter2, bool print, string writena
 		matconsts[2] = c;
 		matconsts[3] = phi;
 
-		materialdp->SetMatConstants(matconsts);
+		fmesh->fmaterial->SetMatConstants(matconsts);
 		//material->fYC.setup(young, nu, c, phi);
-		materialdp->SetMemory(nglobalpts, sz);
-		materialdp->UpdateBodyForce(bodyforce);
-		materialdp->SetRandomField(hhatinho);
+		fmesh->fmaterial->SetMemory(nglobalpts, sz);
+		fmesh->fmaterial->UpdateBodyForce(bodyforce);
+		fmesh->fmaterial->SetRandomField(hhatinho);
 
 		//cout << "all cc" << finemesh->GetAllCoords()[0].size() << endl;
 
-		finemesh->SetHhat(hhatinho);
+		fmesh->SetHhat(hhatinho);
 		//std::vector<std::vector<double>>  sol = IterativeProcessSlope(finemesh, hhatinho, material);//x = desloc y = loadfactor
 		//std::vector<std::vector<double>>  sol = IterativeProcess(finemesh, hhatinho, materialdp,10,1.);//x = desloc y = loadfactor
-		int maxiter = 20;
+		int maxiter = 30;
 		Doub deltatol = 0.02;
 		int desirediter = 10;
 		Doub lamb0 = 0.2;
@@ -1557,7 +1564,7 @@ void slopeproject::MonteCarloGIM(int iter, int iter2, bool print, string writena
 				s = std::to_string(imc);
 				filename += s;
 				filename += ext;
-				materialdp->PostProcess(finemesh->GetAllCoords(), finemesh->GetMeshNodes(), finemesh->GetMeshTopology(), 0, hhatinho, hhatx);
+				fmesh->fmaterial->PostProcess(fmesh->GetAllCoords(), fmesh->GetMeshNodes(), fmesh->GetMeshTopology(), 0, hhatinho, hhatx);
 				std::ofstream file(filename);
 				OutPutPost(hhatx, file);
 
@@ -1570,7 +1577,7 @@ void slopeproject::MonteCarloGIM(int iter, int iter2, bool print, string writena
 				auto sss = std::to_string(imc);
 				filename += sss;
 				filename += ext;
-				materialdp->PostProcess(finemesh->GetAllCoords(), finemesh->GetMeshNodes(), finemesh->GetMeshTopology(), 1, hhatinho, hhatx2);
+				fmesh->fmaterial->PostProcess(fmesh->GetAllCoords(), fmesh->GetMeshNodes(), fmesh->GetMeshTopology(), 1, hhatinho, hhatx2);
 				std::ofstream filesss(filename);
 				OutPutPost(hhatx2, filesss);
 			}
@@ -1586,7 +1593,7 @@ void slopeproject::MonteCarloGIM(int iter, int iter2, bool print, string writena
 
 			filename = namefolder;
 			std::vector<std::vector<double>> solx, soly;
-			materialdp->PostProcess(finemesh->GetAllCoords(), finemesh->GetMeshNodes(), finemesh->GetMeshTopology(), materialdp->GetSolution(), solx, soly);
+			fmesh->fmaterial->PostProcess(fmesh->GetAllCoords(), fmesh->GetMeshNodes(), fmesh->GetMeshTopology(), fmesh->fmaterial->GetSolution(), solx, soly);
 			string name2 = "/soly";
 			string ext2 = ".txt";
 			filename += name2;
@@ -1621,7 +1628,7 @@ void slopeproject::MonteCarloGIM(int iter, int iter2, bool print, string writena
 
 			filename = namefolder;
 			std::vector<std::vector<double>> epsppost;
-			materialdp->PostProcessIntegrationPointVar(finemesh->GetAllCoords(), finemesh->GetMeshNodes(), finemesh->GetMeshTopology(), materialdp->GetSolution(), epsppost);
+			fmesh->fmaterial->PostProcessIntegrationPointVar(fmesh->GetAllCoords(), fmesh->GetMeshNodes(), fmesh->GetMeshTopology(), fmesh->fmaterial->GetSolution(), epsppost);
 			string name4 = "/plasticsqrtj2";
 			string ext4 = ".txt";
 			filename += name4;
@@ -1660,6 +1667,9 @@ void slopeproject::MonteCarloGIM(int iter, int iter2, bool print, string writena
 	std::cout << "\n Monte Carlo simualtion time  " << duration << '\n';
 	file << "\n Monte Carlo simualtion time  " << duration << '\n';
 
+	//delete finemesh;
+   // delete objKLGalerkinRF;
+   // delete materialdp;
 }
 
 

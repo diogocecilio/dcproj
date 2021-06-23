@@ -2,20 +2,10 @@
 BuildItems=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x01\x00\x00\x00\x0b\x00\x00\x00\x00\x01\x00\x00\x00\x0c\x00d\x00c\x00p\x00r\x00o\x00j)
 
 [CMake]
-Build Directory Count=3
+Build Directory Count=2
 Current Build Directory Index-Host System=1
 
 [CMake][CMake Build Directory 0]
-Build Directory Path=/home/diogo/projects/dcproj-build-release
-Build Type=Release
-CMake Binary=/usr/bin/cmake
-CMake Executable=/usr/bin/cmake
-Environment Profile=
-Extra Arguments=
-Install Directory=
-Runtime=Host System
-
-[CMake][CMake Build Directory 1]
 Build Directory Path=/home/diogo/projects/build-debug
 Build Type=Debug
 CMake Binary=/usr/bin/cmake
@@ -25,7 +15,7 @@ Extra Arguments=
 Install Directory=/usr/local
 Runtime=Host System
 
-[CMake][CMake Build Directory 2]
+[CMake][CMake Build Directory 1]
 Build Directory Path=/home/diogo/projects/build-release
 Build Type=Release
 CMake Binary=/usr/bin/cmake

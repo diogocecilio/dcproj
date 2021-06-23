@@ -44,6 +44,7 @@ mesh::mesh(mesh &copy)
 
 mesh::~mesh()
 {
+    delete[] fmaterial;
 }
 
 std::vector<std::vector< std::vector<Doub > > >  mesh::GetAllCoords()

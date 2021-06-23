@@ -19,22 +19,23 @@ druckerprager::druckerprager(Doub young, Doub nu, Doub coesion, Doub frictionang
 
 druckerprager::~druckerprager()
 {
+
 }
 
-void druckerprager::closestpointproj(TensorDoub epst, TensorDoub epsp, TensorDoub & projstress, TensorDoub & projstrain, MatDoub & Dep, Doub & projgamma)
+void druckerprager::closestpointproj(NRtensor<Doub>  epst, NRtensor<Doub>  epsp, NRtensor<Doub>  & projstress, NRtensor<Doub>  & projstrain, NRmatrix<Doub>  & Dep, Doub & projgamma)
 {
-	TensorDoub epse = epst - epsp;
-	MatDoub C = GetElasticMatrix();
+	NRtensor<Doub>  epse = epst - epsp;
+	NRmatrix<Doub>  C = GetElasticMatrix();
 	//C.Print();
 	//epse.Print();
 
-	MatDoub tempepsemat, stresstrial, Dept;
+	NRmatrix<Doub>  tempepsemat, stresstrial, Dept;
 	epse.FromTensorToNRmatrix(tempepsemat);
 	//std::cout << "tempepsemat (elastic strain MatDoub) = " << std::endl;
 	//tempepsemat.Print();
 	C.Mult(tempepsemat, stresstrial);
 	//stresstrial.Print();
-	TensorDoub stresstrialtensor;
+	NRtensor<Doub>  stresstrialtensor;
 	epse.FromNRmatrixToTensor(stresstrial, stresstrialtensor);
 	Doub I1, J2;
 	J2 = stresstrialtensor.J2();
@@ -55,7 +56,7 @@ void druckerprager::closestpointproj(TensorDoub epst, TensorDoub epsp, TensorDou
 	}
 	else {
 		Doub xitrial = I1 / sqrt(3.);
-		MatDoub pt, vec, vect;
+		NRmatrix<Doub>  pt, vec, vect;
 		Doub rhotrial = sqrt(2. * J2);
 		if (fabs(J2)<1.e-3 )
 		{
@@ -78,11 +79,11 @@ void druckerprager::closestpointproj(TensorDoub epst, TensorDoub epsp, TensorDou
 			Doub betasol = atan((sqrt(3.)*(-sig2 + sig3)) / (-2.* sig1 + sig2 + sig3));
 			Doub xitrial = I1 / sqrt(3.);
 			Doub xisol = FindMinimum(pt, xitrial, fflag);
-			MatDoub sig = HW(F1HWCylDruckerPragerSmoothPSMATCH(xisol, rhotrial, betasol));
+			NRmatrix<Doub>  sig = HW(F1HWCylDruckerPragerSmoothPSMATCH(xisol, rhotrial, betasol));
 
-			MatDoub nvec;
-			MatDoub fulltensorproj = stressrecosntruction(sig, vec);
-			MatDoub Q = ComputeQ(fulltensorproj, tempepsemat, projstress, projstrain, projgamma, nvec);
+			NRmatrix<Doub>  nvec;
+			NRmatrix<Doub>  fulltensorproj = stressrecosntruction(sig, vec);
+			NRmatrix<Doub>  Q = ComputeQ(fulltensorproj, tempepsemat, projstress, projstrain, projgamma, nvec);
 			Doub checkdet = 1.e-8;
 			//Doub detQ = fabs(Det(Q));
 			Doub detQ =fabs( Q.DetEig());
@@ -105,7 +106,7 @@ void druckerprager::closestpointproj(TensorDoub epst, TensorDoub epsp, TensorDou
 			else {
 				//	cout << "detQ = " << detQ << endl;
 				//	Q.Print();
-				MatDoub invQ, R;
+				NRmatrix<Doub>  invQ, R;
 				//Cholesky *chol = new Cholesky(Q);
 				//chol->inverse(invQ);
 				//if (chol->fail)
@@ -139,7 +140,7 @@ void druckerprager::closestpointproj(TensorDoub epst, TensorDoub epsp, TensorDou
 
 					invQ.Mult(C, R);
 					Dept = R;
-					MatDoub asol, tempprod, tempprodT, temp2;
+					NRmatrix<Doub>  asol, tempprod, tempprodT, temp2;
 					//cout << "nvec = " << endl;
 					//nvec.Print();
 					R.Mult(nvec, tempprod);
@@ -164,7 +165,7 @@ void druckerprager::closestpointproj(TensorDoub epst, TensorDoub epsp, TensorDou
 	}
 }
 
-Doub druckerprager::FindMinimum(MatDoub pt, Doub xitrial , bool flag)
+Doub druckerprager::FindMinimum(NRmatrix<Doub>  pt, Doub xitrial , bool flag)
 {
 	Doub xisol;
 	Funcd func;
@@ -174,14 +175,14 @@ Doub druckerprager::FindMinimum(MatDoub pt, Doub xitrial , bool flag)
 	return xisol;
 }
 
-MatDoub druckerprager::ComputeQ(MatDoub fulltensorproj, MatDoub tempepsemat, TensorDoub & projstress, TensorDoub & projstrain, Doub & projgamma, MatDoub &nvec)
+NRmatrix<Doub>  druckerprager::ComputeQ(NRmatrix<Doub>  fulltensorproj, NRmatrix<Doub>  tempepsemat, NRtensor<Doub>  & projstress, NRtensor<Doub>  & projstrain, Doub & projgamma, NRmatrix<Doub>  &nvec)
 {
-	MatDoub C = GetElasticMatrix();
+	NRmatrix<Doub>  C = GetElasticMatrix();
 
-	MatDoub projVoigtMat, invCe = GetInverseElasticMatrix(), epsemat;
+	NRmatrix<Doub>  projVoigtMat, invCe = GetInverseElasticMatrix(), epsemat;
 	fulltensorproj.FromFullToVoigt(projVoigtMat);
 
-	TensorDoub voigtProjTensor, epsptensor;
+	NRtensor<Doub>  voigtProjTensor, epsptensor;
 	voigtProjTensor.FromNRmatrixToTensor(projVoigtMat, voigtProjTensor);
 	projstress = voigtProjTensor;
 
@@ -191,7 +192,7 @@ MatDoub druckerprager::ComputeQ(MatDoub fulltensorproj, MatDoub tempepsemat, Ten
 	//nvec.Print();
 
 	invCe.Mult(projVoigtMat, epsemat);
-	MatDoub epspmat = tempepsemat;
+	NRmatrix<Doub>  epspmat = tempepsemat;
 	epspmat -= epsemat;
 	voigtProjTensor.FromNRmatrixToTensor(epspmat, epsptensor);
 
@@ -203,8 +204,8 @@ MatDoub druckerprager::ComputeQ(MatDoub fulltensorproj, MatDoub tempepsemat, Ten
 	MatDoub dnvecdsig = dadsig(voigtProjTensor);
 
 
-	MatDoub Q(6, 6, 0.);for (Int i = 0;i < 6;i++)Q[i][i] = 1.;
-	MatDoub sec;
+	NRmatrix<Doub>  Q(6, 6, 0.);for (Int i = 0;i < 6;i++)Q[i][i] = 1.;
+	NRmatrix<Doub>  sec;
 	C.Mult(dnvecdsig, sec);
 	sec *= gamma;
 	Q += sec;
@@ -222,7 +223,7 @@ Doub druckerprager::yield(Doub xi,Doub rho)
 }
 
 
-MatDoub druckerprager::GetElasticMatrix()
+NRmatrix<Doub>  druckerprager::GetElasticMatrix()
 {
 	MatDoub C(6, 6, 0.);
 	Doub G = fG, K = fK;
@@ -234,7 +235,7 @@ MatDoub druckerprager::GetElasticMatrix()
 	C[5][0] = 0;                  C[5][1] = 0;                 C[5][2] = 0;                 C[5][3] = 0.;C[5][4] = 0.;C[5][5] = G;
 	return C;
 }
-MatDoub druckerprager::GetInverseElasticMatrix()
+NRmatrix<Doub>  druckerprager::GetInverseElasticMatrix()
 {
 	MatDoub C(6, 6, 0.);
 	Doub G = fG, K = fK;
@@ -246,16 +247,16 @@ MatDoub druckerprager::GetInverseElasticMatrix()
 	C[5][0] = 0;                         C[5][1] = 0;                       C[5][2] = 0;                       C[5][3] = 0.;C[5][4] = 0.;C[5][5] = 1. / G;
 	return C;
 }
-MatDoub druckerprager::F1HWCylDruckerPragerSmoothPSMATCH(Doub xi, Doub rho, Doub beta)
+NRmatrix<Doub>  druckerprager::F1HWCylDruckerPragerSmoothPSMATCH(Doub xi, Doub rho, Doub beta)
 {
-	MatDoub solproj(3, 1);
+	NRmatrix<Doub>  solproj(3, 1);
 	Doub rhoint = sqrt(0.6666666666666666)*sqrt(-((pow(fb, 2)*(3 * pow(fa, 2) - 3 * pow(fapex, 2) + 2 * sqrt(3)*fapex*xi - pow(xi, 2))) / pow(fa, 2)));
 	solproj[0][0] = xi;
 	solproj[1][0] = rhoint;
 	solproj[2][0] = beta;
 	return solproj;
 }
-MatDoub druckerprager::HW(MatDoub sig)
+NRmatrix<Doub>  druckerprager::HW(NRmatrix<Doub>  sig)
 {
 	MatDoub sol(3, 1);
 	Doub xi, rho, beta;
@@ -267,9 +268,9 @@ MatDoub druckerprager::HW(MatDoub sig)
 	sol[2][0] = xi / sqrt(3.) + sqrt(2. / 3.)*rho*cos(beta + 2. *  M_PI / 3.);
 	return sol;
 }
-MatDoub druckerprager::stressrecosntruction(MatDoub val, MatDoub vec)
+NRmatrix<Doub>  druckerprager::stressrecosntruction(NRmatrix<Doub>  val, NRmatrix<Doub>  vec)
 {
-	MatDoub sol(3, 3, 0.);
+	NRmatrix<Doub>  sol(3, 3, 0.);
 	for (Int i = 0;i < 3;i++)
 	{
 		MatDoub colvec(3, 1, 0.), colvect, temp;
@@ -286,12 +287,12 @@ MatDoub druckerprager::stressrecosntruction(MatDoub val, MatDoub vec)
 	//sol.Print();
 	return sol;
 }
-MatDoub druckerprager::dadsig(TensorDoub sigprojvoigt)
+NRmatrix<Doub>  druckerprager::dadsig(NRtensor<Doub>  sigprojvoigt)
 {
 	//(P / b ^ 2) - (2 Outer[Times, Ii, Ii] / (9 a ^ 2))
-	MatDoub  first = P();
+	NRmatrix<Doub>   first = P();
 	first *= 1/ (fb*fb);
-	MatDoub second, I(6,1,0.),It(1,6,0.);
+	NRmatrix<Doub>  second, I(6,1,0.),It(1,6,0.);
 	I[0][0] = 1.;I[1][0] = 1.;I[2][0] = 1.;
 	I.Transpose(It);
 	I.Mult(It, second);
@@ -300,12 +301,12 @@ MatDoub druckerprager::dadsig(TensorDoub sigprojvoigt)
 	return first;
 }
 
-MatDoub druckerprager::avec(TensorDoub sigprojvoigt)
+NRmatrix<Doub>  druckerprager::avec(NRtensor<Doub>  sigprojvoigt)
 {
 	//nvec=(6 apex b ^ 2 Ii - 2 b ^ 2 ComputeI1[sigma] Ii + 9 a ^ 2 ComputeS[sigma]) / (9 a ^ 2 b ^ 2) //. subst2
-	TensorDoub S;
+	NRtensor<Doub>  S;
 	Doub I1 = sigprojvoigt.I1();
-	MatDoub first,second, third,I(6, 1, 0.), It(1, 6, 0.);
+	NRmatrix<Doub>  first,second, third,I(6, 1, 0.), It(1, 6, 0.);
 	I[0][0] = 1.;I[1][0] = 1.;I[2][0] = 1.;
 	first = I, second = I;
 	sigprojvoigt.ComputeS(S);
@@ -320,9 +321,9 @@ MatDoub druckerprager::avec(TensorDoub sigprojvoigt)
 	return first;
 }
 
-MatDoub druckerprager::P()
+NRmatrix<Doub>  druckerprager::P()
 {
-	MatDoub P(6, 6);
+	NRmatrix<Doub>  P(6, 6);
 	P[0][0] = 2. / 3.;    P[0][1] = -1. / 3.; P[0][2] = -1. / 3.; P[0][3] = 0.;P[0][4] = 0.;P[0][5] = 0.;
 	P[1][0] = -1. / 3.;   P[1][1] = 2. / 3.;  P[1][2] = -1. / 3.; P[1][3] = 0.;P[1][4] = 0.;P[1][5] = 0.;
 	P[2][0] = -1. / 3.;   P[2][1] = -1. / 3.;  P[2][2] = 2. / 3.; P[2][3] = 0.;P[2][4] = 0.;P[2][5] = 0.;

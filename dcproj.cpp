@@ -1,4 +1,5 @@
-﻿// dcproj.cpp : Defines the entry point for the application.
+﻿
+// dcproj.cpp : Defines the entry point for the application.
 //
 
 #include "dcproj.h"
@@ -145,8 +146,14 @@ void mainlinux()
 void myTreads(int a, int b, slopeproject* slopeobj2,string namefolder3)
 {
 	slopeobj2->MonteCarloGIM(a, b, false, namefolder3);
+    delete slopeobj2;
 }
 
+void myTreadsSRM(int a, int b, slopeproject* slopeobj2,string namefolder3)
+{
+	slopeobj2->MonteCarloSRM(a, b, false, namefolder3);
+    delete slopeobj2;
+}
 
 
 void mainlinux2()
@@ -164,6 +171,12 @@ writer1.someFunctionThatWritesToFile();
 
 	string nodestr = "/home/diogo/projects/dcproj/nos-132-c3.txt";
 	string elsstr = "/home/diogo/projects/dcproj/els-132-c3.txt";
+    
+    	//string nodestr = "/home/diogo/projects/dcproj/nos-cho.txt";
+	//string elsstr = "/home/diogo/projects/dcproj/els-cho.txt";
+    
+  //      	string nodestr = "/home/diogo/projects/dcproj/nos-414.txt";
+//	string elsstr = "/home/diogo/projects/dcproj/els-414.txt";
 
 	MatDoub hhatinho;
 	cout << "testando release " << endl;
@@ -216,7 +229,7 @@ writer1.someFunctionThatWritesToFile();
 	mesh* mesh8 = new mesh(mat8, allcoords, meshcoords, meshtopology, hhatinho);
 	mesh* mesh9 = new mesh(mat9, allcoords, meshcoords, meshtopology, hhatinho);
 
-	int szdebug = mesh2->GetAllCoords().size();
+	//int szdebug = mesh2->GetAllCoords().size();
 
 	mat2->fYC.setup(young, nu, c, phi);
 	mat2->SetMemory(nglobalpts, sz);
@@ -251,8 +264,8 @@ writer1.someFunctionThatWritesToFile();
 	mat9->SetMemory(nglobalpts, sz);
 	mat9->UpdateBodyForce(bodyforce);
 
-	Doub Lx = 20.;//(*Correlation length in x direction*)
-	Doub Ly = 4.;//(*Correlation length in y direction*)
+	Doub Lx = 10.;//(*Correlation length in x direction*)
+	Doub Ly = 1.;//(*Correlation length in y direction*)
 
 	Int nsamples = 5000, expansionorder = 150;
 	Int type = 3;
@@ -276,29 +289,17 @@ writer1.someFunctionThatWritesToFile();
 	slopeproject* slopeobj = new slopeproject(mesh2, objKLGalerkinRF2);
 	//slopeproject* slopeobj3 = new slopeproject(mesh3, objKLGalerkinRF3);
 	//	
-	bool deterministicsol = false;
-	if (deterministicsol == true)
-	{
-		int ndesirediters = 8, niter = 50;
-		Doub dlamb0 = 0.2, alphatol = 0.0001;
 
-		Doub tol = 0.001;
-		std::vector<std::vector<double>> soll;
-		soll = slopeobj->IterativeProcessShearRed(0.01, 2., tol);
-		mat2->fYC.setup(young, nu, c, phi);
-		mat2->SetMemory(nglobalpts, sz);
-		mat2->UpdateBodyForce(bodyforce);
-
-		//soll = slopeproject->IterativeProcess(10, 0.2, 0.001, 30);
-	}
 	
-	//string randomfieldfile = "/home/diogo/projects/results/cho-field-Lx20-Ly4";
+   // string randomfieldfile = "/home/diogo/projects/results/cho-field-Lx10-Ly1";
     //slopeobj->CreateRandomField(randomfieldfile);
     
+   // return;
+    
 	MatDoub coesionrandomfield, frictionrandomfield;
-	string filerf = "/home/diogo/projects/results/randomfielddataLx20-Ly4-lognormal/coesionfield.txt";
+	string filerf = "/home/diogo/projects/results/cho-field-Lx10-Ly1/coesionfield.txt";
 	ReadMatDoub(coesionrandomfield, filerf);
-	string filerff = "/home/diogo/projects/results/randomfielddataLx20-Ly4-lognormal/frictionfield.txt";
+	string filerff = "/home/diogo/projects/results/cho-field-Lx10-Ly1/frictionfield.txt";
 	ReadMatDoub(frictionrandomfield, filerff);
 
 	NRmatrix<MatDoub> randomfield(2, 1);
@@ -313,12 +314,33 @@ writer1.someFunctionThatWritesToFile();
 	slopeproject* slopeobj7 = new slopeproject(mesh7, objKLGalerkinRF7, randomfield);
 	slopeproject* slopeobj8 = new slopeproject(mesh8, objKLGalerkinRF8, randomfield);
 	slopeproject* slopeobj9 = new slopeproject(mesh9, objKLGalerkinRF9, randomfield);
+    
 
-	string namefolder2 = "/home/diogo/projects/results/SRM-cho-field-Lx20-Ly4";
+    
+
+    
+    bool deterministicsol = false;
+	if (deterministicsol == true)
+	{
+		int ndesirediters = 8, niter = 50;
+		Doub dlamb0 = 0.2, alphatol = 0.0001;
+
+		Doub tol = 0.001;
+		std::vector<std::vector<double>> soll;
+		soll = slopeobj2->IterativeProcessShearRed(0.01, 2., tol);
+		mat2->fYC.setup(young, nu, c, phi);
+		mat2->SetMemory(nglobalpts, sz);
+		mat2->UpdateBodyForce(bodyforce);
+        soll = slopeobj2->IterativeProcess(10, 0.2, 0.001, 30);
+	}
+	
+
+
+//	string namefolder2 = "/home/diogo/projects/results/SRM-cho-field-Lx20-Ly4";
 
 	
 
-	bool print = false;
+//	bool print = false;
 	//slopeobj2->MonteCarloSRM(1900, 5000, print, namefolder2);
 
 	// slopeobj2->MonteCarloGIM(1290, 5000, print, namefolder3);
@@ -326,13 +348,56 @@ writer1.someFunctionThatWritesToFile();
     std::cout << "teste thread xxxxxxxxxx" << std::endl;
     
     
-    string namefolder3 = "/home/diogo/projects/results/multithread-onefile";
     
-    slopeobj2->MonteCarloGIM(635, 636, print, namefolder3);
-  
-    if(false)
+
+    string namefolder3 = "/home/diogo/projects/results/multithread-onefile-srm-lx=10-ly=1";
+    std::thread thread6(myTreadsSRM,0, 3500, slopeobj6, namefolder3);
+	std::thread thread7(myTreadsSRM, 3500,5000, slopeobj7, namefolder3);
+    
+  //  string  namefolder4 = "/home/diogo/projects/results/multithread-onefile-gim";
+  //  std::thread thread8(myTreads,3392, 3500, slopeobj8, namefolder4);
+//	std::thread thread9(myTreads, 4895,5000, slopeobj9, namefolder4);
+    
+    thread6.join();
+    thread7.join();
+ //   thread8.join();
+//    thread9.join();
+    
+ /*   
+    
+    bool srm =true;
+    if(srm)
     {
         
+    string namefolder3 = "/home/diogo/projects/results/multithread-onefile-srm";
+        //string namefolder3 = "/home/diogo/projects/results/THREADS/GI-cho-field-Lx20-Ly4 - T2";
+//	std::thread thread2(myTreadsSRM,245,250, slopeobj2,namefolder3);
+   // namefolder3 = "/home/diogo/projects/results/THREADS/GI-cho-field-Lx20-Ly4 - T3";
+//	std::thread thread3(myTreadsSRM, 400, 500, slopeobj3, namefolder3);
+   // namefolder3 = "/home/diogo/projects/results/THREADS/GI-cho-field-Lx20-Ly4 - T4";
+//	std::thread thread4(myTreadsSRM, 748, 750, slopeobj4, namefolder3);
+  //  namefolder3 = "/home/diogo/projects/results/THREADS/GI-cho-field-Lx20-Ly4 - T5";
+//	std::thread thread5(myTreadsSRM, 900,1000, slopeobj5, namefolder3);
+  //  namefolder3 = "/home/diogo/projects/results/THREADS/GI-cho-field-Lx20-Ly4 - T6";
+	std::thread thread6(myTreadsSRM,2000, 3500, slopeobj6, namefolder3);
+  //  namefolder3 = "/home/diogo/projects/results/THREADS/GI-cho-field-Lx20-Ly4 - T7";
+	std::thread thread7(myTreadsSRM, 3500,5000, slopeobj7, namefolder3);
+//    namefolder3 = "/home/diogo/projects/results/THREADS/GI-cho-field-Lx20-Ly4 - T8";
+	//std::thread thread8(myTreadsSRM, 1640, 1750, slopeobj8, namefolder3);
+ //   namefolder3 = "/home/diogo/projects/results/THREADS/GI-cho-field-Lx20-Ly4 - T9";
+//	std::thread thread9(myTreadsSRM, 1885, 2001, slopeobj9, namefolder3);
+	//thread2.join();
+	//thread3.join();
+	//thread4.join();
+	//thread5.join();
+	thread6.join();
+	thread7.join();
+//	thread8.join();
+//	thread9.join();
+    }else
+    {
+        
+    string namefolder3 = "/home/diogo/projects/results/multithread-onefile-gim";
    
     //string namefolder3 = "/home/diogo/projects/results/THREADS/GI-cho-field-Lx20-Ly4 - T2";
 	std::thread thread2(myTreads,492,500, slopeobj2,namefolder3);
@@ -341,7 +406,7 @@ writer1.someFunctionThatWritesToFile();
    // namefolder3 = "/home/diogo/projects/results/THREADS/GI-cho-field-Lx20-Ly4 - T4";
 	std::thread thread4(myTreads, 1494, 1500, slopeobj4, namefolder3);
   //  namefolder3 = "/home/diogo/projects/results/THREADS/GI-cho-field-Lx20-Ly4 - T5";
-	std::thread thread5(myTreads, 1985,2000, slopeobj5, namefolder3);
+	std::thread thread5(myTreads, 1987,2000, slopeobj5, namefolder3);
   //  namefolder3 = "/home/diogo/projects/results/THREADS/GI-cho-field-Lx20-Ly4 - T6";
 //	std::thread thread6(myTreads, 1001, 1250, slopeobj6, namefolder3);
   //  namefolder3 = "/home/diogo/projects/results/THREADS/GI-cho-field-Lx20-Ly4 - T7";
@@ -359,6 +424,7 @@ writer1.someFunctionThatWritesToFile();
 //	thread8.join();
 //	thread9.join();
      }
+     */
 }
 //void myTreads(int a, int b, slopeproject* slopeobj2, string traedN)
 //{
@@ -383,6 +449,9 @@ void mainwindows()
 
 	string nodestr = "D:/DClibrary/meshes/nos-132-c3.txt";
 	string elsstr = "D:/DClibrary/meshes/els-132-c3.txt";
+    
+    
+    
 
 	MatDoub hhatinho;
 	cout << "HI " << endl;
@@ -562,8 +631,12 @@ void mainwindows()
 
 int main()
 {
+ 
+ 
+
+    
 #ifdef __unix__                    /* __unix__ is usually defined by compilers targeting Unix systems */
-	mainlinux2();
+mainlinux2();
 #elif defined(_WIN32) || defined(WIN32)     /* _Win32 is usually defined by compilers targeting 32 or   64 bit Windows systems */
 	mainwindows();
 #endif

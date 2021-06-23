@@ -131,18 +131,6 @@ void NRcatch(NRerror err) {
 }
 #endif
 
-// usage example:
-//
-//	try {
-//		somebadroutine();
-//	}
-//	catch(NRerror s) {NRcatch(s);}
-//
-// (You can of course substitute any other catch body for NRcatch(s).)
-
-
-// Vector and Matrix Classes
-
 #ifdef _USESTDVECTOR_
 #define NRvector vector
 #else
@@ -171,27 +159,6 @@ public:
 
 	~NRvector();
 };
-
-//template <class T>
-//void  NRmatrix<T>::Toboost(boost::numeric::ublas::vector<double> &boostvec)
-//{
-//	boostvec.resize(this->nrows());
-//	for (unsigned i = 0; i < this->nrows(); ++i)
-//		for (unsigned j = 0; j < this->ncols(); ++j)
-//			boostmat(i, j) = v[i][j];
-//}
-
-//// NRvector definitions
-//template <class T>
-//void NRvector<T>::CopyFromMatrix(NRmatrix<T> & source)
-//{
-//	int sz = source.nrwos();
-//	this->assign(sz, 0.);
-//	for (int i = 0;i < sz;i++)
-//	{
-//		v[i] = source[i][0];
-//	}
-//}
 
 
 template <class T>
@@ -553,19 +520,7 @@ NRmatrix<T> & NRmatrix<T>::operator+=(NRmatrix &source)
 	return *this;
 }
 
-template < class T >
-NRmatrix<T> & NRmatrix<T>::operator*=(const T &multipl)
-{
 
-	for (int i = 0;i < this->nrows();i++)
-	{
-		for (int j = 0;j < this->ncols();j++)
-		{
-			v[i][j] *= multipl;
-		}
-	}
-	return *this;
-}
 
 
 template <class T>
@@ -754,6 +709,20 @@ NRmatrix<T> & NRmatrix<T>::operator=(const NRmatrix<T> &rhs)
 			for (i = 1; i< nn; i++) v[i] = v[i - 1] + mm;
 		}
 		for (i = 0; i< nn; i++) for (j = 0; j<mm; j++) v[i][j] = rhs[i][j];
+	}
+	return *this;
+}
+
+template < class T >
+NRmatrix<T> & NRmatrix<T>::operator*=(const T &multipl)
+{
+
+	for (int i = 0;i < this->nrows();i++)
+	{
+		for (int j = 0;j < this->ncols();j++)
+		{
+			v[i][j] *= multipl;
+		}
 	}
 	return *this;
 }
@@ -1032,6 +1001,7 @@ public:
 	void ComputeS(NRtensor<T> & out);
 
 	 inline T Norm()  {
+
 		T norm = 0.;
 		for (int i = 0; i < 6; i++) {
 			norm += v[i] * v[i];
@@ -1051,6 +1021,7 @@ public:
 template <class T>
 void NRtensor<T>::CopyFromNRmatrix(NRmatrix<T> source)
 {
+    
 		XX() = source[0][0];
 		YY() = source[1][0];
 		ZZ() = source[2][0];
@@ -1062,38 +1033,32 @@ void NRtensor<T>::CopyFromNRmatrix(NRmatrix<T> source)
 // NRtensor definitions
 
 template <class T>
-NRtensor<T>::NRtensor() : nn(6), v(new T[6]) { for (int i = 0;i < 6;i++)v[i] = 0.; }
+NRtensor<T>::NRtensor() : nn(6), v(nn>0 ? new T[nn] : NULL)
+{
+    for (int i = 0;i < 6;i++)v[i] = 0.;
+}
+
+//template <class T>
+//NRtensor<T>::NRtensor(int n) : nn(n), v(n>0 ? new T[n] : NULL) {}
 
 template <class T>
-NRtensor<T>::NRtensor(const T& a) : nn(6), v(new T[6])
+NRtensor<T>::NRtensor(const T& a) : nn(6), v(nn>0 ? new T[nn] : NULL)
 {
-	for (int i = 0; i<6; i++) v[i] = a;
+	for (int i = 0; i<nn; i++) v[i] = a;
 }
 
 template <class T>
-NRtensor<T>::NRtensor(const T *a) : nn(6), v(new T[6])
+NRtensor<T>::NRtensor( const T *a) : nn(6), v(nn>0 ? new T[nn] : NULL)
 {
 	for (int i = 0; i<nn; i++) v[i] = *a++;
 }
 
 template <class T>
-NRtensor<T>::NRtensor(const NRtensor<T> &rhs) : nn(6), v(new T[6])
+NRtensor<T>::NRtensor(const NRtensor<T> &rhs) : nn(rhs.nn), v(nn>0 ? new T[nn] : NULL)
 {
 	for (int i = 0; i<nn; i++) v[i] = rhs[i];
 }
 
-
-//template <class T>
-//NRtensor<T>::NRtensor(const NRmatrix<T> &input)
-//{
-//	v[_XX_] = input[0][0];
-//	v[_YY_] = input[1][1];
-//	v[_ZZ_] = input[2][2];
-//	v[_XZ_] = input[0][2];
-//	v[_YZ_] = input[1][2];
-//	v[_XY_] = input[0][1];
-//
-//}
 
 template <class T>
 NRtensor<T> & NRtensor<T>::operator=(const NRtensor<T> &rhs)
@@ -1233,7 +1198,7 @@ T NRtensor<T>::J2() const {
 
 	if (value < 0)
 	{
-		throw(" \ Warning negative J2 ivariant ! \n ");
+		//throw(" \ Warning negative J2 ivariant ! \n ");
 	}
 	return fabs(value);
 }
@@ -1478,8 +1443,8 @@ typedef NRMat3d<Doub> Mat3DDoub, Mat3DDoub_O, Mat3DDoub_IO;
 
 
 // Tensors
-typedef const NRtensor<Doub> TensorDoub_I;
-typedef NRtensor<Doub> TensorDoub, TensorDoub_O, TensorDoub_IO;
+//typedef const NRtensor<Doub> TensorDoub_I;
+//typedef NRtensor<Doub> TensorDoub, TensorDoub_O, TensorDoub_IO;
 
 typedef const NRmatrix3D<Doub> Matrix3DDoub_I;
 typedef NRmatrix3D<Doub> Matrix3DDoub, Matrix3DDoub_O, Matrix3DDoub_IO;
