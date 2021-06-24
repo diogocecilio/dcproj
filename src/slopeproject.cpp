@@ -31,8 +31,8 @@ slopeproject::slopeproject(mesh inmesh, KLGalerkinRF inklgalerking, NRmatrix<Mat
 }
 slopeproject::~slopeproject()
 {
-	delete[] fmesh;
-	delete[] fklgalerking;
+	delete fmesh;
+	delete fklgalerking;
 }
 
 slopeproject::slopeproject(slopeproject& copy)

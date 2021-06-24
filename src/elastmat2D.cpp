@@ -31,6 +31,8 @@ elastmat2D::elastmat2D()
 
 elastmat2D::~elastmat2D()
 {
+    
+
 }
 
 

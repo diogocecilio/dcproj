@@ -23,6 +23,16 @@ KLGalerkinRF::KLGalerkinRF( Int order, Doub Lx, Doub Ly,  Int type, Int samples,
 
 KLGalerkinRF::~KLGalerkinRF()
 {
+    /*	delete fyoung;
+	delete fnu;
+	delete fbodyforce;
+	delete fplanestress;
+	delete fthickness;
+	delete fOrder;
+	delete fmesh;
+	delete fHHAT;
+	delete fhhatvel;*/
+    
 }
 
 void KLGalerkinRF::ContributeB(MatDoub &BE, Doub xi, Doub eta, Doub w, MatDoub elcoords)

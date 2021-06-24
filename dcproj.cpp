@@ -17,7 +17,7 @@ void vecstr_to_vec(std::vector<std::string> vs, std::vector<T>& ret);
 std::vector<Int> vecstr_to_vecint(std::vector<string> vs);
 std::vector<Doub> vecstr_to_vecdoub(std::vector<string> vs);
 void myTreads(int a, int b, slopeproject* slopeobj2, string traedN);
-
+void leakcraw();
 
 class SynchronizedFile {
 public:
@@ -156,6 +156,102 @@ void myTreadsSRM(int a, int b, slopeproject* slopeobj2,string namefolder3)
 }
 
 
+void leakcraw()
+{
+    string nodestr = "/home/diogo/projects/dcproj/nos-132-c3.txt";
+	string elsstr = "/home/diogo/projects/dcproj/els-132-c3.txt";
+    
+    MatDoub hhatinho;
+	cout << " searching leaks " << endl;
+	MatDoub  meshcoords, elcoords;
+	MatInt meshtopology;
+	std::vector<std::vector<std::vector<Doub>>> allcoords;
+	ReadMesh(allcoords, meshcoords, meshtopology, elsstr, nodestr);
+
+	cout << "... " << endl;
+	std::ofstream filemesh1("meshcoords.txt");
+	OutPutPost(meshcoords, filemesh1);
+	std::ofstream filemesh2("meshtopology.txt");
+	OutPutPost(meshtopology, filemesh2);
+    cout << "... " << endl;
+	//Doub c = 18.5633, phi = 20 * M_PI / 180., gamma = -20.;//1.5
+	Doub c = 10., phi = 30 * M_PI / 180., gamma = -20.;//1.5
+
+	
+	    //int * leak =new int;
+	
+	Doub thickness = 1.;
+	Doub young = 20000.;
+	Doub nu = 0.49;
+	//Doub young = 100000.;
+	//Doub nu = 0.3;
+	Int planestress = 0;
+
+	MatDoub bodyforce(2, 1, 0.), newbodyforce;
+	bodyforce[1][0] = gamma;
+	MatDoub ptsweigths;
+	int order = 2;
+	shapequad shape = shapequad(order, 1);
+	shape.pointsandweigths(ptsweigths);
+	Int npts = ptsweigths.nrows();
+	Int nglobalpts = meshtopology.nrows() * npts;
+	Int sz = 2 * meshcoords.nrows();
+    cout << "... " << endl;
+	elastoplastic2D< druckerprager >* mat2 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
+	mesh* mesh2 = new mesh(mat2, allcoords, meshcoords, meshtopology, hhatinho);
+	mat2->fYC.setup(young, nu, c, phi);
+	mat2->SetMemory(nglobalpts, sz);
+	mat2->UpdateBodyForce(bodyforce);
+    cout << "... " << endl;
+	Doub Lx = 10.;//(*Correlation length in x direction*)
+	Doub Ly = 1.;//(*Correlation length in y direction*)
+
+	Int nsamples = 5000, expansionorder = 150;
+	Int type = 3;
+	KLGalerkinRF* objKLGalerkinRF2 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
+    cout << "-...- " << endl;
+	objKLGalerkinRF2->SetMesh(mesh2);
+	slopeproject* slopeobj = new slopeproject(mesh2, objKLGalerkinRF2);
+    
+    delete slopeobj;
+
+	MatDoub coesionrandomfield, frictionrandomfield;
+	string filerf = "/home/diogo/projects/results/cho-field-Lx10-Ly1/coesionfield.txt";
+	//ReadMatDoub(coesionrandomfield, filerf);
+	string filerff = "/home/diogo/projects/results/cho-field-Lx10-Ly1/frictionfield.txt";
+	//ReadMatDoub(frictionrandomfield, filerff);
+cout << "... " << endl;
+	NRmatrix<MatDoub> randomfield(2, 1);
+	randomfield[0][0] = coesionrandomfield;
+	randomfield[1][0] = frictionrandomfield;
+
+	slopeproject* slopeobj2 = new slopeproject(mesh2, objKLGalerkinRF2, randomfield);
+    
+    delete slopeobj2;
+    
+cout << "... -" << endl;
+    /*
+    bool deterministicsol = true;
+	if (deterministicsol == true)
+	{
+		int ndesirediters = 8, niter = 50;
+		Doub dlamb0 = 0.2, alphatol = 0.0001;
+
+		Doub tol = 1.;
+		std::vector<std::vector<double>> soll;
+		soll = slopeobj2->IterativeProcessShearRed(0.01, 2., tol);
+		mat2->fYC.setup(young, nu, c, phi);
+		mat2->SetMemory(nglobalpts, sz);
+		mat2->UpdateBodyForce(bodyforce);
+       // soll = slopeobj2->IterativeProcess(10, 0.2, 0.001, 30);
+	}
+	*/
+	cout << " exiting leaks " << endl;
+
+    
+    
+}
+
 void mainlinux2()
 {
     
@@ -177,6 +273,9 @@ writer1.someFunctionThatWritesToFile();
     
   //      	string nodestr = "/home/diogo/projects/dcproj/nos-414.txt";
 //	string elsstr = "/home/diogo/projects/dcproj/els-414.txt";
+
+    
+    
 
 	MatDoub hhatinho;
 	cout << "testando release " << endl;
@@ -219,6 +318,7 @@ writer1.someFunctionThatWritesToFile();
 	elastoplastic2D< druckerprager >* mat7 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
 	elastoplastic2D< druckerprager >* mat8 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
 	elastoplastic2D< druckerprager >* mat9 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
+    elastoplastic2D< druckerprager >* mat10 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
 
 	mesh* mesh2 = new mesh(mat2, allcoords, meshcoords, meshtopology, hhatinho);
 	mesh* mesh3 = new mesh(mat3, allcoords, meshcoords, meshtopology, hhatinho);
@@ -228,6 +328,7 @@ writer1.someFunctionThatWritesToFile();
 	mesh* mesh7 = new mesh(mat7, allcoords, meshcoords, meshtopology, hhatinho);
 	mesh* mesh8 = new mesh(mat8, allcoords, meshcoords, meshtopology, hhatinho);
 	mesh* mesh9 = new mesh(mat9, allcoords, meshcoords, meshtopology, hhatinho);
+    mesh* mesh10 = new mesh(mat10, allcoords, meshcoords, meshtopology, hhatinho);
 
 	//int szdebug = mesh2->GetAllCoords().size();
 
@@ -263,6 +364,10 @@ writer1.someFunctionThatWritesToFile();
 	mat9->fYC.setup(young, nu, c, phi);
 	mat9->SetMemory(nglobalpts, sz);
 	mat9->UpdateBodyForce(bodyforce);
+    
+    mat10->fYC.setup(young, nu, c, phi);
+	mat10->SetMemory(nglobalpts, sz);
+	mat10->UpdateBodyForce(bodyforce);
 
 	Doub Lx = 10.;//(*Correlation length in x direction*)
 	Doub Ly = 1.;//(*Correlation length in y direction*)
@@ -277,6 +382,7 @@ writer1.someFunctionThatWritesToFile();
 	KLGalerkinRF* objKLGalerkinRF7 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
 	KLGalerkinRF* objKLGalerkinRF8 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
 	KLGalerkinRF* objKLGalerkinRF9 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
+    KLGalerkinRF* objKLGalerkinRF10 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
 
 	objKLGalerkinRF2->SetMesh(mesh2);
 	objKLGalerkinRF3->SetMesh(mesh3);
@@ -286,6 +392,7 @@ writer1.someFunctionThatWritesToFile();
 	objKLGalerkinRF7->SetMesh(mesh7);
 	objKLGalerkinRF8->SetMesh(mesh8);
 	objKLGalerkinRF9->SetMesh(mesh9);
+    objKLGalerkinRF10->SetMesh(mesh10);
 	slopeproject* slopeobj = new slopeproject(mesh2, objKLGalerkinRF2);
 	//slopeproject* slopeobj3 = new slopeproject(mesh3, objKLGalerkinRF3);
 	//	
@@ -314,7 +421,7 @@ writer1.someFunctionThatWritesToFile();
 	slopeproject* slopeobj7 = new slopeproject(mesh7, objKLGalerkinRF7, randomfield);
 	slopeproject* slopeobj8 = new slopeproject(mesh8, objKLGalerkinRF8, randomfield);
 	slopeproject* slopeobj9 = new slopeproject(mesh9, objKLGalerkinRF9, randomfield);
-    
+    slopeproject* slopeobj10 = new slopeproject(mesh10, objKLGalerkinRF10, randomfield);
 
     
 
@@ -345,27 +452,27 @@ writer1.someFunctionThatWritesToFile();
 
 	// slopeobj2->MonteCarloGIM(1290, 5000, print, namefolder3);
     
-    std::cout << "teste thread xxxxxxxxxx" << std::endl;
+//   std::cout << "teste thread xxxxxxxxxx" << std::endl;
     
     
     
 
-    string namefolder3 = "/home/diogo/projects/results/multithread-onefile-srm-lx=10-ly=1";
-    std::thread thread6(myTreadsSRM,0, 3500, slopeobj6, namefolder3);
-	std::thread thread7(myTreadsSRM, 3500,5000, slopeobj7, namefolder3);
+ //   string namefolder3 = "/home/diogo/projects/results/multithread-onefile-srm-lx=10-ly=1";
+//    std::thread thread6(myTreadsSRM,0, 3500, slopeobj6, namefolder3);
+//	std::thread thread7(myTreadsSRM, 3500,5000, slopeobj7, namefolder3);
     
   //  string  namefolder4 = "/home/diogo/projects/results/multithread-onefile-gim";
   //  std::thread thread8(myTreads,3392, 3500, slopeobj8, namefolder4);
 //	std::thread thread9(myTreads, 4895,5000, slopeobj9, namefolder4);
     
-    thread6.join();
-    thread7.join();
+ //   thread6.join();
+ //   thread7.join();
  //   thread8.join();
 //    thread9.join();
     
- /*   
+   
     
-    bool srm =true;
+    bool srm =false;
     if(srm)
     {
         
@@ -397,34 +504,28 @@ writer1.someFunctionThatWritesToFile();
     }else
     {
         
-    string namefolder3 = "/home/diogo/projects/results/multithread-onefile-gim";
-   
-    //string namefolder3 = "/home/diogo/projects/results/THREADS/GI-cho-field-Lx20-Ly4 - T2";
-	std::thread thread2(myTreads,492,500, slopeobj2,namefolder3);
-   // namefolder3 = "/home/diogo/projects/results/THREADS/GI-cho-field-Lx20-Ly4 - T3";
-	std::thread thread3(myTreads, 977, 1000, slopeobj3, namefolder3);
-   // namefolder3 = "/home/diogo/projects/results/THREADS/GI-cho-field-Lx20-Ly4 - T4";
-	std::thread thread4(myTreads, 1494, 1500, slopeobj4, namefolder3);
-  //  namefolder3 = "/home/diogo/projects/results/THREADS/GI-cho-field-Lx20-Ly4 - T5";
-	std::thread thread5(myTreads, 1987,2000, slopeobj5, namefolder3);
-  //  namefolder3 = "/home/diogo/projects/results/THREADS/GI-cho-field-Lx20-Ly4 - T6";
-//	std::thread thread6(myTreads, 1001, 1250, slopeobj6, namefolder3);
-  //  namefolder3 = "/home/diogo/projects/results/THREADS/GI-cho-field-Lx20-Ly4 - T7";
-//	std::thread thread7(myTreads, 1251,1500, slopeobj7, namefolder3);
-//    namefolder3 = "/home/diogo/projects/results/THREADS/GI-cho-field-Lx20-Ly4 - T8";
-//	std::thread thread8(myTreads, 1501, 1750, slopeobj8, namefolder3);
- //   namefolder3 = "/home/diogo/projects/results/THREADS/GI-cho-field-Lx20-Ly4 - T9";
-//	std::thread thread9(myTreads, 1751, 2000, slopeobj9, namefolder3);
+    string namefolder3 = "/home/diogo/projects/results/multithread-onefile-gim-Lx=10-Ly=1";
+	std::thread thread2(myTreads,0,500, slopeobj2,namefolder3);
+	std::thread thread3(myTreads, 500, 1000, slopeobj3, namefolder3);
+	std::thread thread4(myTreads, 1500,2000, slopeobj4, namefolder3);
+	std::thread thread5(myTreads, 2000,2500, slopeobj5, namefolder3);
+	std::thread thread6(myTreads, 2500, 3000, slopeobj6, namefolder3);
+	std::thread thread7(myTreads, 3000,3500, slopeobj7, namefolder3);
+	std::thread thread8(myTreads, 3500, 4000, slopeobj8, namefolder3);
+	std::thread thread9(myTreads, 4000, 4500, slopeobj9, namefolder3);
+    std::thread thread10(myTreads, 4500, 5000, slopeobj10, namefolder3);
+    
 	thread2.join();
 	thread3.join();
 	thread4.join();
 	thread5.join();
-//	thread6.join();
-//	thread7.join();
-//	thread8.join();
-//	thread9.join();
+	thread6.join();
+	thread7.join();
+	thread8.join();
+	thread9.join();
+    thread10.join();
      }
-     */
+     
 }
 //void myTreads(int a, int b, slopeproject* slopeobj2, string traedN)
 //{
@@ -636,7 +737,9 @@ int main()
 
     
 #ifdef __unix__                    /* __unix__ is usually defined by compilers targeting Unix systems */
-mainlinux2();
+    //leakcraw();
+    mainlinux2();
+
 #elif defined(_WIN32) || defined(WIN32)     /* _Win32 is usually defined by compilers targeting 32 or   64 bit Windows systems */
 	mainwindows();
 #endif

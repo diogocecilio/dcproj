@@ -705,7 +705,20 @@ NRmatrix<T> & NRmatrix<T>::operator=(const NRmatrix<T> &rhs)
 			mm = rhs.mm;
 			v = nn>0 ? new T*[nn] : NULL;
 			nel = mm*nn;
-			if (v) v[0] = nel>0 ? new T[nel] : NULL;
+			if (v)
+            {
+                if(nel>0) 
+                {
+                    //if(v[0] != NULL)  delete v[0];
+                    
+                    v[0] = new T[nel];
+                }
+                else
+                {
+                    v[0] = NULL;
+                }
+                //v[0] = nel>0 ? new T[nel] : NULL;
+            }
 			for (i = 1; i< nn; i++) v[i] = v[i - 1] + mm;
 		}
 		for (i = 0; i< nn; i++) for (j = 0; j<mm; j++) v[i][j] = rhs[i][j];
@@ -933,8 +946,8 @@ class NRtensor   {
 	bool fail = false;
 private:
 	
-	int nn;	// size of array. upper index is nn-1
-	T *v;
+	int nn = 6;	// size of array. upper index is nn-1
+	T *v = new T[6];
 public:
 	NRtensor();
 	NRtensor(const T &a);	//initialize to constant value
@@ -1033,7 +1046,7 @@ void NRtensor<T>::CopyFromNRmatrix(NRmatrix<T> source)
 // NRtensor definitions
 
 template <class T>
-NRtensor<T>::NRtensor() : nn(6), v(nn>0 ? new T[nn] : NULL)
+NRtensor<T>::NRtensor() //: nn(6), v(nn>0 ? new T[nn] : NULL)
 {
     for (int i = 0;i < 6;i++)v[i] = 0.;
 }
@@ -1068,11 +1081,6 @@ NRtensor<T> & NRtensor<T>::operator=(const NRtensor<T> &rhs)
 {
 	if (this != &rhs)
 	{
-		if (nn != rhs.nn) {
-			if (v != NULL) delete[](v);
-			nn = rhs.nn;
-			v = nn>0 ? new T[nn] : NULL;
-		}
 		for (int i = 0; i<nn; i++)
 			v[i] = rhs[i];
 	}
@@ -1586,6 +1594,7 @@ void  NRtensor<T>::EigenSystem(NRmatrix<T> & eigenvalues, NRmatrix<T> & eigenvec
 	VecDoub valtemp = system->d;
 	eigenvalues.resize(valtemp.size(), 1);
 	for (int i = 0; i < valtemp.size(); i++)eigenvalues[i][0] = valtemp[i];
+    delete system;
 }
 
 

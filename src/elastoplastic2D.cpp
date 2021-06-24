@@ -51,7 +51,20 @@ elastoplastic2D<YC>::elastoplastic2D()
 template <class YC>
 elastoplastic2D<YC>::~elastoplastic2D()
 {
- 
+
+    
+  /*  delete  fbodyforce;
+	delete fplanestress;
+	delete fthickness;
+	delete fOrder;
+	delete fHHAT;
+	deletefhhatvel;
+	delete fYC;
+
+	delete  fdisplace;
+	delete fepspvec;
+	delete fepspsolitern;
+	delete fglobalcounter;*/
 }
 
 template <class YC>
