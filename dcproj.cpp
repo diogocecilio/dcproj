@@ -480,7 +480,7 @@ writer1.someFunctionThatWritesToFile();
     
    
     
-    bool srm =true;
+    bool srm =false;
     if(srm)
     {
         //694
@@ -517,6 +517,14 @@ writer1.someFunctionThatWritesToFile();
 	std::thread thread8(myTreads, 3500, 4000, slopeobj8, namefolder3);
 	std::thread thread9(myTreads, 4000, 4500, slopeobj9, namefolder3);
     std::thread thread10(myTreads, 4500, 5000, slopeobj10, namefolder3);
+    
+   
+/*string namefolder3 = "/home/diogo/projects/results/multithread-onefile-414els-gim-Lx=40-Ly=4";
+    std::thread thread2(myTreads,0,1000, slopeobj2,namefolder3);
+	std::thread thread3(myTreads, 2000, 3000, slopeobj3, namefolder3);
+	std::thread thread4(myTreads, 3000,4000, slopeobj4, namefolder3);
+	std::thread thread5(myTreads, 4000,5000, slopeobj5, namefolder3);*/
+    
     
 	thread2.join();
 	thread3.join();
