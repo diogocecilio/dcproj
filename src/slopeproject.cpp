@@ -265,10 +265,26 @@ std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed(Doub fa
 			postcounter++;
 
 
-		} while (norm > 0.01 && counter <20 && norm < 5000.);
+		} while (norm > 0.01 && counter <15 && norm < 5000.);
+        
+        if(norm<1){
+		solcount[0] = fabs(displace[2 * iddisplace[0] + 1][0]);
+		solcount[1] = FS;
+		solcount[2] = 0;
+		solcount[3] = 0;
+		solcount[4] = diff;
+		solcount[5] = diff2;
+		solcount[6] = counterout;
+
+		uvf[0] = fabs(displace[2 * iddisplace[0] + 1][0]);
+		uvf[1] = FS;
+
+		solpost2.push_back(uvf);
+		solpost.push_back(solcount);
+}
 
 		res = (fac - facn) / fac;
-		if (R.NRmatrixNorm() > 1) {
+		if (norm>= 1.) {
 			displace = displace0;
 			//R.assign(sz, 1, 0.), FBODY.assign(sz, 1, 0.), FINT.assign(sz, 1, 0.);
 			//facn = FS;
@@ -299,6 +315,9 @@ std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed(Doub fa
 			}
 
 		}
+		
+        
+    
 		//Caso tenha random field a reducao da resistencia tem que ser aplicada a todos os pontos
 		if (hhat0.nrows() != 0)
 		{
@@ -328,30 +347,24 @@ std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed(Doub fa
 		std::cout << " iter = " << counterout << " | FS= " << FS << " | FSmax " << FSmax << " | FSmin = " << FSmin << std::endl;
 
 
-		solcount[0] = fabs(displace[2 * iddisplace[0] + 1][0]);
-		solcount[1] = FS;
-		solcount[2] = 0;
-		solcount[3] = 0;
-		solcount[4] = diff;
-		solcount[5] = diff2;
-		solcount[6] = counterout;
-
-		uvf[0] = 0;
-		uvf[1] = FS;
-
-		solpost2.push_back(uvf);
-		solpost.push_back(solcount);
 
 	}  while ((FSmax - FSmin) / FS > tol); //while ((FSmax - FSmin) / FS > tol && ( norm <1.e20));
 	std::cout << "FOS = " << FS << std::endl;
 	
 	if (false)
 	{
+        MatDoub solpost23;
+		solpost23.CopyFromVector(solpost2);
+		string names = "/home/diogo/projects/results/mathematicas/loadvsdisplacementSRM";
+		string exts = ".dat";
+		names += exts;
+		std::ofstream file8(names);
+		OutPutFile(solpost23, file8);
 
 		std::vector<std::vector<double>> epsppost;
 		mat->PostProcessIntegrationPointVar(meshint->GetAllCoords(), meshint->GetMeshNodes(), meshint->GetMeshTopology(), mat->GetSolution(), epsppost);
-		string name3 = "epsppostnewHUM";
-		string ext3 = ".txt";
+		string name3 = "/home/diogo/projects/results/mathematicas/sqrtJ2SRM-Cho-Determ";
+		string ext3 = ".dat";
 		name3 += ext3;
 		std::ofstream file3(name3);
 		OutPutPost(epsppost, file3);
@@ -359,10 +372,10 @@ std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed(Doub fa
 		string filename;
 		std::vector<std::vector<double>> solx, soly;
 		mat->PostProcess(meshint->GetAllCoords(), meshint->GetMeshNodes(), meshint->GetMeshTopology(), mat->GetSolution(), solx, soly);
-		filename = "solyHUM.txt";
+		filename = "/home/diogo/projects/results/mathematicas/solySRM.dat";
 		std::ofstream file2(filename);
 		OutPutPost(soly, file2);
-		filename = "solxHUM.txt";
+		filename = "/home/diogo/projects/results/mathematicas/solxSRM.dat";
 		std::ofstream file22(filename);
 		OutPutPost(solx, file22);
 	}
@@ -404,7 +417,7 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 	displace.assign(sz, 1, 0.);
 	//Doub l = 10., lamb = 1., lambn=0, lamb3, diff = 100;
 	Doub l = 0, l0 = 0, lamb = 1., lambn = 0, dlamb = 0., lamb3, diff = 100, diff2 = 100;
-	Int counterout = 0, maxcountout = 20;
+	Int counterout = 0, maxcountout = 30;
 	std::vector<double> solcount(7, 0.), uvf(2, 0.);
 	std::vector<std::vector<double>> solpost, solpost2;
 	solpost.push_back(solcount);
@@ -590,8 +603,8 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 
 		MatDoub solpost23;
 		solpost23.CopyFromVector(solpost2);
-		string names = "loadvsdisplacementnew";
-		string exts = ".txt";
+		string names = "/home/diogo/projects/results/mathematicas/loadvsdisplacement";
+		string exts = ".dat";
 		names += exts;
 		std::ofstream file8(names);
 		OutPutFile(solpost23, file8);
@@ -599,8 +612,8 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 
 		std::vector<std::vector<double>> epsppost;
 		fmesh->fmaterial->PostProcessIntegrationPointVar(fmesh->GetAllCoords(), fmesh->GetMeshNodes(), fmesh->GetMeshTopology(), fmesh->fmaterial->GetSolution(), epsppost);
-		string name3 = "epsppostnew";
-		string ext3 = ".txt";
+		string name3 = "/home/diogo/projects/results/mathematicas/sqrtJ2GIM-deter";
+		string ext3 = ".dat";
 		name3 += ext3;
 		std::ofstream file3(name3);
 		OutPutPost(epsppost, file3);
@@ -608,10 +621,10 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 		string filename;
 		std::vector<std::vector<double>> solx, soly;
 		fmesh->fmaterial->PostProcess(fmesh->GetAllCoords(), fmesh->GetMeshNodes(), fmesh->GetMeshTopology(), fmesh->fmaterial->GetSolution(), solx, soly);
-		filename = "soly.txt";
+		filename = "/home/diogo/projects/results/mathematicas/soly.dat";
 		std::ofstream file2(filename);
 		OutPutPost(soly, file2);
-		filename = "solx.txt";
+		filename = "/home/diogo/projects/results/mathematicas/solx.dat";
 		std::ofstream file22(filename);
 		OutPutPost(solx, file22);
 	}
@@ -885,9 +898,9 @@ void slopeproject::InserBC(MatDoub& KG, MatDoub& R, MatDoub& FBODY, std::vector<
 	val = 0;
 	mat->DirichletBC(KG, R, idsbottom, dir, val);
 
-	dir = 0;
-	val = 0;
-	mat->DirichletBC(KG, R, idsbottom, dir, val);
+	//dir = 0;
+	//val = 0;
+	//mat->DirichletBC(KG, R, idsbottom, dir, val);
 
 
 	dir = 0;
@@ -901,9 +914,9 @@ void slopeproject::InserBC(MatDoub& KG, MatDoub& R, MatDoub& FBODY, std::vector<
 	dir = 1;
 	val = 0;
 	mat->DirichletBC(KG, FBODY, idsbottom, dir, val);
-	dir = 0;
-	val = 0;
-	mat->DirichletBC(KG, FBODY, idsbottom, dir, val);
+	//dir = 0;
+	//val = 0;
+	//mat->DirichletBC(KG, FBODY, idsbottom, dir, val);
 
 	dir = 0;
 	val = 0;
