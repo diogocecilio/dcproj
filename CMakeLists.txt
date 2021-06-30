@@ -4,7 +4,7 @@
 cmake_minimum_required (VERSION 3.8)
 
 project ("dcproj")
-#target_link_libraries (dcproj Eigen3::Eigen)
+#target_link_libraries (dcproj Eien3::Eigen)
 # Add source to this project's executable.
 add_executable (dcproj
 "dcproj.cpp" "dcproj.h" 
@@ -30,7 +30,14 @@ include_directories("/usr/include/eigen3")
 
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
-target_link_libraries(dcproj Threads::Threads)
+#target_link_libraries(dcproj Threads::Threads)
+
+#FIND_PACKAGE( Boost 1.71 COMPONENTS program_options REQUIRED )
+#INCLUDE_DIRECTORIES( ${Boost_INCLUDE_DIR} )
+
+#ADD_EXECUTABLE( dcproj dcproj.cpp )
+
+TARGET_LINK_LIBRARIES( dcproj LINK_PUBLIC ${Boost_LIBRARIES} Threads::Threads )
 
 
 include_directories('src')

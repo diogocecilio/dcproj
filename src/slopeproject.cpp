@@ -246,6 +246,9 @@ std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed(Doub fa
 		mat->ResetMat();
 		do
 		{
+            std::clock_t start,startout;
+            double duration=0.;
+            start = std::clock();
 			FINT.assign(sz, 1, 0.);
 			meshint->Assemble(KG, FINT, FBODY);
 			R = FBODY;
@@ -260,10 +263,17 @@ std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed(Doub fa
 			Doub u = fabs(displace[2 * iddisplace[0] + 1][0]);
 			mat->UpdateDisplacement(displace);
 			norm = R.NRmatrixNorm();
-			std::cout << " R norm = " << norm << " | phi0/phi = " << tan(phi0) / tan(phi) << " | c0/c = " << c0 / c << " | c = " << c << " | phi = " << phi << std::endl;
+            
+            duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+            
+			std::cout << " R norm = " << norm << " | phi0/phi = " << tan(phi0) / tan(phi) << " | c0/c = " << c0 / c << " | c = " << c << "| TIME = "<<duration <<" | phi = " << phi << std::endl;
 			counter++;
 			postcounter++;
 
+            if (isnan(norm) == 1) {
+				std::cout << "NAN" << endl;
+				return solpost;
+			}
 
 		} while (norm > 0.01 && counter <15 && norm < 5000.);
         
@@ -499,7 +509,7 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 
 			Doub duration1 = (std::clock() - start) / (double)CLOCKS_PER_SEC;
 
-			//std::cout << " Iteration number = " << counter << " |  |R|/FE = " << err1 << " |  |R| = " << rnorm << " | Unrom  = " << unorm << " | lamb  //= " << lamb << " | time =  <<" << duration1 << std::endl;
+			std::cout << " Iteration number = " << counter << " |  |R|/FE = " << err1 << " |  |R| = " << rnorm << " | Unrom  = " << unorm << " | lamb  = " << lamb << " | TIME =  <<" << duration1 << std::endl;
             //std::cout << " | time =  <<" << duration1 << std::endl;
 			counter++;
             meantime+=duration1;
@@ -587,7 +597,7 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 	} while (counterout <= niter && fabs(diff2) > alphatol );// while (counterout <= maxcountout && fabs(diff2) > 0.05);
 
 
-	if (false)
+	if (true)
 	{
 
 		//string names = "fxu";
