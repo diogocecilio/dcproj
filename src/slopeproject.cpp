@@ -950,11 +950,12 @@ void slopeproject::SolveEigen(MatDoub A, MatDoub b, MatDoub& x)
 		}
 	}
 	for (int i = 0; i < A.nrows(); i++)bbb(i) = b[i][0];
-	VectorXd xxx = AA.llt().solve(bbb);
+	VectorXd xxx = AA.llt().solve(bbb);//mais rápido
 	//VectorXd xxx = AA.fullPivHouseholderQr().solve(bbb);
 	//VectorXd xxx = AA.fullPivLu().solve(bbb);
 	//VectorXd xxx = AA.ldlt().solve(bbb);
 	//VectorXd xxx = AA.lu().solve(bbb);
+    //VectorXd xxx = AA.
 	for (int i = 0; i < A.nrows(); i++)x[i][0] = xxx(i);
 }
 

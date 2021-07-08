@@ -7,7 +7,7 @@ project ("dcproj")
 #target_link_libraries (dcproj Eien3::Eigen)
 # Add source to this project's executable.
 add_executable (dcproj
-"dcproj.cpp" "dcproj.h" 
+src/dcproj.cpp src/dcproj.h
 src/mesh.cpp src/mesh.h
 src/shapequad.cpp src/shapequad.h
 src/slopeproject.cpp src/slopeproject.h 

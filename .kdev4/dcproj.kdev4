@@ -2,13 +2,12 @@
 BuildItems=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x01\x00\x00\x00\x0b\x00\x00\x00\x00\x01\x00\x00\x00\x0c\x00d\x00c\x00p\x00r\x00o\x00j)
 
 [CMake]
-Build Directory Count=4
-Current Build Directory Index-Host System=1
-Temporary Build Directory Index=1
+Build Directory Count=2
+Current Build Directory Index-Host System=0
 
 [CMake][CMake Build Directory 0]
-Build Directory Path=/home/diogo/projects/build-debug
-Build Type=Debug
+Build Directory Path=/home/diogo/projects/dcproj-build-release
+Build Type=Release
 CMake Binary=/usr/bin/cmake
 CMake Executable=/usr/bin/cmake
 Environment Profile=
@@ -17,33 +16,13 @@ Install Directory=/usr/local
 Runtime=Host System
 
 [CMake][CMake Build Directory 1]
-Build Directory Path=/home/diogo/projects/build-release
-Build Type=Release
+Build Directory Path=/home/diogo/projects/dcproj-build-debug
+Build Type=Debug
 CMake Binary=/usr/bin/cmake
 CMake Executable=/usr/bin/cmake
 Environment Profile=
 Extra Arguments=
 Install Directory=/usr/local
-Runtime=Host System
-
-[CMake][CMake Build Directory 2]
-Build Directory Path=/home/diogo/projects/build-serial
-Build Type=Release
-CMake Binary=/usr/bin/cmake
-CMake Executable=/usr/bin/cmake
-Environment Profile=
-Extra Arguments=
-Install Directory=/usr/local
-Runtime=Host System
-
-[CMake][CMake Build Directory 3]
-Build Directory Path=/home/diogo/projects/build-serial2
-Build Type=Release\n
-CMake Binary=/usr/bin/cmake
-CMake Executable=/usr/bin/cmake
-Environment Profile=
-Extra Arguments=
-Install Directory=
 Runtime=Host System
 
 [Launch]
@@ -52,7 +31,7 @@ Launch Configurations=Launch Configuration 0,Launch Configuration 1
 [Launch][Launch Configuration 0]
 Configured Launch Modes=execute
 Configured Launchers=nativeAppLauncher
-Name=dcproj-debug
+Name=release
 Type=Native Application
 
 [Launch][Launch Configuration 0][Data]
@@ -60,9 +39,10 @@ Arguments=
 Dependencies=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x00)
 Dependency Action=Build
 EnvironmentGroup=
-Executable=file:///home/diogo/projects/build-debug/dcproj
+Executable=file:///home/diogo/projects/dcproj-build-release/dcproj
 External Terminal=konsole --noclose --workdir %workdir -e %exe
-Project Target=dcproj,dcproj
+Kill Before Executing Again=4194304
+Project Target=
 Use External Terminal=false
 Working Directory=file:///home/diogo/projects/dcproj
 isExecutable=true
@@ -70,7 +50,7 @@ isExecutable=true
 [Launch][Launch Configuration 1]
 Configured Launch Modes=execute
 Configured Launchers=nativeAppLauncher
-Name=dcproj-release
+Name=debug
 Type=Native Application
 
 [Launch][Launch Configuration 1][Data]
@@ -78,8 +58,9 @@ Arguments=
 Dependencies=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x00)
 Dependency Action=Build
 EnvironmentGroup=
-Executable=file:///home/diogo/projects/build-release/dcproj
+Executable=file:///home/diogo/projects/dcproj-build-debug/dcproj
 External Terminal=konsole --noclose --workdir %workdir -e %exe
+Kill Before Executing Again=4194304
 Project Target=dcproj,dcproj
 Use External Terminal=false
 Working Directory=file:///home/diogo/projects/dcproj
