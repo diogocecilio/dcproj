@@ -11,9 +11,9 @@
 #include <cmath>
 
 #include "elastoplasticbase.h"
-#include<Eigen/SparseCholesky>
+//#include<Eigen/SparseCholesky>
 #include <iostream>
-#include <Eigen/Dense>
+//#include <Eigen/Dense>
 
 //#include <direct.h>
 #include "elastoplastic2D.h"
@@ -38,6 +38,7 @@ public:
 	void OutPutFile(MatDoub& postdata, std::ofstream& file);
 	void OutPutFile1var(MatDoub& postdata, std::ofstream& file);
 	void OutPutFile4var(MatDoub& postdata, std::ofstream& file);
+    void PrintMathematicaFormat(MatDoub postdata, std::ofstream& file);
 	Doub computelamda(MatDoub& dwb, MatDoub& dws, MatDoub& dw, Doub& l);
 	void ReadMesh(std::vector<std::vector< std::vector<Doub > > >& allcoords, MatDoub& meshcoords, MatInt& meshtopology, string filenameel, string filenamecoord);
 	std::vector<Doub>   vecstr_to_vecdoub2(std::vector<string> vs);
@@ -49,9 +50,13 @@ public:
 	std::vector<std::vector<double>>   IterativeProcess(int ndesi, Doub dlamb0, Doub alphatol, int niter);
 	std::vector<std::vector<double>>   IterativeProcessArcLengthSRM(int ndesi, Doub dlamb0, Doub alphatol, int niter);
 	
+    void SolveEigenSparse(MatDoub A, MatDoub b, MatDoub& x);
+    void SolveEigen(SparseMatrix<double> A, VectorXd b, VectorXd& x);
 	void SolveEigen(MatDoub A, MatDoub b, MatDoub& x);
+    void SolveEigen2(MatDoub A, MatDoub b, MatDoub& x);
+    void SolveEigen3(MatDoub A, MatDoub b, MatDoub& x);
 	void InserBC(MatDoub& KG, MatDoub& R, MatDoub& FBODY, std::vector<int> idsbottom, std::vector<int> idsright, std::vector<int> idsleft, material* mat);
-
+    void InserBC(SparseMatrix<double> & KG, VectorXd& R, VectorXd& FBODY, std::vector<int> idsbottom, std::vector<int> idsright, std::vector<int> idsleft, material*mat);
 	void GetElCoords(std::vector<std::vector< std::vector<Doub > > > allcoords, Int el, MatDoub& elcoords);
 	void FindIdsInPath(const MatDoub& path, std::vector<std::vector< std::vector<Doub > > >& allcoords, MatInt& meshtopology, std::vector<int>& idpath);
 	void Line(VecDoub a, VecDoub b, Int ndivs, MatDoub& path);
@@ -59,6 +64,7 @@ public:
 	void findbcids(mesh* gmesh, std::vector<std::vector<int>>& idsvector);
 	MatDoub  AssembleHhationho(Int i);
 	std::vector<std::vector<double>>  IterativeProcessShearRed(Doub fac, Doub delta,Doub tol);
+    std::vector<std::vector<double>>  IterativeProcessShearRed2(Doub fac, Doub delta,Doub tol);
 	void MonteCarloSRM(int iter, int iter2, bool print, string writenamefolder);
 	void MonteCarloGIM(int iter, int iter2,bool print, string writenamefolder);
 	mesh* fmesh;

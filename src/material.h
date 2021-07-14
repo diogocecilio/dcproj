@@ -25,6 +25,7 @@ public:
 	virtual void assembleConstitutiveMatrix(MatDoub& C, Doub mult)=0;
 	virtual void GetElCoords(std::vector<std::vector< std::vector<Doub > > > allcoords, Int el, MatDoub& elcoords)=0;
 	virtual void DirichletBC(MatDoub& KG, MatDoub& FG, std::vector<int> ids, Int  dir, Int val)=0;
+    virtual void DirichletBC(SparseMatrix<double>  &KG, VectorXd &Fint,std::vector<int> ids, Int  dir, Int val)=0;
 	virtual void ContributeLineNewan(MatDoub& KG, MatDoub& FG, std::vector<int> ids, Int  dir, Int val)=0;
 	virtual void ContributeCurvedLine(MatDoub& KG, MatDoub& FG, MatDoub meshnodes, MatInt linetopology, Doub force)=0;
 	virtual void SolPt(const std::vector<std::vector< std::vector<Doub > > >& allcoords, const MatInt& meshtopology, const Int& el, const  MatDoub& solG, const Doub& xi, const Doub& eta, MatDoub& xycoords, MatDoub& sol)=0;
@@ -38,6 +39,7 @@ public:
 	virtual void SetRandomField(MatDoub hhat)=0;
 	virtual void SetMemory(Int ngloblapoints, Int systemsize)=0;
 	virtual void UpdateDisplacement(MatDoub displace)=0;
+    virtual void UpdateDisplacement(VectorXd displace)=0;
 	virtual void UpdatePlasticStrain()=0;
 	virtual void UpdateBodyForce(MatDoub newbodyforce)=0;
 	virtual void ResetPlasticStrain()=0;

@@ -75,6 +75,67 @@ public:
 
 	}
 
+
+    void shapes(MatrixXd &psis, MatrixXd &gradpsis, double xi, double eta)
+	{
+		switch (forder)
+		{
+		case 1:
+			psis.resize(4, 1);
+			gradpsis.resize(2, 4);
+			psis(0,0) = ((1 - eta)*(1 - xi)) / 4.;
+			psis(1,0) = ((1 - eta)*(1 + xi)) / 4.;
+			psis(2,0) = ((1 + eta)*(1 + xi)) / 4.;
+			psis(3,0) = ((1 + eta)*(1 - xi)) / 4.;
+
+			gradpsis(0,0) = 1. / 4. *(-1. + eta);
+			gradpsis(0,1) = (1. - eta) / 4.;
+			gradpsis(0,2) = (1. + eta) / 4.;
+			gradpsis(0,3) = 1. / 4. *(-1. - eta);
+
+			gradpsis(1,0) = 1. / 4. * (-1. + xi);
+			gradpsis(1,1) = 1. / 4. *(-1. - xi);
+			gradpsis(1,2) = (1. + xi) / 4.;
+			gradpsis(1,3) = (1. - xi) / 4.;
+			break;
+		case 2:
+			psis.resize(8, 1);
+			gradpsis.resize(2, 8);
+
+			psis(0,0) = 1. / 4. *(1. - eta) *(1. - xi)* (-1. - eta - xi);
+			psis(1,0) = 1. / 4. *(1. - eta)* (1. + xi) *(-1. - eta + xi);
+			psis(2,0)= 1. / 4.*(1. + eta) *(1. + xi) *(-1. + eta + xi);
+			psis(3,0) = 1. / 4. *(1. + eta)* (1. - xi) *(-1. + eta - xi);
+			psis(4,0) = 1. / 2. * (1. - eta) *(1 - xi *xi);
+			psis(5,0) = 1. / 2. *(1. - eta *eta)* (1. + xi);
+			psis(6,0) = 1. / 2. *(1. + eta)* (1. - xi *xi);
+			psis(7,0) = 1. / 2. * (1. - eta *eta) * (1. - xi);
+
+
+			gradpsis(0,0)= -((1 - eta)*(1 - xi)) / 4. - ((1 - eta)*(-1 - eta - xi)) / 4.;
+			gradpsis(0,1) = ((1 - eta)*(1 + xi)) / 4. + ((1 - eta)*(-1 - eta + xi)) / 4.;
+			gradpsis(0,2) = ((1 + eta)*(1 + xi)) / 4. + ((1 + eta)*(-1 + eta + xi)) / 4.;
+			gradpsis(0,3) = -((1 + eta)*(1 - xi)) / 4. - ((1 + eta)*(-1 + eta - xi)) / 4.;
+			gradpsis(0,4) = (-1 + eta)*xi;
+			gradpsis(0,5) = (1 - eta*eta) / 2.;
+			gradpsis(0,6) = (-1 - eta)*xi;
+			gradpsis(0,7) = (-1 + pow(eta, 2)) / 2.;
+
+			gradpsis(1,0) = -((1 - eta)*(1 - xi)) / 4. - ((1 - xi)*(-1 - eta - xi)) / 4.;
+			gradpsis(1,1) = -((1 - eta)*(1 + xi)) / 4. - ((1 + xi)*(-1 - eta + xi)) / 4.;
+			gradpsis(1,2) = ((1 + eta)*(1 + xi)) / 4. + ((1 + xi)*(-1 + eta + xi)) / 4.;
+			gradpsis(1,3)= ((1 + eta)*(1 - xi)) / 4. + ((1 - xi)*(-1 + eta - xi)) / 4.;
+			gradpsis(1,4) = (-1 + xi*xi) / 2.;
+			gradpsis(1,5) = -eta*(1. + xi);
+			gradpsis(1,6) = 1. / 2. *(1. - xi *xi);
+			gradpsis(1,7) = -eta*(1. - xi);
+			break;
+		}
+
+	}
+
+
+
 	void shapes1D(MatDoub&psis, MatDoub &gradpsis, Doub xi)
 	{
 		switch (forder)

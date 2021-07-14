@@ -300,3 +300,130 @@ void mesh::Assemble(MatDoub& KG, MatDoub& Fint, MatDoub& Fbody)
 	fmaterial->ResetCounter();
 }
 
+
+
+
+
+void mesh::Assemble(SparseMatrix<double>  &KG, VectorXd &Fint, VectorXd &Fbody)
+{
+	//std::vector<std::vector< std::vector<Doub > > > allcoords = fmesh.GetAllCoords();
+	//MatDoub meshnodes = fmesh.GetMeshNodes();
+	//MatInt meshtopology = fmesh.GetMeshTopology();
+    typedef Eigen::Triplet<double> T;
+    std::vector<T> tripletList;
+    //tripletList.reserve(estimation_of_entries);
+	//cout << "all cc" << allcoords[0].size() <<endl;
+
+	MatDoub ek, efint, efbody, elcoords, eltopology;
+
+	GetElCoords(fallcoords, 0, elcoords);
+	Int nnodes = fmeshnodes.nrows();
+	Int rows = elcoords.nrows();
+	Int sz = 2 * nnodes;
+	Int cols = rows;
+	KG.resize(sz, sz);
+
+	Fint.resize(sz);
+	Fbody.resize(sz);
+	Int nels = fallcoords.size();
+MatrixXd KGt(sz,sz);
+tripletList.reserve(sz*sz);
+	//uglob = Table[
+		//Table[{displacement[[2 topol[[k, j]] - 1]],
+		//	displacement[[2 topol[[k, j]]]]}, { j, 1,
+			//Length[topol[[k]]] }], { k, 1, nels }];
+	NRmatrix<NRvector<Doub>> uglob;
+	uglob.resize(nels, nnodes);
+	for (int i = 0; i < nels; i++)
+	{
+		for (int j = 0; j < nnodes; j++) {
+			uglob[i][j].assign(2, 0.);
+		}
+	}
+
+	for (Int iel = 0; iel < nels; iel++)
+	{
+		for (Int node = 0; node < rows; node++)
+		{
+			uglob[iel][node][0] = fmaterial->GetSolution()[2 * fmeshtopology[iel][node]][0];
+			uglob[iel][node][1] = fmaterial->GetSolution()[2 * fmeshtopology[iel][node] + 1][0];
+		}
+	}
+
+	//	uglob.Print2();
+
+	Int fu = 0;
+	for (Int iel = 0; iel < nels; iel++)
+	{
+		if (fHHAT.nrows() != 0)
+		{
+			fhhatvel.resize(fHHAT.ncols());
+			for (Int ivar = 0; ivar < fHHAT.ncols(); ivar++) {
+				fhhatvel[ivar].assign(rows, 1, 0.);
+				for (Int inode = 0; inode < rows; inode++)
+				{
+					fhhatvel[ivar][inode][0] = fHHAT[fmeshtopology[iel][inode]][ivar];
+				}
+			}
+		}
+		fmaterial->SetRandomField(fHHAT);
+		fmaterial->SetRandomFieldLocal(fhhatvel);
+		MatDoub elementdisplace(elcoords.nrows(), 2, 0.);
+		for (Int i = 0; i < elcoords.nrows(); i++)for (Int j = 0; j < 2; j++)elementdisplace[i][j] = uglob[iel][i][j];
+		GetElCoords(fallcoords, iel, elcoords);
+		fmaterial->CacStiff(ek, efint, efbody, elcoords, elementdisplace);
+		for (Int irow = 0;irow < rows;irow++)
+		{
+			Int rowglob = fmeshtopology[iel][irow];
+			for (Int icol = 0;icol < cols;icol++)
+			{
+				Int colglob = fmeshtopology[iel][icol];
+
+                /*double val1=0,val2=0,val3=0,val4=0;
+                val1 = ek[2 * irow + fu][2 * icol + fu];
+                val2 = ek[2 * irow + fu][2 * icol + 1 + fu];
+                val3 = ek[2 * irow + 1 + fu][2 * icol + fu];
+                val4 = ek[2 * irow + 1 + fu][2 * icol + 1 + fu];
+                if(fabs(val1)>1.e-12)KG.coeffRef(2 * rowglob + fu,2 * colglob + fu) +=val1;
+                if(fabs(val2)>1.e-12)KG.coeffRef(2 * rowglob + fu,2 * colglob + 1 + fu)+=val2;
+                if(fabs(val3)>1.e-12)KG.coeffRef(2 * rowglob + 1 + fu,2 * colglob + fu)+=val3;
+                if(fabs(val4)>1.e-12)KG.coeffRef(2 * rowglob + 1 + fu,2 * colglob + 1 + fu)+=val4;*/
+
+                //tripletList.push_back(T(i,j,v_ij));
+
+                KGt(2 * rowglob + fu,2 * colglob + fu) += ek[2 * irow + fu][2 * icol + fu];
+				KGt(2 * rowglob + fu,2 * colglob + 1 + fu) += ek[2 * irow + fu][2 * icol + 1 + fu];
+				KGt(2 * rowglob + 1 + fu,2 * colglob + fu) += ek[2 * irow + 1 + fu][2 * icol + fu];
+				KGt(2 * rowglob + 1 + fu,2 * colglob + 1 + fu) += ek[2 * irow + 1 + fu][2 * icol + 1 + fu];
+
+			}
+			Fbody(2 * rowglob + fu) += efbody[2 * irow + fu][0];
+			Fbody(2 * rowglob + 1 + fu) += efbody[2 * irow + 1 + fu][0];
+
+			Fint(2 * rowglob + fu) += efint[2 * irow + fu][0];
+			Fint(2 * rowglob + 1 + fu) += efint[2 * irow + 1 + fu][0];
+		}
+
+	}
+
+
+	for(int i=0;i<sz;i++)
+    {
+        for(int j=0;j<sz;j++)
+        {
+            if(fabs(KGt(i,j))>1.e-12)
+            {
+                tripletList.push_back(T(i,j,KGt(i,j)));
+
+            }
+        }
+    }
+
+    KG.setFromTriplets(tripletList.begin(), tripletList.end());
+	//KG.makeCompressed();
+	fmaterial->ResetCounter();
+}
+
+
+
+

@@ -107,6 +107,15 @@ void elastoplastic2D<YC>::UpdateDisplacement(NRmatrix<Doub>  displace)
 {
 	fdisplace = displace;
 }
+
+template <class YC>
+void elastoplastic2D<YC>::UpdateDisplacement(VectorXd displace)
+{
+    double sz =  displace.size();
+    fdisplace.resize(sz,1);
+	for(int i=0;i<sz;i++)fdisplace[i][0] = displace(i);
+}
+
 template <class YC>
 void elastoplastic2D<YC>::UpdatePlasticStrain()
 {
@@ -169,8 +178,31 @@ void elastoplastic2D<YC>::ResetDisplacement()
 
 //
 //
+template <class YC>
+void elastoplastic2D<YC>::ContributeEig(MatrixXd &ek,  VectorXd &efint, VectorXd  &efbody, double xi, double eta, double w, MatrixXd elcoords, MatrixXd  eldisplace)
+{
+    int type = 1;
+	shapequad objshapes(fOrder, type);
 
+	MatrixXd   psis, GradPsi, elcoordst, xycoords, Jac, InvJac(2, 2), GradPhi, B, BT, N, NT, psist, C, BC, BCS, stress(3, 1), temp, CS, KSt;
+	objshapes.shapes(psis, GradPsi, xi, eta);
+	psist= psis.transpose();
+	xycoords=psist*elcoords;
+    int nrandomvars = fhhatvel.size();
+    VectorXd hhat(fhhatvel.size());
+	//NRvector<NRmatrix<Doub> > hhat(fhhatvel.size());
 
+	if (fhhatvel.size() != 0)
+	{
+		for (Int ivar = 0;ivar < fhhatvel.size();ivar++)
+		{
+          //  hhat << psist*fhhatvel[ivar];
+			//psist.Mult(fhhatvel[ivar], hhat[ivar]);
+		}
+
+	}
+
+}
 
 template <class YC>
 void elastoplastic2D<YC>::Contribute(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint, NRmatrix<Doub>  &efbody, Doub xi, Doub eta, Doub w, NRmatrix<Doub>  elcoords,NRmatrix<Doub>  eldisplace)
@@ -486,6 +518,97 @@ void elastoplastic2D<YC>::Assemble(std::vector<std::vector< std::vector<Doub > >
 	}
 	fglobalcounter = 0;
 }
+
+template <class YC>
+void elastoplastic2D<YC>::Assemble(std::vector<std::vector< std::vector<Doub > > > allcoords, NRmatrix<Doub>  meshnodes,MatInt meshtopology,SparseMatrix<double>  &KG, VectorXd &Fint, VectorXd &Fbody)
+{
+	//std::vector<std::vector< std::vector<Doub > > > allcoords = fmesh.GetAllCoords();
+	//MatDoub meshnodes = fmesh.GetMeshNodes();
+	//MatInt meshtopology = fmesh.GetMeshTopology();
+
+	//cout << "all cc" << allcoords[0].size() <<endl;
+
+	NRmatrix<Doub>  ek, efint,efbody, elcoords, eltopology;
+	GetElCoords(allcoords, 0, elcoords);
+	Int nnodes = meshnodes.nrows();
+	Int rows = elcoords.nrows();
+	Int sz = 2 * nnodes;
+	Int cols = rows;
+	KG.resize(sz, sz);
+	Fint.resize(sz);
+	Fbody.resize(sz);
+	Int nels = allcoords.size();
+
+	//uglob = Table[
+		//Table[{displacement[[2 topol[[k, j]] - 1]],
+		//	displacement[[2 topol[[k, j]]]]}, { j, 1,
+			//Length[topol[[k]]] }], { k, 1, nels }];
+	NRmatrix<NRvector<Doub>> uglob;
+	uglob.resize(nels, nnodes);
+	for (int i = 0;i < nels;i++)
+	{
+		for (int j = 0;j < nnodes;j++) {
+			uglob[i][j].assign(2, 0.);
+		}
+	}
+
+	for (Int iel = 0; iel < nels;iel++)
+	{
+		for (Int node = 0;node < rows;node++)
+		{
+			uglob[iel][node][0] = fdisplace[2* meshtopology[iel][node]  ][0];
+			uglob[iel][node][1]= fdisplace[2* meshtopology[iel][node]+1][0];
+		}
+	}
+
+//	uglob.Print2();
+
+	Int fu = 0;
+
+	for (Int iel = 0;iel < nels;iel++)
+	{
+		if (fHHAT.nrows() != 0)
+		{
+			fhhatvel.resize( fHHAT.ncols());
+			for (Int ivar = 0;ivar < fHHAT.ncols();ivar++) {
+				fhhatvel[ivar].assign(rows, 1, 0.);
+				for (Int inode = 0;inode < rows;inode++)
+				{
+					fhhatvel[ivar][inode][0] = fHHAT[meshtopology[iel][inode]][ivar];
+				}
+			}
+		}
+		NRmatrix<Doub>  elementdisplace(elcoords.nrows(), 2,0.);
+		for (Int i = 0;i < elcoords.nrows(); i++)for (Int j = 0;j < 2;j++)elementdisplace[i][j] = uglob[iel][i][j];
+		GetElCoords(allcoords, iel, elcoords );
+		CacStiff(ek, efint,efbody, elcoords, elementdisplace);
+		for (Int irow = 0;irow < rows;irow++)
+		{
+			Int rowglob = meshtopology[iel][irow];
+			for (Int icol = 0;icol < cols;icol++)
+			{
+				Int colglob = meshtopology[iel][icol];
+				KG.coeffRef(2 * rowglob + fu,2 * colglob + fu) += ek[2 * irow + fu][2 * icol + fu];
+				KG.coeffRef(2 * rowglob + fu,2 * colglob + 1 + fu) += ek[2 * irow + fu][2 * icol + 1 + fu];
+				KG.coeffRef(2 * rowglob + 1 + fu,2 * colglob + fu) += ek[2 * irow + 1 + fu][2 * icol + fu];
+				KG.coeffRef(2 * rowglob + 1 + fu,2 * colglob + 1 + fu) += ek[2 * irow + 1 + fu][2 * icol + 1 + fu];
+
+			}
+			Fbody(2 * rowglob + fu) += efbody[2 * irow + fu][0];
+			Fbody(2 * rowglob + 1 + fu) += efbody[2 * irow + 1 + fu][0];
+
+			Fint(2 * rowglob + fu) += efint[2 * irow + fu][0];
+			Fint(2 * rowglob + 1 + fu) += efint[2 * irow + 1 + fu][0];
+		}
+
+	}
+	fglobalcounter = 0;
+}
+
+
+
+
+
 template <class YC>
 void elastoplastic2D<YC>::assembleBandN(NRmatrix<Doub>  &B, NRmatrix<Doub>  &N, const NRmatrix<Doub>  &psis, const NRmatrix<Doub>  &GradPhi) 
 {
@@ -574,6 +697,42 @@ void elastoplastic2D<YC>::DirichletBC(NRmatrix<Doub>  &KG, NRmatrix<Doub>  & FG,
 
 	}
 }
+
+template <class YC>
+void elastoplastic2D<YC>::DirichletBC(SparseMatrix<double> & KG, VectorXd& FG, std::vector<int> ids, Int  dir, Int val)
+{
+	Int nodes = ids.size();
+	Int sz = KG.rows();
+	for (Int i = 0;i < nodes;i++)
+	{
+		Int pso = ids[i];
+		if (dir == 0)
+		{
+			for (Int j = 0; j < sz;j++)
+			{
+				KG.coeffRef(2 * pso,j) = 0;
+				KG.coeffRef(j,2 * pso) = 0;
+			}
+			KG.coeffRef(2 * pso,2 * pso) = 1;
+			FG(2 * pso) = val;
+		}
+		else
+		{
+			for (Int j = 0; j < sz;j++)
+			{
+				KG.coeffRef(2 * pso + 1,j) = 0;
+				KG.coeffRef(j,2 * pso + 1) = 0;
+			}
+			KG.coeffRef(2 * pso + 1,2 * pso + 1) = 1;
+			FG(2 * pso + 1) = val;
+		}
+
+
+	}
+}
+
+
+
 template <class YC>
 void elastoplastic2D<YC>::ContributeLineNewan(NRmatrix<Doub>  &KG, NRmatrix<Doub>  & FG, std::vector<int> ids, Int  dir, Int val)
 {

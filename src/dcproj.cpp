@@ -7,6 +7,14 @@
 #include <thread>
 //#include <boost/thread.hpp>
 //using namespace boost; 
+//#define EIGEN_USE_MKL_ALL
+//#define EIGEN_USE_MKL_ALL
+//#define EIGEN_NO_DEBUG
+//#define EIGEN_DONT_PARALLELIZE
+#include <mkl.h>
+#define EIGEN_USE_MKL_ALL
+//#include <lapacke.h>
+
 using namespace std;
 
 void ReadMatDoub(MatDoub& matdoub, std::string  file);
@@ -62,6 +70,9 @@ void myTreadsSRM(int a, int b, slopeproject* slopeobj2,string namefolder3)
 void mainlinux(int simtype,int comeco,int fim)
 {
     
+
+
+
     //cout<< "simtype"<< simtype;
 	//string nodestr = "/home/diogo/projects/dcproj/nos-132-c3.txt";
 	//string elsstr = "/home/diogo/projects/dcproj/els-132-c3.txt";
@@ -178,8 +189,8 @@ void mainlinux(int simtype,int comeco,int fim)
 	mat11->SetMemory(nglobalpts, sz);
 	mat11->UpdateBodyForce(bodyforce);
     
-    Doub Lx = 40.;//(*Correlation length in x direction*)
-	Doub Ly = 2.;//(*Correlation length in y direction*)
+    Doub Lx = 20.;//(*Correlation length in x direction*)
+	Doub Ly = 4.;//(*Correlation length in y direction*)
 	Int nsamples = 50000, expansionorder = 150;
 	Int type = 3;
 	KLGalerkinRF* objKLGalerkinRF0 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
@@ -209,8 +220,21 @@ void mainlinux(int simtype,int comeco,int fim)
 
     if(false)
     {
-        slopeproject* slopeobj0 = new slopeproject(mesh1, objKLGalerkinRF1);
-        string filename = "/home/diogo/projects/results/cho-field-414els-Lx40-Ly2";
+        cout <<"\n initializing  ---->" << endl;
+        slopeproject* slopeobj0 = new slopeproject(mesh0, objKLGalerkinRF0);
+		int ndesirediters = 8, niter = 50;
+		Doub dlamb0 = 0.2, alphatol = 0.0001;
+		Doub tol = 0.001;
+		std::vector<std::vector<double>> soll;
+		mat0->fYC.setup(young, nu, c, phi);
+		mat0->SetMemory(nglobalpts, sz);
+		mat0->UpdateBodyForce(bodyforce);
+        soll = slopeobj0->IterativeProcess(20, 0.1, 0.0001,10);
+        return;
+
+
+
+        string filename = "/home/diogo/Dropbox/slope-reliability/results/mesh-414/cho-field-414els-Lx20-Ly4";
         slopeobj0->CreateRandomField(filename);
 
         return;
@@ -220,9 +244,9 @@ void mainlinux(int simtype,int comeco,int fim)
 
 
     MatDoub coesionrandomfield, frictionrandomfield;
-	string filerf = "/home/diogo/projects/results/cho-field-414els-Lx40-Ly2/coesionfield.txt";
+	string filerf = "/home/diogo/Dropbox/slope-reliability/results/mesh-414/cho-field-414els-Lx20-Ly4/coesionfield.txt";
 	ReadMatDoub(coesionrandomfield, filerf);
-	string filerff = "/home/diogo/projects/results/cho-field-414els-Lx40-Ly2/frictionfield.txt";
+	string filerff = "/home/diogo/Dropbox/slope-reliability/results/mesh-414/cho-field-414els-Lx20-Ly4/frictionfield.txt";
 	ReadMatDoub(frictionrandomfield, filerff);
 
 	NRmatrix<MatDoub> randomfield(2, 1);
@@ -260,8 +284,8 @@ void mainlinux(int simtype,int comeco,int fim)
     std::ofstream file2(filename);
     slopeobj0->OutPutPost(hhatx, file2);
     
-    return;
-    
+
+
     bool deterministicsol = true;
 	if (deterministicsol == true)
 	{
@@ -276,7 +300,7 @@ void mainlinux(int simtype,int comeco,int fim)
 		mat0->UpdateBodyForce(bodyforce);
         soll = slopeobj0->IterativeProcess(20, 0.1, 0.0001,10);
 	}
-	cout <<"\n initializing  ---->" << endl;
+
     return;
     }
     //int simtype,int comeco,int fim
@@ -308,9 +332,9 @@ void mainlinux(int simtype,int comeco,int fim)
     }
     if(GIMorSRM==0)
     {
-        string namefolder = "/home/diogo/projects/results/gim-414els-Lx40-Ly2";
+        string namefolder = "/home/diogo/Dropbox/slope-reliability/results/mesh-414/gim-414els-Lx20-Ly4";
         int a=begin,b,c,d,e,f,g,h,i,j,l,m,n;
-        int delta=int((end-begin)/10);
+        int delta=int((end-begin)/5);
         b=a+delta;
         c=b+delta;
         d=c+delta;
@@ -321,10 +345,11 @@ void mainlinux(int simtype,int comeco,int fim)
         i=h+delta;
         j=i+delta;
         l=j+delta;
-        m=l+delta;
-        n=m+delta;
-        a=250,b=1250,c=2250,d=3250,e=4250,f=5250,g=6250,h=7250,i=8250,j=9250,l=10000;
-
+      //  m=l+delta;
+      //  n=m+delta;
+        a=1044,b=2245,c=3518,d=4746,e=6033,f=7241,g=8500,h=9751,i=10000;
+      // a=496,b=1725,c=2979,d=4220,e=5492,f=6727,g=7960,h=9235,i=10000;
+       // a=496,b=1725,c=2979,d=4220,e=5492,f=10000;
         //multthread
         std::thread thread0(myTreads,a,b, slopeobj0,namefolder);
         std::thread thread1(myTreads,b,c, slopeobj1,namefolder);
@@ -334,10 +359,13 @@ void mainlinux(int simtype,int comeco,int fim)
         std::thread thread5(myTreads,f,g, slopeobj5,namefolder);
         std::thread thread6(myTreads,g,h, slopeobj6,namefolder);
         std::thread thread7(myTreads,h,i, slopeobj7,namefolder);
-        std::thread thread8(myTreads,i,j, slopeobj8,namefolder);
-        std::thread thread9(myTreads,j,l, slopeobj9,namefolder);
+    //    std::thread thread8(myTreads,i,j, slopeobj8,namefolder);
+    //    std::thread thread9(myTreads,j,l, slopeobj9,namefolder);
        // std::thread thread10(myTreads,l,m, slopeobj10,namefolder);
        // std::thread thread11(myTreads,m,n, slopeobj11,namefolder);
+
+        //array v2,v1;
+       // v2=v1.array().sin();
 
         thread0.join();
         thread1.join();
@@ -347,8 +375,8 @@ void mainlinux(int simtype,int comeco,int fim)
         thread5.join();
         thread6.join();
         thread7.join();
-        thread8.join();
-        thread9.join();
+      //  thread8.join();
+      //  thread9.join();
       //  thread10.join();
      //   thread11.join();
         //serial
@@ -362,23 +390,63 @@ void mainlinux(int simtype,int comeco,int fim)
     
     if(GIMorSRM==1)
     {
-        string namefolder = "/home/diogo/projects/results/srm-414els-Lx40-Ly2";
-        //slopeobj2->MonteCarloSRM(begin,end, false, namefolder3);
-        int a=begin,b,c;
-        int delta=int((end-begin)/2);
+        string namefolder = "/home/diogo/Dropbox/slope-reliability/results/mesh-414/srm-414els-Lx20-Ly4";
+        int a=begin,b,c,d,e,f,g,h,i,j,l,m,n;
+        int delta=int((end-begin)/10);
         b=a+delta;
         c=b+delta;
-        cout << "a = "<< a <<endl;
-        cout << "b = "<< b <<endl;
-        cout << "c = "<< c <<endl;
-        cout << "delta = "<< delta <<endl;
-       // std::thread thread0(myTreadsSRM,a,b, slopeobj0,namefolder3);
-      //  std::thread thread1(myTreadsSRM,b,c, slopeobj1,namefolder3);
-      //  thread0.join();
-      //  thread1.join();
+        d=c+delta;
+        e=d+delta;
+        f=e+delta;
+        g=f+delta;
+        h=g+delta;
+        i=h+delta;
+        j=i+delta;
+        l=j+delta;
 
+        a=448;
+        b=1455;
+        c=2450;
+        d=3448;
+        e=4335;
+        f=5454;
+        g=6454;
+        h=7332;
+        i=8337;
+        j=9338;
+        l=10000;
+        std::thread thread0(myTreadsSRM,a,b, slopeobj0,namefolder);
+        std::thread thread1(myTreadsSRM,b,c, slopeobj1,namefolder);
+        std::thread thread2(myTreadsSRM,c,d, slopeobj2,namefolder);
+        std::thread thread3(myTreadsSRM,d,e, slopeobj3,namefolder);
+        std::thread thread4(myTreadsSRM,e,f, slopeobj4,namefolder);
+        std::thread thread5(myTreadsSRM,f,g, slopeobj5,namefolder);
+        std::thread thread6(myTreadsSRM,g,h, slopeobj6,namefolder);
+        std::thread thread7(myTreads,h,i, slopeobj7,namefolder);
+        std::thread thread8(myTreads,i,j, slopeobj8,namefolder);
+        std::thread thread9(myTreads,j,l, slopeobj9,namefolder);
+       // std::thread thread10(myTreads,l,m, slopeobj10,namefolder);
+      //  std::thread thread11(myTreads,m,n, slopeobj11,namefolder);
+
+        //array v2,v1;
+       // v2=v1.array().sin();
+
+        thread0.join();
+        thread1.join();
+        thread2.join();
+        thread3.join();
+        thread4.join();
+        thread5.join();
+        thread6.join();
+        thread7.join();
+        thread8.join();
+        thread9.join();
+       // thread10.join();
+     //   thread11.join();
         //serial
-        slopeobj0->MonteCarloSRM(begin,end, false, namefolder);
+        //slopeobj0->MonteCarloGIM(begin,end, false, namefolder);
+       // slopeobj0->MonteCarloGIM(0,5, false, namefolder);
+
         return;
     }
 
@@ -794,6 +862,67 @@ void mainlinuxserial(int simtype,int comeco,int fim)
 
 }
 
+#include <Eigen/Core>
+using namespace Eigen;
+using namespace std;
+
+
+int main3()
+{
+    ifstream datamatrix("matrix.txt");
+    ifstream datavec("vector.txt");
+    int m=2630;
+    MatrixXd A(m,m);
+    SparseMatrix<double> SP(m,m);
+    VectorXd b(m);
+    chrono::steady_clock sc;
+   auto start = sc.now();
+   double temp =0.;
+    for (int i = 0; i < m; i++)
+    {
+     for (int j = 0; j < m; j++)
+     {
+            datamatrix>>  temp;
+            A(i,j)=temp;
+            if(fabs(A(i,j))!=0.)
+            {
+				 SP.coeffRef(i, j)=temp;
+            }
+        // SP.coeffRef(i,j)=A(i,j);
+     }
+     datavec >> b(i);
+    }
+    auto end = sc.now();
+    auto time_span = static_cast<chrono::duration<double>>(end - start);
+    cout << "Operation took: " << time_span.count() << " seconds.";
+     start = sc.now();
+    VectorXd x = A.llt().solve(b);
+     end = sc.now();
+    // measure time span between start & end
+     time_span = static_cast<chrono::duration<double>>(end - start);
+    cout << "Operation took: " << time_span.count() << " seconds.";
+
+
+    start = sc.now();
+    LLT<MatrixXd> llt;
+    llt.compute(A);
+    VectorXd xxx=llt.solve(b);
+    end = sc.now();
+
+    time_span = static_cast<chrono::duration<double>>(end - start);
+    cout << "Operation took: " << time_span.count() << " seconds.";
+
+    start = sc.now();
+    SimplicialLLT< SparseMatrix<double> > solver;
+    x = solver.compute(SP).solve(b);
+    end = sc.now();
+    time_span = static_cast<chrono::duration<double>>(end - start);
+    cout << "Operation took: " << time_span.count() << " seconds.";
+    //cout << xxx-x << endl;
+
+}
+
+
 int main(int argc, char *argv[])
 {
 
@@ -803,7 +932,7 @@ int main(int argc, char *argv[])
 
    // mainlinuxserial(-1,-1,-1);
     Eigen::initParallel();
-    setNbThreads(5);
+    setNbThreads(16);
     if (argc > 3) {
         mainlinux(atoi(argv[1]),atoi(argv[2]),atoi(argv[3]));
 
@@ -836,132 +965,6 @@ void OutPutPost(NRmatrix<T>& postdata, std::ofstream& file)
 	}
 	file.close();
 }
-
-//void ReadMesh(std::vector<std::vector< std::vector<Doub > > >& allcoords, MatDoub& meshcoords, MatInt& meshtopology, string filenameel, string filenamecoord)
-//{
-//	std::vector<std::vector<Int>> topol;
-//	string line, temp;
-//
-//	ifstream myfile(filenameel);
-//	//
-//	if (myfile.is_open())
-//	{
-//		while (getline(myfile, line))
-//		{
-//			std::vector<string> tokens;
-//			istringstream iss(line);
-//			while (iss >> temp)
-//				tokens.push_back(temp);
-//			std::vector<Int> input_int;
-//			vecstr_to_vec(tokens, input_int);
-//			for (int k = 0; k < input_int.size(); k++)
-//			{
-//				input_int[k] = input_int[k] - 1;
-//			}
-//			topol.push_back(input_int);
-//		}
-//		myfile.close();
-//	}
-//	else std::cout << "Unable to open file";
-//
-//	meshtopology.CopyFromVector(topol);
-//	//meshtopology.Print();
-//
-//	std::vector<std::vector<Doub>> coords;
-//	string line2, temp2;
-//	ifstream myfile2(filenamecoord);
-//	if (myfile2.is_open())
-//	{
-//		while (getline(myfile2, line2))
-//		{
-//			std::vector<string> tokens;
-//			istringstream iss(line2);
-//			while (iss >> temp2)
-//				tokens.push_back(temp2);
-//			std::vector<Doub> input_doub;
-//			vecstr_to_vec(tokens, input_doub);
-//
-//			//std::vector<Doub> input_doub2(input_doub.size() - 1);
-//			//for (int k = 1;k < input_doub.size();k++)
-//			//{
-//			//	input_doub2[k] = input_doub[k];
-//			//}
-//
-//			coords.push_back(input_doub);
-//		}
-//		myfile2.close();
-//	}
-//	else std::cout << "Unable to open file";
-//
-//	meshcoords.CopyFromVector(coords);
-//	//meshcoords.Print();
-//
-//
-//	std::vector<Doub> temp33(2);
-//	for (Int i = 0; i < meshtopology.nrows(); i++)
-//	{
-//		std::vector< std::vector<Doub> > temp22;
-//		for (Int j = 0; j < meshtopology.ncols(); j++)
-//		{
-//			Int top = meshtopology[i][j];
-//			temp33[0] = meshcoords[top][0];
-//			temp33[1] = meshcoords[top][1];
-//			temp22.push_back(temp33);
-//		}
-//		allcoords.push_back(temp22);
-//	}
-//
-//
-//
-//}
-//
-//
-//void ReadMatDoub(MatDoub& matdoub, std::string  file)
-//{
-//	std::vector<std::vector<Doub>> coords;
-//	string line2, temp2;
-//	ifstream myfile2(file);
-//	if (myfile2.is_open())
-//	{
-//		while (getline(myfile2, line2))
-//		{
-//			std::vector<string> tokens;
-//			istringstream iss(line2);
-//			while (iss >> temp2)
-//				tokens.push_back(temp2);
-//			std::vector<Doub> input_doub;
-//			vecstr_to_vec(tokens, input_doub);
-//			coords.push_back(input_doub);
-//		}
-//		myfile2.close();
-//	}
-//	else std::cout << "Unable to open file";
-//	//for (int i = 0;i < coords.size();i++)
-//	//{
-//	//	for (int j = 0;j < coords[0].size();j++)
-//	//	{
-//	//		cout << coords[i][j] << endl;
-//	//	}
-//	//	cout << endl;
-//	//}
-//
-//	matdoub.CopyFromVector(coords);
-//}
-//
-//template <class T> 
-//void vecstr_to_vec(std::vector<std::string> vs, std::vector<T> &ret)
-//{
-//
-//	for (std::vector<std::string>::iterator it = vs.begin(); it != vs.end(); ++it)
-//	{
-//		istringstream iss(*it);
-//		T temp;
-//		iss >> temp;
-//		ret.push_back(temp);
-//	}
-//
-//}
-
 
 
 void ReadMesh(std::vector<std::vector< std::vector<Doub > > >& allcoords, MatDoub& meshcoords, MatInt& meshtopology, string filenameel, string filenamecoord)

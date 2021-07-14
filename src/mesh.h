@@ -46,6 +46,7 @@ public:
 	MatDoub GetMeshNodes();
 	MatInt GetMeshTopology();
 	void Assemble(MatDoub& KG, MatDoub& Fint, MatDoub& Fbody);
+    void Assemble(SparseMatrix<double>  &KG, VectorXd &Fint, VectorXd &Fbody);
 
 	inline void SetHhat(NRmatrix<Doub> HHAT)
 	{

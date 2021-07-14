@@ -24,13 +24,20 @@ public:
 //	~elastmat2D();
 //
 	void Contribute(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint, NRmatrix<Doub>  &efbody, Doub xi, Doub eta, Doub w, NRmatrix<Doub>  elcoords, NRmatrix<Doub>  eldisplace);
+
+    void ContributeEig(MatrixXd &ek,  VectorXd &efint, VectorXd  &efbody, double xi, double eta, double w, MatrixXd elcoords, MatrixXd  eldisplace);
+
 	void CacStiff(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint, NRmatrix<Doub>  &efbody, const NRmatrix<Doub>   &elcoords, NRmatrix<Doub>  eldisplace);
 	void Assemble(std::vector<std::vector< std::vector<Doub > > > allcoords, NRmatrix<Doub>  meshnodes, MatInt meshtopology, NRmatrix<Doub>  &KG, NRmatrix<Doub>  &Fint,NRmatrix<Doub>  &Fbody);
+
+    void Assemble(std::vector<std::vector< std::vector<Doub > > > allcoords, NRmatrix<Doub>  meshnodes, MatInt meshtopology, SparseMatrix<double>  &KG, VectorXd &Fint, VectorXd &Fbody);
+
 	//void Assemble(MatDoub &KG, MatDoub &Fint, MatDoub &Fbody);
 	void assembleBandN(NRmatrix<Doub>  &B, NRmatrix<Doub>  &N, const NRmatrix<Doub>  &psis, const NRmatrix<Doub>  &GradPhi);
 	void assembleConstitutiveMatrix(MatDoub &C, Doub mult);
 	void GetElCoords(std::vector<std::vector< std::vector<Doub > > > allcoords, Int el, MatDoub & elcoords);
 	void DirichletBC(NRmatrix<Doub>  &KG, NRmatrix<Doub>  & FG, std::vector<int> ids, Int  dir, Int val);
+    void DirichletBC(SparseMatrix<double> & KG, VectorXd& FG, std::vector<int> ids, Int  dir, Int val);
 	void ContributeLineNewan(NRmatrix<Doub>  &KG, NRmatrix<Doub>  & FG, std::vector<int> ids, Int  dir, Int val);
 	void ContributeCurvedLine(NRmatrix<Doub>  &KG, NRmatrix<Doub>  &FG, NRmatrix<Doub>  meshnodes, MatInt linetopology, Doub force);
 	void SolPt(const std::vector<std::vector< std::vector<Doub > > > &allcoords,const MatInt &meshtopology, const Int &el, const  NRmatrix<Doub>  &solG, const Doub &xi, const Doub &eta, NRmatrix<Doub>  &xycoords, MatDoub &sol);
@@ -45,6 +52,7 @@ public:
 	void SetRandomFieldLocal(NRvector<NRmatrix<Doub> >  hhatvel);
 	void SetMemory(Int ngloblapoints, Int systemsize);
 	void UpdateDisplacement(NRmatrix<Doub>  displace);
+    void UpdateDisplacement(VectorXd displace);
 	void UpdatePlasticStrain();
 	void UpdateBodyForce(NRmatrix<Doub>  newbodyforce);
 	void ResetPlasticStrain();

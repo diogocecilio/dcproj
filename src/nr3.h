@@ -36,9 +36,19 @@ using namespace std;
 
 
 #include <Eigen/Core>
-#include<Eigen/SparseCholesky>
-#include <Eigen/Dense>
-#include <Eigen/Sparse>
+//#include<Eigen/SparseCholesky>
+//#include <Eigen/Dense>
+//#include <Eigen/Sparse>
+
+#include <mkl.h>
+
+
+//#define EIGEN_USE_BLAS
+//#define EIGEN_USE_LAPACKE
+//#define EIGEN_NO_DEBUG
+//#define EIGEN_DONT_PARALLELIZE
+//#include <cblas.h>
+
 
 using namespace Eigen;
 
@@ -307,6 +317,7 @@ public:
 	void Dot(const NRmatrix &A, NRmatrix &B);
 	void  CopyFromVector(const std::vector<std::vector<T>>&input);
 	void  FromFullToVoigt(NRmatrix<T> & full);
+    NRmatrix & FromEigen(VectorXd data);
 
 	T DetEig()
 	{
@@ -355,27 +366,6 @@ public:
 	
 	~NRmatrix();
 };
-
-//template <class T>
-//void  NRmatrix<T>::Toboost(matrix<double> &boostmat)
-//{
-//	boostmat.resize(this->nrows(), this->ncols());
-//	for (unsigned i = 0; i < this->nrows(); ++i)
-//		for (unsigned j = 0; j < this->ncols(); ++j)
-//			boostmat(i, j) = v[i][j];
-//}
-//
-//template <class T>
-//void  NRmatrix<T>::Fromboost(matrix<double> &boostmat)
-//{
-//	this->assign(boostmat.size1(), boostmat.size2(),0.);
-//	for (unsigned i = 0; i < boostmat.size1(); ++i)
-//		for (unsigned j = 0; j < boostmat.size2(); ++j)
-//			v[i][j]= boostmat(i, j);
-//}
-
-
-
 
 template <class T>
 void  NRmatrix<T>::CopyFromVecdouble(const  NRvector<T>&input)
@@ -458,41 +448,6 @@ T NRmatrix<T>::Det()
 	return det;
 }
 
-//template <class T>
-//void NRmatrix<T>::FromNRmatrixToTensor(NRtensor & resp)
-//{
-	//	resp.XX() = this->v[0][0];
-	//	resp.XX() = this->v[1][1];
-	//	resp.XX() = this->v[2][2];
-	//	resp.XX() = this->v[0][2];
-	//	resp.XX() = this->v[1][2];
-	//	resp.XX() = this->v[0][1];
-//}
-
-
-//void NRmatrix<double>::FromFMatrixToMatdouble(TPZFMatrix<STATE> & tpzfmatrix, NRmatrix & matdouble)
-//{
-//	matdouble.assign(tpzfmatrix.Rows(), tpzfmatrix.Cols(), 0.);
-//	for (int i = 0;i <tpzfmatrix.Rows();i++)
-//	{
-//		for (int j = 0;j <tpzfmatrix.Cols();j++)
-//		{
-//			matdouble[i][j] = tpzfmatrix(i,j);
-//		}
-//	}
-//}
-//
-//void NRmatrix<double>::FromFMatrixToMatdouble(NRmatrix & matdouble, TPZFMatrix<STATE> & tpzfmatrix)
-//{
-//	tpzfmatrix.Resize(matdouble.nrows(), matdouble.ncols());
-//	for (int i = 0;i <matdouble.nrows();i++)
-//	{
-//		for (int j = 0;j <matdouble.ncols();j++)
-//		{
-//			tpzfmatrix(i, j) = matdouble[i][j] ;
-//		}
-//	}
-//}
 
 template < class T >
 NRmatrix<T> & NRmatrix<T>::operator-=(NRmatrix &source)
@@ -725,6 +680,8 @@ NRmatrix<T> & NRmatrix<T>::operator=(const NRmatrix<T> &rhs)
 	}
 	return *this;
 }
+
+
 
 template < class T >
 NRmatrix<T> & NRmatrix<T>::operator*=(const T &multipl)

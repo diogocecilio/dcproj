@@ -26,38 +26,59 @@ src/eigen_sym.h src/cholesky.h src/nr3.h  src/roots.h src/mins_ndim.h  src/ludcm
 )
 #find_package (Eigen3 3.3.9 REQUIRED NO_MODULE)
  
-include_directories("/usr/include/eigen3")
-
-set(THREADS_PREFER_PTHREAD_FLAG ON)
-find_package(Threads REQUIRED)
-#target_link_libraries(dcproj Threads::Threads)
-
-#FIND_PACKAGE( Boost 1.71 COMPONENTS program_options REQUIRED )
-#INCLUDE_DIRECTORIES( ${Boost_INCLUDE_DIR} )
-
-#ADD_EXECUTABLE( dcproj dcproj.cpp )
-
-TARGET_LINK_LIBRARIES( dcproj LINK_PUBLIC ${Boost_LIBRARIES} Threads::Threads )
-
-
 include_directories('src')
+include_directories("/usr/include/eigen3")
+#include_directories("/opt/intel/mkl")
+#include_directories("/opt/intel")
+#include_directories("/opt/intel/oneapi/mkl/2021.3.0/include")
+#include_directories(${MKLROOT})
+include_directories("/opt/intel/oneapi/mkl/2021.3.0/include" "/opt/intel/oneapi/mkl/2021.3.0/lib/intel64/")
+include_directories( ${Boost_INCLUDE_DIR} ${MKLROOT} "/opt/intel/mkl")
 
 target_include_directories(dcproj PUBLIC ${PROJECT_SOURCE_DIR})
 target_include_directories(dcproj PUBLIC ${PROJECT_SOURCE_DIR}/src)
 target_include_directories(dcproj PUBLIC ${PROJECT_SOURCE_DIR}/eigen)
 target_include_directories(dcproj PUBLIC ${PROJECT_SOURCE_DIR}/eigen-3.3.9)
 
+
+set(THREADS_PREFER_PTHREAD_FLAG ON)
 set(HEADER_FILES ${PROJECT_SOURCE_DIR}/src)
+#set(MKLROOT "/opt/intel/oneapi/mkl/2021.3.0")
 
-#add_executable(dcproj execfile.cpp ${HEADER_FILES})
+find_package(Threads REQUIRED)
+find_package(MKL REQUIRED)
 
-#add_library(mylib libsrc.cpp ${HEADER_FILES})
-#target_include_directories(mylib PRIVATE ${YOUR_DIRECTORY})
-#add_executable(myexec execfile.cpp ${HEADER_FILES})
-#target_include_directories(myexec PRIVATE ${YOUR_DIRECTORY})
+#set(USING_MKL ON)
+
+#TARGET_LINK_LIBRARIES( dcproj LINK_PUBLIC     ${MKLROOT}/lib/intel64/libmkl_scalapack_ilp64.a -Wl,--start-group ${MKLROOT}/lib/intel64/libmkl_cdft_core.a ${MKLROOT}/lib/intel64/libmkl_intel_ilp64.a ${MKLROOT}/lib/intel64/libmkl_intel_thread.a ${MKLROOT}/lib/intel64/libmkl_core.a ${MKLROOT}/lib/intel64/libmkl_blacs_intelmpi_ilp64.a -Wl,--end-group -liomp5 -lpthread -lm -ldl)
+
+TARGET_LINK_LIBRARIES( dcproj LINK_PUBLIC ${Boost_LIBRARIES} Threads::Threads ${M_LIBRARIES} )
+
+find_path(MKL_INCLUDE NAMES mkl.h PATHS ${SEARCH_DIRS} /opt/intel/mkl/include /softwares/intel/mkl/include)
+		find_library(MKL_LIB_INTEL NAMES libmkl_intel_lp64.so libmkl_intel_lp64.dylib PATHS
+				${SEARCH_DIRS} /opt/intel/mkl/lib /opt/intel/mkl/lib/intel64/ /softwares/intel/mkl/lib /softwares/intel/mkl/lib/intel64)
+		find_library(MKL_LIB_CORE NAMES libmkl_core.so libmkl_core.dylib PATHS ${SEARCH_DIRS}
+				/opt/intel/mkl/lib /opt/intel/mkl/lib/intel64/ /softwares/intel/mkl/lib /softwares/intel/mkl/lib/intel64/)
+		find_library(MKL_LIB_THREAD NAMES libmkl_intel_thread.so libmkl_intel_thread.dylib PATHS
+				${SEARCH_DIRS} /opt/intel/mkl/lib /opt/intel/mkl/lib/intel64/ /softwares/intel/mkl/lib /softwares/intel/mkl/lib/intel64/)
+		find_library(COMPOSER_OMP NAMES libiomp5.so libiomp5.dylib PATHS ${SEARCH_DIRS}
+				/opt/intel/composer_xe/compiler/lib
+				/opt/intel/composerxe/lib/intel64
+				/opt/intel/lib /softwares/intel/lib/intel64
+                                /opt/intel/compilers_and_libraries/linux/lib/intel64_lin )
+
+                link_libraries(${MKL_LIB_INTEL})
+                link_libraries(${MKL_LIB_CORE})
+                link_libraries(${MKL_LIB_THREAD})
+                link_libraries(${COMPOSER_OMP})
+
+
+add_compile_options( -DMKL_ILP64  -m64  -I"/opt/intel/oneapi/mkl/2021.3.0/include")
 
 
 
-#set(INCLUDE_DIRECTORIES src/include)
 
-# TODO: Add tests and install targets if needed.
+
+
+
+

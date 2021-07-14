@@ -2,6 +2,7 @@
 
 
 #include "slopeproject.h"
+#include <chrono>
 
 #ifdef _WIN32    /* _Win32 is usually defined by compilers targeting 32 or   64 bit Windows systems */
 #include <direct.h>
@@ -117,6 +118,16 @@ void slopeproject::CreateRandomField(string namefolder)
 //	idsvector.push_back(iddisplace);
 //
 //}
+
+void slopeproject::SolveEigen(SparseMatrix<double> A, VectorXd b, VectorXd& x)
+{
+    //start = sc.now();
+    SimplicialLLT< SparseMatrix<double> > solver;
+    x = solver.compute(A).solve(b);
+   // end = sc.now();
+   /// time_span = static_cast<chrono::duration<double>>(end - start);
+   // cout << "Operation took: " << time_span.count() << " seconds.";
+}
 
 void slopeproject::findbcids(mesh* gmesh, std::vector<std::vector<int>>& idsvector)
 {
@@ -246,9 +257,9 @@ std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed(Doub fa
 		mat->ResetMat();
 		do
 		{
-            std::clock_t start,startout;
-            double duration=0.;
-            start = std::clock();
+            chrono::steady_clock sc;
+            auto start = sc.now();
+
 			FINT.assign(sz, 1, 0.);
 			meshint->Assemble(KG, FINT, FBODY);
 			R = FBODY;
@@ -257,16 +268,19 @@ std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed(Doub fa
 
 			InserBC(KG, R, FBODY, idsbottom, idsright, idsleft, mat);
 
-			SolveEigen(KG, R, sol);
+		//	SolveEigen(KG, R, sol);
+            SolveEigenSparse(KG, R, sol);
 
 			displace += sol;
 			Doub u = fabs(displace[2 * iddisplace[0] + 1][0]);
 			mat->UpdateDisplacement(displace);
 			norm = R.NRmatrixNorm();
             
-            duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+            auto end = sc.now();
+            auto time_span = static_cast<chrono::duration<double>>(end - start);
+            cout << "Time: " << time_span.count();
             
-			std::cout << " R norm = " << norm << " | phi0/phi = " << tan(phi0) / tan(phi) << " | c0/c = " << c0 / c << " | c = " << c << "| TIME = "<<duration <<" | phi = " << phi << std::endl;
+			std::cout << " R norm = " << norm << " | phi0/phi = " << tan(phi0) / tan(phi) << " | c0/c = " << c0 / c << " | c = " << c <<" | phi = " << phi << std::endl;
 			counter++;
 			postcounter++;
 
@@ -392,6 +406,247 @@ std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed(Doub fa
 	return solpost;
 }
 
+
+
+std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed2(Doub fac, Doub delta,Doub tol) {
+
+	mesh* meshint = fmesh;
+	std::vector<int>  idsbottom, idsleft, idsright, iddisplace;
+	std::vector<std::vector<int>> idsvector;
+
+	findbcids(meshint, idsvector);
+
+	material* mat = meshint->fmaterial;
+
+	idsbottom = idsvector[0];
+	idsleft = idsvector[1];
+	idsright = idsvector[2];
+	iddisplace = idsvector[3];
+
+	mat->ResetMat();
+	Int sz = 2 * meshint->GetMeshNodes().nrows();
+    SparseMatrix<double>  KG(sz,sz);
+    VectorXd FBODY(sz), FINT(sz),R(sz),sol(sz),displace(sz), displace0(sz);
+	MatDoub ptsweigths;
+	Doub rtemp = 10.;
+
+
+	Doub l = 0, l0 = 0, lamb = 1., lambn = 0, dlamb = 0., lamb3, diff = 100, diff2 = 100;
+	Int counterout = 0, maxcountout = 80;
+	std::vector<double> solcount(7, 0.), uvf(2, 0.);
+	std::vector<std::vector<double>> solpost, solpost2;
+	solpost.push_back(solcount);
+
+	Int niter = 500;
+	Int postcounter = 0;
+
+	NRvector<Doub> matconsts(4, 0.);
+	mat->GetMatConstants(matconsts);
+	Doub  young = matconsts[0];
+	Doub nu = matconsts[1];
+	Doub c = matconsts[2];
+	Doub phi = matconsts[3];
+
+	Doub res = 10, facn = 0, FS = fac, FSmin = 0, FSmax = 100000;
+	Doub norm = 100000.;
+	bool boll = false;
+
+	Doub c0 = c;
+	Doub phi0 = phi;
+
+	NRmatrix<Doub> hhat0;
+	meshint->GetHhat(hhat0);
+	NRmatrix<Doub> hhatcopy  = hhat0;
+
+
+
+	if (hhat0.nrows() != 0)
+	{
+		for (int irow = 0; irow < hhat0.nrows(); irow++)
+		{
+			hhatcopy[irow][0] = hhat0[irow][0] / FS;
+			hhatcopy[irow][1] = atan(tan(hhat0[irow][1]) / FS);
+		}
+		meshint->SetHhat(hhatcopy);
+		c = c0 / FS;
+		phi = atan(tan(phi0) / FS);
+		matconsts[2] = c;
+		matconsts[3] = phi;
+		mat->SetMatConstants(matconsts);
+	}
+	else {
+		c = c0 / FS;
+		phi = atan(tan(phi0) / FS);
+		matconsts[2] = c;
+		matconsts[3] = phi;
+		mat->SetMatConstants(matconsts);
+	}
+
+
+
+	do
+	{
+		Int counter = 0;
+		//displace.assign(sz, 1, 0.);
+		//material->UpdateDisplacement(displace);
+		sol.resize(sz);
+		norm = 1000.;
+
+		mat->ResetMat();
+		do
+		{
+            chrono::steady_clock sc;
+            auto start = sc.now();
+
+			FINT.resize(sz);
+			meshint->Assemble(KG, FINT, FBODY);
+			R = FBODY;
+			//R *= fac;
+			R -= FINT;
+
+			InserBC(KG, R, FBODY, idsbottom, idsright, idsleft, mat);
+
+			SolveEigen(KG, R, sol);
+
+			displace += sol;
+			Doub u = fabs(displace(2 * iddisplace[0] + 1));
+			mat->UpdateDisplacement(displace);
+			norm = R.norm();
+
+            auto end = sc.now();
+            auto time_span = static_cast<chrono::duration<double>>(end - start);
+            cout << "Operation took: " << time_span.count() << " seconds !!!";
+
+			std::cout << " R norm = " << norm << " | phi0/phi = " << tan(phi0) / tan(phi) << " | c0/c = " << c0 / c << " | c = " << c <<" | phi = " << phi << std::endl;
+			counter++;
+			postcounter++;
+
+            if (isnan(norm) == 1) {
+				std::cout << "NAN" << endl;
+				return solpost;
+			}
+
+		} while (norm > 0.01 && counter <15 && norm < 5000.);
+
+        if(norm<1){
+		solcount[0] = fabs(displace(2 * iddisplace[0] + 1));
+		solcount[1] = FS;
+		solcount[2] = 0;
+		solcount[3] = 0;
+		solcount[4] = diff;
+		solcount[5] = diff2;
+		solcount[6] = counterout;
+
+		uvf[0] = fabs(displace(2 * iddisplace[0] + 1));
+		uvf[1] = FS;
+
+		solpost2.push_back(uvf);
+		solpost.push_back(solcount);
+}
+
+		res = (fac - facn) / fac;
+		if (norm>= 1.) {
+			displace = displace0;
+			//R.assign(sz, 1, 0.), FBODY.assign(sz, 1, 0.), FINT.assign(sz, 1, 0.);
+			//facn = FS;
+			FSmax = FS;
+			FS = (FSmin + FSmax) / 2.;
+			//fac = FS;
+			//mat->ResetMat();
+			//mat->UpdateDisplacement(displace0);
+			boll = true;
+		}
+		else {
+			if (boll == true)
+			{
+				displace0 = displace;
+				facn = FS;
+				FSmin = FS;
+				FS = 1. / ((1. / FSmin + 1. / FSmax) / 2.);
+				fac = FS;
+
+			}
+			else {
+				displace0 = displace;
+				facn = FS;
+				FSmin = FS;
+				FS += delta;
+				fac = FS;
+				//mat->UpdatePlasticStrain();
+			}
+
+		}
+
+
+
+		//Caso tenha random field a reducao da resistencia tem que ser aplicada a todos os pontos
+		if (hhat0.nrows() != 0)
+		{
+			for (int irow = 0; irow < hhat0.nrows(); irow++)
+			{
+				hhatcopy[irow][0] = hhat0[irow][0] / FS;
+				hhatcopy[irow][1] = atan(tan(hhat0[irow][1]) / FS);
+			}
+			meshint->SetHhat(hhatcopy);
+			c = c0 / FS;
+			phi = atan(tan(phi0) / FS);
+			matconsts[2] = c;
+			matconsts[3] = phi;
+			mat->SetMatConstants(matconsts);
+		}
+		else {
+			c = c0 / FS;
+			phi = atan(tan(phi0) / FS);
+			matconsts[2] = c;
+			matconsts[3] = phi;
+			mat->SetMatConstants(matconsts);
+		}
+
+
+		counterout++;
+
+		std::cout << " iter = " << counterout << " | FS= " << FS << " | FSmax " << FSmax << " | FSmin = " << FSmin << std::endl;
+
+
+
+	}  while ((FSmax - FSmin) / FS > tol); //while ((FSmax - FSmin) / FS > tol && ( norm <1.e20));
+	std::cout << "FOS = " << FS << std::endl;
+
+	if (false)
+	{
+        MatDoub solpost23;
+		solpost23.CopyFromVector(solpost2);
+		string names = "/home/diogo/projects/results/mathematicas/loadvsdisplacementSRM";
+		string exts = ".dat";
+		names += exts;
+		std::ofstream file8(names);
+		OutPutFile(solpost23, file8);
+
+		std::vector<std::vector<double>> epsppost;
+		mat->PostProcessIntegrationPointVar(meshint->GetAllCoords(), meshint->GetMeshNodes(), meshint->GetMeshTopology(), mat->GetSolution(), epsppost);
+		string name3 = "/home/diogo/projects/results/mathematicas/sqrtJ2SRM-Cho-Determ";
+		string ext3 = ".dat";
+		name3 += ext3;
+		std::ofstream file3(name3);
+		OutPutPost(epsppost, file3);
+
+		string filename;
+		std::vector<std::vector<double>> solx, soly;
+		mat->PostProcess(meshint->GetAllCoords(), meshint->GetMeshNodes(), meshint->GetMeshTopology(), mat->GetSolution(), solx, soly);
+		filename = "/home/diogo/projects/results/mathematicas/solySRM.dat";
+		std::ofstream file2(filename);
+		OutPutPost(soly, file2);
+		filename = "/home/diogo/projects/results/mathematicas/solxSRM.dat";
+		std::ofstream file22(filename);
+		OutPutPost(solx, file22);
+	}
+	return solpost;
+}
+
+
+
+
+
 void myTreads2(int a, int b, slopeproject* slopeobj2, string traedN)
 {
 	string namefolder3 = "D:/slope-results/THREADS/GI-cho-field-Lx20-Ly4" + traedN;
@@ -399,6 +654,44 @@ void myTreads2(int a, int b, slopeproject* slopeobj2, string traedN)
 	
 }
 
+typedef Eigen::SparseMatrix<double> SpMat;
+void slopeproject::SolveEigen2(MatDoub A, MatDoub b, MatDoub& x)
+{
+	x.assign(A.nrows(), 1, 0.);
+    SpMat Aa(A.nrows(), A.nrows());
+	for (int i = 0; i < A.nrows(); i++)
+	{
+		for (int j = 0; j < A.ncols(); j++)
+		{
+            if(fabs(A[i][j])>1.e-12)
+            {
+				Aa.coeffRef(i, j) = A[i][j];
+            }
+		}
+	}
+	Aa.makeCompressed();
+	VectorXd bb(A.nrows()), xx(A.nrows());
+	for (int i = 0; i < A.nrows(); i++)bb(i) = b[i][0];
+
+	Eigen::SimplicialLLT<SpMat, Eigen::Lower> solver;
+   // Eigen::SimplicialLLT<SpMat> solver;
+  //  Eigen::SparseLU<SpMat> solver;
+   // Eigen::ConjugateGradient<SpMat> solver;
+    //Eigen::BiCGSTAB<SpMat> solver;
+   //Eigen::SimplicialLDLT<SpMat,Eigen::Upper> solver;
+  //  solver.analyzePattern(Aa);
+	solver.compute(Aa);
+    if(solver.info()!=Eigen::Success)
+    {
+        std::cout << " Decomposition Failed " << std::endl;
+        getchar();
+
+    }
+	xx = solver.solve(bb);         // use the factorization to solve for the given right hand side
+	for (int i = 0; i < A.nrows(); i++)x[i][0] = xx(i);
+}
+
+//#define EIGEN_USE_MKL_ALL
 
 std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Doub dlamb0,Doub alphatol, int niter)
 {
@@ -457,9 +750,6 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
     Int counter = 0, maxcount = 20;
 	do
 	{
-		std::clock_t start,startout;
-		double duration;
-        startout = std::clock();
 		Doub err1 = 10., err2 = 10., tol = 1.e-5;
         if(counter<maxcount)lambn0 = lamb;
 		diff = 10;
@@ -469,7 +759,10 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
         counter = 0;
 		do
 		{
-            start = std::clock();
+
+            chrono::steady_clock sc;
+            auto start = sc.now();     // start timer
+           // start = std::clock();
 			//mat->Assemble(mesh->GetAllCoords(), mesh->GetMeshNodes(), mesh->GetMeshTopology(), KG, FINT, FBODY);
 			fmesh->Assemble(KG, FINT, FBODY);
 			R = FBODY;
@@ -479,6 +772,35 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 			InserBC(KG, R, FBODY, idsbottom, idsright, idsleft, fmesh->fmaterial);
 			//SolveNR3(KG, R, dws);
 			//SolveNR3(KG, FBODY, dwb);
+
+
+            if(false)
+            {
+            string matrixout = "/home/diogo/projects/dcproj/matrix.dat";
+            std::ofstream matrixoutfile(matrixout);
+            PrintMathematicaFormat(KG,matrixoutfile);
+            string vecout = "/home/diogo/projects/dcproj/vector.dat";
+            std::ofstream vecoutfile(vecout);
+            PrintMathematicaFormat(FBODY,vecoutfile);
+
+
+            double startsolve = std::clock();
+            SolveEigen(KG, FBODY, dwb);
+            double endsolve = (std::clock() - startsolve) / (double)CLOCKS_PER_SEC;
+            cout << "\n time solving \n " << endsolve <<endl;
+
+            startsolve = std::clock();
+            SolveEigen2(KG, FBODY, dws);
+            endsolve = (std::clock() - startsolve) / (double)CLOCKS_PER_SEC;
+
+            cout << "\n time solving \n " << endsolve <<endl;
+           // cout << "\n dws-=dwb \n "  <<endl;
+           // dws-=dwb;
+           // dws.Print();
+            throw("\n Matrix test reached! \n");
+            //return;
+
+            }
 			SolveEigen(KG, R, dws);
 			SolveEigen(KG, FBODY, dwb);
 
@@ -507,21 +829,26 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 			err1 = rnorm / FBODY.NRmatrixNorm();
 			err2 = normdw / unorm;
 
-			Doub duration1 = (std::clock() - start) / (double)CLOCKS_PER_SEC;
 
-			std::cout << " Iteration number = " << counter << " |  |R|/FE = " << err1 << " |  |R| = " << rnorm << " | Unrom  = " << unorm << " | lamb  = " << lamb << " | TIME =  <<" << duration1 << std::endl;
+            auto end = sc.now();
+            auto time_span = static_cast<chrono::duration<double>>(end - start);
+            cout << "Operation took: " << time_span.count() << " seconds !!!";
+
+			//Doub duration1 = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+
+			std::cout << " Iteration number = " << counter << " |  |R|/FE = " << err1 << " |  |R| = " << rnorm << " | Unrom  = " << unorm << " | lamb  = " << lamb <<std::endl;
             //std::cout << " | time =  <<" << duration1 << std::endl;
 			counter++;
-            meantime+=duration1;
+            //meantime+=time_span;
 			rtemp = rnorm;
 			if (counter == 1)rnorm = 10;
 
 
 		} while (counter < maxcount && rnorm > rtol);
         meantime/=counter;
-        Doub outtime = (std::clock() - startout) / (double)CLOCKS_PER_SEC;
+       // Doub outtime = (std::clock() - startout) / (double)CLOCKS_PER_SEC;
        // diff2= fabs(lambn0- lamb);
-        std::cout << " exter iter = " << counterout << "  | newton iters = " << counter  << " |  |R| = " << rnorm << " |  lamb  = " <<lamb << " | dlamb  = " <<diff2 << "| mean time in "<< meantime <<" | total time (s) = " << outtime << std::endl;
+        std::cout << " exter iter = " << counterout << "  | newton iters = " << counter  << " |  |R| = " << rnorm << " |  lamb  = " <<lamb << " | dlamb  = " <<diff2 << std::endl;
         
 		if (rnorm > 0.5)
 		{
@@ -848,10 +1175,6 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcessArcLengthSRM(in
 
 }
 
-
-
-
-
 Doub  slopeproject::computelamda(MatDoub& dwb, MatDoub& dws, MatDoub& dw, Doub& l)
 {
 	Int sz = dwb.nrows();
@@ -873,32 +1196,44 @@ Doub  slopeproject::computelamda(MatDoub& dwb, MatDoub& dws, MatDoub& dw, Doub& 
 
 }
 
-void slopeproject::OutPutFile(MatDoub& postdata, std::ofstream& file)
+
+void slopeproject::InserBC(SparseMatrix<double> & KG, VectorXd& R, VectorXd& FBODY, std::vector<int> idsbottom, std::vector<int> idsright, std::vector<int> idsleft, material* mat)
 {
 
-	file.clear();
+	//FBODY *= 1. / lamb;
+	Int dir, val;
+	dir = 1;
+	val = 0;
+	mat->DirichletBC(KG, R, idsbottom, dir, val);
 
-	for (Int i = 0; i < postdata.nrows(); i++)
-	{
-		file << postdata[i][0] << " " << postdata[i][1] << endl;
-	}
+	//dir = 0;
+	//val = 0;
+	//mat->DirichletBC(KG, R, idsbottom, dir, val);
 
-	file.close();
+
+	dir = 0;
+	val = 0;
+	mat->DirichletBC(KG, R, idsright, dir, val);
+	dir = 0;
+	val = 0;
+	mat->DirichletBC(KG, R, idsleft, dir, val);
+
+
+	dir = 1;
+	val = 0;
+	mat->DirichletBC(KG, FBODY, idsbottom, dir, val);
+	//dir = 0;
+	//val = 0;
+	//mat->DirichletBC(KG, FBODY, idsbottom, dir, val);
+
+	dir = 0;
+	val = 0;
+	mat->DirichletBC(KG, FBODY, idsright, dir, val);
+	dir = 0;
+	val = 0;
+	mat->DirichletBC(KG, FBODY, idsleft, dir, val);
 }
 
-void slopeproject::OutPutPost(std::vector<std::vector<double>>& postdata, std::ofstream& file)
-{
-	file.clear();
-	for (Int i = 0; i < postdata.size(); i++)
-	{
-		for (Int j = 0; j < postdata[0].size(); j++)
-		{
-			file << postdata[i][j] << " ";
-		}
-		file << endl;
-	}
-	file.close();
-}
 
 void slopeproject::InserBC(MatDoub& KG, MatDoub& R, MatDoub& FBODY, std::vector<int> idsbottom, std::vector<int> idsright, std::vector<int> idsleft, material* mat)
 {
@@ -937,8 +1272,10 @@ void slopeproject::InserBC(MatDoub& KG, MatDoub& R, MatDoub& FBODY, std::vector<
 }
 
 
-void slopeproject::SolveEigen(MatDoub A, MatDoub b, MatDoub& x)
+void slopeproject::SolveEigen3(MatDoub A, MatDoub b, MatDoub& x)
 {
+
+
 	x.assign(A.nrows(), 1, 0.);
 	MatrixXd AA(A.nrows(), A.nrows());
 	VectorXd bbb(A.nrows());
@@ -955,37 +1292,65 @@ void slopeproject::SolveEigen(MatDoub A, MatDoub b, MatDoub& x)
 	//VectorXd xxx = AA.fullPivLu().solve(bbb);
 	//VectorXd xxx = AA.ldlt().solve(bbb);
 	//VectorXd xxx = AA.lu().solve(bbb);
-    //VectorXd xxx = AA.
 	for (int i = 0; i < A.nrows(); i++)x[i][0] = xxx(i);
 }
 
-void slopeproject::OutPutPost(MatDoub& postdata, std::ofstream& file)
+void slopeproject::SolveEigen(MatDoub A, MatDoub b, MatDoub& x)
 {
-	file.clear();
-	for (Int i = 0; i < postdata.nrows(); i++)
+
+    x.assign(A.nrows(), 1, 0.);
+	MatrixXd AA(A.nrows(), A.nrows());
+	VectorXd bbb(A.nrows());
+	for (int i = 0; i < A.nrows(); i++)
 	{
-		for (Int j = 0; j < postdata.ncols(); j++)
+		for (int j = 0; j < A.ncols(); j++)
 		{
-			file << postdata[i][j] << " ";
+			AA(i, j) = A[i][j];
 		}
-		file << endl;
+		bbb(i) = b[i][0];
 	}
-	file.close();
+    LLT<MatrixXd> llt;
+    llt.compute(AA);
+    VectorXd xxx=llt.solve(bbb);
+    for (int i = 0; i < A.nrows(); i++)x[i][0] = xxx(i);
 }
 
-void  slopeproject::OutPutPost(MatInt& postdata, std::ofstream& file)
+
+void slopeproject::SolveEigenSparse(MatDoub A, MatDoub b, MatDoub& x)
 {
-	file.clear();
-	for (Int i = 0; i < postdata.nrows(); i++)
+
+    typedef Eigen::Triplet<double> T;
+    std::vector<T> tripletList;
+    int sz=A.nrows();
+
+    tripletList.reserve(sz*50);
+   // tripletList.reserve(80000);
+
+    x.assign(sz, 1, 0.);
+	SparseMatrix<double> AA(sz, sz);
+	VectorXd bbb(sz);
+	for (int i = 0; i < sz; i++)
 	{
-		for (Int j = 0; j < postdata.ncols(); j++)
+		for (int j = 0; j < sz; j++)
 		{
-			file << postdata[i][j] << " ";
+            if(fabs(A[i][j])>1.e-12)
+            {
+                tripletList.push_back(T(i,j,A[i][j]));
+            }
 		}
-		file << endl;
+		bbb(i) = b[i][0];
 	}
-	file.close();
+
+    AA.setFromTriplets(tripletList.begin(), tripletList.end());
+
+    AA.makeCompressed();
+    SimplicialLLT< SparseMatrix<double> > solver;
+    VectorXd xx = solver.compute(AA).solve(bbb);
+    for(int i=0;i<sz;i++)x[i][0]=xx(i);
 }
+
+
+
 
 void  slopeproject::ReadMesh(std::vector<std::vector< std::vector<Doub > > >& allcoords, MatDoub& meshcoords, MatInt& meshtopology, string filenameel, string filenamecoord)
 {
@@ -1710,5 +2075,74 @@ void slopeproject::OutPutFile1var(MatDoub& postdata, std::ofstream& file)
 		file << postdata[i][0] << endl;
 	}
 
+	file.close();
+}
+
+void slopeproject::OutPutFile(MatDoub& postdata, std::ofstream& file)
+{
+
+	file.clear();
+
+	for (Int i = 0; i < postdata.nrows(); i++)
+	{
+		file << postdata[i][0] << " " << postdata[i][1] << endl;
+	}
+
+	file.close();
+}
+
+void slopeproject::OutPutPost(std::vector<std::vector<double>>& postdata, std::ofstream& file)
+{
+	file.clear();
+	for (Int i = 0; i < postdata.size(); i++)
+	{
+		for (Int j = 0; j < postdata[0].size(); j++)
+		{
+			file << postdata[i][j] << " ";
+		}
+		file << endl;
+	}
+	file.close();
+}
+
+void slopeproject::OutPutPost(MatDoub& postdata, std::ofstream& file)
+{
+	file.clear();
+	for (Int i = 0; i < postdata.nrows(); i++)
+	{
+		for (Int j = 0; j < postdata.ncols(); j++)
+		{
+			file << postdata[i][j] << " ";
+		}
+		file << endl;
+	}
+	file.close();
+}
+
+void  slopeproject::OutPutPost(MatInt& postdata, std::ofstream& file)
+{
+	file.clear();
+	for (Int i = 0; i < postdata.nrows(); i++)
+	{
+		for (Int j = 0; j < postdata.ncols(); j++)
+		{
+            file << postdata[i][j] << " " ;
+		}
+		file << endl;
+	}
+	file.close();
+}
+
+void slopeproject::PrintMathematicaFormat(MatDoub postdata, std::ofstream& file)
+{
+    file.clear();
+	for (Int i = 0; i < postdata.nrows(); i++)
+	{
+		for (Int j = 0; j < postdata.ncols(); j++)
+		{
+            file << postdata[i][j] << " " ;
+		}
+		file << endl;
+	}
 	file.close();
 }
