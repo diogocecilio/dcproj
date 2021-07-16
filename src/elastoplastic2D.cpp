@@ -179,28 +179,115 @@ void elastoplastic2D<YC>::ResetDisplacement()
 //
 //
 template <class YC>
-void elastoplastic2D<YC>::ContributeEig(MatrixXd &ek,  VectorXd &efint, VectorXd  &efbody, double xi, double eta, double w, MatrixXd elcoords, MatrixXd  eldisplace)
+void elastoplastic2D<YC>::ContributeEig(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint, NRmatrix<Doub>  &efbody, Doub xi, Doub eta, Doub w, NRmatrix<Doub>  elcoords,NRmatrix<Doub>  eldisplace)
 {
-    int type = 1;
+	int type = 1;
 	shapequad objshapes(fOrder, type);
 
-	MatrixXd   psis, GradPsi, elcoordst, xycoords, Jac, InvJac(2, 2), GradPhi, B, BT, N, NT, psist, C, BC, BCS, stress(3, 1), temp, CS, KSt;
+	NRmatrix<Doub>  psis, GradPsi, elcoordst, xycoords, Jac, InvJac(2, 2), GradPhi,    psist, C, BC, BCS, stress(3, 1, 0.), temp, CS, KSt;
 	objshapes.shapes(psis, GradPsi, xi, eta);
-	psist= psis.transpose();
-	xycoords=psist*elcoords;
-    int nrandomvars = fhhatvel.size();
-    VectorXd hhat(fhhatvel.size());
-	//NRvector<NRmatrix<Doub> > hhat(fhhatvel.size());
+	psis.Transpose(psist);
+	psist.Mult(elcoords, xycoords);
+	NRvector<NRmatrix<Doub> > hhat(fhhatvel.size());
 
 	if (fhhatvel.size() != 0)
 	{
 		for (Int ivar = 0;ivar < fhhatvel.size();ivar++)
 		{
-          //  hhat << psist*fhhatvel[ivar];
-			//psist.Mult(fhhatvel[ivar], hhat[ivar]);
+			psist.Mult(fhhatvel[ivar], hhat[ivar]);
 		}
 
 	}
+	GradPsi.Mult(elcoords, Jac);
+	Int nnodes = psis.nrows();
+	Doub DetJ = -Jac[0][1] * Jac[1][0] + Jac[0][0] * Jac[1][1];
+	if (DetJ <= 0)
+	{
+
+		std::cout << "\n DetJ < 0 " << endl;
+		std::cout << "\n xi " << xi << endl;
+		std::cout << "\n eta " << eta << endl;
+		GradPsi.Print();
+		elcoords.Print();
+		GradPsi.Mult(elcoords, Jac);
+		xycoords.Print();
+
+		psis.Print();
+
+		objshapes.shapes(psis, GradPsi, xi, eta);
+		return;
+	}
+	InvJac[0][0] = Jac[1][1] / DetJ;   InvJac[0][1] = -Jac[0][1] / DetJ;
+	InvJac[1][0] = -Jac[1][0] / DetJ;	InvJac[1][1] = Jac[0][0] / DetJ;
+	InvJac.Mult(GradPsi, GradPhi);
+	NRmatrix<Doub>  gradu;
+	GradPhi.Mult(eldisplace, gradu);
+
+	//{ {dudx, dudy}, { dvdx, dvdy }} = gradprevsol;
+	Doub ex = gradu[0][0];// dudx;
+	Doub ey = gradu[1][1];
+	Doub exy = (gradu[0][1] + gradu[1][0]);
+
+
+	NRtensor<Doub>   epst(0.), epsp(0.), projstress(0.), projstrain(0.), epspeint(0.);
+
+	NRmatrix<Doub>  Dep;
+	Doub  projgamma=0.;
+	epst.XX() = ex;epst.YY() = ey;epst.XY() = exy;
+	//epsp = epspsoliternGLOBAL[globalcounter];
+	epsp = fepspsolitern[fglobalcounter];
+
+	//std::cout << "epst = " << std::endl;
+	//epst.Print();
+	//std::cout << "epsp = " << std::endl;
+	//epsp.Print();
+	//cout << "\n antes c  = " << fYC.GetCoes() << endl;
+	if (fhhatvel.size() != 0)
+	{
+		for (Int ivar = 0;ivar < fhhatvel.size();ivar++)
+		{
+			psist.Mult(fhhatvel[ivar], hhat[ivar]);
+		}
+		fYC.updateatributes(hhat);
+	}
+	//cout << "\n c  = " << fYC.GetCoes() <<endl;
+
+	fYC.closestpointproj(epst,epsp,projstress,projstrain,Dep,projgamma);
+	if (fhhatvel.size() != 0)
+	{
+		fYC.restoreoriginalatributes();
+	}
+	//cout <<"asd"<<endl;
+	MatrixXd DepEig;
+    Dep.ToEigen(DepEig);
+	//epspeint = epst - (epse);
+	epspeint = epst;
+	epspeint = epspeint - projstrain;
+
+	fepspvec[fglobalcounter] = epspeint;
+	//epspvecGLOBAL[globalcounter] = epspeint;
+
+	fglobalcounter++;
+    MatrixXd B;
+    MatrixXd N;
+
+	assembleBandN(B, N, psis, GradPhi);
+
+
+    MatrixXd eke;
+    eke=((B.transpose())*DepEig*B)*w*DetJ*fthickness;
+	stress[0][0] = projstress.XX();stress[1][0] = projstress.YY();stress[2][0] = projstress.XY();
+    MatrixXd stresseig;
+    stress.ToEigen(stresseig);
+    MatrixXd efinteig = (B.transpose()*stresseig)*w*DetJ;
+
+    MatrixXd bodyeig,efbodyeig;
+    fbodyforce.ToEigen(bodyeig);
+	efbodyeig= N.transpose()*bodyeig*w*DetJ;
+
+    ek.FromEigen(eke);
+    efbody.FromEigen(efbodyeig);
+    efint.FromEigen(efinteig);
 
 }
 
@@ -296,7 +383,9 @@ void elastoplastic2D<YC>::Contribute(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint
 	B.Transpose(BT);
 	
 	//Dep.Print();
-	//BT.Print();
+
+    //BT.Print();
+   // BC=(BT*Dep)*B;
 	BT.Mult(Dep, BC);
 	BC.Mult(B, ek);
 
@@ -606,7 +695,40 @@ void elastoplastic2D<YC>::Assemble(std::vector<std::vector< std::vector<Doub > >
 }
 
 
+template <class YC>
+void elastoplastic2D<YC>::assembleBandN(MatrixXd &B, MatrixXd  &N, const NRmatrix<Doub>  &psis, const NRmatrix<Doub>  &GradPhi)
+{
+    B.resize(3,psis.nrows() * 2);
+    N.resize(2,psis.nrows() * 2);
 
+
+	Int j = 0, k = 0;
+	for (Int i = 0;i < psis.nrows() * 2;i++)
+	{
+		if (i % 2 == 0)
+		{
+			B(0,i) = GradPhi[0][j];
+			B(1,i) = 0;
+			B(2,i) = GradPhi[1][j];
+
+			N(0,i) = psis[j][0];
+			N(1,i) = 0;
+			j++;
+		}
+		else {
+			B(0,i) = 0;
+			B(1,i) = GradPhi[1][k];
+			B(2,i) = GradPhi[0][k];
+
+			N(0,i) = 0;
+			N(1,i) = psis[k][0];
+
+			k++;
+		}
+
+	}
+
+}
 
 
 template <class YC>

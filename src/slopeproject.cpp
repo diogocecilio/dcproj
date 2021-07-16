@@ -762,8 +762,6 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 
             chrono::steady_clock sc;
             auto start = sc.now();     // start timer
-           // start = std::clock();
-			//mat->Assemble(mesh->GetAllCoords(), mesh->GetMeshNodes(), mesh->GetMeshTopology(), KG, FINT, FBODY);
 			fmesh->Assemble(KG, FINT, FBODY);
 			R = FBODY;
 			R *= lamb;
@@ -772,7 +770,6 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 			InserBC(KG, R, FBODY, idsbottom, idsright, idsleft, fmesh->fmaterial);
 			//SolveNR3(KG, R, dws);
 			//SolveNR3(KG, FBODY, dwb);
-
 
             if(false)
             {
@@ -801,11 +798,8 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
             //return;
 
             }
-			SolveEigen(KG, R, dws);
-			SolveEigen(KG, FBODY, dwb);
-
-			//SolveEigen2(KG, R, dws);
-			//SolveEigen2(KG, FBODY, dwb);
+			SolveEigenSparse(KG, R, dws);
+			SolveEigenSparse(KG, FBODY, dwb);
 			
 			dlamb = computelamda(dwb, dws, dw, l);
 			if (isnan(dlamb) == 1) {
@@ -829,14 +823,13 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 			err1 = rnorm / FBODY.NRmatrixNorm();
 			err2 = normdw / unorm;
 
-
             auto end = sc.now();
             auto time_span = static_cast<chrono::duration<double>>(end - start);
-            cout << "Operation took: " << time_span.count() << " seconds !!!";
+            //cout << "Operation took: " << time_span.count() << " seconds !!!";
 
 			//Doub duration1 = (std::clock() - start) / (double)CLOCKS_PER_SEC;
 
-			std::cout << " Iteration number = " << counter << " |  |R|/FE = " << err1 << " |  |R| = " << rnorm << " | Unrom  = " << unorm << " | lamb  = " << lamb <<std::endl;
+			std::cout << " Time in newton step :  " << time_span.count() <<" Iteration number = " << counter << " |  |R| = " << rnorm <<" | lamb  = " << lamb <<std::endl;
             //std::cout << " | time =  <<" << duration1 << std::endl;
 			counter++;
             //meantime+=time_span;
@@ -848,7 +841,7 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
         meantime/=counter;
        // Doub outtime = (std::clock() - startout) / (double)CLOCKS_PER_SEC;
        // diff2= fabs(lambn0- lamb);
-        std::cout << " exter iter = " << counterout << "  | newton iters = " << counter  << " |  |R| = " << rnorm << " |  lamb  = " <<lamb << " | dlamb  = " <<diff2 << std::endl;
+        std::cout << " exter iter = " << counterout << "  | newton iters = " << counter  << " |  |R| = " << rnorm << " |  lamb  = " << lamb << std::endl;
         
 		if (rnorm > 0.5)
 		{
@@ -924,7 +917,7 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 	} while (counterout <= niter && fabs(diff2) > alphatol );// while (counterout <= maxcountout && fabs(diff2) > 0.05);
 
 
-	if (true)
+	if (false)
 	{
 
 		//string names = "fxu";
@@ -1323,7 +1316,7 @@ void slopeproject::SolveEigenSparse(MatDoub A, MatDoub b, MatDoub& x)
     std::vector<T> tripletList;
     int sz=A.nrows();
 
-    tripletList.reserve(sz*50);
+    tripletList.reserve(sz*100);
    // tripletList.reserve(80000);
 
     x.assign(sz, 1, 0.);
@@ -1869,12 +1862,14 @@ void slopeproject::MonteCarloGIM(int iter, int iter2, bool print, string writena
 	std::cout << "\n samples " << samples << endl;
 	for (Int imc = iter; imc < iter2; imc++)
 	{
-		std::cout << "\n MC realization " << imc << endl;
-		MatDoub hhatinho = AssembleHhationho(imc);
 
-		std::clock_t start1;
-		double duration1;
-		start1 = std::clock();
+
+        chrono::steady_clock sc;
+        auto start = sc.now();
+
+
+
+		MatDoub hhatinho = AssembleHhationho(imc);
 
 		NRvector<Doub> matconsts(4, 0.);
 		matconsts[0] = young;
@@ -1883,36 +1878,21 @@ void slopeproject::MonteCarloGIM(int iter, int iter2, bool print, string writena
 		matconsts[3] = phi;
 
 		fmesh->fmaterial->SetMatConstants(matconsts);
-		//material->fYC.setup(young, nu, c, phi);
 		fmesh->fmaterial->SetMemory(nglobalpts, sz);
 		fmesh->fmaterial->UpdateBodyForce(bodyforce);
 		fmesh->fmaterial->SetRandomField(hhatinho);
-
-		//cout << "all cc" << finemesh->GetAllCoords()[0].size() << endl;
-
 		fmesh->SetHhat(hhatinho);
-		//std::vector<std::vector<double>>  sol = IterativeProcessSlope(finemesh, hhatinho, material);//x = desloc y = loadfactor
-		//std::vector<std::vector<double>>  sol = IterativeProcess(finemesh, hhatinho, materialdp,10,1.);//x = desloc y = loadfactor
-		int maxiter = 30;
+
+        int maxiter = 30;
 		Doub deltatol = 0.02;
 		int desirediter = 10;
 		Doub lamb0 = 0.2;
-		//int ndesi, Doub dlamb0, Doub alphatol, int niter
+
 		std::vector<std::vector<double>>  sol = IterativeProcess(desirediter, lamb0, deltatol, maxiter);//x = desloc y = loadfactor
-		//std::vector<std::vector<double>>  sol = IterativeProcessShearRed(allcoordsfine, meshcoordsfine, meshtopologyfine, hhatinho, material);//x = desloc y = loadfactor
 
 
-
-		duration1 = (std::clock() - start1) / (double)CLOCKS_PER_SEC;
-		std::cout << "IterativeProcess time " << duration1 << std::endl;
-
-
-
-		start1 = std::clock();
 		MatDoub solpost23;
 		solpost23.CopyFromVector(sol);
-
-
 		Int last = solpost23.nrows() - 1;
 		Doub data = solpost23[last][1];
 
@@ -1921,9 +1901,7 @@ void slopeproject::MonteCarloGIM(int iter, int iter2, bool print, string writena
 			continue;
 		}
 
-
 		solvec.push_back(data);
-
 		string  filename = namefolder;
 		datafile = "/information";
 		string ext = ".txt";
@@ -1939,18 +1917,52 @@ void slopeproject::MonteCarloGIM(int iter, int iter2, bool print, string writena
 		fileinfo << "diff= " << solpost23[last][4] << std::endl;
 		fileinfo << "diff2 = " << solpost23[last][5] << std::endl;
 		fileinfo << "counterout = " << solpost23[last][6] << std::endl;
-        fileinfo << "time = " << duration1 << std::endl;
 
-		if (false) {
+
+        PrintMCS(namefolder, imc, print);
+
+		//string filename2 = namefolder;
+		//filename2 += "/montecarlosafetyfactor.txt";
+		//std::ofstream file23(filename2);
+		//OutPutFile1var(solpost2, file23);
+
+		if (data <= 1.)
+		{
+			fail++;
+		}
+
+        auto end = sc.now();
+        auto time_span = static_cast<chrono::duration<double>>(end - start);
+        fileinfo << "TIME in MCR = " << time_span.count() << std::endl;
+		std::cout << " ******** MC  realization  = " << imc << " | Current safety fator = " << data << " | Time: " << time_span.count() << endl;
+		solpost2[imc][0] = data;
+		//delete mat;
+		//delete mesh2;
+	}
+	string filename = namefolder;
+	filename += "/montecarlosafetyfactor.txt";
+	std::ofstream file23(filename);
+	OutPutFile1var(solpost2, file23);
+	file << "failue probability = " << Doub(fail) / Doub(samples) << endl;
+	std::cout << "failue probability = " << Doub(fail) / Doub(samples);
+	duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
+	std::cout << "\n Monte Carlo simualtion time  " << duration << '\n';
+	file << "\n Monte Carlo simualtion time  " << duration << '\n';
+
+}
+
+void slopeproject::PrintMCS(string namefolder,int imc,bool print)
+{
+    		MatDoub hhatinho = AssembleHhationho(imc);
 
 
 			if (print) {
-				filename = namefolder;
+				string filename = namefolder;
 				std::vector<std::vector<double>> hhatx;
 				string name = "/Coesao";
-				ext = ".txt";
+				string ext = ".txt";
 				filename += name;
-				s = std::to_string(imc);
+				auto s = std::to_string(imc);
 				filename += s;
 				filename += ext;
 				fmesh->fmaterial->PostProcess(fmesh->GetAllCoords(), fmesh->GetMeshNodes(), fmesh->GetMeshTopology(), 0, hhatinho, hhatx);
@@ -1969,18 +1981,10 @@ void slopeproject::MonteCarloGIM(int iter, int iter2, bool print, string writena
 				fmesh->fmaterial->PostProcess(fmesh->GetAllCoords(), fmesh->GetMeshNodes(), fmesh->GetMeshTopology(), 1, hhatinho, hhatx2);
 				std::ofstream filesss(filename);
 				OutPutPost(hhatx2, filesss);
-			}
-			//	filename = namefolder;
-			//	string names = "/FxU";
-			//	string exts = ".txt";
-				//filename += names;
-				//auto ss = std::to_string(imc);
-				//filename += ss;
-				////filename += exts;
-				//std::ofstream file8(filename);
-				//OutPutFile(uvf, file8);
 
-			filename = namefolder;
+
+
+            filename = namefolder;
 			std::vector<std::vector<double>> solx, soly;
 			fmesh->fmaterial->PostProcess(fmesh->GetAllCoords(), fmesh->GetMeshNodes(), fmesh->GetMeshTopology(), fmesh->fmaterial->GetSolution(), solx, soly);
 			string name2 = "/soly";
@@ -2026,42 +2030,10 @@ void slopeproject::MonteCarloGIM(int iter, int iter2, bool print, string writena
 			filename += ext4;
 			std::ofstream file4(filename);
 			OutPutPost(epsppost, file4);
-		}
 
-		string filename2 = namefolder;
-		filename2 += "/montecarlosafetyfactor.txt";
-		std::ofstream file23(filename2);
-		OutPutFile1var(solpost2, file23);
+            }
 
-		duration1 = (std::clock() - start1) / (double)CLOCKS_PER_SEC;
-
-		std::cout << " Postprocess time " << duration1 << std::endl;
-
-		if (data <= 1.)
-		{
-			fail++;
-		}
-		std::cout << " mc it = " << imc << " | Current safety fator = " << data << endl;
-		solpost2[imc][0] = data;
-		//delete mat;
-		//delete mesh2;
-	}
-	string filename = namefolder;
-	filename += "/montecarlosafetyfactor.txt";
-	std::ofstream file23(filename);
-	OutPutFile1var(solpost2, file23);
-	file << "failue probability = " << Doub(fail) / Doub(samples) << endl;
-	std::cout << "failue probability = " << Doub(fail) / Doub(samples);
-	duration = (std::clock() - start) / (double)CLOCKS_PER_SEC;
-	std::cout << "\n Monte Carlo simualtion time  " << duration << '\n';
-	file << "\n Monte Carlo simualtion time  " << duration << '\n';
-
-	//delete finemesh;
-   // delete objKLGalerkinRF;
-   // delete materialdp;
 }
-
-
 
 
 

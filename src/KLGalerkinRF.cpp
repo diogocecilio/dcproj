@@ -342,6 +342,16 @@ void KLGalerkinRF::SolveGenEigValProblem(VecComplex & val, MatDoub & vec, NRmatr
 	cout << " \n EIGENVALUES Hessenberg  AFTER CHOP" << endl;
 	val.Print();
 
+	std::ofstream fileval("/home/diogo/Dropbox/slope-reliability/results/mathematicas/eigenvalues-Lx40-Ly2.dat");
+
+    fileval.clear();
+    for(int  i =0;i<val.size();i++)
+    {
+        fileval  << i  << " "<< val[i].real() << std::endl;
+    }
+    fileval.close();
+
+
 	for (Int j = 0;j < M;j++)
 	{
 		for (Int i = 0;i < vec.nrows();i++)

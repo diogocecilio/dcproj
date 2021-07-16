@@ -32,6 +32,7 @@ public:
 	~slopeproject();
 	slopeproject(slopeproject& copy);
 	void CreateRandomField(string namefolder);
+    void PrintMCS(string namefolder,int imc,bool print);
 	void OutPutPost(MatDoub& postdata, std::ofstream& file);
 	void OutPutPost(MatInt& postdata, std::ofstream& file);
 	void OutPutPost(std::vector<std::vector<double>>& postdata, std::ofstream& file);

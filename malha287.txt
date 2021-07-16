@@ -1,0 +1,1696 @@
+ENTITIES
+POINT
+Num: 1 HigherEntity: 3 conditions: 0 material: 0
+LAYER: 0
+Coord: 0.0 0.0 0.0
+END POINT
+POINT
+Num: 2 HigherEntity: 3 conditions: 0 material: 0
+LAYER: 0
+Coord: 50.0 0.0 0.0
+END POINT
+POINT
+Num: 3 HigherEntity: 2 conditions: 0 material: 0
+LAYER: 0
+Coord: 0.0 20.0 0.0
+END POINT
+POINT
+Num: 4 HigherEntity: 2 conditions: 0 material: 0
+LAYER: 0
+Coord: 20.0 20.0 0.0
+END POINT
+POINT
+Num: 5 HigherEntity: 4 conditions: 0 material: 0
+LAYER: 0
+Coord: 30.0 10.0 0.0
+END POINT
+POINT
+Num: 6 HigherEntity: 2 conditions: 0 material: 0
+LAYER: 0
+Coord: 50.0 10.0 0.0
+END POINT
+POINT
+Num: 7 HigherEntity: 3 conditions: 0 material: 0
+LAYER: 0
+Coord: 30.0 8.0 0.0
+END POINT
+POINT
+Num: 8 HigherEntity: 3 conditions: 0 material: 0
+LAYER: 0
+Coord: 15.0 20.0 0.0
+END POINT
+POINT
+Num: 9 HigherEntity: 4 conditions: 0 material: 0
+LAYER: 0
+Coord: 15.0 8.0 0.0
+END POINT
+POINT
+Num: 10 HigherEntity: 3 conditions: 0 material: 0
+LAYER: 0
+Coord: 18.0 10.0 0.0
+END POINT
+POINT
+Num: 11 HigherEntity: 3 conditions: 0 material: 0
+LAYER: 0
+Coord: 18.0 20.0 0.0
+END POINT
+POINT
+Num: 12 HigherEntity: 3 conditions: 0 material: 0
+LAYER: 0
+Coord: 9.0 20.0 0.0
+END POINT
+POINT
+Num: 13 HigherEntity: 4 conditions: 0 material: 0
+LAYER: 0
+Coord: 9.0 4.0 0.0
+END POINT
+POINT
+Num: 14 HigherEntity: 4 conditions: 0 material: 0
+LAYER: 0
+Coord: 36.0 4.0 0.0
+END POINT
+POINT
+Num: 15 HigherEntity: 3 conditions: 0 material: 0
+LAYER: 0
+Coord: 36.0 10.0 0.0
+END POINT
+STLINE
+Num: 1 HigherEntity: 1 conditions: 0 material: 0
+LAYER: 0
+Meshing Info: (num=54,NOE=1) Elemtype=0 IsStructured=1 Meshing=Default num_divisions=12
+Points: 1 2
+END STLINE
+STLINE
+Num: 2 HigherEntity: 1 conditions: 0 material: 0
+LAYER: 0
+Meshing Info: (num=55,NOE=1) Elemtype=0 IsStructured=1 Meshing=Default num_divisions=13
+Points: 1 3
+END STLINE
+STLINE
+Num: 3 HigherEntity: 1 conditions: 0 material: 0
+LAYER: 0
+Meshing Info: (num=71,NOE=1) Elemtype=0 IsStructured=1 Meshing=Default num_divisions=13 weight=(0,0.6)
+Points: 4 5
+END STLINE
+STLINE
+Num: 4 HigherEntity: 1 conditions: 0 material: 0
+LAYER: 0
+Meshing Info: (num=53,NOE=1) Elemtype=0 IsStructured=1 Meshing=Default num_divisions=3
+Points: 6 2
+END STLINE
+STLINE
+Num: 5 HigherEntity: 2 conditions: 0 material: 0
+LAYER: 0
+Meshing Info: (num=73,NOE=1) Elemtype=0 IsStructured=1 Meshing=Default num_divisions=3 weight=(0,0.4)
+Points: 7 5
+END STLINE
+STLINE
+Num: 6 HigherEntity: 2 conditions: 0 material: 0
+LAYER: 0
+Meshing Info: (num=57,NOE=1) Elemtype=0 IsStructured=1 Meshing=Default num_divisions=13
+Points: 8 9
+END STLINE
+STLINE
+Num: 7 HigherEntity: 2 conditions: 0 material: 0
+LAYER: 0
+Meshing Info: (num=58,NOE=1) Elemtype=0 IsStructured=1 Meshing=Default num_divisions=12
+Points: 9 7
+END STLINE
+STLINE
+Num: 8 HigherEntity: 2 conditions: 0 material: 0
+LAYER: 0
+Meshing Info: (num=70,NOE=1) Elemtype=0 IsStructured=1 Meshing=Default num_divisions=12 weight=(0.4,0)
+Points: 5 10
+END STLINE
+STLINE
+Num: 9 HigherEntity: 2 conditions: 0 material: 0
+LAYER: 0
+Meshing Info: (num=72,NOE=1) Elemtype=0 IsStructured=1 Meshing=Default num_divisions=13 weight=(0.6,0)
+Points: 10 11
+END STLINE
+STLINE
+Num: 10 HigherEntity: 2 conditions: 0 material: 0
+LAYER: 0
+Meshing Info: (num=74,NOE=1) Elemtype=0 IsStructured=1 Meshing=Default num_divisions=3 weight=(0.4,0)
+Points: 10 9
+END STLINE
+STLINE
+Num: 11 HigherEntity: 1 conditions: 0 material: 0
+LAYER: 0
+Meshing Info: (num=48,NOE=1) Elemtype=0 IsStructured=1 Meshing=Default num_divisions=3
+Points: 8 11
+END STLINE
+STLINE
+Num: 12 HigherEntity: 1 conditions: 0 material: 0
+LAYER: 0
+Meshing Info: (num=49,NOE=1) Elemtype=0 IsStructured=1 Meshing=Default num_divisions=12
+Points: 11 4
+END STLINE
+STLINE
+Num: 13 HigherEntity: 2 conditions: 0 material: 0
+LAYER: 0
+Meshing Info: (num=61,NOE=1) Elemtype=0 IsStructured=1 Meshing=Default num_divisions=13
+Points: 12 13
+END STLINE
+STLINE
+Num: 14 HigherEntity: 2 conditions: 0 material: 0
+LAYER: 0
+Meshing Info: (num=62,NOE=1) Elemtype=0 IsStructured=1 Meshing=Default num_divisions=12
+Points: 13 14
+END STLINE
+STLINE
+Num: 15 HigherEntity: 2 conditions: 0 material: 0
+LAYER: 0
+Meshing Info: (num=52,NOE=1) Elemtype=0 IsStructured=1 Meshing=Default num_divisions=3
+Points: 14 15
+END STLINE
+STLINE
+Num: 16 HigherEntity: 2 conditions: 0 material: 0
+LAYER: 0
+Meshing Info: (num=64,NOE=1) Elemtype=0 IsStructured=1 Meshing=Default num_divisions=1
+Points: 9 13
+END STLINE
+STLINE
+Num: 17 HigherEntity: 2 conditions: 0 material: 0
+LAYER: 0
+Meshing Info: (num=65,NOE=1) Elemtype=0 IsStructured=1 Meshing=Default num_divisions=1
+Points: 13 1
+END STLINE
+STLINE
+Num: 18 HigherEntity: 2 conditions: 0 material: 0
+LAYER: 0
+Meshing Info: (num=51,NOE=1) Elemtype=0 IsStructured=1 Meshing=Default num_divisions=1
+Points: 7 14
+END STLINE
+STLINE
+Num: 19 HigherEntity: 2 conditions: 0 material: 0
+LAYER: 0
+Meshing Info: (num=66,NOE=1) Elemtype=0 IsStructured=1 Meshing=Default num_divisions=1
+Points: 14 2
+END STLINE
+STLINE
+Num: 20 HigherEntity: 1 conditions: 0 material: 0
+LAYER: 0
+Meshing Info: (num=46,NOE=1) Elemtype=0 IsStructured=1 Meshing=Default num_divisions=1
+Points: 3 12
+END STLINE
+STLINE
+Num: 21 HigherEntity: 1 conditions: 0 material: 0
+LAYER: 0
+Meshing Info: (num=47,NOE=1) Elemtype=0 IsStructured=1 Meshing=Default num_divisions=1
+Points: 12 8
+END STLINE
+STLINE
+Num: 22 HigherEntity: 1 conditions: 0 material: 0
+LAYER: 0
+Meshing Info: (num=67,NOE=1) Elemtype=0 IsStructured=1 Meshing=Default num_divisions=1
+Points: 5 15
+END STLINE
+STLINE
+Num: 23 HigherEntity: 1 conditions: 0 material: 0
+LAYER: 0
+Meshing Info: (num=68,NOE=1) Elemtype=0 IsStructured=1 Meshing=Default num_divisions=1
+Points: 15 6
+END STLINE
+NURBSURFACE
+Num: 1 HigherEntity: 0 conditions: 0 material: 0
+LAYER: Layer0
+Meshing Info: (num=63,NOE=9) Elemtype=3 IsStructured=1 Meshing=Default num_divisions=0
+NumLines: 4
+Line: 17 Orientation: DIFF1ST
+Line: 13 Orientation: DIFF1ST
+Line: 20 Orientation: DIFF1ST
+Line: 2 Orientation: DIFF1ST
+Number of Control Points= 2 2 Degree= 1 1
+Point 1,1 coords:-0.4500000000000002,-1.1000000000000014,0.0
+Point 1,2 coords:9.45,-1.1000000000000014,0.0
+Point 2,1 coords:-0.4500000000000002,23.1,0.0
+Point 2,2 coords:9.45,23.1,0.0
+Number of knots in U= 4
+knot 1 value=0.0
+knot 2 value=0.0
+knot 3 value=1.0
+knot 4 value=1.0
+Number of knots in V= 4
+knot 1 value=0.0
+knot 2 value=0.0
+knot 3 value=1.0
+knot 4 value=1.0
+Non rational
+IsTrimmed: 1
+Center: 4.500000000000001 11.0 0.0
+Normal: 0.0 0.0 1.0
+END NURBSURFACE
+NURBSURFACE
+Num: 2 HigherEntity: 0 conditions: 0 material: 0
+LAYER: Layer0
+Meshing Info: (num=63,NOE=9) Elemtype=3 IsStructured=1 Meshing=Default num_divisions=0
+NumLines: 4
+Line: 21 Orientation: DIFF1ST
+Line: 13 Orientation: SAME1ST
+Line: 16 Orientation: DIFF1ST
+Line: 6 Orientation: DIFF1ST
+Number of Control Points= 2 2 Degree= 1 1
+Point 1,1 coords:8.7,3.299999999999999,0.0
+Point 1,2 coords:15.3,3.299999999999999,0.0
+Point 2,1 coords:8.7,23.1,0.0
+Point 2,2 coords:15.3,23.1,0.0
+Number of knots in U= 4
+knot 1 value=0.0
+knot 2 value=0.0
+knot 3 value=1.0
+knot 4 value=1.0
+Number of knots in V= 4
+knot 1 value=0.0
+knot 2 value=0.0
+knot 3 value=1.0
+knot 4 value=1.0
+Non rational
+IsTrimmed: 1
+Center: 12.0 12.999999999999998 0.0
+Normal: 0.0 0.0 1.0
+END NURBSURFACE
+NURBSURFACE
+Num: 3 HigherEntity: 0 conditions: 0 material: 0
+LAYER: Layer0
+Meshing Info: (num=63,NOE=9) Elemtype=3 IsStructured=1 Meshing=Default num_divisions=0
+NumLines: 4
+Line: 6 Orientation: SAME1ST
+Line: 10 Orientation: DIFF1ST
+Line: 9 Orientation: SAME1ST
+Line: 11 Orientation: DIFF1ST
+Number of Control Points= 2 2 Degree= 1 1
+Point 1,1 coords:14.85,7.457499999999999,0.0
+Point 1,2 coords:18.15,7.457499999999999,0.0
+Point 2,1 coords:14.85,21.5925,0.0
+Point 2,2 coords:18.15,21.5925,0.0
+Number of knots in U= 4
+knot 1 value=0.0
+knot 2 value=0.0
+knot 3 value=1.0
+knot 4 value=1.0
+Number of knots in V= 4
+knot 1 value=0.0
+knot 2 value=0.0
+knot 3 value=1.0
+knot 4 value=1.0
+Non rational
+IsTrimmed: 1
+Center: 16.5 14.5 0.0
+Normal: 0.0 0.0 1.0
+END NURBSURFACE
+NURBSURFACE
+Num: 4 HigherEntity: 0 conditions: 0 material: 0
+LAYER: Layer0
+Meshing Info: (num=63,NOE=9) Elemtype=3 IsStructured=1 Meshing=Default num_divisions=0
+NumLines: 4
+Line: 12 Orientation: DIFF1ST
+Line: 9 Orientation: DIFF1ST
+Line: 8 Orientation: DIFF1ST
+Line: 3 Orientation: DIFF1ST
+Number of Control Points= 2 2 Degree= 1 1
+Point 1,1 coords:12.149999999999999,9.5,0.0
+Point 1,2 coords:30.85,9.5,0.0
+Point 2,1 coords:12.149999999999999,20.5,0.0
+Point 2,2 coords:30.85,20.5,0.0
+Number of knots in U= 4
+knot 1 value=0.0
+knot 2 value=0.0
+knot 3 value=1.0
+knot 4 value=1.0
+Number of knots in V= 4
+knot 1 value=0.0
+knot 2 value=0.0
+knot 3 value=1.0
+knot 4 value=1.0
+Non rational
+IsTrimmed: 1
+Center: 21.5 15.0 0.0
+Normal: 0.0 0.0 1.0
+END NURBSURFACE
+NURBSURFACE
+Num: 5 HigherEntity: 0 conditions: 0 material: 0
+LAYER: Layer0
+Meshing Info: (num=63,NOE=9) Elemtype=3 IsStructured=1 Meshing=Default num_divisions=0
+NumLines: 4
+Line: 5 Orientation: SAME1ST
+Line: 8 Orientation: SAME1ST
+Line: 10 Orientation: SAME1ST
+Line: 7 Orientation: SAME1ST
+Number of Control Points= 2 2 Degree= 1 1
+Point 1,1 coords:14.174999999999999,7.9,0.0
+Point 1,2 coords:32.325,7.9,0.0
+Point 2,1 coords:14.174999999999999,10.1,0.0
+Point 2,2 coords:32.325,10.1,0.0
+Number of knots in U= 4
+knot 1 value=0.0
+knot 2 value=0.0
+knot 3 value=1.0
+knot 4 value=1.0
+Number of knots in V= 4
+knot 1 value=0.0
+knot 2 value=0.0
+knot 3 value=1.0
+knot 4 value=1.0
+Non rational
+IsTrimmed: 1
+Center: 23.25 9.0 0.0
+Normal: 0.0 0.0 1.0
+END NURBSURFACE
+NURBSURFACE
+Num: 6 HigherEntity: 0 conditions: 0 material: 0
+LAYER: Layer0
+Meshing Info: (num=63,NOE=9) Elemtype=3 IsStructured=1 Meshing=Default num_divisions=0
+NumLines: 4
+Line: 16 Orientation: SAME1ST
+Line: 14 Orientation: SAME1ST
+Line: 18 Orientation: DIFF1ST
+Line: 7 Orientation: DIFF1ST
+Number of Control Points= 2 2 Degree= 1 1
+Point 1,1 coords:7.428749999999997,3.795,0.0
+Point 1,2 coords:37.04625,3.795,0.0
+Point 2,1 coords:7.428749999999997,8.305,0.0
+Point 2,2 coords:37.04625,8.305,0.0
+Number of knots in U= 4
+knot 1 value=0.0
+knot 2 value=0.0
+knot 3 value=1.0
+knot 4 value=1.0
+Number of knots in V= 4
+knot 1 value=0.0
+knot 2 value=0.0
+knot 3 value=1.0
+knot 4 value=1.0
+Non rational
+IsTrimmed: 1
+Center: 22.500000000000004 5.999999999999999 0.0
+Normal: 0.0 0.0 1.0
+END NURBSURFACE
+NURBSURFACE
+Num: 7 HigherEntity: 0 conditions: 0 material: 0
+LAYER: Layer0
+Meshing Info: (num=63,NOE=9) Elemtype=3 IsStructured=1 Meshing=Default num_divisions=0
+NumLines: 4
+Line: 18 Orientation: SAME1ST
+Line: 15 Orientation: SAME1ST
+Line: 22 Orientation: DIFF1ST
+Line: 5 Orientation: DIFF1ST
+Number of Control Points= 2 2 Degree= 1 1
+Point 1,1 coords:29.542499999999993,3.6025,0.0
+Point 1,2 coords:36.3075,3.6025,0.0
+Point 2,1 coords:29.542499999999993,12.3475,0.0
+Point 2,2 coords:36.3075,12.3475,0.0
+Number of knots in U= 4
+knot 1 value=0.0
+knot 2 value=0.0
+knot 3 value=1.0
+knot 4 value=1.0
+Number of knots in V= 4
+knot 1 value=0.0
+knot 2 value=0.0
+knot 3 value=1.0
+knot 4 value=1.0
+Non rational
+IsTrimmed: 1
+Center: 33.0 7.999999999999998 0.0
+Normal: 0.0 0.0 1.0
+END NURBSURFACE
+NURBSURFACE
+Num: 8 HigherEntity: 0 conditions: 0 material: 0
+LAYER: Layer0
+Meshing Info: (num=63,NOE=9) Elemtype=3 IsStructured=1 Meshing=Default num_divisions=0
+NumLines: 4
+Line: 23 Orientation: DIFF1ST
+Line: 15 Orientation: DIFF1ST
+Line: 19 Orientation: SAME1ST
+Line: 4 Orientation: DIFF1ST
+Number of Control Points= 2 2 Degree= 1 1
+Point 1,1 coords:34.932500000000005,-0.38500000000000245,0.0
+Point 1,2 coords:50.7175,-0.38500000000000245,0.0
+Point 2,1 coords:34.932500000000005,12.485000000000003,0.0
+Point 2,2 coords:50.7175,12.485000000000003,0.0
+Number of knots in U= 4
+knot 1 value=0.0
+knot 2 value=0.0
+knot 3 value=1.0
+knot 4 value=1.0
+Number of knots in V= 4
+knot 1 value=0.0
+knot 2 value=0.0
+knot 3 value=1.0
+knot 4 value=1.0
+Non rational
+IsTrimmed: 1
+Center: 43.0 6.000000000000002 0.0
+Normal: 0.0 0.0 1.0
+END NURBSURFACE
+NURBSURFACE
+Num: 9 HigherEntity: 0 conditions: 0 material: 0
+LAYER: Layer0
+Meshing Info: (num=63,NOE=9) Elemtype=3 IsStructured=1 Meshing=Default num_divisions=0
+NumLines: 4
+Line: 1 Orientation: SAME1ST
+Line: 19 Orientation: DIFF1ST
+Line: 14 Orientation: DIFF1ST
+Line: 17 Orientation: SAME1ST
+Number of Control Points= 2 2 Degree= 1 1
+Point 1,1 coords:-5.431250000000006,-0.20500000000000007,0.0
+Point 1,2 coords:51.90625000000001,-0.20500000000000007,0.0
+Point 2,1 coords:-5.431250000000006,4.305,0.0
+Point 2,2 coords:51.90625000000001,4.305,0.0
+Number of knots in U= 4
+knot 1 value=0.0
+knot 2 value=0.0
+knot 3 value=1.0
+knot 4 value=1.0
+Number of knots in V= 4
+knot 1 value=0.0
+knot 2 value=0.0
+knot 3 value=1.0
+knot 4 value=1.0
+Non rational
+IsTrimmed: 1
+Center: 23.75 2.0 0.0
+Normal: 0.0 0.0 1.0
+END NURBSURFACE
+END ENTITIES
+MESH dimension 3 ElemType Quadrilateral Nnode 8
+Coordinates
+    1              50               0               0
+    2              50      1.66666667               0
+    3      47.9166667               0               0
+    4              50      3.33333333               0
+    5      45.8333333               0               0
+    6              50               5               0
+    7           43.75               0               0
+    8              50      6.66666667               0
+    9              43               2               0
+   10      41.6666667               0               0
+   11              50      8.33333333               0
+   12              43      4.66666667               0
+   13              50              10               0
+   14              43      7.33333333               0
+   15      39.7916667               2               0
+   16      39.5833333               0               0
+   17              43              10               0
+   18            37.5               0               0
+   19      36.5833333               2               0
+   20              36               4               0
+   21      35.4166667               0               0
+   22              36               5               0
+   23              36               6               0
+   24          34.875               4               0
+   25              36               7               0
+   26              36               8               0
+   27              36               9               0
+   28      33.3333333               0               0
+   29           33.75               4               0
+   30          33.375               2               0
+   31              36              10               0
+   32          32.625               4               0
+   33              33               6               0
+   34              33       7.3877551               0
+   35           31.25               0               0
+   36            31.5               4               0
+   37              33      8.72989196               0
+   38           31.25               6               0
+   39              33              10               0
+   40      30.1666667               2               0
+   41          30.375               4               0
+   42      29.1666667               0               0
+   43           29.25               4               0
+   44            29.5               6               0
+   45              30               8               0
+   46              30       8.3877551               0
+   47              30       8.7755102               0
+   48              30      9.11764706               0
+   49          29.375               8               0
+   50              30      9.45978391               0
+   51          28.125               4               0
+   52              30      9.72989196               0
+   53      29.5436276       8.7755102               0
+   54      29.7872001      9.45978391               0
+   55              30              10               0
+   56      29.9615779      10.0384221               0
+   57      29.9231558      10.0768442               0
+   58      29.8781001              10               0
+   59      29.7038371      9.72989196               0
+   60      29.5732206      9.45978391               0
+   61      29.8634537      10.1365463               0
+   62      29.8013106      10.0768442               0
+   63      29.7562002              10               0
+   64      29.3407033      9.11764706               0
+   65      29.8037517      10.1962483               0
+   66      29.7178775      10.0384221               0
+   67      29.0879487       8.7755102               0
+   68      29.6795594      10.0768442               0
+   69           28.75               8               0
+   70      29.5896036              10               0
+   71      29.6820138      10.1962483               0
+   72       29.321248      9.45978391               0
+   73      29.7137394      10.2862606               0
+   74       28.851338       8.3877551               0
+   75      29.6200279      10.1365463               0
+   76      29.5132731      10.0768442               0
+   77      29.5605072      10.1962483               0
+   78      29.3180476      9.72989196               0
+   79      29.6237271      10.3762729               0
+   80      29.4230071              10               0
+   81      27.0833333               0               0
+   82      29.3850566      10.0384221               0
+   83      29.4707884      10.2862606               0
+   84      29.0681104      9.45978391               0
+   85      29.5022006      10.3762729               0
+   86      29.3471169      10.0768442               0
+   87      29.3947333      10.1962483               0
+   88      29.4921706      10.5078294               0
+   89           27.75               6               0
+   90      29.2881855      10.1365463               0
+   91      29.2008784              10               0
+   92      29.3810933      10.3762729               0
+   93      28.6180954       8.7755102               0
+   94      26.9583333               2               0
+   95      29.2292796      10.1962483               0
+   96      29.1257019      10.0768442               0
+   97      29.3606142      10.6393858               0
+   98      29.2161599      10.3762729               0
+   99      28.6272651      9.11764706               0
+  100      28.7679092      9.45978391               0
+  101       29.140515      10.2862606               0
+  102      29.2500424      10.5078294               0
+  103      28.9787497              10               0
+  104          28.125               8               0
+  105      28.8217398      9.72989196               0
+  106      29.2395003      10.6393858               0
+  107      28.9415984      10.0384221               0
+  108      29.0090061      10.1962483               0
+  109              27               4               0
+  110      29.0518065      10.3762729               0
+  111      28.9044642      10.0768442               0
+  112      29.1190398      10.6393858               0
+  113      28.8467965      10.1365463               0
+  114      29.1744112      10.8255888               0
+  115      28.4665688      9.45978391               0
+  116      28.7891689      10.1962483               0
+  117      28.6899823              10               0
+  118       28.148927       8.7755102               0
+  119      28.9222541      10.5078294               0
+  120      28.8333267      10.3762729               0
+  121      28.9554759      10.6393858               0
+  122      28.6170144      10.0768442               0
+  123       28.702359      10.2862606               0
+  124      28.9337006      10.8255888               0
+  125      28.9882082      11.0117918               0
+  126      28.7928159      10.6393858               0
+  127      28.6156373      10.3762729               0
+  128      28.5037905      10.1962483               0
+  129       28.401215              10               0
+  130      27.6991557       8.3877551               0
+  131      28.8678759      11.0117918               0
+  132      28.1088438      9.45978391               0
+  133      28.3654957      10.0384221               0
+  134      28.1934943      9.72989196               0
+  135            27.5               8               0
+  136      28.3297968      10.0768442               0
+  137      28.5771088      10.6393858               0
+  138      28.7484516      11.0117918               0
+  139      28.4890456      10.5078294               0
+  140      27.8468447      9.11764706               0
+  141      28.6097996      10.8255888               0
+  142      28.2743662      10.1365463               0
+  143      27.6620655       8.7755102               0
+  144      28.3334356      10.3762729               0
+  145      28.2189837      10.1962483               0
+  146      28.7332533      11.2667467               0
+  147      28.5870956      11.0117918               0
+  148      28.3626337      10.6393858               0
+  149       28.035443              10               0
+  150      28.1355735      10.2862606               0
+  151      27.7500369      9.45978391               0
+  152      28.4269958      11.0117918               0
+  153      27.9661865      10.0768442               0
+  154      28.0522694      10.3762729               0
+  155      28.4949416      11.2667467               0
+  156      28.1840093      10.8255888               0
+  157      28.0851867      10.6393858               0
+  158      27.8587331      10.1962483               0
+  159      28.2155017      11.0117918               0
+  160      28.4782985      11.5217015               0
+  161      27.9307037      10.5078294               0
+  162      27.1758739       8.7755102               0
+  163          25.875               4               0
+  164       27.669671              10               0
+  165          26.875               8               0
+  166      27.6362569      10.0384221               0
+  167      28.3593789      11.5217015               0
+  168        27.60286      10.0768442               0
+  169      28.1770225      11.2667467               0
+  170       27.326152      9.45978391               0
+  171      27.4134249      9.72989196               0
+  172      28.0057196      11.0117918               0
+  173      27.6970859      10.3762729               0
+  174      27.8093537      10.6393858               0
+  175      28.2415826      11.5217015               0
+  176      27.5510002      10.1365463               0
+  177      27.4991812      10.1962483               0
+  178              26               6               0
+  179      26.9862783      9.11764706               0
+  180      28.0837168      11.5217015               0
+  181      27.4211298      10.2862606               0
+  182      27.7352158      11.0117918               0
+  183      27.6379535      10.8255888               0
+  184      28.1409736      11.8590264               0
+  185      27.2185523              10               0
+  186      27.9274053      11.5217015               0
+  187      26.5416614       8.3877551               0
+  188      27.3431683      10.3762729               0
+  189      27.4615799      10.6393858               0
+  190      26.6683967       8.7755102               0
+  191      27.7621155      11.2667467               0
+  192      26.9013053      9.45978391               0
+  193      27.1549857      10.0768442               0
+  194              25               0               0
+  195           26.25               8               0
+  196      27.9065836      11.8590264               0
+  197      27.2293824      10.5078294               0
+  198      27.4669551      11.0117918               0
+  199      27.7221797      11.5217015               0
+  200      27.0563097      10.1962483               0
+  201      27.1157791      10.6393858               0
+  202      27.5190725      11.5217015               0
+  203      26.7674335              10               0
+  204      26.9077534      10.3762729               0
+  205      27.8036487      12.1963513               0
+  206      26.7374254      10.0384221               0
+  207      27.5976486      11.8590264               0
+  208       26.707421      10.0768442               0
+  209      27.1296758      11.0117918               0
+  210      27.2334377      11.2667467               0
+  211      26.1615555       8.7755102               0
+  212       26.404445      9.45978391               0
+  213      27.6871264      12.1963513               0
+  214      26.6608063      10.1365463               0
+  215      26.9552888      10.8255888               0
+  216      26.4658314      9.72989196               0
+  217      27.2584456      11.5217015               0
+  218      26.6142006      10.1962483               0
+  219       27.571807      12.1963513               0
+  220           24.75               4               0
+  221      26.5439502      10.2862606               0
+  222      26.6910833      10.6393858               0
+  223      26.0333157      9.11764706               0
+  224          25.625               8               0
+  225      27.4192796      12.1963513               0
+  226      26.7951385      11.0117918               0
+  227       27.198305      11.8590264               0
+  228      26.4737197      10.3762729               0
+  229      27.0005939      11.5217015               0
+  230       26.226091              10               0
+  231      27.2684165      12.1963513               0
+  232      26.3711099      10.5078294               0
+  233      26.1705629      10.0768442               0
+  234      25.9068468      9.45978391               0
+  235      25.6300722       8.7755102               0
+  236      27.3729108      12.6270892               0
+  237      27.0722561      12.1963513               0
+  238      26.5763799      11.2667467               0
+  239      26.0842219      10.1962483               0
+  240      26.2685403      10.6393858               0
+  241      25.3770249       8.3877551               0
+  242      26.6776965      11.5217015               0
+  243      26.3852722      11.0117918               0
+  244      27.1446084      12.6270892               0
+  245       26.878364      12.1963513               0
+  246      26.6934805      11.8590264               0
+  247      25.9539142      10.3762729               0
+  248      26.1234316      10.8255888               0
+  249              25               8               0
+  250      25.6847485              10               0
+  251      26.3581916      11.5217015               0
+  252           23.75               2               0
+  253       25.659375      10.0384221               0
+  254      26.6313757      12.1963513               0
+  255      25.6339794      10.0768442               0
+  256      26.8486856      12.6270892               0
+  257      25.0991544       8.7755102               0
+  258      25.3333425      9.45978391               0
+  259      25.9783979      11.0117918               0
+  260      25.5944753      10.1365463               0
+  261           24.25               6               0
+  262      25.7631902      10.6393858               0
+  263      25.5549192      10.1962483               0
+  264      26.9421729      13.0578271               0
+  265       25.342216      9.72989196               0
+  266      25.4951836      10.2862606               0
+  267      26.3873591      12.1963513               0
+  268      26.8294123      13.0578271               0
+  269      24.9782015      9.11764706               0
+  270      25.9680377      11.5217015               0
+  271      25.4353333      10.3762729               0
+  272          23.625               4               0
+  273      26.7176837      13.0578271               0
+  274      26.4708844      12.6270892               0
+  275      26.0703218      11.8590264               0
+  276      25.7799288      11.2667467               0
+  277      25.3476578      10.5078294               0
+  278      26.5729284      13.0578271               0
+  279          24.375               8               0
+  280      26.0835091      12.1963513               0
+  281      25.4927185      11.0117918               0
+  282      25.0531823              10               0
+  283      24.5408573       8.7755102               0
+  284      25.2597488      10.6393858               0
+  285       26.429601      13.0578271               0
+  286      25.0080977      10.0768442               0
+  287       24.759477      9.45978391               0
+  288      25.5815855      11.5217015               0
+  289       24.937735      10.1962483               0
+  290      22.9166667               0               0
+  291      26.2460388      13.0578271               0
+  292      25.7832918      12.1963513               0
+  293      25.1349376      10.8255888               0
+  294      25.9977387      12.6270892               0
+  295      24.2034196       8.3877551               0
+  296      26.4120339      13.5879661               0
+  297      24.8309591      10.3762729               0
+  298      26.0644228      13.0578271               0
+  299      25.0096916      11.0117918               0
+  300      25.3193408      11.8590264               0
+  301      26.1925405      13.5879661               0
+  302      25.1214723      11.5217015               0
+  303      25.4183045      12.1963513               0
+  304           23.75               8               0
+  305      23.9829942       8.7755102               0
+  306       24.421616              10               0
+  307      25.8356068      13.0578271               0
+  308      24.6734668      10.6393858               0
+  309      24.4020124      10.0384221               0
+  310      24.3823507      10.0768442               0
+  311      24.1101229      9.45978391               0
+  312      24.8375309      11.2667467               0
+  313      24.3516854      10.1365463               0
+  314      24.3208827      10.1962483               0
+  315      25.4178544      12.6270892               0
+  316      25.9145181      13.5879661               0
+  317      25.6093404      13.0578271               0
+  318      24.2741857      10.2862606               0
+  319      24.0442604      9.72989196               0
+  320      23.8154642      9.11764706               0
+  321      25.0572812      12.1963513               0
+  322      24.2271861      10.3762729               0
+  323            22.5               4               0
+  324      24.4478134      11.0117918               0
+  325      24.6646409      11.5217015               0
+  326       24.157962      10.5078294               0
+  327      25.3298376      13.0578271               0
+  328      25.8818949      14.1181051               0
+  329      25.5652868      13.5879661               0
+  330      24.0881218      10.6393858               0
+  331      23.3960566       8.7755102               0
+  332      25.7745022      14.1181051               0
+  333          23.125               8               0
+  334      23.7058409              10               0
+  335      25.6676442      14.1181051               0
+  336            22.5               6               0
+  337      24.6288845      12.1963513               0
+  338      25.0534516      13.0578271               0
+  339       23.988253      10.8255888               0
+  340       23.460984      9.45978391               0
+  341      24.4348584      11.8590264               0
+  342      23.6730958      10.0768442               0
+  343       25.533461      14.1181051               0
+  344      23.0190353       8.3877551               0
+  345      24.7228891      12.6270892               0
+  346      23.6216065      10.1962483               0
+  347      24.1340911      11.5217015               0
+  348      25.1326613      13.5879661               0
+  349      23.8872373      11.0117918               0
+  350      25.4000178      14.1181051               0
+  351      23.5426127      10.3762729               0
+  352      24.7193879      13.0578271               0
+  353      25.2330389      14.1181051               0
+  354       24.204002      12.1963513               0
+  355      23.7471563      11.2667467               0
+  356      22.8093313       8.7755102               0
+  357       23.424326      10.6393858               0
+  358            22.5               8               0
+  359      25.0670684      14.1181051               0
+  360      24.3887252      13.0578271               0
+  361      23.6051524      11.5217015               0
+  362      24.6060985      13.5879661               0
+  363      22.9900658              10               0
+  364      25.2538841      14.7461159               0
+  365      22.9769264      10.0384221               0
+  366      24.8614155      14.1181051               0
+  367      22.7420999      9.45978391               0
+  368      22.9636918      10.0768442               0
+  369      22.9429402      10.1365463               0
+  370          21.375               4               0
+  371      23.2514922      11.0117918               0
+  372      22.5456758      9.11764706               0
+  373      22.9219634      10.1962483               0
+  374      23.7116846      12.1963513               0
+  375      25.0460361      14.7461159               0
+  376      23.9078381      12.6270892               0
+  377      22.8899171      10.2862606               0
+  378      24.6570837      14.1181051               0
+  379      22.8573746      10.3762729               0
+  380      22.5862139      9.72989196               0
+  381      23.9980306      13.0578271               0
+  382      23.4145385      11.8590264               0
+  383      22.8089395      10.5078294               0
+  384       22.193286       8.7755102               0
+  385      20.8333333               0               0
+  386      24.7909861      14.7461159               0
+  387      24.4075733      14.1181051               0
+  388          21.875               8               0
+  389      22.7594942      10.6393858               0
+  390      23.0054619      11.5217015               0
+  391      23.9776985      13.5879661               0
+  392      22.6878409      10.8255888               0
+  393      21.8220495       8.3877551               0
+  394      23.2210925      12.1963513               0
+  395      23.6103512      13.0578271               0
+  396      24.1596779      14.1181051               0
+  397      24.4775854      14.7461159               0
+  398      22.6143072      11.0117918               0
+  399      20.5416667               2               0
+  400      22.0242349      9.45978391               0
+  401      22.2027132              10               0
+  402      22.1829176      10.0768442               0
+  403      22.1513035      10.1962483               0
+  404      24.6258733      15.3741267               0
+  405      23.8623966      14.1181051               0
+  406       22.510725      11.2667467               0
+  407      21.5771143       8.7755102               0
+  408      24.5252982      15.3741267               0
+  409      22.1017232      10.3762729               0
+  410      24.0945645      14.7461159               0
+  411      22.9704424      12.6270892               0
+  412      24.4244903      15.3741267               0
+  413           21.25               8               0
+  414      23.1625873      13.0578271               0
+  415           20.75               6               0
+  416      22.4039898      11.5217015               0
+  417      22.0252781      10.6393858               0
+  418      22.6654752      12.1963513               0
+  419      24.3034569      15.3741267               0
+  420      23.5668775      14.1181051               0
+  421      23.2427526      13.5879661               0
+  422           20.25               4               0
+  423      24.1821014      15.3741267               0
+  424      22.2582919      11.8590264               0
+  425      21.9094747      11.0117918               0
+  426      24.0354372      15.3741267               0
+  427      23.6315671      14.7461159               0
+  428      21.1768667      9.11764706               0
+  429      22.7163036      13.0578271               0
+  430      21.2481985      9.45978391               0
+  431      23.2196384      14.1181051               0
+  432      21.4153606              10               0
+  433      23.8883339      15.3741267               0
+  434      21.4085135      10.0384221               0
+  435      21.4015507      10.0768442               0
+  436      21.3905045      10.1365463               0
+  437      20.9331593       8.7755102               0
+  438      21.3791847      10.1962483               0
+  439      21.3616082      10.2862606               0
+  440      22.1079501      12.1963513               0
+  441          20.625               8               0
+  442      23.7106161      15.3741267               0
+  443       21.343429      10.3762729               0
+  444      21.7377342      11.5217015               0
+  445      21.3157991      10.5078294               0
+  446      20.6105748       8.3877551               0
+  447      22.8739615      14.1181051               0
+  448      20.9960737      9.72989196               0
+  449      23.5323232      15.3741267               0
+  450      21.2869424      10.6393858               0
+  451      23.9109071      16.0890929               0
+  452      23.0803727      14.7461159               0
+  453      22.2121513      13.0578271               0
+  454      21.2440717      10.8255888               0
+  455      22.3996643      13.5879661               0
+  456      23.3183589      15.3741267               0
+  457      21.9100164      12.6270892               0
+  458      23.7167639      16.0890929               0
+  459      21.1989171      11.0117918               0
+  460      22.4765374      14.1181051               0
+  461      23.1036915      15.3741267               0
+  462      20.2886051       8.7755102               0
+  463      21.1335708      11.2667467               0
+  464      20.4742034      9.45978391               0
+  465      21.4901803      12.1963513               0
+  466      23.4886255      16.0890929               0
+  467              20               8               0
+  468      20.5755178              10               0
+  469      20.5671677      10.0768442               0
+  470          19.125               4               0
+  471      21.0643951      11.5217015               0
+  472      21.7063623      13.0578271               0
+  473      20.5533176      10.1962483               0
+  474      22.8491893      15.3741267               0
+  475      20.5304743      10.3762729               0
+  476      23.2170463      16.0890929               0
+  477           18.75               0               0
+  478      22.4361579      14.7461159               0
+  479      22.0798802      14.1181051               0
+  480      20.9674303      11.8590264               0
+  481      20.4930112      10.6393858               0
+  482      22.5939198      15.3741267               0
+  483       22.891696      16.0890929               0
+  484      20.4322005      11.0117918               0
+  485              19               6               0
+  486      20.8648253      12.1963513               0
+  487      19.7252451      9.11764706               0
+  488      21.4493934      13.5879661               0
+  489      19.6197815       8.7755102               0
+  490       23.195941       16.804059               0
+  491          19.375               8               0
+  492      21.1471179      13.0578271               0
+  493      22.2963267      15.3741267               0
+  494      21.6339983      14.1181051               0
+  495       23.102807       16.804059               0
+  496      19.3826295       8.3877551               0
+  497      19.6592077      9.45978391               0
+  498      23.0086911       16.804059               0
+  499       20.335443      11.5217015               0
+  500      22.5022707      16.0890929               0
+  501      19.7356751              10               0
+  502      20.7265693      12.6270892               0
+  503      22.9021912       16.804059               0
+  504      19.7336925      10.0384221               0
+  505      19.7316164      10.0768442               0
+  506      21.6986115      14.7461159               0
+  507      19.7282063      10.1365463               0
+  508      21.9980534      15.3741267               0
+  509      19.7245746      10.1962483               0
+  510      22.7943325       16.804059               0
+  511      19.7186862      10.2862606               0
+  512      19.7123097      10.3762729               0
+  513      19.7021312      10.5078294               0
+  514      22.6703278       16.804059               0
+  515      21.1872683      14.1181051               0
+  516      19.6909588      10.6393858               0
+  517      20.5813658      13.0578271               0
+  518      22.5444713       16.804059               0
+  519      19.3150218      9.72989196               0
+  520      19.6735035      10.8255888               0
+  521      20.1866117      12.1963513               0
+  522      21.6574684      15.3741267               0
+  523              18               4               0
+  524           18.75               8               0
+  525      22.0400115      16.0890929               0
+  526      18.9497577       8.7755102               0
+  527       19.654198      11.0117918               0
+  528      22.3982104       16.804059               0
+  529      19.6249136      11.2667467               0
+  530      22.2495234       16.804059               0
+  531      19.5925271      11.5217015               0
+  532      20.6964865      14.1181051               0
+  533      21.3165494      15.3741267               0
+  534      18.8474312      9.45978391               0
+  535      20.3949805      13.5879661               0
+  536      22.0760154       16.804059               0
+  537      20.8727379      14.7461159               0
+  538      19.5452707      11.8590264               0
+  539      18.8678375              10               0
+  540       22.414978       17.585022               0
+  541      18.8667066      10.0768442               0
+  542      17.3333333               2               0
+  543      21.4998698      16.0890929               0
+  544      21.8995417       16.804059               0
+  545      19.9689666      13.0578271               0
+  546      18.8644992      10.1962483               0
+  547      18.8601619      10.3762729               0
+  548      19.4934454      12.1963513               0
+  549          18.125               8               0
+  550      22.2345941       17.585022               0
+  551      20.9365433      15.3741267               0
+  552      18.8517254      10.6393858               0
+  553      21.6942963       16.804059               0
+  554      18.2609612       8.7755102               0
+  555      18.1362135       8.3877551               0
+  556      20.2023328      14.1181051               0
+  557      22.0343852       17.585022               0
+  558      18.8357791      11.0117918               0
+  559      18.2149208      9.11764706               0
+  560      19.4214058      12.6270892               0
+  561      21.4858147       16.804059               0
+  562      20.5569064      15.3741267               0
+  563       21.807346       17.585022               0
+  564      18.8070032      11.5217015               0
+  565        20.88312      16.0890929               0
+  566           17.25               6               0
+  567      21.2460213       16.804059               0
+  568      19.3437383      13.0578271               0
+  569      16.6666667               0               0
+  570      18.0163354      9.45978391               0
+  571          16.875               4               0
+  572      21.5451126       17.585022               0
+  573      19.6720162      14.1181051               0
+  574      19.9692454      14.7461159               0
+  575            17.5               8               0
+  576       21.003359       16.804059               0
+  577              18              10               0
+  578              18      10.0384221               0
+  579       18.758223      12.1963513               0
+  580              18      10.0768442               0
+  581              18      10.1365463               0
+  582      20.1450081      15.3741267               0
+  583              18      10.1962483               0
+  584      17.5702719       8.7755102               0
+  585              18      10.2862606               0
+  586      19.2419319      13.5879661               0
+  587              18      10.3762729               0
+  588              18      10.5078294               0
+  589      21.2386694       17.585022               0
+  590              18      10.6393858               0
+  591      20.7294349       16.804059               0
+  592              18      10.8255888               0
+  593      21.6340149      18.3659851               0
+  594      17.5948379      9.72989196               0
+  595              18      11.0117918               0
+  596      21.5473414      18.3659851               0
+  597      20.1998591      16.0890929               0
+  598       17.594268       9.8595276               0
+  599      17.5925376      10.0309167               0
+  600              18      11.2667467               0
+  601      18.6817361      13.0578271               0
+  602      21.4595161      18.3659851               0
+  603      19.1350525      14.1181051               0
+  604      19.7345778      15.3741267               0
+  605      20.4541023       16.804059               0
+  606      17.5895761      10.2611218               0
+  607              18      11.5217015               0
+  608      21.3666168      18.3659851               0
+  609      20.8799085       17.585022               0
+  610          16.875               8               0
+  611      17.5852558      10.5714312               0
+  612      21.2721237      18.3659851               0
+  613              18      11.8590264               0
+  614      17.1896759      9.45978391               0
+  615       16.869567       8.3877551               0
+  616      21.1704354      18.3659851               0
+  617      17.1893864      9.59057606               0
+  618       17.188536      9.72167687               0
+  619       17.579398      10.9867202               0
+  620              18      12.1963513               0
+  621       20.151295       16.804059               0
+  622      17.1870808       9.8697527               0
+  623       21.066575      18.3659851               0
+  624      16.8680727       8.7755102               0
+  625      17.1850752      10.0181314               0
+  626      19.0044934      14.7461159               0
+  627       19.302169      15.3741267               0
+  628       17.182387      10.1905902               0
+  629      20.9528731      18.3659851               0
+  630      20.4642215       17.585022               0
+  631              18      12.6270892               0
+  632      17.1791523      10.3633498               0
+  633      17.5718055      11.5337757               0
+  634      18.5726386      14.1181051               0
+  635      20.8363256      18.3659851               0
+  636           15.75               4               0
+  637       17.175105      10.5690467               0
+  638      19.4704719      16.0890929               0
+  639      19.8500452       16.804059               0
+  640      16.6764706      9.11764706               0
+  641      17.1705116       10.775044               0
+  642              18      13.0578271               0
+  643      20.7069482      18.3659851               0
+  644      17.1649238      11.0243257               0
+  645      17.5623347      12.2383863               0
+  646      16.6754101      9.57992007               0
+  647           16.25               8               0
+  648      20.5740921      18.3659851               0
+  649      18.8726543      15.3741267               0
+  650      17.1587961      11.2739045               0
+  651              18      13.5879661               0
+  652      19.9939355       17.585022               0
+  653      19.5295021       16.804059               0
+  654      20.4255365      18.3659851               0
+  655      16.6721902       10.065005               0
+  656       17.151459      11.5779171               0
+  657      20.8170075      19.1829925               0
+  658      17.1436109      11.8822109               0
+  659      20.2731851      18.3659851               0
+  660      16.1632653       8.7755102               0
+  661      16.6666796      10.5827112               0
+  662              18      14.1181051               0
+  663      17.5510212      13.1212285               0
+  664            15.5               6               0
+  665      16.1630162      9.11133053               0
+  666      20.6472933      19.1829925               0
+  667      19.2151514       16.804059               0
+  668      17.1343544      12.2516985               0
+  669      20.1031858      18.3659851               0
+  670      18.4341012      15.3741267               0
+  671      16.1622841      9.44661082               0
+  672      16.6586406      11.1452295               0
+  673      18.7250345      16.0890929               0
+  674      20.4714444      19.1829925               0
+  675      17.1246694      12.6214218               0
+  676      19.4818001       17.585022               0
+  677      16.1610316       9.7876178               0
+  678              18      14.7461159               0
+  679      19.9298214      18.3659851               0
+  680          15.625               8               0
+  681      16.1593052      10.1280949               0
+  682      18.8937378       16.804059               0
+  683      16.6477406      11.7667694               0
+  684      20.2865157      19.1829925               0
+  685      17.1134793      13.0650285               0
+  686       19.738868      18.3659851               0
+  687      14.5833333               0               0
+  688      15.5816327       8.3877551               0
+  689      16.1569914       10.476901               0
+  690      17.5382511      14.1929432               0
+  691              18      15.3741267               0
+  692      20.0887046      19.1829925               0
+  693       16.154207      10.8251809               0
+  694      19.5462625      18.3659851               0
+  695      17.1020423      13.5087709               0
+  696          14.625               4               0
+  697      16.6336127      12.4626264               0
+  698      18.5845314       16.804059               0
+  699      15.5811421      9.23688511               0
+  700      16.1507233      11.1849951               0
+  701      18.9530956       17.585022               0
+  702      19.8736602      19.1829925               0
+  703      19.3392379      18.3659851               0
+  704      16.1467695      11.5442837               0
+  705      17.0892266      14.0310103               0
+  706              18      16.0890929               0
+  707      15.5796526      10.0870251               0
+  708       18.282877       16.804059               0
+  709      16.1419597      11.9188159               0
+  710              15               8               0
+  711      19.6373161      19.1829925               0
+  712      16.6159899      13.2475822               0
+  713      19.1340402      18.3659851               0
+  714          14.125               2               0
+  715      17.5249434       15.449231               0
+  716      17.0765022      14.5531994               0
+  717              15      8.46153846               0
+  718      16.1366852      12.2928283               0
+  719              20              20               0
+  720      18.9213485      18.3659851               0
+  721      15.5771035      10.9395648               0
+  722              15      8.92307692               0
+  723      18.4446941       17.585022               0
+  724      19.9166667              20               0
+  725      19.3773825      19.1829925               0
+  726              18       16.804059               0
+  727      16.1303697      12.6860592               0
+  728      19.8333333              20               0
+  729              15      9.38461538               0
+  730      17.0628753      15.1524273               0
+  731           19.75              20               0
+  732      16.5949381      14.1336698               0
+  733      18.7159199      18.3659851               0
+  734      16.1236145      13.0787983               0
+  735      19.6666667              20               0
+  736              15      9.84615385               0
+  737      19.0954015      19.1829925               0
+  738      15.5733848      11.7961419               0
+  739      19.5833333              20               0
+  740      18.5133065      18.3659851               0
+  741            19.5              20               0
+  742      16.1156468      13.4946016               0
+  743              15      10.3076923               0
+  744              18       17.585022               0
+  745      17.0498868      15.7513041               0
+  746      19.4166667              20               0
+  747      17.5126611      16.8671682               0
+  748      19.3333333              20               0
+  749      18.3250112      18.3659851               0
+  750              15      10.7692308               0
+  751      18.7988807      19.1829925               0
+  752      16.1073104      13.9099924               0
+  753           19.25              20               0
+  754      15.5683426      12.6585991               0
+  755      16.5711761      15.1275262               0
+  756            13.5               4               0
+  757           13.75               6               0
+  758      19.1666667              20               0
+  759              15      11.2307692               0
+  760      18.1514935      18.3659851               0
+  761      16.0976783      14.3516281               0
+  762      19.0833333              20               0
+  763      17.0368971      16.4181864               0
+  764      18.5025955      19.1829925               0
+  765              19              20               0
+  766              18      18.3659851               0
+  767              15      11.6923077               0
+  768      18.9166667              20               0
+  769      16.0878339      14.7930263               0
+  770      15.5618072      13.5289087               0
+  771      18.8333333              20               0
+  772              15      12.1538462               0
+  773           18.75              20               0
+  774      18.2279925      19.1829925               0
+  775      17.0253222      17.0842904               0
+  776      18.6666667              20               0
+  777      16.5464137      16.2277673               0
+  778      16.0768027      15.2625663               0
+  779              15      12.6153846               0
+  780      18.5833333              20               0
+  781              18      19.1829925               0
+  782            18.5              20               0
+  783      15.5536552      14.4090825               0
+  784      17.5035459      18.4040795               0
+  785              15      13.0769231               0
+  786      18.4166667              20               0
+  787        16.06585      15.7321941               0
+  788      18.3333333              20               0
+  789      17.0150189      17.8013089               0
+  790            12.5               0               0
+  791           18.25              20               0
+  792              15      13.5384615               0
+  793      18.1666667              20               0
+  794      16.0541205       16.229969               0
+  795      18.0833333              20               0
+  796              15              14               0
+  797       15.543917      15.3010968               0
+  798              18              20               0
+  799      16.5235592      17.4229866               0
+  800      17.0070917        18.51702               0
+  801          12.375               4               0
+  802      16.0429405      16.7283583               0
+  803              15      14.4615385               0
+  804              15      14.9230769               0
+  805       15.532925        16.20686               0
+  806      16.0317595      17.2525258               0
+  807            17.5              20               0
+  808      17.0018474      19.2594444               0
+  809              15      15.3846154               0
+  810      16.0217963       17.778055               0
+  811       16.506598      18.6910221               0
+  812              15      15.8461538               0
+  813              12               6               0
+  814      15.5214703      17.1282029               0
+  815              17              20               0
+  816      16.0129276      18.3243742               0
+  817              15      16.3076923               0
+  818              12      7.07692308               0
+  819              15      16.7692308               0
+  820              12      8.15384615               0
+  821      16.0061043      18.8729806               0
+  822      15.5108981      18.0668119               0
+  823           11.25               4               0
+  824              15      17.2307692               0
+  825            16.5              20               0
+  826              12      9.23076923               0
+  827      10.9166667               2               0
+  828      16.0015902      19.4348554               0
+  829              15      17.6923077               0
+  830              12      10.3076923               0
+  831      15.5030521      19.0239676               0
+  832              15      18.1538462               0
+  833              16              20               0
+  834      10.4166667               0               0
+  835              15      18.6153846               0
+  836              12      11.3846154               0
+  837              15      19.0769231               0
+  838            15.5              20               0
+  839              12      12.4615385               0
+  840          10.125               4               0
+  841              15      19.5384615               0
+  842              15              20               0
+  843              12      13.5384615               0
+  844              12      14.6153846               0
+  845              12      15.6923077               0
+  846               9               4               0
+  847               9      4.61538462               0
+  848               9      5.23076923               0
+  849               9      5.84615385               0
+  850               9      6.46153846               0
+  851              12      16.7692308               0
+  852               9      7.07692308               0
+  853      8.33333333               0               0
+  854               9      7.69230769               0
+  855               9      8.30769231               0
+  856               9      8.92307692               0
+  857              12      17.8461538               0
+  858               9      9.53846154               0
+  859               9      10.1538462               0
+  860      7.70833333               2               0
+  861               9      10.7692308               0
+  862              12      18.9230769               0
+  863               9      11.3846154               0
+  864               9              12               0
+  865               9      12.6153846               0
+  866              12              20               0
+  867               9      13.2307692               0
+  868               9      13.8461538               0
+  869               9      14.4615385               0
+  870               9      15.0769231               0
+  871            6.25               0               0
+  872               9      15.6923077               0
+  873               9      16.3076923               0
+  874               9      16.9230769               0
+  875               9      17.5384615               0
+  876               9      18.1538462               0
+  877               9      18.7692308               0
+  878               9      19.3846154               0
+  879             4.5               2               0
+  880               9              20               0
+  881             4.5      3.38461538               0
+  882             4.5      4.76923077               0
+  883      4.16666667               0               0
+  884             4.5      6.15384615               0
+  885             4.5      7.53846154               0
+  886             4.5      8.92307692               0
+  887             4.5      10.3076923               0
+  888             4.5      11.6923077               0
+  889             4.5      13.0769231               0
+  890             4.5      14.4615385               0
+  891      2.08333333               0               0
+  892             4.5      15.8461538               0
+  893             4.5      17.2307692               0
+  894             4.5      18.6153846               0
+  895             4.5              20               0
+  896               0               0               0
+  897               0     0.769230769               0
+  898               0      1.53846154               0
+  899               0      2.30769231               0
+  900               0      3.07692308               0
+  901               0      3.84615385               0
+  902               0      4.61538462               0
+  903               0      5.38461538               0
+  904               0      6.15384615               0
+  905               0      6.92307692               0
+  906               0      7.69230769               0
+  907               0      8.46153846               0
+  908               0      9.23076923               0
+  909               0              10               0
+  910               0      10.7692308               0
+  911               0      11.5384615               0
+  912               0      12.3076923               0
+  913               0      13.0769231               0
+  914               0      13.8461538               0
+  915               0      14.6153846               0
+  916               0      15.3846154               0
+  917               0      16.1538462               0
+  918               0      16.9230769               0
+  919               0      17.6923077               0
+  920               0      18.4615385               0
+  921               0      19.2307692               0
+  922               0              20               0
+End Coordinates
+
+Elements
+1 846 848 898 896 847 881 897 879
+2 848 850 900 898 849 882 899 881
+3 850 854 902 900 852 884 901 882
+4 854 856 904 902 855 885 903 884
+5 856 859 906 904 858 886 905 885
+6 859 863 908 906 861 887 907 886
+7 863 865 910 908 864 888 909 887
+8 865 868 912 910 867 889 911 888
+9 868 870 914 912 869 890 913 889
+10 870 873 916 914 872 892 915 890
+11 873 875 918 916 874 893 917 892
+12 875 877 920 918 876 894 919 893
+13 877 880 922 920 878 895 921 894
+14 880 877 837 842 878 862 841 866
+15 877 875 832 837 876 857 835 862
+16 875 873 824 832 874 851 829 857
+17 873 870 817 824 872 845 819 851
+18 870 868 809 817 869 844 812 845
+19 868 865 803 809 867 843 804 844
+20 865 863 792 803 864 839 796 843
+21 863 859 779 792 861 836 785 839
+22 859 856 767 779 858 830 772 836
+23 856 854 750 767 855 826 759 830
+24 854 850 736 750 852 820 743 826
+25 850 848 722 736 849 818 729 820
+26 848 846 710 722 847 813 717 818
+27 837 821 833 842 831 828 838 841
+28 832 810 821 837 822 816 831 835
+29 824 802 810 832 814 806 822 829
+30 817 787 802 824 805 794 814 819
+31 809 769 787 817 797 778 805 812
+32 803 752 769 809 783 761 797 804
+33 792 734 752 803 770 742 783 796
+34 779 718 734 792 754 727 770 785
+35 767 704 718 779 738 709 754 772
+36 750 693 704 767 721 700 738 759
+37 736 681 693 750 707 689 721 743
+38 722 671 681 736 699 677 707 729
+39 710 660 671 722 688 665 699 717
+40 821 800 815 833 811 808 825 828
+41 810 775 800 821 799 789 811 816
+42 802 745 775 810 777 763 799 806
+43 787 716 745 802 755 730 777 794
+44 769 695 716 787 732 705 755 778
+45 752 675 695 769 712 685 732 761
+46 734 658 675 752 697 668 712 742
+47 718 650 658 734 683 656 697 727
+48 704 641 650 718 672 644 683 709
+49 693 632 641 704 661 637 672 700
+50 681 625 632 693 655 628 661 689
+51 671 618 625 681 646 622 655 677
+52 660 614 618 671 640 617 646 665
+53 800 766 798 815 784 781 807 808
+54 775 726 766 800 747 744 784 789
+55 745 691 726 775 715 706 747 763
+56 716 662 691 745 690 678 715 730
+57 695 642 662 716 663 651 690 705
+58 675 620 642 695 645 631 663 685
+59 658 607 620 675 633 613 645 668
+60 650 595 607 658 619 600 633 656
+61 641 590 595 650 611 592 619 644
+62 632 587 590 641 606 588 611 637
+63 625 583 587 632 599 585 606 628
+64 618 580 583 625 598 581 599 622
+65 614 577 580 618 594 578 598 617
+66 728 602 593 719 666 596 657 724
+67 735 612 602 728 674 608 666 731
+68 741 623 612 735 684 616 674 739
+69 748 635 623 741 692 629 684 746
+70 758 648 635 748 702 643 692 753
+71 765 659 648 758 711 654 702 762
+72 771 679 659 765 725 669 711 768
+73 776 694 679 771 737 686 725 773
+74 782 713 694 776 751 703 737 780
+75 788 733 713 782 764 720 751 786
+76 793 749 733 788 774 740 764 791
+77 798 766 749 793 781 760 774 795
+78 602 498 490 593 550 495 540 596
+79 612 510 498 602 557 503 550 608
+80 623 518 510 612 563 514 557 616
+81 635 530 518 623 572 528 563 629
+82 648 544 530 635 589 536 572 643
+83 659 561 544 648 609 553 589 654
+84 679 576 561 659 630 567 609 669
+85 694 605 576 679 652 591 630 686
+86 713 639 605 694 676 621 652 703
+87 733 667 639 713 701 653 676 720
+88 749 698 667 733 723 682 701 740
+89 766 726 698 749 744 708 723 760
+90 498 412 404 490 458 408 451 495
+91 510 423 412 498 466 419 458 503
+92 518 433 423 510 476 426 466 514
+93 530 449 433 518 483 442 476 528
+94 544 461 449 530 500 456 483 536
+95 561 482 461 544 525 474 500 553
+96 576 508 482 561 543 493 525 567
+97 605 533 508 576 565 522 543 591
+98 639 562 533 605 597 551 565 621
+99 667 604 562 639 638 582 597 653
+100 698 649 604 667 673 627 638 682
+101 726 691 649 698 706 670 673 708
+102 412 335 328 404 375 332 364 408
+103 423 350 335 412 386 343 375 419
+104 433 359 350 423 397 353 386 426
+105 449 378 359 433 410 366 397 442
+106 461 396 378 449 427 387 410 456
+107 482 420 396 461 452 405 427 474
+108 508 447 420 482 478 431 452 493
+109 533 479 447 508 506 460 478 522
+110 562 515 479 533 537 494 506 551
+111 604 556 515 562 574 532 537 582
+112 649 603 556 604 626 573 574 627
+113 691 662 603 649 678 634 626 670
+114 335 273 264 328 301 268 296 332
+115 350 285 273 335 316 278 301 343
+116 359 298 285 350 329 291 316 353
+117 378 317 298 359 348 307 329 366
+118 396 338 317 378 362 327 348 387
+119 420 360 338 396 391 352 362 405
+120 447 395 360 420 421 381 391 431
+121 479 429 395 447 455 414 421 460
+122 515 472 429 479 488 453 455 494
+123 556 517 472 515 535 492 488 532
+124 603 568 517 556 586 545 535 573
+125 662 642 568 603 651 601 586 634
+126 273 219 205 264 244 213 236 268
+127 285 231 219 273 256 225 244 278
+128 298 245 231 285 274 237 256 291
+129 317 267 245 298 294 254 274 307
+130 338 292 267 317 315 280 294 327
+131 360 321 292 338 345 303 315 352
+132 395 354 321 360 376 337 345 381
+133 429 394 354 395 411 374 376 414
+134 472 440 394 429 457 418 411 453
+135 517 486 440 472 502 465 457 492
+136 568 548 486 517 560 521 502 545
+137 642 620 548 568 631 579 560 601
+138 219 175 160 205 196 167 184 213
+139 231 186 175 219 207 180 196 225
+140 245 202 186 231 227 199 207 237
+141 267 229 202 245 246 217 227 254
+142 292 251 229 267 275 242 246 280
+143 321 288 251 292 300 270 275 303
+144 354 325 288 321 341 302 300 337
+145 394 361 325 354 382 347 341 374
+146 440 416 361 394 424 390 382 418
+147 486 471 416 440 480 444 424 465
+148 548 531 471 486 538 499 480 521
+149 620 607 531 548 613 564 538 579
+150 175 138 125 160 155 131 146 167
+151 186 152 138 175 169 147 155 180
+152 202 172 152 186 191 159 169 199
+153 229 198 172 202 210 182 191 217
+154 251 226 198 229 238 209 210 242
+155 288 259 226 251 276 243 238 270
+156 325 299 259 288 312 281 276 302
+157 361 349 299 325 355 324 312 347
+158 416 398 349 361 406 371 355 390
+159 471 459 398 416 463 425 406 444
+160 531 527 459 471 529 484 463 499
+161 607 595 527 531 600 558 529 564
+162 138 112 97 125 124 106 114 131
+163 152 126 112 138 141 121 124 147
+164 172 148 126 152 156 137 141 159
+165 198 174 148 172 183 157 156 182
+166 226 201 174 198 215 189 183 209
+167 259 240 201 226 248 222 215 243
+168 299 284 240 259 293 262 248 281
+169 349 330 284 299 339 308 293 324
+170 398 389 330 349 392 357 339 371
+171 459 450 389 398 454 417 392 425
+172 527 516 450 459 520 481 454 484
+173 595 590 516 527 592 552 520 558
+174 112 92 79 97 102 85 88 106
+175 126 110 92 112 119 98 102 121
+176 148 127 110 126 139 120 119 137
+177 174 154 127 148 161 144 139 157
+178 201 188 154 174 197 173 161 189
+179 240 228 188 201 232 204 197 222
+180 284 271 228 240 277 247 232 262
+181 330 322 271 284 326 297 277 308
+182 389 379 322 330 383 351 326 357
+183 450 443 379 389 445 409 383 417
+184 516 512 443 450 513 475 445 481
+185 590 587 512 516 588 547 513 552
+186 92 77 65 79 83 71 73 85
+187 110 95 77 92 101 87 83 98
+188 127 116 95 110 123 108 101 120
+189 154 145 116 127 150 128 123 144
+190 188 177 145 154 181 158 150 173
+191 228 218 177 188 221 200 181 204
+192 271 263 218 228 266 239 221 247
+193 322 314 263 271 318 289 266 297
+194 379 373 314 322 377 346 318 351
+195 443 438 373 379 439 403 377 409
+196 512 509 438 443 511 473 439 475
+197 587 583 509 512 585 546 511 547
+198 77 68 57 65 75 62 61 71
+199 95 86 68 77 90 76 75 87
+200 116 111 86 95 113 96 90 108
+201 145 136 111 116 142 122 113 128
+202 177 168 136 145 176 153 142 158
+203 218 208 168 177 214 193 176 200
+204 263 255 208 218 260 233 214 239
+205 314 310 255 263 313 286 260 289
+206 373 368 310 314 369 342 313 346
+207 438 435 368 373 436 402 369 403
+208 509 505 435 438 507 469 436 473
+209 583 580 505 509 581 541 507 546
+210 68 63 55 57 66 58 56 62
+211 86 80 63 68 82 70 66 76
+212 111 103 80 86 107 91 82 96
+213 136 129 103 111 133 117 107 122
+214 168 164 129 136 166 149 133 153
+215 208 203 164 168 206 185 166 193
+216 255 250 203 208 253 230 206 233
+217 310 306 250 255 309 282 253 286
+218 368 363 306 310 365 334 309 342
+219 435 432 363 368 434 401 365 402
+220 505 501 432 435 504 468 434 469
+221 580 577 501 505 578 539 504 541
+222 47 67 69 45 53 74 49 46
+223 50 60 67 47 54 64 53 48
+224 55 63 60 50 58 59 54 52
+225 67 118 135 69 93 130 104 74
+226 60 84 118 67 72 99 93 64
+227 63 80 84 60 70 78 72 59
+228 118 162 195 135 143 187 165 130
+229 84 115 162 118 100 140 143 99
+230 80 103 115 84 91 105 100 78
+231 162 211 249 195 190 241 224 187
+232 115 151 211 162 132 179 190 140
+233 103 129 151 115 117 134 132 105
+234 211 257 304 249 235 295 279 241
+235 151 192 257 211 170 223 235 179
+236 129 164 192 151 149 171 170 134
+237 257 305 358 304 283 344 333 295
+238 192 234 305 257 212 269 283 223
+239 164 203 234 192 185 216 212 171
+240 305 356 413 358 331 393 388 344
+241 234 287 356 305 258 320 331 269
+242 203 250 287 234 230 265 258 216
+243 356 407 467 413 384 446 441 393
+244 287 340 407 356 311 372 384 320
+245 250 306 340 287 282 319 311 265
+246 407 462 524 467 437 496 491 446
+247 340 400 462 407 367 428 437 372
+248 306 363 400 340 334 380 367 319
+249 462 526 575 524 489 555 549 496
+250 400 464 526 462 430 487 489 428
+251 363 432 464 400 401 448 430 380
+252 526 584 647 575 554 615 610 555
+253 464 534 584 526 497 559 554 487
+254 432 501 534 464 468 519 497 448
+255 584 660 710 647 624 688 680 615
+256 534 614 660 584 570 640 624 559
+257 501 577 614 534 539 594 570 519
+258 846 823 647 710 840 757 680 813
+259 823 756 575 647 801 664 610 757
+260 756 636 524 575 696 566 549 664
+261 636 523 467 524 571 485 491 566
+262 523 422 413 467 470 415 441 485
+263 422 323 358 413 370 336 388 415
+264 323 220 304 358 272 261 333 336
+265 220 109 249 304 163 178 279 261
+266 109 43 195 249 51 89 224 178
+267 43 36 135 195 41 44 165 89
+268 36 29 69 135 32 38 104 44
+269 29 20 45 69 24 33 49 38
+270 20 23 47 45 22 34 46 33
+271 23 26 50 47 25 37 48 34
+272 26 31 55 50 27 39 52 37
+273 31 26 8 13 27 14 11 17
+274 26 23 4 8 25 12 6 14
+275 23 20 1 4 22 9 2 12
+276 883 823 846 896 860 840 879 891
+277 853 756 823 883 827 801 860 871
+278 790 636 756 853 714 696 827 834
+279 569 523 636 790 542 571 714 687
+280 385 422 523 569 399 470 542 477
+281 194 323 422 385 252 370 399 290
+282 42 220 323 194 94 272 252 81
+283 28 109 220 42 40 163 94 35
+284 18 43 109 28 30 51 40 21
+285 10 36 43 18 19 41 30 16
+286 5 29 36 10 15 32 19 7
+287 1 20 29 5 9 24 15 3
+End Elements
+PROBLEM DATA
+END PROBLEM DATA
+INTERVAL NUMBER: 1
+INTERVAL DATA
+END INTERVAL DATA

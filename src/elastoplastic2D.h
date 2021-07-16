@@ -25,7 +25,7 @@ public:
 //
 	void Contribute(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint, NRmatrix<Doub>  &efbody, Doub xi, Doub eta, Doub w, NRmatrix<Doub>  elcoords, NRmatrix<Doub>  eldisplace);
 
-    void ContributeEig(MatrixXd &ek,  VectorXd &efint, VectorXd  &efbody, double xi, double eta, double w, MatrixXd elcoords, MatrixXd  eldisplace);
+    void ContributeEig(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint, NRmatrix<Doub>  &efbody, Doub xi, Doub eta, Doub w, NRmatrix<Doub>  elcoords, NRmatrix<Doub>  eldisplace);
 
 	void CacStiff(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint, NRmatrix<Doub>  &efbody, const NRmatrix<Doub>   &elcoords, NRmatrix<Doub>  eldisplace);
 	void Assemble(std::vector<std::vector< std::vector<Doub > > > allcoords, NRmatrix<Doub>  meshnodes, MatInt meshtopology, NRmatrix<Doub>  &KG, NRmatrix<Doub>  &Fint,NRmatrix<Doub>  &Fbody);
@@ -34,6 +34,9 @@ public:
 
 	//void Assemble(MatDoub &KG, MatDoub &Fint, MatDoub &Fbody);
 	void assembleBandN(NRmatrix<Doub>  &B, NRmatrix<Doub>  &N, const NRmatrix<Doub>  &psis, const NRmatrix<Doub>  &GradPhi);
+    //	B.assign(3, psis.nrows() * 2, 0.);
+	//N.assign(2, psis.nrows() * 2, 0.);
+    void assembleBandN(MatrixXd&B, MatrixXd  &N, const NRmatrix<Doub>  &psis, const NRmatrix<Doub>  &GradPhi);
 	void assembleConstitutiveMatrix(MatDoub &C, Doub mult);
 	void GetElCoords(std::vector<std::vector< std::vector<Doub > > > allcoords, Int el, MatDoub & elcoords);
 	void DirichletBC(NRmatrix<Doub>  &KG, NRmatrix<Doub>  & FG, std::vector<int> ids, Int  dir, Int val);

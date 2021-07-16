@@ -304,6 +304,7 @@ public:
 	inline T* operator[](const int i);	//subscripting: pointer to row i
 	inline const T* operator[](const int i) const;
 	NRmatrix & operator*=(const T &multipl);
+   // NRmatrix<T>  operator*();
 	NRmatrix & operator+=(NRmatrix &source);
 	NRmatrix & operator-=(NRmatrix &source);
 	inline int nrows() const;
@@ -318,6 +319,29 @@ public:
 	void  CopyFromVector(const std::vector<std::vector<T>>&input);
 	void  FromFullToVoigt(NRmatrix<T> & full);
     NRmatrix & FromEigen(VectorXd data);
+
+    inline void FromEigen(MatrixXd  data)
+    {
+        this->assign(data.rows(), data.cols(), 0.);
+        for (int i = 0;i < this->nrows();i++)
+        {
+            for (int j = 0;j < this->ncols();j++)
+            {
+                 v[i][j]=data(i,j);
+            }
+        }
+    }
+    inline void ToEigen(MatrixXd & data)
+    {
+        data.resize(this->nrows(), this->nrows());
+		for (int i = 0; i < this->nrows(); i++)
+		{
+			for (int j = 0; j < this->ncols(); j++)
+			{
+				data(i, j) = v[i][j];
+			}
+		}
+    }
 
 	T DetEig()
 	{
