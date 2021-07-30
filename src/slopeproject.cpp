@@ -1316,7 +1316,7 @@ void slopeproject::SolveEigenSparse(MatDoub A, MatDoub b, MatDoub& x)
     std::vector<T> tripletList;
     int sz=A.nrows();
 
-    tripletList.reserve(sz*100);
+    tripletList.reserve(sz*30);
    // tripletList.reserve(80000);
 
     x.assign(sz, 1, 0.);

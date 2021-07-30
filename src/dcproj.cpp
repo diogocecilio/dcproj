@@ -80,11 +80,17 @@ void mainlinux(int simtype,int comeco,int fim)
    // string nodestr = "/home/diogo/projects/dcproj/nos-cho.txt";
 	//string elsstr = "/home/diogo/projects/dcproj/els-cho.txt";
     
-    //string nodestr = "/home/diogo/projects/dcproj/nos-912.txt";
+  //  string nodestr = "/home/diogo/projects/dcproj/nos-912.txt";
 	//string elsstr = "/home/diogo/projects/dcproj/els-912.txt";
 
        string nodestr = "/home/diogo/projects/dcproj/nos-287.txt";
 	string elsstr = "/home/diogo/projects/dcproj/els-287.txt";
+
+   // string nodestr = "/home/diogo/projects/dcproj/nos-381.txt";
+//	string elsstr = "/home/diogo/projects/dcproj/els-381.txt";
+
+   //         string nodestr = "/home/diogo/projects/dcproj/nos-445.txt";
+	//string elsstr = "/home/diogo/projects/dcproj/els-445.txt";
 
 
 	MatDoub hhatinho;
@@ -130,6 +136,13 @@ void mainlinux(int simtype,int comeco,int fim)
     elastoplastic2D< druckerprager >* mat9 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
     elastoplastic2D< druckerprager >* mat10 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
     elastoplastic2D< druckerprager >* mat11 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
+    elastoplastic2D< druckerprager >* mat12= new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
+    elastoplastic2D< druckerprager >* mat13 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
+    elastoplastic2D< druckerprager >* mat14 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
+    elastoplastic2D< druckerprager >* mat15 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
+    elastoplastic2D< druckerprager >* mat16 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
+    elastoplastic2D< druckerprager >* mat17 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
+    elastoplastic2D< druckerprager >* mat18 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
 	
 	mesh* mesh0 = new mesh(mat0, allcoords, meshcoords, meshtopology, hhatinho);
     mesh* mesh1 = new mesh(mat1, allcoords, meshcoords, meshtopology, hhatinho);
@@ -143,6 +156,14 @@ void mainlinux(int simtype,int comeco,int fim)
     mesh* mesh9 = new mesh(mat9, allcoords, meshcoords, meshtopology, hhatinho);
 	mesh* mesh10 = new mesh(mat10, allcoords, meshcoords, meshtopology, hhatinho);
     mesh* mesh11 = new mesh(mat11, allcoords, meshcoords, meshtopology, hhatinho);
+    mesh* mesh12 = new mesh(mat12, allcoords, meshcoords, meshtopology, hhatinho);
+    mesh* mesh13 = new mesh(mat13, allcoords, meshcoords, meshtopology, hhatinho);
+    mesh* mesh14 = new mesh(mat14, allcoords, meshcoords, meshtopology, hhatinho);
+    mesh* mesh15 = new mesh(mat15, allcoords, meshcoords, meshtopology, hhatinho);
+    mesh* mesh16 = new mesh(mat16, allcoords, meshcoords, meshtopology, hhatinho);
+    mesh* mesh17 = new mesh(mat17, allcoords, meshcoords, meshtopology, hhatinho);
+    mesh* mesh18 = new mesh(mat18, allcoords, meshcoords, meshtopology, hhatinho);
+
 
 	mat0->fYC.setup(young, nu, c, phi);
 	mat0->SetMemory(nglobalpts, sz);
@@ -191,6 +212,34 @@ void mainlinux(int simtype,int comeco,int fim)
         mat11->fYC.setup(young, nu, c, phi);
 	mat11->SetMemory(nglobalpts, sz);
 	mat11->UpdateBodyForce(bodyforce);
+
+            mat12->fYC.setup(young, nu, c, phi);
+	mat12->SetMemory(nglobalpts, sz);
+	mat12->UpdateBodyForce(bodyforce);
+
+            mat13->fYC.setup(young, nu, c, phi);
+	mat13->SetMemory(nglobalpts, sz);
+	mat13->UpdateBodyForce(bodyforce);
+
+            mat14->fYC.setup(young, nu, c, phi);
+	mat14->SetMemory(nglobalpts, sz);
+	mat14->UpdateBodyForce(bodyforce);
+
+            mat15->fYC.setup(young, nu, c, phi);
+	mat15->SetMemory(nglobalpts, sz);
+	mat15->UpdateBodyForce(bodyforce);
+
+            mat16->fYC.setup(young, nu, c, phi);
+	mat16->SetMemory(nglobalpts, sz);
+	mat16->UpdateBodyForce(bodyforce);
+
+            mat17->fYC.setup(young, nu, c, phi);
+	mat17->SetMemory(nglobalpts, sz);
+	mat17->UpdateBodyForce(bodyforce);
+
+            mat18->fYC.setup(young, nu, c, phi);
+	mat18->SetMemory(nglobalpts, sz);
+	mat18->UpdateBodyForce(bodyforce);
     
     Doub Lx = 20.;//(*Correlation length in x direction*)
 	Doub Ly = 2.;//(*Correlation length in y direction*)
@@ -208,6 +257,14 @@ void mainlinux(int simtype,int comeco,int fim)
     KLGalerkinRF* objKLGalerkinRF9 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
     KLGalerkinRF* objKLGalerkinRF10 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
     KLGalerkinRF* objKLGalerkinRF11 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
+    KLGalerkinRF* objKLGalerkinRF12 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
+    KLGalerkinRF* objKLGalerkinRF13 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
+    KLGalerkinRF* objKLGalerkinRF14 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
+    KLGalerkinRF* objKLGalerkinRF15 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
+    KLGalerkinRF* objKLGalerkinRF16 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
+    KLGalerkinRF* objKLGalerkinRF17 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
+    KLGalerkinRF* objKLGalerkinRF18 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
+
 	objKLGalerkinRF0->SetMesh(mesh0);
     objKLGalerkinRF1->SetMesh(mesh1);
     objKLGalerkinRF2->SetMesh(mesh2);
@@ -220,8 +277,15 @@ void mainlinux(int simtype,int comeco,int fim)
     objKLGalerkinRF9->SetMesh(mesh9);
     objKLGalerkinRF10->SetMesh(mesh10);
     objKLGalerkinRF11->SetMesh(mesh11);
+     objKLGalerkinRF12->SetMesh(mesh12);
+      objKLGalerkinRF13->SetMesh(mesh13);
+       objKLGalerkinRF14->SetMesh(mesh14);
+        objKLGalerkinRF15->SetMesh(mesh15);
+         objKLGalerkinRF16->SetMesh(mesh16);
+          objKLGalerkinRF17->SetMesh(mesh17);
+           objKLGalerkinRF18->SetMesh(mesh18);
 
-    if(false)
+    if(true)
     {
         cout <<"\n initializing hhhh ---->" << endl;
         slopeproject* slopeobj0 = new slopeproject(mesh0, objKLGalerkinRF0);
@@ -234,8 +298,9 @@ void mainlinux(int simtype,int comeco,int fim)
 		mat0->UpdateBodyForce(bodyforce);
         soll = slopeobj0->IterativeProcess(20, 0.1, 0.0001,10);
 
-        //string filename = "/home/diogo/Dropbox/slope-reliability/results/mesh-287/cho-field-Lx20-Ly2";
-       // slopeobj0->CreateRandomField(filename);
+        return;
+        string filename = "/home/diogo/Dropbox/slope-reliability/results/mesh-381/cho-field-Lx20-Ly2";
+        slopeobj0->CreateRandomField(filename);
 
         return;
     }
@@ -265,6 +330,14 @@ void mainlinux(int simtype,int comeco,int fim)
     slopeproject* slopeobj9 = new slopeproject(mesh9, objKLGalerkinRF9,randomfield);
     slopeproject* slopeobj10 = new slopeproject(mesh10, objKLGalerkinRF10,randomfield);
     slopeproject* slopeobj11 = new slopeproject(mesh11, objKLGalerkinRF11,randomfield);
+
+    slopeproject* slopeobj12 = new slopeproject(mesh12, objKLGalerkinRF12,randomfield);
+    slopeproject* slopeobj13 = new slopeproject(mesh13, objKLGalerkinRF13,randomfield);
+    slopeproject* slopeobj14 = new slopeproject(mesh14, objKLGalerkinRF14,randomfield);
+    slopeproject* slopeobj15 = new slopeproject(mesh15, objKLGalerkinRF15,randomfield);
+    slopeproject* slopeobj16 = new slopeproject(mesh16, objKLGalerkinRF16,randomfield);
+    slopeproject* slopeobj17 = new slopeproject(mesh17, objKLGalerkinRF17,randomfield);
+    slopeproject* slopeobj18 = new slopeproject(mesh18, objKLGalerkinRF18,randomfield);
     MatDoub hhatinho2 = slopeobj0->AssembleHhationho(1156);
     if(false)//Print a single simulation
     {
@@ -337,57 +410,8 @@ void mainlinux(int simtype,int comeco,int fim)
     {
         std::cout << " \n GIM ";
         string namefolder = "/home/diogo/Dropbox/slope-reliability/results/mesh-287/gim-Lx20-Ly2";
-        int a=begin,b,c,d,e,f,g,h,i,j,l,m,n;
-        int delta=int((end-begin)/10);
-        b=a+delta;
-        c=b+delta;
-        d=c+delta;
-        e=d+delta;
-        f=e+delta;
-        g=f+delta;
-        h=g+delta;
-        i=h+delta;
-        j=i+delta;
-        l=j+delta;
-
-        std::cout << " \n Starting MCS ";
-        //multthread
-        std::thread thread0(myTreads,a,b, slopeobj0,namefolder);
-        std::thread thread1(myTreads,b,c, slopeobj1,namefolder);
-        std::thread thread2(myTreads,c,d, slopeobj2,namefolder);
-        std::thread thread3(myTreads,d,e, slopeobj3,namefolder);
-        std::thread thread4(myTreads,e,f, slopeobj4,namefolder);
-        std::thread thread5(myTreads,f,g, slopeobj5,namefolder);
-        std::thread thread6(myTreads,g,h, slopeobj6,namefolder);
-        std::thread thread7(myTreads,h,i, slopeobj7,namefolder);
-        std::thread thread8(myTreads,i,j, slopeobj8,namefolder);
-        std::thread thread9(myTreads,j,l, slopeobj9,namefolder);
-       /* std::thread thread10(myTreads,l,m, slopeobj10,namefolder);
-        std::thread thread11(myTreads,m,n, slopeobj11,namefolder);*/
-
-        thread0.join();
-        thread1.join();
-        thread2.join();
-        thread3.join();
-        thread4.join();
-        thread5.join();
-        thread6.join();
-        thread7.join();
-        thread8.join();
-        thread9.join();
-      /*  thread10.join();
-        thread11.join();*/
-        //serial
-        //slopeobj0->MonteCarloGIM(begin,end, false, namefolder);
-       // slopeobj0->MonteCarloGIM(0,5, false, namefolder);
-        return;
-    }
-    
-    if(GIMorSRM==1)
-    {
-        string namefolder = "/home/diogo/Dropbox/slope-reliability/results/mesh-287/srm-Lx20-Ly2";
-        int a=begin,b,c,d,e,f,g,h,i,j,l,m,n;
-        int delta=int((end-begin)/12);
+        int a=begin,b,c,d,e,f,g,h,i,j,l,m,n,o,p,q,r,s,t,u,v;
+        int delta=int((end-begin)/19);
         b=a+delta;
         c=b+delta;
         d=c+delta;
@@ -400,19 +424,35 @@ void mainlinux(int simtype,int comeco,int fim)
         l=j+delta;
         m=l+delta;
         n=m+delta;
-
-        std::thread thread0(myTreadsSRM,a,b, slopeobj0,namefolder);
-        std::thread thread1(myTreadsSRM,b,c, slopeobj1,namefolder);
-        std::thread thread2(myTreadsSRM,c,d, slopeobj2,namefolder);
-        std::thread thread3(myTreadsSRM,d,e, slopeobj3,namefolder);
-        std::thread thread4(myTreadsSRM,e,f, slopeobj4,namefolder);
-        std::thread thread5(myTreadsSRM,f,g, slopeobj5,namefolder);
-        std::thread thread6(myTreadsSRM,g,h, slopeobj6,namefolder);
-        std::thread thread7(myTreadsSRM,h,i, slopeobj7,namefolder);
-        std::thread thread8(myTreadsSRM,i,j, slopeobj8,namefolder);
-        std::thread thread9(myTreadsSRM,j,l, slopeobj9,namefolder);
-        std::thread thread10(myTreadsSRM,l,m, slopeobj10,namefolder);
-        std::thread thread11(myTreadsSRM,m,n, slopeobj11,namefolder);
+        o=n+delta;
+        p=o+delta;
+        q=p+delta;
+        r=q+delta;
+        s=r+delta;
+        t=s+delta;
+        u=t+delta;
+        std::cout << " \n a ";
+        std::cout << " \n u ";
+        //multthread
+        std::thread thread0(myTreads,a,b, slopeobj0,namefolder);
+        std::thread thread1(myTreads,b,c, slopeobj1,namefolder);
+        std::thread thread2(myTreads,c,d, slopeobj2,namefolder);
+        std::thread thread3(myTreads,d,e, slopeobj3,namefolder);
+        std::thread thread4(myTreads,e,f, slopeobj4,namefolder);
+        std::thread thread5(myTreads,f,g, slopeobj5,namefolder);
+        std::thread thread6(myTreads,g,h, slopeobj6,namefolder);
+        std::thread thread7(myTreads,h,i, slopeobj7,namefolder);
+        std::thread thread8(myTreads,i,j, slopeobj8,namefolder);
+        std::thread thread9(myTreads,j,l, slopeobj9,namefolder);
+       std::thread thread10(myTreads,l,m, slopeobj10,namefolder);
+        std::thread thread11(myTreads,m,n, slopeobj11,namefolder);
+        std::thread thread12(myTreads,n,o, slopeobj12,namefolder);
+        std::thread thread13(myTreads,o,p, slopeobj13,namefolder);
+        std::thread thread14(myTreads,p,q, slopeobj14,namefolder);
+        std::thread thread15(myTreads,q,r, slopeobj15,namefolder);
+        std::thread thread16(myTreads,r,s, slopeobj16,namefolder);
+        std::thread thread17(myTreads,s,t, slopeobj17,namefolder);
+        std::thread thread18(myTreads,t,u, slopeobj18,namefolder);
 
         thread0.join();
         thread1.join();
@@ -426,8 +466,88 @@ void mainlinux(int simtype,int comeco,int fim)
         thread9.join();
         thread10.join();
         thread11.join();
+        thread12.join();
+        thread13.join();
+        thread14.join();
+        thread15.join();
+        thread16.join();
+        thread17.join();
+        thread18.join();
 
+
+        //serial
+        //slopeobj0->MonteCarloGIM(begin,end, false, namefolder);
+       // slopeobj0->MonteCarloGIM(0,5, false, namefolder);
         return;
+    }
+    
+    if(GIMorSRM==1)
+    {
+        std::cout << " \n GIM ";
+        string namefolder = "/home/diogo/Dropbox/slope-reliability/results/mesh-287/srm-Lx20-Ly2";
+        int a=begin,b,c,d,e,f,g,h,i,j,l,m,n,o,p,q,r,s,t,u,v;
+        int delta=int((end-begin)/19);
+        b=a+delta;
+        c=b+delta;
+        d=c+delta;
+        e=d+delta;
+        f=e+delta;
+        g=f+delta;
+        h=g+delta;
+        i=h+delta;
+        j=i+delta;
+        l=j+delta;
+        m=l+delta;
+        n=m+delta;
+        o=n+delta;
+        p=o+delta;
+        q=p+delta;
+        r=q+delta;
+        s=r+delta;
+        t=s+delta;
+        u=t+delta;
+        std::cout << " \n a " << a <<std::endl;
+        std::cout << " \n u "<< u <<std::endl;
+        //multthread
+        std::thread thread0(myTreadsSRM,a,b, slopeobj0,namefolder);
+        std::thread thread1(myTreadsSRM,b,c, slopeobj1,namefolder);
+        std::thread thread2(myTreadsSRM,c,d, slopeobj2,namefolder);
+        std::thread thread3(myTreadsSRM,d,e, slopeobj3,namefolder);
+        std::thread thread4(myTreadsSRM,e,f, slopeobj4,namefolder);
+        std::thread thread5(myTreadsSRM,f,g, slopeobj5,namefolder);
+        std::thread thread6(myTreadsSRM,g,h, slopeobj6,namefolder);
+        std::thread thread7(myTreadsSRM,h,i, slopeobj7,namefolder);
+        std::thread thread8(myTreadsSRM,i,j, slopeobj8,namefolder);
+        std::thread thread9(myTreadsSRM,j,l, slopeobj9,namefolder);
+       std::thread thread10(myTreadsSRM,l,m, slopeobj10,namefolder);
+        std::thread thread11(myTreadsSRM,m,n, slopeobj11,namefolder);
+        std::thread thread12(myTreadsSRM,n,o, slopeobj12,namefolder);
+        std::thread thread13(myTreadsSRM,o,p, slopeobj13,namefolder);
+        std::thread thread14(myTreadsSRM,p,q, slopeobj14,namefolder);
+        std::thread thread15(myTreadsSRM,q,r, slopeobj15,namefolder);
+        std::thread thread16(myTreadsSRM,r,s, slopeobj16,namefolder);
+        std::thread thread17(myTreadsSRM,s,t, slopeobj17,namefolder);
+        std::thread thread18(myTreadsSRM,t,u, slopeobj18,namefolder);
+
+        thread0.join();
+        thread1.join();
+        thread2.join();
+        thread3.join();
+        thread4.join();
+        thread5.join();
+        thread6.join();
+        thread7.join();
+        thread8.join();
+        thread9.join();
+        thread10.join();
+        thread11.join();
+        thread12.join();
+        thread13.join();
+        thread14.join();
+        thread15.join();
+        thread16.join();
+        thread17.join();
+        thread18.join();
     }
 
     
