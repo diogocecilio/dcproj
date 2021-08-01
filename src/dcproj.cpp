@@ -67,7 +67,107 @@ void myTreadsSRM(int a, int b, slopeproject* slopeobj2,string namefolder3)
     delete slopeobj2;
 }
 
+
 void mainlinux(int simtype,int comeco,int fim)
+{
+    //cout<< "simtype"<< simtype;
+	//string nodestr = "/home/diogo/projects/dcproj/nos-132-c3.txt";
+	//string elsstr = "/home/diogo/projects/dcproj/els-132-c3.txt";
+
+   // string nodestr = "/home/diogo/projects/dcproj/nos-cho.txt";
+	//string elsstr = "/home/diogo/projects/dcproj/els-cho.txt";
+
+  //  string nodestr = "/home/diogo/projects/dcproj/nos-912.txt";
+	//string elsstr = "/home/diogo/projects/dcproj/els-912.txt";
+
+       string nodestr = "/home/diogo/projects/dcproj/nos-287.txt";
+	string elsstr = "/home/diogo/projects/dcproj/els-287.txt";
+
+   // string nodestr = "/home/diogo/projects/dcproj/nos-381.txt";
+//	string elsstr = "/home/diogo/projects/dcproj/els-381.txt";
+
+   //         string nodestr = "/home/diogo/projects/dcproj/nos-445.txt";
+	//string elsstr = "/home/diogo/projects/dcproj/els-445.txt";
+
+
+	MatDoub hhatinho;
+	MatDoub  meshcoords, elcoords;
+	MatInt meshtopology;
+	std::vector<std::vector<std::vector<Doub>>> allcoords;
+	ReadMesh(allcoords, meshcoords, meshtopology, elsstr, nodestr);
+
+	std::ofstream filemesh1("meshcoords.txt");
+	OutPutPost(meshcoords, filemesh1);
+	std::ofstream filemesh2("meshtopology.txt");
+	OutPutPost(meshtopology, filemesh2);
+
+	//Doub c = 18.5633, phi = 20 * M_PI / 180., gamma = -20.;//1.5
+	Doub c = 10., phi = 30 * M_PI / 180., gamma = -20.;//1.5
+
+	Doub thickness = 1.;
+	Doub young = 20000.;
+	Doub nu = 0.49;
+	//Doub young = 100000.;
+	//Doub nu = 0.3;
+	Int planestress = 0;
+
+	MatDoub bodyforce(2, 1, 0.), newbodyforce;
+	bodyforce[1][0] = gamma;
+	MatDoub ptsweigths;
+	int order = 2;
+	shapequad shape = shapequad(order, 1);
+	shape.pointsandweigths(ptsweigths);
+	Int npts = ptsweigths.nrows();
+	Int nglobalpts = meshtopology.nrows() * npts;
+	Int sz = 2 * meshcoords.nrows();
+    int nthreads =10;
+    std::vector <std::thread> threadsmat;
+
+    Doub Lx = 20.;//(*Correlation length in x direction*)
+	Doub Ly = 2.;//(*Correlation length in y direction*)
+	Int nsamples = 50000, expansionorder = 150;
+	Int type = 3;
+
+    MatDoub coesionrandomfield, frictionrandomfield;
+	string filerf = "/home/diogo/Dropbox/slope-reliability/results/mesh-287/cho-field-Lx20-Ly2/coesionfield.txt";
+	ReadMatDoub(coesionrandomfield, filerf);
+	string filerff = "/home/diogo/Dropbox/slope-reliability/results/mesh-287/cho-field-Lx20-Ly2/frictionfield.txt";
+	ReadMatDoub(frictionrandomfield, filerff);
+
+	NRmatrix<MatDoub> randomfield(2, 1);
+	randomfield[0][0] = coesionrandomfield;
+	randomfield[1][0] = frictionrandomfield;
+
+    string namefolder = "/home/diogo/Dropbox/slope-reliability/results/mesh-287/test";
+
+    int delta = int(nsamples/nthreads);
+    int a=0,b=delta;
+    for(int i=0;i<nthreads;i++)
+    {
+        elastoplastic2D< druckerprager >* mat = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
+        mesh* meshs = new mesh(mat, allcoords, meshcoords, meshtopology, hhatinho);
+        mat->fYC.setup(young, nu, c, phi);
+        mat->SetMemory(nglobalpts, sz);
+        mat->UpdateBodyForce(bodyforce);
+        KLGalerkinRF* objKLGalerkinRF = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
+        objKLGalerkinRF->SetMesh(meshs);
+        slopeproject* slopeobj = new slopeproject(meshs, objKLGalerkinRF,randomfield);
+        std::cout << "a = "<< a <<std::endl;
+        std::cout << "b = "<< b <<std::endl;
+        std::thread threadx(myTreads,a,b, slopeobj,namefolder);
+        a=b;
+        b+=delta;
+
+        threadsmat.push_back(std::move(threadx));
+    }
+
+    for(auto &threadx: threadsmat )threadx.join();
+
+
+}
+
+
+void mainlinux2(int simtype,int comeco,int fim)
 {
     
 
@@ -123,6 +223,11 @@ void mainlinux(int simtype,int comeco,int fim)
 	Int npts = ptsweigths.nrows();
 	Int nglobalpts = meshtopology.nrows() * npts;
 	Int sz = 2 * meshcoords.nrows();
+
+    Doub Lx = 20.;//(*Correlation length in x direction*)
+	Doub Ly = 2.;//(*Correlation length in y direction*)
+	Int nsamples = 50000, expansionorder = 150;
+	Int type = 3;
 
 	elastoplastic2D< druckerprager >* mat0 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
     elastoplastic2D< druckerprager >* mat1 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
@@ -241,10 +346,10 @@ void mainlinux(int simtype,int comeco,int fim)
 	mat18->SetMemory(nglobalpts, sz);
 	mat18->UpdateBodyForce(bodyforce);
     
-    Doub Lx = 20.;//(*Correlation length in x direction*)
-	Doub Ly = 2.;//(*Correlation length in y direction*)
-	Int nsamples = 50000, expansionorder = 150;
-	Int type = 3;
+   // Doub Lx = 20.;//(*Correlation length in x direction*)
+	//Doub Ly = 2.;//(*Correlation length in y direction*)
+	//Int nsamples = 50000, expansionorder = 150;
+	//Int type = 3;
 	KLGalerkinRF* objKLGalerkinRF0 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
     KLGalerkinRF* objKLGalerkinRF1 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
     KLGalerkinRF* objKLGalerkinRF2 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
