@@ -7,9 +7,11 @@ project ("dcproj")
 #target_link_libraries (dcproj Eien3::Eigen)
 # Add source to this project's executable.
 add_executable (dcproj
+src/beam3dtools.cpp src/beam3dtools.h
 src/dcproj.cpp src/dcproj.h
 src/mesh.cpp src/mesh.h
 src/shapequad.cpp src/shapequad.h
+src/shapehexahedron.cpp src/shapehexahedron.h
 src/slopeproject.cpp src/slopeproject.h 
 src/vonmises.cpp src/vonmises.h
 src/druckerprager.cpp src/druckerprager.h
@@ -19,8 +21,10 @@ src/KLGalerkinRF.cpp src/KLGalerkinRF.h
 src/gridmesh.cpp src/gridmesh.h
 src/elastoplasticbase.cpp src/elastoplasticbase.h
 src/elastoplastic2D.cpp src/elastoplastic2D.h
+src/elastoplastic3D.cpp src/elastoplastic3D.h
 src/elastmat2D.cpp src/elastmat2D.h
 src/eigen_unsym.cpp src/eigen_unsym.h
+src/error.cpp src/error.h
 
 src/eigen_sym.h src/cholesky.h src/nr3.h  src/roots.h src/mins_ndim.h  src/ludcmp.h
 )

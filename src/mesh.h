@@ -22,16 +22,16 @@
 #include <Eigen/src/Core/util/DisableStupidWarnings.h>
 #include "material.h"
 #include "shapequad.h"
-
+#include "error.h"
 class mesh
 {
 public:
 
-	mesh(std::vector<std::vector< std::vector<Doub > > > &allcoords, NRmatrix<Doub> &meshnodes, NRmatrix<Int> &meshtopology);
+	mesh(int dim,std::vector<std::vector< std::vector<Doub > > > &allcoords, NRmatrix<Doub> &meshnodes, NRmatrix<Int> &meshtopology);
 
-	mesh(material * mat , std::vector<std::vector< std::vector<Doub > > >& allcoords, NRmatrix<Doub>& meshnodes, NRmatrix<Int>& meshtopology);
+	mesh(int dim, material * mat , std::vector<std::vector< std::vector<Doub > > >& allcoords, NRmatrix<Doub>& meshnodes, NRmatrix<Int>& meshtopology);
 
-	mesh(material* mat, std::vector<std::vector< std::vector<Doub > > >& allcoords, NRmatrix<Doub>& meshnodes, NRmatrix<Int>& meshtopology,MatDoub  HHAT );
+	mesh(int dim, material* mat, std::vector<std::vector< std::vector<Doub > > >& allcoords, NRmatrix<Doub>& meshnodes, NRmatrix<Int>& meshtopology,MatDoub  HHAT );
 
 	mesh(mesh &copy);
 
@@ -39,7 +39,7 @@ public:
 
 	~mesh();
 
-	static void GetElCoords(std::vector<std::vector< std::vector<Doub > > > allcoords, Int el, MatDoub & elcoords);
+    void GetElCoords(std::vector<std::vector< std::vector<Doub > > > allcoords, Int el, MatDoub & elcoords);
 	MatDoub FindSolution(VecDoub coord, MatDoub datatosearch);
 	MatDoub  TransferSolution( mesh &out, MatDoub datatosearch);
 	std::vector<std::vector< std::vector<Doub > > >  GetAllCoords();
@@ -63,7 +63,7 @@ public:
 	material* fmaterial;
 private:
 
-	 
+	 int fdim;
 	 std::vector<std::vector< std::vector<Doub > > > fallcoords;
 	 MatDoub fmeshnodes;
 	 MatInt fmeshtopology;

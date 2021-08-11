@@ -5,32 +5,33 @@
 #include <Eigen/src/Core/util/DisableStupidWarnings.h>
 #include "mesh.h"
 
-mesh::mesh(std::vector<std::vector< std::vector<Doub > > > &allcoords, NRmatrix<Doub> &meshnodes, NRmatrix<Int> &meshtopology)
+mesh::mesh(int dim,std::vector<std::vector< std::vector<Doub > > > &allcoords, NRmatrix<Doub> &meshnodes, NRmatrix<Int> &meshtopology)
 {
 	fallcoords = allcoords;
 	fmeshnodes = meshnodes;
 	fmeshtopology = meshtopology;
+    fdim=dim;
 }
 
-mesh::mesh(material *mat, std::vector<std::vector< std::vector<Doub > > >& allcoords, NRmatrix<Doub>& meshnodes, NRmatrix<Int>& meshtopology)
+mesh::mesh(int dim,material *mat, std::vector<std::vector< std::vector<Doub > > >& allcoords, NRmatrix<Doub>& meshnodes, NRmatrix<Int>& meshtopology)
 {
 	fmaterial = mat;
 	fallcoords = allcoords;
 	fmeshnodes = meshnodes;
 	fmeshtopology = meshtopology;
-
+    fdim=dim;
 
 }
 
 
-mesh::mesh(material* mat, std::vector<std::vector< std::vector<Doub > > >& allcoords, NRmatrix<Doub>& meshnodes, NRmatrix<Int>& meshtopology,MatDoub  HHAT)
+mesh::mesh(int dim,material* mat, std::vector<std::vector< std::vector<Doub > > >& allcoords, NRmatrix<Doub>& meshnodes, NRmatrix<Int>& meshtopology,MatDoub  HHAT)
 {
 	fmaterial = mat;
 	fallcoords = allcoords;
 	fmeshnodes = meshnodes;
 	fmeshtopology = meshtopology;
 	fHHAT = HHAT;
-
+    fdim=dim;
 }
 
 mesh::mesh()
@@ -39,7 +40,7 @@ mesh::mesh()
 
 mesh::mesh(mesh &copy)
 {
-	copy = mesh(fallcoords, fmeshnodes, fmeshtopology);
+	copy = mesh(fdim,fallcoords, fmeshnodes, fmeshtopology);
 }
 
 mesh::~mesh()
@@ -71,15 +72,12 @@ MatInt mesh::GetMeshTopology()
 
 void mesh::GetElCoords(std::vector<std::vector< std::vector<Doub > > > allcoords, Int el, MatDoub & elcoords)
 {
-
-	elcoords.assign(allcoords[el].size(), 2, 0.);
+	elcoords.assign(allcoords[el].size(), fdim, 0.);
 	Int sz = allcoords[el].size();
 	for (Int j = 0; j <sz; j++)
 	{
-		Doub x = allcoords[el][j][0];
-		Doub y = allcoords[el][j][1];
-		elcoords[j][0] = x;
-		elcoords[j][1] = y;
+        for(int i =0;i<fdim;i++)elcoords[j][i]=allcoords[el][j][i];
+
 	}
 }
 
@@ -213,7 +211,7 @@ MatDoub mesh::TransferSolution( mesh &out, MatDoub datatosearch)
 	return outsol;
 }
 
-
+/*
 void mesh::Assemble(MatDoub& KG, MatDoub& Fint, MatDoub& Fbody)
 {
 	//std::vector<std::vector< std::vector<Doub > > > allcoords = fmesh.GetAllCoords();
@@ -300,6 +298,101 @@ void mesh::Assemble(MatDoub& KG, MatDoub& Fint, MatDoub& Fbody)
 	fmaterial->ResetCounter();
 }
 
+*/
+
+void mesh::Assemble(MatDoub& KG, MatDoub& Fint, MatDoub& Fbody)
+{
+	//std::vector<std::vector< std::vector<Doub > > > allcoords = fmesh.GetAllCoords();
+	//MatDoub meshnodes = fmesh.GetMeshNodes();
+	//MatInt meshtopology = fmesh.GetMeshTopology();
+
+	//cout << "all cc" << allcoords[0].size() <<endl;
+
+    int ndof_per_node=fdim;
+	MatDoub ek, efint, efbody, elcoords, eltopology;
+	GetElCoords(fallcoords, 0, elcoords);
+	Int nnodes = fmeshnodes.nrows();
+	Int rows = elcoords.nrows();
+	Int sz = ndof_per_node * nnodes;
+	Int cols = rows;
+	KG.assign(sz, sz, 0.);
+	Fint.assign(sz, 1, 0.);
+	Fbody.assign(sz, 1, 0.);
+	Int nels = fallcoords.size();
+
+	//uglob = Table[
+		//Table[{displacement[[2 topol[[k, j]] - 1]],
+		//	displacement[[2 topol[[k, j]]]]}, { j, 1,
+			//Length[topol[[k]]] }], { k, 1, nels }];
+	NRmatrix<NRvector<Doub>> uglob;
+	uglob.resize(nels, nnodes);
+	for (int i = 0; i < nels; i++)
+	{
+		for (int j = 0; j < nnodes; j++) {
+			uglob[i][j].assign(ndof_per_node, 0.);
+		}
+	}
+
+	for (Int iel = 0; iel < nels; iel++)
+	{
+		for (Int node = 0; node < rows; node++)
+		{
+            for(int idof=0;idof<ndof_per_node;idof++)
+            {
+                uglob[iel][node][idof] = fmaterial->GetSolution()[ndof_per_node * fmeshtopology[iel][node]+idof][0];
+            }
+		}
+	}
+
+	Int fu = 0;
+	for (Int iel = 0; iel < nels; iel++)
+	{
+		if (fHHAT.nrows() != 0)
+		{
+			fhhatvel.resize(fHHAT.ncols());
+			for (Int ivar = 0; ivar < fHHAT.ncols(); ivar++) {
+				fhhatvel[ivar].assign(rows, 1, 0.);
+				for (Int inode = 0; inode < rows; inode++)
+				{
+					fhhatvel[ivar][inode][0] = fHHAT[fmeshtopology[iel][inode]][ivar];
+				}
+			}
+		}
+		fmaterial->SetRandomField(fHHAT);
+		fmaterial->SetRandomFieldLocal(fhhatvel);
+		MatDoub elementdisplace(elcoords.nrows(),ndof_per_node, 0.);
+		for (Int i = 0; i < elcoords.nrows(); i++)for (Int j = 0; j < ndof_per_node; j++)elementdisplace[i][j] = uglob[iel][i][j];
+		GetElCoords(fallcoords, iel, elcoords);
+		fmaterial->CacStiff(ek, efint, efbody, elcoords, elementdisplace);
+		for (Int irow = 0; irow < rows; irow++)
+		{
+			Int rowglob = fmeshtopology[iel][irow];
+			for (Int icol = 0; icol < cols; icol++)
+			{
+				Int colglob = fmeshtopology[iel][icol];
+                int n=ndof_per_node;
+                for(int idof=0;idof<n;idof++)
+                {
+                    for(int jdof=0;jdof<n;jdof++)
+                    {
+                        KG[n * rowglob - idof+n-1][n * colglob- jdof+n-1] += ek[n * irow- idof+n-1][n * icol- jdof+n-1];
+                    }
+
+                }
+
+            }
+
+			int n=ndof_per_node;
+            for(int idof=0;idof<n;idof++)
+            {
+                Fbody[n * rowglob - idof+n-1][0] += efbody[n * irow- idof+n-1][0];
+                Fint[n * rowglob - idof+n-1][0]  += efint[n * irow- idof+n-1][0];
+            }
+		}
+
+	}
+	fmaterial->ResetCounter();
+}
 
 
 

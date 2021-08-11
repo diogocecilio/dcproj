@@ -23,6 +23,7 @@
 #include <fcntl.h>
 #include <string.h>
 #include <ctype.h>
+#include "error.h"
 
 #define _XX_ 0
 #define _YY_ 1
@@ -34,7 +35,7 @@
 using namespace std;
 
 
-
+#define _CHECKBOUNDS_
 #include <Eigen/Core>
 //#include<Eigen/SparseCholesky>
 //#include <Eigen/Dense>
@@ -552,8 +553,9 @@ template <class T>
 void NRmatrix<T>::Mult(const NRmatrix &A, NRmatrix &B)
 {
 	if (this->ncols() != A.nrows()) {
-		cout << "\n incompatible size multiplication " << endl;
-		throw("incompatible size multiplication");
+        std::cout<< " Incompatible size multiplication: " << std::endl;
+        std::cout<< " this->ncols() =  "<< this->ncols()  << "|  A.nrows() = "<< A.nrows() << std::endl;
+        DebugStop();
 	}
 	B.assign(this->nrows(), A.ncols(), 0.);
 	for (int i = 0;i < this->nrows();i++)
@@ -726,7 +728,8 @@ inline T* NRmatrix<T>::operator[](const int i)	//subscripting: pointer to row i
 {
 #ifdef _CHECKBOUNDS_
 	if (i<0 || i >= nn) {
-		throw("NRmatrix subscript out of bounds");
+		std::cout<< "NRmatrix subscript out of bounds" << std::endl;
+        DebugStop();
 	}
 #endif
 	return v[i];
@@ -737,7 +740,8 @@ inline const T* NRmatrix<T>::operator[](const int i) const
 {
 #ifdef _CHECKBOUNDS_
 	if (i<0 || i >= nn) {
-		throw("NRmatrix subscript out of bounds");
+        std::cout<< "NRmatrix subscript out of bounds" << std::endl;
+        DebugStop();
 	}
 #endif
 	return v[i];
@@ -1119,7 +1123,8 @@ inline T & NRtensor<T>::operator[](const int i)	//subscripting
 {
 #ifdef _CHECKBOUNDS_
 	if (i<0 || i >= nn) {
-		throw("NRvector subscript out of bounds");
+        std::cout<< "NRvector subscript out of bounds" << std::endl;
+        DebugStop();
 	}
 #endif
 	return v[i];
@@ -1130,7 +1135,8 @@ inline const T & NRtensor<T>::operator[](const int i) const	//subscripting
 {
 #ifdef _CHECKBOUNDS_
 	if (i<0 || i >= nn) {
-		throw("NRvector subscript out of bounds");
+        std::cout<< "NRvector subscript out of bounds" << std::endl;
+        DebugStop();
 	}
 #endif
 	return v[i];

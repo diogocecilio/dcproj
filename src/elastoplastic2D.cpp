@@ -179,8 +179,12 @@ void elastoplastic2D<YC>::ResetDisplacement()
 //
 //
 template <class YC>
-void elastoplastic2D<YC>::ContributeEig(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint, NRmatrix<Doub>  &efbody, Doub xi, Doub eta, Doub w, NRmatrix<Doub>  elcoords,NRmatrix<Doub>  eldisplace)
+void elastoplastic2D<YC>::ContributeEig(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint, NRmatrix<Doub>  &efbody,NRvector<Doub> ptsw, NRmatrix<Doub>  elcoords, NRmatrix<Doub>  eldisplace)
 {
+    Doub xi,eta,w;
+    xi=ptsw[0];
+    eta=ptsw[1];
+    w=ptsw[2];
 	int type = 1;
 	shapequad objshapes(fOrder, type);
 
@@ -231,7 +235,7 @@ void elastoplastic2D<YC>::ContributeEig(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &ef
 
 	NRtensor<Doub>   epst(0.), epsp(0.), projstress(0.), projstrain(0.), epspeint(0.);
 
-	NRmatrix<Doub>  Dep;
+	NRmatrix<Doub>  Dep,Dept;
 	Doub  projgamma=0.;
 	epst.XX() = ex;epst.YY() = ey;epst.XY() = exy;
 	//epsp = epspsoliternGLOBAL[globalcounter];
@@ -250,9 +254,14 @@ void elastoplastic2D<YC>::ContributeEig(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &ef
 		}
 		fYC.updateatributes(hhat);
 	}
-	//cout << "\n c  = " << fYC.GetCoes() <<endl;
+	cout << "\n c  = "  <<endl;
 
-	fYC.closestpointproj(epst,epsp,projstress,projstrain,Dep,projgamma);
+	fYC.closestpointproj(epst,epsp,projstress,projstrain,Dept,projgamma);
+    Dep.assign(3, 3, 0.);
+    Dep[0][0] = Dept[0][0];Dep[0][1] = Dept[0][1];Dep[0][2] = Dept[0][5];
+    Dep[1][0] = Dept[1][0];Dep[1][1] = Dept[1][1];Dep[1][2] = Dept[1][5];
+    Dep[2][0] = Dept[5][0];Dep[2][1] = Dept[5][1];Dep[2][2] = Dept[5][5];
+
 	if (fhhatvel.size() != 0)
 	{
 		fYC.restoreoriginalatributes();
@@ -292,8 +301,12 @@ void elastoplastic2D<YC>::ContributeEig(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &ef
 }
 
 template <class YC>
-void elastoplastic2D<YC>::Contribute(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint, NRmatrix<Doub>  &efbody, Doub xi, Doub eta, Doub w, NRmatrix<Doub>  elcoords,NRmatrix<Doub>  eldisplace)
+void elastoplastic2D<YC>::Contribute(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint, NRmatrix<Doub>  &efbody,NRvector<Doub> ptsw, NRmatrix<Doub>  elcoords,NRmatrix<Doub>  eldisplace)
 {
+    Doub xi,eta,w;
+    xi=ptsw[0];
+    eta=ptsw[1];
+    w=ptsw[2];
 	int type = 1;
 	shapequad objshapes(fOrder, type);
 
@@ -344,7 +357,7 @@ void elastoplastic2D<YC>::Contribute(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint
 
 	NRtensor<Doub>   epst(0.), epsp(0.), projstress(0.), projstrain(0.), epspeint(0.);
     
-	NRmatrix<Doub>  Dep;
+	NRmatrix<Doub>  Dep,Dept;
 	Doub  projgamma=0.;
 	epst.XX() = ex;epst.YY() = ey;epst.XY() = exy;
 	//epsp = epspsoliternGLOBAL[globalcounter];
@@ -365,7 +378,11 @@ void elastoplastic2D<YC>::Contribute(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint
 	}
 	//cout << "\n c  = " << fYC.GetCoes() <<endl;
 
-	fYC.closestpointproj(epst,epsp,projstress,projstrain,Dep,projgamma);
+	fYC.closestpointproj(epst,epsp,projstress,projstrain,Dept,projgamma);
+    Dep.assign(3, 3, 0.);
+    Dep[0][0] = Dept[0][0];Dep[0][1] = Dept[0][1];Dep[0][2] = Dept[0][5];
+    Dep[1][0] = Dept[1][0];Dep[1][1] = Dept[1][1];Dep[1][2] = Dept[1][5];
+    Dep[2][0] = Dept[5][0];Dep[2][1] = Dept[5][1];Dep[2][2] = Dept[5][5];
 	if (fhhatvel.size() != 0)
 	{
 		fYC.restoreoriginalatributes();
@@ -415,13 +432,15 @@ void elastoplastic2D<YC>::CacStiff(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint, 
 	shape.pointsandweigths(ptsweigths);
 	Int npts = ptsweigths.nrows();
 
+    NRvector<Doub> ptsw(3);
 	for (Int ipt = 0;ipt < npts;ipt++)
 	{
-		xi = ptsweigths[ipt][0];
-		eta = ptsweigths[ipt][1];
-		w = ptsweigths[ipt][2];
+
+		ptsw[0]=ptsweigths[ipt][0];
+		ptsw[1]= ptsweigths[ipt][1];
+		ptsw[2]= ptsweigths[ipt][2];
 		//std::cout << "integration point :" << " xi = " << xi << "  eta = "<<  eta << std::endl;
-		Contribute(ekt, eftint, eftbody, xi, eta, w, elcoords, eldisplace);
+		Contribute(ekt, eftint, eftbody, ptsw, elcoords, eldisplace);
 		ek += ekt;
 		efint += eftint;
 		efbody += eftbody;

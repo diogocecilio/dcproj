@@ -4,7 +4,9 @@
 
 #include "dcproj.h"
 #include "mesh.h"
+#include "elastoplastic3D.h"
 #include <thread>
+#include "beam3dtools.h"
 //#include <boost/thread.hpp>
 //using namespace boost; 
 //#define EIGEN_USE_MKL_ALL
@@ -68,7 +70,7 @@ void myTreadsSRM(int a, int b, slopeproject* slopeobj2,string namefolder3)
 }
 
 
-void mainlinux(int simtype,int comeco,int fim)
+void mainlinux2(int simtype,int comeco,int fim)
 {
     //cout<< "simtype"<< simtype;
 	//string nodestr = "/home/diogo/projects/dcproj/nos-132-c3.txt";
@@ -142,10 +144,12 @@ void mainlinux(int simtype,int comeco,int fim)
 
     int delta = int(nsamples/nthreads);
     int a=0,b=delta;
+    int dim =2;
     for(int i=0;i<nthreads;i++)
     {
         elastoplastic2D< druckerprager >* mat = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
-        mesh* meshs = new mesh(mat, allcoords, meshcoords, meshtopology, hhatinho);
+
+        mesh* meshs = new mesh(dim,mat, allcoords, meshcoords, meshtopology, hhatinho);
         mat->fYC.setup(young, nu, c, phi);
         mat->SetMemory(nglobalpts, sz);
         mat->UpdateBodyForce(bodyforce);
@@ -167,7 +171,7 @@ void mainlinux(int simtype,int comeco,int fim)
 }
 
 
-void mainlinux2(int simtype,int comeco,int fim)
+void mainlinux(int simtype,int comeco,int fim)
 {
     
 
@@ -193,6 +197,7 @@ void mainlinux2(int simtype,int comeco,int fim)
 	//string elsstr = "/home/diogo/projects/dcproj/els-445.txt";
 
 
+    int dim=2;
 	MatDoub hhatinho;
 	MatDoub  meshcoords, elcoords;
 	MatInt meshtopology;
@@ -249,25 +254,25 @@ void mainlinux2(int simtype,int comeco,int fim)
     elastoplastic2D< druckerprager >* mat17 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
     elastoplastic2D< druckerprager >* mat18 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
 	
-	mesh* mesh0 = new mesh(mat0, allcoords, meshcoords, meshtopology, hhatinho);
-    mesh* mesh1 = new mesh(mat1, allcoords, meshcoords, meshtopology, hhatinho);
-    mesh* mesh2 = new mesh(mat2, allcoords, meshcoords, meshtopology, hhatinho);
-    mesh* mesh3 = new mesh(mat3, allcoords, meshcoords, meshtopology, hhatinho);
-    mesh* mesh4 = new mesh(mat4, allcoords, meshcoords, meshtopology, hhatinho);
-    mesh* mesh5 = new mesh(mat5, allcoords, meshcoords, meshtopology, hhatinho);
-    mesh* mesh6 = new mesh(mat6, allcoords, meshcoords, meshtopology, hhatinho);
-    mesh* mesh7 = new mesh(mat7, allcoords, meshcoords, meshtopology, hhatinho);
-    mesh* mesh8 = new mesh(mat8, allcoords, meshcoords, meshtopology, hhatinho);
-    mesh* mesh9 = new mesh(mat9, allcoords, meshcoords, meshtopology, hhatinho);
-	mesh* mesh10 = new mesh(mat10, allcoords, meshcoords, meshtopology, hhatinho);
-    mesh* mesh11 = new mesh(mat11, allcoords, meshcoords, meshtopology, hhatinho);
-    mesh* mesh12 = new mesh(mat12, allcoords, meshcoords, meshtopology, hhatinho);
-    mesh* mesh13 = new mesh(mat13, allcoords, meshcoords, meshtopology, hhatinho);
-    mesh* mesh14 = new mesh(mat14, allcoords, meshcoords, meshtopology, hhatinho);
-    mesh* mesh15 = new mesh(mat15, allcoords, meshcoords, meshtopology, hhatinho);
-    mesh* mesh16 = new mesh(mat16, allcoords, meshcoords, meshtopology, hhatinho);
-    mesh* mesh17 = new mesh(mat17, allcoords, meshcoords, meshtopology, hhatinho);
-    mesh* mesh18 = new mesh(mat18, allcoords, meshcoords, meshtopology, hhatinho);
+	mesh* mesh0 = new mesh(dim,mat0, allcoords, meshcoords, meshtopology, hhatinho);
+    mesh* mesh1 = new mesh(dim,mat1, allcoords, meshcoords, meshtopology, hhatinho);
+    mesh* mesh2 = new mesh(dim,mat2, allcoords, meshcoords, meshtopology, hhatinho);
+    mesh* mesh3 = new mesh(dim,mat3, allcoords, meshcoords, meshtopology, hhatinho);
+    mesh* mesh4 = new mesh(dim,mat4, allcoords, meshcoords, meshtopology, hhatinho);
+    mesh* mesh5 = new mesh(dim,mat5, allcoords, meshcoords, meshtopology, hhatinho);
+    mesh* mesh6 = new mesh(dim,mat6, allcoords, meshcoords, meshtopology, hhatinho);
+    mesh* mesh7 = new mesh(dim,mat7, allcoords, meshcoords, meshtopology, hhatinho);
+    mesh* mesh8 = new mesh(dim,mat8, allcoords, meshcoords, meshtopology, hhatinho);
+    mesh* mesh9 = new mesh(dim,mat9, allcoords, meshcoords, meshtopology, hhatinho);
+	mesh* mesh10 = new mesh(dim,mat10, allcoords, meshcoords, meshtopology, hhatinho);
+    mesh* mesh11 = new mesh(dim,mat11, allcoords, meshcoords, meshtopology, hhatinho);
+    mesh* mesh12 = new mesh(dim,mat12, allcoords, meshcoords, meshtopology, hhatinho);
+    mesh* mesh13 = new mesh(dim,mat13, allcoords, meshcoords, meshtopology, hhatinho);
+    mesh* mesh14 = new mesh(dim,mat14, allcoords, meshcoords, meshtopology, hhatinho);
+    mesh* mesh15 = new mesh(dim,mat15, allcoords, meshcoords, meshtopology, hhatinho);
+    mesh* mesh16 = new mesh(dim,mat16, allcoords, meshcoords, meshtopology, hhatinho);
+    mesh* mesh17 = new mesh(dim,mat17, allcoords, meshcoords, meshtopology, hhatinho);
+    mesh* mesh18 = new mesh(dim,mat18, allcoords, meshcoords, meshtopology, hhatinho);
 
 
 	mat0->fYC.setup(young, nu, c, phi);
@@ -669,7 +674,7 @@ void mainwindows()
 	string elsstr = "D:/DClibrary/meshes/els-132-c3.txt";
     
     
-    
+    int dim =2;
 
 	MatDoub hhatinho;
 	cout << "HI " << endl;
@@ -713,14 +718,14 @@ void mainwindows()
 	elastoplastic2D< druckerprager >* mat8 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
 	elastoplastic2D< druckerprager >* mat9 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
 
-	mesh* mesh2 = new mesh(mat2, allcoords, meshcoords, meshtopology, hhatinho);
-	mesh* mesh3 = new mesh(mat3, allcoords, meshcoords, meshtopology, hhatinho);
-	mesh* mesh4 = new mesh(mat4, allcoords, meshcoords, meshtopology, hhatinho);
-	mesh* mesh5 = new mesh(mat5, allcoords, meshcoords, meshtopology, hhatinho);
-	mesh* mesh6 = new mesh(mat6, allcoords, meshcoords, meshtopology, hhatinho);
-	mesh* mesh7 = new mesh(mat7, allcoords, meshcoords, meshtopology, hhatinho);
-	mesh* mesh8 = new mesh(mat8, allcoords, meshcoords, meshtopology, hhatinho);
-	mesh* mesh9 = new mesh(mat9, allcoords, meshcoords, meshtopology, hhatinho);
+	mesh* mesh2 = new mesh(dim,mat2, allcoords, meshcoords, meshtopology, hhatinho);
+	mesh* mesh3 = new mesh(dim,mat3, allcoords, meshcoords, meshtopology, hhatinho);
+	mesh* mesh4 = new mesh(dim,mat4, allcoords, meshcoords, meshtopology, hhatinho);
+	mesh* mesh5 = new mesh(dim,mat5, allcoords, meshcoords, meshtopology, hhatinho);
+	mesh* mesh6 = new mesh(dim,mat6, allcoords, meshcoords, meshtopology, hhatinho);
+	mesh* mesh7 = new mesh(dim,mat7, allcoords, meshcoords, meshtopology, hhatinho);
+	mesh* mesh8 = new mesh(dim,mat8, allcoords, meshcoords, meshtopology, hhatinho);
+	mesh* mesh9 = new mesh(dim,mat9, allcoords, meshcoords, meshtopology, hhatinho);
 
 	int szdebug = mesh2->GetAllCoords().size();
 
@@ -887,7 +892,8 @@ void createrandomfield()
 
 	elastoplastic2D< druckerprager >* mat0 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
 
-	mesh* mesh0 = new mesh(mat0, allcoords, meshcoords, meshtopology, hhatinho);
+    int dim=2;
+	mesh* mesh0 = new mesh(dim,mat0, allcoords, meshcoords, meshtopology, hhatinho);
 
 	mat0->fYC.setup(young, nu, c, phi);
 	mat0->SetMemory(nglobalpts, sz);
@@ -955,7 +961,8 @@ void mainlinuxserial(int simtype,int comeco,int fim)
 
 	elastoplastic2D< druckerprager >* mat0 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
 
-	mesh* mesh0 = new mesh(mat0, allcoords, meshcoords, meshtopology, hhatinho);
+    int dim=2;
+	mesh* mesh0 = new mesh(dim,mat0, allcoords, meshcoords, meshtopology, hhatinho);
 
 	mat0->fYC.setup(young, nu, c, phi);
 	mat0->SetMemory(nglobalpts, sz);
@@ -1130,6 +1137,15 @@ int main3()
 
 int main(int argc, char *argv[])
 {
+    beam3dtools beam0bj = beam3dtools();
+    beam0bj.SolveElasticBeam();
+     int ndesi =10;
+     Doub dlamb0 =0.1;
+     Doub alphatol= 0.01;
+     int niter=20;
+    beam0bj.IterativeProcess(ndesi,dlamb0,alphatol,niter);
+
+    return 0;
 
 #ifdef __unix__                    /* __unix__ is usually defined by compilers targeting Unix systems */
     //leakcraw();
@@ -1137,7 +1153,7 @@ int main(int argc, char *argv[])
 
    // mainlinuxserial(-1,-1,-1);
     Eigen::initParallel();
-    setNbThreads(16);
+    setNbThreads(1);
     if (argc > 3) {
         mainlinux(atoi(argv[1]),atoi(argv[2]),atoi(argv[3]));
 
@@ -1199,7 +1215,7 @@ void ReadMesh(std::vector<std::vector< std::vector<Doub > > >& allcoords, MatDou
 	else std::cout << "Unable to open file";
 
 	meshtopology.CopyFromVector(topol);
-	//meshtopology.Print();
+	meshtopology.Print();
 
 	std::vector<std::vector<Doub>> coords;
 	string line2, temp2;
@@ -1227,10 +1243,10 @@ void ReadMesh(std::vector<std::vector< std::vector<Doub > > >& allcoords, MatDou
 	else std::cout << "Unable to open file";
 
 	meshcoords.CopyFromVector(coords);
-	//meshcoords.Print();
+	meshcoords.Print();
 
 
-	std::vector<Doub> temp33(2);
+	std::vector<Doub> temp33(3);
 	for (Int i = 0; i < meshtopology.nrows(); i++)
 	{
 		std::vector< std::vector<Doub> > temp22;
@@ -1239,6 +1255,7 @@ void ReadMesh(std::vector<std::vector< std::vector<Doub > > >& allcoords, MatDou
 			Int top = meshtopology[i][j];
 			temp33[0] = meshcoords[top][0];
 			temp33[1] = meshcoords[top][1];
+            temp33[2] = meshcoords[top][2];
 			temp22.push_back(temp33);
 		}
 		allcoords.push_back(temp22);
@@ -1263,7 +1280,7 @@ std::vector<Int> vecstr_to_vecint(std::vector<string> vs)
 std::vector<Doub> vecstr_to_vecdoub(std::vector<string> vs)
 {
 	std::vector<Doub> ret;
-	for (std::vector<string>::iterator it = vs.begin() + 1; it != vs.end() - 1; ++it)
+	for (std::vector<string>::iterator it = vs.begin() +1; it != vs.end() ; ++it)
 	{
 		istringstream iss(*it);
 		Doub temp;

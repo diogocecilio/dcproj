@@ -48,10 +48,7 @@ void druckerprager::closestpointproj(NRtensor<Doub>  epst, NRtensor<Doub>  epsp,
 		projstress = stresstrialtensor;
 		projstrain = epse;
 		Dept = C;
-		Dep.assign(3, 3, 0.);
-		Dep[0][0] = Dept[0][0];Dep[0][1] = Dept[0][1];Dep[0][2] = Dept[0][5];
-		Dep[1][0] = Dept[1][0];Dep[1][1] = Dept[1][1];Dep[1][2] = Dept[1][5];
-		Dep[2][0] = Dept[5][0];Dep[2][1] = Dept[5][1];Dep[2][2] = Dept[5][5];
+        Dep=Dept;
 		projgamma = 0.;
 	}
 	else {
@@ -65,10 +62,7 @@ void druckerprager::closestpointproj(NRtensor<Doub>  epst, NRtensor<Doub>  epsp,
 			projstress = stresstrialtensor;
 			projstrain = epse;
 			Dept = C;
-			Dep.assign(3, 3, 0.);
-			Dep[0][0] = Dept[0][0];Dep[0][1] = Dept[0][1];Dep[0][2] = Dept[0][5];
-			Dep[1][0] = Dept[1][0];Dep[1][1] = Dept[1][1];Dep[1][2] = Dept[1][5];
-			Dep[2][0] = Dept[5][0];Dep[2][1] = Dept[5][1];Dep[2][2] = Dept[5][5];
+            Dep=Dept;
 			projgamma = 0.;
 			
 		}
@@ -96,10 +90,7 @@ void druckerprager::closestpointproj(NRtensor<Doub>  epst, NRtensor<Doub>  epsp,
 				projstress = stresstrialtensor;
 				projstrain = epse;
 				Dept = C;
-				Dep.assign(3, 3, 0.);
-				Dep[0][0] = Dept[0][0];Dep[0][1] = Dept[0][1];Dep[0][2] = Dept[0][5];
-				Dep[1][0] = Dept[1][0];Dep[1][1] = Dept[1][1];Dep[1][2] = Dept[1][5];
-				Dep[2][0] = Dept[5][0];Dep[2][1] = Dept[5][1];Dep[2][2] = Dept[5][5];
+                Dep=Dept;
 				projgamma = 0.;
 				return;
 			}
@@ -123,10 +114,7 @@ void druckerprager::closestpointproj(NRtensor<Doub>  epst, NRtensor<Doub>  epsp,
 					projstress = stresstrialtensor;
 					projstrain = epse;
 					Dept = C;
-					Dep.assign(3, 3, 0.);
-					Dep[0][0] = Dept[0][0];Dep[0][1] = Dept[0][1];Dep[0][2] = Dept[0][5];
-					Dep[1][0] = Dept[1][0];Dep[1][1] = Dept[1][1];Dep[1][2] = Dept[1][5];
-					Dep[2][0] = Dept[5][0];Dep[2][1] = Dept[5][1];Dep[2][2] = Dept[5][5];
+                    Dep=Dept;
 					projgamma = 0.;
 				//	delete chol;
 				//	delete lu;
@@ -152,11 +140,7 @@ void druckerprager::closestpointproj(NRtensor<Doub>  epst, NRtensor<Doub>  epsp,
 
 					temp2 *= 1. / sum;
 					Dept -= temp2;
-
-					Dep.assign(3, 3, 0.);
-					Dep[0][0] = Dept[0][0];Dep[0][1] = Dept[0][1];Dep[0][2] = Dept[0][5];
-					Dep[1][0] = Dept[1][0];Dep[1][1] = Dept[1][1];Dep[1][2] = Dept[1][5];
-					Dep[2][0] = Dept[5][0];Dep[2][1] = Dept[5][1];Dep[2][2] = Dept[5][5];
+                    Dep=Dept;
 					fflag = true;
 					//Dep.Print();
 				}

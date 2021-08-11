@@ -17,12 +17,12 @@ public:
 	//	elastmat2D();
 	//	~elastmat2D();
 	//
-	virtual void Contribute(MatDoub& ek, MatDoub& efint, MatDoub& efbody, Doub xi, Doub eta, Doub w, MatDoub elcoords, MatDoub eldisplace)=0;
+	virtual void Contribute(MatDoub& ek, MatDoub& efint, MatDoub& efbody,NRvector<Doub> ptsw, MatDoub elcoords, MatDoub eldisplace)=0;
 	virtual void CacStiff(MatDoub& ek, MatDoub& efint, MatDoub& efbody, const MatDoub& elcoords, MatDoub eldisplace)=0;
 	virtual void Assemble(std::vector<std::vector< std::vector<Doub > > > allcoords, MatDoub meshnodes, MatInt meshtopology, MatDoub& KG, MatDoub& Fint, MatDoub& Fbody)=0;
 	//virtual void Assemble(MatDoub &KG, MatDoub &Fint, MatDoub &Fbody)=0;
 	virtual void assembleBandN(MatDoub& B, MatDoub& N, const MatDoub& psis, const MatDoub& GradPhi)=0;
-	virtual void assembleConstitutiveMatrix(MatDoub& C, Doub mult)=0;
+	//virtual void assembleConstitutiveMatrix(MatDoub& C, Doub mult)=0;
 	virtual void GetElCoords(std::vector<std::vector< std::vector<Doub > > > allcoords, Int el, MatDoub& elcoords)=0;
 	virtual void DirichletBC(MatDoub& KG, MatDoub& FG, std::vector<int> ids, Int  dir, Int val)=0;
     virtual void DirichletBC(SparseMatrix<double>  &KG, VectorXd &Fint,std::vector<int> ids, Int  dir, Int val)=0;

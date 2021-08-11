@@ -1400,10 +1400,10 @@ void  slopeproject::ReadMesh(std::vector<std::vector< std::vector<Doub > > >& al
 	else std::cout << "Unable to open file";
 
 	meshcoords.CopyFromVector(coords);
-	//meshcoords.Print();
+	meshcoords.Print();
 
 
-	std::vector<Doub> temp33(2);
+	std::vector<Doub> temp33(3);
 	for (Int i = 0; i < meshtopology.nrows(); i++)
 	{
 		std::vector< std::vector<Doub> > temp22;
@@ -1412,6 +1412,7 @@ void  slopeproject::ReadMesh(std::vector<std::vector< std::vector<Doub > > >& al
 			Int top = meshtopology[i][j];
 			temp33[0] = meshcoords[top][0];
 			temp33[1] = meshcoords[top][1];
+            temp33[2] = meshcoords[top][2];
 			temp22.push_back(temp33);
 		}
 		allcoords.push_back(temp22);
@@ -1436,7 +1437,7 @@ std::vector<Int>  slopeproject::vecstr_to_vecint(std::vector<string> vs)
 std::vector<Doub>  slopeproject::vecstr_to_vecdoub(std::vector<string> vs)
 {
 	std::vector<Doub> ret;
-	for (std::vector<string>::iterator it = vs.begin() + 1; it != vs.end() - 1; ++it)
+	for (std::vector<string>::iterator it = vs.begin() ; it != vs.end() ; ++it)
 	{
 		istringstream iss(*it);
 		Doub temp;
@@ -1445,6 +1446,19 @@ std::vector<Doub>  slopeproject::vecstr_to_vecdoub(std::vector<string> vs)
 	}
 	return ret;
 }
+
+/*std::vector<Doub>  slopeproject::vecstr_to_vecdoub(std::vector<string> vs)
+{
+	std::vector<Doub> ret;
+	for (std::vector<string>::iterator it = vs.begin() + 1; it != vs.end() - 1; ++it)
+	{
+		istringstream iss(*it);
+		Doub temp;
+		iss >> temp;
+		ret.push_back(temp);
+	}
+	return ret;
+}*/
 
 std::vector<Doub>  slopeproject::vecstr_to_vecdoub2(std::vector<string> vs)
 {

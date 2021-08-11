@@ -11,6 +11,7 @@ postprocess::~postprocess()
 {
 }
 
+
 void postprocess::PostProcess(mesh &inmesh,const MatDoub & nodalsol, std::vector<std::vector<double>> &sol)
 {
 
@@ -18,7 +19,7 @@ void postprocess::PostProcess(mesh &inmesh,const MatDoub & nodalsol, std::vector
 	MatDoub meshnodes = inmesh.GetMeshNodes();
 	MatInt meshtopology = inmesh.GetMeshTopology();
 	MatDoub elcoords, eltopology, psis, gradpsis, xycoords, psist;
-	mesh::GetElCoords(allcoords, 0, elcoords);
+	inmesh.GetElCoords(allcoords, 0, elcoords);
 	Int rows = elcoords.nrows();
 	Int cols = rows;
 	Int nels = allcoords.size();
@@ -26,7 +27,7 @@ void postprocess::PostProcess(mesh &inmesh,const MatDoub & nodalsol, std::vector
 	shapequad shape = shapequad(2, 1);
 	for (Int iel = 0;iel < nels;iel++)
 	{
-		mesh::GetElCoords(allcoords, iel, elcoords);
+		inmesh.GetElCoords(allcoords, iel, elcoords);
 		for (Doub xi = -1.;xi < 1 - refine;xi += refine)
 		{
 			std::vector<double> soli(3);
