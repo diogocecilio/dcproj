@@ -16,7 +16,7 @@
 #include <mkl.h>
 #define EIGEN_USE_MKL_ALL
 //#include <lapacke.h>
-
+#include "pressurizedhole.h"
 using namespace std;
 
 void ReadMatDoub(MatDoub& matdoub, std::string  file);
@@ -1138,13 +1138,13 @@ int main3()
 int main(int argc, char *argv[])
 {
     beam3dtools beam0bj = beam3dtools();
-    beam0bj.SolveElasticBeam();
-     int ndesi =10;
-     Doub dlamb0 =0.1;
-     Doub alphatol= 0.01;
-     int niter=20;
-    beam0bj.IterativeProcess(ndesi,dlamb0,alphatol,niter);
+    //beam0bj.SolveElasticBeam();
+    //beam0bj.IterativeProcess();
 
+    beam0bj.SolveElasticCube();
+    //pressurizedhole hole0bj = pressurizedhole();
+    //hole0bj.SolveElasticHole();
+    //hole0bj.IterativeProcess();
     return 0;
 
 #ifdef __unix__                    /* __unix__ is usually defined by compilers targeting Unix systems */

@@ -25,7 +25,7 @@ src/elastoplastic3D.cpp src/elastoplastic3D.h
 src/elastmat2D.cpp src/elastmat2D.h
 src/eigen_unsym.cpp src/eigen_unsym.h
 src/error.cpp src/error.h
-
+src/pressurizedhole.cpp src/pressurizedhole.h
 src/eigen_sym.h src/cholesky.h src/nr3.h  src/roots.h src/mins_ndim.h  src/ludcmp.h
 )
 #find_package (Eigen3 3.3.9 REQUIRED NO_MODULE)
