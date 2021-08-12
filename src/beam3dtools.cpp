@@ -17,6 +17,7 @@ beam3dtools::~beam3dtools()
 
 Doub  beam3dtools::computelamda(MatDoub& dwb, MatDoub& dws, MatDoub& dw, Doub& l)
 {
+    Doub dlamb=0.;
 	Int sz = dwb.nrows();
 	Doub aa = 0.;
 	for (Int i = 0; i < sz; i++)aa += dwb[i][0] * dwb[i][0];
@@ -30,7 +31,17 @@ Doub  beam3dtools::computelamda(MatDoub& dwb, MatDoub& dws, MatDoub& dw, Doub& l
 
 	cc -= l * l;
 	Doub delta = bb * bb - 4. * aa * cc;
-	Doub dlamb = (-bb + sqrt(delta)) / (2. * aa);
+
+    if(delta<0)
+    {
+        std::cout<< "a = "<< aa << std::endl;
+        std::cout<< "b = "<< bb << std::endl;
+        std::cout<< "c = "<< cc << std::endl;
+        std::cout<< "delta = "<< delta << std::endl;
+        std::cout << " deta negativo. "<<std::endl;
+        //DebugStop();
+    }
+	dlamb = (-bb + sqrt(delta)) / (2. * aa);
 	return dlamb;
 
 
@@ -45,7 +56,7 @@ std::vector<std::vector<double>>   beam3dtools::IterativeProcess( int ndesi, Dou
     Int sz = 3 * mesh0.GetMeshNodes().nrows();
 	MatDoub KG(sz, sz, 0.), FBODY(sz, 1, 0.), FINT(sz, 1, 0.),FEXT(sz, 1, 0.), ptsweigths;
 
-    FEXT[127 *3 -1][0]=-1.;
+
 
 	mesh0.fmaterial->ResetPlasticStrain();
 	mesh0.fmaterial->ResetDisplacement();
@@ -66,7 +77,7 @@ std::vector<std::vector<double>>   beam3dtools::IterativeProcess( int ndesi, Dou
 
     mesh0.Assemble(KG,FINT, FBODY);
 
-    FBODY.Print();
+    //FBODY.Print();
     R=FEXT;
 	R += FBODY;
 	R *= lamb;
@@ -84,14 +95,16 @@ std::vector<std::vector<double>>   beam3dtools::IterativeProcess( int ndesi, Dou
 	dwbt.Mult(dwb, mult);
 	l0 = sqrt(dlamb0 * dlamb0 * mult[0][0]);
 	l = l0;
-	dlamb = computelamda(dwb, dws, dw, l);
-	lamb = 0;
+	dlamb = 0.1;
+	lamb = 0.1;
 	Doub scalar = 1.5;
-	Doub rtol = 0.5;
+	Doub rtol =0.001;
 
 	cout << " \n SYSTEM SIZE  = " << KG.nrows() << std::endl;
 	Doub rnorm = 10., lambn0=0.;
     Int counter = 0, maxcount = 20;
+
+    FEXT[127 *3 -1][0]=-2.0;
 	do
 	{
 		Doub err1 = 10., err2 = 10., tol = 1.e-5;
@@ -106,31 +119,37 @@ std::vector<std::vector<double>>   beam3dtools::IterativeProcess( int ndesi, Dou
 
             chrono::steady_clock sc;
             auto start = sc.now();     // start timer
-			fmesh->Assemble(KG, FINT, FBODY);
-            R=FEXT;
-            R += FBODY;
+			mesh0.Assemble(KG, FINT, FBODY);
+            FBODY+=FEXT;
+            R = FBODY;
 			R *= lamb;
 			R -= FINT;
 
             InsertBC2(mesh0,  KG,  FBODY);
             InsertBC2(mesh0,  KG,  R);
 
-			SolveEigenSparse(KG, R, dws);
-			SolveEigenSparse(KG, FBODY, dwb);
+			SolveEigen(KG, R, dws);
+			SolveEigen(KG, FBODY, dwb);
 
 			dlamb = computelamda(dwb, dws, dw, l);
 			if (isnan(dlamb) == 1) {
-				std::cout << "NAN" << endl;
+				std::cout << " isnan(dlamb) detected. " << endl;
                 DebugStop();
 			}
+			if(dlamb==0)
+            {
+             //lamb+=0.1;
+            }
+            else{
 			lamb += dlamb;
+            }
 			dww = dwb;
 			dww *= dlamb;
 			dww += dws;
 			dw += dww;
 
 			displace += dww;
-			fmesh->fmaterial->UpdateDisplacement(displace);
+			mesh0.fmaterial->UpdateDisplacement(displace);
 
 			rnorm = R.NRmatrixNorm();
 			Doub normdw = dww.NRmatrixNorm();
@@ -172,7 +191,7 @@ std::vector<std::vector<double>>   beam3dtools::IterativeProcess( int ndesi, Dou
 				}
 			dws.assign(sz, 1, 0.), dwb.assign(sz, 1, 0.), dww.assign(sz, 1, 0.), R.assign(sz, 1, 0.), dw.assign(sz, 1, 0.), R.assign(sz, 1, 0.), FBODY.assign(sz, 1, 0.), FINT.assign(sz, 1, 0.);
 
-			fmesh->Assemble(KG, FINT, FBODY);
+			mesh0.Assemble(KG, FINT, FBODY);
 			R=FEXT;
             R += FBODY;
 			R *= lamb;
@@ -193,7 +212,7 @@ std::vector<std::vector<double>>   beam3dtools::IterativeProcess( int ndesi, Dou
 			l *= Doub(ndesi) / Doub(counter);
 			if (l > 10.)l = 10.;
 			diff2 = fabs(lambn0 - lamb);
-			fmesh->fmaterial->UpdatePlasticStrain();
+			mesh0.fmaterial->UpdatePlasticStrain();
 		}
 
 		counterout++;
@@ -235,6 +254,7 @@ void beam3dtools::CreateMatAndMesh(mesh &getmesh, material &mat)
     int dim=3;
     MatDoub KG,Fint,Fbody;
     NRmatrix<Doub> bodyforce(3,1);
+    bodyforce.assign(3,1,0.);
     bodyforce[1][0]=0.;
     Int order=2;
 
@@ -247,7 +267,7 @@ void beam3dtools::CreateMatAndMesh(mesh &getmesh, material &mat)
 
     elastoplastic3D< vonmises >* mat0 = new elastoplastic3D< vonmises >(bodyforce,order);
 
-	mat0->fYC.setup(20000.,0., 2.1e5);
+	mat0->fYC.setup(200000.,0., 2000);
 	mat0->SetMemory(nglobalpts, sz);
 	mat0->UpdateBodyForce(bodyforce);
 
@@ -317,7 +337,7 @@ void beam3dtools::InsertBC(mesh &mesh0, NRmatrix<Doub> & K, NRmatrix<Doub> & F)
 
     //MatDoub F,u;
     F.assign(F.nrows(),1,0.);
-    F[127*3-1][0]=-1.;
+    F[127*3-1][0]=-2.;
 }
 
 void beam3dtools::SolveElasticBeam()

@@ -280,6 +280,7 @@ void elastoplastic3D<YC>::Contribute(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint
 	//ef = (Transpose[BB].stress) weight DetJ;
 	//ef2 = (Transpose[NShapes].{0, -bodyforce}) weight DetJ;
 	BT.Mult(stress, efint);
+    //fbodyforce.Print();
 	NT.Mult(fbodyforce, efbody);
 	efint *= w*DetJ;
 	efbody *= w*DetJ;
