@@ -166,6 +166,7 @@ void beam3dtools::CreateMatAndMeshCube(mesh&getmesh, material &mat)
 	mat0->UpdateBodyForce(bodyforce);
 
     mesh* mesh0 = new mesh(dim,mat0, allcoords, meshcoords, meshtopology);
+
     getmesh=*mesh0;
     mat =*mat0;
 }
@@ -204,6 +205,8 @@ void beam3dtools::CreateMatAndMesh(mesh &getmesh, material &mat)
     mesh* mesh0 = new mesh(dim,mat0, allcoords, meshcoords, meshtopology);
     getmesh=*mesh0;
     mat =*mat0;
+
+
 }
 
 
@@ -314,6 +317,12 @@ void beam3dtools::SolveElasticCube()
     SolveEigen( KG, Fint, u);
    // u.Print();
     std::cout << "Displace = " <<u[5*3-1][0] << std::endl;
+
+   // Int dimension=3;
+   // VTKGraphMesh vtkobj(&mesh0,dimension,u);
+
+   // vtkobj.DrawSolution( 1,  0.);
+
 }
 
 void beam3dtools::SolveElasticBeam()
@@ -330,6 +339,12 @@ void beam3dtools::SolveElasticBeam()
 
     NRmatrix<Doub> u;
     SolveEigen( KG, Fint, u);
+
+    //string beamstr="beam";
+    //VTKGraphMesh vtkobj(&mesh0,3,u,beamstr);
+
+    //vtkobj.DrawSolution( 1,  0.);
+
     u.Print();
     std::cout << "Displace = " <<u[127*3-1][0] << std::endl;
 }

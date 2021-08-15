@@ -64,6 +64,7 @@ MatInt mesh::GetMeshTopology()
 	return fmeshtopology;
 }
 
+
 //material mesh::GetMaterial()
 //{
 //	return *fmaterial;

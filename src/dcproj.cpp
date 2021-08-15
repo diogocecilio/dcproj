@@ -7,6 +7,7 @@
 #include "elastoplastic3D.h"
 #include <thread>
 #include "beam3dtools.h"
+
 //#include <boost/thread.hpp>
 //using namespace boost; 
 //#define EIGEN_USE_MKL_ALL
@@ -1137,15 +1138,16 @@ int main3()
 
 int main(int argc, char *argv[])
 {
-    beam3dtools beam0bj = beam3dtools();
-    //beam0bj.SolveElasticBeam();
+
+   // beam3dtools beam0bj = beam3dtools();
+   // beam0bj.SolveElasticBeam();
     //beam0bj.IterativeProcess();
 
-    beam0bj.SolveElasticCube();
+    //beam0bj.SolveElasticCube();
     //pressurizedhole hole0bj = pressurizedhole();
     //hole0bj.SolveElasticHole();
     //hole0bj.IterativeProcess();
-    return 0;
+    //return 0;
 
 #ifdef __unix__                    /* __unix__ is usually defined by compilers targeting Unix systems */
     //leakcraw();

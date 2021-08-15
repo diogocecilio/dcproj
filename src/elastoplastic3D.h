@@ -78,6 +78,7 @@ public:
 	{
 		return fbodyforce;
 	}
+	virtual NRvector<NRtensor<Doub> > GetPlasticStrain();
 //
 //
 private:

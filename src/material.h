@@ -47,6 +47,7 @@ public:
 	virtual void ResetMat()=0;
 	virtual void ResetMemory()=0;
 	virtual NRmatrix<Doub> GetSolution() = 0;
+    virtual NRvector<NRtensor<Doub> > GetPlasticStrain()=0;
 	virtual void SetMatConstants(NRvector<Doub>& consts)=0;
 	virtual void GetMatConstants(NRvector<Doub>& consts) = 0;
 	virtual void ResetCounter() = 0;

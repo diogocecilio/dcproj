@@ -8,6 +8,7 @@
 #include "mesh.h"
 #include "elastoplastic3D.h"
 #include <chrono>
+//#include "vtkmesh.h"
 //using Eigen::MatrixXd;
 using namespace Eigen;
 class beam3dtools

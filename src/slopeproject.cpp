@@ -3,11 +3,11 @@
 
 #include "slopeproject.h"
 #include <chrono>
-
+class VTKGraphMesh;
 #ifdef _WIN32    /* _Win32 is usually defined by compilers targeting 32 or   64 bit Windows systems */
 #include <direct.h>
 #endif
-
+//#include "vtkmesh.h"
 slopeproject::slopeproject()
 {
 
@@ -894,6 +894,17 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 			if (l > 10.)l = 10.;
 			diff2 = fabs(lambn0 - lamb);
 			fmesh->fmaterial->UpdatePlasticStrain();
+            std::vector<string> scalar_names;
+            std::vector<string> vector_names;
+          //  TPZStack<std::string> scalar_names,vector_names, tensor_names;
+            vector_names.push_back("Displacement");
+            vector_names.push_back("Strain");
+            vector_names.push_back("SqrtJ2(EPSP)");
+            vector_names.push_back("Stress");
+            Int dim=2;
+            string slopestr="xslope";
+            VTKGraphMesh vtkobj(fmesh,dim,scalar_names,vector_names,slopestr);
+            vtkobj.DrawSolution( counterout, counter);
 		}
 
 		counterout++;

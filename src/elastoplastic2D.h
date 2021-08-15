@@ -63,6 +63,7 @@ public:
 	void ResetMat();
 	void ResetMemory();
 	NRmatrix<Doub> GetSolution();
+    NRvector<NRtensor<Doub> > GetPlasticStrain();
 
 	void ResetCounter()
 	{

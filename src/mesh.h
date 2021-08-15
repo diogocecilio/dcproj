@@ -45,6 +45,7 @@ public:
 	std::vector<std::vector< std::vector<Doub > > >  GetAllCoords();
 	MatDoub GetMeshNodes();
 	MatInt GetMeshTopology();
+    MatInt GetMeshTopologyVTK();
 	void Assemble(MatDoub& KG, MatDoub& Fint, MatDoub& Fbody);
     void Assemble(SparseMatrix<double>  &KG, VectorXd &Fint, VectorXd &Fbody);
 

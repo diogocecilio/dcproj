@@ -159,6 +159,13 @@ void elastoplastic2D<YC>::ResetPlasticStrain()
 
 }
 
+
+template <class YC>
+NRvector<NRtensor<Doub> >   elastoplastic2D<YC>::GetPlasticStrain()
+{
+	return fepspvec;
+}
+
 template <class YC>
 void elastoplastic2D<YC>::ResetMat()
 {

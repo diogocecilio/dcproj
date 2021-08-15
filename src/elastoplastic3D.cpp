@@ -131,6 +131,12 @@ void elastoplastic3D<YC>::ResetPlasticStrain()
 }
 
 template <class YC>
+NRvector<NRtensor<Doub> >   elastoplastic3D<YC>::GetPlasticStrain()
+{
+	return fepspvec;
+}
+
+template <class YC>
 void elastoplastic3D<YC>::ResetMat()
 {
 	fglobalcounter = 0;
