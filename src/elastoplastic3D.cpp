@@ -489,6 +489,13 @@ void elastoplastic3D<YC>::PostProcessIntegrationPointVar(std::vector<std::vector
 }
 
 template <class YC>
+void elastoplastic3D<YC>::PostProcessStrain(mesh * inmesh, NRvector<NRvector<NRtensor<Doub>>> &sol)
+{
+    std::cout<< "Not Implemented." << std::endl;
+    DebugStop();
+}
+
+template <class YC>
 void elastoplastic3D<YC>::Assemble(std::vector<std::vector< std::vector<Doub > > > allcoords, NRmatrix<Doub>  meshnodes, MatInt meshtopology, NRmatrix<Doub>  &KG, NRmatrix<Doub>  &Fint,NRmatrix<Doub>  &Fbody)
 {
     std::cout<< "Not Implemented." << std::endl;
@@ -506,6 +513,20 @@ template <class YC>
 NRmatrix<Doub>  elastoplastic3D<YC>::GetSolution()
 {
 	return fdisplace;
+}
+
+template <class YC>
+void elastoplastic3D<YC>::ComputeSolAndDSol(mesh * inmesh,NRmatrix<Doub>&sol,NRmatrix<Doub>&dsol)
+{
+    std::cout<< "Not Implemented." << std::endl;
+    DebugStop();
+}
+
+template <class YC>
+void elastoplastic3D<YC>::ComputeSolAndDSol(mesh * inmesh,NRvector<NRmatrix<Doub>>&sol,NRvector<NRmatrix<Doub>>&dsol)
+{
+    std::cout<< "Not Implemented." << std::endl;
+    DebugStop();
 }
 
 

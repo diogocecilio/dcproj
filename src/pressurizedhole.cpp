@@ -1,5 +1,6 @@
 #include "pressurizedhole.h"
-
+#include "vtkmesh.h"
+//class VTKGraphMesh;
 pressurizedhole::pressurizedhole()
 {
 
@@ -89,6 +90,17 @@ void  pressurizedhole::IterativeProcess()
 		counterout++;
 		solpost[iload][0] = fabs(u[0][0]);
 		solpost[iload][1] = fabs(fac[iload] * finalload);
+        std::vector<string> scalar_names;
+        std::vector<string> vector_names;
+        //  TPZStack<std::string> scalar_names,vector_names, tensor_names;
+        vector_names.push_back("Displacement");
+        vector_names.push_back("Strain");
+        //vector_names.push_back("SqrtJ2(EPSP)");
+        //vector_names.push_back("Stress");
+        Int dim=2;
+        string slopestr="pressurizedring";
+        VTKGraphMesh vtkobj(&mesh0,dim,scalar_names,vector_names,slopestr);
+        vtkobj.DrawSolution( counterout, counter);
 
 	}
 
@@ -99,6 +111,9 @@ void  pressurizedhole::IterativeProcess()
     MatInt meshtopology=mesh0.GetMeshTopology();
     MatDoub meshnodes=mesh0.GetMeshNodes();
 	mesh0.fmaterial->PostProcess(allcoords,meshnodes,meshtopology, u, solx, soly);
+    NRmatrix<Doub> sol,dsol;
+    mesh0.fmaterial->ComputeSolAndDSol(&mesh0,sol,dsol);
+
 	std::ofstream file("soly.txt");
 	OutPutPost(soly, file);
 
@@ -116,6 +131,11 @@ void pressurizedhole::CreateMatAndMesh(mesh &getmesh, material &mat)
 	MatInt meshtopology;
 	std::vector<std::vector<std::vector<Doub>>> allcoords;
 	ReadMesh(allcoords, meshcoords, meshtopology, elsstr, nodestr);
+
+    std::ofstream filemesh1("meshcoords.txt");
+	OutPutPost(meshcoords, filemesh1);
+	std::ofstream filemesh2("meshtopology.txt");
+	OutPutPost(meshtopology, filemesh2);
 
     int dim=2;
     MatDoub KG,Fint,Fbody;

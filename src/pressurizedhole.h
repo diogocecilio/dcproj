@@ -1,4 +1,5 @@
 #pragma once
+
 #include "nr3.h"
 #include <math.h>
 #include <cmath>
@@ -9,6 +10,7 @@
 #include "elastoplastic2D.h"
 #include <chrono>
 #include "gridmesh.h"
+
 //using Eigen::MatrixXd;
 using namespace Eigen;
 class pressurizedhole
@@ -41,6 +43,21 @@ public:
     //constcoord[3] // specify with 1 in the fixed direction
      void  FindIds(NRvector<double> constcoorddata,NRvector<int> constcoord, std::vector<std::vector< std::vector<Doub > > >& allcoords, MatInt& meshtopology, std::vector<int>& ids);
 
+
+    template <class T>
+    void OutPutPost(NRmatrix<T>& postdata, std::ofstream& file)
+    {
+        file.clear();
+        for (Int i = 0; i < postdata.nrows(); i++)
+        {
+            for (Int j = 0; j < postdata.ncols(); j++)
+            {
+                file << postdata[i][j] << " ";
+            }
+            file << endl;
+        }
+        file.close();
+    }
 
     void OutPutFile(MatDoub & postdata, std::ofstream &file)
     {

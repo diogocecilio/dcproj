@@ -48,6 +48,8 @@ public:
     MatInt GetMeshTopologyVTK();
 	void Assemble(MatDoub& KG, MatDoub& Fint, MatDoub& Fbody);
     void Assemble(SparseMatrix<double>  &KG, VectorXd &Fint, VectorXd &Fbody);
+    void  FindIds(NRvector<double> constcoorddata,NRvector<int> constcoord, std::vector<int>& ids);
+
 
 	inline void SetHhat(NRmatrix<Doub> HHAT)
 	{

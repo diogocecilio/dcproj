@@ -4,7 +4,7 @@
 #include "druckerprager.h"
 #include "elastoplasticbase.h"
 //#include "mesh.h"
-
+class mesh;
 
 class material
 {
@@ -32,7 +32,7 @@ public:
 	//
 	virtual void PostProcess(std::vector<std::vector< std::vector<Doub > > > allcoords, MatDoub meshnodes, MatInt meshtopology, const MatDoub& nodalsol, std::vector<std::vector<double>>& solx, std::vector<std::vector<double>>& soly)=0;
 	virtual void PostProcess(std::vector<std::vector< std::vector<Doub > > > allcoords, MatDoub meshnodes, MatInt meshtopology, Int var, const MatDoub& nodalsol, std::vector<std::vector<double>>& sol)=0;
-
+    virtual void PostProcessStrain(mesh * inmesh, NRvector<NRvector<NRtensor<Doub>>> &sol)=0;
 	virtual void PostProcessIntegrationPointVar(std::vector<std::vector< std::vector<Doub > > > allcoords, MatDoub meshnodes, MatInt meshtopology, const MatDoub& nodalsol, std::vector<std::vector<double>>& sol)=0;
 
 	//void SetMemory(MatDoub displace, NRvector<TensorDoub> epspvec, NRvector<TensorDoub>  epspsolitern, Int globalcounter);
@@ -54,6 +54,8 @@ public:
 	virtual void SetRandomFieldLocal(NRvector<MatDoub>  hhatvel)=0;
 	//virtual elastoplasticbase GetYieldCriterion()=0;
 	virtual MatDoub GetBodyForce() =0;
+    virtual void ComputeSolAndDSol(mesh * inmesh,NRmatrix<Doub>&sol,NRmatrix<Doub>&dsol)=0;
+    virtual void ComputeSolAndDSol(mesh * inmesh,NRvector<NRmatrix<Doub>>&sol,NRvector<NRmatrix<Doub>>&dsol)=0;
 	//virtual void GetMaterialRandomField()=0;
 
 	//MatDoub fHHAT;

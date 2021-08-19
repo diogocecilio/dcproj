@@ -4,6 +4,8 @@
 
 #include "material.h"
 #include "shapequad.h"
+#include "mesh.h"
+#include "error.h"
 
 using namespace std;
 
@@ -48,6 +50,10 @@ public:
 	void PostProcess(std::vector<std::vector< std::vector<Doub > > > allcoords, NRmatrix<Doub>  meshnodes, MatInt meshtopology, const NRmatrix<Doub>  & nodalsol, std::vector<std::vector<double>> &solx, std::vector<std::vector<double>> &soly);
     void PostProcess(std::vector<std::vector< std::vector<Doub > > > allcoords, NRmatrix<Doub>  meshnodes, MatInt meshtopology, Int var,const NRmatrix<Doub>  & nodalsol, std::vector<std::vector<double>> &sol);
 
+    void PostProcessStrain(mesh * inmesh,NRvector<NRvector<NRtensor<Doub>>> &sol);
+
+  //  void PostProcess(std::vector<std::vector< std::vector<Doub > > > allcoords, NRmatrix<Doub>  meshnodes, MatInt meshtopology, Int var,const NRmatrix<Doub>  & nodalsol, std::vector<std::vector<double>> &sol);
+
 	void PostProcessIntegrationPointVar(std::vector<std::vector< std::vector<Doub > > > allcoords, NRmatrix<Doub>  meshnodes, MatInt meshtopology, const NRmatrix<Doub>  & nodalsol, std::vector<std::vector<double>> &sol);
 
 	//void SetMemory(MatDoub displace, NRvector<TensorDoub> epspvec, NRvector<TensorDoub>  epspsolitern, Int globalcounter);
@@ -64,6 +70,10 @@ public:
 	void ResetMemory();
 	NRmatrix<Doub> GetSolution();
     NRvector<NRtensor<Doub> > GetPlasticStrain();
+    void  ComputeStrain(mesh * inmesh,NRmatrix<Doub>  elcoords, NRmatrix<Doub>  eldisplace, NRvector<Doub> ptsw,NRtensor<Doub> &straintensor,Int &index);
+
+    void ComputeSolAndDSol(mesh * inmesh,NRmatrix<Doub>&sol,NRmatrix<Doub>&dsol);
+    void ComputeSolAndDSol(mesh * inmesh,NRvector<NRmatrix<Doub>>&sol,NRvector<NRmatrix<Doub>>&dsol);
 
 	void ResetCounter()
 	{
@@ -92,6 +102,31 @@ public:
 	}
 //
 //
+Int getIndex(vector<int> indexvec, int inode)
+{
+    Int id;
+    std::vector<int>::iterator it = std::find(indexvec.begin(), indexvec.end(), inode);
+    if (it != indexvec.end() || indexvec.size()!=0)
+    {
+        id = std::distance(indexvec.begin(), it);
+        //std::cout << "Element Found" << std::endl;
+    }else
+    {
+        id=Int(10e12);
+    }
+    return id;
+}
+
+void deleteduplicates(std::vector<int> &v)
+{
+    auto end = v.end();
+    for (auto it = v.begin(); it != end; ++it) {
+        end = std::remove(it + 1, end, *it);
+    }
+
+    v.erase(end, v.end());
+}
+
 private:
 
 	NRmatrix<Doub>  fbodyforce;

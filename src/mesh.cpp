@@ -73,11 +73,11 @@ MatInt mesh::GetMeshTopology()
 
 void mesh::GetElCoords(std::vector<std::vector< std::vector<Doub > > > allcoords, Int el, MatDoub & elcoords)
 {
-	elcoords.assign(allcoords[el].size(), fdim, 0.);
+	elcoords.assign(allcoords[el].size(), 3, 0.);
 	Int sz = allcoords[el].size();
 	for (Int j = 0; j <sz; j++)
 	{
-        for(int i =0;i<fdim;i++)elcoords[j][i]=allcoords[el][j][i];
+        for(int i =0;i<3;i++)elcoords[j][i]=allcoords[el][j][i];
 
 	}
 }
@@ -326,10 +326,10 @@ void mesh::Assemble(MatDoub& KG, MatDoub& Fint, MatDoub& Fbody)
 		//	displacement[[2 topol[[k, j]]]]}, { j, 1,
 			//Length[topol[[k]]] }], { k, 1, nels }];
 	NRmatrix<NRvector<Doub>> uglob;
-	uglob.resize(nels, nnodes);
+	uglob.resize(nels, rows);
 	for (int i = 0; i < nels; i++)
 	{
-		for (int j = 0; j < nnodes; j++) {
+		for (int j = 0; j < rows; j++) {
 			uglob[i][j].assign(ndof_per_node, 0.);
 		}
 	}
@@ -427,10 +427,10 @@ tripletList.reserve(sz*sz);
 		//	displacement[[2 topol[[k, j]]]]}, { j, 1,
 			//Length[topol[[k]]] }], { k, 1, nels }];
 	NRmatrix<NRvector<Doub>> uglob;
-	uglob.resize(nels, nnodes);
+	uglob.resize(nels, rows);
 	for (int i = 0; i < nels; i++)
 	{
-		for (int j = 0; j < nnodes; j++) {
+		for (int j = 0; j < rows; j++) {
 			uglob[i][j].assign(2, 0.);
 		}
 	}
@@ -518,6 +518,67 @@ tripletList.reserve(sz*sz);
 	fmaterial->ResetCounter();
 }
 
+void  mesh::FindIds(NRvector<double> constcoorddata,NRvector<int> constcoord, std::vector<int> & ids)
+{
+     std::vector<std::vector< std::vector<Doub > > > allcoords =fallcoords;
+     MatInt meshtopology = fmeshtopology;
+ //constcoorddata vector containig info about face to search id. It must contain any coodinate locate in the in the face
+	MatDoub elcoords;
+	int nels = allcoords.size();
+	GetElCoords(allcoords, 0, elcoords);
+	Int nnodes = elcoords.nrows();
+    int sum=0;
+    //constcoord.size() = 1 face
+    //constcoord.size() = 2 linha
+    //constcoord.size() = 3 pontos
+
+    std::vector<int> dirs;
+    for(int iconst=0;iconst<constcoord.size();iconst++)
+    {
+        sum+=constcoord[iconst];
+        if(constcoord[iconst]==1)dirs.push_back(iconst);
+
+    }
+    for (Int iel = 0; iel < nels; iel++)
+    {
+        GetElCoords(allcoords, iel, elcoords);
+        for (Int inode = 0; inode < nnodes; inode++)
+        {
+
+            if(sum==1)
+            {
+                if(fabs(elcoords[inode][dirs[0]] - constcoorddata[dirs[0]])<1.e-4  )
+                {
+                        ids.push_back(meshtopology[iel][inode]);
+                }
+            }else if (sum==2)
+            {
+                if(fabs(elcoords[inode][dirs[0]] - constcoorddata[dirs[0]])<1.e-4 && fabs(elcoords[inode][dirs[1]] - constcoorddata[dirs[1]])<1.e-4 )
+                {
+                    ids.push_back(meshtopology[iel][inode]);
+                }
+            }
+            else if (sum==3)
+            {
+                //elcoords.Print();
+                if(fabs(elcoords[inode][dirs[0]] - constcoorddata[dirs[0]])<1.e-4 && fabs(elcoords[inode][dirs[1]] - constcoorddata[dirs[1]])<1.e-4 && fabs(elcoords[inode][dirs[2]] - constcoorddata[dirs[2]])<1.e-4)
+                {
+                    ids.push_back(meshtopology[iel][inode]);
+                }
+            }
+
+
+        }
+
+
+    }
+
+    if(ids.size()>0)
+    {
+        sort(ids.begin(), ids.end());
+        ids.erase(unique(ids.begin(), ids.end()), ids.end());
+    }
+}
 
 
 

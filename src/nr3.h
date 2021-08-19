@@ -172,6 +172,8 @@ public:
 };
 
 
+
+
 template <class T>
 NRvector<T>::NRvector() : nn(0), v(NULL) {}
 
@@ -943,6 +945,7 @@ public:
 	NRtensor & operator+(const NRtensor &rhs);	//assignment
 	NRtensor & operator-(const NRtensor &rhs);	//assignment
 	NRtensor & operator*=(const T &multipl);
+    NRtensor& operator+=(const NRtensor &rhs);
 	typedef T value_type; // make T available externally
 	inline T & operator[](const int i);	//i'th element
 	inline const T & operator[](const int i) const;
@@ -1115,6 +1118,14 @@ template <class T>
 NRtensor<T> & NRtensor<T>::operator*=(const T &multipl) {
 	int i;
 	for (i = 0; i < 6; i++)v[i] *= multipl;
+	return *this;
+}
+
+
+template <class T>
+NRtensor<T> & NRtensor<T>::operator+=(const NRtensor<T> &rhs) {
+	int i;
+	for (i = 0; i < 6; i++)v[i] += rhs[i];
 	return *this;
 }
 

@@ -159,11 +159,11 @@ void elastoplastic2D<YC>::ResetPlasticStrain()
 
 }
 
-
+//Return the last converged plastic deformation
 template <class YC>
 NRvector<NRtensor<Doub> >   elastoplastic2D<YC>::GetPlasticStrain()
 {
-	return fepspvec;
+	return fepspsolitern;
 }
 
 template <class YC>
@@ -306,6 +306,8 @@ void elastoplastic2D<YC>::ContributeEig(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &ef
     efint.FromEigen(efinteig);
 
 }
+
+
 
 template <class YC>
 void elastoplastic2D<YC>::Contribute(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint, NRmatrix<Doub>  &efbody,NRvector<Doub> ptsw, NRmatrix<Doub>  elcoords,NRmatrix<Doub>  eldisplace)
@@ -1087,6 +1089,7 @@ void elastoplastic2D<YC>::PostProcess(std::vector<std::vector< std::vector<Doub 
 	}
 }
 
+
 template <class YC>
 //void elastoplastic2D<YC>::PostProcessIntegrationPointVar(mesh & inmesh, const MatDoub & nodalsol, std::vector<std::vector<double>> &sol)
 void elastoplastic2D<YC>::PostProcessIntegrationPointVar(std::vector<std::vector< std::vector<Doub > > > allcoords, NRmatrix<Doub>  meshnode, MatInt meshtopology, const NRmatrix<Doub>  & nodalsol, std::vector<std::vector<double>> &sol)
@@ -1126,6 +1129,290 @@ void elastoplastic2D<YC>::PostProcessIntegrationPointVar(std::vector<std::vector
 
 		}
 	}
+}
+
+NRmatrix<Doub> debug;
+Int counts=0;
+template <class YC>
+//void elastoplastic2D<YC>::PostProcess(mesh & inmesh,Int var,const MatDoub & nodalsol, std::vector<std::vector<double>> &sol)
+void elastoplastic2D<YC>::PostProcessStrain(mesh * inmesh,  NRvector<NRvector<NRtensor<Doub>>> &sol )
+{
+    Doub xi,eta;
+    Int ndof_per_node =2;
+    std::vector<std::vector< std::vector<Doub > > > allcoords;
+    NRmatrix<Doub>  meshnode;
+    MatInt meshtopology;
+    allcoords = inmesh->GetAllCoords();
+    meshnode=inmesh->GetMeshNodes();
+    meshtopology=inmesh->GetMeshTopology();
+	int type = 1;
+	shapequad objshapes(fOrder, type);
+	NRmatrix<Doub>  elcoords, eltopology, psis, gradpsis, xycoords, psist,ptsweigths,GradPsi;
+
+	shapequad shape = shapequad(fOrder, 1);
+	shape.pointsandweigths(ptsweigths);
+    NRmatrix<Doub> basenodes= shape.GetBaseNodes();
+
+	GetElCoords(allcoords, 0, elcoords);
+	Int rows = elcoords.nrows();
+	Int cols = rows;
+	Int nels = allcoords.size();
+
+    NRvector<NRvector<NRtensor<Doub>>> solutionbyel(nels);
+    Int nnodes = meshnode.nrows();
+    NRmatrix<NRvector<Doub>> uglob;
+	uglob.resize(nels, rows);
+
+    NRtensor<Doub> straintensor;
+    NRvector<Doub> ptsw(3);
+    std::vector<Int> indexvec;
+	for (Int iel = 0;iel < nels;iel++)
+	{
+
+		GetElCoords(allcoords, iel, elcoords);
+        Int elnodes = elcoords.nrows();
+        solutionbyel[iel].resize(elnodes);
+         NRmatrix<Doub> elementdisplace(elnodes,ndof_per_node);
+
+
+        for(Int inode=0;inode<elnodes;inode++)
+        {
+            Int index=meshtopology[iel][inode];
+
+            elementdisplace[inode][0] = GetSolution()[ndof_per_node * index +0][0];//ux
+            elementdisplace[inode][1] = GetSolution()[ndof_per_node * index +1][0];//uy
+            Int nodeid;
+            for(Int ibase=0;ibase<basenodes.nrows();ibase++)
+            {
+                ptsw[0]=basenodes[ibase][0];
+                ptsw[1]=basenodes[ibase][1];
+                ptsw[2]=0.;
+                ComputeStrain(inmesh,elcoords, elementdisplace,ptsw,straintensor,index);
+                solutionbyel[iel][inode]+=straintensor;
+            }
+            if(index==266)
+            {
+                std::cout << "iel = " <<iel<< std::endl;
+                std::cout << "inode = " <<inode<< std::endl;
+                std::cout << "index = " <<index<< std::endl;
+                std::cout << "basenodes" <<std::endl;
+                std::cout << "xi = "<< ptsw[0] << " eta = "<< ptsw[1]<<std::endl;
+                std::cout << "elcoords" <<std::endl;
+                elcoords.Print();
+                std::cout << "stress" <<std::endl;
+                solutionbyel[iel][inode].Print();
+            }
+            //indexvec.push_back(nodeid);
+
+        }
+	}
+    sol=solutionbyel;
+/*
+    for (Int iel = 0;iel < nels;iel++)
+	{
+        std::cout<< "iel = "<<iel<<std::endl;
+
+        Int elnodes = solutionbyel[iel].size();
+
+        for(Int inode=0;inode<elnodes;inode++)
+        {
+            solutionbyel[iel][inode].Print();
+        }
+        std::cout<< endl;
+	}
+	*/
+
+	//debug.Print();
+	//deleteduplicates(indexvec);
+
+	//Int id;
+ 	//for(Int inode=0;inode<nnodes;inode++)
+    //{
+     //   id = getIndex(indexvec,inode);
+     //   sol[inode]=soltemp[id];
+    //}
+
+
+}
+
+template <class YC>
+void elastoplastic2D<YC>::ComputeSolAndDSol(mesh * inmesh,NRmatrix<Doub>&sol,NRmatrix<Doub>&dsol)
+{
+    Doub xi,eta,w;
+    std::vector<std::vector< std::vector<Doub > > >  allcoords = inmesh->GetAllCoords();
+    NRmatrix<Int> meshtopology = inmesh->GetMeshTopology();
+    NRmatrix<Doub> nodalsol = GetSolution();
+
+	NRmatrix<Doub>  elcoords, psis, gradpsis, xycoords, psist,InvJac(2,2),Jac,gradphi,ptsweigths;
+	GetElCoords(allcoords, 0, elcoords);
+	Int nels = allcoords.size();
+    Int nvars = 2;
+    Int sz=nodalsol.nrows();
+    sol.assign(sz,1,0.),dsol.assign(sz,2,0.);
+
+    shapequad objshapes(2, 1);
+	objshapes.pointsandweigths(ptsweigths);
+    Int npts=ptsweigths.nrows();
+	for (Int iel = 0;iel < nels;iel++)
+	{
+        for(Int ipt=0;ipt<npts;ipt++)
+        {
+            xi=ptsweigths[ipt][0];
+            eta=ptsweigths[ipt][1];
+            w=ptsweigths[ipt][2];
+            objshapes.shapes(psis, gradpsis, xi, eta);
+            psis.Transpose(psist);
+            gradpsis.Mult(elcoords, Jac);
+            Doub DetJ = -Jac[0][1] * Jac[1][0] + Jac[0][0] * Jac[1][1];
+            if(DetJ<=0)
+            {
+                std::cout<< "DetJ<0 "<<std::endl;
+                DebugStop();
+            }
+
+            InvJac[0][0] = Jac[1][1] / DetJ;   InvJac[0][1] = -Jac[0][1] / DetJ;
+            InvJac[1][0] = -Jac[1][0] / DetJ;	InvJac[1][1] = Jac[0][0] / DetJ;
+            InvJac.Mult(gradpsis, gradphi);
+            for(Int ishape=0;ishape<psis.nrows();ishape++)
+            {
+               // Fbody[n * rowglob - idof+n-1][0] += efbody[n * irow- idof+n-1][0];
+                //sol[meshtopology[iel][ishape] * 2][0]+= psis[ishape][0] * nodalsol[meshtopology[iel][ishape] * 2][0];
+                //sol[meshtopology[iel][ishape] * 2 + 1][0]+= psis[ishape][0] * nodalsol[meshtopology[iel][ishape] * 2 + 1][0];
+                Int index=meshtopology[iel][ishape];
+                //sol[2 * index ][0]+= psis[ishape][0] * nodalsol[2 * index ][0];
+                //sol[2 * index +1][0]+= psis[ishape][0] * nodalsol[2 * index +1][0];
+                sol[2 * index ][0]=  nodalsol[2 * index ][0];
+                sol[2 * index +1][0]= nodalsol[2 * index +1][0];
+
+                dsol[meshtopology[iel][ishape] * 2][0]= gradphi[0][ishape] * nodalsol[meshtopology[iel][ishape] * 2][0];//dudx
+                dsol[meshtopology[iel][ishape] * 2 + 1][0]= gradphi[0][ishape]  * nodalsol[meshtopology[iel][ishape] * 2 + 1][0];//dwdx
+
+                dsol[meshtopology[iel][ishape] * 2][1]= gradphi[1][ishape] * nodalsol[meshtopology[iel][ishape] * 2][0];//dudy
+                dsol[meshtopology[iel][ishape] * 2 + 1][1]= gradphi[1][ishape]  * nodalsol[meshtopology[iel][ishape] * 2 + 1][0];//dwdy
+            }
+        }
+    }
+    //sol.Print();
+    //dsol.Print();
+}
+
+
+template <class YC>
+void elastoplastic2D<YC>::ComputeSolAndDSol(mesh * inmesh,NRvector<NRmatrix<Doub>>&sol,NRvector<NRmatrix<Doub>>&dsol)
+{
+    Doub xi,eta,w;
+    std::vector<std::vector< std::vector<Doub > > >  allcoords = inmesh->GetAllCoords();
+    NRmatrix<Int> meshtopology = inmesh->GetMeshTopology();
+    NRmatrix<Doub> nodalsol = GetSolution();
+    Int meshnodes = inmesh->GetMeshNodes().nrows();
+
+	NRmatrix<Doub>  elcoords, psis, gradpsis, xycoords, psist,InvJac(2,2),Jac,gradphi,ptsweigths,elementdisplace;
+	GetElCoords(allcoords, 0, elcoords);
+    elementdisplace.assign(elcoords.nrows(),2,0.);
+	Int nels = allcoords.size();
+    Int nvars = 2;
+    Int sz=nodalsol.nrows();
+    //sol.assign(sz,1,0.);
+
+    shapequad objshapes(2, 1);
+	objshapes.pointsandweigths(ptsweigths);
+    Int npts=ptsweigths.nrows();
+    NRmatrix<Doub> base=objshapes.GetBaseNodes();
+    npts=base.nrows();
+    dsol.resize(meshnodes);
+    sol.resize(meshnodes);
+    for(Int inode=0;inode<meshnodes;inode++){
+        sol[inode].assign(1,2,0.);
+        dsol[inode].assign(2,2,0.);
+    }
+	for (Int iel = 0;iel < nels;iel++)
+	{
+        for(Int ipt=0;ipt<npts;ipt++)
+        {
+
+            Doub xi,eta,w;
+            //xi=ptsweigths[ipt][0];
+            //eta=ptsweigths[ipt][1];
+            //w=ptsweigths[ipt][2];
+            xi=base[ipt][0];
+            eta=base[ipt][1];
+            //w=base[ipt][2];
+            int type = 1;
+
+            NRmatrix<Doub>  psis,psist, GradPsi,xycoords,Jac,InvJac(2,2),GradPhi;
+            objshapes.shapes(psis, GradPsi, xi, eta);
+            psis.Transpose(psist);
+            psist.Mult(elcoords, xycoords);
+
+            GradPsi.Mult(elcoords, Jac);
+
+            Doub DetJ = -Jac[0][1] * Jac[1][0] + Jac[0][0] * Jac[1][1];
+            if(DetJ<=0)
+            {
+                std::cout<< "DetJ<0 "<<std::endl;
+                DebugStop();
+            }
+            InvJac[0][0] = Jac[1][1] / DetJ;   InvJac[0][1] = -Jac[0][1] / DetJ;
+            InvJac[1][0] = -Jac[1][0] / DetJ;	InvJac[1][1] = Jac[0][0] / DetJ;
+            InvJac.Mult(GradPsi, GradPhi);
+
+            elementdisplace.assign(psis.nrows(),2,0.);
+            for(Int inode=0;inode<psis.nrows();inode++)
+            {
+                Int index=meshtopology[iel][inode];
+                elementdisplace[inode][0] = GetSolution()[2 * index +0][0];//ux
+                elementdisplace[inode][1] = GetSolution()[2 * index +1][0];//uy
+            }
+
+
+            Int index=meshtopology[iel][ipt];
+            NRmatrix<Doub>  gradu,u;
+            psist.Mult(elementdisplace, u);
+            GradPhi.Mult(elementdisplace, gradu);
+            sol[index]=u;
+            dsol[index]=gradu;
+
+        }
+    }
+    std::cout<< "teste "<<std::endl;
+    //sol.Print();
+    //dsol.Print();
+}
+
+
+template <class YC>
+void elastoplastic2D<YC>::ComputeStrain(mesh * inmesh,NRmatrix<Doub>  elcoords,NRmatrix<Doub>  eldisplace,NRvector<Doub> ptsw,NRtensor<Doub> &straintensor,Int &index)
+{
+    Doub xi,eta,w;
+    xi=ptsw[0];
+    eta=ptsw[1];
+    w=ptsw[2];
+	int type = 1;
+	shapequad objshapes(fOrder, type);
+
+	NRmatrix<Doub>  psis,psist, GradPsi,xycoords,Jac,InvJac(2,2),GradPhi;
+	objshapes.shapes(psis, GradPsi, xi, eta);
+	psis.Transpose(psist);
+	psist.Mult(elcoords, xycoords);
+
+    GradPsi.Mult(elcoords, Jac);
+    Doub DetJ = -Jac[0][1] * Jac[1][0] + Jac[0][0] * Jac[1][1];
+    if(DetJ<=0)
+    {
+        std::cout<< "DetJ<0 "<<std::endl;
+        DebugStop();
+    }
+
+    InvJac[0][0] = Jac[1][1] / DetJ;   InvJac[0][1] = -Jac[0][1] / DetJ;
+	InvJac[1][0] = -Jac[1][0] / DetJ;	InvJac[1][1] = Jac[0][0] / DetJ;
+	InvJac.Mult(GradPsi, GradPhi);
+	NRmatrix<Doub>  gradu;
+	GradPhi.Mult(eldisplace, gradu);
+
+    Doub ex = gradu[0][0];// dudx;
+	Doub ey = gradu[1][1];
+	Doub exy = (gradu[0][1] + gradu[1][0]);
+    straintensor.XX() = ex;straintensor.YY() = ey;straintensor.XY() = exy;
 }
 
 template <class YC>

@@ -388,13 +388,13 @@ void mainlinux(int simtype,int comeco,int fim)
     objKLGalerkinRF9->SetMesh(mesh9);
     objKLGalerkinRF10->SetMesh(mesh10);
     objKLGalerkinRF11->SetMesh(mesh11);
-     objKLGalerkinRF12->SetMesh(mesh12);
-      objKLGalerkinRF13->SetMesh(mesh13);
-       objKLGalerkinRF14->SetMesh(mesh14);
-        objKLGalerkinRF15->SetMesh(mesh15);
-         objKLGalerkinRF16->SetMesh(mesh16);
-          objKLGalerkinRF17->SetMesh(mesh17);
-           objKLGalerkinRF18->SetMesh(mesh18);
+    objKLGalerkinRF12->SetMesh(mesh12);
+    objKLGalerkinRF13->SetMesh(mesh13);
+    objKLGalerkinRF14->SetMesh(mesh14);
+    objKLGalerkinRF15->SetMesh(mesh15);
+    objKLGalerkinRF16->SetMesh(mesh16);
+    objKLGalerkinRF17->SetMesh(mesh17);
+    objKLGalerkinRF18->SetMesh(mesh18);
 
     if(true)
     {
@@ -519,7 +519,7 @@ void mainlinux(int simtype,int comeco,int fim)
     end=50000;
     if(GIMorSRM==0)
     {
-        std::cout << " \n GIM ";
+      /*  std::cout << " \n GIM ";
         string namefolder = "/home/diogo/Dropbox/slope-reliability/results/mesh-287/gim-Lx20-Ly2";
         int a=begin,b,c,d,e,f,g,h,i,j,l,m,n,o,p,q,r,s,t,u,v;
         int delta=int((end-begin)/19);
@@ -584,11 +584,12 @@ void mainlinux(int simtype,int comeco,int fim)
         thread16.join();
         thread17.join();
         thread18.join();
-
-
+*/
         //serial
         //slopeobj0->MonteCarloGIM(begin,end, false, namefolder);
-       // slopeobj0->MonteCarloGIM(0,5, false, namefolder);
+        std::cout << " \n teste vtk ";
+        string namefolder = "/home/diogo/Dropbox/slope-reliability/results/mesh-287/teste vtk";
+        slopeobj0->MonteCarloGIM(0,1, false, namefolder);
         return;
     }
     
@@ -1140,14 +1141,14 @@ int main(int argc, char *argv[])
 {
 
    // beam3dtools beam0bj = beam3dtools();
-   // beam0bj.SolveElasticBeam();
+  //  beam0bj.SolveElasticBeam();
     //beam0bj.IterativeProcess();
 
     //beam0bj.SolveElasticCube();
-    //pressurizedhole hole0bj = pressurizedhole();
+    pressurizedhole hole0bj = pressurizedhole();
     //hole0bj.SolveElasticHole();
-    //hole0bj.IterativeProcess();
-    //return 0;
+    hole0bj.IterativeProcess();
+    return 0;
 
 #ifdef __unix__                    /* __unix__ is usually defined by compilers targeting Unix systems */
     //leakcraw();
