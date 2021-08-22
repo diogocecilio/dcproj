@@ -30,8 +30,26 @@ public:
 
 	Doub FindMinimum(NRmatrix<Doub>  pt,Doub xitrial,bool flag);
 	MatDoub ComputeQ(NRmatrix<Doub>  fulltensorproj, NRmatrix<Doub>  tempepsemat, NRtensor<Doub>  & projstress, NRtensor<Doub>  & projstrain, Doub & projgamma,NRmatrix<Doub>  & nvec);
+
+    Doub phi(NRtensor<Doub> epse)
+    {
+        NRmatrix<Doub>  tempepsemat, stresstrial;
+        NRmatrix<Doub>  C = GetElasticMatrix();
+        epse.FromTensorToNRmatrix(tempepsemat);
+        C.Mult(tempepsemat, stresstrial);
+        NRtensor<Doub>  stresstrialtensor;
+        epse.FromNRmatrixToTensor(stresstrial, stresstrialtensor);
+        Doub I1, J2;
+        J2 = stresstrialtensor.J2();
+        I1 = stresstrialtensor.I1();
+        Doub xi = I1 / sqrt(3.);
+        Doub rho = sqrt(2. * J2);
+        Doub yieldcr =-(pow(((fapex - xi / sqrt(3.)) / fa), 2) - pow(((rho / sqrt(2.)) / fb), 2) - 1);
+        return yieldcr;
+    }
 	
 	// Doub func2(Doub xi)
+
 	//{
 	//	Doub sig1 = pt[0][0], sig2 = pt[0][1], sig3 = pt[0][2];
 	//	Doub beta = atan((sqrt(3)*(-sig2 + sig3)) / (-2 * sig1 + sig2 + sig3));

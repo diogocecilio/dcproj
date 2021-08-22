@@ -38,9 +38,9 @@ void  pressurizedhole::IterativeProcess()
 
     u.assign(sz,1,0.);
 	Doub finalload = 0.19209;
-	Doub fac[] = { 0.1 / finalload, 0.14 / finalload, 0.18 / finalload, 0.19 / finalload, 1. };
-
-	Int steps = 5;
+	//Doub fac[] = { 0.1 / finalload, 0.14 / finalload, 0.18 / finalload, 0.19 / finalload, 1. };
+    Doub fac[] = {0.019209/ finalload, 0.038418/ finalload, 0.057627/ finalload, 0.076836/ finalload, 0.096045/ finalload, 0.115254/ finalload, 0.134463/ finalload, 0.153672/ finalload, 0.172881/ finalload, 0.19209/ finalload};
+	Int steps = 10;
 	Int counterout = 1;
 	MatDoub solpost(1000, 2, 0.);
 	for (Int iload = 0; iload < steps; iload++)

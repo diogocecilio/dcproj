@@ -83,14 +83,14 @@ void mainlinux2(int simtype,int comeco,int fim)
   //  string nodestr = "/home/diogo/projects/dcproj/nos-912.txt";
 	//string elsstr = "/home/diogo/projects/dcproj/els-912.txt";
 
-       string nodestr = "/home/diogo/projects/dcproj/nos-287.txt";
-	string elsstr = "/home/diogo/projects/dcproj/els-287.txt";
+    //   string nodestr = "/home/diogo/projects/dcproj/nos-287.txt";
+	//string elsstr = "/home/diogo/projects/dcproj/els-287.txt";
 
    // string nodestr = "/home/diogo/projects/dcproj/nos-381.txt";
 //	string elsstr = "/home/diogo/projects/dcproj/els-381.txt";
 
-   //         string nodestr = "/home/diogo/projects/dcproj/nos-445.txt";
-	//string elsstr = "/home/diogo/projects/dcproj/els-445.txt";
+            string nodestr = "/home/diogo/projects/dcproj/nos-445.txt";
+	string elsstr = "/home/diogo/projects/dcproj/els-445.txt";
 
 
 	MatDoub hhatinho;
@@ -123,7 +123,7 @@ void mainlinux2(int simtype,int comeco,int fim)
 	Int npts = ptsweigths.nrows();
 	Int nglobalpts = meshtopology.nrows() * npts;
 	Int sz = 2 * meshcoords.nrows();
-    int nthreads =10;
+    int nthreads =2;
     std::vector <std::thread> threadsmat;
 
     Doub Lx = 20.;//(*Correlation length in x direction*)
@@ -185,11 +185,20 @@ void mainlinux(int simtype,int comeco,int fim)
    // string nodestr = "/home/diogo/projects/dcproj/nos-cho.txt";
 	//string elsstr = "/home/diogo/projects/dcproj/els-cho.txt";
     
-  //  string nodestr = "/home/diogo/projects/dcproj/nos-912.txt";
+    //string nodestr = "/home/diogo/projects/dcproj/nos-912.txt";
 	//string elsstr = "/home/diogo/projects/dcproj/els-912.txt";
 
-       string nodestr = "/home/diogo/projects/dcproj/nos-287.txt";
-	string elsstr = "/home/diogo/projects/dcproj/els-287.txt";
+     //   string nodestr = "/home/diogo/projects/dcproj/nodes.dat";//mathematica
+	//string elsstr = "/home/diogo/projects/dcproj/topol.dat";//mathematica
+
+   // string nodestr = "/home/diogo/projects/dcproj/nodes-unstructured.txt";
+	//string elsstr = "/home/diogo/projects/dcproj/els-unstructured.txt";
+
+        string nodestr = "/home/diogo/projects/dcproj/nodes1k.txt";
+	string elsstr = "/home/diogo/projects/dcproj/els1k.txt";
+//
+  //     string nodestr = "/home/diogo/projects/dcproj/nos-287.txt";
+	//string elsstr = "/home/diogo/projects/dcproj/els-287.txt";
 
    // string nodestr = "/home/diogo/projects/dcproj/nos-381.txt";
 //	string elsstr = "/home/diogo/projects/dcproj/els-381.txt";
@@ -352,7 +361,7 @@ void mainlinux(int simtype,int comeco,int fim)
 	mat18->SetMemory(nglobalpts, sz);
 	mat18->UpdateBodyForce(bodyforce);
     
-   // Doub Lx = 20.;//(*Correlation length in x direction*)
+    //Doub Lx = 20.;//(*Correlation length in x direction*)
 	//Doub Ly = 2.;//(*Correlation length in y direction*)
 	//Int nsamples = 50000, expansionorder = 150;
 	//Int type = 3;
@@ -396,6 +405,9 @@ void mainlinux(int simtype,int comeco,int fim)
     objKLGalerkinRF17->SetMesh(mesh17);
     objKLGalerkinRF18->SetMesh(mesh18);
 
+    string mathematicapath = "/home/diogo/projects/results/mathematica-new";
+    string resultfolderpath = "/home/diogo/Dropbox/slope-reliability/results/mesh-1k";
+
     if(true)
     {
         cout <<"\n initializing hhhh ---->" << endl;
@@ -407,10 +419,13 @@ void mainlinux(int simtype,int comeco,int fim)
 		mat0->fYC.setup(young, nu, c, phi);
 		mat0->SetMemory(nglobalpts, sz);
 		mat0->UpdateBodyForce(bodyforce);
-        soll = slopeobj0->IterativeProcess(20, 0.1, 0.0001,10);
-
+        soll = slopeobj0->IterativeProcess(20, 0.1, 0.01,10);
         return;
-        string filename = "/home/diogo/Dropbox/slope-reliability/results/mesh-381/cho-field-Lx20-Ly2";
+        string filename = resultfolderpath;
+        filename+="/field-Lx";
+        filename+=to_string(Int(Lx));
+        filename+="-Ly";
+        filename+=to_string(Int(Ly));
         slopeobj0->CreateRandomField(filename);
 
         return;
@@ -420,9 +435,19 @@ void mainlinux(int simtype,int comeco,int fim)
 
 
     MatDoub coesionrandomfield, frictionrandomfield;
-	string filerf = "/home/diogo/Dropbox/slope-reliability/results/mesh-287/cho-field-Lx20-Ly2/coesionfield.txt";
+    string filerf=resultfolderpath;
+    filerf+="/field-Lx";
+    filerf+=to_string(Int(Lx));
+    filerf+="-Ly";
+    filerf+=to_string(Int(Ly));
+    filerf += "/coesionfield.txt";
 	ReadMatDoub(coesionrandomfield, filerf);
-	string filerff = "/home/diogo/Dropbox/slope-reliability/results/mesh-287/cho-field-Lx20-Ly2/frictionfield.txt";
+	string filerff =resultfolderpath;
+    filerff+="/field-Lx";
+    filerff+=to_string(Int(Lx));
+    filerff+="-Ly";
+    filerff+=to_string(Int(Ly));
+	filerff+= "/frictionfield.txt";
 	ReadMatDoub(frictionrandomfield, filerff);
 
 	NRmatrix<MatDoub> randomfield(2, 1);
@@ -456,14 +481,15 @@ void mainlinux(int simtype,int comeco,int fim)
     MatDoub hhatinho2 = slopeobj0->AssembleHhationho(1156);//pior Lx =20, Ly =4
     //MatDoub hhatinho2 = slopeobj0->AssembleHhationho(1055);//melhor Lx =20, Ly =4
     mesh0->SetHhat(hhatinho2);
-    
-    string filename = "/home/diogo/projects/results/mathematicas/Coesao.dat";
+    string filename = mathematicapath;
+    filename += "/Coesao.dat";
     std::vector<std::vector<double>> hhatx;
     mesh0->fmaterial->PostProcess(mesh0->GetAllCoords(), mesh0->GetMeshNodes(), mesh0->GetMeshTopology(), 0, hhatinho2, hhatx);
     std::ofstream file(filename);
     slopeobj0->OutPutPost(hhatx, file);
     
-    string filename2 = "/home/diogo/projects/results/mathematicas/Phi.dat";
+    string filename2 = mathematicapath;
+    filename2+="/Phi.dat";
     mesh0->fmaterial->PostProcess(mesh0->GetAllCoords(), mesh0->GetMeshNodes(), mesh0->GetMeshTopology(), 1, hhatinho2, hhatx);
     std::ofstream file2(filename);
     slopeobj0->OutPutPost(hhatx, file2);
@@ -588,7 +614,11 @@ void mainlinux(int simtype,int comeco,int fim)
         //serial
         //slopeobj0->MonteCarloGIM(begin,end, false, namefolder);
         std::cout << " \n teste vtk ";
-        string namefolder = "/home/diogo/Dropbox/slope-reliability/results/mesh-287/teste vtk";
+        auto namefolder=resultfolderpath;
+        namefolder += "/gim-Lx";
+        namefolder+=to_string(Int(Lx));
+        namefolder+="-Ly";
+        namefolder+=to_string(Int(Ly));
         slopeobj0->MonteCarloGIM(0,1, false, namefolder);
         return;
     }
@@ -1147,7 +1177,7 @@ int main(int argc, char *argv[])
     //beam0bj.SolveElasticCube();
     pressurizedhole hole0bj = pressurizedhole();
     //hole0bj.SolveElasticHole();
-    hole0bj.IterativeProcess();
+   hole0bj.IterativeProcess();
     return 0;
 
 #ifdef __unix__                    /* __unix__ is usually defined by compilers targeting Unix systems */

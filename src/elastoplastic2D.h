@@ -75,6 +75,12 @@ public:
     void ComputeSolAndDSol(mesh * inmesh,NRmatrix<Doub>&sol,NRmatrix<Doub>&dsol);
     void ComputeSolAndDSol(mesh * inmesh,NRvector<NRmatrix<Doub>>&sol,NRvector<NRmatrix<Doub>>&dsol);
 
+    Doub ComputePhi(NRtensor<Doub> eps)
+    {
+        Doub valphi=fYC.phi(eps);
+        return valphi;
+    }
+
 	void ResetCounter()
 	{
 		fglobalcounter = 0;

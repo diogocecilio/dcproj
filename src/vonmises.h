@@ -21,6 +21,24 @@ public:
 	MatDoub stressrecosntruction(MatDoub val, MatDoub vec);
 	MatDoub dadsig(NRtensor<Doub>  sigprojvoigt);
 	MatDoub P();
+
+    Doub phi(NRtensor<Doub> epse)
+    {
+        NRmatrix<Doub>  tempepsemat, stresstrial;
+        NRmatrix<Doub>  C = GetElasticMatrix();
+        epse.FromTensorToNRmatrix(tempepsemat);
+        C.Mult(tempepsemat, stresstrial);
+        NRtensor<Doub>  stresstrialtensor;
+        epse.FromNRmatrixToTensor(stresstrial, stresstrialtensor);
+        Doub I1, J2;
+        J2 = stresstrialtensor.J2();
+        I1 = stresstrialtensor.I1();
+        Doub xi = I1 / sqrt(3.);
+        Doub rho = sqrt(2. * J2);
+        Doub yieldcr = yield(J2);
+        return yieldcr;
+    }
+
 	inline void setup(Doub young, Doub nu, Doub sigy) {
 		fyoung = young;
 		fsigy = sigy;

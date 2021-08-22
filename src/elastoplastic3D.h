@@ -81,6 +81,12 @@ public:
 		return fbodyforce;
 	}
 	virtual NRvector<NRtensor<Doub> > GetPlasticStrain();
+
+    Doub ComputePhi(NRtensor<Doub> eps)
+    {
+        Doub valphi=fYC.phi(eps);
+        return valphi;
+    }
 //
 //
 private:

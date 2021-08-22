@@ -800,6 +800,9 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
             }
 			SolveEigenSparse(KG, R, dws);
 			SolveEigenSparse(KG, FBODY, dwb);
+
+            //SolveEigen(KG, R, dws);
+			//SolveEigen(KG, FBODY, dwb);
 			
 			dlamb = computelamda(dwb, dws, dw, l);
 			if (isnan(dlamb) == 1) {
@@ -894,17 +897,7 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 			if (l > 10.)l = 10.;
 			diff2 = fabs(lambn0 - lamb);
 			fmesh->fmaterial->UpdatePlasticStrain();
-            std::vector<string> scalar_names;
-            std::vector<string> vector_names;
-          //  TPZStack<std::string> scalar_names,vector_names, tensor_names;
-            vector_names.push_back("Displacement");
-            vector_names.push_back("Strain");
-            //vector_names.push_back("SqrtJ2(EPSP)");
-            //vector_names.push_back("Stress");
-            Int dim=2;
-            string slopestr="straintestslope";
-            VTKGraphMesh vtkobj(fmesh,dim,scalar_names,vector_names,slopestr);
-            vtkobj.DrawSolution( counterout, counter);
+
 		}
 
 		counterout++;
@@ -923,6 +916,21 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 
 		solpost2.push_back(uvf);
 		solpost.push_back(solcount);
+
+	fmesh->fmaterial->UpdateDisplacement(displace0);
+    std::vector<string> scalar_names;
+    std::vector<string> vector_names;
+          //  TPZStack<std::string> scalar_names,vector_names, tensor_names;
+    vector_names.push_back("Displacement");
+    vector_names.push_back("Strain");
+        //vector_names.push_back("SqrtJ2(EPSP)");
+        //vector_names.push_back("Stress");
+    Int dim=2;
+    string slopestr="slope-saida";
+    VTKGraphMesh vtkobj(fmesh,dim,scalar_names,vector_names,slopestr);
+    vtkobj.DrawSolution( counterout, counter);
+
+
 
 		//std::cout << " $$$$$ Iteration number = " << counter << " |  |R|/FE = " << err1 << " |  |R| = " << rnorm <<  " | lambn  = " << lambn << " | lamb  = " << lamb << " |  dlamb " << dlamb << std::endl;
 	} while (counterout <= niter && fabs(diff2) > alphatol );// while (counterout <= maxcountout && fabs(diff2) > 0.05);
@@ -969,6 +977,8 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 		std::ofstream file22(filename);
 		OutPutPost(solx, file22);
 	}
+
+
 
 //	std::cout << "  Iteration number = " << counterout <<  " |  |R| = " << rnorm << " | lamb  = " << lamb << std::endl;
 	return solpost;

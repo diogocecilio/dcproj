@@ -1,7 +1,7 @@
 #include <sstream>
 #include "vtkmesh.h"
 //using namespace std;
-
+#include "druckerprager.h"
 
 VTKGraphMesh::VTKGraphMesh(mesh *cmesh, int dimension,std::vector<std::string> &scalnames, const std::vector<std::string> &vecnames,  std::string FileName)
 {
@@ -73,28 +73,54 @@ void VTKGraphMesh::DrawSolution(Int step, Doub time){
         fOutFile << type <<  endl;
 	}
 
+     NRvector<  NRmatrix<Doub>  > sol,dsol;
+    fmesh->fmaterial->ComputeSolAndDSol(fmesh,sol,dsol);
+
     fOutFile << "POINT_DATA " << nnodes << endl;
-	fOutFile << "SCALARS DisplacementMagnitude float 1" << endl;
+	fOutFile << "SCALARS phi float 1" << endl;
 	fOutFile << "LOOKUP_TABLE default" << endl;
+
     for (Int inode = 0; inode < nnodes; inode++)
     {
-        fOutFile << sqrt(fdata[inode*fdim+0][0]*fdata[inode*fdim+0][0]+fdata[inode*fdim+1][0]*fdata[inode*fdim+1][0]) <<   endl;//x
+        NRmatrix<Doub> eps,gradu,gradut;
+        NRtensor<Doub> tensor(0.);
+        gradu=dsol[inode];
+       // gradu.Transpose(gradut);
+       // eps=gradu;
+       // eps+=gradut;
+      //  eps*=1/2.;
+        if(fdim==3)
+        {
+            //tensor.XX()=eps[0][0];tensor.XY()=eps[0][1];tensor.XZ()=eps[0][2];
+            //tensor.XY()=eps[1][0];tensor.YY()=eps[1][1];tensor.YZ()=eps[1][2];
+            //tensor.XZ()=eps[2][0];tensor.YZ()=eps[2][1];tensor.ZZ()=eps[2][2];
+        }
+        else if(fdim==2)
+        {
+            tensor.XX()=gradu[0][0];tensor.XY()=(gradu[2][0]+gradu[2][0])/2.;
+            tensor.XY()=(gradu[2][0]+gradu[2][0])/2.;tensor.YY()=gradu[1][0];
+        }
+        Doub valphi =fmesh->fmaterial->ComputePhi(tensor) ;
+        fOutFile << valphi <<   endl;//x
     }
 
 
     NRmatrix<Doub> HHAT;
     fmesh->GetHhat(HHAT);
+    if(HHAT.nrows()!=0)
+    {
+        fOutFile << "SCALARS cohesion float 1" << endl;
+        fOutFile << "LOOKUP_TABLE default" << endl;
+
+        for (Int inode = 0; inode < nnodes; inode++)
+        {
+            fOutFile << HHAT[inode][0] <<   endl;//x
+        }
+    }
 
 
 
-   // NRvector<NRtensor<Doub> > plasticstrain=fmesh->fmaterial->GetPlasticStrain();
- //NRmatrix<Doub> sol,dsol;
 
- //   fmesh->fmaterial->ComputeSolAndDSol(fmesh,sol,dsol);
-
-
-     NRvector<  NRmatrix<Doub>  > sol,dsol;
-    fmesh->fmaterial->ComputeSolAndDSol(fmesh,sol,dsol);
     sol[0].Print();
     //sol[5].Print();
     //fdata.Print();
@@ -106,148 +132,26 @@ void VTKGraphMesh::DrawSolution(Int step, Doub time){
         {
             for (Int inode = 0; inode < nnodes; inode++)
             {
-
-                fOutFile << sol[inode][0][0] << " " << sol[inode][0][1] << " ";
-
+                fOutFile << sol[inode][0][0] << " " << sol[inode][1][0] << " ";
                 fOutFile << 0;
                 fOutFile << std::endl;
-               /* NRvector<int>constcoord2(3);
-                constcoord2[0]=1;//livre para procurar x
-                constcoord2[1]=1;//livre para procurar y
-                constcoord2[2]=1;//livre para procurar z
-                std::vector<Int> ids;
-                NRvector<Doub> doubcoords(3);
-                doubcoords[0]=nodes[inode][0];
-                doubcoords[1]=nodes[inode][1];
-                doubcoords[2]=nodes[inode][2];
-                fmesh->FindIds(doubcoords, constcoord2 , ids);*/
 
-
-               // for(Int idim=0;idim<fdim;idim++)
-                //{
-                    //fOutFile << sol[inode*fdim+idim][0] << " ";
-               // }
-               // fOutFile << 0.;
-              //  fOutFile << std::endl;
             }
-
-          /*  for (Int inode = 0; inode < nnodes; inode++)
-            {
-                Int count=0;
-                for (Int iel = 0; iel < els; iel++)
-                {
-                    for(Int ielnode=0;ielnode<elnodes;ielnode++)
-                    {
-                        Int id;
-                        id = meshtopol[iel][ielnode];
-                        if(id==inode)
-                        {
-                            for(Int idim=0;idim<fdim;idim++)
-                            {
-                                fOutFile << sol[id*fdim+idim][0] << " ";
-                            }
-                            fOutFile << 0.;
-                            fOutFile << std::endl;
-                        }
-                        count++;
-                    }
-                }
-
-            }*/
-
-
-
 
         }
         else if(fVecNames[ivar] =="Strain")
         {
             NRmatrix<Doub> eps,gradu,gradut;
+            //NRmatrix<Doub> eps,gradu,gradut;
             for (Int inode = 0; inode < nnodes; inode++)
             {
                 gradu=dsol[inode];
-                gradu.Transpose(gradut);
-                eps=gradu;
-                eps+=gradut;
-                eps*=1/2.;
-                fOutFile << eps[0][0] << " " << eps[1][1]<< " " << " "<< eps[1][0];
+                //gradu.Transpose(gradut);
+                //eps=gradu;
+                //eps+=gradut;
+                //eps*=1/2.;
+                fOutFile << gradu[0][0] << " " << gradu[1][0]<< " " << " "<< gradu[2][0];
                 fOutFile << std::endl;
-            }
-
-            /*
-            for (Int inode = 0; inode < nnodes; inode++)
-            {
-                for(Int idim=0;idim<fdim;idim++)
-                {
-                    fOutFile << dsol[inode*fdim+idim][0] << " ";//duxdx e duxdy
-                }
-                fOutFile << 0.;
-                fOutFile << std::endl;
-            }
-            */
-
-
-        }
-        else if(fVecNames[ivar] =="SqrtJ2(EPSP)")
-        {
-
-        }
-        else if(fVecNames[ivar] =="Stress")
-        {
-
-        }
-
-    }
-
-   /* Int nvecnames = fVecNames.size();
-    for(Int ivar=0;ivar<nvecnames;ivar++)
-    {
-        (fOutFile) << "VECTORS " << fVecNames[ivar] << " float" << std::endl;
-        if(fVecNames[ivar] =="Displacement")
-        {
-            for (Int inode = 0; inode < nnodes; inode++)
-            {
-                for(Int idim=0;idim<fdim;idim++)
-                {
-                    fOutFile << fdata[inode*fdim+idim][0] << " ";
-                }
-                fOutFile << 0.;
-                fOutFile << std::endl;
-            }
-        }
-        else if(fVecNames[ivar] =="Strain")
-        {
-            NRvector<NRvector<NRtensor<Doub>>> strain;
-            fmesh->fmaterial->PostProcessStrain(fmesh,strain);
-
-            bool repeat;
-            for (Int inode = 0; inode < nnodes; inode++)
-            {
-                    repeat=false;
-                    NRtensor<Doub> straint;
-                    Int count=0;
-                    for (Int iel = 0; iel < strain.size(); iel++)
-                    {
-
-                        for(Int ielnode=0;ielnode<strain[iel].size();ielnode++)
-                        {
-                            Int id;
-                            id= meshtopol[iel][ielnode];
-                            if(id==inode && repeat==false)
-                            //if(id==inode)
-                            {
-                                straint+=strain[iel][ielnode];
-                               // std::cout << " id = " << id <<std::endl;
-                                //strain[iel][ielnode].Print();
-                               // fOutFile << strain[iel][ielnode].XX() << " "<<strain[iel][ielnode].YY() << " "<< strain[iel][ielnode].XY();
-                                //repeat=true;
-                                fOutFile << std::endl;
-                                count++;
-                            }
-                        }
-                    }
-                    straint*=1./Doub(count);
-                    fOutFile << straint.XX() << " "<<straint.YY() << " "<< straint.XY();
-                    fOutFile << std::endl;
             }
 
         }
@@ -261,7 +165,6 @@ void VTKGraphMesh::DrawSolution(Int step, Doub time){
         }
 
     }
-    */
 
 
 	fOutFile.close();
