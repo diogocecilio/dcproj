@@ -6,8 +6,8 @@ Build Directory Count=2
 Current Build Directory Index-Host System=0
 
 [CMake][CMake Build Directory 0]
-Build Directory Path=/home/diogo/projects/dcproj-build-release
-Build Type=Release
+Build Directory Path=/home/diogocecilio/projects/dcproj-build-release
+Build Type=Release\n
 CMake Binary=/usr/bin/cmake
 CMake Executable=/usr/bin/cmake
 Environment Profile=
@@ -16,7 +16,7 @@ Install Directory=/usr/local
 Runtime=Host System
 
 [CMake][CMake Build Directory 1]
-Build Directory Path=/home/diogo/projects/dcproj-build-debug
+Build Directory Path=/home/diogocecilio/projects/dcproj-build-debug
 Build Type=Debug
 CMake Binary=/usr/bin/cmake
 CMake Executable=/usr/bin/cmake
@@ -37,33 +37,31 @@ Type=Native Application
 [Launch][Launch Configuration 0][Data]
 Arguments=
 Dependencies=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x00)
-Dependency Action=Build
+Dependency Action=Install
 EnvironmentGroup=
-Executable=file:///home/diogo/projects/dcproj-build-release/dcproj
+Executable=file:///home/diogocecilio/projects/dcproj-build-release/dcproj
 External Terminal=konsole --noclose --workdir %workdir -e %exe
-Kill Before Executing Again=65536
 Project Target=dcproj,dcproj
 Use External Terminal=false
-Working Directory=file:///home/diogo/projects/dcproj
+Working Directory=file:///home/diogocecilio/projects/dcproj/
 isExecutable=true
 
 [Launch][Launch Configuration 1]
 Configured Launch Modes=execute
 Configured Launchers=nativeAppLauncher
-Name=debug
+Name=New Compiled Binary Launcher
 Type=Native Application
 
 [Launch][Launch Configuration 1][Data]
 Arguments=
 Dependencies=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x00)
-Dependency Action=Build
+Dependency Action=Install
 EnvironmentGroup=
-Executable=file:///home/diogo/projects/dcproj-build-debug/dcproj
+Executable=file:///home/diogocecilio/projects/dcproj-build-debug/dcproj
 External Terminal=konsole --noclose --workdir %workdir -e %exe
-Kill Before Executing Again=65536
 Project Target=dcproj,dcproj
 Use External Terminal=false
-Working Directory=file:///home/diogo/projects/dcproj
+Working Directory=file:///home/diogocecilio/projects/dcproj/
 isExecutable=true
 
 [Project]

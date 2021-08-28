@@ -14,7 +14,7 @@
 //#define EIGEN_USE_MKL_ALL
 //#define EIGEN_NO_DEBUG
 //#define EIGEN_DONT_PARALLELIZE
-#include <mkl.h>
+//#include <mkl.h>
 #define EIGEN_USE_MKL_ALL
 //#include <lapacke.h>
 #include "pressurizedhole.h"
@@ -86,12 +86,13 @@ void mainlinux2(int simtype,int comeco,int fim)
     //   string nodestr = "/home/diogo/projects/dcproj/nos-287.txt";
 	//string elsstr = "/home/diogo/projects/dcproj/els-287.txt";
 
-   // string nodestr = "/home/diogo/projects/dcproj/nos-381.txt";
+    //string nodestr = "/home/diogo/projects/dcproj/nos-381.txt";
 //	string elsstr = "/home/diogo/projects/dcproj/els-381.txt";
 
-            string nodestr = "/home/diogo/projects/dcproj/nos-445.txt";
-	string elsstr = "/home/diogo/projects/dcproj/els-445.txt";
-
+         //   string nodestr = "/home/diogo/projects/dcproj/nos-445.txt";
+	//string elsstr = "/home/diogo/projects/dcproj/els-445.txt";
+            string nodestr = "/home/diogocecilio/projects/dcproj/nodes-606.txt";
+	string elsstr = "/home/diogocecilio/projects/dcproj/els-606.txt";
 
 	MatDoub hhatinho;
 	MatDoub  meshcoords, elcoords;
@@ -123,7 +124,7 @@ void mainlinux2(int simtype,int comeco,int fim)
 	Int npts = ptsweigths.nrows();
 	Int nglobalpts = meshtopology.nrows() * npts;
 	Int sz = 2 * meshcoords.nrows();
-    int nthreads =2;
+    int nthreads =5;
     std::vector <std::thread> threadsmat;
 
     Doub Lx = 20.;//(*Correlation length in x direction*)
@@ -132,16 +133,16 @@ void mainlinux2(int simtype,int comeco,int fim)
 	Int type = 3;
 
     MatDoub coesionrandomfield, frictionrandomfield;
-	string filerf = "/home/diogo/Dropbox/slope-reliability/results/mesh-287/cho-field-Lx20-Ly2/coesionfield.txt";
+	string filerf = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh-606/field-Lx20-Ly2/coesionfield.txt";
 	ReadMatDoub(coesionrandomfield, filerf);
-	string filerff = "/home/diogo/Dropbox/slope-reliability/results/mesh-287/cho-field-Lx20-Ly2/frictionfield.txt";
+	string filerff = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh-606/field-Lx20-Ly2/frictionfield.txt";
 	ReadMatDoub(frictionrandomfield, filerff);
 
 	NRmatrix<MatDoub> randomfield(2, 1);
 	randomfield[0][0] = coesionrandomfield;
 	randomfield[1][0] = frictionrandomfield;
 
-    string namefolder = "/home/diogo/Dropbox/slope-reliability/results/mesh-287/test";
+    string namefolder = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh-606/GIM-lx20-ly2";
 
     int delta = int(nsamples/nthreads);
     int a=0,b=delta;
@@ -151,6 +152,7 @@ void mainlinux2(int simtype,int comeco,int fim)
         elastoplastic2D< druckerprager >* mat = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
 
         mesh* meshs = new mesh(dim,mat, allcoords, meshcoords, meshtopology, hhatinho);
+      //  mesh* mesh0 = new mesh(dim,mat0, allcoords, meshcoords, meshtopology, hhatinho);
         mat->fYC.setup(young, nu, c, phi);
         mat->SetMemory(nglobalpts, sz);
         mat->UpdateBodyForce(bodyforce);
@@ -191,19 +193,22 @@ void mainlinux(int simtype,int comeco,int fim)
      //   string nodestr = "/home/diogo/projects/dcproj/nodes.dat";//mathematica
 	//string elsstr = "/home/diogo/projects/dcproj/topol.dat";//mathematica
 
-   // string nodestr = "/home/diogo/projects/dcproj/nodes-unstructured.txt";
-	//string elsstr = "/home/diogo/projects/dcproj/els-unstructured.txt";
+  //  string nodestr = "/home/diogocecilio/projects/dcproj/nodes-unstructured.txt";
+	//string elsstr = "/home/diogocecilio/projects/dcproj/els-unstructured.txt";
 
-        string nodestr = "/home/diogo/projects/dcproj/nodes1k.txt";
-	string elsstr = "/home/diogo/projects/dcproj/els1k.txt";
+   //string nodestr = "/home/diogocecilio/projects/dcproj/nodes1k.txt";
+	//string elsstr = "/home/diogocecilio/projects/dcproj/els1k.txt";
 //
-  //     string nodestr = "/home/diogo/projects/dcproj/nos-287.txt";
-	//string elsstr = "/home/diogo/projects/dcproj/els-287.txt";
+   //   string nodestr = "/home/diogocecilio/projects/dcproj/nos-287.txt";
+	// string elsstr = "/home/diogocecilio/projects/dcproj/els-287.txt";
 
-   // string nodestr = "/home/diogo/projects/dcproj/nos-381.txt";
-//	string elsstr = "/home/diogo/projects/dcproj/els-381.txt";
+    //string nodestr = "/home/diogocecilio/projects/dcproj/nos-381.txt";
+	//string elsstr = "/home/diogocecilio/projects/dcproj/els-381.txt";
+    
+        string nodestr = "/home/diogocecilio/projects/dcproj/nodes-606.txt";
+	string elsstr = "/home/diogocecilio/projects/dcproj/els-606.txt";
 
-   //         string nodestr = "/home/diogo/projects/dcproj/nos-445.txt";
+       //     string nodestr = "/home/diogo/projects/dcproj/nos-445.txt";
 	//string elsstr = "/home/diogo/projects/dcproj/els-445.txt";
 
 
@@ -224,7 +229,7 @@ void mainlinux(int simtype,int comeco,int fim)
 
 	Doub thickness = 1.;
 	Doub young = 20000.;
-	Doub nu = 0.49;
+	Doub nu = 0.3;
 	//Doub young = 100000.;
 	//Doub nu = 0.3;
 	Int planestress = 0;
@@ -405,8 +410,8 @@ void mainlinux(int simtype,int comeco,int fim)
     objKLGalerkinRF17->SetMesh(mesh17);
     objKLGalerkinRF18->SetMesh(mesh18);
 
-    string mathematicapath = "/home/diogo/projects/results/mathematica-new";
-    string resultfolderpath = "/home/diogo/Dropbox/slope-reliability/results/mesh-1k";
+    string mathematicapath = "/home/diogocecilio/projects/results/mathematica-606";
+    string resultfolderpath = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh-606";
 
     if(true)
     {
@@ -420,7 +425,7 @@ void mainlinux(int simtype,int comeco,int fim)
 		mat0->SetMemory(nglobalpts, sz);
 		mat0->UpdateBodyForce(bodyforce);
         soll = slopeobj0->IterativeProcess(20, 0.1, 0.01,10);
-        return;
+      //  return;
         string filename = resultfolderpath;
         filename+="/field-Lx";
         filename+=to_string(Int(Lx));
@@ -508,7 +513,7 @@ void mainlinux(int simtype,int comeco,int fim)
 		mat0->fYC.setup(young, nu, c, phi);
 		mat0->SetMemory(nglobalpts, sz);
 		mat0->UpdateBodyForce(bodyforce);
-        soll = slopeobj0->IterativeProcess(20, 0.1, 0.0001,10);
+        soll = slopeobj0->IterativeProcess(30, 0.001, 0.0001,20);
 	}
 
     return;
@@ -1175,10 +1180,10 @@ int main(int argc, char *argv[])
     //beam0bj.IterativeProcess();
 
     //beam0bj.SolveElasticCube();
-    pressurizedhole hole0bj = pressurizedhole();
+    //pressurizedhole hole0bj = pressurizedhole();
     //hole0bj.SolveElasticHole();
-   hole0bj.IterativeProcess();
-    return 0;
+   //hole0bj.IterativeProcess();
+   // return 0;
 
 #ifdef __unix__                    /* __unix__ is usually defined by compilers targeting Unix systems */
     //leakcraw();
@@ -1190,10 +1195,13 @@ int main(int argc, char *argv[])
     if (argc > 3) {
         mainlinux(atoi(argv[1]),atoi(argv[2]),atoi(argv[3]));
 
+        
     }
     else
     {
-        mainlinux(-1,-1,-1);
+        //mainlinux(-1,-1,-1);
+        
+        mainlinux2(-1,-1,-1);
     }
 
 

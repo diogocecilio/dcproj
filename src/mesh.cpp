@@ -396,7 +396,58 @@ void mesh::Assemble(MatDoub& KG, MatDoub& Fint, MatDoub& Fbody)
 }
 
 
+void mesh::ComputeSolAndDSol(NRmatrix<Doub> &sol, NRmatrix<Doub> &dsol)
+{
 
+    int ndof_per_node=fdim;
+	MatDoub ek, efint, efbody, elcoords, eltopology;
+	GetElCoords(fallcoords, 0, elcoords);
+	Int nnodes = fmeshnodes.nrows();
+	Int rows = elcoords.nrows();
+	Int sz = ndof_per_node * nnodes;
+	Int cols = rows;
+
+	Int nels = fallcoords.size();
+    sol.assign(nnodes*fdim,1,0.);
+    dsol.assign(nnodes*fdim,2,0.);
+
+	NRmatrix<NRvector<Doub>> uglob;
+	uglob.resize(nels, rows);
+	for (int i = 0; i < nels; i++)
+	{
+		for (int j = 0; j < rows; j++) {
+			uglob[i][j].assign(ndof_per_node, 0.);
+		}
+	}
+
+	for (Int iel = 0; iel < nels; iel++)
+	{
+		for (Int node = 0; node < rows; node++)
+		{
+            for(int idof=0;idof<ndof_per_node;idof++)
+            {
+                uglob[iel][node][idof] = fmaterial->GetSolution()[ndof_per_node * fmeshtopology[iel][node]+idof][0];
+            }
+		}
+	}
+
+	for (Int iel = 0; iel < nels; iel++)
+	{
+		MatDoub elementdisplace(elcoords.nrows(),ndof_per_node, 0.);
+		for (Int i = 0; i < elcoords.nrows(); i++)for (Int j = 0; j < ndof_per_node; j++)elementdisplace[i][j] = uglob[iel][i][j];
+		for (Int irow = 0; irow < rows; irow++)
+		{
+            Int rowglob = fmeshtopology[iel][irow];
+			int n=ndof_per_node;
+            for(int idof=0;idof<n;idof++)
+            {
+                sol[n * rowglob - idof+n-1][0] += efbody[n * irow- idof+n-1][0];
+                dsol[n * rowglob - idof+n-1][0]  += efint[n * irow- idof+n-1][0];
+            }
+		}
+
+	}
+}
 
 void mesh::Assemble(SparseMatrix<double>  &KG, VectorXd &Fint, VectorXd &Fbody)
 {

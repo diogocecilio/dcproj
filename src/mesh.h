@@ -50,6 +50,7 @@ public:
     void Assemble(SparseMatrix<double>  &KG, VectorXd &Fint, VectorXd &Fbody);
     void  FindIds(NRvector<double> constcoorddata,NRvector<int> constcoord, std::vector<int>& ids);
 
+    void ComputeSolAndDSol(NRmatrix<Doub> &sol, NRmatrix<Doub> &dsol);
 
 	inline void SetHhat(NRmatrix<Doub> HHAT)
 	{

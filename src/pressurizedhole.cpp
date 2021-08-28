@@ -98,7 +98,7 @@ void  pressurizedhole::IterativeProcess()
         //vector_names.push_back("SqrtJ2(EPSP)");
         //vector_names.push_back("Stress");
         Int dim=2;
-        string slopestr="pressurizedring";
+        string slopestr="ring";
         VTKGraphMesh vtkobj(&mesh0,dim,scalar_names,vector_names,slopestr);
         vtkobj.DrawSolution( counterout, counter);
 
@@ -123,8 +123,8 @@ void  pressurizedhole::IterativeProcess()
 
 void pressurizedhole::CreateMatAndMesh(mesh &getmesh, material &mat)
 {
-    string nodestr = "/home/diogo/projects/dcproj/nodes-pressure-fino.txt";
-	string elsstr = "/home/diogo/projects/dcproj/elements-pressure-fino.txt";
+    string nodestr = "/home/diogocecilio/projects/dcproj/nodes-pressure-fino.txt";
+	string elsstr = "/home/diogocecilio/projects/dcproj/elements-pressure-fino.txt";
 
 	MatDoub hhatinho;
 	MatDoub  meshcoords;

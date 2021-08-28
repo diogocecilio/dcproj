@@ -37,8 +37,8 @@ include_directories("/usr/include/eigen3")
 #include_directories("/opt/intel")
 #include_directories("/opt/intel/oneapi/mkl/2021.3.0/include")
 #include_directories(${MKLROOT})
-include_directories("/opt/intel/oneapi/mkl/2021.3.0/include" "/opt/intel/oneapi/mkl/2021.3.0/lib/intel64/")
-include_directories( ${Boost_INCLUDE_DIR} ${MKLROOT} "/opt/intel/mkl")
+#include_directories("/opt/intel/oneapi/mkl/2021.3.0/include" "/opt/intel/oneapi/mkl/2021.3.0/lib/intel64/" "/usr/include/mkl" "/usr/lib/x86_64-linux-gnu/mkl")
+#include_directories( ${Boost_INCLUDE_DIR} ${MKLROOT} "/opt/intel/mkl")
 
 target_include_directories(dcproj PUBLIC ${PROJECT_SOURCE_DIR})
 target_include_directories(dcproj PUBLIC ${PROJECT_SOURCE_DIR}/src)
@@ -51,7 +51,7 @@ set(HEADER_FILES ${PROJECT_SOURCE_DIR}/src)
 #set(MKLROOT "/opt/intel/oneapi/mkl/2021.3.0")
 
 find_package(Threads REQUIRED)
-find_package(MKL REQUIRED)
+#find_package(MKL REQUIRED)
 
 #set(USING_MKL ON)
 

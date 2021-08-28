@@ -70,7 +70,7 @@ public:
 	void ResetMemory();
 	NRmatrix<Doub> GetSolution();
     NRvector<NRtensor<Doub> > GetPlasticStrain();
-    void  ComputeStrain(mesh * inmesh,NRmatrix<Doub>  elcoords, NRmatrix<Doub>  eldisplace, NRvector<Doub> ptsw,NRtensor<Doub> &straintensor,Int &index);
+    void ComputeSolution(mesh * inmesh,NRmatrix<Doub>  elcoords,NRmatrix<Doub>  eldisplace,NRvector<Doub> ptsw,NRmatrix<Doub> &sol,NRmatrix<Doub> &dsol);
 
     void ComputeSolAndDSol(mesh * inmesh,NRmatrix<Doub>&sol,NRmatrix<Doub>&dsol);
     void ComputeSolAndDSol(mesh * inmesh,NRvector<NRmatrix<Doub>>&sol,NRvector<NRmatrix<Doub>>&dsol);

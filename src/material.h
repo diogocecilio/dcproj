@@ -57,6 +57,7 @@ public:
     virtual void ComputeSolAndDSol(mesh * inmesh,NRmatrix<Doub>&sol,NRmatrix<Doub>&dsol)=0;
     virtual void ComputeSolAndDSol(mesh * inmesh,NRvector<NRmatrix<Doub>>&sol,NRvector<NRmatrix<Doub>>&dsol)=0;
     virtual Doub ComputePhi(NRtensor<Doub> eps)=0;
+    virtual void ComputeSolution(mesh * inmesh,NRmatrix<Doub>  elcoords,NRmatrix<Doub>  eldisplace,NRvector<Doub> ptsw,NRmatrix<Doub> &sol,NRmatrix<Doub> &dsol)=0;
 	//virtual void GetMaterialRandomField()=0;
 
 	//MatDoub fHHAT;

@@ -97,13 +97,19 @@ void VTKGraphMesh::DrawSolution(Int step, Doub time){
         }
         else if(fdim==2)
         {
-            tensor.XX()=gradu[0][0];tensor.XY()=(gradu[2][0]+gradu[2][0])/2.;
-            tensor.XY()=(gradu[2][0]+gradu[2][0])/2.;tensor.YY()=gradu[1][0];
+            //	Doub ex = gradu[0][0];// dudx;
+	//Doub ey = gradu[1][1];
+	//Doub exy = (gradu[0][1] + gradu[1][0]);
+            //tensor.XX()=gradu[0][0];tensor.XY()=(gradu[1][0]+gradu[0][1]);
+            //tensor.XY()=(gradu[1][0]+gradu[0][1]);tensor.YY()=gradu[1][1];
+            //tensor.YY()=gradu[1][1];
+            tensor.XX()=gradu[0][0];tensor.YY()=gradu[1][1];tensor.XY()=(gradu[0][1] + gradu[1][0]);
         }
         Doub valphi =fmesh->fmaterial->ComputePhi(tensor) ;
         fOutFile << valphi <<   endl;//x
     }
-
+        //sol[inode].assign(2,1,0.);
+        //dsol[inode].assign(2,2,0.);
 
     NRmatrix<Doub> HHAT;
     fmesh->GetHhat(HHAT);
@@ -121,7 +127,7 @@ void VTKGraphMesh::DrawSolution(Int step, Doub time){
 
 
 
-    sol[0].Print();
+    //sol[0].Print();
     //sol[5].Print();
     //fdata.Print();
     Int nvecnames = fVecNames.size();
@@ -132,7 +138,8 @@ void VTKGraphMesh::DrawSolution(Int step, Doub time){
         {
             for (Int inode = 0; inode < nnodes; inode++)
             {
-                fOutFile << sol[inode][0][0] << " " << sol[inode][1][0] << " ";
+                //fOutFile << sol[inode][0][0] << " " << sol[inode][0][1] << " ";
+                fOutFile << sol[inode][0][0] << " " << sol[inode][0][1] << " ";
                 fOutFile << 0;
                 fOutFile << std::endl;
 
@@ -150,7 +157,11 @@ void VTKGraphMesh::DrawSolution(Int step, Doub time){
                 //eps=gradu;
                 //eps+=gradut;
                 //eps*=1/2.;
-                fOutFile << gradu[0][0] << " " << gradu[1][0]<< " " << " "<< gradu[2][0];
+                	//Doub ex = gradu[0][0];// dudx;
+	//Doub ey = gradu[1][1];
+	//Doub exy = (gradu[0][1] + gradu[1][0]);
+                fOutFile << gradu[0][0] << " " << gradu[1][1] <<  " "<< (gradu[1][0] );
+                //fOutFile << gradu[0][0] << " " << gradu[0][1]<< " " << " "<< gradu[1][0];
                 fOutFile << std::endl;
             }
 

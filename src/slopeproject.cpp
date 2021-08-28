@@ -760,9 +760,12 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 		do
 		{
 
-            chrono::steady_clock sc;
-            auto start = sc.now();     // start timer
+            chrono::steady_clock sc,sc2;
+                // start timer
+            auto start2 = sc2.now();
 			fmesh->Assemble(KG, FINT, FBODY);
+            auto end2 = sc.now();
+            auto time_span_assemble = static_cast<chrono::duration<double>>(end2 - start2);
 			R = FBODY;
 			R *= lamb;
 			R -= FINT;
@@ -773,10 +776,10 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 
             if(false)
             {
-            string matrixout = "/home/diogo/projects/dcproj/matrix.dat";
+            string matrixout = "/home/diogocecilio/projects/dcproj/matrix.dat";
             std::ofstream matrixoutfile(matrixout);
             PrintMathematicaFormat(KG,matrixoutfile);
-            string vecout = "/home/diogo/projects/dcproj/vector.dat";
+            string vecout = "/home/diogocecilio/projects/dcproj/vector.dat";
             std::ofstream vecoutfile(vecout);
             PrintMathematicaFormat(FBODY,vecoutfile);
 
@@ -794,13 +797,15 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
            // cout << "\n dws-=dwb \n "  <<endl;
            // dws-=dwb;
            // dws.Print();
-            throw("\n Matrix test reached! \n");
+            DebugStop();
             //return;
 
             }
+            auto start = sc.now(); 
 			SolveEigenSparse(KG, R, dws);
 			SolveEigenSparse(KG, FBODY, dwb);
-
+            auto end = sc.now();
+            auto time_span_solver = static_cast<chrono::duration<double>>(end - start);
             //SolveEigen(KG, R, dws);
 			//SolveEigen(KG, FBODY, dwb);
 			
@@ -826,13 +831,12 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 			err1 = rnorm / FBODY.NRmatrixNorm();
 			err2 = normdw / unorm;
 
-            auto end = sc.now();
-            auto time_span = static_cast<chrono::duration<double>>(end - start);
+
             //cout << "Operation took: " << time_span.count() << " seconds !!!";
 
 			//Doub duration1 = (std::clock() - start) / (double)CLOCKS_PER_SEC;
 
-			std::cout << " Time in newton step :  " << time_span.count() <<" Iteration number = " << counter << " |  |R| = " << rnorm <<" | lamb  = " << lamb <<std::endl;
+			std::cout << " Time assemblimg :  " << time_span_assemble.count() <<  " Time inverting system :  " << time_span_solver.count() << " Iteration number = " << counter << " |  |R| = " << rnorm <<" | lamb  = " << lamb <<std::endl;
             //std::cout << " | time =  <<" << duration1 << std::endl;
 			counter++;
             //meantime+=time_span;
@@ -926,7 +930,7 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
         //vector_names.push_back("SqrtJ2(EPSP)");
         //vector_names.push_back("Stress");
     Int dim=2;
-    string slopestr="slope-saida";
+    string slopestr="slope-saida-fina";
     VTKGraphMesh vtkobj(fmesh,dim,scalar_names,vector_names,slopestr);
     vtkobj.DrawSolution( counterout, counter);
 
@@ -1337,7 +1341,7 @@ void slopeproject::SolveEigenSparse(MatDoub A, MatDoub b, MatDoub& x)
     std::vector<T> tripletList;
     int sz=A.nrows();
 
-    tripletList.reserve(sz*30);
+    tripletList.reserve(sz*60);
    // tripletList.reserve(80000);
 
     x.assign(sz, 1, 0.);

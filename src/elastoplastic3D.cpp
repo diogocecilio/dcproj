@@ -459,6 +459,12 @@ void elastoplastic3D<YC>::ContributeCurvedLine(NRmatrix<Doub>  &KG, NRmatrix<Dou
     std::cout<< "Not Implemented." << std::endl;
     DebugStop();
 }
+template <class YC>
+void elastoplastic3D<YC>::ComputeSolution(mesh * inmesh,NRmatrix<Doub>  elcoords,NRmatrix<Doub>  eldisplace,NRvector<Doub> ptsw,NRmatrix<Doub> &sol,NRmatrix<Doub> &dsol)
+{
+        std::cout<< "Not Implemented." << std::endl;
+    DebugStop();
+}
 
 template <class YC>
 void elastoplastic3D<YC>::SolPt(const std::vector<std::vector< std::vector<Doub > > > &allcoords, const MatInt &meshtopology, const Int &el, const  NRmatrix<Doub>  &solG, const Doub &xi, const Doub &eta, NRmatrix<Doub>  &xycoords, NRmatrix<Doub>  &sol)
