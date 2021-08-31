@@ -15,6 +15,7 @@ src/shapehexahedron.cpp src/shapehexahedron.h
 src/slopeproject.cpp src/slopeproject.h 
 src/vonmises.cpp src/vonmises.h
 src/druckerprager.cpp src/druckerprager.h
+src/mohrcoulomb.cpp src/mohrcoulomb.h
 src/postprocess.cpp src/postprocess.h 
 src/material.cpp  src/material.h 
 src/KLGalerkinRF.cpp src/KLGalerkinRF.h
