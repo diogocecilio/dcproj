@@ -373,36 +373,38 @@ std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed(Doub fa
 
 
 	}  while ((FSmax - FSmin) / FS > tol); //while ((FSmax - FSmin) / FS > tol && ( norm <1.e20));
-	std::cout << "FOS = " << FS << std::endl;
+	//std::cout << "FOS eeeeee = " << FS << std::endl;
 	
-	if (false)
+	if (true)
 	{
+        std::cout << "FOS eeeeee = " << FS << std::endl;
         MatDoub solpost23;
 		solpost23.CopyFromVector(solpost2);
-		string names = "/home/diogo/projects/results/mathematicas/loadvsdisplacementSRM";
-		string exts = ".dat";
-		names += exts;
+		string names = "loadvsdisplacementSRM.dat";
 		std::ofstream file8(names);
 		OutPutFile(solpost23, file8);
 
 		std::vector<std::vector<double>> epsppost;
 		mat->PostProcessIntegrationPointVar(meshint->GetAllCoords(), meshint->GetMeshNodes(), meshint->GetMeshTopology(), mat->GetSolution(), epsppost);
-		string name3 = "/home/diogo/projects/results/mathematicas/sqrtJ2SRM-Cho-Determ";
-		string ext3 = ".dat";
-		name3 += ext3;
+		//string name3 = "/home/diogocecilio/Dropbox/slope-reliability/results/mathematicas-new/sqrtJ2SRM-Cho-Determ";
+		//string ext3 = ".dat";
+        string name3 = "sqrtJ2SRM-Cho-Determ.dat";
+		//string ext3 = ".dat";
+		//name3 += ext3;
 		std::ofstream file3(name3);
 		OutPutPost(epsppost, file3);
 
 		string filename;
 		std::vector<std::vector<double>> solx, soly;
 		mat->PostProcess(meshint->GetAllCoords(), meshint->GetMeshNodes(), meshint->GetMeshTopology(), mat->GetSolution(), solx, soly);
-		filename = "/home/diogo/projects/results/mathematicas/solySRM.dat";
+		filename = "/home/diogocecilio/Dropbox/slope-reliability/results/mathematicas-new/solySRM.dat";
 		std::ofstream file2(filename);
 		OutPutPost(soly, file2);
-		filename = "/home/diogo/projects/results/mathematicas/solxSRM.dat";
+		filename = "/home/diogocecilio/Dropbox/slope-reliability/results/mathematicas-new/solxSRM.dat";
 		std::ofstream file22(filename);
 		OutPutPost(solx, file22);
 	}
+	
 	return solpost;
 }
 
@@ -612,19 +614,20 @@ std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed2(Doub f
 	}  while ((FSmax - FSmin) / FS > tol); //while ((FSmax - FSmin) / FS > tol && ( norm <1.e20));
 	std::cout << "FOS = " << FS << std::endl;
 
-	if (false)
+	if (true)
 	{
         MatDoub solpost23;
 		solpost23.CopyFromVector(solpost2);
-		string names = "/home/diogo/projects/results/mathematicas/loadvsdisplacementSRM";
-		string exts = ".dat";
-		names += exts;
+		//string names = "/home/diogo/projects/results/mathematicas/loadvsdisplacementSRM";
+		//string exts = ".dat";
+		//names += exts;
+        string names="uxf.dat";
 		std::ofstream file8(names);
 		OutPutFile(solpost23, file8);
 
 		std::vector<std::vector<double>> epsppost;
 		mat->PostProcessIntegrationPointVar(meshint->GetAllCoords(), meshint->GetMeshNodes(), meshint->GetMeshTopology(), mat->GetSolution(), epsppost);
-		string name3 = "/home/diogo/projects/results/mathematicas/sqrtJ2SRM-Cho-Determ";
+		string name3 = "/home/diogo/projects/results/mathematicas/sqrtJ2SRM-Cho-Determx";
 		string ext3 = ".dat";
 		name3 += ext3;
 		std::ofstream file3(name3);
@@ -719,7 +722,7 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 	MatDoub displace, displace0;
 	displace.assign(sz, 1, 0.);
 	//Doub l = 10., lamb = 1., lambn=0, lamb3, diff = 100;
-	Doub l = 0, l0 = 0, lamb = 1., lambn = 0, dlamb = 0., lamb3, diff = 100, diff2 = 100;
+	Doub l = 0, l0 = 0, lamb = 1., lambn =0.1, dlamb = 0.1, lamb3, diff = 100, diff2 = 100;
 	Int counterout = 0, maxcountout = 30;
 	std::vector<double> solcount(7, 0.), uvf(2, 0.);
 	std::vector<std::vector<double>> solpost, solpost2;
@@ -747,7 +750,7 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 	Doub rtol = 0.5;
 	//cout << " \n SYSTEM SIZE  = " << KG.nrows() << std::endl;
 	Doub rnorm = 10., rnormn=10.,lambn0=0.;
-    Int counter = 0, maxcount = 20;
+    Int counter = 0, maxcount = 30;
 	do
 	{
 		Doub err1 = 10., err2 = 10., tol = 1.e-5;
@@ -841,7 +844,7 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 			counter++;
             //meantime+=time_span;
 			rtemp = rnorm;
-			if (counter == 1)rnorm = 10;
+			if (counter == 1 || counter==0)rnorm = 10;
 
 
 		} while (counter < maxcount && rnorm > rtol);
@@ -930,7 +933,7 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
         //vector_names.push_back("SqrtJ2(EPSP)");
         //vector_names.push_back("Stress");
     Int dim=2;
-    string slopestr="slope-saida-fina";
+    string slopestr="/home/diogocecilio/projects/dcproj/data/slope-saida-fina";
     VTKGraphMesh vtkobj(fmesh,dim,scalar_names,vector_names,slopestr);
     vtkobj.DrawSolution( counterout, counter);
 
@@ -953,31 +956,33 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 		//std::ofstream file8(names);
 		//OutPutFile(solpost23, file8);
 
-
+        std::cout << " GIM = " << std::endl;
 		MatDoub solpost23;
 		solpost23.CopyFromVector(solpost2);
-		string names = "/home/diogo/projects/results/mathematicas/loadvsdisplacement";
-		string exts = ".dat";
-		names += exts;
+		//string names = "/home/diogocecilio/Dropbox/slope-reliability/results/mathematicas-new/loadvsdisplacement2222";
+		//string exts = ".dat";
+		//names += exts;
+        string names = "uxf.dat";
 		std::ofstream file8(names);
 		OutPutFile(solpost23, file8);
 
 
 		std::vector<std::vector<double>> epsppost;
 		fmesh->fmaterial->PostProcessIntegrationPointVar(fmesh->GetAllCoords(), fmesh->GetMeshNodes(), fmesh->GetMeshTopology(), fmesh->fmaterial->GetSolution(), epsppost);
-		string name3 = "/home/diogo/projects/results/mathematicas/sqrtJ2GIM-deter";
-		string ext3 = ".dat";
-		name3 += ext3;
+		//string name3 = "/home/diogocecilio/Dropbox/slope-reliability/results/mathematicas-new/sqrtJ2GIM-deter2222";
+		//string ext3 = ".dat";
+		//name3 += ext3;
+        string name3 = "/home/diogocecilio/projects/dcproj/data/sqrtJ2GIM.dat";
 		std::ofstream file3(name3);
 		OutPutPost(epsppost, file3);
 
 		string filename;
 		std::vector<std::vector<double>> solx, soly;
 		fmesh->fmaterial->PostProcess(fmesh->GetAllCoords(), fmesh->GetMeshNodes(), fmesh->GetMeshTopology(), fmesh->fmaterial->GetSolution(), solx, soly);
-		filename = "/home/diogo/projects/results/mathematicas/soly.dat";
+		filename = "/home/diogocecilio/projects/dcproj/data/soly.dat";
 		std::ofstream file2(filename);
 		OutPutPost(soly, file2);
-		filename = "/home/diogo/projects/results/mathematicas/solx.dat";
+		filename = "/home/diogocecilio/projects/dcproj/data/solx.dat";
 		std::ofstream file22(filename);
 		OutPutPost(solx, file22);
 	}
@@ -1922,11 +1927,11 @@ void slopeproject::MonteCarloGIM(int iter, int iter2, bool print, string writena
 		fmesh->fmaterial->SetRandomField(hhatinho);
 		fmesh->SetHhat(hhatinho);
 
-        int maxiter = 30;
-		Doub deltatol = 0.02;
-		int desirediter = 10;
-		Doub lamb0 = 0.2;
-
+        int maxiter = 10;
+		Doub deltatol = 0.01;
+		int desirediter = 20;
+		Doub lamb0 = 0.5;
+//soll = slopeobj0->IterativeProcess(10, 0.5, 0.01,20);
 		std::vector<std::vector<double>>  sol = IterativeProcess(desirediter, lamb0, deltatol, maxiter);//x = desloc y = loadfactor
 
 
@@ -2101,15 +2106,63 @@ void slopeproject::OutPutFile(MatDoub& postdata, std::ofstream& file)
 
 	file.close();
 }
-
-void slopeproject::OutPutPost(std::vector<std::vector<double>>& postdata, std::ofstream& file)
+/*TITLE = "Example: Simple XY Plot"
+VARIABLES = "X", "Y", "Z", "Distance", "Temperature"
+ZONE T="Only Zone", I=20, J=2, K=1, F=POINT
+0.0 0.0 0.0 0.0 850.9
+0.0 0.0 0.0 0.022 790.1
+0.0 0.0 0.0 0.051 554.0
+0.0 0.0 0.0 0.069 540.0
+0.0 0.0 0.0 0.075 545.5
+0.0 0.0 0.0 0.083 549.4
+0.0 0.0 0.0 0.106 590.2
+0.0 0.0 0.0 0.1234 535.1
+0.0 0.0 0.0 0.15 601.0
+0.0 0.0 0.0 0.201 664.5
+0.0 0.0 0.0 0.25 635.9
+0.0 0.0 0.0 0.35 599.9
+0.0 0.0 0.0 0.4454 600.0
+0.0 0.0 0.0 0.49 513.0
+0.0 0.0 0.0 0.5656 442.0
+0.0 0.0 0.0 0.6423 333.5
+0.0 0.0 0.0 0.6604 300.4
+0.0 0.0 0.0 0.7 245.7
+0.0 0.0 0.0 0.89 221.4
+0.0 0.0 0.0 1.3 200.0*/
+/*void slopeproject::OutPutPost(std::vector<std::vector<double>>& postdata, std::ofstream& file)
 {
 	file.clear();
+    
+    file << "TITLE = " <<   "Example: Simple XY Plot" << endl;
+    file << "VARIABLES = " <<   "X ,"<< "Y ," << "Z ," <<" sqrt(J2)"<< endl;
+    file << "ZONE T= " <<  "Only Zone ," << " I =" << postdata.size() << " J = 1,"<< " K = 2, "<< "F=POINT "<<  endl;
+//ZONE T="Only Zone", I=20, J=2, K=1, F=POINT
+    
 	for (Int i = 0; i < postdata.size(); i++)
 	{
 		for (Int j = 0; j < postdata[0].size(); j++)
 		{
 			file << postdata[i][j] << " ";
+		}
+		file << 0.;
+		file << endl;
+	}
+	file.close();
+}*/
+
+void slopeproject::OutPutPost(std::vector<std::vector<double>>& postdata, std::ofstream& file)
+{
+	file.clear();
+    file << "x coord, "<< "y coord, "<< "z coord, "<< "scalar "<< endl;
+	for (Int i = 0; i < postdata.size(); i++)
+	{
+		for (Int j = 0; j < postdata[0].size(); j++)
+		{
+            if(j==2){
+                file << 0. << ", " << postdata[i][j];
+            }else{
+                file << postdata[i][j] << ", ";
+            }
 		}
 		file << endl;
 	}

@@ -136,8 +136,8 @@ void beam3dtools::IterativeProcess( )
 }
 void beam3dtools::CreateMatAndMeshCube(mesh&getmesh, material &mat)
 {
-    string nodestr = "/home/diogo/projects/dcproj/one-el-p2-nodes-v2.txt";
-	string elsstr = "/home/diogo/projects/dcproj/one-el-p2-els.txt";
+    string nodestr = "/home/diogo/projects/dcproj/data/one-el-p2-nodes-v2.txt";
+	string elsstr = "/home/diogo/projects/dcproj/data/one-el-p2-els.txt";
 
 	MatDoub hhatinho;
 	MatDoub  meshcoords;
@@ -173,8 +173,8 @@ void beam3dtools::CreateMatAndMeshCube(mesh&getmesh, material &mat)
 
 void beam3dtools::CreateMatAndMesh(mesh &getmesh, material &mat)
 {
-    string nodestr = "/home/diogo/projects/dcproj/beam3D-nodes.txt";
-	string elsstr = "/home/diogo/projects/dcproj/beam3D-elements.txt";
+    string nodestr = "/home/diogo/projects/dcproj/data/beam3D-nodes.txt";
+	string elsstr = "/home/diogo/projects/dcproj/data/beam3D-elements.txt";
 
 	MatDoub hhatinho;
 	MatDoub  meshcoords;

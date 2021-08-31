@@ -389,8 +389,7 @@ void KLGalerkinRF::GenerateNonGaussinRandomField(VecComplex& val, MatDoub& vec, 
 	//unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
 	//std::default_random_engine generator(seed);
 
-	std::random_device rd{};
-	std::mt19937 generator{ rd() };
+
 
 	std::normal_distribution<Doub> distribution(0., 1.);
 
@@ -401,6 +400,8 @@ void KLGalerkinRF::GenerateNonGaussinRandomField(VecComplex& val, MatDoub& vec, 
 	{
 		for (Int iexp = 0; iexp < M; iexp++)
 		{
+            std::random_device rd{};
+            std::mt19937 generator{ rd() };
 			Doub xic = distribution(generator);
 			Doub xiphi = distribution(generator);
 			THETA[iexp][n] = xic;

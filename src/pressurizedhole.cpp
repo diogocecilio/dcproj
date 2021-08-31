@@ -123,8 +123,8 @@ void  pressurizedhole::IterativeProcess()
 
 void pressurizedhole::CreateMatAndMesh(mesh &getmesh, material &mat)
 {
-    string nodestr = "/home/diogocecilio/projects/dcproj/nodes-pressure-fino.txt";
-	string elsstr = "/home/diogocecilio/projects/dcproj/elements-pressure-fino.txt";
+    string nodestr = "/home/diogocecilio/projects/dcproj/data/nodes-pressure-fino.txt";
+	string elsstr = "/home/diogocecilio/projects/dcproj/data/elements-pressure-fino.txt";
 
 	MatDoub hhatinho;
 	MatDoub  meshcoords;

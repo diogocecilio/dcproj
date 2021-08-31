@@ -83,16 +83,19 @@ void mainlinux2(int simtype,int comeco,int fim)
   //  string nodestr = "/home/diogo/projects/dcproj/nos-912.txt";
 	//string elsstr = "/home/diogo/projects/dcproj/els-912.txt";
 
-    //   string nodestr = "/home/diogo/projects/dcproj/nos-287.txt";
-	//string elsstr = "/home/diogo/projects/dcproj/els-287.txt";
+       string nodestr = "/home/diogocecilio/projects/dcproj/data/nos-287.txt";
+	string elsstr = "/home/diogocecilio/projects/dcproj/data/els-287.txt";
 
-    //string nodestr = "/home/diogo/projects/dcproj/nos-381.txt";
+  //  string nodestr = "/home/diogo/projects/dcproj/nos-381.txt";
 //	string elsstr = "/home/diogo/projects/dcproj/els-381.txt";
+    
+   //     string nodestr = "/home/diogocecilio/projects/dcproj/nos-381.txt";
+//	string elsstr = "/home/diogocecilio/projects/dcproj/els-381.txt";
 
          //   string nodestr = "/home/diogo/projects/dcproj/nos-445.txt";
 	//string elsstr = "/home/diogo/projects/dcproj/els-445.txt";
-            string nodestr = "/home/diogocecilio/projects/dcproj/nodes-606.txt";
-	string elsstr = "/home/diogocecilio/projects/dcproj/els-606.txt";
+       //     string nodestr = "/home/diogocecilio/projects/dcproj/nodes-606.txt";
+	//string elsstr = "/home/diogocecilio/projects/dcproj/els-606.txt";
 
 	MatDoub hhatinho;
 	MatDoub  meshcoords, elcoords;
@@ -110,7 +113,7 @@ void mainlinux2(int simtype,int comeco,int fim)
 
 	Doub thickness = 1.;
 	Doub young = 20000.;
-	Doub nu = 0.49;
+	Doub nu = 0.3;
 	//Doub young = 100000.;
 	//Doub nu = 0.3;
 	Int planestress = 0;
@@ -124,26 +127,31 @@ void mainlinux2(int simtype,int comeco,int fim)
 	Int npts = ptsweigths.nrows();
 	Int nglobalpts = meshtopology.nrows() * npts;
 	Int sz = 2 * meshcoords.nrows();
-    int nthreads =5;
+    int nthreads =10;
     std::vector <std::thread> threadsmat;
 
     Doub Lx = 20.;//(*Correlation length in x direction*)
 	Doub Ly = 2.;//(*Correlation length in y direction*)
-	Int nsamples = 50000, expansionorder = 150;
+	Int nsamples = 10000, expansionorder = 150;
 	Int type = 3;
 
     MatDoub coesionrandomfield, frictionrandomfield;
-	string filerf = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh-606/field-Lx20-Ly2/coesionfield.txt";
+	//string filerf = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh-606/field-Lx20-Ly2/coesionfield.txt";
+    //string filerf = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh-381/field-Lx20-Ly2/coesionfield.txt";
+    string filerf = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh-287-novostestes/field-Lx20-Ly2/coesionfield.txt";
 	ReadMatDoub(coesionrandomfield, filerf);
-	string filerff = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh-606/field-Lx20-Ly2/frictionfield.txt";
+	//string filerff = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh-606/field-Lx20-Ly2/frictionfield.txt";
+   // string filerff = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh-381/field-Lx20-Ly2/frictionfield.txt";
+    string filerff = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh-287-novostestes/field-Lx20-Ly2/frictionfield.txt";
 	ReadMatDoub(frictionrandomfield, filerff);
 
 	NRmatrix<MatDoub> randomfield(2, 1);
 	randomfield[0][0] = coesionrandomfield;
 	randomfield[1][0] = frictionrandomfield;
 
-    string namefolder = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh-606/GIM-lx20-ly2";
-
+    //string namefolder = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh-606/GIM-lx20-ly2";
+    //string namefolder = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh-381/gim-Lx20-Ly2";
+    string namefolder = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh-287-novostestes/gim-Lx20-Ly2";
     int delta = int(nsamples/nthreads);
     int a=0,b=delta;
     int dim =2;
@@ -196,19 +204,23 @@ void mainlinux(int simtype,int comeco,int fim)
   //  string nodestr = "/home/diogocecilio/projects/dcproj/nodes-unstructured.txt";
 	//string elsstr = "/home/diogocecilio/projects/dcproj/els-unstructured.txt";
 
-   //string nodestr = "/home/diogocecilio/projects/dcproj/nodes1k.txt";
-	//string elsstr = "/home/diogocecilio/projects/dcproj/els1k.txt";
+//   string nodestr = "/home/diogocecilio/projects/dcproj/nodes1k.txt";
+//	string elsstr = "/home/diogocecilio/projects/dcproj/els1k.txt";
 //
-   //   string nodestr = "/home/diogocecilio/projects/dcproj/nos-287.txt";
-	// string elsstr = "/home/diogocecilio/projects/dcproj/els-287.txt";
+    
+   //string nodestr = "/home/diogocecilio/projects/dcproj/nodes-2k.txt";
+	//string elsstr = "/home/diogocecilio/projects/dcproj/els-2k.txt";
+    
+    string nodestr = "/home/diogocecilio/projects/dcproj/data/nos-287.txt";
+    string elsstr = "/home/diogocecilio/projects/dcproj/data/els-287.txt";
 
     //string nodestr = "/home/diogocecilio/projects/dcproj/nos-381.txt";
 	//string elsstr = "/home/diogocecilio/projects/dcproj/els-381.txt";
     
-        string nodestr = "/home/diogocecilio/projects/dcproj/nodes-606.txt";
-	string elsstr = "/home/diogocecilio/projects/dcproj/els-606.txt";
+     // string nodestr = "/home/diogocecilio/projects/dcproj/nodes-606.txt";
+	//string elsstr = "/home/diogocecilio/projects/dcproj/els-606.txt";
 
-       //     string nodestr = "/home/diogo/projects/dcproj/nos-445.txt";
+    //string nodestr = "/home/diogo/projects/dcproj/nos-445.txt";
 	//string elsstr = "/home/diogo/projects/dcproj/els-445.txt";
 
 
@@ -229,7 +241,7 @@ void mainlinux(int simtype,int comeco,int fim)
 
 	Doub thickness = 1.;
 	Doub young = 20000.;
-	Doub nu = 0.3;
+	Doub nu = 0.49;
 	//Doub young = 100000.;
 	//Doub nu = 0.3;
 	Int planestress = 0;
@@ -410,8 +422,8 @@ void mainlinux(int simtype,int comeco,int fim)
     objKLGalerkinRF17->SetMesh(mesh17);
     objKLGalerkinRF18->SetMesh(mesh18);
 
-    string mathematicapath = "/home/diogocecilio/projects/results/mathematica-606";
-    string resultfolderpath = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh-606";
+    string mathematicapath = "/home/diogocecilio/projects/results/mathematica-287";
+    string resultfolderpath = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh-287-novostestes";
 
     if(true)
     {
@@ -424,8 +436,9 @@ void mainlinux(int simtype,int comeco,int fim)
 		mat0->fYC.setup(young, nu, c, phi);
 		mat0->SetMemory(nglobalpts, sz);
 		mat0->UpdateBodyForce(bodyforce);
-        soll = slopeobj0->IterativeProcess(20, 0.1, 0.01,10);
-      //  return;
+        soll = slopeobj0->IterativeProcess(10, 0.5, 0.01,30);
+        //soll = slopeobj0->IterativeProcessShearRed(0.1,2.,tol);
+        //'return;
         string filename = resultfolderpath;
         filename+="/field-Lx";
         filename+=to_string(Int(Lx));
@@ -513,7 +526,7 @@ void mainlinux(int simtype,int comeco,int fim)
 		mat0->fYC.setup(young, nu, c, phi);
 		mat0->SetMemory(nglobalpts, sz);
 		mat0->UpdateBodyForce(bodyforce);
-        soll = slopeobj0->IterativeProcess(30, 0.001, 0.0001,20);
+        soll = slopeobj0->IterativeProcess(30, 0.1, 0.01,20);
 	}
 
     return;
@@ -1199,9 +1212,9 @@ int main(int argc, char *argv[])
     }
     else
     {
-        //mainlinux(-1,-1,-1);
+        mainlinux(-1,-1,-1);
         
-        mainlinux2(-1,-1,-1);
+        //mainlinux2(-1,-1,-1);
     }
 
 
