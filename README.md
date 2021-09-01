@@ -1,3 +1,6 @@
+Code with implementations of:
+"A comparative study of Strength Reduction  and Gravity Increase Methods considering Random Fields in slope stability analysis"
+
 # dcproj
 download/install kdevelop
 sudo apt-get install kdevelop
