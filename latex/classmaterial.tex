@@ -1,0 +1,510 @@
+\hypertarget{classmaterial}{}\doxysection{material Class Reference}
+\label{classmaterial}\index{material@{material}}
+
+
+{\ttfamily \#include $<$material.\+h$>$}
+
+
+
+Inheritance diagram for material\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmaterial__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmaterial_abcbc2f61c24746fe8923983a4ba39d1e}{material}} ()
+\item 
+\mbox{\hyperlink{classmaterial_a81832a5543032ea194fbdbdba352efa7}{$\sim$material}} ()
+\item 
+virtual void \mbox{\hyperlink{classmaterial_af57b701eae627f899da8b551492158c4}{Contribute}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&ek, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&efint, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&efbody, \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ ptsw, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} elcoords, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} eldisplace)=0
+\item 
+virtual void \mbox{\hyperlink{classmaterial_ab1f68a415ca798ee4283a9d31d19de4c}{Cac\+Stiff}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&ek, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&efint, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&efbody, const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&elcoords, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} eldisplace)=0
+\item 
+virtual void \mbox{\hyperlink{classmaterial_abdff47ebbc0b16893e3fc18941add8c3}{Assemble}} (std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ allcoords, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} meshnodes, \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} meshtopology, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&KG, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&Fint, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&Fbody)=0
+\item 
+virtual void \mbox{\hyperlink{classmaterial_a04b81686a1e4d8704b9212197580e409}{assemble\+BandN}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&B, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&N, const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&psis, const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&Grad\+Phi)=0
+\item 
+virtual void \mbox{\hyperlink{classmaterial_a947a9c6e657312a904bdb969b4b3ce1e}{Get\+El\+Coords}} (std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ allcoords, \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} el, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&elcoords)=0
+\item 
+virtual void \mbox{\hyperlink{classmaterial_af4004268c2899c7d45bab2cd3f9d5871}{Dirichlet\+BC}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&KG, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&FG, std\+::vector$<$ int $>$ ids, \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} dir, \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} val)=0
+\item 
+virtual void \mbox{\hyperlink{classmaterial_a0e073c26afee65a24c1cdfe66eb7b96f}{Dirichlet\+BC}} (Sparse\+Matrix$<$ double $>$ \&KG, Vector\+Xd \&Fint, std\+::vector$<$ int $>$ ids, \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} dir, \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} val)=0
+\item 
+virtual void \mbox{\hyperlink{classmaterial_a9e5515d5c1ffe56aa1d470572278a994}{Contribute\+Line\+Newan}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&KG, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&FG, std\+::vector$<$ int $>$ ids, \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} dir, \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} val)=0
+\item 
+virtual void \mbox{\hyperlink{classmaterial_a35c5550c2737b548d5e6ca3c292ee53c}{Contribute\+Curved\+Line}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&KG, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&FG, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} meshnodes, \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} linetopology, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} force)=0
+\item 
+virtual void \mbox{\hyperlink{classmaterial_a7e50b87f0d59b1b5290fff1a47634ac5}{Sol\+Pt}} (const std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&allcoords, const \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \&meshtopology, const \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} \&el, const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&solG, const \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&xi, const \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&eta, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&xycoords, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&sol)=0
+\item 
+virtual void \mbox{\hyperlink{classmaterial_a63319cbe419a2779285c4cdf92585b19}{Post\+Process}} (std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ allcoords, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} meshnodes, \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} meshtopology, const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&nodalsol, std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&solx, std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&soly)=0
+\item 
+virtual void \mbox{\hyperlink{classmaterial_a68a882f99e067c212634559dabb2e084}{Post\+Process}} (std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ allcoords, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} meshnodes, \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} meshtopology, \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} var, const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&nodalsol, std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&sol)=0
+\item 
+virtual void \mbox{\hyperlink{classmaterial_a8b95890bc5b0e16ef253bca541559f3f}{Post\+Process\+Strain}} (\mbox{\hyperlink{classmesh}{mesh}} $\ast$inmesh, \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$$>$$>$ \&sol)=0
+\item 
+virtual void \mbox{\hyperlink{classmaterial_a269de8b8e3633149197e70e0b508e6f2}{Post\+Process\+Integration\+Point\+Var}} (std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ allcoords, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} meshnodes, \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} meshtopology, const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&nodalsol, std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&sol)=0
+\item 
+virtual void \mbox{\hyperlink{classmaterial_aacf3d8d5df049a3b4039fd46993d150b}{Set\+Random\+Field}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} hhat)=0
+\item 
+virtual void \mbox{\hyperlink{classmaterial_afb25c8bf72991239f81adc283a6b7db0}{Set\+Memory}} (\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} ngloblapoints, \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} systemsize)=0
+\item 
+virtual void \mbox{\hyperlink{classmaterial_a1203ba906bf2cb30cf89fecaa1ecec60}{Update\+Displacement}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} displace)=0
+\item 
+virtual void \mbox{\hyperlink{classmaterial_af1c66feefb1439f6b9e35210d7957f9e}{Update\+Displacement}} (Vector\+Xd displace)=0
+\item 
+virtual void \mbox{\hyperlink{classmaterial_a17f2e10668e0e209899c95db0569b565}{Update\+Plastic\+Strain}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classmaterial_a8b8c3e20994099e5a992556d914af0d8}{Update\+Body\+Force}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} newbodyforce)=0
+\item 
+virtual void \mbox{\hyperlink{classmaterial_a3dc14cf584660a4fea8e02848bbda754}{Reset\+Plastic\+Strain}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classmaterial_a174ab38258bd7e7f1cc7f9905bffcf7c}{Reset\+Displacement}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classmaterial_abde9ca84a4cb09c9f4cc7e4fd64c9bf6}{Reset\+Mat}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classmaterial_a3fae1f91dd7d138cad06532a6b84e4b6}{Reset\+Memory}} ()=0
+\item 
+virtual \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{classmaterial_a0f80c31f4c91555f4bdb7b74b2b8f68a}{Get\+Solution}} ()=0
+\item 
+virtual \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ \mbox{\hyperlink{classmaterial_afa78b4dd269b2be36abb33f7e3b6a76d}{Get\+Plastic\+Strain}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classmaterial_a3b117ef811ff8bd3405557dbfa620173}{Set\+Mat\+Constants}} (\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&consts)=0
+\item 
+virtual void \mbox{\hyperlink{classmaterial_abcf6c1cff3eeb24a142602ab39da9c2b}{Get\+Mat\+Constants}} (\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&consts)=0
+\item 
+virtual void \mbox{\hyperlink{classmaterial_ad46bff47cf690a38a2ec327bba5e44d5}{Reset\+Counter}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classmaterial_ae806984b4f46c3391ef643e7ba6b4180}{Set\+Random\+Field\+Local}} (\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} $>$ hhatvel)=0
+\item 
+virtual \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \mbox{\hyperlink{classmaterial_a24ea26c836e36909a250e74ea1da4b08}{Get\+Body\+Force}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classmaterial_a48edb461b01a410da9ca58979d4235fd}{Compute\+Sol\+And\+D\+Sol}} (\mbox{\hyperlink{classmesh}{mesh}} $\ast$inmesh, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&sol, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&dsol)=0
+\item 
+virtual void \mbox{\hyperlink{classmaterial_a4bee543e2703419ca7e207f817fa7277}{Compute\+Sol\+And\+D\+Sol}} (\mbox{\hyperlink{classmesh}{mesh}} $\ast$inmesh, \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$$>$ \&sol, \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$$>$ \&dsol)=0
+\item 
+virtual \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classmaterial_a2e4301e309533906f75f681a05548286}{Compute\+Phi}} (\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ eps)=0
+\item 
+virtual void \mbox{\hyperlink{classmaterial_ac1fb19099d4dc4978afe01a459c3f999}{Compute\+Solution}} (\mbox{\hyperlink{classmesh}{mesh}} $\ast$inmesh, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ elcoords, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ eldisplace, \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ ptsw, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&sol, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&dsol)=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 9 of file material.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classmaterial_abcbc2f61c24746fe8923983a4ba39d1e}\label{classmaterial_abcbc2f61c24746fe8923983a4ba39d1e}} 
+\index{material@{material}!material@{material}}
+\index{material@{material}!material@{material}}
+\doxysubsubsection{\texorpdfstring{material()}{material()}}
+{\footnotesize\ttfamily material\+::material (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 5 of file material.\+cpp.
+
+\mbox{\Hypertarget{classmaterial_a81832a5543032ea194fbdbdba352efa7}\label{classmaterial_a81832a5543032ea194fbdbdba352efa7}} 
+\index{material@{material}!````~material@{$\sim$material}}
+\index{````~material@{$\sim$material}!material@{material}}
+\doxysubsubsection{\texorpdfstring{$\sim$material()}{~material()}}
+{\footnotesize\ttfamily material\+::$\sim$material (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 9 of file material.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classmaterial_abdff47ebbc0b16893e3fc18941add8c3}\label{classmaterial_abdff47ebbc0b16893e3fc18941add8c3}} 
+\index{material@{material}!Assemble@{Assemble}}
+\index{Assemble@{Assemble}!material@{material}}
+\doxysubsubsection{\texorpdfstring{Assemble()}{Assemble()}}
+{\footnotesize\ttfamily virtual void material\+::\+Assemble (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$}]{allcoords,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{meshnodes,  }\item[{\mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}}}]{meshtopology,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{KG,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{Fint,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{Fbody }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Referenced by Iterative\+Cho(), Iterative\+Process(), Iterative\+Process\+Shear\+Red(), Iterative\+Process\+Shear\+Red2(), Iterative\+Process\+Shear\+Red3(), and Iterative\+Slope\+Stability\+Eig().
+
+\mbox{\Hypertarget{classmaterial_a04b81686a1e4d8704b9212197580e409}\label{classmaterial_a04b81686a1e4d8704b9212197580e409}} 
+\index{material@{material}!assembleBandN@{assembleBandN}}
+\index{assembleBandN@{assembleBandN}!material@{material}}
+\doxysubsubsection{\texorpdfstring{assembleBandN()}{assembleBandN()}}
+{\footnotesize\ttfamily virtual void material\+::assemble\+BandN (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{B,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{N,  }\item[{const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{psis,  }\item[{const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{Grad\+Phi }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+\mbox{\Hypertarget{classmaterial_ab1f68a415ca798ee4283a9d31d19de4c}\label{classmaterial_ab1f68a415ca798ee4283a9d31d19de4c}} 
+\index{material@{material}!CacStiff@{CacStiff}}
+\index{CacStiff@{CacStiff}!material@{material}}
+\doxysubsubsection{\texorpdfstring{CacStiff()}{CacStiff()}}
+{\footnotesize\ttfamily virtual void material\+::\+Cac\+Stiff (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{ek,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{efint,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{efbody,  }\item[{const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{elcoords,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{eldisplace }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Referenced by mesh\+::\+Assemble().
+
+\mbox{\Hypertarget{classmaterial_a2e4301e309533906f75f681a05548286}\label{classmaterial_a2e4301e309533906f75f681a05548286}} 
+\index{material@{material}!ComputePhi@{ComputePhi}}
+\index{ComputePhi@{ComputePhi}!material@{material}}
+\doxysubsubsection{\texorpdfstring{ComputePhi()}{ComputePhi()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} material\+::\+Compute\+Phi (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$}]{eps }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classelastoplastic3_d_a75528be088ddd717ea0b69587b19361f}{elastoplastic3\+D$<$ Y\+C $>$}}, and \mbox{\hyperlink{classelastoplastic2_d_abea8738c71e54de35d05925a51065217}{elastoplastic2\+D$<$ Y\+C $>$}}.
+
+
+
+Referenced by V\+T\+K\+Graph\+Mesh\+::\+Draw\+Solution().
+
+\mbox{\Hypertarget{classmaterial_a48edb461b01a410da9ca58979d4235fd}\label{classmaterial_a48edb461b01a410da9ca58979d4235fd}} 
+\index{material@{material}!ComputeSolAndDSol@{ComputeSolAndDSol}}
+\index{ComputeSolAndDSol@{ComputeSolAndDSol}!material@{material}}
+\doxysubsubsection{\texorpdfstring{ComputeSolAndDSol()}{ComputeSolAndDSol()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily virtual void material\+::\+Compute\+Sol\+And\+D\+Sol (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmesh}{mesh}} $\ast$}]{inmesh,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{sol,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{dsol }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classelastoplastic2_d_a0fc819caad01e6c2eec4fb4b89d89cdd}{elastoplastic2\+D$<$ Y\+C $>$}}, and \mbox{\hyperlink{classelastoplastic3_d_a41f980b1010d4e7f278c9ed59ace89ca}{elastoplastic3\+D$<$ Y\+C $>$}}.
+
+
+
+Referenced by V\+T\+K\+Graph\+Mesh\+::\+Draw\+Solution(), and pressurizedhole\+::\+Iterative\+Process().
+
+\mbox{\Hypertarget{classmaterial_a4bee543e2703419ca7e207f817fa7277}\label{classmaterial_a4bee543e2703419ca7e207f817fa7277}} 
+\index{material@{material}!ComputeSolAndDSol@{ComputeSolAndDSol}}
+\index{ComputeSolAndDSol@{ComputeSolAndDSol}!material@{material}}
+\doxysubsubsection{\texorpdfstring{ComputeSolAndDSol()}{ComputeSolAndDSol()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily virtual void material\+::\+Compute\+Sol\+And\+D\+Sol (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmesh}{mesh}} $\ast$}]{inmesh,  }\item[{\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$$>$ \&}]{sol,  }\item[{\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$$>$ \&}]{dsol }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classelastoplastic2_d_aee603c70a15489e48e7b52e2bd639b95}{elastoplastic2\+D$<$ Y\+C $>$}}, and \mbox{\hyperlink{classelastoplastic3_d_a9e08239d67c9dc73931ac699a94e26ca}{elastoplastic3\+D$<$ Y\+C $>$}}.
+
+\mbox{\Hypertarget{classmaterial_ac1fb19099d4dc4978afe01a459c3f999}\label{classmaterial_ac1fb19099d4dc4978afe01a459c3f999}} 
+\index{material@{material}!ComputeSolution@{ComputeSolution}}
+\index{ComputeSolution@{ComputeSolution}!material@{material}}
+\doxysubsubsection{\texorpdfstring{ComputeSolution()}{ComputeSolution()}}
+{\footnotesize\ttfamily virtual void material\+::\+Compute\+Solution (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmesh}{mesh}} $\ast$}]{inmesh,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$}]{elcoords,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$}]{eldisplace,  }\item[{\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$}]{ptsw,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{sol,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{dsol }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classelastoplastic2_d_a2235ff5459a9ca1b15f231867279425f}{elastoplastic2\+D$<$ Y\+C $>$}}, and \mbox{\hyperlink{classelastoplastic3_d_a808189241d4e486bef9442887d432dee}{elastoplastic3\+D$<$ Y\+C $>$}}.
+
+\mbox{\Hypertarget{classmaterial_af57b701eae627f899da8b551492158c4}\label{classmaterial_af57b701eae627f899da8b551492158c4}} 
+\index{material@{material}!Contribute@{Contribute}}
+\index{Contribute@{Contribute}!material@{material}}
+\doxysubsubsection{\texorpdfstring{Contribute()}{Contribute()}}
+{\footnotesize\ttfamily virtual void material\+::\+Contribute (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{ek,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{efint,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{efbody,  }\item[{\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$}]{ptsw,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{elcoords,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{eldisplace }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+\mbox{\Hypertarget{classmaterial_a35c5550c2737b548d5e6ca3c292ee53c}\label{classmaterial_a35c5550c2737b548d5e6ca3c292ee53c}} 
+\index{material@{material}!ContributeCurvedLine@{ContributeCurvedLine}}
+\index{ContributeCurvedLine@{ContributeCurvedLine}!material@{material}}
+\doxysubsubsection{\texorpdfstring{ContributeCurvedLine()}{ContributeCurvedLine()}}
+{\footnotesize\ttfamily virtual void material\+::\+Contribute\+Curved\+Line (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{KG,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{FG,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{meshnodes,  }\item[{\mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}}}]{linetopology,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{force }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Referenced by pressurizedhole\+::\+Load\+B\+C().
+
+\mbox{\Hypertarget{classmaterial_a9e5515d5c1ffe56aa1d470572278a994}\label{classmaterial_a9e5515d5c1ffe56aa1d470572278a994}} 
+\index{material@{material}!ContributeLineNewan@{ContributeLineNewan}}
+\index{ContributeLineNewan@{ContributeLineNewan}!material@{material}}
+\doxysubsubsection{\texorpdfstring{ContributeLineNewan()}{ContributeLineNewan()}}
+{\footnotesize\ttfamily virtual void material\+::\+Contribute\+Line\+Newan (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{KG,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{FG,  }\item[{std\+::vector$<$ int $>$}]{ids,  }\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{dir,  }\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+\mbox{\Hypertarget{classmaterial_af4004268c2899c7d45bab2cd3f9d5871}\label{classmaterial_af4004268c2899c7d45bab2cd3f9d5871}} 
+\index{material@{material}!DirichletBC@{DirichletBC}}
+\index{DirichletBC@{DirichletBC}!material@{material}}
+\doxysubsubsection{\texorpdfstring{DirichletBC()}{DirichletBC()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily virtual void material\+::\+Dirichlet\+BC (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{KG,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{FG,  }\item[{std\+::vector$<$ int $>$}]{ids,  }\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{dir,  }\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Referenced by slopeproject\+::\+Inser\+B\+C(), Inser\+B\+C(), pressurizedhole\+::\+Insert\+B\+C(), beam3dtools\+::\+Insert\+B\+C(), beam3dtools\+::\+Insert\+Cube\+B\+C(), Iterative\+Cho(), and Iterative\+Slope\+Stability\+Eig().
+
+\mbox{\Hypertarget{classmaterial_a0e073c26afee65a24c1cdfe66eb7b96f}\label{classmaterial_a0e073c26afee65a24c1cdfe66eb7b96f}} 
+\index{material@{material}!DirichletBC@{DirichletBC}}
+\index{DirichletBC@{DirichletBC}!material@{material}}
+\doxysubsubsection{\texorpdfstring{DirichletBC()}{DirichletBC()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily virtual void material\+::\+Dirichlet\+BC (\begin{DoxyParamCaption}\item[{Sparse\+Matrix$<$ double $>$ \&}]{KG,  }\item[{Vector\+Xd \&}]{Fint,  }\item[{std\+::vector$<$ int $>$}]{ids,  }\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{dir,  }\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classelastoplastic3_d_a7a652fdb6898ac48227e244e0a16edd3}{elastoplastic3\+D$<$ Y\+C $>$}}, and \mbox{\hyperlink{classelastoplastic2_d_a35fd65db0ffb229799dd5720bcb3f0ec}{elastoplastic2\+D$<$ Y\+C $>$}}.
+
+\mbox{\Hypertarget{classmaterial_a24ea26c836e36909a250e74ea1da4b08}\label{classmaterial_a24ea26c836e36909a250e74ea1da4b08}} 
+\index{material@{material}!GetBodyForce@{GetBodyForce}}
+\index{GetBodyForce@{GetBodyForce}!material@{material}}
+\doxysubsubsection{\texorpdfstring{GetBodyForce()}{GetBodyForce()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} material\+::\+Get\+Body\+Force (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classelastoplastic2_d_a78cffb727420d0d7fa3549436bd58ad7}{elastoplastic2\+D$<$ Y\+C $>$}}, and \mbox{\hyperlink{classelastoplastic3_d_ac1029cf1cb6a1e947b1d9245ea4870d5}{elastoplastic3\+D$<$ Y\+C $>$}}.
+
+
+
+Referenced by slopeproject\+::\+Monte\+Carlo\+G\+I\+M(), and slopeproject\+::\+Monte\+Carlo\+S\+R\+M().
+
+\mbox{\Hypertarget{classmaterial_a947a9c6e657312a904bdb969b4b3ce1e}\label{classmaterial_a947a9c6e657312a904bdb969b4b3ce1e}} 
+\index{material@{material}!GetElCoords@{GetElCoords}}
+\index{GetElCoords@{GetElCoords}!material@{material}}
+\doxysubsubsection{\texorpdfstring{GetElCoords()}{GetElCoords()}}
+{\footnotesize\ttfamily virtual void material\+::\+Get\+El\+Coords (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$}]{allcoords,  }\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{el,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{elcoords }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classelastoplastic2_d_a2cf95d2dee01a6ea226f83c31333b166}{elastoplastic2\+D$<$ Y\+C $>$}}, and \mbox{\hyperlink{classelastoplastic3_d_a068685990d091f6becf3496fb97fa693}{elastoplastic3\+D$<$ Y\+C $>$}}.
+
+\mbox{\Hypertarget{classmaterial_abcf6c1cff3eeb24a142602ab39da9c2b}\label{classmaterial_abcf6c1cff3eeb24a142602ab39da9c2b}} 
+\index{material@{material}!GetMatConstants@{GetMatConstants}}
+\index{GetMatConstants@{GetMatConstants}!material@{material}}
+\doxysubsubsection{\texorpdfstring{GetMatConstants()}{GetMatConstants()}}
+{\footnotesize\ttfamily virtual void material\+::\+Get\+Mat\+Constants (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{consts }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classelastoplastic2_d_a355ee5112e480bc78ea4312134827765}{elastoplastic2\+D$<$ Y\+C $>$}}, and \mbox{\hyperlink{classelastoplastic3_d_a09f21e40358897d71de4dd0d13930194}{elastoplastic3\+D$<$ Y\+C $>$}}.
+
+
+
+Referenced by slopeproject\+::\+Iterative\+Process\+Arc\+Length\+S\+R\+M(), slopeproject\+::\+Iterative\+Process\+Shear\+Red(), Iterative\+Process\+Shear\+Red(), slopeproject\+::\+Iterative\+Process\+Shear\+Red2(), slopeproject\+::\+Monte\+Carlo\+G\+I\+M(), and slopeproject\+::\+Monte\+Carlo\+S\+R\+M().
+
+\mbox{\Hypertarget{classmaterial_afa78b4dd269b2be36abb33f7e3b6a76d}\label{classmaterial_afa78b4dd269b2be36abb33f7e3b6a76d}} 
+\index{material@{material}!GetPlasticStrain@{GetPlasticStrain}}
+\index{GetPlasticStrain@{GetPlasticStrain}!material@{material}}
+\doxysubsubsection{\texorpdfstring{GetPlasticStrain()}{GetPlasticStrain()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}$>$ $>$ material\+::\+Get\+Plastic\+Strain (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classelastoplastic3_d_a00b9f698da0301373cf58af81db21ae5}{elastoplastic3\+D$<$ Y\+C $>$}}, and \mbox{\hyperlink{classelastoplastic2_d_a32651db12fff93f4d628f93d9ae9d3b1}{elastoplastic2\+D$<$ Y\+C $>$}}.
+
+\mbox{\Hypertarget{classmaterial_a0f80c31f4c91555f4bdb7b74b2b8f68a}\label{classmaterial_a0f80c31f4c91555f4bdb7b74b2b8f68a}} 
+\index{material@{material}!GetSolution@{GetSolution}}
+\index{GetSolution@{GetSolution}!material@{material}}
+\doxysubsubsection{\texorpdfstring{GetSolution()}{GetSolution()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}$>$ material\+::\+Get\+Solution (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classelastoplastic2_d_ab045e1aeb2f984dfe1b79370aceb54e6}{elastoplastic2\+D$<$ Y\+C $>$}}, and \mbox{\hyperlink{classelastoplastic3_d_a78b0a89c1b793a13934a05256600b977}{elastoplastic3\+D$<$ Y\+C $>$}}.
+
+
+
+Referenced by mesh\+::\+Assemble(), mesh\+::\+Compute\+Sol\+And\+D\+Sol(), slopeproject\+::\+Iterative\+Process(), Iterative\+Process(), slopeproject\+::\+Iterative\+Process\+Arc\+Length\+S\+R\+M(), slopeproject\+::\+Iterative\+Process\+Shear\+Red(), Iterative\+Process\+Shear\+Red(), slopeproject\+::\+Iterative\+Process\+Shear\+Red2(), slopeproject\+::\+Monte\+Carlo\+S\+R\+M(), slopeproject\+::\+Print\+M\+C\+S(), and V\+T\+K\+Graph\+Mesh\+::\+V\+T\+K\+Graph\+Mesh().
+
+\mbox{\Hypertarget{classmaterial_a63319cbe419a2779285c4cdf92585b19}\label{classmaterial_a63319cbe419a2779285c4cdf92585b19}} 
+\index{material@{material}!PostProcess@{PostProcess}}
+\index{PostProcess@{PostProcess}!material@{material}}
+\doxysubsubsection{\texorpdfstring{PostProcess()}{PostProcess()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily virtual void material\+::\+Post\+Process (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$}]{allcoords,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{meshnodes,  }\item[{\mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}}}]{meshtopology,  }\item[{const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{nodalsol,  }\item[{std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&}]{solx,  }\item[{std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&}]{soly }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Referenced by Iterative\+Cho(), pressurizedhole\+::\+Iterative\+Process(), slopeproject\+::\+Iterative\+Process(), beam3dtools\+::\+Iterative\+Process(), Iterative\+Process(), slopeproject\+::\+Iterative\+Process\+Arc\+Length\+S\+R\+M(), slopeproject\+::\+Iterative\+Process\+Shear\+Red(), Iterative\+Process\+Shear\+Red(), slopeproject\+::\+Iterative\+Process\+Shear\+Red2(), Iterative\+Process\+Shear\+Red2(), Iterative\+Process\+Shear\+Red3(), Iterative\+Slope\+Stability\+Eig(), mainlinux(), mainlinuxserial(), slopeproject\+::\+Monte\+Carlo\+S\+R\+M(), Monte\+Carlo\+Talude2(), slopeproject\+::\+Print\+M\+C\+S(), and solvedetermtest().
+
+\mbox{\Hypertarget{classmaterial_a68a882f99e067c212634559dabb2e084}\label{classmaterial_a68a882f99e067c212634559dabb2e084}} 
+\index{material@{material}!PostProcess@{PostProcess}}
+\index{PostProcess@{PostProcess}!material@{material}}
+\doxysubsubsection{\texorpdfstring{PostProcess()}{PostProcess()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily virtual void material\+::\+Post\+Process (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$}]{allcoords,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{meshnodes,  }\item[{\mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}}}]{meshtopology,  }\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{var,  }\item[{const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{nodalsol,  }\item[{std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&}]{sol }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+\mbox{\Hypertarget{classmaterial_a269de8b8e3633149197e70e0b508e6f2}\label{classmaterial_a269de8b8e3633149197e70e0b508e6f2}} 
+\index{material@{material}!PostProcessIntegrationPointVar@{PostProcessIntegrationPointVar}}
+\index{PostProcessIntegrationPointVar@{PostProcessIntegrationPointVar}!material@{material}}
+\doxysubsubsection{\texorpdfstring{PostProcessIntegrationPointVar()}{PostProcessIntegrationPointVar()}}
+{\footnotesize\ttfamily virtual void material\+::\+Post\+Process\+Integration\+Point\+Var (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$}]{allcoords,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{meshnodes,  }\item[{\mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}}}]{meshtopology,  }\item[{const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{nodalsol,  }\item[{std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&}]{sol }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Referenced by Iterative\+Cho(), slopeproject\+::\+Iterative\+Process(), Iterative\+Process(), slopeproject\+::\+Iterative\+Process\+Arc\+Length\+S\+R\+M(), slopeproject\+::\+Iterative\+Process\+Shear\+Red(), Iterative\+Process\+Shear\+Red(), slopeproject\+::\+Iterative\+Process\+Shear\+Red2(), Iterative\+Process\+Shear\+Red2(), Iterative\+Process\+Shear\+Red3(), Iterative\+Slope\+Stability\+Eig(), slopeproject\+::\+Monte\+Carlo\+S\+R\+M(), Monte\+Carlo\+Talude2(), slopeproject\+::\+Print\+M\+C\+S(), and solvedetermtest().
+
+\mbox{\Hypertarget{classmaterial_a8b95890bc5b0e16ef253bca541559f3f}\label{classmaterial_a8b95890bc5b0e16ef253bca541559f3f}} 
+\index{material@{material}!PostProcessStrain@{PostProcessStrain}}
+\index{PostProcessStrain@{PostProcessStrain}!material@{material}}
+\doxysubsubsection{\texorpdfstring{PostProcessStrain()}{PostProcessStrain()}}
+{\footnotesize\ttfamily virtual void material\+::\+Post\+Process\+Strain (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmesh}{mesh}} $\ast$}]{inmesh,  }\item[{\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$$>$$>$ \&}]{sol }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classelastoplastic2_d_a1cd33ed1ba5f8027b1c22beb807f499d}{elastoplastic2\+D$<$ Y\+C $>$}}, and \mbox{\hyperlink{classelastoplastic3_d_a89a2c337bb558b8d558b747eed247dd1}{elastoplastic3\+D$<$ Y\+C $>$}}.
+
+\mbox{\Hypertarget{classmaterial_ad46bff47cf690a38a2ec327bba5e44d5}\label{classmaterial_ad46bff47cf690a38a2ec327bba5e44d5}} 
+\index{material@{material}!ResetCounter@{ResetCounter}}
+\index{ResetCounter@{ResetCounter}!material@{material}}
+\doxysubsubsection{\texorpdfstring{ResetCounter()}{ResetCounter()}}
+{\footnotesize\ttfamily virtual void material\+::\+Reset\+Counter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classelastoplastic2_d_a076ce9f6bf805266515ddf557d8bde16}{elastoplastic2\+D$<$ Y\+C $>$}}, and \mbox{\hyperlink{classelastoplastic3_d_a61b4bd798dcb77decdd9356dce372287}{elastoplastic3\+D$<$ Y\+C $>$}}.
+
+
+
+Referenced by mesh\+::\+Assemble().
+
+\mbox{\Hypertarget{classmaterial_a174ab38258bd7e7f1cc7f9905bffcf7c}\label{classmaterial_a174ab38258bd7e7f1cc7f9905bffcf7c}} 
+\index{material@{material}!ResetDisplacement@{ResetDisplacement}}
+\index{ResetDisplacement@{ResetDisplacement}!material@{material}}
+\doxysubsubsection{\texorpdfstring{ResetDisplacement()}{ResetDisplacement()}}
+{\footnotesize\ttfamily virtual void material\+::\+Reset\+Displacement (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classelastoplastic2_d_a70f17542360d52ec6e339de95c400ce7}{elastoplastic2\+D$<$ Y\+C $>$}}, and \mbox{\hyperlink{classelastoplastic3_d_aaf77705bd567553b210d9971d02e7b78}{elastoplastic3\+D$<$ Y\+C $>$}}.
+
+
+
+Referenced by Iterative\+Cho(), slopeproject\+::\+Iterative\+Process(), Iterative\+Process(), slopeproject\+::\+Iterative\+Process\+Arc\+Length\+S\+R\+M(), Iterative\+Process\+Shear\+Red3(), and Iterative\+Slope\+Stability\+Eig().
+
+\mbox{\Hypertarget{classmaterial_abde9ca84a4cb09c9f4cc7e4fd64c9bf6}\label{classmaterial_abde9ca84a4cb09c9f4cc7e4fd64c9bf6}} 
+\index{material@{material}!ResetMat@{ResetMat}}
+\index{ResetMat@{ResetMat}!material@{material}}
+\doxysubsubsection{\texorpdfstring{ResetMat()}{ResetMat()}}
+{\footnotesize\ttfamily virtual void material\+::\+Reset\+Mat (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classelastoplastic2_d_ae2bd41b033cdf35f71237987b1e55339}{elastoplastic2\+D$<$ Y\+C $>$}}, and \mbox{\hyperlink{classelastoplastic3_d_a279e8403d8a1140cf16f83afd6b67fd4}{elastoplastic3\+D$<$ Y\+C $>$}}.
+
+
+
+Referenced by Iterative\+Cho(), slopeproject\+::\+Iterative\+Process(), Iterative\+Process(), slopeproject\+::\+Iterative\+Process\+Arc\+Length\+S\+R\+M(), slopeproject\+::\+Iterative\+Process\+Shear\+Red(), Iterative\+Process\+Shear\+Red(), slopeproject\+::\+Iterative\+Process\+Shear\+Red2(), Iterative\+Process\+Shear\+Red2(), Iterative\+Process\+Shear\+Red3(), Iterative\+Slope\+Stability\+Eig(), and slopeproject\+::\+Monte\+Carlo\+S\+R\+M().
+
+\mbox{\Hypertarget{classmaterial_a3fae1f91dd7d138cad06532a6b84e4b6}\label{classmaterial_a3fae1f91dd7d138cad06532a6b84e4b6}} 
+\index{material@{material}!ResetMemory@{ResetMemory}}
+\index{ResetMemory@{ResetMemory}!material@{material}}
+\doxysubsubsection{\texorpdfstring{ResetMemory()}{ResetMemory()}}
+{\footnotesize\ttfamily virtual void material\+::\+Reset\+Memory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classelastoplastic2_d_ac9390433cb38768f790750fe124f3621}{elastoplastic2\+D$<$ Y\+C $>$}}, and \mbox{\hyperlink{classelastoplastic3_d_a03d05e8931cef92f9d2788be92048865}{elastoplastic3\+D$<$ Y\+C $>$}}.
+
+\mbox{\Hypertarget{classmaterial_a3dc14cf584660a4fea8e02848bbda754}\label{classmaterial_a3dc14cf584660a4fea8e02848bbda754}} 
+\index{material@{material}!ResetPlasticStrain@{ResetPlasticStrain}}
+\index{ResetPlasticStrain@{ResetPlasticStrain}!material@{material}}
+\doxysubsubsection{\texorpdfstring{ResetPlasticStrain()}{ResetPlasticStrain()}}
+{\footnotesize\ttfamily virtual void material\+::\+Reset\+Plastic\+Strain (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classelastoplastic2_d_a3f9c34b015f4668dc193436bb7e3d1c7}{elastoplastic2\+D$<$ Y\+C $>$}}, and \mbox{\hyperlink{classelastoplastic3_d_a6dbd29e5ec0ba9d17e5b1ba9a3a3f824}{elastoplastic3\+D$<$ Y\+C $>$}}.
+
+
+
+Referenced by Iterative\+Cho(), slopeproject\+::\+Iterative\+Process(), Iterative\+Process(), slopeproject\+::\+Iterative\+Process\+Arc\+Length\+S\+R\+M(), Iterative\+Process\+Shear\+Red3(), and Iterative\+Slope\+Stability\+Eig().
+
+\mbox{\Hypertarget{classmaterial_a3b117ef811ff8bd3405557dbfa620173}\label{classmaterial_a3b117ef811ff8bd3405557dbfa620173}} 
+\index{material@{material}!SetMatConstants@{SetMatConstants}}
+\index{SetMatConstants@{SetMatConstants}!material@{material}}
+\doxysubsubsection{\texorpdfstring{SetMatConstants()}{SetMatConstants()}}
+{\footnotesize\ttfamily virtual void material\+::\+Set\+Mat\+Constants (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{consts }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classelastoplastic2_d_a3a3bb476327e74b2f5707d9e2f5a21bd}{elastoplastic2\+D$<$ Y\+C $>$}}, and \mbox{\hyperlink{classelastoplastic3_d_a7bfcde90a0480862a08f55f7004ffff3}{elastoplastic3\+D$<$ Y\+C $>$}}.
+
+
+
+Referenced by slopeproject\+::\+Iterative\+Process\+Arc\+Length\+S\+R\+M(), slopeproject\+::\+Iterative\+Process\+Shear\+Red(), Iterative\+Process\+Shear\+Red(), slopeproject\+::\+Iterative\+Process\+Shear\+Red2(), slopeproject\+::\+Monte\+Carlo\+G\+I\+M(), and slopeproject\+::\+Monte\+Carlo\+S\+R\+M().
+
+\mbox{\Hypertarget{classmaterial_afb25c8bf72991239f81adc283a6b7db0}\label{classmaterial_afb25c8bf72991239f81adc283a6b7db0}} 
+\index{material@{material}!SetMemory@{SetMemory}}
+\index{SetMemory@{SetMemory}!material@{material}}
+\doxysubsubsection{\texorpdfstring{SetMemory()}{SetMemory()}}
+{\footnotesize\ttfamily virtual void material\+::\+Set\+Memory (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{ngloblapoints,  }\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{systemsize }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classelastoplastic2_d_a61fe38cc62646cc29b6d47d977f059e6}{elastoplastic2\+D$<$ Y\+C $>$}}, and \mbox{\hyperlink{classelastoplastic3_d_a43e43dbf38b42a577aa997c65f70cfcf}{elastoplastic3\+D$<$ Y\+C $>$}}.
+
+
+
+Referenced by slopeproject\+::\+Monte\+Carlo\+G\+I\+M(), slopeproject\+::\+Monte\+Carlo\+S\+R\+M(), Monte\+Carlo\+Talude2(), solvedeterm(), and solvedetermtest().
+
+\mbox{\Hypertarget{classmaterial_aacf3d8d5df049a3b4039fd46993d150b}\label{classmaterial_aacf3d8d5df049a3b4039fd46993d150b}} 
+\index{material@{material}!SetRandomField@{SetRandomField}}
+\index{SetRandomField@{SetRandomField}!material@{material}}
+\doxysubsubsection{\texorpdfstring{SetRandomField()}{SetRandomField()}}
+{\footnotesize\ttfamily virtual void material\+::\+Set\+Random\+Field (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{hhat }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Referenced by mesh\+::\+Assemble(), slopeproject\+::\+Monte\+Carlo\+G\+I\+M(), and Monte\+Carlo\+Talude2().
+
+\mbox{\Hypertarget{classmaterial_ae806984b4f46c3391ef643e7ba6b4180}\label{classmaterial_ae806984b4f46c3391ef643e7ba6b4180}} 
+\index{material@{material}!SetRandomFieldLocal@{SetRandomFieldLocal}}
+\index{SetRandomFieldLocal@{SetRandomFieldLocal}!material@{material}}
+\doxysubsubsection{\texorpdfstring{SetRandomFieldLocal()}{SetRandomFieldLocal()}}
+{\footnotesize\ttfamily virtual void material\+::\+Set\+Random\+Field\+Local (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} $>$}]{hhatvel }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Referenced by mesh\+::\+Assemble().
+
+\mbox{\Hypertarget{classmaterial_a7e50b87f0d59b1b5290fff1a47634ac5}\label{classmaterial_a7e50b87f0d59b1b5290fff1a47634ac5}} 
+\index{material@{material}!SolPt@{SolPt}}
+\index{SolPt@{SolPt}!material@{material}}
+\doxysubsubsection{\texorpdfstring{SolPt()}{SolPt()}}
+{\footnotesize\ttfamily virtual void material\+::\+Sol\+Pt (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&}]{allcoords,  }\item[{const \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \&}]{meshtopology,  }\item[{const \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} \&}]{el,  }\item[{const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{solG,  }\item[{const \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&}]{xi,  }\item[{const \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&}]{eta,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{xycoords,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{sol }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+\mbox{\Hypertarget{classmaterial_a8b8c3e20994099e5a992556d914af0d8}\label{classmaterial_a8b8c3e20994099e5a992556d914af0d8}} 
+\index{material@{material}!UpdateBodyForce@{UpdateBodyForce}}
+\index{UpdateBodyForce@{UpdateBodyForce}!material@{material}}
+\doxysubsubsection{\texorpdfstring{UpdateBodyForce()}{UpdateBodyForce()}}
+{\footnotesize\ttfamily virtual void material\+::\+Update\+Body\+Force (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{newbodyforce }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Referenced by Iterative\+Process\+Shear\+Red2(), slopeproject\+::\+Monte\+Carlo\+G\+I\+M(), slopeproject\+::\+Monte\+Carlo\+S\+R\+M(), Monte\+Carlo\+Talude2(), solvedeterm(), and solvedetermtest().
+
+\mbox{\Hypertarget{classmaterial_a1203ba906bf2cb30cf89fecaa1ecec60}\label{classmaterial_a1203ba906bf2cb30cf89fecaa1ecec60}} 
+\index{material@{material}!UpdateDisplacement@{UpdateDisplacement}}
+\index{UpdateDisplacement@{UpdateDisplacement}!material@{material}}
+\doxysubsubsection{\texorpdfstring{UpdateDisplacement()}{UpdateDisplacement()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily virtual void material\+::\+Update\+Displacement (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{displace }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Referenced by Iterative\+Cho(), pressurizedhole\+::\+Iterative\+Process(), slopeproject\+::\+Iterative\+Process(), beam3dtools\+::\+Iterative\+Process(), Iterative\+Process(), slopeproject\+::\+Iterative\+Process\+Arc\+Length\+S\+R\+M(), slopeproject\+::\+Iterative\+Process\+Shear\+Red(), Iterative\+Process\+Shear\+Red(), slopeproject\+::\+Iterative\+Process\+Shear\+Red2(), Iterative\+Process\+Shear\+Red2(), Iterative\+Process\+Shear\+Red3(), and Iterative\+Slope\+Stability\+Eig().
+
+\mbox{\Hypertarget{classmaterial_af1c66feefb1439f6b9e35210d7957f9e}\label{classmaterial_af1c66feefb1439f6b9e35210d7957f9e}} 
+\index{material@{material}!UpdateDisplacement@{UpdateDisplacement}}
+\index{UpdateDisplacement@{UpdateDisplacement}!material@{material}}
+\doxysubsubsection{\texorpdfstring{UpdateDisplacement()}{UpdateDisplacement()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily virtual void material\+::\+Update\+Displacement (\begin{DoxyParamCaption}\item[{Vector\+Xd}]{displace }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classelastoplastic2_d_acd6bd25300ccf4b31c2c7443646a9c0d}{elastoplastic2\+D$<$ Y\+C $>$}}, and \mbox{\hyperlink{classelastoplastic3_d_a3a281ab0925f3f1c027af2216d69b759}{elastoplastic3\+D$<$ Y\+C $>$}}.
+
+\mbox{\Hypertarget{classmaterial_a17f2e10668e0e209899c95db0569b565}\label{classmaterial_a17f2e10668e0e209899c95db0569b565}} 
+\index{material@{material}!UpdatePlasticStrain@{UpdatePlasticStrain}}
+\index{UpdatePlasticStrain@{UpdatePlasticStrain}!material@{material}}
+\doxysubsubsection{\texorpdfstring{UpdatePlasticStrain()}{UpdatePlasticStrain()}}
+{\footnotesize\ttfamily virtual void material\+::\+Update\+Plastic\+Strain (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classelastoplastic2_d_acd750c0452a0d45eb8320d7d6bdc3486}{elastoplastic2\+D$<$ Y\+C $>$}}, and \mbox{\hyperlink{classelastoplastic3_d_a2bbb4b07832cd6394b7ec8a571a64d73}{elastoplastic3\+D$<$ Y\+C $>$}}.
+
+
+
+Referenced by Iterative\+Cho(), pressurizedhole\+::\+Iterative\+Process(), slopeproject\+::\+Iterative\+Process(), beam3dtools\+::\+Iterative\+Process(), Iterative\+Process(), slopeproject\+::\+Iterative\+Process\+Arc\+Length\+S\+R\+M(), Iterative\+Process\+Shear\+Red(), Iterative\+Process\+Shear\+Red2(), Iterative\+Process\+Shear\+Red3(), and Iterative\+Slope\+Stability\+Eig().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{material_8h}{material.\+h}}\item 
+src/\mbox{\hyperlink{material_8cpp}{material.\+cpp}}\end{DoxyCompactItemize}

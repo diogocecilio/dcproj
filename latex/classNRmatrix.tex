@@ -1,0 +1,103 @@
+\hypertarget{classNRmatrix}{}\doxysection{N\+Rmatrix$<$ T $>$ Class Template Reference}
+\label{classNRmatrix}\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classNRmatrix_a25db79ed9e2b1d6e21301d5c5fa17a02}\label{classNRmatrix_a25db79ed9e2b1d6e21301d5c5fa17a02}} 
+typedef T {\bfseries value\+\_\+type}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classNRmatrix_a5781e40c58c4ea6c3138309bf8c32547}\label{classNRmatrix_a5781e40c58c4ea6c3138309bf8c32547}} 
+{\bfseries N\+Rmatrix} (int n, int m)
+\item 
+\mbox{\Hypertarget{classNRmatrix_aedb4ca538cb8041e6fe480c035d32265}\label{classNRmatrix_aedb4ca538cb8041e6fe480c035d32265}} 
+{\bfseries N\+Rmatrix} (int n, int m, const T \&a)
+\item 
+\mbox{\Hypertarget{classNRmatrix_a600b995e06491510f32bcaaff9d7f054}\label{classNRmatrix_a600b995e06491510f32bcaaff9d7f054}} 
+{\bfseries N\+Rmatrix} (int n, int m, const T $\ast$a)
+\item 
+\mbox{\Hypertarget{classNRmatrix_acea6416ee73aea178a9d6eddac9a52a8}\label{classNRmatrix_acea6416ee73aea178a9d6eddac9a52a8}} 
+{\bfseries N\+Rmatrix} (const \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}} \&rhs)
+\item 
+\mbox{\Hypertarget{classNRmatrix_ad111392af3096947e73d1040414b8a5d}\label{classNRmatrix_ad111392af3096947e73d1040414b8a5d}} 
+\mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}} \& {\bfseries operator=} (const \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}} \&rhs)
+\item 
+\mbox{\Hypertarget{classNRmatrix_aa93a475474f18b4cae1510debe767ea8}\label{classNRmatrix_aa93a475474f18b4cae1510debe767ea8}} 
+T $\ast$ {\bfseries operator\mbox{[}$\,$\mbox{]}} (const int i)
+\item 
+\mbox{\Hypertarget{classNRmatrix_a5ac6af2dc177d009292f0ec83274dede}\label{classNRmatrix_a5ac6af2dc177d009292f0ec83274dede}} 
+const T $\ast$ {\bfseries operator\mbox{[}$\,$\mbox{]}} (const int i) const
+\item 
+\mbox{\Hypertarget{classNRmatrix_aa6fb447bfc99c67ec14fb77c069ad254}\label{classNRmatrix_aa6fb447bfc99c67ec14fb77c069ad254}} 
+\mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}} \& {\bfseries operator$\ast$=} (const T \&multipl)
+\item 
+\mbox{\Hypertarget{classNRmatrix_a0777a705163cfd98cafaebca7cfa1de1}\label{classNRmatrix_a0777a705163cfd98cafaebca7cfa1de1}} 
+\mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}} \& {\bfseries operator+=} (\mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}} \&source)
+\item 
+\mbox{\Hypertarget{classNRmatrix_a0a919726ee7e6c8047963cfb6cd392b0}\label{classNRmatrix_a0a919726ee7e6c8047963cfb6cd392b0}} 
+\mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}} \& {\bfseries operator-\/=} (\mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}} \&source)
+\item 
+\mbox{\Hypertarget{classNRmatrix_a6ec22e0969fa8d2f97b03fda2dcb5f1a}\label{classNRmatrix_a6ec22e0969fa8d2f97b03fda2dcb5f1a}} 
+int {\bfseries nrows} () const
+\item 
+\mbox{\Hypertarget{classNRmatrix_a746c9ca5fc30176fae8c1f23072e6528}\label{classNRmatrix_a746c9ca5fc30176fae8c1f23072e6528}} 
+int {\bfseries ncols} () const
+\item 
+\mbox{\Hypertarget{classNRmatrix_a472dd4ed406d3b41320771512168c9f6}\label{classNRmatrix_a472dd4ed406d3b41320771512168c9f6}} 
+void {\bfseries resize} (int newn, int newm)
+\item 
+\mbox{\Hypertarget{classNRmatrix_a1407e1be0ea707f079b5519dc8075148}\label{classNRmatrix_a1407e1be0ea707f079b5519dc8075148}} 
+void {\bfseries assign} (int newn, int newm, const T \&a)
+\item 
+\mbox{\Hypertarget{classNRmatrix_ae5bebb969b54ea0c6860ec2d8b33ee45}\label{classNRmatrix_ae5bebb969b54ea0c6860ec2d8b33ee45}} 
+void {\bfseries Print} ()
+\item 
+\mbox{\Hypertarget{classNRmatrix_acdc859aa9fb31dc903b601b6ea0c1a28}\label{classNRmatrix_acdc859aa9fb31dc903b601b6ea0c1a28}} 
+void {\bfseries Print2} ()
+\item 
+\mbox{\Hypertarget{classNRmatrix_a8d14f4edbae97dede500e540b717ae21}\label{classNRmatrix_a8d14f4edbae97dede500e540b717ae21}} 
+void {\bfseries Transpose} (\mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}} \&transpose)
+\item 
+\mbox{\Hypertarget{classNRmatrix_a8b272b4fa1531145c4f51b1f6a1cf895}\label{classNRmatrix_a8b272b4fa1531145c4f51b1f6a1cf895}} 
+void {\bfseries Mult} (const \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}} \&A, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}} \&B)
+\item 
+\mbox{\Hypertarget{classNRmatrix_acef11836c36e7345e03dc97e8089da5d}\label{classNRmatrix_acef11836c36e7345e03dc97e8089da5d}} 
+void {\bfseries Dot} (const \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}} \&A, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}} \&B)
+\item 
+\mbox{\Hypertarget{classNRmatrix_a5e60b787f565ef75be32f204479a4892}\label{classNRmatrix_a5e60b787f565ef75be32f204479a4892}} 
+void {\bfseries Copy\+From\+Vector} (const std\+::vector$<$ std\+::vector$<$ T $>$$>$ \&input)
+\item 
+\mbox{\Hypertarget{classNRmatrix_a397f0765947c97adb3af8eaeac87be11}\label{classNRmatrix_a397f0765947c97adb3af8eaeac87be11}} 
+void {\bfseries From\+Full\+To\+Voigt} (\mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ T $>$ \&full)
+\item 
+\mbox{\Hypertarget{classNRmatrix_a53950cd29a0fd74cb878ba7317ee3a95}\label{classNRmatrix_a53950cd29a0fd74cb878ba7317ee3a95}} 
+\mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}} \& {\bfseries From\+Eigen} (Vector\+Xd data)
+\item 
+\mbox{\Hypertarget{classNRmatrix_ac74159f1fd39f07740f9848e2c381e7a}\label{classNRmatrix_ac74159f1fd39f07740f9848e2c381e7a}} 
+void {\bfseries From\+Eigen} (Matrix\+Xd data)
+\item 
+\mbox{\Hypertarget{classNRmatrix_a152c4d39df78ee0d0bef53a3ce188ccf}\label{classNRmatrix_a152c4d39df78ee0d0bef53a3ce188ccf}} 
+void {\bfseries To\+Eigen} (Matrix\+Xd \&data)
+\item 
+\mbox{\Hypertarget{classNRmatrix_a8b0f4de2e6ebc09abec5e3ef7bb45b58}\label{classNRmatrix_a8b0f4de2e6ebc09abec5e3ef7bb45b58}} 
+T {\bfseries Det\+Eig} ()
+\item 
+\mbox{\Hypertarget{classNRmatrix_a77b030377fbc2918655fd7cb844f5554}\label{classNRmatrix_a77b030377fbc2918655fd7cb844f5554}} 
+void {\bfseries Compute\+Inverse} (\mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ T $>$ \&Inv\+Out)
+\item 
+\mbox{\Hypertarget{classNRmatrix_afa0b84e2e2bb81ed373e0f7e8a464f73}\label{classNRmatrix_afa0b84e2e2bb81ed373e0f7e8a464f73}} 
+T {\bfseries N\+Rmatrix\+Norm} ()
+\item 
+\mbox{\Hypertarget{classNRmatrix_aef9775a6a3b76eae67a2ce77b9f4e101}\label{classNRmatrix_aef9775a6a3b76eae67a2ce77b9f4e101}} 
+T {\bfseries Det} ()
+\item 
+\mbox{\Hypertarget{classNRmatrix_aee59eb56564f9f8bee3a95c4e723d00b}\label{classNRmatrix_aee59eb56564f9f8bee3a95c4e723d00b}} 
+void {\bfseries Copy\+From\+Vecdouble} (const \mbox{\hyperlink{classNRvector}{N\+Rvector}}$<$ T $>$ \&input)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/nr3.\+h\end{DoxyCompactItemize}

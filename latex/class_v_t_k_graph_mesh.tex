@@ -1,0 +1,232 @@
+\hypertarget{class_v_t_k_graph_mesh}{}\doxysection{V\+T\+K\+Graph\+Mesh Class Reference}
+\label{class_v_t_k_graph_mesh}\index{VTKGraphMesh@{VTKGraphMesh}}
+
+
+{\ttfamily \#include $<$vtkmesh.\+h$>$}
+
+
+
+Collaboration diagram for V\+T\+K\+Graph\+Mesh\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_v_t_k_graph_mesh__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_v_t_k_graph_mesh_a4af640621f63c454a9f2e829101062f7}{V\+T\+K\+Graph\+Mesh}} (\mbox{\hyperlink{classmesh}{mesh}} $\ast$cmesh, int dimension, std\+::vector$<$ std\+::string $>$ \&scalnames, const std\+::vector$<$ std\+::string $>$ \&vecnames, std\+::string File\+Name)
+\begin{DoxyCompactList}\small\item\em Constructor for graphical mesh using V\+TK format with tensor variables. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_v_t_k_graph_mesh_a3f0fdc88ae925af8b422aef7f16c95f6}{Draw\+Nodes}} ()
+\item 
+void \mbox{\hyperlink{class_v_t_k_graph_mesh_a06d006aab1128d7faa7cb6396edf4627}{Draw\+Connectivity}} ()
+\item 
+void \mbox{\hyperlink{class_v_t_k_graph_mesh_a44271c388242a5c5346f05ffa286cb63}{Draw\+Solution}} (\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} step, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} time)
+\item 
+\mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \mbox{\hyperlink{class_v_t_k_graph_mesh_acb4d755e4d0e9bb0b81ecb1f598f6f9f}{Get\+Mesh\+Topology\+V\+TK}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ofstream \mbox{\hyperlink{class_v_t_k_graph_mesh_a34dfca2d92f4a0e027d791109348d50c}{f\+Out\+File}}
+\item 
+\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{class_v_t_k_graph_mesh_a4d450beafb5ff3f47d0a471c78e4a32c}{fdata}}
+\item 
+\mbox{\hyperlink{classmesh}{mesh}} $\ast$ \mbox{\hyperlink{class_v_t_k_graph_mesh_aa4411adc7cac9ce72af370c2a5f22a3b}{fmesh}}
+\item 
+std\+::string \mbox{\hyperlink{class_v_t_k_graph_mesh_a51518ba13f2aecf883185b963ca1da12}{f\+File\+Name}}
+\item 
+\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} \mbox{\hyperlink{class_v_t_k_graph_mesh_ab3eb08789e14265898b998988c287cd4}{fdim}}
+\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_v_t_k_graph_mesh_a1e9a5dc3b32bcb44b36662eb4a48866e}{f\+Vec\+Names}}
+\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_v_t_k_graph_mesh_aed8fe16416cebeb27351e94de9ed7c89}{f\+Scal\+Names}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 8 of file vtkmesh.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_v_t_k_graph_mesh_a4af640621f63c454a9f2e829101062f7}\label{class_v_t_k_graph_mesh_a4af640621f63c454a9f2e829101062f7}} 
+\index{VTKGraphMesh@{VTKGraphMesh}!VTKGraphMesh@{VTKGraphMesh}}
+\index{VTKGraphMesh@{VTKGraphMesh}!VTKGraphMesh@{VTKGraphMesh}}
+\doxysubsubsection{\texorpdfstring{VTKGraphMesh()}{VTKGraphMesh()}}
+{\footnotesize\ttfamily V\+T\+K\+Graph\+Mesh\+::\+V\+T\+K\+Graph\+Mesh (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmesh}{mesh}} $\ast$}]{cmesh,  }\item[{int}]{dimension,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{scalnames,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{vecnames,  }\item[{std\+::string}]{File\+Name }\end{DoxyParamCaption})}
+
+
+
+Constructor for graphical mesh using V\+TK format with tensor variables. 
+
+
+
+Definition at line 6 of file vtkmesh.\+cpp.
+
+
+
+References fdata, fdim, f\+File\+Name, mesh\+::fmaterial, fmesh, f\+Scal\+Names, f\+Vec\+Names, and material\+::\+Get\+Solution().
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_v_t_k_graph_mesh_a06d006aab1128d7faa7cb6396edf4627}\label{class_v_t_k_graph_mesh_a06d006aab1128d7faa7cb6396edf4627}} 
+\index{VTKGraphMesh@{VTKGraphMesh}!DrawConnectivity@{DrawConnectivity}}
+\index{DrawConnectivity@{DrawConnectivity}!VTKGraphMesh@{VTKGraphMesh}}
+\doxysubsubsection{\texorpdfstring{DrawConnectivity()}{DrawConnectivity()}}
+{\footnotesize\ttfamily void V\+T\+K\+Graph\+Mesh\+::\+Draw\+Connectivity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_v_t_k_graph_mesh_a3f0fdc88ae925af8b422aef7f16c95f6}\label{class_v_t_k_graph_mesh_a3f0fdc88ae925af8b422aef7f16c95f6}} 
+\index{VTKGraphMesh@{VTKGraphMesh}!DrawNodes@{DrawNodes}}
+\index{DrawNodes@{DrawNodes}!VTKGraphMesh@{VTKGraphMesh}}
+\doxysubsubsection{\texorpdfstring{DrawNodes()}{DrawNodes()}}
+{\footnotesize\ttfamily void V\+T\+K\+Graph\+Mesh\+::\+Draw\+Nodes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_v_t_k_graph_mesh_a44271c388242a5c5346f05ffa286cb63}\label{class_v_t_k_graph_mesh_a44271c388242a5c5346f05ffa286cb63}} 
+\index{VTKGraphMesh@{VTKGraphMesh}!DrawSolution@{DrawSolution}}
+\index{DrawSolution@{DrawSolution}!VTKGraphMesh@{VTKGraphMesh}}
+\doxysubsubsection{\texorpdfstring{DrawSolution()}{DrawSolution()}}
+{\footnotesize\ttfamily void V\+T\+K\+Graph\+Mesh\+::\+Draw\+Solution (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{step,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{time }\end{DoxyParamCaption})}
+
+
+
+Definition at line 16 of file vtkmesh.\+cpp.
+
+
+
+References material\+::\+Compute\+Phi(), material\+::\+Compute\+Sol\+And\+D\+Sol(), fdim, f\+File\+Name, mesh\+::fmaterial, fmesh, f\+Out\+File, f\+Vec\+Names, mesh\+::\+Get\+Hhat(), mesh\+::\+Get\+Mesh\+Nodes(), Get\+Mesh\+Topology\+V\+T\+K(), N\+Rmatrix$<$ T $>$\+::ncols(), N\+Rmatrix$<$ T $>$\+::nrows(), N\+Rtensor$<$ T $>$\+::\+X\+X(), N\+Rtensor$<$ T $>$\+::\+X\+Y(), and N\+Rtensor$<$ T $>$\+::\+Y\+Y().
+
+
+
+Referenced by pressurizedhole\+::\+Iterative\+Process(), and slopeproject\+::\+Iterative\+Process().
+
+\mbox{\Hypertarget{class_v_t_k_graph_mesh_acb4d755e4d0e9bb0b81ecb1f598f6f9f}\label{class_v_t_k_graph_mesh_acb4d755e4d0e9bb0b81ecb1f598f6f9f}} 
+\index{VTKGraphMesh@{VTKGraphMesh}!GetMeshTopologyVTK@{GetMeshTopologyVTK}}
+\index{GetMeshTopologyVTK@{GetMeshTopologyVTK}!VTKGraphMesh@{VTKGraphMesh}}
+\doxysubsubsection{\texorpdfstring{GetMeshTopologyVTK()}{GetMeshTopologyVTK()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} V\+T\+K\+Graph\+Mesh\+::\+Get\+Mesh\+Topology\+V\+TK (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 19 of file vtkmesh.\+h.
+
+
+
+References fdim, fmesh, mesh\+::\+Get\+Mesh\+Topology(), N\+Rmatrix$<$ T $>$\+::ncols(), and N\+Rmatrix$<$ T $>$\+::nrows().
+
+
+
+Referenced by Draw\+Solution().
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_v_t_k_graph_mesh_a4d450beafb5ff3f47d0a471c78e4a32c}\label{class_v_t_k_graph_mesh_a4d450beafb5ff3f47d0a471c78e4a32c}} 
+\index{VTKGraphMesh@{VTKGraphMesh}!fdata@{fdata}}
+\index{fdata@{fdata}!VTKGraphMesh@{VTKGraphMesh}}
+\doxysubsubsection{\texorpdfstring{fdata}{fdata}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}$>$ V\+T\+K\+Graph\+Mesh\+::fdata\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 79 of file vtkmesh.\+h.
+
+
+
+Referenced by V\+T\+K\+Graph\+Mesh().
+
+\mbox{\Hypertarget{class_v_t_k_graph_mesh_ab3eb08789e14265898b998988c287cd4}\label{class_v_t_k_graph_mesh_ab3eb08789e14265898b998988c287cd4}} 
+\index{VTKGraphMesh@{VTKGraphMesh}!fdim@{fdim}}
+\index{fdim@{fdim}!VTKGraphMesh@{VTKGraphMesh}}
+\doxysubsubsection{\texorpdfstring{fdim}{fdim}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} V\+T\+K\+Graph\+Mesh\+::fdim\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 82 of file vtkmesh.\+h.
+
+
+
+Referenced by Draw\+Solution(), Get\+Mesh\+Topology\+V\+T\+K(), and V\+T\+K\+Graph\+Mesh().
+
+\mbox{\Hypertarget{class_v_t_k_graph_mesh_a51518ba13f2aecf883185b963ca1da12}\label{class_v_t_k_graph_mesh_a51518ba13f2aecf883185b963ca1da12}} 
+\index{VTKGraphMesh@{VTKGraphMesh}!fFileName@{fFileName}}
+\index{fFileName@{fFileName}!VTKGraphMesh@{VTKGraphMesh}}
+\doxysubsubsection{\texorpdfstring{fFileName}{fFileName}}
+{\footnotesize\ttfamily std\+::string V\+T\+K\+Graph\+Mesh\+::f\+File\+Name\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 81 of file vtkmesh.\+h.
+
+
+
+Referenced by Draw\+Solution(), and V\+T\+K\+Graph\+Mesh().
+
+\mbox{\Hypertarget{class_v_t_k_graph_mesh_aa4411adc7cac9ce72af370c2a5f22a3b}\label{class_v_t_k_graph_mesh_aa4411adc7cac9ce72af370c2a5f22a3b}} 
+\index{VTKGraphMesh@{VTKGraphMesh}!fmesh@{fmesh}}
+\index{fmesh@{fmesh}!VTKGraphMesh@{VTKGraphMesh}}
+\doxysubsubsection{\texorpdfstring{fmesh}{fmesh}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classmesh}{mesh}}$\ast$ V\+T\+K\+Graph\+Mesh\+::fmesh\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 80 of file vtkmesh.\+h.
+
+
+
+Referenced by Draw\+Solution(), Get\+Mesh\+Topology\+V\+T\+K(), and V\+T\+K\+Graph\+Mesh().
+
+\mbox{\Hypertarget{class_v_t_k_graph_mesh_a34dfca2d92f4a0e027d791109348d50c}\label{class_v_t_k_graph_mesh_a34dfca2d92f4a0e027d791109348d50c}} 
+\index{VTKGraphMesh@{VTKGraphMesh}!fOutFile@{fOutFile}}
+\index{fOutFile@{fOutFile}!VTKGraphMesh@{VTKGraphMesh}}
+\doxysubsubsection{\texorpdfstring{fOutFile}{fOutFile}}
+{\footnotesize\ttfamily std\+::ofstream V\+T\+K\+Graph\+Mesh\+::f\+Out\+File\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 78 of file vtkmesh.\+h.
+
+
+
+Referenced by Draw\+Solution().
+
+\mbox{\Hypertarget{class_v_t_k_graph_mesh_aed8fe16416cebeb27351e94de9ed7c89}\label{class_v_t_k_graph_mesh_aed8fe16416cebeb27351e94de9ed7c89}} 
+\index{VTKGraphMesh@{VTKGraphMesh}!fScalNames@{fScalNames}}
+\index{fScalNames@{fScalNames}!VTKGraphMesh@{VTKGraphMesh}}
+\doxysubsubsection{\texorpdfstring{fScalNames}{fScalNames}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ V\+T\+K\+Graph\+Mesh\+::f\+Scal\+Names\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 84 of file vtkmesh.\+h.
+
+
+
+Referenced by V\+T\+K\+Graph\+Mesh().
+
+\mbox{\Hypertarget{class_v_t_k_graph_mesh_a1e9a5dc3b32bcb44b36662eb4a48866e}\label{class_v_t_k_graph_mesh_a1e9a5dc3b32bcb44b36662eb4a48866e}} 
+\index{VTKGraphMesh@{VTKGraphMesh}!fVecNames@{fVecNames}}
+\index{fVecNames@{fVecNames}!VTKGraphMesh@{VTKGraphMesh}}
+\doxysubsubsection{\texorpdfstring{fVecNames}{fVecNames}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ V\+T\+K\+Graph\+Mesh\+::f\+Vec\+Names\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 83 of file vtkmesh.\+h.
+
+
+
+Referenced by Draw\+Solution(), and V\+T\+K\+Graph\+Mesh().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{vtkmesh_8h}{vtkmesh.\+h}}\item 
+src/\mbox{\hyperlink{vtkmesh_8cpp}{vtkmesh.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,1462 @@
+\hypertarget{nr3_8h}{}\doxysection{src/nr3.h File Reference}
+\label{nr3_8h}\index{src/nr3.h@{src/nr3.h}}
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$complex$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$limits$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}error.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$Eigen/\+Core$>$}\newline
+Include dependency graph for nr3.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{nr3_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{nr3_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_n_rvector}{N\+Rvector$<$ T $>$}}
+\item 
+class \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix$<$ T $>$}}
+\item 
+class \mbox{\hyperlink{class_n_r_mat3d}{N\+R\+Mat3d$<$ T $>$}}
+\item 
+class \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor$<$ T $>$}}
+\item 
+class \mbox{\hyperlink{class_n_rmatrix3_d}{N\+Rmatrix3\+D$<$ T $>$}}
+\item 
+struct \mbox{\hyperlink{struct_jacobi}{Jacobi}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{nr3_8h_a467cf987a0cdc33821e81f55de814afd}{\+\_\+\+X\+X\+\_\+}}
+\item 
+\#define \mbox{\hyperlink{nr3_8h_a3174710510ad98d390a3a30f1c93e3c6}{\+\_\+\+Y\+Y\+\_\+}}
+\item 
+\#define \mbox{\hyperlink{nr3_8h_aac9e95c38d3089e62ed77879647442b5}{\+\_\+\+Z\+Z\+\_\+}}
+\item 
+\#define \mbox{\hyperlink{nr3_8h_a89701a2cdc0f163fc07f84730f7c53b3}{\+\_\+\+X\+Z\+\_\+}}
+\item 
+\#define \mbox{\hyperlink{nr3_8h_aed8ec6a8db777a5bae883b7cd5034559}{\+\_\+\+Y\+Z\+\_\+}}
+\item 
+\#define \mbox{\hyperlink{nr3_8h_a254e37d0ed9145d0d755049f271121c1}{\+\_\+\+X\+Y\+\_\+}}
+\item 
+\#define \mbox{\hyperlink{nr3_8h_adab0fcaa80952e58fc9b95b1ebec51bc}{\+\_\+\+C\+H\+E\+C\+K\+B\+O\+U\+N\+D\+S\+\_\+}}
+\item 
+\#define \mbox{\hyperlink{nr3_8h_a525335710b53cb064ca56b936120431e}{\+\_\+\+U\+S\+E\+\_\+\+M\+A\+T\+H\+\_\+\+D\+E\+F\+I\+N\+ES}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef int \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}
+\item 
+typedef double \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}
+\item 
+typedef unsigned int \mbox{\hyperlink{nr3_8h_a4840c4503b7d10cea5e08416eb3716f1}{Uint}}
+\item 
+typedef long long int \mbox{\hyperlink{nr3_8h_af83bd1c87d82a7a9414b640d5911e674}{Llong}}
+\item 
+typedef unsigned long long int \mbox{\hyperlink{nr3_8h_a45bbe8834e22a2a6cb84fefeff43c77e}{Ullong}}
+\item 
+typedef char \mbox{\hyperlink{nr3_8h_a7942e32f6409fbd1fd347a8c23ef725e}{Char}}
+\item 
+typedef unsigned char \mbox{\hyperlink{nr3_8h_a5c3641e5dfe71f67a3c3a72026a24af2}{Uchar}}
+\item 
+typedef long double \mbox{\hyperlink{nr3_8h_a213aceede362abae357b651f973a4c86}{Ldoub}}
+\item 
+typedef complex$<$ double $>$ \mbox{\hyperlink{nr3_8h_a5e0f8adeae7b5e03bc1058518809e929}{Complex}}
+\item 
+typedef bool \mbox{\hyperlink{nr3_8h_a76a8b016e5ad61faf9062cc387df5016}{Bool}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} $>$ \mbox{\hyperlink{nr3_8h_a064027d87b8f30a1bcaf0e4a5c379ad6}{Vec\+Int}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} $>$ \mbox{\hyperlink{nr3_8h_ac795acdd62f57a5b372bd5cd4b37e481}{Vec\+Int\+\_\+O}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} $>$ \mbox{\hyperlink{nr3_8h_a2a18f99f4687fa3fe39d8d4c4f6711c0}{Vec\+Int\+\_\+\+IO}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a4840c4503b7d10cea5e08416eb3716f1}{Uint}} $>$ \mbox{\hyperlink{nr3_8h_a8b89bc682f1a0b21e2d7bb734c8e5ec9}{Vec\+Uint}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a4840c4503b7d10cea5e08416eb3716f1}{Uint}} $>$ \mbox{\hyperlink{nr3_8h_afa2a7aed7a616f9e31108549055dfa51}{Vec\+Uint\+\_\+O}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a4840c4503b7d10cea5e08416eb3716f1}{Uint}} $>$ \mbox{\hyperlink{nr3_8h_ad970eef31b74f318511cd5bc596dc7fa}{Vec\+Uint\+\_\+\+IO}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_af83bd1c87d82a7a9414b640d5911e674}{Llong}} $>$ \mbox{\hyperlink{nr3_8h_ada1b746d7e58492831cb8dc8bf191e48}{Vec\+Llong}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_af83bd1c87d82a7a9414b640d5911e674}{Llong}} $>$ \mbox{\hyperlink{nr3_8h_a788892dd8589142675e7b6a88d9047a8}{Vec\+Llong\+\_\+O}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_af83bd1c87d82a7a9414b640d5911e674}{Llong}} $>$ \mbox{\hyperlink{nr3_8h_aba42033559a8c487be229e96b7bbf05b}{Vec\+Llong\+\_\+\+IO}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a45bbe8834e22a2a6cb84fefeff43c77e}{Ullong}} $>$ \mbox{\hyperlink{nr3_8h_a8e97f4ad71616d808e509608c11cc91b}{Vec\+Ullong}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a45bbe8834e22a2a6cb84fefeff43c77e}{Ullong}} $>$ \mbox{\hyperlink{nr3_8h_aa88f5f8722ee17cd2a98023a6b46ec42}{Vec\+Ullong\+\_\+O}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a45bbe8834e22a2a6cb84fefeff43c77e}{Ullong}} $>$ \mbox{\hyperlink{nr3_8h_aa468aaec4a55329defcbb7a23d67536f}{Vec\+Ullong\+\_\+\+IO}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a7942e32f6409fbd1fd347a8c23ef725e}{Char}} $>$ \mbox{\hyperlink{nr3_8h_a33a591012f109c740c00237ed6c54781}{Vec\+Char}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a7942e32f6409fbd1fd347a8c23ef725e}{Char}} $>$ \mbox{\hyperlink{nr3_8h_a1735f1bdedbc035535f54fdd7a31be44}{Vec\+Char\+\_\+O}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a7942e32f6409fbd1fd347a8c23ef725e}{Char}} $>$ \mbox{\hyperlink{nr3_8h_a14ecb38e80bc1d8f2f79ae4ddef443fb}{Vec\+Char\+\_\+\+IO}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a7942e32f6409fbd1fd347a8c23ef725e}{Char}} $\ast$ $>$ \mbox{\hyperlink{nr3_8h_a1aa1991b84a18ad49125a8076ecfce78}{Vec\+Charp}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a7942e32f6409fbd1fd347a8c23ef725e}{Char}} $\ast$ $>$ \mbox{\hyperlink{nr3_8h_ab647832288de0b4a259ec4aeee753bbd}{Vec\+Charp\+\_\+O}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a7942e32f6409fbd1fd347a8c23ef725e}{Char}} $\ast$ $>$ \mbox{\hyperlink{nr3_8h_a759da1434eb3126b78506250c30d8865}{Vec\+Charp\+\_\+\+IO}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a5c3641e5dfe71f67a3c3a72026a24af2}{Uchar}} $>$ \mbox{\hyperlink{nr3_8h_a9db47554ed72a2623a35aeb6ede81ad8}{Vec\+Uchar}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a5c3641e5dfe71f67a3c3a72026a24af2}{Uchar}} $>$ \mbox{\hyperlink{nr3_8h_aa998396dbf9122a73db41883e589b348}{Vec\+Uchar\+\_\+O}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a5c3641e5dfe71f67a3c3a72026a24af2}{Uchar}} $>$ \mbox{\hyperlink{nr3_8h_a055a18c18769a8cf3fb602ec5c051ed9}{Vec\+Uchar\+\_\+\+IO}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{nr3_8h_a97a3701e8aa6ca145af8d5c7c5c50d87}{Vec\+Doub}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{nr3_8h_a0e1e2f8eb088c9a6bef13f04075dadb7}{Vec\+Doub\+\_\+O}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{nr3_8h_ad79288a4d07086bfad5b69c192ee07c5}{Vec\+Doub\+\_\+\+IO}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $\ast$ $>$ \mbox{\hyperlink{nr3_8h_a4fdb625794d46c6a94599656c752e93b}{Vec\+Doubp}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $\ast$ $>$ \mbox{\hyperlink{nr3_8h_adb2d0d7b8725e5b2635f0cddaa8d6ce7}{Vec\+Doubp\+\_\+O}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $\ast$ $>$ \mbox{\hyperlink{nr3_8h_ac172924b21c0e2df5f66c51a9f993f4f}{Vec\+Doubp\+\_\+\+IO}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a5e0f8adeae7b5e03bc1058518809e929}{Complex}} $>$ \mbox{\hyperlink{nr3_8h_a79b3433b3828171258b200b6c197f1a5}{Vec\+Complex}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a5e0f8adeae7b5e03bc1058518809e929}{Complex}} $>$ \mbox{\hyperlink{nr3_8h_a306880b8a943a819003aa40039edd5cd}{Vec\+Complex\+\_\+O}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a5e0f8adeae7b5e03bc1058518809e929}{Complex}} $>$ \mbox{\hyperlink{nr3_8h_ae1412950788310da4c1c6744c8c13b3e}{Vec\+Complex\+\_\+\+IO}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a76a8b016e5ad61faf9062cc387df5016}{Bool}} $>$ \mbox{\hyperlink{nr3_8h_abbefda5aee8e26da41ae345b190cc557}{Vec\+Bool}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a76a8b016e5ad61faf9062cc387df5016}{Bool}} $>$ \mbox{\hyperlink{nr3_8h_a683d728ad5e373bc5e88f9fb80100d04}{Vec\+Bool\+\_\+O}}
+\item 
+typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a76a8b016e5ad61faf9062cc387df5016}{Bool}} $>$ \mbox{\hyperlink{nr3_8h_ab36043fed00aa7eeefd3b381e1b83efa}{Vec\+Bool\+\_\+\+IO}}
+\item 
+typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} $>$ \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}}
+\item 
+typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} $>$ \mbox{\hyperlink{nr3_8h_a50db466a4ed24a68193ad218e59787a2}{Mat\+Int\+\_\+O}}
+\item 
+typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} $>$ \mbox{\hyperlink{nr3_8h_ae8bb87648704bdc62a87ecdf5a8d33eb}{Mat\+Int\+\_\+\+IO}}
+\item 
+typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_a4840c4503b7d10cea5e08416eb3716f1}{Uint}} $>$ \mbox{\hyperlink{nr3_8h_aec2a2d06628dee4ca023b383944ed466}{Mat\+Uint}}
+\item 
+typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_a4840c4503b7d10cea5e08416eb3716f1}{Uint}} $>$ \mbox{\hyperlink{nr3_8h_a2ddce5e41c3a95b44e97e011605945c9}{Mat\+Uint\+\_\+O}}
+\item 
+typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_a4840c4503b7d10cea5e08416eb3716f1}{Uint}} $>$ \mbox{\hyperlink{nr3_8h_ae1b2c3ffddb2c67d3e21910c0c2a0718}{Mat\+Uint\+\_\+\+IO}}
+\item 
+typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_af83bd1c87d82a7a9414b640d5911e674}{Llong}} $>$ \mbox{\hyperlink{nr3_8h_a1230f8d120e3c4f61b06bda8e8f24002}{Mat\+Llong}}
+\item 
+typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_af83bd1c87d82a7a9414b640d5911e674}{Llong}} $>$ \mbox{\hyperlink{nr3_8h_a3d34a4f50a144fd723b3e7896b7b137f}{Mat\+Llong\+\_\+O}}
+\item 
+typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_af83bd1c87d82a7a9414b640d5911e674}{Llong}} $>$ \mbox{\hyperlink{nr3_8h_a6747975ecbc50ff3cce60c989852cb3a}{Mat\+Llong\+\_\+\+IO}}
+\item 
+typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_a45bbe8834e22a2a6cb84fefeff43c77e}{Ullong}} $>$ \mbox{\hyperlink{nr3_8h_aa245c36ae5cb1df3fdeb06c1b8d1b1d7}{Mat\+Ullong}}
+\item 
+typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_a45bbe8834e22a2a6cb84fefeff43c77e}{Ullong}} $>$ \mbox{\hyperlink{nr3_8h_a3c544b784957d6f473074d477cb79739}{Mat\+Ullong\+\_\+O}}
+\item 
+typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_a45bbe8834e22a2a6cb84fefeff43c77e}{Ullong}} $>$ \mbox{\hyperlink{nr3_8h_af1c383ee22612df6b6535d2a1a256cd3}{Mat\+Ullong\+\_\+\+IO}}
+\item 
+typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_a7942e32f6409fbd1fd347a8c23ef725e}{Char}} $>$ \mbox{\hyperlink{nr3_8h_a106ce247ee0afc2b82bfac0f87800361}{Mat\+Char}}
+\item 
+typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_a7942e32f6409fbd1fd347a8c23ef725e}{Char}} $>$ \mbox{\hyperlink{nr3_8h_a2cdf738b30367a5ac95f35d453df91fc}{Mat\+Char\+\_\+O}}
+\item 
+typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_a7942e32f6409fbd1fd347a8c23ef725e}{Char}} $>$ \mbox{\hyperlink{nr3_8h_aa27e215496f98e52046b8243e6d8fe36}{Mat\+Char\+\_\+\+IO}}
+\item 
+typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_a5c3641e5dfe71f67a3c3a72026a24af2}{Uchar}} $>$ \mbox{\hyperlink{nr3_8h_a628ee6ad6adac2b78590582d477a1592}{Mat\+Uchar}}
+\item 
+typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_a5c3641e5dfe71f67a3c3a72026a24af2}{Uchar}} $>$ \mbox{\hyperlink{nr3_8h_aeb1ec6da1bd71897e1903c5314890963}{Mat\+Uchar\+\_\+O}}
+\item 
+typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_a5c3641e5dfe71f67a3c3a72026a24af2}{Uchar}} $>$ \mbox{\hyperlink{nr3_8h_abb324d10407ebaabd5e0b393245c7f5b}{Mat\+Uchar\+\_\+\+IO}}
+\item 
+typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}
+\item 
+typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{nr3_8h_af78ffaeb7f0b1f76b9a101d2b2a2050b}{Mat\+Doub\+\_\+O}}
+\item 
+typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{nr3_8h_a8ce97cf9117c0661727b51f370cfc089}{Mat\+Doub\+\_\+\+IO}}
+\item 
+typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_a76a8b016e5ad61faf9062cc387df5016}{Bool}} $>$ \mbox{\hyperlink{nr3_8h_af01764e8bf4d5d0bca752b94b6d2e875}{Mat\+Bool}}
+\item 
+typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_a76a8b016e5ad61faf9062cc387df5016}{Bool}} $>$ \mbox{\hyperlink{nr3_8h_a322f7bef9da5e26db900dc6a3648bc43}{Mat\+Bool\+\_\+O}}
+\item 
+typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_a76a8b016e5ad61faf9062cc387df5016}{Bool}} $>$ \mbox{\hyperlink{nr3_8h_a6c5c7115f23af2e950d979054b454a5f}{Mat\+Bool\+\_\+\+IO}}
+\item 
+typedef \mbox{\hyperlink{class_n_r_mat3d}{N\+R\+Mat3d}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{nr3_8h_a3ed716db17e01e674bca9ba707611a19}{Mat3\+D\+Doub}}
+\item 
+typedef \mbox{\hyperlink{class_n_r_mat3d}{N\+R\+Mat3d}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{nr3_8h_aec9fcd977ee768d951c1b41b9e16e990}{Mat3\+D\+Doub\+\_\+O}}
+\item 
+typedef \mbox{\hyperlink{class_n_r_mat3d}{N\+R\+Mat3d}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{nr3_8h_af24b5f695e77c1ad62437cfb50ddae5a}{Mat3\+D\+Doub\+\_\+\+IO}}
+\item 
+typedef \mbox{\hyperlink{class_n_rmatrix3_d}{N\+Rmatrix3D}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{nr3_8h_a542c9c1b30049b8cd640ab31af0f265c}{Matrix3\+D\+Doub}}
+\item 
+typedef \mbox{\hyperlink{class_n_rmatrix3_d}{N\+Rmatrix3D}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{nr3_8h_a31a441475ba259461bdcbcdbc3d44f7a}{Matrix3\+D\+Doub\+\_\+O}}
+\item 
+typedef \mbox{\hyperlink{class_n_rmatrix3_d}{N\+Rmatrix3D}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{nr3_8h_ac98daaec54053d3b525b132dd865ca75}{Matrix3\+D\+Doub\+\_\+\+IO}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$class T $>$ }\\\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \mbox{\hyperlink{nr3_8h_a06d1c40d0369212d1b6fa6ecd3bb9fbd}{S\+QR}} (const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} a)
+\item 
+{\footnotesize template$<$class T $>$ }\\const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \& \mbox{\hyperlink{nr3_8h_a209bcb7d618351acd2e2ae728a0a4a03}{M\+AX}} (const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&a, const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&b)
+\item 
+float \mbox{\hyperlink{nr3_8h_af81927aa1249cf37ac3750267885b120}{M\+AX}} (const double \&a, const float \&b)
+\item 
+float \mbox{\hyperlink{nr3_8h_a3e7d146382ee63a63057d0d1da21681c}{M\+AX}} (const float \&a, const double \&b)
+\item 
+{\footnotesize template$<$class T $>$ }\\const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \& \mbox{\hyperlink{nr3_8h_a9e57865c72ea6681c364d10f79cf175a}{M\+IN}} (const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&a, const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&b)
+\item 
+float \mbox{\hyperlink{nr3_8h_a2cfa98af017775923db28dc7c2e20172}{M\+IN}} (const double \&a, const float \&b)
+\item 
+float \mbox{\hyperlink{nr3_8h_a3d33ecea9b81bb92f8eea3582752aa9a}{M\+IN}} (const float \&a, const double \&b)
+\item 
+{\footnotesize template$<$class T $>$ }\\\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \mbox{\hyperlink{nr3_8h_ac5bb90632c74845e7dc3cb8c46a1fbdd}{S\+I\+GN}} (const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&a, const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&b)
+\item 
+float \mbox{\hyperlink{nr3_8h_a050c6451d15aaccc09c71cc4a383b8f7}{S\+I\+GN}} (const float \&a, const double \&b)
+\item 
+float \mbox{\hyperlink{nr3_8h_aae9be2b78e310ebaae80d3a980ef37c3}{S\+I\+GN}} (const double \&a, const float \&b)
+\item 
+{\footnotesize template$<$class T $>$ }\\void \mbox{\hyperlink{nr3_8h_a7c47ab41142fb494373b0b511cfe219b}{S\+W\+AP}} (\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&a, \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&b)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} $>$ \mbox{\hyperlink{nr3_8h_ae30af93c35ff67772f7c2ccdf91418c8}{Vec\+Int\+\_\+I}}
+\item 
+const typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a4840c4503b7d10cea5e08416eb3716f1}{Uint}} $>$ \mbox{\hyperlink{nr3_8h_a7808c96a2b59605c10ffbd54f863fe11}{Vec\+Uint\+\_\+I}}
+\item 
+const typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_af83bd1c87d82a7a9414b640d5911e674}{Llong}} $>$ \mbox{\hyperlink{nr3_8h_a672dcf76dc398f6b329ccddf47d5286a}{Vec\+Llong\+\_\+I}}
+\item 
+const typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a45bbe8834e22a2a6cb84fefeff43c77e}{Ullong}} $>$ \mbox{\hyperlink{nr3_8h_a7506bc9a2c086dd5c509d70df632f1d8}{Vec\+Ullong\+\_\+I}}
+\item 
+const typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a7942e32f6409fbd1fd347a8c23ef725e}{Char}} $>$ \mbox{\hyperlink{nr3_8h_ad554dc6694d337c1a62f405032cd58e2}{Vec\+Char\+\_\+I}}
+\item 
+const typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a7942e32f6409fbd1fd347a8c23ef725e}{Char}} $\ast$ $>$ \mbox{\hyperlink{nr3_8h_ae140f4c6f58b5e5a278292c31776ee94}{Vec\+Charp\+\_\+I}}
+\item 
+const typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a5c3641e5dfe71f67a3c3a72026a24af2}{Uchar}} $>$ \mbox{\hyperlink{nr3_8h_a4265357872b563ecdd9080928dda6c80}{Vec\+Uchar\+\_\+I}}
+\item 
+const typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{nr3_8h_a03f0d3bb248e15df9d42cc3c80203ea0}{Vec\+Doub\+\_\+I}}
+\item 
+const typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $\ast$ $>$ \mbox{\hyperlink{nr3_8h_a399a67d6ebefb93676697dafd77e172a}{Vec\+Doubp\+\_\+I}}
+\item 
+const typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a5e0f8adeae7b5e03bc1058518809e929}{Complex}} $>$ \mbox{\hyperlink{nr3_8h_a9dfcf8fcad7ade4758b86b1f51963ff2}{Vec\+Complex\+\_\+I}}
+\item 
+const typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_a76a8b016e5ad61faf9062cc387df5016}{Bool}} $>$ \mbox{\hyperlink{nr3_8h_aebe3aaa8fd73fd1d0f0cc869bf4c61d9}{Vec\+Bool\+\_\+I}}
+\item 
+const typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} $>$ \mbox{\hyperlink{nr3_8h_af72652fd106c4ec8d0e4901b30db053b}{Mat\+Int\+\_\+I}}
+\item 
+const typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_a4840c4503b7d10cea5e08416eb3716f1}{Uint}} $>$ \mbox{\hyperlink{nr3_8h_a36a3a510c4af6263bfb96981ec12cd9d}{Mat\+Uint\+\_\+I}}
+\item 
+const typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_af83bd1c87d82a7a9414b640d5911e674}{Llong}} $>$ \mbox{\hyperlink{nr3_8h_a29a25639e2d88ef8e49bdd1ed10ff5f9}{Mat\+Llong\+\_\+I}}
+\item 
+const typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_a45bbe8834e22a2a6cb84fefeff43c77e}{Ullong}} $>$ \mbox{\hyperlink{nr3_8h_a2c4a31ee72ad5fafba54e9bee65ae004}{Mat\+Ullong\+\_\+I}}
+\item 
+const typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_a7942e32f6409fbd1fd347a8c23ef725e}{Char}} $>$ \mbox{\hyperlink{nr3_8h_a032caf25ab47332951ce997c0f9c18d4}{Mat\+Char\+\_\+I}}
+\item 
+const typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_a5c3641e5dfe71f67a3c3a72026a24af2}{Uchar}} $>$ \mbox{\hyperlink{nr3_8h_a58c9c6a82054b9a51df5b05825b725cb}{Mat\+Uchar\+\_\+I}}
+\item 
+const typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{nr3_8h_a724773f982f11577951cbd1efadf9768}{Mat\+Doub\+\_\+I}}
+\item 
+const typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_a76a8b016e5ad61faf9062cc387df5016}{Bool}} $>$ \mbox{\hyperlink{nr3_8h_a9e857cd5b1c2cc6acc274ea82565e228}{Mat\+Bool\+\_\+I}}
+\item 
+const typedef \mbox{\hyperlink{class_n_r_mat3d}{N\+R\+Mat3d}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{nr3_8h_a31e9839c08446af25edd05689148a48c}{Mat3\+D\+Doub\+\_\+I}}
+\item 
+const typedef \mbox{\hyperlink{class_n_rmatrix3_d}{N\+Rmatrix3D}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{nr3_8h_aa73a2220a2e94a6067e43c9237733372}{Matrix3\+D\+Doub\+\_\+I}}
+\item 
+static const \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{nr3_8h_a34b94923276ce0dade39d47a4275cabc}{NaN}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{nr3_8h_adab0fcaa80952e58fc9b95b1ebec51bc}\label{nr3_8h_adab0fcaa80952e58fc9b95b1ebec51bc}} 
+\index{nr3.h@{nr3.h}!\_CHECKBOUNDS\_@{\_CHECKBOUNDS\_}}
+\index{\_CHECKBOUNDS\_@{\_CHECKBOUNDS\_}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{\_CHECKBOUNDS\_}{\_CHECKBOUNDS\_}}
+{\footnotesize\ttfamily \#define \+\_\+\+C\+H\+E\+C\+K\+B\+O\+U\+N\+D\+S\+\_\+}
+
+
+
+Definition at line 38 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a525335710b53cb064ca56b936120431e}\label{nr3_8h_a525335710b53cb064ca56b936120431e}} 
+\index{nr3.h@{nr3.h}!\_USE\_MATH\_DEFINES@{\_USE\_MATH\_DEFINES}}
+\index{\_USE\_MATH\_DEFINES@{\_USE\_MATH\_DEFINES}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{\_USE\_MATH\_DEFINES}{\_USE\_MATH\_DEFINES}}
+{\footnotesize\ttfamily \#define \+\_\+\+U\+S\+E\+\_\+\+M\+A\+T\+H\+\_\+\+D\+E\+F\+I\+N\+ES}
+
+
+
+Definition at line 57 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a467cf987a0cdc33821e81f55de814afd}\label{nr3_8h_a467cf987a0cdc33821e81f55de814afd}} 
+\index{nr3.h@{nr3.h}!\_XX\_@{\_XX\_}}
+\index{\_XX\_@{\_XX\_}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{\_XX\_}{\_XX\_}}
+{\footnotesize\ttfamily \#define \+\_\+\+X\+X\+\_\+}
+
+
+
+Definition at line 28 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a254e37d0ed9145d0d755049f271121c1}\label{nr3_8h_a254e37d0ed9145d0d755049f271121c1}} 
+\index{nr3.h@{nr3.h}!\_XY\_@{\_XY\_}}
+\index{\_XY\_@{\_XY\_}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{\_XY\_}{\_XY\_}}
+{\footnotesize\ttfamily \#define \+\_\+\+X\+Y\+\_\+}
+
+
+
+Definition at line 33 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a89701a2cdc0f163fc07f84730f7c53b3}\label{nr3_8h_a89701a2cdc0f163fc07f84730f7c53b3}} 
+\index{nr3.h@{nr3.h}!\_XZ\_@{\_XZ\_}}
+\index{\_XZ\_@{\_XZ\_}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{\_XZ\_}{\_XZ\_}}
+{\footnotesize\ttfamily \#define \+\_\+\+X\+Z\+\_\+}
+
+
+
+Definition at line 31 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a3174710510ad98d390a3a30f1c93e3c6}\label{nr3_8h_a3174710510ad98d390a3a30f1c93e3c6}} 
+\index{nr3.h@{nr3.h}!\_YY\_@{\_YY\_}}
+\index{\_YY\_@{\_YY\_}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{\_YY\_}{\_YY\_}}
+{\footnotesize\ttfamily \#define \+\_\+\+Y\+Y\+\_\+}
+
+
+
+Definition at line 29 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_aed8ec6a8db777a5bae883b7cd5034559}\label{nr3_8h_aed8ec6a8db777a5bae883b7cd5034559}} 
+\index{nr3.h@{nr3.h}!\_YZ\_@{\_YZ\_}}
+\index{\_YZ\_@{\_YZ\_}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{\_YZ\_}{\_YZ\_}}
+{\footnotesize\ttfamily \#define \+\_\+\+Y\+Z\+\_\+}
+
+
+
+Definition at line 32 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_aac9e95c38d3089e62ed77879647442b5}\label{nr3_8h_aac9e95c38d3089e62ed77879647442b5}} 
+\index{nr3.h@{nr3.h}!\_ZZ\_@{\_ZZ\_}}
+\index{\_ZZ\_@{\_ZZ\_}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{\_ZZ\_}{\_ZZ\_}}
+{\footnotesize\ttfamily \#define \+\_\+\+Z\+Z\+\_\+}
+
+
+
+Definition at line 30 of file nr3.\+h.
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{nr3_8h_a76a8b016e5ad61faf9062cc387df5016}\label{nr3_8h_a76a8b016e5ad61faf9062cc387df5016}} 
+\index{nr3.h@{nr3.h}!Bool@{Bool}}
+\index{Bool@{Bool}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{Bool}{Bool}}
+{\footnotesize\ttfamily typedef bool \mbox{\hyperlink{nr3_8h_a76a8b016e5ad61faf9062cc387df5016}{Bool}}}
+
+
+
+Definition at line 1372 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a7942e32f6409fbd1fd347a8c23ef725e}\label{nr3_8h_a7942e32f6409fbd1fd347a8c23ef725e}} 
+\index{nr3.h@{nr3.h}!Char@{Char}}
+\index{Char@{Char}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{Char}{Char}}
+{\footnotesize\ttfamily typedef char \mbox{\hyperlink{nr3_8h_a7942e32f6409fbd1fd347a8c23ef725e}{Char}}}
+
+
+
+Definition at line 1364 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a5e0f8adeae7b5e03bc1058518809e929}\label{nr3_8h_a5e0f8adeae7b5e03bc1058518809e929}} 
+\index{nr3.h@{nr3.h}!Complex@{Complex}}
+\index{Complex@{Complex}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{Complex}{Complex}}
+{\footnotesize\ttfamily typedef complex$<$double$>$ \mbox{\hyperlink{nr3_8h_a5e0f8adeae7b5e03bc1058518809e929}{Complex}}}
+
+
+
+Definition at line 1370 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}\label{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}} 
+\index{nr3.h@{nr3.h}!Doub@{Doub}}
+\index{Doub@{Doub}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{Doub}{Doub}}
+{\footnotesize\ttfamily typedef double \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}
+
+
+
+Definition at line 1353 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}\label{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}} 
+\index{nr3.h@{nr3.h}!Int@{Int}}
+\index{Int@{Int}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{Int}{Int}}
+{\footnotesize\ttfamily typedef int \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}
+
+
+
+Definition at line 1352 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a213aceede362abae357b651f973a4c86}\label{nr3_8h_a213aceede362abae357b651f973a4c86}} 
+\index{nr3.h@{nr3.h}!Ldoub@{Ldoub}}
+\index{Ldoub@{Ldoub}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{Ldoub}{Ldoub}}
+{\footnotesize\ttfamily typedef long double \mbox{\hyperlink{nr3_8h_a213aceede362abae357b651f973a4c86}{Ldoub}}}
+
+
+
+Definition at line 1368 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_af83bd1c87d82a7a9414b640d5911e674}\label{nr3_8h_af83bd1c87d82a7a9414b640d5911e674}} 
+\index{nr3.h@{nr3.h}!Llong@{Llong}}
+\index{Llong@{Llong}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{Llong}{Llong}}
+{\footnotesize\ttfamily typedef long long int \mbox{\hyperlink{nr3_8h_af83bd1c87d82a7a9414b640d5911e674}{Llong}}}
+
+
+
+Definition at line 1360 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a3ed716db17e01e674bca9ba707611a19}\label{nr3_8h_a3ed716db17e01e674bca9ba707611a19}} 
+\index{nr3.h@{nr3.h}!Mat3DDoub@{Mat3DDoub}}
+\index{Mat3DDoub@{Mat3DDoub}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{Mat3DDoub}{Mat3DDoub}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_r_mat3d}{N\+R\+Mat3d}}$<$\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}$>$ \mbox{\hyperlink{nr3_8h_a3ed716db17e01e674bca9ba707611a19}{Mat3\+D\+Doub}}}
+
+
+
+Definition at line 1448 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_af24b5f695e77c1ad62437cfb50ddae5a}\label{nr3_8h_af24b5f695e77c1ad62437cfb50ddae5a}} 
+\index{nr3.h@{nr3.h}!Mat3DDoub\_IO@{Mat3DDoub\_IO}}
+\index{Mat3DDoub\_IO@{Mat3DDoub\_IO}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{Mat3DDoub\_IO}{Mat3DDoub\_IO}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_r_mat3d}{N\+R\+Mat3d}}$<$\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}$>$ \mbox{\hyperlink{nr3_8h_af24b5f695e77c1ad62437cfb50ddae5a}{Mat3\+D\+Doub\+\_\+\+IO}}}
+
+
+
+Definition at line 1448 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_aec9fcd977ee768d951c1b41b9e16e990}\label{nr3_8h_aec9fcd977ee768d951c1b41b9e16e990}} 
+\index{nr3.h@{nr3.h}!Mat3DDoub\_O@{Mat3DDoub\_O}}
+\index{Mat3DDoub\_O@{Mat3DDoub\_O}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{Mat3DDoub\_O}{Mat3DDoub\_O}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_r_mat3d}{N\+R\+Mat3d}}$<$\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}$>$ \mbox{\hyperlink{nr3_8h_aec9fcd977ee768d951c1b41b9e16e990}{Mat3\+D\+Doub\+\_\+O}}}
+
+
+
+Definition at line 1448 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_af01764e8bf4d5d0bca752b94b6d2e875}\label{nr3_8h_af01764e8bf4d5d0bca752b94b6d2e875}} 
+\index{nr3.h@{nr3.h}!MatBool@{MatBool}}
+\index{MatBool@{MatBool}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatBool}{MatBool}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_a76a8b016e5ad61faf9062cc387df5016}{Bool}}$>$ \mbox{\hyperlink{nr3_8h_af01764e8bf4d5d0bca752b94b6d2e875}{Mat\+Bool}}}
+
+
+
+Definition at line 1443 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a6c5c7115f23af2e950d979054b454a5f}\label{nr3_8h_a6c5c7115f23af2e950d979054b454a5f}} 
+\index{nr3.h@{nr3.h}!MatBool\_IO@{MatBool\_IO}}
+\index{MatBool\_IO@{MatBool\_IO}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatBool\_IO}{MatBool\_IO}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_a76a8b016e5ad61faf9062cc387df5016}{Bool}}$>$ \mbox{\hyperlink{nr3_8h_a6c5c7115f23af2e950d979054b454a5f}{Mat\+Bool\+\_\+\+IO}}}
+
+
+
+Definition at line 1443 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a322f7bef9da5e26db900dc6a3648bc43}\label{nr3_8h_a322f7bef9da5e26db900dc6a3648bc43}} 
+\index{nr3.h@{nr3.h}!MatBool\_O@{MatBool\_O}}
+\index{MatBool\_O@{MatBool\_O}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatBool\_O}{MatBool\_O}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_a76a8b016e5ad61faf9062cc387df5016}{Bool}}$>$ \mbox{\hyperlink{nr3_8h_a322f7bef9da5e26db900dc6a3648bc43}{Mat\+Bool\+\_\+O}}}
+
+
+
+Definition at line 1443 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a106ce247ee0afc2b82bfac0f87800361}\label{nr3_8h_a106ce247ee0afc2b82bfac0f87800361}} 
+\index{nr3.h@{nr3.h}!MatChar@{MatChar}}
+\index{MatChar@{MatChar}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatChar}{MatChar}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_a7942e32f6409fbd1fd347a8c23ef725e}{Char}}$>$ \mbox{\hyperlink{nr3_8h_a106ce247ee0afc2b82bfac0f87800361}{Mat\+Char}}}
+
+
+
+Definition at line 1434 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_aa27e215496f98e52046b8243e6d8fe36}\label{nr3_8h_aa27e215496f98e52046b8243e6d8fe36}} 
+\index{nr3.h@{nr3.h}!MatChar\_IO@{MatChar\_IO}}
+\index{MatChar\_IO@{MatChar\_IO}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatChar\_IO}{MatChar\_IO}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_a7942e32f6409fbd1fd347a8c23ef725e}{Char}}$>$ \mbox{\hyperlink{nr3_8h_aa27e215496f98e52046b8243e6d8fe36}{Mat\+Char\+\_\+\+IO}}}
+
+
+
+Definition at line 1434 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a2cdf738b30367a5ac95f35d453df91fc}\label{nr3_8h_a2cdf738b30367a5ac95f35d453df91fc}} 
+\index{nr3.h@{nr3.h}!MatChar\_O@{MatChar\_O}}
+\index{MatChar\_O@{MatChar\_O}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatChar\_O}{MatChar\_O}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_a7942e32f6409fbd1fd347a8c23ef725e}{Char}}$>$ \mbox{\hyperlink{nr3_8h_a2cdf738b30367a5ac95f35d453df91fc}{Mat\+Char\+\_\+O}}}
+
+
+
+Definition at line 1434 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_ad80bce79a872a353958f95cd97ec035b}\label{nr3_8h_ad80bce79a872a353958f95cd97ec035b}} 
+\index{nr3.h@{nr3.h}!MatDoub@{MatDoub}}
+\index{MatDoub@{MatDoub}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatDoub}{MatDoub}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}$>$ \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}
+
+
+
+Definition at line 1440 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a8ce97cf9117c0661727b51f370cfc089}\label{nr3_8h_a8ce97cf9117c0661727b51f370cfc089}} 
+\index{nr3.h@{nr3.h}!MatDoub\_IO@{MatDoub\_IO}}
+\index{MatDoub\_IO@{MatDoub\_IO}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatDoub\_IO}{MatDoub\_IO}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}$>$ \mbox{\hyperlink{nr3_8h_a8ce97cf9117c0661727b51f370cfc089}{Mat\+Doub\+\_\+\+IO}}}
+
+
+
+Definition at line 1440 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_af78ffaeb7f0b1f76b9a101d2b2a2050b}\label{nr3_8h_af78ffaeb7f0b1f76b9a101d2b2a2050b}} 
+\index{nr3.h@{nr3.h}!MatDoub\_O@{MatDoub\_O}}
+\index{MatDoub\_O@{MatDoub\_O}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatDoub\_O}{MatDoub\_O}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}$>$ \mbox{\hyperlink{nr3_8h_af78ffaeb7f0b1f76b9a101d2b2a2050b}{Mat\+Doub\+\_\+O}}}
+
+
+
+Definition at line 1440 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}\label{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}} 
+\index{nr3.h@{nr3.h}!MatInt@{MatInt}}
+\index{MatInt@{MatInt}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatInt}{MatInt}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}$>$ \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}}}
+
+
+
+Definition at line 1422 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_ae8bb87648704bdc62a87ecdf5a8d33eb}\label{nr3_8h_ae8bb87648704bdc62a87ecdf5a8d33eb}} 
+\index{nr3.h@{nr3.h}!MatInt\_IO@{MatInt\_IO}}
+\index{MatInt\_IO@{MatInt\_IO}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatInt\_IO}{MatInt\_IO}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}$>$ \mbox{\hyperlink{nr3_8h_ae8bb87648704bdc62a87ecdf5a8d33eb}{Mat\+Int\+\_\+\+IO}}}
+
+
+
+Definition at line 1422 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a50db466a4ed24a68193ad218e59787a2}\label{nr3_8h_a50db466a4ed24a68193ad218e59787a2}} 
+\index{nr3.h@{nr3.h}!MatInt\_O@{MatInt\_O}}
+\index{MatInt\_O@{MatInt\_O}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatInt\_O}{MatInt\_O}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}$>$ \mbox{\hyperlink{nr3_8h_a50db466a4ed24a68193ad218e59787a2}{Mat\+Int\+\_\+O}}}
+
+
+
+Definition at line 1422 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a1230f8d120e3c4f61b06bda8e8f24002}\label{nr3_8h_a1230f8d120e3c4f61b06bda8e8f24002}} 
+\index{nr3.h@{nr3.h}!MatLlong@{MatLlong}}
+\index{MatLlong@{MatLlong}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatLlong}{MatLlong}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_af83bd1c87d82a7a9414b640d5911e674}{Llong}}$>$ \mbox{\hyperlink{nr3_8h_a1230f8d120e3c4f61b06bda8e8f24002}{Mat\+Llong}}}
+
+
+
+Definition at line 1428 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a6747975ecbc50ff3cce60c989852cb3a}\label{nr3_8h_a6747975ecbc50ff3cce60c989852cb3a}} 
+\index{nr3.h@{nr3.h}!MatLlong\_IO@{MatLlong\_IO}}
+\index{MatLlong\_IO@{MatLlong\_IO}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatLlong\_IO}{MatLlong\_IO}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_af83bd1c87d82a7a9414b640d5911e674}{Llong}}$>$ \mbox{\hyperlink{nr3_8h_a6747975ecbc50ff3cce60c989852cb3a}{Mat\+Llong\+\_\+\+IO}}}
+
+
+
+Definition at line 1428 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a3d34a4f50a144fd723b3e7896b7b137f}\label{nr3_8h_a3d34a4f50a144fd723b3e7896b7b137f}} 
+\index{nr3.h@{nr3.h}!MatLlong\_O@{MatLlong\_O}}
+\index{MatLlong\_O@{MatLlong\_O}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatLlong\_O}{MatLlong\_O}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_af83bd1c87d82a7a9414b640d5911e674}{Llong}}$>$ \mbox{\hyperlink{nr3_8h_a3d34a4f50a144fd723b3e7896b7b137f}{Mat\+Llong\+\_\+O}}}
+
+
+
+Definition at line 1428 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a542c9c1b30049b8cd640ab31af0f265c}\label{nr3_8h_a542c9c1b30049b8cd640ab31af0f265c}} 
+\index{nr3.h@{nr3.h}!Matrix3DDoub@{Matrix3DDoub}}
+\index{Matrix3DDoub@{Matrix3DDoub}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{Matrix3DDoub}{Matrix3DDoub}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rmatrix3_d}{N\+Rmatrix3D}}$<$\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}$>$ \mbox{\hyperlink{nr3_8h_a542c9c1b30049b8cd640ab31af0f265c}{Matrix3\+D\+Doub}}}
+
+
+
+Definition at line 1456 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_ac98daaec54053d3b525b132dd865ca75}\label{nr3_8h_ac98daaec54053d3b525b132dd865ca75}} 
+\index{nr3.h@{nr3.h}!Matrix3DDoub\_IO@{Matrix3DDoub\_IO}}
+\index{Matrix3DDoub\_IO@{Matrix3DDoub\_IO}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{Matrix3DDoub\_IO}{Matrix3DDoub\_IO}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rmatrix3_d}{N\+Rmatrix3D}}$<$\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}$>$ \mbox{\hyperlink{nr3_8h_ac98daaec54053d3b525b132dd865ca75}{Matrix3\+D\+Doub\+\_\+\+IO}}}
+
+
+
+Definition at line 1456 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a31a441475ba259461bdcbcdbc3d44f7a}\label{nr3_8h_a31a441475ba259461bdcbcdbc3d44f7a}} 
+\index{nr3.h@{nr3.h}!Matrix3DDoub\_O@{Matrix3DDoub\_O}}
+\index{Matrix3DDoub\_O@{Matrix3DDoub\_O}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{Matrix3DDoub\_O}{Matrix3DDoub\_O}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rmatrix3_d}{N\+Rmatrix3D}}$<$\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}$>$ \mbox{\hyperlink{nr3_8h_a31a441475ba259461bdcbcdbc3d44f7a}{Matrix3\+D\+Doub\+\_\+O}}}
+
+
+
+Definition at line 1456 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a628ee6ad6adac2b78590582d477a1592}\label{nr3_8h_a628ee6ad6adac2b78590582d477a1592}} 
+\index{nr3.h@{nr3.h}!MatUchar@{MatUchar}}
+\index{MatUchar@{MatUchar}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatUchar}{MatUchar}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_a5c3641e5dfe71f67a3c3a72026a24af2}{Uchar}}$>$ \mbox{\hyperlink{nr3_8h_a628ee6ad6adac2b78590582d477a1592}{Mat\+Uchar}}}
+
+
+
+Definition at line 1437 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_abb324d10407ebaabd5e0b393245c7f5b}\label{nr3_8h_abb324d10407ebaabd5e0b393245c7f5b}} 
+\index{nr3.h@{nr3.h}!MatUchar\_IO@{MatUchar\_IO}}
+\index{MatUchar\_IO@{MatUchar\_IO}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatUchar\_IO}{MatUchar\_IO}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_a5c3641e5dfe71f67a3c3a72026a24af2}{Uchar}}$>$ \mbox{\hyperlink{nr3_8h_abb324d10407ebaabd5e0b393245c7f5b}{Mat\+Uchar\+\_\+\+IO}}}
+
+
+
+Definition at line 1437 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_aeb1ec6da1bd71897e1903c5314890963}\label{nr3_8h_aeb1ec6da1bd71897e1903c5314890963}} 
+\index{nr3.h@{nr3.h}!MatUchar\_O@{MatUchar\_O}}
+\index{MatUchar\_O@{MatUchar\_O}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatUchar\_O}{MatUchar\_O}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_a5c3641e5dfe71f67a3c3a72026a24af2}{Uchar}}$>$ \mbox{\hyperlink{nr3_8h_aeb1ec6da1bd71897e1903c5314890963}{Mat\+Uchar\+\_\+O}}}
+
+
+
+Definition at line 1437 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_aec2a2d06628dee4ca023b383944ed466}\label{nr3_8h_aec2a2d06628dee4ca023b383944ed466}} 
+\index{nr3.h@{nr3.h}!MatUint@{MatUint}}
+\index{MatUint@{MatUint}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatUint}{MatUint}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_a4840c4503b7d10cea5e08416eb3716f1}{Uint}}$>$ \mbox{\hyperlink{nr3_8h_aec2a2d06628dee4ca023b383944ed466}{Mat\+Uint}}}
+
+
+
+Definition at line 1425 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_ae1b2c3ffddb2c67d3e21910c0c2a0718}\label{nr3_8h_ae1b2c3ffddb2c67d3e21910c0c2a0718}} 
+\index{nr3.h@{nr3.h}!MatUint\_IO@{MatUint\_IO}}
+\index{MatUint\_IO@{MatUint\_IO}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatUint\_IO}{MatUint\_IO}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_a4840c4503b7d10cea5e08416eb3716f1}{Uint}}$>$ \mbox{\hyperlink{nr3_8h_ae1b2c3ffddb2c67d3e21910c0c2a0718}{Mat\+Uint\+\_\+\+IO}}}
+
+
+
+Definition at line 1425 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a2ddce5e41c3a95b44e97e011605945c9}\label{nr3_8h_a2ddce5e41c3a95b44e97e011605945c9}} 
+\index{nr3.h@{nr3.h}!MatUint\_O@{MatUint\_O}}
+\index{MatUint\_O@{MatUint\_O}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatUint\_O}{MatUint\_O}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_a4840c4503b7d10cea5e08416eb3716f1}{Uint}}$>$ \mbox{\hyperlink{nr3_8h_a2ddce5e41c3a95b44e97e011605945c9}{Mat\+Uint\+\_\+O}}}
+
+
+
+Definition at line 1425 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_aa245c36ae5cb1df3fdeb06c1b8d1b1d7}\label{nr3_8h_aa245c36ae5cb1df3fdeb06c1b8d1b1d7}} 
+\index{nr3.h@{nr3.h}!MatUllong@{MatUllong}}
+\index{MatUllong@{MatUllong}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatUllong}{MatUllong}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_a45bbe8834e22a2a6cb84fefeff43c77e}{Ullong}}$>$ \mbox{\hyperlink{nr3_8h_aa245c36ae5cb1df3fdeb06c1b8d1b1d7}{Mat\+Ullong}}}
+
+
+
+Definition at line 1431 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_af1c383ee22612df6b6535d2a1a256cd3}\label{nr3_8h_af1c383ee22612df6b6535d2a1a256cd3}} 
+\index{nr3.h@{nr3.h}!MatUllong\_IO@{MatUllong\_IO}}
+\index{MatUllong\_IO@{MatUllong\_IO}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatUllong\_IO}{MatUllong\_IO}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_a45bbe8834e22a2a6cb84fefeff43c77e}{Ullong}}$>$ \mbox{\hyperlink{nr3_8h_af1c383ee22612df6b6535d2a1a256cd3}{Mat\+Ullong\+\_\+\+IO}}}
+
+
+
+Definition at line 1431 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a3c544b784957d6f473074d477cb79739}\label{nr3_8h_a3c544b784957d6f473074d477cb79739}} 
+\index{nr3.h@{nr3.h}!MatUllong\_O@{MatUllong\_O}}
+\index{MatUllong\_O@{MatUllong\_O}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatUllong\_O}{MatUllong\_O}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_a45bbe8834e22a2a6cb84fefeff43c77e}{Ullong}}$>$ \mbox{\hyperlink{nr3_8h_a3c544b784957d6f473074d477cb79739}{Mat\+Ullong\+\_\+O}}}
+
+
+
+Definition at line 1431 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a5c3641e5dfe71f67a3c3a72026a24af2}\label{nr3_8h_a5c3641e5dfe71f67a3c3a72026a24af2}} 
+\index{nr3.h@{nr3.h}!Uchar@{Uchar}}
+\index{Uchar@{Uchar}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{Uchar}{Uchar}}
+{\footnotesize\ttfamily typedef unsigned char \mbox{\hyperlink{nr3_8h_a5c3641e5dfe71f67a3c3a72026a24af2}{Uchar}}}
+
+
+
+Definition at line 1365 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a4840c4503b7d10cea5e08416eb3716f1}\label{nr3_8h_a4840c4503b7d10cea5e08416eb3716f1}} 
+\index{nr3.h@{nr3.h}!Uint@{Uint}}
+\index{Uint@{Uint}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{Uint}{Uint}}
+{\footnotesize\ttfamily typedef unsigned int \mbox{\hyperlink{nr3_8h_a4840c4503b7d10cea5e08416eb3716f1}{Uint}}}
+
+
+
+Definition at line 1354 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a45bbe8834e22a2a6cb84fefeff43c77e}\label{nr3_8h_a45bbe8834e22a2a6cb84fefeff43c77e}} 
+\index{nr3.h@{nr3.h}!Ullong@{Ullong}}
+\index{Ullong@{Ullong}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{Ullong}{Ullong}}
+{\footnotesize\ttfamily typedef unsigned long long int \mbox{\hyperlink{nr3_8h_a45bbe8834e22a2a6cb84fefeff43c77e}{Ullong}}}
+
+
+
+Definition at line 1361 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_abbefda5aee8e26da41ae345b190cc557}\label{nr3_8h_abbefda5aee8e26da41ae345b190cc557}} 
+\index{nr3.h@{nr3.h}!VecBool@{VecBool}}
+\index{VecBool@{VecBool}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecBool}{VecBool}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a76a8b016e5ad61faf9062cc387df5016}{Bool}}$>$ \mbox{\hyperlink{nr3_8h_abbefda5aee8e26da41ae345b190cc557}{Vec\+Bool}}}
+
+
+
+Definition at line 1417 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_ab36043fed00aa7eeefd3b381e1b83efa}\label{nr3_8h_ab36043fed00aa7eeefd3b381e1b83efa}} 
+\index{nr3.h@{nr3.h}!VecBool\_IO@{VecBool\_IO}}
+\index{VecBool\_IO@{VecBool\_IO}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecBool\_IO}{VecBool\_IO}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a76a8b016e5ad61faf9062cc387df5016}{Bool}}$>$ \mbox{\hyperlink{nr3_8h_ab36043fed00aa7eeefd3b381e1b83efa}{Vec\+Bool\+\_\+\+IO}}}
+
+
+
+Definition at line 1417 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a683d728ad5e373bc5e88f9fb80100d04}\label{nr3_8h_a683d728ad5e373bc5e88f9fb80100d04}} 
+\index{nr3.h@{nr3.h}!VecBool\_O@{VecBool\_O}}
+\index{VecBool\_O@{VecBool\_O}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecBool\_O}{VecBool\_O}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a76a8b016e5ad61faf9062cc387df5016}{Bool}}$>$ \mbox{\hyperlink{nr3_8h_a683d728ad5e373bc5e88f9fb80100d04}{Vec\+Bool\+\_\+O}}}
+
+
+
+Definition at line 1417 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a33a591012f109c740c00237ed6c54781}\label{nr3_8h_a33a591012f109c740c00237ed6c54781}} 
+\index{nr3.h@{nr3.h}!VecChar@{VecChar}}
+\index{VecChar@{VecChar}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecChar}{VecChar}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a7942e32f6409fbd1fd347a8c23ef725e}{Char}}$>$ \mbox{\hyperlink{nr3_8h_a33a591012f109c740c00237ed6c54781}{Vec\+Char}}}
+
+
+
+Definition at line 1399 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a14ecb38e80bc1d8f2f79ae4ddef443fb}\label{nr3_8h_a14ecb38e80bc1d8f2f79ae4ddef443fb}} 
+\index{nr3.h@{nr3.h}!VecChar\_IO@{VecChar\_IO}}
+\index{VecChar\_IO@{VecChar\_IO}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecChar\_IO}{VecChar\_IO}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a7942e32f6409fbd1fd347a8c23ef725e}{Char}}$>$ \mbox{\hyperlink{nr3_8h_a14ecb38e80bc1d8f2f79ae4ddef443fb}{Vec\+Char\+\_\+\+IO}}}
+
+
+
+Definition at line 1399 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a1735f1bdedbc035535f54fdd7a31be44}\label{nr3_8h_a1735f1bdedbc035535f54fdd7a31be44}} 
+\index{nr3.h@{nr3.h}!VecChar\_O@{VecChar\_O}}
+\index{VecChar\_O@{VecChar\_O}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecChar\_O}{VecChar\_O}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a7942e32f6409fbd1fd347a8c23ef725e}{Char}}$>$ \mbox{\hyperlink{nr3_8h_a1735f1bdedbc035535f54fdd7a31be44}{Vec\+Char\+\_\+O}}}
+
+
+
+Definition at line 1399 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a1aa1991b84a18ad49125a8076ecfce78}\label{nr3_8h_a1aa1991b84a18ad49125a8076ecfce78}} 
+\index{nr3.h@{nr3.h}!VecCharp@{VecCharp}}
+\index{VecCharp@{VecCharp}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecCharp}{VecCharp}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a7942e32f6409fbd1fd347a8c23ef725e}{Char}}$\ast$$>$ \mbox{\hyperlink{nr3_8h_a1aa1991b84a18ad49125a8076ecfce78}{Vec\+Charp}}}
+
+
+
+Definition at line 1402 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a759da1434eb3126b78506250c30d8865}\label{nr3_8h_a759da1434eb3126b78506250c30d8865}} 
+\index{nr3.h@{nr3.h}!VecCharp\_IO@{VecCharp\_IO}}
+\index{VecCharp\_IO@{VecCharp\_IO}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecCharp\_IO}{VecCharp\_IO}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a7942e32f6409fbd1fd347a8c23ef725e}{Char}}$\ast$$>$ \mbox{\hyperlink{nr3_8h_a759da1434eb3126b78506250c30d8865}{Vec\+Charp\+\_\+\+IO}}}
+
+
+
+Definition at line 1402 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_ab647832288de0b4a259ec4aeee753bbd}\label{nr3_8h_ab647832288de0b4a259ec4aeee753bbd}} 
+\index{nr3.h@{nr3.h}!VecCharp\_O@{VecCharp\_O}}
+\index{VecCharp\_O@{VecCharp\_O}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecCharp\_O}{VecCharp\_O}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a7942e32f6409fbd1fd347a8c23ef725e}{Char}}$\ast$$>$ \mbox{\hyperlink{nr3_8h_ab647832288de0b4a259ec4aeee753bbd}{Vec\+Charp\+\_\+O}}}
+
+
+
+Definition at line 1402 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a79b3433b3828171258b200b6c197f1a5}\label{nr3_8h_a79b3433b3828171258b200b6c197f1a5}} 
+\index{nr3.h@{nr3.h}!VecComplex@{VecComplex}}
+\index{VecComplex@{VecComplex}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecComplex}{VecComplex}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a5e0f8adeae7b5e03bc1058518809e929}{Complex}}$>$ \mbox{\hyperlink{nr3_8h_a79b3433b3828171258b200b6c197f1a5}{Vec\+Complex}}}
+
+
+
+Definition at line 1414 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_ae1412950788310da4c1c6744c8c13b3e}\label{nr3_8h_ae1412950788310da4c1c6744c8c13b3e}} 
+\index{nr3.h@{nr3.h}!VecComplex\_IO@{VecComplex\_IO}}
+\index{VecComplex\_IO@{VecComplex\_IO}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecComplex\_IO}{VecComplex\_IO}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a5e0f8adeae7b5e03bc1058518809e929}{Complex}}$>$ \mbox{\hyperlink{nr3_8h_ae1412950788310da4c1c6744c8c13b3e}{Vec\+Complex\+\_\+\+IO}}}
+
+
+
+Definition at line 1414 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a306880b8a943a819003aa40039edd5cd}\label{nr3_8h_a306880b8a943a819003aa40039edd5cd}} 
+\index{nr3.h@{nr3.h}!VecComplex\_O@{VecComplex\_O}}
+\index{VecComplex\_O@{VecComplex\_O}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecComplex\_O}{VecComplex\_O}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a5e0f8adeae7b5e03bc1058518809e929}{Complex}}$>$ \mbox{\hyperlink{nr3_8h_a306880b8a943a819003aa40039edd5cd}{Vec\+Complex\+\_\+O}}}
+
+
+
+Definition at line 1414 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a97a3701e8aa6ca145af8d5c7c5c50d87}\label{nr3_8h_a97a3701e8aa6ca145af8d5c7c5c50d87}} 
+\index{nr3.h@{nr3.h}!VecDoub@{VecDoub}}
+\index{VecDoub@{VecDoub}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecDoub}{VecDoub}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}$>$ \mbox{\hyperlink{nr3_8h_a97a3701e8aa6ca145af8d5c7c5c50d87}{Vec\+Doub}}}
+
+
+
+Definition at line 1408 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_ad79288a4d07086bfad5b69c192ee07c5}\label{nr3_8h_ad79288a4d07086bfad5b69c192ee07c5}} 
+\index{nr3.h@{nr3.h}!VecDoub\_IO@{VecDoub\_IO}}
+\index{VecDoub\_IO@{VecDoub\_IO}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecDoub\_IO}{VecDoub\_IO}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}$>$ \mbox{\hyperlink{nr3_8h_ad79288a4d07086bfad5b69c192ee07c5}{Vec\+Doub\+\_\+\+IO}}}
+
+
+
+Definition at line 1408 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a0e1e2f8eb088c9a6bef13f04075dadb7}\label{nr3_8h_a0e1e2f8eb088c9a6bef13f04075dadb7}} 
+\index{nr3.h@{nr3.h}!VecDoub\_O@{VecDoub\_O}}
+\index{VecDoub\_O@{VecDoub\_O}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecDoub\_O}{VecDoub\_O}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}$>$ \mbox{\hyperlink{nr3_8h_a0e1e2f8eb088c9a6bef13f04075dadb7}{Vec\+Doub\+\_\+O}}}
+
+
+
+Definition at line 1408 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a4fdb625794d46c6a94599656c752e93b}\label{nr3_8h_a4fdb625794d46c6a94599656c752e93b}} 
+\index{nr3.h@{nr3.h}!VecDoubp@{VecDoubp}}
+\index{VecDoubp@{VecDoubp}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecDoubp}{VecDoubp}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}$\ast$$>$ \mbox{\hyperlink{nr3_8h_a4fdb625794d46c6a94599656c752e93b}{Vec\+Doubp}}}
+
+
+
+Definition at line 1411 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_ac172924b21c0e2df5f66c51a9f993f4f}\label{nr3_8h_ac172924b21c0e2df5f66c51a9f993f4f}} 
+\index{nr3.h@{nr3.h}!VecDoubp\_IO@{VecDoubp\_IO}}
+\index{VecDoubp\_IO@{VecDoubp\_IO}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecDoubp\_IO}{VecDoubp\_IO}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}$\ast$$>$ \mbox{\hyperlink{nr3_8h_ac172924b21c0e2df5f66c51a9f993f4f}{Vec\+Doubp\+\_\+\+IO}}}
+
+
+
+Definition at line 1411 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_adb2d0d7b8725e5b2635f0cddaa8d6ce7}\label{nr3_8h_adb2d0d7b8725e5b2635f0cddaa8d6ce7}} 
+\index{nr3.h@{nr3.h}!VecDoubp\_O@{VecDoubp\_O}}
+\index{VecDoubp\_O@{VecDoubp\_O}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecDoubp\_O}{VecDoubp\_O}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}$\ast$$>$ \mbox{\hyperlink{nr3_8h_adb2d0d7b8725e5b2635f0cddaa8d6ce7}{Vec\+Doubp\+\_\+O}}}
+
+
+
+Definition at line 1411 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a064027d87b8f30a1bcaf0e4a5c379ad6}\label{nr3_8h_a064027d87b8f30a1bcaf0e4a5c379ad6}} 
+\index{nr3.h@{nr3.h}!VecInt@{VecInt}}
+\index{VecInt@{VecInt}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecInt}{VecInt}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}$>$ \mbox{\hyperlink{nr3_8h_a064027d87b8f30a1bcaf0e4a5c379ad6}{Vec\+Int}}}
+
+
+
+Definition at line 1387 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a2a18f99f4687fa3fe39d8d4c4f6711c0}\label{nr3_8h_a2a18f99f4687fa3fe39d8d4c4f6711c0}} 
+\index{nr3.h@{nr3.h}!VecInt\_IO@{VecInt\_IO}}
+\index{VecInt\_IO@{VecInt\_IO}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecInt\_IO}{VecInt\_IO}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}$>$ \mbox{\hyperlink{nr3_8h_a2a18f99f4687fa3fe39d8d4c4f6711c0}{Vec\+Int\+\_\+\+IO}}}
+
+
+
+Definition at line 1387 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_ac795acdd62f57a5b372bd5cd4b37e481}\label{nr3_8h_ac795acdd62f57a5b372bd5cd4b37e481}} 
+\index{nr3.h@{nr3.h}!VecInt\_O@{VecInt\_O}}
+\index{VecInt\_O@{VecInt\_O}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecInt\_O}{VecInt\_O}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}$>$ \mbox{\hyperlink{nr3_8h_ac795acdd62f57a5b372bd5cd4b37e481}{Vec\+Int\+\_\+O}}}
+
+
+
+Definition at line 1387 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_ada1b746d7e58492831cb8dc8bf191e48}\label{nr3_8h_ada1b746d7e58492831cb8dc8bf191e48}} 
+\index{nr3.h@{nr3.h}!VecLlong@{VecLlong}}
+\index{VecLlong@{VecLlong}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecLlong}{VecLlong}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_af83bd1c87d82a7a9414b640d5911e674}{Llong}}$>$ \mbox{\hyperlink{nr3_8h_ada1b746d7e58492831cb8dc8bf191e48}{Vec\+Llong}}}
+
+
+
+Definition at line 1393 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_aba42033559a8c487be229e96b7bbf05b}\label{nr3_8h_aba42033559a8c487be229e96b7bbf05b}} 
+\index{nr3.h@{nr3.h}!VecLlong\_IO@{VecLlong\_IO}}
+\index{VecLlong\_IO@{VecLlong\_IO}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecLlong\_IO}{VecLlong\_IO}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_af83bd1c87d82a7a9414b640d5911e674}{Llong}}$>$ \mbox{\hyperlink{nr3_8h_aba42033559a8c487be229e96b7bbf05b}{Vec\+Llong\+\_\+\+IO}}}
+
+
+
+Definition at line 1393 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a788892dd8589142675e7b6a88d9047a8}\label{nr3_8h_a788892dd8589142675e7b6a88d9047a8}} 
+\index{nr3.h@{nr3.h}!VecLlong\_O@{VecLlong\_O}}
+\index{VecLlong\_O@{VecLlong\_O}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecLlong\_O}{VecLlong\_O}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_af83bd1c87d82a7a9414b640d5911e674}{Llong}}$>$ \mbox{\hyperlink{nr3_8h_a788892dd8589142675e7b6a88d9047a8}{Vec\+Llong\+\_\+O}}}
+
+
+
+Definition at line 1393 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a9db47554ed72a2623a35aeb6ede81ad8}\label{nr3_8h_a9db47554ed72a2623a35aeb6ede81ad8}} 
+\index{nr3.h@{nr3.h}!VecUchar@{VecUchar}}
+\index{VecUchar@{VecUchar}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecUchar}{VecUchar}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a5c3641e5dfe71f67a3c3a72026a24af2}{Uchar}}$>$ \mbox{\hyperlink{nr3_8h_a9db47554ed72a2623a35aeb6ede81ad8}{Vec\+Uchar}}}
+
+
+
+Definition at line 1405 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a055a18c18769a8cf3fb602ec5c051ed9}\label{nr3_8h_a055a18c18769a8cf3fb602ec5c051ed9}} 
+\index{nr3.h@{nr3.h}!VecUchar\_IO@{VecUchar\_IO}}
+\index{VecUchar\_IO@{VecUchar\_IO}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecUchar\_IO}{VecUchar\_IO}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a5c3641e5dfe71f67a3c3a72026a24af2}{Uchar}}$>$ \mbox{\hyperlink{nr3_8h_a055a18c18769a8cf3fb602ec5c051ed9}{Vec\+Uchar\+\_\+\+IO}}}
+
+
+
+Definition at line 1405 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_aa998396dbf9122a73db41883e589b348}\label{nr3_8h_aa998396dbf9122a73db41883e589b348}} 
+\index{nr3.h@{nr3.h}!VecUchar\_O@{VecUchar\_O}}
+\index{VecUchar\_O@{VecUchar\_O}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecUchar\_O}{VecUchar\_O}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a5c3641e5dfe71f67a3c3a72026a24af2}{Uchar}}$>$ \mbox{\hyperlink{nr3_8h_aa998396dbf9122a73db41883e589b348}{Vec\+Uchar\+\_\+O}}}
+
+
+
+Definition at line 1405 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a8b89bc682f1a0b21e2d7bb734c8e5ec9}\label{nr3_8h_a8b89bc682f1a0b21e2d7bb734c8e5ec9}} 
+\index{nr3.h@{nr3.h}!VecUint@{VecUint}}
+\index{VecUint@{VecUint}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecUint}{VecUint}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a4840c4503b7d10cea5e08416eb3716f1}{Uint}}$>$ \mbox{\hyperlink{nr3_8h_a8b89bc682f1a0b21e2d7bb734c8e5ec9}{Vec\+Uint}}}
+
+
+
+Definition at line 1390 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_ad970eef31b74f318511cd5bc596dc7fa}\label{nr3_8h_ad970eef31b74f318511cd5bc596dc7fa}} 
+\index{nr3.h@{nr3.h}!VecUint\_IO@{VecUint\_IO}}
+\index{VecUint\_IO@{VecUint\_IO}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecUint\_IO}{VecUint\_IO}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a4840c4503b7d10cea5e08416eb3716f1}{Uint}}$>$ \mbox{\hyperlink{nr3_8h_ad970eef31b74f318511cd5bc596dc7fa}{Vec\+Uint\+\_\+\+IO}}}
+
+
+
+Definition at line 1390 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_afa2a7aed7a616f9e31108549055dfa51}\label{nr3_8h_afa2a7aed7a616f9e31108549055dfa51}} 
+\index{nr3.h@{nr3.h}!VecUint\_O@{VecUint\_O}}
+\index{VecUint\_O@{VecUint\_O}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecUint\_O}{VecUint\_O}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a4840c4503b7d10cea5e08416eb3716f1}{Uint}}$>$ \mbox{\hyperlink{nr3_8h_afa2a7aed7a616f9e31108549055dfa51}{Vec\+Uint\+\_\+O}}}
+
+
+
+Definition at line 1390 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a8e97f4ad71616d808e509608c11cc91b}\label{nr3_8h_a8e97f4ad71616d808e509608c11cc91b}} 
+\index{nr3.h@{nr3.h}!VecUllong@{VecUllong}}
+\index{VecUllong@{VecUllong}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecUllong}{VecUllong}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a45bbe8834e22a2a6cb84fefeff43c77e}{Ullong}}$>$ \mbox{\hyperlink{nr3_8h_a8e97f4ad71616d808e509608c11cc91b}{Vec\+Ullong}}}
+
+
+
+Definition at line 1396 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_aa468aaec4a55329defcbb7a23d67536f}\label{nr3_8h_aa468aaec4a55329defcbb7a23d67536f}} 
+\index{nr3.h@{nr3.h}!VecUllong\_IO@{VecUllong\_IO}}
+\index{VecUllong\_IO@{VecUllong\_IO}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecUllong\_IO}{VecUllong\_IO}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a45bbe8834e22a2a6cb84fefeff43c77e}{Ullong}}$>$ \mbox{\hyperlink{nr3_8h_aa468aaec4a55329defcbb7a23d67536f}{Vec\+Ullong\+\_\+\+IO}}}
+
+
+
+Definition at line 1396 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_aa88f5f8722ee17cd2a98023a6b46ec42}\label{nr3_8h_aa88f5f8722ee17cd2a98023a6b46ec42}} 
+\index{nr3.h@{nr3.h}!VecUllong\_O@{VecUllong\_O}}
+\index{VecUllong\_O@{VecUllong\_O}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecUllong\_O}{VecUllong\_O}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a45bbe8834e22a2a6cb84fefeff43c77e}{Ullong}}$>$ \mbox{\hyperlink{nr3_8h_aa88f5f8722ee17cd2a98023a6b46ec42}{Vec\+Ullong\+\_\+O}}}
+
+
+
+Definition at line 1396 of file nr3.\+h.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{nr3_8h_af81927aa1249cf37ac3750267885b120}\label{nr3_8h_af81927aa1249cf37ac3750267885b120}} 
+\index{nr3.h@{nr3.h}!MAX@{MAX}}
+\index{MAX@{MAX}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MAX()}{MAX()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily float M\+AX (\begin{DoxyParamCaption}\item[{const double \&}]{a,  }\item[{const float \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 77 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a3e7d146382ee63a63057d0d1da21681c}\label{nr3_8h_a3e7d146382ee63a63057d0d1da21681c}} 
+\index{nr3.h@{nr3.h}!MAX@{MAX}}
+\index{MAX@{MAX}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MAX()}{MAX()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily float M\+AX (\begin{DoxyParamCaption}\item[{const float \&}]{a,  }\item[{const double \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 82 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a209bcb7d618351acd2e2ae728a0a4a03}\label{nr3_8h_a209bcb7d618351acd2e2ae728a0a4a03}} 
+\index{nr3.h@{nr3.h}!MAX@{MAX}}
+\index{MAX@{MAX}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MAX()}{MAX()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}}\& M\+AX (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&}]{a,  }\item[{const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 72 of file nr3.\+h.
+
+
+
+Referenced by Bracketmethod\+::bracket(), Unsymmeig\+::hqr(), Unsymmeig\+::hqr2(), and Frprmn$<$ T $>$\+::minimize().
+
+\mbox{\Hypertarget{nr3_8h_a2cfa98af017775923db28dc7c2e20172}\label{nr3_8h_a2cfa98af017775923db28dc7c2e20172}} 
+\index{nr3.h@{nr3.h}!MIN@{MIN}}
+\index{MIN@{MIN}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MIN()}{MIN()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily float M\+IN (\begin{DoxyParamCaption}\item[{const double \&}]{a,  }\item[{const float \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 93 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a3d33ecea9b81bb92f8eea3582752aa9a}\label{nr3_8h_a3d33ecea9b81bb92f8eea3582752aa9a}} 
+\index{nr3.h@{nr3.h}!MIN@{MIN}}
+\index{MIN@{MIN}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MIN()}{MIN()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily float M\+IN (\begin{DoxyParamCaption}\item[{const float \&}]{a,  }\item[{const double \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 98 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a9e57865c72ea6681c364d10f79cf175a}\label{nr3_8h_a9e57865c72ea6681c364d10f79cf175a}} 
+\index{nr3.h@{nr3.h}!MIN@{MIN}}
+\index{MIN@{MIN}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MIN()}{MIN()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}}\& M\+IN (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&}]{a,  }\item[{const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 88 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_aae9be2b78e310ebaae80d3a980ef37c3}\label{nr3_8h_aae9be2b78e310ebaae80d3a980ef37c3}} 
+\index{nr3.h@{nr3.h}!SIGN@{SIGN}}
+\index{SIGN@{SIGN}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{SIGN()}{SIGN()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily float S\+I\+GN (\begin{DoxyParamCaption}\item[{const double \&}]{a,  }\item[{const float \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 114 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a050c6451d15aaccc09c71cc4a383b8f7}\label{nr3_8h_a050c6451d15aaccc09c71cc4a383b8f7}} 
+\index{nr3.h@{nr3.h}!SIGN@{SIGN}}
+\index{SIGN@{SIGN}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{SIGN()}{SIGN()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily float S\+I\+GN (\begin{DoxyParamCaption}\item[{const float \&}]{a,  }\item[{const double \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 109 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_ac5bb90632c74845e7dc3cb8c46a1fbdd}\label{nr3_8h_ac5bb90632c74845e7dc3cb8c46a1fbdd}} 
+\index{nr3.h@{nr3.h}!SIGN@{SIGN}}
+\index{SIGN@{SIGN}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{SIGN()}{SIGN()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} S\+I\+GN (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&}]{a,  }\item[{const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 104 of file nr3.\+h.
+
+
+
+Referenced by Bracketmethod\+::bracket(), Unsymmeig\+::hqr(), Unsymmeig\+::hqr2(), Brent\+::minimize(), Dbrent\+::minimize(), zbrent(), and zriddr().
+
+\mbox{\Hypertarget{nr3_8h_a06d1c40d0369212d1b6fa6ecd3bb9fbd}\label{nr3_8h_a06d1c40d0369212d1b6fa6ecd3bb9fbd}} 
+\index{nr3.h@{nr3.h}!SQR@{SQR}}
+\index{SQR@{SQR}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{SQR()}{SQR()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} S\+QR (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}}}]{a }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 69 of file nr3.\+h.
+
+
+
+Referenced by Unsymmeig\+::hqr2(), and Powell$<$ T $>$\+::minimize().
+
+\mbox{\Hypertarget{nr3_8h_a7c47ab41142fb494373b0b511cfe219b}\label{nr3_8h_a7c47ab41142fb494373b0b511cfe219b}} 
+\index{nr3.h@{nr3.h}!SWAP@{SWAP}}
+\index{SWAP@{SWAP}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{SWAP()}{SWAP()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void S\+W\+AP (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&}]{a,  }\item[{\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 120 of file nr3.\+h.
+
+
+
+Referenced by Bracketmethod\+::bracket(), Unsymmeig\+::elmhes(), rtflsp(), and rtsec().
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{nr3_8h_a31e9839c08446af25edd05689148a48c}\label{nr3_8h_a31e9839c08446af25edd05689148a48c}} 
+\index{nr3.h@{nr3.h}!Mat3DDoub\_I@{Mat3DDoub\_I}}
+\index{Mat3DDoub\_I@{Mat3DDoub\_I}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{Mat3DDoub\_I}{Mat3DDoub\_I}}
+{\footnotesize\ttfamily const typedef \mbox{\hyperlink{class_n_r_mat3d}{N\+R\+Mat3d}}$<$\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}$>$ Mat3\+D\+Doub\+\_\+I}
+
+
+
+Definition at line 1447 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a9e857cd5b1c2cc6acc274ea82565e228}\label{nr3_8h_a9e857cd5b1c2cc6acc274ea82565e228}} 
+\index{nr3.h@{nr3.h}!MatBool\_I@{MatBool\_I}}
+\index{MatBool\_I@{MatBool\_I}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatBool\_I}{MatBool\_I}}
+{\footnotesize\ttfamily const typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_a76a8b016e5ad61faf9062cc387df5016}{Bool}}$>$ Mat\+Bool\+\_\+I}
+
+
+
+Definition at line 1442 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a032caf25ab47332951ce997c0f9c18d4}\label{nr3_8h_a032caf25ab47332951ce997c0f9c18d4}} 
+\index{nr3.h@{nr3.h}!MatChar\_I@{MatChar\_I}}
+\index{MatChar\_I@{MatChar\_I}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatChar\_I}{MatChar\_I}}
+{\footnotesize\ttfamily const typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_a7942e32f6409fbd1fd347a8c23ef725e}{Char}}$>$ Mat\+Char\+\_\+I}
+
+
+
+Definition at line 1433 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a724773f982f11577951cbd1efadf9768}\label{nr3_8h_a724773f982f11577951cbd1efadf9768}} 
+\index{nr3.h@{nr3.h}!MatDoub\_I@{MatDoub\_I}}
+\index{MatDoub\_I@{MatDoub\_I}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatDoub\_I}{MatDoub\_I}}
+{\footnotesize\ttfamily const typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}$>$ Mat\+Doub\+\_\+I}
+
+
+
+Definition at line 1439 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_af72652fd106c4ec8d0e4901b30db053b}\label{nr3_8h_af72652fd106c4ec8d0e4901b30db053b}} 
+\index{nr3.h@{nr3.h}!MatInt\_I@{MatInt\_I}}
+\index{MatInt\_I@{MatInt\_I}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatInt\_I}{MatInt\_I}}
+{\footnotesize\ttfamily const typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}$>$ Mat\+Int\+\_\+I}
+
+
+
+Definition at line 1421 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a29a25639e2d88ef8e49bdd1ed10ff5f9}\label{nr3_8h_a29a25639e2d88ef8e49bdd1ed10ff5f9}} 
+\index{nr3.h@{nr3.h}!MatLlong\_I@{MatLlong\_I}}
+\index{MatLlong\_I@{MatLlong\_I}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatLlong\_I}{MatLlong\_I}}
+{\footnotesize\ttfamily const typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_af83bd1c87d82a7a9414b640d5911e674}{Llong}}$>$ Mat\+Llong\+\_\+I}
+
+
+
+Definition at line 1427 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_aa73a2220a2e94a6067e43c9237733372}\label{nr3_8h_aa73a2220a2e94a6067e43c9237733372}} 
+\index{nr3.h@{nr3.h}!Matrix3DDoub\_I@{Matrix3DDoub\_I}}
+\index{Matrix3DDoub\_I@{Matrix3DDoub\_I}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{Matrix3DDoub\_I}{Matrix3DDoub\_I}}
+{\footnotesize\ttfamily const typedef \mbox{\hyperlink{class_n_rmatrix3_d}{N\+Rmatrix3D}}$<$\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}$>$ Matrix3\+D\+Doub\+\_\+I}
+
+
+
+Definition at line 1455 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a58c9c6a82054b9a51df5b05825b725cb}\label{nr3_8h_a58c9c6a82054b9a51df5b05825b725cb}} 
+\index{nr3.h@{nr3.h}!MatUchar\_I@{MatUchar\_I}}
+\index{MatUchar\_I@{MatUchar\_I}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatUchar\_I}{MatUchar\_I}}
+{\footnotesize\ttfamily const typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_a5c3641e5dfe71f67a3c3a72026a24af2}{Uchar}}$>$ Mat\+Uchar\+\_\+I}
+
+
+
+Definition at line 1436 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a36a3a510c4af6263bfb96981ec12cd9d}\label{nr3_8h_a36a3a510c4af6263bfb96981ec12cd9d}} 
+\index{nr3.h@{nr3.h}!MatUint\_I@{MatUint\_I}}
+\index{MatUint\_I@{MatUint\_I}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatUint\_I}{MatUint\_I}}
+{\footnotesize\ttfamily const typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_a4840c4503b7d10cea5e08416eb3716f1}{Uint}}$>$ Mat\+Uint\+\_\+I}
+
+
+
+Definition at line 1424 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a2c4a31ee72ad5fafba54e9bee65ae004}\label{nr3_8h_a2c4a31ee72ad5fafba54e9bee65ae004}} 
+\index{nr3.h@{nr3.h}!MatUllong\_I@{MatUllong\_I}}
+\index{MatUllong\_I@{MatUllong\_I}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{MatUllong\_I}{MatUllong\_I}}
+{\footnotesize\ttfamily const typedef \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_a45bbe8834e22a2a6cb84fefeff43c77e}{Ullong}}$>$ Mat\+Ullong\+\_\+I}
+
+
+
+Definition at line 1430 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a34b94923276ce0dade39d47a4275cabc}\label{nr3_8h_a34b94923276ce0dade39d47a4275cabc}} 
+\index{nr3.h@{nr3.h}!NaN@{NaN}}
+\index{NaN@{NaN}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{NaN}{NaN}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} NaN\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 1377 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_aebe3aaa8fd73fd1d0f0cc869bf4c61d9}\label{nr3_8h_aebe3aaa8fd73fd1d0f0cc869bf4c61d9}} 
+\index{nr3.h@{nr3.h}!VecBool\_I@{VecBool\_I}}
+\index{VecBool\_I@{VecBool\_I}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecBool\_I}{VecBool\_I}}
+{\footnotesize\ttfamily const typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a76a8b016e5ad61faf9062cc387df5016}{Bool}}$>$ Vec\+Bool\+\_\+I}
+
+
+
+Definition at line 1416 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_ad554dc6694d337c1a62f405032cd58e2}\label{nr3_8h_ad554dc6694d337c1a62f405032cd58e2}} 
+\index{nr3.h@{nr3.h}!VecChar\_I@{VecChar\_I}}
+\index{VecChar\_I@{VecChar\_I}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecChar\_I}{VecChar\_I}}
+{\footnotesize\ttfamily const typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a7942e32f6409fbd1fd347a8c23ef725e}{Char}}$>$ Vec\+Char\+\_\+I}
+
+
+
+Definition at line 1398 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_ae140f4c6f58b5e5a278292c31776ee94}\label{nr3_8h_ae140f4c6f58b5e5a278292c31776ee94}} 
+\index{nr3.h@{nr3.h}!VecCharp\_I@{VecCharp\_I}}
+\index{VecCharp\_I@{VecCharp\_I}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecCharp\_I}{VecCharp\_I}}
+{\footnotesize\ttfamily const typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a7942e32f6409fbd1fd347a8c23ef725e}{Char}}$\ast$$>$ Vec\+Charp\+\_\+I}
+
+
+
+Definition at line 1401 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a9dfcf8fcad7ade4758b86b1f51963ff2}\label{nr3_8h_a9dfcf8fcad7ade4758b86b1f51963ff2}} 
+\index{nr3.h@{nr3.h}!VecComplex\_I@{VecComplex\_I}}
+\index{VecComplex\_I@{VecComplex\_I}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecComplex\_I}{VecComplex\_I}}
+{\footnotesize\ttfamily const typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a5e0f8adeae7b5e03bc1058518809e929}{Complex}}$>$ Vec\+Complex\+\_\+I}
+
+
+
+Definition at line 1413 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a03f0d3bb248e15df9d42cc3c80203ea0}\label{nr3_8h_a03f0d3bb248e15df9d42cc3c80203ea0}} 
+\index{nr3.h@{nr3.h}!VecDoub\_I@{VecDoub\_I}}
+\index{VecDoub\_I@{VecDoub\_I}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecDoub\_I}{VecDoub\_I}}
+{\footnotesize\ttfamily const typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}$>$ Vec\+Doub\+\_\+I}
+
+
+
+Definition at line 1407 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a399a67d6ebefb93676697dafd77e172a}\label{nr3_8h_a399a67d6ebefb93676697dafd77e172a}} 
+\index{nr3.h@{nr3.h}!VecDoubp\_I@{VecDoubp\_I}}
+\index{VecDoubp\_I@{VecDoubp\_I}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecDoubp\_I}{VecDoubp\_I}}
+{\footnotesize\ttfamily const typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}$\ast$$>$ Vec\+Doubp\+\_\+I}
+
+
+
+Definition at line 1410 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_ae30af93c35ff67772f7c2ccdf91418c8}\label{nr3_8h_ae30af93c35ff67772f7c2ccdf91418c8}} 
+\index{nr3.h@{nr3.h}!VecInt\_I@{VecInt\_I}}
+\index{VecInt\_I@{VecInt\_I}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecInt\_I}{VecInt\_I}}
+{\footnotesize\ttfamily const typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}$>$ Vec\+Int\+\_\+I}
+
+
+
+Definition at line 1386 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a672dcf76dc398f6b329ccddf47d5286a}\label{nr3_8h_a672dcf76dc398f6b329ccddf47d5286a}} 
+\index{nr3.h@{nr3.h}!VecLlong\_I@{VecLlong\_I}}
+\index{VecLlong\_I@{VecLlong\_I}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecLlong\_I}{VecLlong\_I}}
+{\footnotesize\ttfamily const typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_af83bd1c87d82a7a9414b640d5911e674}{Llong}}$>$ Vec\+Llong\+\_\+I}
+
+
+
+Definition at line 1392 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a4265357872b563ecdd9080928dda6c80}\label{nr3_8h_a4265357872b563ecdd9080928dda6c80}} 
+\index{nr3.h@{nr3.h}!VecUchar\_I@{VecUchar\_I}}
+\index{VecUchar\_I@{VecUchar\_I}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecUchar\_I}{VecUchar\_I}}
+{\footnotesize\ttfamily const typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a5c3641e5dfe71f67a3c3a72026a24af2}{Uchar}}$>$ Vec\+Uchar\+\_\+I}
+
+
+
+Definition at line 1404 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a7808c96a2b59605c10ffbd54f863fe11}\label{nr3_8h_a7808c96a2b59605c10ffbd54f863fe11}} 
+\index{nr3.h@{nr3.h}!VecUint\_I@{VecUint\_I}}
+\index{VecUint\_I@{VecUint\_I}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecUint\_I}{VecUint\_I}}
+{\footnotesize\ttfamily const typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a4840c4503b7d10cea5e08416eb3716f1}{Uint}}$>$ Vec\+Uint\+\_\+I}
+
+
+
+Definition at line 1389 of file nr3.\+h.
+
+\mbox{\Hypertarget{nr3_8h_a7506bc9a2c086dd5c509d70df632f1d8}\label{nr3_8h_a7506bc9a2c086dd5c509d70df632f1d8}} 
+\index{nr3.h@{nr3.h}!VecUllong\_I@{VecUllong\_I}}
+\index{VecUllong\_I@{VecUllong\_I}!nr3.h@{nr3.h}}
+\doxysubsubsection{\texorpdfstring{VecUllong\_I}{VecUllong\_I}}
+{\footnotesize\ttfamily const typedef \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_a45bbe8834e22a2a6cb84fefeff43c77e}{Ullong}}$>$ Vec\+Ullong\+\_\+I}
+
+
+
+Definition at line 1395 of file nr3.\+h.
+

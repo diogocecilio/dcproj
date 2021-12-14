@@ -173,8 +173,8 @@ void beam3dtools::CreateMatAndMeshCube(mesh&getmesh, material &mat)
 
 void beam3dtools::CreateMatAndMesh(mesh &getmesh, material &mat)
 {
-    string nodestr = "/home/diogo/projects/dcproj/data/beam3D-nodes.txt";
-	string elsstr = "/home/diogo/projects/dcproj/data/beam3D-elements.txt";
+    string nodestr = "/home/diogocecilio/projects/dcproj/data/beam3D-nodes.txt";
+	string elsstr = "/home/diogocecilio/projects/dcproj/data/beam3D-elements.txt";
 
 	MatDoub hhatinho;
 	MatDoub  meshcoords;
@@ -340,7 +340,7 @@ void beam3dtools::SolveElasticBeam()
     NRmatrix<Doub> u;
     SolveEigen( KG, Fint, u);
 
-    //string beamstr="beam";
+    string beamstr="beam";
     //VTKGraphMesh vtkobj(&mesh0,3,u,beamstr);
 
     //vtkobj.DrawSolution( 1,  0.);

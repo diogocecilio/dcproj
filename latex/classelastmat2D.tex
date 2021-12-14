@@ -1,0 +1,77 @@
+\hypertarget{classelastmat2D}{}\doxysection{elastmat2D Class Reference}
+\label{classelastmat2D}\index{elastmat2D@{elastmat2D}}
+
+
+Inheritance diagram for elastmat2D\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=163pt]{classelastmat2D__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for elastmat2D\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=191pt]{classelastmat2D__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classelastmat2D_a1264acc50e4bd9eef385a23de810e7d8}\label{classelastmat2D_a1264acc50e4bd9eef385a23de810e7d8}} 
+{\bfseries elastmat2D} (\mbox{\hyperlink{classmesh}{mesh}} \&inmesh, Doub young, Doub nu, Doub thickness, Doub bodyforce, Int planestress, Int order)
+\item 
+\mbox{\Hypertarget{classelastmat2D_aa73882b634aba6f92712f3bf2102a7d2}\label{classelastmat2D_aa73882b634aba6f92712f3bf2102a7d2}} 
+{\bfseries elastmat2D} (Doub young, Doub nu, Doub thickness, Doub bodyforce, Int planestress, Int order, \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} H\+H\+AT)
+\item 
+\mbox{\Hypertarget{classelastmat2D_a69a731753ebb721647271dc606b49bef}\label{classelastmat2D_a69a731753ebb721647271dc606b49bef}} 
+void {\bfseries Contribute} (\mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&ek, \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&ef, Doub xi, Doub eta, Doub w, \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} elcoords)
+\item 
+\mbox{\Hypertarget{classelastmat2D_ad79c6445944d16ad2eba62cbe173127b}\label{classelastmat2D_ad79c6445944d16ad2eba62cbe173127b}} 
+void {\bfseries Cac\+Stiff} (\mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&ek, \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&ef, const \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&elcoords)
+\item 
+\mbox{\Hypertarget{classelastmat2D_a2aa5c152ce64077eb6eddde8f17ea5d2}\label{classelastmat2D_a2aa5c152ce64077eb6eddde8f17ea5d2}} 
+void {\bfseries Assemble} (\mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&KG, \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&FG, const std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ Doub $>$ $>$ $>$ \&allcoords, const \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&meshnodes, const \mbox{\hyperlink{classNRmatrix}{Mat\+Int}} meshtopology)
+\item 
+\mbox{\Hypertarget{classelastmat2D_a45493e530215b933833373854d88f41c}\label{classelastmat2D_a45493e530215b933833373854d88f41c}} 
+void {\bfseries assemble\+BandN} (\mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&B, \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&N, const \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&psis, const \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&Grad\+Phi)
+\item 
+\mbox{\Hypertarget{classelastmat2D_a8d6509f3954c9acf3081d70a36829c2f}\label{classelastmat2D_a8d6509f3954c9acf3081d70a36829c2f}} 
+void {\bfseries assemble\+Constitutive\+Matrix} (\mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&C, Doub mult)
+\item 
+\mbox{\Hypertarget{classelastmat2D_a2e80aade5dc8c162ec911697d992e8b1}\label{classelastmat2D_a2e80aade5dc8c162ec911697d992e8b1}} 
+void {\bfseries Get\+El\+Coords} (std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ Doub $>$ $>$ $>$ \&allcoords, Int el, \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&elcoords)
+\item 
+\mbox{\Hypertarget{classelastmat2D_a73baae084b0761f21ae5c7ed003a7c7c}\label{classelastmat2D_a73baae084b0761f21ae5c7ed003a7c7c}} 
+void {\bfseries Dirichlet\+BC} (\mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&KG, \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&FG, std\+::vector$<$ int $>$ ids, Int dir, Int val)
+\item 
+\mbox{\Hypertarget{classelastmat2D_a538091688d21a5fc41e500b55605ca44}\label{classelastmat2D_a538091688d21a5fc41e500b55605ca44}} 
+void {\bfseries Contribute\+Line\+Newan} (\mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&KG, \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&FG, std\+::vector$<$ int $>$ ids, Int dir, Int val)
+\item 
+\mbox{\Hypertarget{classelastmat2D_a53aaa3cd424ae20382ce8a42071db41e}\label{classelastmat2D_a53aaa3cd424ae20382ce8a42071db41e}} 
+void {\bfseries Sol\+Pt} (const Int \&el, const \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&solG, const Doub \&xi, const Doub \&eta, \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&xycoords, \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&sol)
+\item 
+\mbox{\Hypertarget{classelastmat2D_a36e0148b889eb72ad8d98457be551b0f}\label{classelastmat2D_a36e0148b889eb72ad8d98457be551b0f}} 
+void {\bfseries Post\+Process} (const \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&nodalsol, std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&solx, std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&soly)
+\item 
+\mbox{\Hypertarget{classelastmat2D_a007327ea7507735de43436d19aff10d5}\label{classelastmat2D_a007327ea7507735de43436d19aff10d5}} 
+void {\bfseries Post\+Process} (const \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&nodalsol, std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&sol)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classelastmat2D_ac11ab9c507c40e4a5176fbb2124833d2}\label{classelastmat2D_ac11ab9c507c40e4a5176fbb2124833d2}} 
+\mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} {\bfseries f\+H\+H\+AT}
+\item 
+\mbox{\Hypertarget{classelastmat2D_a13dd31dc85e19064705f5e755aaa7263}\label{classelastmat2D_a13dd31dc85e19064705f5e755aaa7263}} 
+\mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} {\bfseries fhhatvel}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/elastmat2\+D.\+h\item 
+src/elastmat2\+D.\+cpp\end{DoxyCompactItemize}

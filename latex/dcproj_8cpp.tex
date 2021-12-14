@@ -1,0 +1,343 @@
+\hypertarget{dcproj_8cpp}{}\doxysection{src/dcproj.cpp File Reference}
+\label{dcproj_8cpp}\index{src/dcproj.cpp@{src/dcproj.cpp}}
+{\ttfamily \#include \char`\"{}dcproj.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mesh.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}elastoplastic3\+D.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include \char`\"{}beam3dtools.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}pressurizedhole.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$Eigen/\+Core$>$}\newline
+Include dependency graph for dcproj.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dcproj_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_synchronized_file}{Synchronized\+File}}
+\item 
+class \mbox{\hyperlink{class_writer}{Writer}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{dcproj_8cpp_a5bd13fea2d52009d82048504cb75e7c1}{E\+I\+G\+E\+N\+\_\+\+U\+S\+E\+\_\+\+M\+K\+L\+\_\+\+A\+LL}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{dcproj_8cpp_ae907f8ff5210462f96545a82784a7850}{Read\+Mat\+Doub}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&matdoub, std\+::string file)
+\item 
+void \mbox{\hyperlink{dcproj_8cpp_a164457c251eee5c0e997e75df589b2e5}{Read\+Mesh}} (std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&allcoords, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&meshcoords, \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \&meshtopology, string filenameel, string filenamecoord)
+\item 
+{\footnotesize template$<$class T $>$ }\\void \mbox{\hyperlink{dcproj_8cpp_aeed38dc9b8cd6e760d3a9bd49ba974d8}{Out\+Put\+Post}} (\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&postdata, std\+::ofstream \&file)
+\item 
+{\footnotesize template$<$class T $>$ }\\void \mbox{\hyperlink{dcproj_8cpp_a80132e3cfdd3e84069895d6abcc4192d}{vecstr\+\_\+to\+\_\+vec}} (std\+::vector$<$ std\+::string $>$ vs, std\+::vector$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&ret)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} $>$ \mbox{\hyperlink{dcproj_8cpp_a6cfd32ccfc9685b8a47d29326e744733}{vecstr\+\_\+to\+\_\+vecint}} (std\+::vector$<$ string $>$ vs)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{dcproj_8cpp_a44446bd6c0aef3ad30017c88cf3ea685}{vecstr\+\_\+to\+\_\+vecdoub}} (std\+::vector$<$ string $>$ vs)
+\item 
+void \mbox{\hyperlink{dcproj_8cpp_abbb40b416c74459133ba0158e31da204}{my\+Treads}} (int a, int b, \mbox{\hyperlink{classslopeproject}{slopeproject}} $\ast$slopeobj2, string traedN)
+\item 
+void \mbox{\hyperlink{dcproj_8cpp_a79f77616cbacc61de1cf570396aca46c}{leakcraw}} ()
+\item 
+void \mbox{\hyperlink{dcproj_8cpp_ae492f92a8ada881680762fd5a69d2f02}{my\+Treads\+S\+RM}} (int a, int b, \mbox{\hyperlink{classslopeproject}{slopeproject}} $\ast$slopeobj2, string namefolder3)
+\item 
+void \mbox{\hyperlink{dcproj_8cpp_ae8e3bab6710dfeab5b2b1811d75b4cd8}{mainlinux2}} (int simtype, int comeco, int fim)
+\item 
+void \mbox{\hyperlink{dcproj_8cpp_a99d145974b988ecaa27717cc91861229}{mainlinux}} (int simtype, int comeco, int fim)
+\item 
+void \mbox{\hyperlink{dcproj_8cpp_a4e91648b358d8b9603bf0b45a038f8f5}{mainwindows}} ()
+\item 
+void \mbox{\hyperlink{dcproj_8cpp_a0e3dfb6f073ab2b8fa5bded38907165a}{createrandomfield}} ()
+\item 
+void \mbox{\hyperlink{dcproj_8cpp_a2a448f1746616923d3c83ef42c5bfcbd}{mainlinuxserial}} (int simtype, int comeco, int fim)
+\item 
+int \mbox{\hyperlink{dcproj_8cpp_a6b5f9ed88e08b56c1356c754618aeae0}{main3}} ()
+\item 
+int \mbox{\hyperlink{dcproj_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\item 
+std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{dcproj_8cpp_a6682a8e9673450db26188f7d57b5e8d5}{vecstr\+\_\+to\+\_\+vecdoub2}} (std\+::vector$<$ string $>$ vs)
+\item 
+{\footnotesize template$<$class T $>$ }\\std\+::vector$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \mbox{\hyperlink{dcproj_8cpp_a602b65ae42d3fa754f4f187f510e76ca}{vecstr\+\_\+to\+\_\+vec}} (std\+::vector$<$ string $>$ vs)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{dcproj_8cpp_a5bd13fea2d52009d82048504cb75e7c1}\label{dcproj_8cpp_a5bd13fea2d52009d82048504cb75e7c1}} 
+\index{dcproj.cpp@{dcproj.cpp}!EIGEN\_USE\_MKL\_ALL@{EIGEN\_USE\_MKL\_ALL}}
+\index{EIGEN\_USE\_MKL\_ALL@{EIGEN\_USE\_MKL\_ALL}!dcproj.cpp@{dcproj.cpp}}
+\doxysubsubsection{\texorpdfstring{EIGEN\_USE\_MKL\_ALL}{EIGEN\_USE\_MKL\_ALL}}
+{\footnotesize\ttfamily \#define E\+I\+G\+E\+N\+\_\+\+U\+S\+E\+\_\+\+M\+K\+L\+\_\+\+A\+LL}
+
+
+
+Definition at line 18 of file dcproj.\+cpp.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{dcproj_8cpp_a0e3dfb6f073ab2b8fa5bded38907165a}\label{dcproj_8cpp_a0e3dfb6f073ab2b8fa5bded38907165a}} 
+\index{dcproj.cpp@{dcproj.cpp}!createrandomfield@{createrandomfield}}
+\index{createrandomfield@{createrandomfield}!dcproj.cpp@{dcproj.cpp}}
+\doxysubsubsection{\texorpdfstring{createrandomfield()}{createrandomfield()}}
+{\footnotesize\ttfamily void createrandomfield (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 904 of file dcproj.\+cpp.
+
+
+
+References slopeproject\+::\+Create\+Random\+Field(), elastoplastic2\+D$<$ Y\+C $>$\+::f\+YC, N\+Rmatrix$<$ T $>$\+::nrows(), Out\+Put\+Post(), shapequad\+::pointsandweigths(), Read\+Mesh(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Set\+Memory(), K\+L\+Galerkin\+R\+F\+::\+Set\+Mesh(), druckerprager\+::setup(), and elastoplastic2\+D$<$ Y\+C $>$\+::\+Update\+Body\+Force().
+
+\mbox{\Hypertarget{dcproj_8cpp_a79f77616cbacc61de1cf570396aca46c}\label{dcproj_8cpp_a79f77616cbacc61de1cf570396aca46c}} 
+\index{dcproj.cpp@{dcproj.cpp}!leakcraw@{leakcraw}}
+\index{leakcraw@{leakcraw}!dcproj.cpp@{dcproj.cpp}}
+\doxysubsubsection{\texorpdfstring{leakcraw()}{leakcraw()}}
+{\footnotesize\ttfamily void leakcraw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{dcproj_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{dcproj_8cpp_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{dcproj.cpp@{dcproj.cpp}!main@{main}}
+\index{main@{main}!dcproj.cpp@{dcproj.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1188 of file dcproj.\+cpp.
+
+
+
+References mainlinux(), mainwindows(), and beam3dtools\+::\+Solve\+Elastic\+Beam().
+
+\mbox{\Hypertarget{dcproj_8cpp_a6b5f9ed88e08b56c1356c754618aeae0}\label{dcproj_8cpp_a6b5f9ed88e08b56c1356c754618aeae0}} 
+\index{dcproj.cpp@{dcproj.cpp}!main3@{main3}}
+\index{main3@{main3}!dcproj.cpp@{dcproj.cpp}}
+\doxysubsubsection{\texorpdfstring{main3()}{main3()}}
+{\footnotesize\ttfamily int main3 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1132 of file dcproj.\+cpp.
+
+\mbox{\Hypertarget{dcproj_8cpp_a99d145974b988ecaa27717cc91861229}\label{dcproj_8cpp_a99d145974b988ecaa27717cc91861229}} 
+\index{dcproj.cpp@{dcproj.cpp}!mainlinux@{mainlinux}}
+\index{mainlinux@{mainlinux}!dcproj.cpp@{dcproj.cpp}}
+\doxysubsubsection{\texorpdfstring{mainlinux()}{mainlinux()}}
+{\footnotesize\ttfamily void mainlinux (\begin{DoxyParamCaption}\item[{int}]{simtype,  }\item[{int}]{comeco,  }\item[{int}]{fim }\end{DoxyParamCaption})}
+
+
+
+Definition at line 185 of file dcproj.\+cpp.
+
+
+
+References slopeproject\+::\+Assemble\+Hhationho(), slopeproject\+::\+Create\+Random\+Field(), mesh\+::fmaterial, elastoplastic2\+D$<$ Y\+C $>$\+::f\+YC, mesh\+::\+Get\+All\+Coords(), mesh\+::\+Get\+Mesh\+Nodes(), mesh\+::\+Get\+Mesh\+Topology(), slopeproject\+::\+Iterative\+Process(), slopeproject\+::\+Monte\+Carlo\+G\+I\+M(), my\+Treads\+S\+R\+M(), N\+Rmatrix$<$ T $>$\+::nrows(), slopeproject\+::\+Out\+Put\+Post(), Out\+Put\+Post(), shapequad\+::pointsandweigths(), material\+::\+Post\+Process(), Read\+Mat\+Doub(), Read\+Mesh(), mesh\+::\+Set\+Hhat(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Set\+Memory(), K\+L\+Galerkin\+R\+F\+::\+Set\+Mesh(), druckerprager\+::setup(), and elastoplastic2\+D$<$ Y\+C $>$\+::\+Update\+Body\+Force().
+
+
+
+Referenced by main().
+
+\mbox{\Hypertarget{dcproj_8cpp_ae8e3bab6710dfeab5b2b1811d75b4cd8}\label{dcproj_8cpp_ae8e3bab6710dfeab5b2b1811d75b4cd8}} 
+\index{dcproj.cpp@{dcproj.cpp}!mainlinux2@{mainlinux2}}
+\index{mainlinux2@{mainlinux2}!dcproj.cpp@{dcproj.cpp}}
+\doxysubsubsection{\texorpdfstring{mainlinux2()}{mainlinux2()}}
+{\footnotesize\ttfamily void mainlinux2 (\begin{DoxyParamCaption}\item[{int}]{simtype,  }\item[{int}]{comeco,  }\item[{int}]{fim }\end{DoxyParamCaption})}
+
+
+
+Definition at line 74 of file dcproj.\+cpp.
+
+
+
+References elastoplastic2\+D$<$ Y\+C $>$\+::f\+YC, my\+Treads(), N\+Rmatrix$<$ T $>$\+::nrows(), Out\+Put\+Post(), shapequad\+::pointsandweigths(), Read\+Mat\+Doub(), Read\+Mesh(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Set\+Memory(), K\+L\+Galerkin\+R\+F\+::\+Set\+Mesh(), druckerprager\+::setup(), and elastoplastic2\+D$<$ Y\+C $>$\+::\+Update\+Body\+Force().
+
+\mbox{\Hypertarget{dcproj_8cpp_a2a448f1746616923d3c83ef42c5bfcbd}\label{dcproj_8cpp_a2a448f1746616923d3c83ef42c5bfcbd}} 
+\index{dcproj.cpp@{dcproj.cpp}!mainlinuxserial@{mainlinuxserial}}
+\index{mainlinuxserial@{mainlinuxserial}!dcproj.cpp@{dcproj.cpp}}
+\doxysubsubsection{\texorpdfstring{mainlinuxserial()}{mainlinuxserial()}}
+{\footnotesize\ttfamily void mainlinuxserial (\begin{DoxyParamCaption}\item[{int}]{simtype,  }\item[{int}]{comeco,  }\item[{int}]{fim }\end{DoxyParamCaption})}
+
+
+
+Definition at line 972 of file dcproj.\+cpp.
+
+
+
+References slopeproject\+::\+Assemble\+Hhationho(), slopeproject\+::\+Create\+Random\+Field(), mesh\+::fmaterial, elastoplastic2\+D$<$ Y\+C $>$\+::f\+YC, mesh\+::\+Get\+All\+Coords(), mesh\+::\+Get\+Mesh\+Nodes(), mesh\+::\+Get\+Mesh\+Topology(), slopeproject\+::\+Iterative\+Process(), slopeproject\+::\+Monte\+Carlo\+G\+I\+M(), slopeproject\+::\+Monte\+Carlo\+S\+R\+M(), N\+Rmatrix$<$ T $>$\+::nrows(), slopeproject\+::\+Out\+Put\+Post(), Out\+Put\+Post(), shapequad\+::pointsandweigths(), material\+::\+Post\+Process(), Read\+Mat\+Doub(), Read\+Mesh(), mesh\+::\+Set\+Hhat(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Set\+Memory(), K\+L\+Galerkin\+R\+F\+::\+Set\+Mesh(), druckerprager\+::setup(), and elastoplastic2\+D$<$ Y\+C $>$\+::\+Update\+Body\+Force().
+
+\mbox{\Hypertarget{dcproj_8cpp_a4e91648b358d8b9603bf0b45a038f8f5}\label{dcproj_8cpp_a4e91648b358d8b9603bf0b45a038f8f5}} 
+\index{dcproj.cpp@{dcproj.cpp}!mainwindows@{mainwindows}}
+\index{mainwindows@{mainwindows}!dcproj.cpp@{dcproj.cpp}}
+\doxysubsubsection{\texorpdfstring{mainwindows()}{mainwindows()}}
+{\footnotesize\ttfamily void mainwindows (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 719 of file dcproj.\+cpp.
+
+
+
+References elastoplastic2\+D$<$ Y\+C $>$\+::f\+YC, mesh\+::\+Get\+All\+Coords(), slopeproject\+::\+Iterative\+Process\+Shear\+Red(), my\+Treads(), N\+Rmatrix$<$ T $>$\+::nrows(), Out\+Put\+Post(), shapequad\+::pointsandweigths(), Read\+Mat\+Doub(), Read\+Mesh(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Set\+Memory(), K\+L\+Galerkin\+R\+F\+::\+Set\+Mesh(), druckerprager\+::setup(), and elastoplastic2\+D$<$ Y\+C $>$\+::\+Update\+Body\+Force().
+
+
+
+Referenced by main().
+
+\mbox{\Hypertarget{dcproj_8cpp_abbb40b416c74459133ba0158e31da204}\label{dcproj_8cpp_abbb40b416c74459133ba0158e31da204}} 
+\index{dcproj.cpp@{dcproj.cpp}!myTreads@{myTreads}}
+\index{myTreads@{myTreads}!dcproj.cpp@{dcproj.cpp}}
+\doxysubsubsection{\texorpdfstring{myTreads()}{myTreads()}}
+{\footnotesize\ttfamily void my\+Treads (\begin{DoxyParamCaption}\item[{int}]{a,  }\item[{int}]{b,  }\item[{\mbox{\hyperlink{classslopeproject}{slopeproject}} $\ast$}]{slopeobj2,  }\item[{string}]{traedN }\end{DoxyParamCaption})}
+
+
+
+Definition at line 61 of file dcproj.\+cpp.
+
+
+
+References slopeproject\+::\+Monte\+Carlo\+G\+I\+M().
+
+
+
+Referenced by mainlinux2(), and mainwindows().
+
+\mbox{\Hypertarget{dcproj_8cpp_ae492f92a8ada881680762fd5a69d2f02}\label{dcproj_8cpp_ae492f92a8ada881680762fd5a69d2f02}} 
+\index{dcproj.cpp@{dcproj.cpp}!myTreadsSRM@{myTreadsSRM}}
+\index{myTreadsSRM@{myTreadsSRM}!dcproj.cpp@{dcproj.cpp}}
+\doxysubsubsection{\texorpdfstring{myTreadsSRM()}{myTreadsSRM()}}
+{\footnotesize\ttfamily void my\+Treads\+S\+RM (\begin{DoxyParamCaption}\item[{int}]{a,  }\item[{int}]{b,  }\item[{\mbox{\hyperlink{classslopeproject}{slopeproject}} $\ast$}]{slopeobj2,  }\item[{string}]{namefolder3 }\end{DoxyParamCaption})}
+
+
+
+Definition at line 67 of file dcproj.\+cpp.
+
+
+
+References slopeproject\+::\+Monte\+Carlo\+S\+R\+M().
+
+
+
+Referenced by mainlinux().
+
+\mbox{\Hypertarget{dcproj_8cpp_aeed38dc9b8cd6e760d3a9bd49ba974d8}\label{dcproj_8cpp_aeed38dc9b8cd6e760d3a9bd49ba974d8}} 
+\index{dcproj.cpp@{dcproj.cpp}!OutPutPost@{OutPutPost}}
+\index{OutPutPost@{OutPutPost}!dcproj.cpp@{dcproj.cpp}}
+\doxysubsubsection{\texorpdfstring{OutPutPost()}{OutPutPost()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void Out\+Put\+Post (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{postdata,  }\item[{std\+::ofstream \&}]{file }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1230 of file dcproj.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::ncols(), and N\+Rmatrix$<$ T $>$\+::nrows().
+
+
+
+Referenced by createrandomfield(), mainlinux(), mainlinux2(), mainlinuxserial(), and mainwindows().
+
+\mbox{\Hypertarget{dcproj_8cpp_ae907f8ff5210462f96545a82784a7850}\label{dcproj_8cpp_ae907f8ff5210462f96545a82784a7850}} 
+\index{dcproj.cpp@{dcproj.cpp}!ReadMatDoub@{ReadMatDoub}}
+\index{ReadMatDoub@{ReadMatDoub}!dcproj.cpp@{dcproj.cpp}}
+\doxysubsubsection{\texorpdfstring{ReadMatDoub()}{ReadMatDoub()}}
+{\footnotesize\ttfamily void Read\+Mat\+Doub (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{matdoub,  }\item[{std\+::string}]{file }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1374 of file dcproj.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::\+Copy\+From\+Vector(), and vecstr\+\_\+to\+\_\+vecdoub2().
+
+
+
+Referenced by mainlinux(), mainlinux2(), mainlinuxserial(), and mainwindows().
+
+\mbox{\Hypertarget{dcproj_8cpp_a164457c251eee5c0e997e75df589b2e5}\label{dcproj_8cpp_a164457c251eee5c0e997e75df589b2e5}} 
+\index{dcproj.cpp@{dcproj.cpp}!ReadMesh@{ReadMesh}}
+\index{ReadMesh@{ReadMesh}!dcproj.cpp@{dcproj.cpp}}
+\doxysubsubsection{\texorpdfstring{ReadMesh()}{ReadMesh()}}
+{\footnotesize\ttfamily void Read\+Mesh (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&}]{allcoords,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{meshcoords,  }\item[{\mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \&}]{meshtopology,  }\item[{string}]{filenameel,  }\item[{string}]{filenamecoord }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1245 of file dcproj.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::\+Copy\+From\+Vector(), N\+Rmatrix$<$ T $>$\+::ncols(), N\+Rmatrix$<$ T $>$\+::nrows(), N\+Rmatrix$<$ T $>$\+::\+Print(), vecstr\+\_\+to\+\_\+vecdoub(), and vecstr\+\_\+to\+\_\+vecint().
+
+
+
+Referenced by createrandomfield(), mainlinux(), mainlinux2(), mainlinuxserial(), and mainwindows().
+
+\mbox{\Hypertarget{dcproj_8cpp_a80132e3cfdd3e84069895d6abcc4192d}\label{dcproj_8cpp_a80132e3cfdd3e84069895d6abcc4192d}} 
+\index{dcproj.cpp@{dcproj.cpp}!vecstr\_to\_vec@{vecstr\_to\_vec}}
+\index{vecstr\_to\_vec@{vecstr\_to\_vec}!dcproj.cpp@{dcproj.cpp}}
+\doxysubsubsection{\texorpdfstring{vecstr\_to\_vec()}{vecstr\_to\_vec()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void vecstr\+\_\+to\+\_\+vec (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{vs,  }\item[{std\+::vector$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{ret }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{dcproj_8cpp_a602b65ae42d3fa754f4f187f510e76ca}\label{dcproj_8cpp_a602b65ae42d3fa754f4f187f510e76ca}} 
+\index{dcproj.cpp@{dcproj.cpp}!vecstr\_to\_vec@{vecstr\_to\_vec}}
+\index{vecstr\_to\_vec@{vecstr\_to\_vec}!dcproj.cpp@{dcproj.cpp}}
+\doxysubsubsection{\texorpdfstring{vecstr\_to\_vec()}{vecstr\_to\_vec()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+std\+::vector$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ vecstr\+\_\+to\+\_\+vec (\begin{DoxyParamCaption}\item[{std\+::vector$<$ string $>$}]{vs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1361 of file dcproj.\+cpp.
+
+\mbox{\Hypertarget{dcproj_8cpp_a44446bd6c0aef3ad30017c88cf3ea685}\label{dcproj_8cpp_a44446bd6c0aef3ad30017c88cf3ea685}} 
+\index{dcproj.cpp@{dcproj.cpp}!vecstr\_to\_vecdoub@{vecstr\_to\_vecdoub}}
+\index{vecstr\_to\_vecdoub@{vecstr\_to\_vecdoub}!dcproj.cpp@{dcproj.cpp}}
+\doxysubsubsection{\texorpdfstring{vecstr\_to\_vecdoub()}{vecstr\_to\_vecdoub()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ vecstr\+\_\+to\+\_\+vecdoub (\begin{DoxyParamCaption}\item[{std\+::vector$<$ string $>$}]{vs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1334 of file dcproj.\+cpp.
+
+
+
+Referenced by Read\+Mesh().
+
+\mbox{\Hypertarget{dcproj_8cpp_a6682a8e9673450db26188f7d57b5e8d5}\label{dcproj_8cpp_a6682a8e9673450db26188f7d57b5e8d5}} 
+\index{dcproj.cpp@{dcproj.cpp}!vecstr\_to\_vecdoub2@{vecstr\_to\_vecdoub2}}
+\index{vecstr\_to\_vecdoub2@{vecstr\_to\_vecdoub2}!dcproj.cpp@{dcproj.cpp}}
+\doxysubsubsection{\texorpdfstring{vecstr\_to\_vecdoub2()}{vecstr\_to\_vecdoub2()}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}$>$ vecstr\+\_\+to\+\_\+vecdoub2 (\begin{DoxyParamCaption}\item[{std\+::vector$<$ string $>$}]{vs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1347 of file dcproj.\+cpp.
+
+
+
+Referenced by Read\+Mat\+Doub().
+
+\mbox{\Hypertarget{dcproj_8cpp_a6cfd32ccfc9685b8a47d29326e744733}\label{dcproj_8cpp_a6cfd32ccfc9685b8a47d29326e744733}} 
+\index{dcproj.cpp@{dcproj.cpp}!vecstr\_to\_vecint@{vecstr\_to\_vecint}}
+\index{vecstr\_to\_vecint@{vecstr\_to\_vecint}!dcproj.cpp@{dcproj.cpp}}
+\doxysubsubsection{\texorpdfstring{vecstr\_to\_vecint()}{vecstr\_to\_vecint()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} $>$ vecstr\+\_\+to\+\_\+vecint (\begin{DoxyParamCaption}\item[{std\+::vector$<$ string $>$}]{vs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1321 of file dcproj.\+cpp.
+
+
+
+Referenced by Read\+Mesh().
+

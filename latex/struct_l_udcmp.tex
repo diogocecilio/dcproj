@@ -1,0 +1,243 @@
+\hypertarget{struct_l_udcmp}{}\doxysection{L\+Udcmp Struct Reference}
+\label{struct_l_udcmp}\index{LUdcmp@{LUdcmp}}
+
+
+{\ttfamily \#include $<$ludcmp.\+h$>$}
+
+
+
+Collaboration diagram for L\+Udcmp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{struct_l_udcmp__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_l_udcmp_a88f8d4e53a687f1aebaccb106fe1f8b6}{L\+Udcmp}} (\mbox{\hyperlink{nr3_8h_a724773f982f11577951cbd1efadf9768}{Mat\+Doub\+\_\+I}} \&a)
+\item 
+void \mbox{\hyperlink{struct_l_udcmp_abb2ff11ce57f1cf53ec09c3a07e5dcb9}{solve}} (\mbox{\hyperlink{nr3_8h_a03f0d3bb248e15df9d42cc3c80203ea0}{Vec\+Doub\+\_\+I}} \&b, \mbox{\hyperlink{nr3_8h_a0e1e2f8eb088c9a6bef13f04075dadb7}{Vec\+Doub\+\_\+O}} \&x)
+\item 
+void \mbox{\hyperlink{struct_l_udcmp_abf917f692e2d15aa3119aab8b8f3919a}{solve}} (\mbox{\hyperlink{nr3_8h_a724773f982f11577951cbd1efadf9768}{Mat\+Doub\+\_\+I}} \&b, \mbox{\hyperlink{nr3_8h_af78ffaeb7f0b1f76b9a101d2b2a2050b}{Mat\+Doub\+\_\+O}} \&x)
+\item 
+void \mbox{\hyperlink{struct_l_udcmp_abae3f62ec7635002303f8ba19f8549f0}{inverse}} (\mbox{\hyperlink{nr3_8h_af78ffaeb7f0b1f76b9a101d2b2a2050b}{Mat\+Doub\+\_\+O}} \&ainv)
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{struct_l_udcmp_a86c2b27ce6289d34bcb572ac2ad07265}{det}} ()
+\item 
+void \mbox{\hyperlink{struct_l_udcmp_a0aaa183f5e9c793682c45ca750d86c4a}{mprove}} (\mbox{\hyperlink{nr3_8h_a03f0d3bb248e15df9d42cc3c80203ea0}{Vec\+Doub\+\_\+I}} \&b, \mbox{\hyperlink{nr3_8h_ad79288a4d07086bfad5b69c192ee07c5}{Vec\+Doub\+\_\+\+IO}} \&x)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} \mbox{\hyperlink{struct_l_udcmp_afd586c6dd8ce1854a10d38d37ab7b3b5}{n}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \mbox{\hyperlink{struct_l_udcmp_a16d0158c35ddb0e89af0140674ec9f47}{lu}}
+\item 
+\mbox{\hyperlink{nr3_8h_a064027d87b8f30a1bcaf0e4a5c379ad6}{Vec\+Int}} \mbox{\hyperlink{struct_l_udcmp_aeb9bd66f4fc77ac5be3d21243573ae77}{indx}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{struct_l_udcmp_ae2ddddd549a356272d218da4776fd316}{d}}
+\item 
+\mbox{\hyperlink{nr3_8h_a724773f982f11577951cbd1efadf9768}{Mat\+Doub\+\_\+I}} \& \mbox{\hyperlink{struct_l_udcmp_a236844012699a811e2d0940e7f235a65}{aref}}
+\item 
+bool \mbox{\hyperlink{struct_l_udcmp_a8edd42cc9dd20940331cd37d1b37ed3c}{fail}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 3 of file ludcmp.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_l_udcmp_a88f8d4e53a687f1aebaccb106fe1f8b6}\label{struct_l_udcmp_a88f8d4e53a687f1aebaccb106fe1f8b6}} 
+\index{LUdcmp@{LUdcmp}!LUdcmp@{LUdcmp}}
+\index{LUdcmp@{LUdcmp}!LUdcmp@{LUdcmp}}
+\doxysubsubsection{\texorpdfstring{LUdcmp()}{LUdcmp()}}
+{\footnotesize\ttfamily L\+Udcmp\+::\+L\+Udcmp (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_a724773f982f11577951cbd1efadf9768}{Mat\+Doub\+\_\+I}} \&}]{a }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 18 of file ludcmp.\+h.
+
+
+
+References d, fail, indx, lu, and n.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_l_udcmp_a86c2b27ce6289d34bcb572ac2ad07265}\label{struct_l_udcmp_a86c2b27ce6289d34bcb572ac2ad07265}} 
+\index{LUdcmp@{LUdcmp}!det@{det}}
+\index{det@{det}!LUdcmp@{LUdcmp}}
+\doxysubsubsection{\texorpdfstring{det()}{det()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} L\+Udcmp\+::det (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 111 of file ludcmp.\+h.
+
+
+
+References d, lu, and n.
+
+\mbox{\Hypertarget{struct_l_udcmp_abae3f62ec7635002303f8ba19f8549f0}\label{struct_l_udcmp_abae3f62ec7635002303f8ba19f8549f0}} 
+\index{LUdcmp@{LUdcmp}!inverse@{inverse}}
+\index{inverse@{inverse}!LUdcmp@{LUdcmp}}
+\doxysubsubsection{\texorpdfstring{inverse()}{inverse()}}
+{\footnotesize\ttfamily void L\+Udcmp\+::inverse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_af78ffaeb7f0b1f76b9a101d2b2a2050b}{Mat\+Doub\+\_\+O}} \&}]{ainv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 101 of file ludcmp.\+h.
+
+
+
+References n, N\+Rmatrix$<$ T $>$\+::resize(), and solve().
+
+
+
+Referenced by vonmises\+::closestpointproj().
+
+\mbox{\Hypertarget{struct_l_udcmp_a0aaa183f5e9c793682c45ca750d86c4a}\label{struct_l_udcmp_a0aaa183f5e9c793682c45ca750d86c4a}} 
+\index{LUdcmp@{LUdcmp}!mprove@{mprove}}
+\index{mprove@{mprove}!LUdcmp@{LUdcmp}}
+\doxysubsubsection{\texorpdfstring{mprove()}{mprove()}}
+{\footnotesize\ttfamily void L\+Udcmp\+::mprove (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_a03f0d3bb248e15df9d42cc3c80203ea0}{Vec\+Doub\+\_\+I}} \&}]{b,  }\item[{\mbox{\hyperlink{nr3_8h_ad79288a4d07086bfad5b69c192ee07c5}{Vec\+Doub\+\_\+\+IO}} \&}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 117 of file ludcmp.\+h.
+
+
+
+References aref, n, and solve().
+
+\mbox{\Hypertarget{struct_l_udcmp_abf917f692e2d15aa3119aab8b8f3919a}\label{struct_l_udcmp_abf917f692e2d15aa3119aab8b8f3919a}} 
+\index{LUdcmp@{LUdcmp}!solve@{solve}}
+\index{solve@{solve}!LUdcmp@{LUdcmp}}
+\doxysubsubsection{\texorpdfstring{solve()}{solve()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void L\+Udcmp\+::solve (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_a724773f982f11577951cbd1efadf9768}{Mat\+Doub\+\_\+I}} \&}]{b,  }\item[{\mbox{\hyperlink{nr3_8h_af78ffaeb7f0b1f76b9a101d2b2a2050b}{Mat\+Doub\+\_\+O}} \&}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 89 of file ludcmp.\+h.
+
+
+
+References n, N\+Rmatrix$<$ T $>$\+::ncols(), N\+Rmatrix$<$ T $>$\+::nrows(), and solve().
+
+\mbox{\Hypertarget{struct_l_udcmp_abb2ff11ce57f1cf53ec09c3a07e5dcb9}\label{struct_l_udcmp_abb2ff11ce57f1cf53ec09c3a07e5dcb9}} 
+\index{LUdcmp@{LUdcmp}!solve@{solve}}
+\index{solve@{solve}!LUdcmp@{LUdcmp}}
+\doxysubsubsection{\texorpdfstring{solve()}{solve()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void L\+Udcmp\+::solve (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_a03f0d3bb248e15df9d42cc3c80203ea0}{Vec\+Doub\+\_\+I}} \&}]{b,  }\item[{\mbox{\hyperlink{nr3_8h_a0e1e2f8eb088c9a6bef13f04075dadb7}{Vec\+Doub\+\_\+O}} \&}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 64 of file ludcmp.\+h.
+
+
+
+References indx, lu, n, and N\+Rvector$<$ T $>$\+::size().
+
+
+
+Referenced by inverse(), mprove(), and solve().
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_l_udcmp_a236844012699a811e2d0940e7f235a65}\label{struct_l_udcmp_a236844012699a811e2d0940e7f235a65}} 
+\index{LUdcmp@{LUdcmp}!aref@{aref}}
+\index{aref@{aref}!LUdcmp@{LUdcmp}}
+\doxysubsubsection{\texorpdfstring{aref}{aref}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_a724773f982f11577951cbd1efadf9768}{Mat\+Doub\+\_\+I}}\& L\+Udcmp\+::aref}
+
+
+
+Definition at line 15 of file ludcmp.\+h.
+
+
+
+Referenced by mprove().
+
+\mbox{\Hypertarget{struct_l_udcmp_ae2ddddd549a356272d218da4776fd316}\label{struct_l_udcmp_ae2ddddd549a356272d218da4776fd316}} 
+\index{LUdcmp@{LUdcmp}!d@{d}}
+\index{d@{d}!LUdcmp@{LUdcmp}}
+\doxysubsubsection{\texorpdfstring{d}{d}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} L\+Udcmp\+::d}
+
+
+
+Definition at line 8 of file ludcmp.\+h.
+
+
+
+Referenced by det(), and L\+Udcmp().
+
+\mbox{\Hypertarget{struct_l_udcmp_a8edd42cc9dd20940331cd37d1b37ed3c}\label{struct_l_udcmp_a8edd42cc9dd20940331cd37d1b37ed3c}} 
+\index{LUdcmp@{LUdcmp}!fail@{fail}}
+\index{fail@{fail}!LUdcmp@{LUdcmp}}
+\doxysubsubsection{\texorpdfstring{fail}{fail}}
+{\footnotesize\ttfamily bool L\+Udcmp\+::fail}
+
+
+
+Definition at line 16 of file ludcmp.\+h.
+
+
+
+Referenced by L\+Udcmp().
+
+\mbox{\Hypertarget{struct_l_udcmp_aeb9bd66f4fc77ac5be3d21243573ae77}\label{struct_l_udcmp_aeb9bd66f4fc77ac5be3d21243573ae77}} 
+\index{LUdcmp@{LUdcmp}!indx@{indx}}
+\index{indx@{indx}!LUdcmp@{LUdcmp}}
+\doxysubsubsection{\texorpdfstring{indx}{indx}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_a064027d87b8f30a1bcaf0e4a5c379ad6}{Vec\+Int}} L\+Udcmp\+::indx}
+
+
+
+Definition at line 7 of file ludcmp.\+h.
+
+
+
+Referenced by L\+Udcmp(), and solve().
+
+\mbox{\Hypertarget{struct_l_udcmp_a16d0158c35ddb0e89af0140674ec9f47}\label{struct_l_udcmp_a16d0158c35ddb0e89af0140674ec9f47}} 
+\index{LUdcmp@{LUdcmp}!lu@{lu}}
+\index{lu@{lu}!LUdcmp@{LUdcmp}}
+\doxysubsubsection{\texorpdfstring{lu}{lu}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} L\+Udcmp\+::lu}
+
+
+
+Definition at line 6 of file ludcmp.\+h.
+
+
+
+Referenced by det(), L\+Udcmp(), and solve().
+
+\mbox{\Hypertarget{struct_l_udcmp_afd586c6dd8ce1854a10d38d37ab7b3b5}\label{struct_l_udcmp_afd586c6dd8ce1854a10d38d37ab7b3b5}} 
+\index{LUdcmp@{LUdcmp}!n@{n}}
+\index{n@{n}!LUdcmp@{LUdcmp}}
+\doxysubsubsection{\texorpdfstring{n}{n}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} L\+Udcmp\+::n}
+
+
+
+Definition at line 5 of file ludcmp.\+h.
+
+
+
+Referenced by det(), inverse(), L\+Udcmp(), mprove(), and solve().
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{ludcmp_8h}{ludcmp.\+h}}\end{DoxyCompactItemize}

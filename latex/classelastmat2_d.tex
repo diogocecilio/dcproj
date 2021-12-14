@@ -1,0 +1,397 @@
+\hypertarget{classelastmat2_d}{}\doxysection{elastmat2D Class Reference}
+\label{classelastmat2_d}\index{elastmat2D@{elastmat2D}}
+
+
+{\ttfamily \#include $<$elastmat2\+D.\+h$>$}
+
+
+
+Inheritance diagram for elastmat2D\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=163pt]{classelastmat2_d__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for elastmat2D\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classelastmat2_d__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classelastmat2_d_a1264acc50e4bd9eef385a23de810e7d8}{elastmat2D}} (\mbox{\hyperlink{classmesh}{mesh}} \&inmesh, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} young, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} nu, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} thickness, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} bodyforce, \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} planestress, \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} order)
+\item 
+\mbox{\hyperlink{classelastmat2_d_aa73882b634aba6f92712f3bf2102a7d2}{elastmat2D}} (\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} young, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} nu, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} thickness, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} bodyforce, \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} planestress, \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} order, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} H\+H\+AT)
+\item 
+\mbox{\hyperlink{classelastmat2_d_a304b56e27f2bd4abab93290314f66ab8}{elastmat2D}} ()
+\item 
+\mbox{\hyperlink{classelastmat2_d_a407fb1daa4f4d137d13d77d2a04d1f0a}{$\sim$elastmat2D}} ()
+\item 
+void \mbox{\hyperlink{classelastmat2_d_a69a731753ebb721647271dc606b49bef}{Contribute}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&ek, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&ef, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} xi, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} eta, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} w, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} elcoords)
+\item 
+void \mbox{\hyperlink{classelastmat2_d_ad79c6445944d16ad2eba62cbe173127b}{Cac\+Stiff}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&ek, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&ef, const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&elcoords)
+\item 
+void \mbox{\hyperlink{classelastmat2_d_a2aa5c152ce64077eb6eddde8f17ea5d2}{Assemble}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&KG, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&FG, const std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&allcoords, const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&meshnodes, const \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} meshtopology)
+\item 
+void \mbox{\hyperlink{classelastmat2_d_a45493e530215b933833373854d88f41c}{assemble\+BandN}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&B, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&N, const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&psis, const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&Grad\+Phi)
+\item 
+void \mbox{\hyperlink{classelastmat2_d_a8d6509f3954c9acf3081d70a36829c2f}{assemble\+Constitutive\+Matrix}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&C, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} mult)
+\item 
+void \mbox{\hyperlink{classelastmat2_d_a2e80aade5dc8c162ec911697d992e8b1}{Get\+El\+Coords}} (std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&allcoords, \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} el, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&elcoords)
+\item 
+void \mbox{\hyperlink{classelastmat2_d_a73baae084b0761f21ae5c7ed003a7c7c}{Dirichlet\+BC}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&KG, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&FG, std\+::vector$<$ int $>$ ids, \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} dir, \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} val)
+\item 
+void \mbox{\hyperlink{classelastmat2_d_a538091688d21a5fc41e500b55605ca44}{Contribute\+Line\+Newan}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&KG, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&FG, std\+::vector$<$ int $>$ ids, \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} dir, \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} val)
+\item 
+void \mbox{\hyperlink{classelastmat2_d_a53aaa3cd424ae20382ce8a42071db41e}{Sol\+Pt}} (const \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} \&el, const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&solG, const \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&xi, const \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&eta, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&xycoords, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&sol)
+\item 
+void \mbox{\hyperlink{classelastmat2_d_a36e0148b889eb72ad8d98457be551b0f}{Post\+Process}} (const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&nodalsol, std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&solx, std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&soly)
+\item 
+void \mbox{\hyperlink{classelastmat2_d_a007327ea7507735de43436d19aff10d5}{Post\+Process}} (const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&nodalsol, std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&sol)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \mbox{\hyperlink{classelastmat2_d_ac11ab9c507c40e4a5176fbb2124833d2}{f\+H\+H\+AT}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \mbox{\hyperlink{classelastmat2_d_a13dd31dc85e19064705f5e755aaa7263}{fhhatvel}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classelastmat2_d_aa9c9921b328d2608b741007ee1354969}{fyoung}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classelastmat2_d_a5e91adacf964671d2d8a3ba429204a9f}{fnu}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classelastmat2_d_a0b2ef9303fa72d101103ba2a7b385fcc}{fbodyforce}}
+\item 
+\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} \mbox{\hyperlink{classelastmat2_d_a48ed8bd79773a44875bc546ace0d346f}{fplanestress}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classelastmat2_d_a03dd33456f5f6c71445418a9323fda00}{fthickness}}
+\item 
+\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} \mbox{\hyperlink{classelastmat2_d_af39ffb5289180330a6e237c22b6d2654}{f\+Order}}
+\item 
+\mbox{\hyperlink{classmesh}{mesh}} \mbox{\hyperlink{classelastmat2_d_a41cdba92ed770789b84eced146b8d2ed}{fmesh}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 7 of file elastmat2\+D.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classelastmat2_d_a1264acc50e4bd9eef385a23de810e7d8}\label{classelastmat2_d_a1264acc50e4bd9eef385a23de810e7d8}} 
+\index{elastmat2D@{elastmat2D}!elastmat2D@{elastmat2D}}
+\index{elastmat2D@{elastmat2D}!elastmat2D@{elastmat2D}}
+\doxysubsubsection{\texorpdfstring{elastmat2D()}{elastmat2D()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily elastmat2\+D\+::elastmat2D (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmesh}{mesh}} \&}]{inmesh,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{young,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{nu,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{thickness,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{bodyforce,  }\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{planestress,  }\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{order }\end{DoxyParamCaption})}
+
+
+
+Definition at line 5 of file elastmat2\+D.\+cpp.
+
+\mbox{\Hypertarget{classelastmat2_d_aa73882b634aba6f92712f3bf2102a7d2}\label{classelastmat2_d_aa73882b634aba6f92712f3bf2102a7d2}} 
+\index{elastmat2D@{elastmat2D}!elastmat2D@{elastmat2D}}
+\index{elastmat2D@{elastmat2D}!elastmat2D@{elastmat2D}}
+\doxysubsubsection{\texorpdfstring{elastmat2D()}{elastmat2D()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily elastmat2\+D\+::elastmat2D (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{young,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{nu,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{thickness,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{bodyforce,  }\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{planestress,  }\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{order,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{H\+H\+AT }\end{DoxyParamCaption})}
+
+
+
+Definition at line 16 of file elastmat2\+D.\+cpp.
+
+\mbox{\Hypertarget{classelastmat2_d_a304b56e27f2bd4abab93290314f66ab8}\label{classelastmat2_d_a304b56e27f2bd4abab93290314f66ab8}} 
+\index{elastmat2D@{elastmat2D}!elastmat2D@{elastmat2D}}
+\index{elastmat2D@{elastmat2D}!elastmat2D@{elastmat2D}}
+\doxysubsubsection{\texorpdfstring{elastmat2D()}{elastmat2D()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily elastmat2\+D\+::elastmat2D (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 27 of file elastmat2\+D.\+cpp.
+
+\mbox{\Hypertarget{classelastmat2_d_a407fb1daa4f4d137d13d77d2a04d1f0a}\label{classelastmat2_d_a407fb1daa4f4d137d13d77d2a04d1f0a}} 
+\index{elastmat2D@{elastmat2D}!````~elastmat2D@{$\sim$elastmat2D}}
+\index{````~elastmat2D@{$\sim$elastmat2D}!elastmat2D@{elastmat2D}}
+\doxysubsubsection{\texorpdfstring{$\sim$elastmat2D()}{~elastmat2D()}}
+{\footnotesize\ttfamily elastmat2\+D\+::$\sim$elastmat2D (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 32 of file elastmat2\+D.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classelastmat2_d_a2aa5c152ce64077eb6eddde8f17ea5d2}\label{classelastmat2_d_a2aa5c152ce64077eb6eddde8f17ea5d2}} 
+\index{elastmat2D@{elastmat2D}!Assemble@{Assemble}}
+\index{Assemble@{Assemble}!elastmat2D@{elastmat2D}}
+\doxysubsubsection{\texorpdfstring{Assemble()}{Assemble()}}
+{\footnotesize\ttfamily void elastmat2\+D\+::\+Assemble (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{KG,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{FG,  }\item[{const std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&}]{allcoords,  }\item[{const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{meshnodes,  }\item[{const \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}}}]{meshtopology }\end{DoxyParamCaption})}
+
+
+
+Definition at line 39 of file elastmat2\+D.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::nrows().
+
+\mbox{\Hypertarget{classelastmat2_d_a45493e530215b933833373854d88f41c}\label{classelastmat2_d_a45493e530215b933833373854d88f41c}} 
+\index{elastmat2D@{elastmat2D}!assembleBandN@{assembleBandN}}
+\index{assembleBandN@{assembleBandN}!elastmat2D@{elastmat2D}}
+\doxysubsubsection{\texorpdfstring{assembleBandN()}{assembleBandN()}}
+{\footnotesize\ttfamily void elastmat2\+D\+::assemble\+BandN (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{B,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{N,  }\item[{const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{psis,  }\item[{const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{Grad\+Phi }\end{DoxyParamCaption})}
+
+
+
+Definition at line 176 of file elastmat2\+D.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign(), and N\+Rmatrix$<$ T $>$\+::nrows().
+
+\mbox{\Hypertarget{classelastmat2_d_a8d6509f3954c9acf3081d70a36829c2f}\label{classelastmat2_d_a8d6509f3954c9acf3081d70a36829c2f}} 
+\index{elastmat2D@{elastmat2D}!assembleConstitutiveMatrix@{assembleConstitutiveMatrix}}
+\index{assembleConstitutiveMatrix@{assembleConstitutiveMatrix}!elastmat2D@{elastmat2D}}
+\doxysubsubsection{\texorpdfstring{assembleConstitutiveMatrix()}{assembleConstitutiveMatrix()}}
+{\footnotesize\ttfamily void elastmat2\+D\+::assemble\+Constitutive\+Matrix (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{C,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{mult }\end{DoxyParamCaption})}
+
+
+
+Definition at line 207 of file elastmat2\+D.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign().
+
+\mbox{\Hypertarget{classelastmat2_d_ad79c6445944d16ad2eba62cbe173127b}\label{classelastmat2_d_ad79c6445944d16ad2eba62cbe173127b}} 
+\index{elastmat2D@{elastmat2D}!CacStiff@{CacStiff}}
+\index{CacStiff@{CacStiff}!elastmat2D@{elastmat2D}}
+\doxysubsubsection{\texorpdfstring{CacStiff()}{CacStiff()}}
+{\footnotesize\ttfamily void elastmat2\+D\+::\+Cac\+Stiff (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{ek,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{ef,  }\item[{const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{elcoords }\end{DoxyParamCaption})}
+
+
+
+Definition at line 86 of file elastmat2\+D.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign(), N\+Rmatrix$<$ T $>$\+::nrows(), and shapequad\+::pointsandweigths().
+
+\mbox{\Hypertarget{classelastmat2_d_a69a731753ebb721647271dc606b49bef}\label{classelastmat2_d_a69a731753ebb721647271dc606b49bef}} 
+\index{elastmat2D@{elastmat2D}!Contribute@{Contribute}}
+\index{Contribute@{Contribute}!elastmat2D@{elastmat2D}}
+\doxysubsubsection{\texorpdfstring{Contribute()}{Contribute()}}
+{\footnotesize\ttfamily void elastmat2\+D\+::\+Contribute (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{ek,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{ef,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{xi,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{eta,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{w,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{elcoords }\end{DoxyParamCaption})}
+
+
+
+Definition at line 110 of file elastmat2\+D.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::\+Mult(), N\+Rmatrix$<$ T $>$\+::nrows(), N\+Rmatrix$<$ T $>$\+::\+Print(), shapequad\+::shapes(), and N\+Rmatrix$<$ T $>$\+::\+Transpose().
+
+\mbox{\Hypertarget{classelastmat2_d_a538091688d21a5fc41e500b55605ca44}\label{classelastmat2_d_a538091688d21a5fc41e500b55605ca44}} 
+\index{elastmat2D@{elastmat2D}!ContributeLineNewan@{ContributeLineNewan}}
+\index{ContributeLineNewan@{ContributeLineNewan}!elastmat2D@{elastmat2D}}
+\doxysubsubsection{\texorpdfstring{ContributeLineNewan()}{ContributeLineNewan()}}
+{\footnotesize\ttfamily void elastmat2\+D\+::\+Contribute\+Line\+Newan (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{KG,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{FG,  }\item[{std\+::vector$<$ int $>$}]{ids,  }\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{dir,  }\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{val }\end{DoxyParamCaption})}
+
+
+
+Definition at line 263 of file elastmat2\+D.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::\+Mult(), N\+Rmatrix$<$ T $>$\+::nrows(), shapequad\+::pointsandweigths1\+D(), and shapequad\+::shapes1\+D().
+
+\mbox{\Hypertarget{classelastmat2_d_a73baae084b0761f21ae5c7ed003a7c7c}\label{classelastmat2_d_a73baae084b0761f21ae5c7ed003a7c7c}} 
+\index{elastmat2D@{elastmat2D}!DirichletBC@{DirichletBC}}
+\index{DirichletBC@{DirichletBC}!elastmat2D@{elastmat2D}}
+\doxysubsubsection{\texorpdfstring{DirichletBC()}{DirichletBC()}}
+{\footnotesize\ttfamily void elastmat2\+D\+::\+Dirichlet\+BC (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{KG,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{FG,  }\item[{std\+::vector$<$ int $>$}]{ids,  }\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{dir,  }\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{val }\end{DoxyParamCaption})}
+
+
+
+Definition at line 230 of file elastmat2\+D.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::nrows().
+
+\mbox{\Hypertarget{classelastmat2_d_a2e80aade5dc8c162ec911697d992e8b1}\label{classelastmat2_d_a2e80aade5dc8c162ec911697d992e8b1}} 
+\index{elastmat2D@{elastmat2D}!GetElCoords@{GetElCoords}}
+\index{GetElCoords@{GetElCoords}!elastmat2D@{elastmat2D}}
+\doxysubsubsection{\texorpdfstring{GetElCoords()}{GetElCoords()}}
+{\footnotesize\ttfamily void elastmat2\+D\+::\+Get\+El\+Coords (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&}]{allcoords,  }\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{el,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{elcoords }\end{DoxyParamCaption})}
+
+
+
+Definition at line 217 of file elastmat2\+D.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign().
+
+
+
+Referenced by K\+L\+Galerkin\+R\+F\+::\+Assemble\+B(), K\+L\+Galerkin\+R\+F\+::\+Assemble\+C(), and K\+L\+Galerkin\+R\+F\+::\+Perfom\+Integral\+Of\+Listconst().
+
+\mbox{\Hypertarget{classelastmat2_d_a007327ea7507735de43436d19aff10d5}\label{classelastmat2_d_a007327ea7507735de43436d19aff10d5}} 
+\index{elastmat2D@{elastmat2D}!PostProcess@{PostProcess}}
+\index{PostProcess@{PostProcess}!elastmat2D@{elastmat2D}}
+\doxysubsubsection{\texorpdfstring{PostProcess()}{PostProcess()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void elastmat2\+D\+::\+Post\+Process (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{nodalsol,  }\item[{std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&}]{sol }\end{DoxyParamCaption})}
+
+
+
+Definition at line 351 of file elastmat2\+D.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::\+Mult(), N\+Rmatrix$<$ T $>$\+::nrows(), shapequad\+::shapes(), and N\+Rmatrix$<$ T $>$\+::\+Transpose().
+
+\mbox{\Hypertarget{classelastmat2_d_a36e0148b889eb72ad8d98457be551b0f}\label{classelastmat2_d_a36e0148b889eb72ad8d98457be551b0f}} 
+\index{elastmat2D@{elastmat2D}!PostProcess@{PostProcess}}
+\index{PostProcess@{PostProcess}!elastmat2D@{elastmat2D}}
+\doxysubsubsection{\texorpdfstring{PostProcess()}{PostProcess()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void elastmat2\+D\+::\+Post\+Process (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{nodalsol,  }\item[{std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&}]{solx,  }\item[{std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&}]{soly }\end{DoxyParamCaption})}
+
+
+
+Definition at line 310 of file elastmat2\+D.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::\+Mult(), N\+Rmatrix$<$ T $>$\+::nrows(), shapequad\+::shapes(), and N\+Rmatrix$<$ T $>$\+::\+Transpose().
+
+\mbox{\Hypertarget{classelastmat2_d_a53aaa3cd424ae20382ce8a42071db41e}\label{classelastmat2_d_a53aaa3cd424ae20382ce8a42071db41e}} 
+\index{elastmat2D@{elastmat2D}!SolPt@{SolPt}}
+\index{SolPt@{SolPt}!elastmat2D@{elastmat2D}}
+\doxysubsubsection{\texorpdfstring{SolPt()}{SolPt()}}
+{\footnotesize\ttfamily void elastmat2\+D\+::\+Sol\+Pt (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} \&}]{el,  }\item[{const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{solG,  }\item[{const \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&}]{xi,  }\item[{const \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&}]{eta,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{xycoords,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{sol }\end{DoxyParamCaption})}
+
+
+
+Definition at line 286 of file elastmat2\+D.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign(), N\+Rmatrix$<$ T $>$\+::\+Mult(), N\+Rmatrix$<$ T $>$\+::nrows(), shapequad\+::shapes(), and N\+Rmatrix$<$ T $>$\+::\+Transpose().
+
+
+
+Referenced by K\+L\+Galerkin\+R\+F\+::\+Perfom\+Integral\+Of\+Listconst2().
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classelastmat2_d_a0b2ef9303fa72d101103ba2a7b385fcc}\label{classelastmat2_d_a0b2ef9303fa72d101103ba2a7b385fcc}} 
+\index{elastmat2D@{elastmat2D}!fbodyforce@{fbodyforce}}
+\index{fbodyforce@{fbodyforce}!elastmat2D@{elastmat2D}}
+\doxysubsubsection{\texorpdfstring{fbodyforce}{fbodyforce}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} elastmat2\+D\+::fbodyforce\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 32 of file elastmat2\+D.\+h.
+
+\mbox{\Hypertarget{classelastmat2_d_ac11ab9c507c40e4a5176fbb2124833d2}\label{classelastmat2_d_ac11ab9c507c40e4a5176fbb2124833d2}} 
+\index{elastmat2D@{elastmat2D}!fHHAT@{fHHAT}}
+\index{fHHAT@{fHHAT}!elastmat2D@{elastmat2D}}
+\doxysubsubsection{\texorpdfstring{fHHAT}{fHHAT}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} elastmat2\+D\+::f\+H\+H\+AT}
+
+
+
+Definition at line 38 of file elastmat2\+D.\+h.
+
+\mbox{\Hypertarget{classelastmat2_d_a13dd31dc85e19064705f5e755aaa7263}\label{classelastmat2_d_a13dd31dc85e19064705f5e755aaa7263}} 
+\index{elastmat2D@{elastmat2D}!fhhatvel@{fhhatvel}}
+\index{fhhatvel@{fhhatvel}!elastmat2D@{elastmat2D}}
+\doxysubsubsection{\texorpdfstring{fhhatvel}{fhhatvel}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} elastmat2\+D\+::fhhatvel}
+
+
+
+Definition at line 39 of file elastmat2\+D.\+h.
+
+\mbox{\Hypertarget{classelastmat2_d_a41cdba92ed770789b84eced146b8d2ed}\label{classelastmat2_d_a41cdba92ed770789b84eced146b8d2ed}} 
+\index{elastmat2D@{elastmat2D}!fmesh@{fmesh}}
+\index{fmesh@{fmesh}!elastmat2D@{elastmat2D}}
+\doxysubsubsection{\texorpdfstring{fmesh}{fmesh}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classmesh}{mesh}} elastmat2\+D\+::fmesh\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 36 of file elastmat2\+D.\+h.
+
+\mbox{\Hypertarget{classelastmat2_d_a5e91adacf964671d2d8a3ba429204a9f}\label{classelastmat2_d_a5e91adacf964671d2d8a3ba429204a9f}} 
+\index{elastmat2D@{elastmat2D}!fnu@{fnu}}
+\index{fnu@{fnu}!elastmat2D@{elastmat2D}}
+\doxysubsubsection{\texorpdfstring{fnu}{fnu}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} elastmat2\+D\+::fnu\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 31 of file elastmat2\+D.\+h.
+
+\mbox{\Hypertarget{classelastmat2_d_af39ffb5289180330a6e237c22b6d2654}\label{classelastmat2_d_af39ffb5289180330a6e237c22b6d2654}} 
+\index{elastmat2D@{elastmat2D}!fOrder@{fOrder}}
+\index{fOrder@{fOrder}!elastmat2D@{elastmat2D}}
+\doxysubsubsection{\texorpdfstring{fOrder}{fOrder}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} elastmat2\+D\+::f\+Order\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 35 of file elastmat2\+D.\+h.
+
+\mbox{\Hypertarget{classelastmat2_d_a48ed8bd79773a44875bc546ace0d346f}\label{classelastmat2_d_a48ed8bd79773a44875bc546ace0d346f}} 
+\index{elastmat2D@{elastmat2D}!fplanestress@{fplanestress}}
+\index{fplanestress@{fplanestress}!elastmat2D@{elastmat2D}}
+\doxysubsubsection{\texorpdfstring{fplanestress}{fplanestress}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} elastmat2\+D\+::fplanestress\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 33 of file elastmat2\+D.\+h.
+
+\mbox{\Hypertarget{classelastmat2_d_a03dd33456f5f6c71445418a9323fda00}\label{classelastmat2_d_a03dd33456f5f6c71445418a9323fda00}} 
+\index{elastmat2D@{elastmat2D}!fthickness@{fthickness}}
+\index{fthickness@{fthickness}!elastmat2D@{elastmat2D}}
+\doxysubsubsection{\texorpdfstring{fthickness}{fthickness}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} elastmat2\+D\+::fthickness\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 34 of file elastmat2\+D.\+h.
+
+\mbox{\Hypertarget{classelastmat2_d_aa9c9921b328d2608b741007ee1354969}\label{classelastmat2_d_aa9c9921b328d2608b741007ee1354969}} 
+\index{elastmat2D@{elastmat2D}!fyoung@{fyoung}}
+\index{fyoung@{fyoung}!elastmat2D@{elastmat2D}}
+\doxysubsubsection{\texorpdfstring{fyoung}{fyoung}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} elastmat2\+D\+::fyoung\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 30 of file elastmat2\+D.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{elastmat2_d_8h}{elastmat2\+D.\+h}}\item 
+src/\mbox{\hyperlink{elastmat2_d_8cpp}{elastmat2\+D.\+cpp}}\end{DoxyCompactItemize}

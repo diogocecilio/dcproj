@@ -1,0 +1,68 @@
+\hypertarget{classpostprocess}{}\doxysection{postprocess Class Reference}
+\label{classpostprocess}\index{postprocess@{postprocess}}
+
+
+{\ttfamily \#include $<$postprocess.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classpostprocess_abd94c1292b4e0e2cb8f35ff182774fc8}{postprocess}} ()
+\item 
+\mbox{\hyperlink{classpostprocess_ae5cf87ffaaa5ce22556696c004bd117c}{$\sim$postprocess}} ()
+\item 
+void \mbox{\hyperlink{classpostprocess_affd6871897ec87486f0071afa95bee41}{Post\+Process}} (\mbox{\hyperlink{classmesh}{mesh}} \&inmesh, const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&nodalsol, std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&sol)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 5 of file postprocess.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classpostprocess_abd94c1292b4e0e2cb8f35ff182774fc8}\label{classpostprocess_abd94c1292b4e0e2cb8f35ff182774fc8}} 
+\index{postprocess@{postprocess}!postprocess@{postprocess}}
+\index{postprocess@{postprocess}!postprocess@{postprocess}}
+\doxysubsubsection{\texorpdfstring{postprocess()}{postprocess()}}
+{\footnotesize\ttfamily postprocess\+::postprocess (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 5 of file postprocess.\+cpp.
+
+\mbox{\Hypertarget{classpostprocess_ae5cf87ffaaa5ce22556696c004bd117c}\label{classpostprocess_ae5cf87ffaaa5ce22556696c004bd117c}} 
+\index{postprocess@{postprocess}!````~postprocess@{$\sim$postprocess}}
+\index{````~postprocess@{$\sim$postprocess}!postprocess@{postprocess}}
+\doxysubsubsection{\texorpdfstring{$\sim$postprocess()}{~postprocess()}}
+{\footnotesize\ttfamily postprocess\+::$\sim$postprocess (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 10 of file postprocess.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classpostprocess_affd6871897ec87486f0071afa95bee41}\label{classpostprocess_affd6871897ec87486f0071afa95bee41}} 
+\index{postprocess@{postprocess}!PostProcess@{PostProcess}}
+\index{PostProcess@{PostProcess}!postprocess@{postprocess}}
+\doxysubsubsection{\texorpdfstring{PostProcess()}{PostProcess()}}
+{\footnotesize\ttfamily void postprocess\+::\+Post\+Process (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmesh}{mesh}} \&}]{inmesh,  }\item[{const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{nodalsol,  }\item[{std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&}]{sol }\end{DoxyParamCaption})}
+
+
+
+Definition at line 15 of file postprocess.\+cpp.
+
+
+
+References mesh\+::\+Get\+All\+Coords(), mesh\+::\+Get\+El\+Coords(), mesh\+::\+Get\+Mesh\+Nodes(), mesh\+::\+Get\+Mesh\+Topology(), N\+Rmatrix$<$ T $>$\+::\+Mult(), N\+Rmatrix$<$ T $>$\+::nrows(), shapequad\+::shapes(), and N\+Rmatrix$<$ T $>$\+::\+Transpose().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{postprocess_8h}{postprocess.\+h}}\item 
+src/\mbox{\hyperlink{postprocess_8cpp}{postprocess.\+cpp}}\end{DoxyCompactItemize}

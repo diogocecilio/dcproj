@@ -1,0 +1,96 @@
+\hypertarget{classKLGalerkinRF}{}\doxysection{K\+L\+Galerkin\+RF Class Reference}
+\label{classKLGalerkinRF}\index{KLGalerkinRF@{KLGalerkinRF}}
+
+
+Inheritance diagram for K\+L\+Galerkin\+RF\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=163pt]{classKLGalerkinRF__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for K\+L\+Galerkin\+RF\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=191pt]{classKLGalerkinRF__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classKLGalerkinRF_a20ecd396be7a3fa3be11f60ea2b86f90}\label{classKLGalerkinRF_a20ecd396be7a3fa3be11f60ea2b86f90}} 
+{\bfseries K\+L\+Galerkin\+RF} (Int order, Doub Lx, Doub Ly, Int type, Int samples, Int expansionorder)
+\item 
+\mbox{\Hypertarget{classKLGalerkinRF_a6d3ebd6ca5d959cbbff83371e4b87d3e}\label{classKLGalerkinRF_a6d3ebd6ca5d959cbbff83371e4b87d3e}} 
+void {\bfseries ContributeB} (\mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&BE, Doub xi, Doub eta, Doub w, \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} elcoords)
+\item 
+\mbox{\Hypertarget{classKLGalerkinRF_aac37c45d24cc3fc9ab079b3560682f71}\label{classKLGalerkinRF_aac37c45d24cc3fc9ab079b3560682f71}} 
+void {\bfseries Cac\+StiffB} (\mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&BE, const \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&elcoords)
+\item 
+\mbox{\Hypertarget{classKLGalerkinRF_aa88399d2e205cee179aed46cde56c272}\label{classKLGalerkinRF_aa88399d2e205cee179aed46cde56c272}} 
+void {\bfseries AssembleB} (\mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&B)
+\item 
+\mbox{\Hypertarget{classKLGalerkinRF_ad67bd4b6f039a23ea612c68dac252f84}\label{classKLGalerkinRF_ad67bd4b6f039a23ea612c68dac252f84}} 
+void {\bfseries ContributeC} (\mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&CE, \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} psis1, \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} Grad\+Psi1, \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} elcoords1, Doub w1, \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} psis2, \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} Grad\+Psi2, \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} elcoords2, Doub w2)
+\item 
+\mbox{\Hypertarget{classKLGalerkinRF_aaabdf838a9b3c37f73f5c4792aaf4760}\label{classKLGalerkinRF_aaabdf838a9b3c37f73f5c4792aaf4760}} 
+void {\bfseries Cac\+StiffC} (\mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&CE, const \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&elcoords1, const \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&elcoords2)
+\item 
+\mbox{\Hypertarget{classKLGalerkinRF_a0cfb6393e7b06bc92b161c6f8eee2053}\label{classKLGalerkinRF_a0cfb6393e7b06bc92b161c6f8eee2053}} 
+void {\bfseries AssembleC} (\mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&C)
+\item 
+\mbox{\Hypertarget{classKLGalerkinRF_a1b6e7bf4d1ea5c15116bf7f615b307d8}\label{classKLGalerkinRF_a1b6e7bf4d1ea5c15116bf7f615b307d8}} 
+void {\bfseries Solve\+Gen\+Eig\+Val\+Problem} (\mbox{\hyperlink{classNRvector}{Vec\+Complex}} \&val, \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&vec, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} $>$ \&H\+H\+AT, std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&errpost)
+\item 
+\mbox{\Hypertarget{classKLGalerkinRF_a6ccbb9f2272ab9d9e80a788a31047b5f}\label{classKLGalerkinRF_a6ccbb9f2272ab9d9e80a788a31047b5f}} 
+void {\bfseries Generate\+Gaussin\+Random\+Field} (\mbox{\hyperlink{classNRvector}{Vec\+Complex}} \&val, \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&vec, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} $>$ \&H\+H\+AT, std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&errpost)
+\item 
+\mbox{\Hypertarget{classKLGalerkinRF_ae57e3c53c6685ca44b39d33177bd6ac9}\label{classKLGalerkinRF_ae57e3c53c6685ca44b39d33177bd6ac9}} 
+void {\bfseries Generate\+Non\+Gaussin\+Random\+Field} (\mbox{\hyperlink{classNRvector}{Vec\+Complex}} \&val, \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&vec, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} $>$ \&H\+H\+AT, std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&errpost)
+\item 
+\mbox{\Hypertarget{classKLGalerkinRF_a23b45afff096f56b6bd61094dee401fb}\label{classKLGalerkinRF_a23b45afff096f56b6bd61094dee401fb}} 
+Doub {\bfseries Autocorrelation\+Func} (\mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} x1, \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} x2)
+\item 
+\mbox{\Hypertarget{classKLGalerkinRF_a3effa382cc37749c3c5bff5b5bd9e048}\label{classKLGalerkinRF_a3effa382cc37749c3c5bff5b5bd9e048}} 
+Doub {\bfseries Perfom\+Integral\+Of\+Listconst} (const \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&Vec)
+\item 
+\mbox{\Hypertarget{classKLGalerkinRF_a9daef93ee1d2a28ad441b4eb3f27f1c0}\label{classKLGalerkinRF_a9daef93ee1d2a28ad441b4eb3f27f1c0}} 
+Doub {\bfseries Perfom\+Integral\+Of\+Listconst2} (const \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&Vec)
+\item 
+\mbox{\Hypertarget{classKLGalerkinRF_ae1e73c4c323eedab9911490ea49eb2bc}\label{classKLGalerkinRF_ae1e73c4c323eedab9911490ea49eb2bc}} 
+void {\bfseries Compute\+Variance\+Error} (\mbox{\hyperlink{classNRvector}{Vec\+Complex}} \&val, \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&vec, \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&error)
+\item 
+\mbox{\Hypertarget{classKLGalerkinRF_ae157f4dab1f7a208fb85ce1e7f0a7bc1}\label{classKLGalerkinRF_ae157f4dab1f7a208fb85ce1e7f0a7bc1}} 
+void {\bfseries Out\+Put\+Post} (std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&postdata, std\+::ofstream \&file)
+\item 
+\mbox{\Hypertarget{classKLGalerkinRF_ad827bf5003a8913e138718004c8a86c5}\label{classKLGalerkinRF_ad827bf5003a8913e138718004c8a86c5}} 
+Doub {\bfseries Get\+Lx} ()
+\item 
+\mbox{\Hypertarget{classKLGalerkinRF_a412b0c50e4d7f156469f31c1dc6bd50b}\label{classKLGalerkinRF_a412b0c50e4d7f156469f31c1dc6bd50b}} 
+Doub {\bfseries Get\+Ly} ()
+\item 
+\mbox{\Hypertarget{classKLGalerkinRF_a31de9e0660d90378eac0a5e7293e7b88}\label{classKLGalerkinRF_a31de9e0660d90378eac0a5e7293e7b88}} 
+Doub {\bfseries Get\+Sig} ()
+\item 
+\mbox{\Hypertarget{classKLGalerkinRF_aa0007f22daa8ac8b46ea7b94d01557df}\label{classKLGalerkinRF_aa0007f22daa8ac8b46ea7b94d01557df}} 
+Doub {\bfseries Getftype} ()
+\item 
+\mbox{\Hypertarget{classKLGalerkinRF_a78128fb205d4f6e98581349adcebbd6b}\label{classKLGalerkinRF_a78128fb205d4f6e98581349adcebbd6b}} 
+Doub {\bfseries Get\+Expansionorder} ()
+\item 
+\mbox{\Hypertarget{classKLGalerkinRF_ad72613f6c861fd770be808dc67824f24}\label{classKLGalerkinRF_ad72613f6c861fd770be808dc67824f24}} 
+Doub {\bfseries Get\+Samples} ()
+\item 
+\mbox{\Hypertarget{classKLGalerkinRF_a3ed5b7414a985a9fb3c86282d9a5263a}\label{classKLGalerkinRF_a3ed5b7414a985a9fb3c86282d9a5263a}} 
+void {\bfseries Set\+Mesh} (\mbox{\hyperlink{classmesh}{mesh}} $\ast$inmesh)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/K\+L\+Galerkin\+R\+F.\+h\item 
+src/K\+L\+Galerkin\+R\+F.\+cpp\end{DoxyCompactItemize}

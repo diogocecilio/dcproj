@@ -14,16 +14,16 @@ elastoplastic2D<YC>::elastoplastic2D(Doub thickness, NRmatrix<Doub>  bodyforce, 
 
 }
 
-template <class YC>
-elastoplastic2D<YC>::elastoplastic2D(Doub young, Doub nu, Doub sigy, Doub thickness, NRmatrix<Doub>  bodyforce, Int planestress, Int order, NRmatrix<Doub>   HHAT)
-{
-	fbodyforce = bodyforce;
-	fplanestress = planestress;
-	fthickness = thickness;
-	fOrder = order;
-	fHHAT = HHAT;
+//template <class YC>
+//elastoplastic2D<YC>::elastoplastic2D(Doub young, Doub nu, Doub sigy, Doub thickness, NRmatrix<Doub>  bodyforce, Int planestress, Int order, NRmatrix<Doub>   HHAT)
+//{
+//	fbodyforce = bodyforce;
+//	fplanestress = planestress;
+//	fthickness = thickness;
+//	fOrder = order;
+//	fHHAT = HHAT;
 
-}
+//}
 
 template <class YC>
 elastoplastic2D<YC>::elastoplastic2D(Doub thickness, NRmatrix<Doub>  bodyforce, Int planestress, Int order, NRmatrix<Doub>   HHAT) 
@@ -185,6 +185,7 @@ void elastoplastic2D<YC>::ResetDisplacement()
 
 //
 //
+/*
 template <class YC>
 void elastoplastic2D<YC>::ContributeEig(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint, NRmatrix<Doub>  &efbody,NRvector<Doub> ptsw, NRmatrix<Doub>  elcoords, NRmatrix<Doub>  eldisplace)
 {
@@ -307,7 +308,7 @@ void elastoplastic2D<YC>::ContributeEig(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &ef
 
 }
 
-
+*/
 
 template <class YC>
 void elastoplastic2D<YC>::Contribute(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint, NRmatrix<Doub>  &efbody,NRvector<Doub> ptsw, NRmatrix<Doub>  elcoords,NRmatrix<Doub>  eldisplace)
@@ -433,7 +434,7 @@ void elastoplastic2D<YC>::Contribute(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint
 	efbody *= w*DetJ;
 }
 template <class YC>
-void elastoplastic2D<YC>::CacStiff(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint, NRmatrix<Doub>  &efbody, const NRmatrix<Doub>   &elcoords,NRmatrix<Doub>  eldisplace)
+void elastoplastic2D<YC>::CalcStiff(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint, NRmatrix<Doub>  &efbody, const NRmatrix<Doub>   &elcoords,NRmatrix<Doub>  eldisplace)
 {
 	MatDoub ptsweigths, ekt, eftint,eftbody;
 	Doub xi, eta, w;
@@ -556,7 +557,7 @@ void elastoplastic2D<YC>::CacStiff(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint, 
 
 
 
-
+/*
 template <class YC>
 void elastoplastic2D<YC>::Assemble(std::vector<std::vector< std::vector<Doub > > > allcoords, NRmatrix<Doub>  meshnodes,MatInt meshtopology,NRmatrix<Doub>  &KG, NRmatrix<Doub>  &Fint, NRmatrix<Doub>  &Fbody)
 {
@@ -729,7 +730,7 @@ void elastoplastic2D<YC>::Assemble(std::vector<std::vector< std::vector<Doub > >
 	fglobalcounter = 0;
 }
 
-
+*/
 template <class YC>
 void elastoplastic2D<YC>::assembleBandN(MatrixXd &B, MatrixXd  &N, const NRmatrix<Doub>  &psis, const NRmatrix<Doub>  &GradPhi)
 {
@@ -798,17 +799,8 @@ void elastoplastic2D<YC>::assembleBandN(NRmatrix<Doub>  &B, NRmatrix<Doub>  &N, 
 
 	}
 }
-template <class YC>
-void elastoplastic2D<YC>::assembleConstitutiveMatrix(NRmatrix<Doub>  &C, Doub mult)
-{
-	
-	Doub young = mult*fYC.fyoung, nu = fYC.fnu;
-	Doub nusqr = nu*nu;
-	C.assign(3, 3, 0.);
-	C[0][0] = young / (1 - nusqr);   C[0][1] = nu*young / (1 - nusqr);C[0][2] = 0.;
-	C[1][0] = nu*young / (1 - nusqr);C[1][1] = young / (1 - nusqr);   C[1][2] = 0.;
-	C[2][0] = 0.;                    C[2][1] = 0.;                    C[2][2] = young / (2 * (1 + nu));
-}
+
+
 template <class YC>
 void elastoplastic2D<YC>::GetElCoords(std::vector<std::vector< std::vector<Doub > > > allcoords, Int el, NRmatrix<Doub>  & elcoords) 
 {
@@ -988,8 +980,11 @@ void elastoplastic2D<YC>::ContributeCurvedLine(NRmatrix<Doub>  &KG, NRmatrix<Dou
 }
 
 template <class YC>
-void elastoplastic2D<YC>::SolPt(const std::vector<std::vector< std::vector<Doub > > > &allcoords, const MatInt &meshtopology, const Int &el, const  NRmatrix<Doub>  &solG, const Doub &xi, const Doub &eta, NRmatrix<Doub>  &xycoords, NRmatrix<Doub>  &sol)
+void elastoplastic2D<YC>::SolPt(mesh * inmesh, const Int &el, const  NRmatrix<Doub>  &nodalsol, const Doub &xi, const Doub &eta, NRmatrix<Doub>  &xycoords, NRmatrix<Doub>  &sol)
 {
+    const std::vector<std::vector< std::vector<Doub > > > allcoords = inmesh->GetAllCoords();
+    const MatInt meshtopology  = inmesh->GetMeshTopology();
+    
 	MatDoub psis, GradPsi, elcoords, psist, solel;
 	GetElCoords(allcoords, el, elcoords);
 
@@ -1005,7 +1000,7 @@ void elastoplastic2D<YC>::SolPt(const std::vector<std::vector< std::vector<Doub 
 
 	for (Int inode = 0; inode < nodes;inode++)
 	{
-		solel[inode][0] = solG[meshtopology[el][inode]][0];
+		solel[inode][0] = nodalsol[meshtopology[el][inode]][0];
 	}
 	psist.Mult(solel, sol);
 }
@@ -1136,110 +1131,6 @@ void elastoplastic2D<YC>::PostProcessIntegrationPointVar(std::vector<std::vector
 
 		}
 	}
-}
-
-NRmatrix<Doub> debug;
-Int counts=0;
-template <class YC>
-//void elastoplastic2D<YC>::PostProcess(mesh & inmesh,Int var,const MatDoub & nodalsol, std::vector<std::vector<double>> &sol)
-void elastoplastic2D<YC>::PostProcessStrain(mesh * inmesh,  NRvector<NRvector<NRtensor<Doub>>> &sol )
-{
-    Doub xi,eta;
-    Int ndof_per_node =2;
-    std::vector<std::vector< std::vector<Doub > > > allcoords;
-    NRmatrix<Doub>  meshnode;
-    MatInt meshtopology;
-    allcoords = inmesh->GetAllCoords();
-    meshnode=inmesh->GetMeshNodes();
-    meshtopology=inmesh->GetMeshTopology();
-	int type = 1;
-	shapequad objshapes(fOrder, type);
-	NRmatrix<Doub>  elcoords, eltopology, psis, gradpsis, xycoords, psist,ptsweigths,GradPsi;
-
-	shapequad shape = shapequad(fOrder, 1);
-	shape.pointsandweigths(ptsweigths);
-    NRmatrix<Doub> basenodes= shape.GetBaseNodes();
-
-	GetElCoords(allcoords, 0, elcoords);
-	Int rows = elcoords.nrows();
-	Int cols = rows;
-	Int nels = allcoords.size();
-
-    NRvector<NRvector<NRtensor<Doub>>> solutionbyel(nels);
-    Int nnodes = meshnode.nrows();
-    NRmatrix<NRvector<Doub>> uglob;
-	uglob.resize(nels, rows);
-
-    NRtensor<Doub> straintensor;
-    NRvector<Doub> ptsw(3);
-    std::vector<Int> indexvec;
-	for (Int iel = 0;iel < nels;iel++)
-	{
-
-		GetElCoords(allcoords, iel, elcoords);
-        Int elnodes = elcoords.nrows();
-        solutionbyel[iel].resize(elnodes);
-         NRmatrix<Doub> elementdisplace(elnodes,ndof_per_node);
-
-
-        for(Int inode=0;inode<elnodes;inode++)
-        {
-            Int index=meshtopology[iel][inode];
-
-            elementdisplace[inode][0] = GetSolution()[ndof_per_node * index +0][0];//ux
-            elementdisplace[inode][1] = GetSolution()[ndof_per_node * index +1][0];//uy
-            Int nodeid;
-            for(Int ibase=0;ibase<basenodes.nrows();ibase++)
-            {
-                ptsw[0]=basenodes[ibase][0];
-                ptsw[1]=basenodes[ibase][1];
-                ptsw[2]=0.;
-                //ComputeStrain(inmesh,elcoords, elementdisplace,ptsw,straintensor,index);
-                solutionbyel[iel][inode]+=straintensor;
-            }
-            if(index==266)
-            {
-                std::cout << "iel = " <<iel<< std::endl;
-                std::cout << "inode = " <<inode<< std::endl;
-                std::cout << "index = " <<index<< std::endl;
-                std::cout << "basenodes" <<std::endl;
-                std::cout << "xi = "<< ptsw[0] << " eta = "<< ptsw[1]<<std::endl;
-                std::cout << "elcoords" <<std::endl;
-                elcoords.Print();
-                std::cout << "stress" <<std::endl;
-                solutionbyel[iel][inode].Print();
-            }
-            //indexvec.push_back(nodeid);
-
-        }
-	}
-    sol=solutionbyel;
-/*
-    for (Int iel = 0;iel < nels;iel++)
-	{
-        std::cout<< "iel = "<<iel<<std::endl;
-
-        Int elnodes = solutionbyel[iel].size();
-
-        for(Int inode=0;inode<elnodes;inode++)
-        {
-            solutionbyel[iel][inode].Print();
-        }
-        std::cout<< endl;
-	}
-	*/
-
-	//debug.Print();
-	//deleteduplicates(indexvec);
-
-	//Int id;
- 	//for(Int inode=0;inode<nnodes;inode++)
-    //{
-     //   id = getIndex(indexvec,inode);
-     //   sol[inode]=soltemp[id];
-    //}
-
-
 }
 
 template <class YC>

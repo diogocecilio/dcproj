@@ -3,7 +3,7 @@ BuildItems=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x01\x00\x00\x00\x0b\x00\x00\x
 
 [CMake]
 Build Directory Count=2
-Current Build Directory Index-Host System=0
+Current Build Directory Index-Host System=1
 
 [CMake][CMake Build Directory 0]
 Build Directory Path=/home/diogocecilio/projects/dcproj-build-release
@@ -49,7 +49,7 @@ isExecutable=true
 [Launch][Launch Configuration 1]
 Configured Launch Modes=execute
 Configured Launchers=nativeAppLauncher
-Name=New Compiled Binary Launcher
+Name=debug
 Type=Native Application
 
 [Launch][Launch Configuration 1][Data]

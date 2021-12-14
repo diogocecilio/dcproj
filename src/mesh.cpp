@@ -303,11 +303,6 @@ void mesh::Assemble(MatDoub& KG, MatDoub& Fint, MatDoub& Fbody)
 
 void mesh::Assemble(MatDoub& KG, MatDoub& Fint, MatDoub& Fbody)
 {
-	//std::vector<std::vector< std::vector<Doub > > > allcoords = fmesh.GetAllCoords();
-	//MatDoub meshnodes = fmesh.GetMeshNodes();
-	//MatInt meshtopology = fmesh.GetMeshTopology();
-
-	//cout << "all cc" << allcoords[0].size() <<endl;
 
     int ndof_per_node=fdim;
 	MatDoub ek, efint, efbody, elcoords, eltopology;
@@ -321,10 +316,6 @@ void mesh::Assemble(MatDoub& KG, MatDoub& Fint, MatDoub& Fbody)
 	Fbody.assign(sz, 1, 0.);
 	Int nels = fallcoords.size();
 
-	//uglob = Table[
-		//Table[{displacement[[2 topol[[k, j]] - 1]],
-		//	displacement[[2 topol[[k, j]]]]}, { j, 1,
-			//Length[topol[[k]]] }], { k, 1, nels }];
 	NRmatrix<NRvector<Doub>> uglob;
 	uglob.resize(nels, rows);
 	for (int i = 0; i < nels; i++)
@@ -364,7 +355,7 @@ void mesh::Assemble(MatDoub& KG, MatDoub& Fint, MatDoub& Fbody)
 		MatDoub elementdisplace(elcoords.nrows(),ndof_per_node, 0.);
 		for (Int i = 0; i < elcoords.nrows(); i++)for (Int j = 0; j < ndof_per_node; j++)elementdisplace[i][j] = uglob[iel][i][j];
 		GetElCoords(fallcoords, iel, elcoords);
-		fmaterial->CacStiff(ek, efint, efbody, elcoords, elementdisplace);
+		fmaterial->CalcStiff(ek, efint, efbody, elcoords, elementdisplace);
 		for (Int irow = 0; irow < rows; irow++)
 		{
 			Int rowglob = fmeshtopology[iel][irow];
@@ -516,7 +507,7 @@ tripletList.reserve(sz*sz);
 		MatDoub elementdisplace(elcoords.nrows(), 2, 0.);
 		for (Int i = 0; i < elcoords.nrows(); i++)for (Int j = 0; j < 2; j++)elementdisplace[i][j] = uglob[iel][i][j];
 		GetElCoords(fallcoords, iel, elcoords);
-		fmaterial->CacStiff(ek, efint, efbody, elcoords, elementdisplace);
+		fmaterial->CalcStiff(ek, efint, efbody, elcoords, elementdisplace);
 		for (Int irow = 0;irow < rows;irow++)
 		{
 			Int rowglob = fmeshtopology[iel][irow];

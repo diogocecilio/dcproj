@@ -35,7 +35,7 @@ elastmat2D::~elastmat2D()
 
 }
 
-
+/*
 void elastmat2D::Assemble(MatDoub &KG, MatDoub &FG, const std::vector<std::vector< std::vector<Doub > > > &allcoords, const MatDoub &meshnodes, const MatInt meshtopology)
 {
 	MatDoub ek, ef, elcoords, eltopology;
@@ -82,8 +82,8 @@ void elastmat2D::Assemble(MatDoub &KG, MatDoub &FG, const std::vector<std::vecto
 	}
 
 }
-
-void elastmat2D::CacStiff(MatDoub &ek, MatDoub &ef, const MatDoub  &elcoords)
+*/
+void elastmat2D::CalcStiff(MatDoub &ek, MatDoub &ef, const MatDoub  &elcoords)
 {
 
 	MatDoub ptsweigths, ekt, eft;

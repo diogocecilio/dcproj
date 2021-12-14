@@ -1,0 +1,16 @@
+set multiplot
+# plot the contour from the surface1.txt
+unset key
+set dgrid3d
+unset surface
+set contour base
+# these values need to be set (requirement)
+set cntrparam level incremental 0.16, 0.259, 4.47
+set view 0,0
+unset ztics
+splot "projects/dcproj/data/sqrtJ2GIM2.dat" with lines
+# plot the points on the x-y plane
+unset xtics
+unset ytics
+splot "projects/dcproj/data/sqrtJ2GIM2.dat"
+unset multiplot

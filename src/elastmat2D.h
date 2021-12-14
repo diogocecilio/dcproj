@@ -13,8 +13,8 @@ public:
 	~elastmat2D();
 
 	void Contribute(MatDoub &ek, MatDoub &ef, Doub xi, Doub eta, Doub w, MatDoub elcoords);
-	void CacStiff(MatDoub &ek, MatDoub &ef, const MatDoub  &elcoords);
-	void Assemble(MatDoub &KG, MatDoub &FG, const std::vector<std::vector< std::vector<Doub > > > &allcoords, const MatDoub &meshnodes, const MatInt meshtopology);
+	void CalcStiff(MatDoub &ek, MatDoub &ef, const MatDoub  &elcoords);
+	//void Assemble(MatDoub &KG, MatDoub &FG, const std::vector<std::vector< std::vector<Doub > > > &allcoords, const MatDoub &meshnodes, const MatInt meshtopology);
 	void assembleBandN(MatDoub &B, MatDoub &N, const MatDoub &psis, const MatDoub &GradPhi);
 	void assembleConstitutiveMatrix(MatDoub &C, Doub mult);
 	void GetElCoords(std::vector<std::vector< std::vector<Doub > > > &allcoords, Int el, MatDoub & elcoords);

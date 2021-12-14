@@ -1,0 +1,611 @@
+\hypertarget{classmohrcoulomb}{}\doxysection{mohrcoulomb Class Reference}
+\label{classmohrcoulomb}\index{mohrcoulomb@{mohrcoulomb}}
+
+
+{\ttfamily \#include $<$mohrcoulomb.\+h$>$}
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structmohrcoulomb_1_1_t_compute_sequence}{T\+Compute\+Sequence}}
+\begin{DoxyCompactList}\small\item\em structure which contains the decision tree of the return map \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \mbox{\hyperlink{classmohrcoulomb_a0af96a669b695c3abf4da73a384b17baa0e180887d8ebb603f9591dab72c72eb7}{N\+Yield}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmohrcoulomb_ab4f2832805d2ef91d7e9f0f39c4cd486}{mohrcoulomb}} ()
+\item 
+\mbox{\hyperlink{classmohrcoulomb_a2880ff4183543c12203f0bf7411ec54b}{mohrcoulomb}} (\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classmohrcoulomb_acef96cd6eace6b9ee38358f279a2fa86}{Phi}}, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classmohrcoulomb_a7da9fd5f2c03e580df3713734d7d562d}{Psi}}, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} c, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} young, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} nu)
+\item 
+\mbox{\hyperlink{classmohrcoulomb_a203b793072479af4359b352e8dc1c157}{mohrcoulomb}} (const \mbox{\hyperlink{classmohrcoulomb}{mohrcoulomb}} \&cp)
+\item 
+void \mbox{\hyperlink{classmohrcoulomb_ab492995c9d432c437edccde64e6a8cd1}{Set\+Up}} (\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classmohrcoulomb_acef96cd6eace6b9ee38358f279a2fa86}{Phi}}, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classmohrcoulomb_a7da9fd5f2c03e580df3713734d7d562d}{Psi}}, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} c, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} young, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} nu)
+\item 
+\mbox{\hyperlink{classmohrcoulomb}{mohrcoulomb}} \& \mbox{\hyperlink{classmohrcoulomb_aeb44ffded14e07f1a28ea9372fd8b1d3}{operator=}} (const \mbox{\hyperlink{classmohrcoulomb}{mohrcoulomb}} \&cp)
+\item 
+void \mbox{\hyperlink{classmohrcoulomb_a50e6bf642515fc91746b5103e810ecdf}{Set\+Eps\+Bar}} (\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&epsbar)
+\item 
+void \mbox{\hyperlink{classmohrcoulomb_a176d590a8a7c1569da771fd114ab87ae}{Set\+Elastic\+Response}} (\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} young, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} nu)
+\item 
+{\footnotesize template$<$class T $>$ }\\\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \mbox{\hyperlink{classmohrcoulomb_a334e5da4f2dd9b38ce5ad213075a02d1}{Sigma\+Elast\+PV}} (const \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&deform) const
+\item 
+{\footnotesize template$<$class T $>$ }\\\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \mbox{\hyperlink{classmohrcoulomb_ac32b5800a61d525df596d39b20a53d4e}{Phi\+Plane}} (const \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&sigma) const
+\item 
+{\footnotesize template$<$class T $>$ }\\bool \mbox{\hyperlink{classmohrcoulomb_a9854ab152539e81f1c14a09f7262a135}{Return\+Map\+Plane}} (const \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&sigma\+\_\+trial, \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&sigma\+\_\+projected, \mbox{\hyperlink{structmohrcoulomb_1_1_t_compute_sequence}{T\+Compute\+Sequence}} \&memory, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&epsbarnew) const
+\item 
+void \mbox{\hyperlink{classmohrcoulomb_aaaa0c150a10ee3c0ce1d2b4f24b06109}{Compute\+Plane\+Tangent}} (\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&tang, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&epsbarp) const
+\item 
+{\footnotesize template$<$class T $>$ }\\bool \mbox{\hyperlink{classmohrcoulomb_a5b52f475bdada720e87573cc2b340d2b}{Return\+Map\+Left\+Edge}} (const \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&sigma\+\_\+trial, \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&sigma\+\_\+projected, \mbox{\hyperlink{structmohrcoulomb_1_1_t_compute_sequence}{T\+Compute\+Sequence}} \&memory, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&epsbarnew) const
+\item 
+void \mbox{\hyperlink{classmohrcoulomb_a7043119fe389d0f46f5daebccaf71a99}{Compute\+Left\+Edge\+Tangent}} (\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&tang, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&epsbarp) const
+\item 
+{\footnotesize template$<$class T $>$ }\\bool \mbox{\hyperlink{classmohrcoulomb_a63912486123e6a990d8e3fd62557b7b6}{Return\+Map\+Right\+Edge}} (const \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&sigma\+\_\+trial, \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&sigma\+\_\+projected, \mbox{\hyperlink{structmohrcoulomb_1_1_t_compute_sequence}{T\+Compute\+Sequence}} \&memory, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&epsbarnew) const
+\item 
+void \mbox{\hyperlink{classmohrcoulomb_a1478a76481f55749aef565c8fc2ae59d}{Compute\+Right\+Edge\+Tangent}} (\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&tang, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&epsbarp) const
+\item 
+{\footnotesize template$<$class T $>$ }\\bool \mbox{\hyperlink{classmohrcoulomb_a69c9416fa2b31161d6747781a14e0dd3}{Return\+Map\+Apex}} (const \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&sigma\+\_\+trial, \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&sigma\+\_\+projected, \mbox{\hyperlink{structmohrcoulomb_1_1_t_compute_sequence}{T\+Compute\+Sequence}} \&memory, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&epsbarnew) const
+\item 
+void \mbox{\hyperlink{classmohrcoulomb_a8f9ec0dabfae52da808b96f79b94aecf}{Compute\+Apex\+Gradient}} (\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&gradient, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&eps\+\_\+bar\+\_\+p) const
+\item 
+void \mbox{\hyperlink{classmohrcoulomb_a6dd506ad7735df2914e13a2d05f049e6}{Project\+Sigma}} (const \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&sigma\+\_\+trial, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} k\+\_\+prev, \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&sigma, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&k\+\_\+proj, \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} \&m\+\_\+type, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $\ast$gradient=N\+U\+LL)
+\item 
+void \mbox{\hyperlink{classmohrcoulomb_acef96cd6eace6b9ee38358f279a2fa86}{Phi}} (\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ sig\+\_\+vec, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} alpha, \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&phi) const
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classmohrcoulomb_ae753b030dd8a8f0ac93d148748a8012c}{Phi}} ()
+\item 
+void \mbox{\hyperlink{classmohrcoulomb_ae56cd717f403a0be511a312681228378}{Set\+Phi}} (\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} phi)
+\begin{DoxyCompactList}\small\item\em Set up the phi. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classmohrcoulomb_a7da9fd5f2c03e580df3713734d7d562d}{Psi}} ()
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classmohrcoulomb_a0a41dfaf331974d5327c998866740701}{Cohesion}} ()
+\item 
+void \mbox{\hyperlink{classmohrcoulomb_aba6ff336e1bd9241582e4806f670d757}{Set\+Cohesion}} (\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} cohesion)
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classmohrcoulomb_abc3461cb02b6f4b4c2468713cd6e071c}{E}} ()
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classmohrcoulomb_a9543b7afd7d1a83b732aa21210fe94fd}{Poisson}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classmohrcoulomb_a68ad4b9790732a4c0dc58aec464d0822}{f\+Eps\+Plastic\+Bar}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classmohrcoulomb_a21123b959036d7a01dc08087df3033fb}{f\+Phi}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classmohrcoulomb_ac113c932132d5f3fc4b9d0ccddfb9e94}{f\+Psi}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classmohrcoulomb_a723cf42b3a6dd038b92a295dac0a70c8}{fc}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classmohrcoulomb_af1db4364dce049174b3d6b05e7b9a4d6}{fyoung}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classmohrcoulomb_abd426ee98146a068ef7d3afa2d85e1c6}{fnu}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classmohrcoulomb_a5c5cd01efb8bf5dedd66c4f0a55d75d1}{flambda}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classmohrcoulomb_acb069ab6a372d811830ad1122f50ce0d}{fmu}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classmohrcoulomb_a4d83baa1ed2d1a06825b75af8d71a42c}{fK}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 13 of file mohrcoulomb.\+h.
+
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classmohrcoulomb_a0af96a669b695c3abf4da73a384b17ba}\label{classmohrcoulomb_a0af96a669b695c3abf4da73a384b17ba}} 
+\doxysubsubsection{\texorpdfstring{anonymous enum}{anonymous enum}}
+{\footnotesize\ttfamily anonymous enum}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NYield@{NYield}!mohrcoulomb@{mohrcoulomb}}\index{mohrcoulomb@{mohrcoulomb}!NYield@{NYield}}}\mbox{\Hypertarget{classmohrcoulomb_a0af96a669b695c3abf4da73a384b17baa0e180887d8ebb603f9591dab72c72eb7}\label{classmohrcoulomb_a0af96a669b695c3abf4da73a384b17baa0e180887d8ebb603f9591dab72c72eb7}} 
+N\+Yield&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 16 of file mohrcoulomb.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classmohrcoulomb_ab4f2832805d2ef91d7e9f0f39c4cd486}\label{classmohrcoulomb_ab4f2832805d2ef91d7e9f0f39c4cd486}} 
+\index{mohrcoulomb@{mohrcoulomb}!mohrcoulomb@{mohrcoulomb}}
+\index{mohrcoulomb@{mohrcoulomb}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{mohrcoulomb()}{mohrcoulomb()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily mohrcoulomb\+::mohrcoulomb (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 3 of file mohrcoulomb.\+cpp.
+
+
+
+References Debug\+Stop.
+
+\mbox{\Hypertarget{classmohrcoulomb_a2880ff4183543c12203f0bf7411ec54b}\label{classmohrcoulomb_a2880ff4183543c12203f0bf7411ec54b}} 
+\index{mohrcoulomb@{mohrcoulomb}!mohrcoulomb@{mohrcoulomb}}
+\index{mohrcoulomb@{mohrcoulomb}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{mohrcoulomb()}{mohrcoulomb()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily mohrcoulomb\+::mohrcoulomb (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{Phi,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{Psi,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{c,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{young,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{nu }\end{DoxyParamCaption})}
+
+
+
+Definition at line 7 of file mohrcoulomb.\+cpp.
+
+
+
+References Debug\+Stop.
+
+\mbox{\Hypertarget{classmohrcoulomb_a203b793072479af4359b352e8dc1c157}\label{classmohrcoulomb_a203b793072479af4359b352e8dc1c157}} 
+\index{mohrcoulomb@{mohrcoulomb}!mohrcoulomb@{mohrcoulomb}}
+\index{mohrcoulomb@{mohrcoulomb}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{mohrcoulomb()}{mohrcoulomb()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily mohrcoulomb\+::mohrcoulomb (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classmohrcoulomb}{mohrcoulomb}} \&}]{cp }\end{DoxyParamCaption})}
+
+
+
+Definition at line 11 of file mohrcoulomb.\+cpp.
+
+
+
+References Debug\+Stop.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classmohrcoulomb_a0a41dfaf331974d5327c998866740701}\label{classmohrcoulomb_a0a41dfaf331974d5327c998866740701}} 
+\index{mohrcoulomb@{mohrcoulomb}!Cohesion@{Cohesion}}
+\index{Cohesion@{Cohesion}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{Cohesion()}{Cohesion()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} mohrcoulomb\+::\+Cohesion (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 146 of file mohrcoulomb.\+h.
+
+
+
+References fc.
+
+\mbox{\Hypertarget{classmohrcoulomb_a8f9ec0dabfae52da808b96f79b94aecf}\label{classmohrcoulomb_a8f9ec0dabfae52da808b96f79b94aecf}} 
+\index{mohrcoulomb@{mohrcoulomb}!ComputeApexGradient@{ComputeApexGradient}}
+\index{ComputeApexGradient@{ComputeApexGradient}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{ComputeApexGradient()}{ComputeApexGradient()}}
+{\footnotesize\ttfamily void mohrcoulomb\+::\+Compute\+Apex\+Gradient (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{gradient,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&}]{eps\+\_\+bar\+\_\+p }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 146 of file mohrcoulomb.\+cpp.
+
+\mbox{\Hypertarget{classmohrcoulomb_a7043119fe389d0f46f5daebccaf71a99}\label{classmohrcoulomb_a7043119fe389d0f46f5daebccaf71a99}} 
+\index{mohrcoulomb@{mohrcoulomb}!ComputeLeftEdgeTangent@{ComputeLeftEdgeTangent}}
+\index{ComputeLeftEdgeTangent@{ComputeLeftEdgeTangent}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{ComputeLeftEdgeTangent()}{ComputeLeftEdgeTangent()}}
+{\footnotesize\ttfamily void mohrcoulomb\+::\+Compute\+Left\+Edge\+Tangent (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{tang,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&}]{epsbarp }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 121 of file mohrcoulomb.\+cpp.
+
+\mbox{\Hypertarget{classmohrcoulomb_aaaa0c150a10ee3c0ce1d2b4f24b06109}\label{classmohrcoulomb_aaaa0c150a10ee3c0ce1d2b4f24b06109}} 
+\index{mohrcoulomb@{mohrcoulomb}!ComputePlaneTangent@{ComputePlaneTangent}}
+\index{ComputePlaneTangent@{ComputePlaneTangent}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{ComputePlaneTangent()}{ComputePlaneTangent()}}
+{\footnotesize\ttfamily void mohrcoulomb\+::\+Compute\+Plane\+Tangent (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{tang,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&}]{epsbarp }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 85 of file mohrcoulomb.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign(), fc, fK, fmu, f\+Phi, and f\+Psi.
+
+\mbox{\Hypertarget{classmohrcoulomb_a1478a76481f55749aef565c8fc2ae59d}\label{classmohrcoulomb_a1478a76481f55749aef565c8fc2ae59d}} 
+\index{mohrcoulomb@{mohrcoulomb}!ComputeRightEdgeTangent@{ComputeRightEdgeTangent}}
+\index{ComputeRightEdgeTangent@{ComputeRightEdgeTangent}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{ComputeRightEdgeTangent()}{ComputeRightEdgeTangent()}}
+{\footnotesize\ttfamily void mohrcoulomb\+::\+Compute\+Right\+Edge\+Tangent (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{tang,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&}]{epsbarp }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 133 of file mohrcoulomb.\+cpp.
+
+\mbox{\Hypertarget{classmohrcoulomb_abc3461cb02b6f4b4c2468713cd6e071c}\label{classmohrcoulomb_abc3461cb02b6f4b4c2468713cd6e071c}} 
+\index{mohrcoulomb@{mohrcoulomb}!E@{E}}
+\index{E@{E}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{E()}{E()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} mohrcoulomb\+::E (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 156 of file mohrcoulomb.\+h.
+
+
+
+References fyoung.
+
+\mbox{\Hypertarget{classmohrcoulomb_aeb44ffded14e07f1a28ea9372fd8b1d3}\label{classmohrcoulomb_aeb44ffded14e07f1a28ea9372fd8b1d3}} 
+\index{mohrcoulomb@{mohrcoulomb}!operator=@{operator=}}
+\index{operator=@{operator=}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classmohrcoulomb}{mohrcoulomb}}\& mohrcoulomb\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classmohrcoulomb}{mohrcoulomb}} \&}]{cp }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classmohrcoulomb_ae753b030dd8a8f0ac93d148748a8012c}\label{classmohrcoulomb_ae753b030dd8a8f0ac93d148748a8012c}} 
+\index{mohrcoulomb@{mohrcoulomb}!Phi@{Phi}}
+\index{Phi@{Phi}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{Phi()}{Phi()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} mohrcoulomb\+::\+Phi (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 131 of file mohrcoulomb.\+h.
+
+
+
+References f\+Phi.
+
+
+
+Referenced by Set\+Up().
+
+\mbox{\Hypertarget{classmohrcoulomb_acef96cd6eace6b9ee38358f279a2fa86}\label{classmohrcoulomb_acef96cd6eace6b9ee38358f279a2fa86}} 
+\index{mohrcoulomb@{mohrcoulomb}!Phi@{Phi}}
+\index{Phi@{Phi}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{Phi()}{Phi()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void mohrcoulomb\+::\+Phi (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$}]{sig\+\_\+vec,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{alpha,  }\item[{\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{phi }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 158 of file mohrcoulomb.\+cpp.
+
+
+
+References Phi\+Plane(), and N\+Rvector$<$ T $>$\+::resize().
+
+\mbox{\Hypertarget{classmohrcoulomb_ac32b5800a61d525df596d39b20a53d4e}\label{classmohrcoulomb_ac32b5800a61d525df596d39b20a53d4e}} 
+\index{mohrcoulomb@{mohrcoulomb}!PhiPlane@{PhiPlane}}
+\index{PhiPlane@{PhiPlane}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{PhiPlane()}{PhiPlane()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} mohrcoulomb\+::\+Phi\+Plane (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{sigma }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 31 of file mohrcoulomb.\+cpp.
+
+
+
+References fc, and f\+Phi.
+
+
+
+Referenced by Phi().
+
+\mbox{\Hypertarget{classmohrcoulomb_a9543b7afd7d1a83b732aa21210fe94fd}\label{classmohrcoulomb_a9543b7afd7d1a83b732aa21210fe94fd}} 
+\index{mohrcoulomb@{mohrcoulomb}!Poisson@{Poisson}}
+\index{Poisson@{Poisson}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{Poisson()}{Poisson()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} mohrcoulomb\+::\+Poisson (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 160 of file mohrcoulomb.\+h.
+
+
+
+References fnu.
+
+\mbox{\Hypertarget{classmohrcoulomb_a6dd506ad7735df2914e13a2d05f049e6}\label{classmohrcoulomb_a6dd506ad7735df2914e13a2d05f049e6}} 
+\index{mohrcoulomb@{mohrcoulomb}!ProjectSigma@{ProjectSigma}}
+\index{ProjectSigma@{ProjectSigma}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{ProjectSigma()}{ProjectSigma()}}
+{\footnotesize\ttfamily void mohrcoulomb\+::\+Project\+Sigma (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{sigma\+\_\+trial,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{k\+\_\+prev,  }\item[{\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{sigma,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&}]{k\+\_\+proj,  }\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} \&}]{m\+\_\+type,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $\ast$}]{gradient = {\ttfamily NULL} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 152 of file mohrcoulomb.\+cpp.
+
+\mbox{\Hypertarget{classmohrcoulomb_a7da9fd5f2c03e580df3713734d7d562d}\label{classmohrcoulomb_a7da9fd5f2c03e580df3713734d7d562d}} 
+\index{mohrcoulomb@{mohrcoulomb}!Psi@{Psi}}
+\index{Psi@{Psi}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{Psi()}{Psi()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} mohrcoulomb\+::\+Psi (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 141 of file mohrcoulomb.\+h.
+
+
+
+References f\+Psi.
+
+
+
+Referenced by Set\+Up().
+
+\mbox{\Hypertarget{classmohrcoulomb_a69c9416fa2b31161d6747781a14e0dd3}\label{classmohrcoulomb_a69c9416fa2b31161d6747781a14e0dd3}} 
+\index{mohrcoulomb@{mohrcoulomb}!ReturnMapApex@{ReturnMapApex}}
+\index{ReturnMapApex@{ReturnMapApex}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{ReturnMapApex()}{ReturnMapApex()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool mohrcoulomb\+::\+Return\+Map\+Apex (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{sigma\+\_\+trial,  }\item[{\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{sigma\+\_\+projected,  }\item[{\mbox{\hyperlink{structmohrcoulomb_1_1_t_compute_sequence}{T\+Compute\+Sequence}} \&}]{memory,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&}]{epsbarnew }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 139 of file mohrcoulomb.\+cpp.
+
+\mbox{\Hypertarget{classmohrcoulomb_a5b52f475bdada720e87573cc2b340d2b}\label{classmohrcoulomb_a5b52f475bdada720e87573cc2b340d2b}} 
+\index{mohrcoulomb@{mohrcoulomb}!ReturnMapLeftEdge@{ReturnMapLeftEdge}}
+\index{ReturnMapLeftEdge@{ReturnMapLeftEdge}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{ReturnMapLeftEdge()}{ReturnMapLeftEdge()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool mohrcoulomb\+::\+Return\+Map\+Left\+Edge (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{sigma\+\_\+trial,  }\item[{\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{sigma\+\_\+projected,  }\item[{\mbox{\hyperlink{structmohrcoulomb_1_1_t_compute_sequence}{T\+Compute\+Sequence}} \&}]{memory,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&}]{epsbarnew }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 115 of file mohrcoulomb.\+cpp.
+
+\mbox{\Hypertarget{classmohrcoulomb_a9854ab152539e81f1c14a09f7262a135}\label{classmohrcoulomb_a9854ab152539e81f1c14a09f7262a135}} 
+\index{mohrcoulomb@{mohrcoulomb}!ReturnMapPlane@{ReturnMapPlane}}
+\index{ReturnMapPlane@{ReturnMapPlane}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{ReturnMapPlane()}{ReturnMapPlane()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool mohrcoulomb\+::\+Return\+Map\+Plane (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{sigma\+\_\+trial,  }\item[{\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{sigma\+\_\+projected,  }\item[{\mbox{\hyperlink{structmohrcoulomb_1_1_t_compute_sequence}{T\+Compute\+Sequence}} \&}]{memory,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&}]{epsbarnew }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 41 of file mohrcoulomb.\+cpp.
+
+
+
+References Debug\+Stop, fc, mohrcoulomb\+::\+T\+Compute\+Sequence\+::f\+Gamma, fK, fmu, f\+Phi, and f\+Psi.
+
+\mbox{\Hypertarget{classmohrcoulomb_a63912486123e6a990d8e3fd62557b7b6}\label{classmohrcoulomb_a63912486123e6a990d8e3fd62557b7b6}} 
+\index{mohrcoulomb@{mohrcoulomb}!ReturnMapRightEdge@{ReturnMapRightEdge}}
+\index{ReturnMapRightEdge@{ReturnMapRightEdge}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{ReturnMapRightEdge()}{ReturnMapRightEdge()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool mohrcoulomb\+::\+Return\+Map\+Right\+Edge (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{sigma\+\_\+trial,  }\item[{\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{sigma\+\_\+projected,  }\item[{\mbox{\hyperlink{structmohrcoulomb_1_1_t_compute_sequence}{T\+Compute\+Sequence}} \&}]{memory,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&}]{epsbarnew }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 127 of file mohrcoulomb.\+cpp.
+
+\mbox{\Hypertarget{classmohrcoulomb_aba6ff336e1bd9241582e4806f670d757}\label{classmohrcoulomb_aba6ff336e1bd9241582e4806f670d757}} 
+\index{mohrcoulomb@{mohrcoulomb}!SetCohesion@{SetCohesion}}
+\index{SetCohesion@{SetCohesion}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{SetCohesion()}{SetCohesion()}}
+{\footnotesize\ttfamily void mohrcoulomb\+::\+Set\+Cohesion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{cohesion }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 150 of file mohrcoulomb.\+h.
+
+
+
+References fc.
+
+\mbox{\Hypertarget{classmohrcoulomb_a176d590a8a7c1569da771fd114ab87ae}\label{classmohrcoulomb_a176d590a8a7c1569da771fd114ab87ae}} 
+\index{mohrcoulomb@{mohrcoulomb}!SetElasticResponse@{SetElasticResponse}}
+\index{SetElasticResponse@{SetElasticResponse}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{SetElasticResponse()}{SetElasticResponse()}}
+{\footnotesize\ttfamily void mohrcoulomb\+::\+Set\+Elastic\+Response (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{young,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{nu }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 88 of file mohrcoulomb.\+h.
+
+
+
+References fnu, and fyoung.
+
+\mbox{\Hypertarget{classmohrcoulomb_a50e6bf642515fc91746b5103e810ecdf}\label{classmohrcoulomb_a50e6bf642515fc91746b5103e810ecdf}} 
+\index{mohrcoulomb@{mohrcoulomb}!SetEpsBar@{SetEpsBar}}
+\index{SetEpsBar@{SetEpsBar}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{SetEpsBar()}{SetEpsBar()}}
+{\footnotesize\ttfamily void mohrcoulomb\+::\+Set\+Eps\+Bar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&}]{epsbar }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 83 of file mohrcoulomb.\+h.
+
+
+
+References f\+Eps\+Plastic\+Bar.
+
+\mbox{\Hypertarget{classmohrcoulomb_ae56cd717f403a0be511a312681228378}\label{classmohrcoulomb_ae56cd717f403a0be511a312681228378}} 
+\index{mohrcoulomb@{mohrcoulomb}!SetPhi@{SetPhi}}
+\index{SetPhi@{SetPhi}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{SetPhi()}{SetPhi()}}
+{\footnotesize\ttfamily void mohrcoulomb\+::\+Set\+Phi (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{phi }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set up the phi. 
+
+
+
+Definition at line 136 of file mohrcoulomb.\+h.
+
+
+
+References f\+Phi.
+
+\mbox{\Hypertarget{classmohrcoulomb_ab492995c9d432c437edccde64e6a8cd1}\label{classmohrcoulomb_ab492995c9d432c437edccde64e6a8cd1}} 
+\index{mohrcoulomb@{mohrcoulomb}!SetUp@{SetUp}}
+\index{SetUp@{SetUp}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{SetUp()}{SetUp()}}
+{\footnotesize\ttfamily void mohrcoulomb\+::\+Set\+Up (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{Phi,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{Psi,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{c,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{young,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{nu }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 70 of file mohrcoulomb.\+h.
+
+
+
+References fc, fK, flambda, fmu, fnu, f\+Phi, f\+Psi, fyoung, Phi(), and Psi().
+
+\mbox{\Hypertarget{classmohrcoulomb_a334e5da4f2dd9b38ce5ad213075a02d1}\label{classmohrcoulomb_a334e5da4f2dd9b38ce5ad213075a02d1}} 
+\index{mohrcoulomb@{mohrcoulomb}!SigmaElastPV@{SigmaElastPV}}
+\index{SigmaElastPV@{SigmaElastPV}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{SigmaElastPV()}{SigmaElastPV()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ mohrcoulomb\+::\+Sigma\+Elast\+PV (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{deform }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 17 of file mohrcoulomb.\+cpp.
+
+
+
+References flambda, and fmu.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classmohrcoulomb_a723cf42b3a6dd038b92a295dac0a70c8}\label{classmohrcoulomb_a723cf42b3a6dd038b92a295dac0a70c8}} 
+\index{mohrcoulomb@{mohrcoulomb}!fc@{fc}}
+\index{fc@{fc}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{fc}{fc}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} mohrcoulomb\+::fc\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 24 of file mohrcoulomb.\+h.
+
+
+
+Referenced by Cohesion(), Compute\+Plane\+Tangent(), Phi\+Plane(), Return\+Map\+Plane(), Set\+Cohesion(), and Set\+Up().
+
+\mbox{\Hypertarget{classmohrcoulomb_a68ad4b9790732a4c0dc58aec464d0822}\label{classmohrcoulomb_a68ad4b9790732a4c0dc58aec464d0822}} 
+\index{mohrcoulomb@{mohrcoulomb}!fEpsPlasticBar@{fEpsPlasticBar}}
+\index{fEpsPlasticBar@{fEpsPlasticBar}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{fEpsPlasticBar}{fEpsPlasticBar}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} mohrcoulomb\+::f\+Eps\+Plastic\+Bar\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 32 of file mohrcoulomb.\+h.
+
+
+
+Referenced by Set\+Eps\+Bar().
+
+\mbox{\Hypertarget{classmohrcoulomb_a4d83baa1ed2d1a06825b75af8d71a42c}\label{classmohrcoulomb_a4d83baa1ed2d1a06825b75af8d71a42c}} 
+\index{mohrcoulomb@{mohrcoulomb}!fK@{fK}}
+\index{fK@{fK}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{fK}{fK}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} mohrcoulomb\+::fK\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 29 of file mohrcoulomb.\+h.
+
+
+
+Referenced by Compute\+Plane\+Tangent(), Return\+Map\+Plane(), and Set\+Up().
+
+\mbox{\Hypertarget{classmohrcoulomb_a5c5cd01efb8bf5dedd66c4f0a55d75d1}\label{classmohrcoulomb_a5c5cd01efb8bf5dedd66c4f0a55d75d1}} 
+\index{mohrcoulomb@{mohrcoulomb}!flambda@{flambda}}
+\index{flambda@{flambda}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{flambda}{flambda}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} mohrcoulomb\+::flambda\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 27 of file mohrcoulomb.\+h.
+
+
+
+Referenced by Set\+Up(), and Sigma\+Elast\+P\+V().
+
+\mbox{\Hypertarget{classmohrcoulomb_acb069ab6a372d811830ad1122f50ce0d}\label{classmohrcoulomb_acb069ab6a372d811830ad1122f50ce0d}} 
+\index{mohrcoulomb@{mohrcoulomb}!fmu@{fmu}}
+\index{fmu@{fmu}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{fmu}{fmu}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} mohrcoulomb\+::fmu\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 28 of file mohrcoulomb.\+h.
+
+
+
+Referenced by Compute\+Plane\+Tangent(), Return\+Map\+Plane(), Set\+Up(), and Sigma\+Elast\+P\+V().
+
+\mbox{\Hypertarget{classmohrcoulomb_abd426ee98146a068ef7d3afa2d85e1c6}\label{classmohrcoulomb_abd426ee98146a068ef7d3afa2d85e1c6}} 
+\index{mohrcoulomb@{mohrcoulomb}!fnu@{fnu}}
+\index{fnu@{fnu}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{fnu}{fnu}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} mohrcoulomb\+::fnu\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 26 of file mohrcoulomb.\+h.
+
+
+
+Referenced by Poisson(), Set\+Elastic\+Response(), and Set\+Up().
+
+\mbox{\Hypertarget{classmohrcoulomb_a21123b959036d7a01dc08087df3033fb}\label{classmohrcoulomb_a21123b959036d7a01dc08087df3033fb}} 
+\index{mohrcoulomb@{mohrcoulomb}!fPhi@{fPhi}}
+\index{fPhi@{fPhi}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{fPhi}{fPhi}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} mohrcoulomb\+::f\+Phi\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 22 of file mohrcoulomb.\+h.
+
+
+
+Referenced by Compute\+Plane\+Tangent(), Phi(), Phi\+Plane(), Return\+Map\+Plane(), Set\+Phi(), and Set\+Up().
+
+\mbox{\Hypertarget{classmohrcoulomb_ac113c932132d5f3fc4b9d0ccddfb9e94}\label{classmohrcoulomb_ac113c932132d5f3fc4b9d0ccddfb9e94}} 
+\index{mohrcoulomb@{mohrcoulomb}!fPsi@{fPsi}}
+\index{fPsi@{fPsi}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{fPsi}{fPsi}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} mohrcoulomb\+::f\+Psi\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 23 of file mohrcoulomb.\+h.
+
+
+
+Referenced by Compute\+Plane\+Tangent(), Psi(), Return\+Map\+Plane(), and Set\+Up().
+
+\mbox{\Hypertarget{classmohrcoulomb_af1db4364dce049174b3d6b05e7b9a4d6}\label{classmohrcoulomb_af1db4364dce049174b3d6b05e7b9a4d6}} 
+\index{mohrcoulomb@{mohrcoulomb}!fyoung@{fyoung}}
+\index{fyoung@{fyoung}!mohrcoulomb@{mohrcoulomb}}
+\doxysubsubsection{\texorpdfstring{fyoung}{fyoung}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} mohrcoulomb\+::fyoung\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 25 of file mohrcoulomb.\+h.
+
+
+
+Referenced by E(), Set\+Elastic\+Response(), and Set\+Up().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{mohrcoulomb_8h}{mohrcoulomb.\+h}}\item 
+src/\mbox{\hyperlink{mohrcoulomb_8cpp}{mohrcoulomb.\+cpp}}\end{DoxyCompactItemize}

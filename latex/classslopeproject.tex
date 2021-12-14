@@ -1,0 +1,785 @@
+\hypertarget{classslopeproject}{}\doxysection{slopeproject Class Reference}
+\label{classslopeproject}\index{slopeproject@{slopeproject}}
+
+
+{\ttfamily \#include $<$slopeproject.\+h$>$}
+
+
+
+Collaboration diagram for slopeproject\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classslopeproject__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classslopeproject_a641065ed4553c0e27b7258577917eefd}{slopeproject}} (\mbox{\hyperlink{classmesh}{mesh}} $\ast$inmesh, \mbox{\hyperlink{class_k_l_galerkin_r_f}{K\+L\+Galerkin\+RF}} $\ast$inklgalerking)
+\item 
+\mbox{\hyperlink{classslopeproject_aafd20f463d7570d49e846e73c632ed73}{slopeproject}} (\mbox{\hyperlink{classmesh}{mesh}} $\ast$inmesh, \mbox{\hyperlink{class_k_l_galerkin_r_f}{K\+L\+Galerkin\+RF}} $\ast$inklgalerking, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} $>$ randomfield)
+\item 
+\mbox{\hyperlink{classslopeproject_a8ddebd144a214122120050f67cad5cad}{slopeproject}} (\mbox{\hyperlink{classmesh}{mesh}} inmesh, \mbox{\hyperlink{class_k_l_galerkin_r_f}{K\+L\+Galerkin\+RF}} inklgalerking, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} $>$ randomfield)
+\item 
+\mbox{\hyperlink{classslopeproject_a53434b5add0dace760f14b11b57ca380}{slopeproject}} ()
+\item 
+\mbox{\hyperlink{classslopeproject_af3df4bb8aff98118e1826c481b7316d9}{$\sim$slopeproject}} ()
+\item 
+\mbox{\hyperlink{classslopeproject_a8ac980834e6e078fd530ef119d1d8b26}{slopeproject}} (\mbox{\hyperlink{classslopeproject}{slopeproject}} \&copy)
+\item 
+void \mbox{\hyperlink{classslopeproject_ac7185622cd5af53751247e69a992630e}{Create\+Random\+Field}} (string namefolder)
+\item 
+void \mbox{\hyperlink{classslopeproject_aa35876b6c1ca427b2e8e30b37f696956}{Print\+M\+CS}} (string namefolder, int imc, bool print)
+\item 
+void \mbox{\hyperlink{classslopeproject_a2f860f9c2fdd514516cd5420796df04e}{Out\+Put\+Post}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&postdata, std\+::ofstream \&file)
+\item 
+void \mbox{\hyperlink{classslopeproject_a2cd4c367a51dbf2fa231d6b9b08788bb}{Out\+Put\+Post}} (\mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \&postdata, std\+::ofstream \&file)
+\item 
+void \mbox{\hyperlink{classslopeproject_ad50de5e6b2084ebaec8bb036ca7538d4}{Out\+Put\+Post}} (std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&postdata, std\+::ofstream \&file)
+\item 
+void \mbox{\hyperlink{classslopeproject_a8ac6b7ca8cd0dc13afb0e9391c7aaead}{Out\+Put\+File}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&postdata, std\+::ofstream \&file)
+\item 
+void \mbox{\hyperlink{classslopeproject_a7892b66ffe7d3b7e81995f168e98b996}{Out\+Put\+File1var}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&postdata, std\+::ofstream \&file)
+\item 
+void \mbox{\hyperlink{classslopeproject_aa5c53a0167d4da39ce8b452c024116a9}{Out\+Put\+File4var}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&postdata, std\+::ofstream \&file)
+\item 
+void \mbox{\hyperlink{classslopeproject_a3680a8af5e33ea553cf73817ef75bcd4}{Print\+Mathematica\+Format}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} postdata, std\+::ofstream \&file)
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classslopeproject_a62544f794bbd46994de0c96539bc0d6a}{computelamda}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&dwb, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&dws, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&dw, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&l)
+\item 
+void \mbox{\hyperlink{classslopeproject_a9279855ba04f0ba72c0ee0ea3358da19}{Read\+Mesh}} (std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&allcoords, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&meshcoords, \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \&meshtopology, string filenameel, string filenamecoord)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{classslopeproject_acd31834a5985808a32be2f3bf675599d}{vecstr\+\_\+to\+\_\+vecdoub2}} (std\+::vector$<$ string $>$ vs)
+\item 
+{\footnotesize template$<$class T $>$ }\\std\+::vector$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \mbox{\hyperlink{classslopeproject_aff24fdf8c929089ab79257b90baed61b}{vecstr\+\_\+to\+\_\+vec}} (std\+::vector$<$ string $>$ vs)
+\item 
+void \mbox{\hyperlink{classslopeproject_a0f0de3a90a804c2a31449dc58410cffc}{Read\+Mat\+Doub}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&matdoub, std\+::string file)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{classslopeproject_a56845eafaf7e91c3c415d5b5378c6f28}{vecstr\+\_\+to\+\_\+vecdoub}} (std\+::vector$<$ string $>$ vs)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} $>$ \mbox{\hyperlink{classslopeproject_a710511c06a293488f2a25166d7cb5378}{vecstr\+\_\+to\+\_\+vecint}} (std\+::vector$<$ string $>$ vs)
+\item 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{classslopeproject_a04a6b52a91cd6106fd5037ee0c5ddc36}{Iterative\+Process}} (int ndesi, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} dlamb0, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} alphatol, int niter)
+\item 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{classslopeproject_a6d41e9856a44706b6080878afe379f3e}{Iterative\+Process\+Arc\+Length\+S\+RM}} (int ndesi, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} dlamb0, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} alphatol, int niter)
+\item 
+void \mbox{\hyperlink{classslopeproject_a366de50a92352478e546026af10786ba}{Solve\+Eigen\+Sparse}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} A, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} b, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&x)
+\item 
+void \mbox{\hyperlink{classslopeproject_a96c6da7f2854e79ecb5cb97e07206066}{Solve\+Eigen}} (Sparse\+Matrix$<$ double $>$ A, Vector\+Xd b, Vector\+Xd \&x)
+\item 
+void \mbox{\hyperlink{classslopeproject_a239dd06dfa65e41fe4e2210a3023d56b}{Solve\+Eigen}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} A, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} b, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&x)
+\item 
+void \mbox{\hyperlink{classslopeproject_a7a33ee4c8e2bb32c802fea9eac423398}{Solve\+Eigen2}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} A, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} b, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&x)
+\item 
+void \mbox{\hyperlink{classslopeproject_a98a8d2beebb4db2766bfcd72bde6b49f}{Solve\+Eigen3}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} A, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} b, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&x)
+\item 
+void \mbox{\hyperlink{classslopeproject_ab7aa14f0f627b7cd07371da4db105762}{Inser\+BC}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&KG, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&R, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&F\+B\+O\+DY, std\+::vector$<$ int $>$ idsbottom, std\+::vector$<$ int $>$ idsright, std\+::vector$<$ int $>$ idsleft, \mbox{\hyperlink{classmaterial}{material}} $\ast$mat)
+\item 
+void \mbox{\hyperlink{classslopeproject_ac85f75bcad7288da72c61d515f8b676d}{Inser\+BC}} (Sparse\+Matrix$<$ double $>$ \&KG, Vector\+Xd \&R, Vector\+Xd \&F\+B\+O\+DY, std\+::vector$<$ int $>$ idsbottom, std\+::vector$<$ int $>$ idsright, std\+::vector$<$ int $>$ idsleft, \mbox{\hyperlink{classmaterial}{material}} $\ast$mat)
+\item 
+void \mbox{\hyperlink{classslopeproject_ae166e24201aae64ed2db6b0925830f4c}{Get\+El\+Coords}} (std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ allcoords, \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} el, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&elcoords)
+\item 
+void \mbox{\hyperlink{classslopeproject_a6f2d085451c2b75c56262a18a0849e7d}{Find\+Ids\+In\+Path}} (const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&path, std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&allcoords, \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \&meshtopology, std\+::vector$<$ int $>$ \&idpath)
+\item 
+void \mbox{\hyperlink{classslopeproject_af0be0de9fd719d16c71ad641b64beddc}{Line}} (\mbox{\hyperlink{nr3_8h_a97a3701e8aa6ca145af8d5c7c5c50d87}{Vec\+Doub}} a, \mbox{\hyperlink{nr3_8h_a97a3701e8aa6ca145af8d5c7c5c50d87}{Vec\+Doub}} b, \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} ndivs, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&path)
+\item 
+void \mbox{\hyperlink{classslopeproject_aeab32b0268ae91ee1ad9b5c1eece03aa}{findbcids}} (\mbox{\hyperlink{classmesh}{mesh}} $\ast$gmesh, std\+::vector$<$ std\+::vector$<$ int $>$$>$ \&idsvector)
+\item 
+\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \mbox{\hyperlink{classslopeproject_ad8459785760b4f8ae01ed43be8444ea4}{Assemble\+Hhationho}} (\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} i)
+\item 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{classslopeproject_a931b77d2f66bf8b46b1d3bf621a59cba}{Iterative\+Process\+Shear\+Red}} (\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} fac, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} delta, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} tol)
+\item 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{classslopeproject_a5cc77e3d45398625351158add174dc73}{Iterative\+Process\+Shear\+Red2}} (\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} fac, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} delta, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} tol)
+\item 
+void \mbox{\hyperlink{classslopeproject_a776d4c3b8575a030844af99137938f47}{Monte\+Carlo\+S\+RM}} (int iter, int iter2, bool print, string writenamefolder)
+\item 
+void \mbox{\hyperlink{classslopeproject_acdad233d97cb312cd8c0d203bd8c8234}{Monte\+Carlo\+G\+IM}} (int iter, int iter2, bool print, string writenamefolder)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmesh}{mesh}} $\ast$ \mbox{\hyperlink{classslopeproject_a56b87fc99b669c216de663601b3da344}{fmesh}}
+\item 
+\mbox{\hyperlink{class_k_l_galerkin_r_f}{K\+L\+Galerkin\+RF}} $\ast$ \mbox{\hyperlink{classslopeproject_a61e79297c511aa0f0cc3bf2e15c8efed}{fklgalerking}}
+\item 
+\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} $>$ \mbox{\hyperlink{classslopeproject_a54543f772cd4814b97671fbda3b04a18}{frandomfield}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 24 of file slopeproject.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classslopeproject_a641065ed4553c0e27b7258577917eefd}\label{classslopeproject_a641065ed4553c0e27b7258577917eefd}} 
+\index{slopeproject@{slopeproject}!slopeproject@{slopeproject}}
+\index{slopeproject@{slopeproject}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{slopeproject()}{slopeproject()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily slopeproject\+::slopeproject (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmesh}{mesh}} $\ast$}]{inmesh,  }\item[{\mbox{\hyperlink{class_k_l_galerkin_r_f}{K\+L\+Galerkin\+RF}} $\ast$}]{inklgalerking }\end{DoxyParamCaption})}
+
+
+
+Definition at line 16 of file slopeproject.\+cpp.
+
+
+
+References fklgalerking, and fmesh.
+
+\mbox{\Hypertarget{classslopeproject_aafd20f463d7570d49e846e73c632ed73}\label{classslopeproject_aafd20f463d7570d49e846e73c632ed73}} 
+\index{slopeproject@{slopeproject}!slopeproject@{slopeproject}}
+\index{slopeproject@{slopeproject}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{slopeproject()}{slopeproject()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily slopeproject\+::slopeproject (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmesh}{mesh}} $\ast$}]{inmesh,  }\item[{\mbox{\hyperlink{class_k_l_galerkin_r_f}{K\+L\+Galerkin\+RF}} $\ast$}]{inklgalerking,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} $>$}]{randomfield }\end{DoxyParamCaption})}
+
+
+
+Definition at line 21 of file slopeproject.\+cpp.
+
+
+
+References fklgalerking, fmesh, and frandomfield.
+
+\mbox{\Hypertarget{classslopeproject_a8ddebd144a214122120050f67cad5cad}\label{classslopeproject_a8ddebd144a214122120050f67cad5cad}} 
+\index{slopeproject@{slopeproject}!slopeproject@{slopeproject}}
+\index{slopeproject@{slopeproject}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{slopeproject()}{slopeproject()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily slopeproject\+::slopeproject (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmesh}{mesh}}}]{inmesh,  }\item[{\mbox{\hyperlink{class_k_l_galerkin_r_f}{K\+L\+Galerkin\+RF}}}]{inklgalerking,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} $>$}]{randomfield }\end{DoxyParamCaption})}
+
+
+
+Definition at line 27 of file slopeproject.\+cpp.
+
+
+
+References fklgalerking, fmesh, and frandomfield.
+
+\mbox{\Hypertarget{classslopeproject_a53434b5add0dace760f14b11b57ca380}\label{classslopeproject_a53434b5add0dace760f14b11b57ca380}} 
+\index{slopeproject@{slopeproject}!slopeproject@{slopeproject}}
+\index{slopeproject@{slopeproject}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{slopeproject()}{slopeproject()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily slopeproject\+::slopeproject (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 11 of file slopeproject.\+cpp.
+
+\mbox{\Hypertarget{classslopeproject_af3df4bb8aff98118e1826c481b7316d9}\label{classslopeproject_af3df4bb8aff98118e1826c481b7316d9}} 
+\index{slopeproject@{slopeproject}!````~slopeproject@{$\sim$slopeproject}}
+\index{````~slopeproject@{$\sim$slopeproject}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{$\sim$slopeproject()}{~slopeproject()}}
+{\footnotesize\ttfamily slopeproject\+::$\sim$slopeproject (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 33 of file slopeproject.\+cpp.
+
+
+
+References fklgalerking, and fmesh.
+
+\mbox{\Hypertarget{classslopeproject_a8ac980834e6e078fd530ef119d1d8b26}\label{classslopeproject_a8ac980834e6e078fd530ef119d1d8b26}} 
+\index{slopeproject@{slopeproject}!slopeproject@{slopeproject}}
+\index{slopeproject@{slopeproject}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{slopeproject()}{slopeproject()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily slopeproject\+::slopeproject (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classslopeproject}{slopeproject}} \&}]{copy }\end{DoxyParamCaption})}
+
+
+
+Definition at line 39 of file slopeproject.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classslopeproject_ad8459785760b4f8ae01ed43be8444ea4}\label{classslopeproject_ad8459785760b4f8ae01ed43be8444ea4}} 
+\index{slopeproject@{slopeproject}!AssembleHhationho@{AssembleHhationho}}
+\index{AssembleHhationho@{AssembleHhationho}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{AssembleHhationho()}{AssembleHhationho()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} slopeproject\+::\+Assemble\+Hhationho (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{i }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1620 of file slopeproject.\+cpp.
+
+
+
+References frandomfield, and N\+Rmatrix$<$ T $>$\+::nrows().
+
+
+
+Referenced by mainlinux(), mainlinuxserial(), Monte\+Carlo\+G\+I\+M(), Monte\+Carlo\+S\+R\+M(), and Print\+M\+C\+S().
+
+\mbox{\Hypertarget{classslopeproject_a62544f794bbd46994de0c96539bc0d6a}\label{classslopeproject_a62544f794bbd46994de0c96539bc0d6a}} 
+\index{slopeproject@{slopeproject}!computelamda@{computelamda}}
+\index{computelamda@{computelamda}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{computelamda()}{computelamda()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} slopeproject\+::computelamda (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{dwb,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{dws,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{dw,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&}]{l }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1201 of file slopeproject.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::nrows().
+
+
+
+Referenced by Iterative\+Process(), and Iterative\+Process\+Arc\+Length\+S\+R\+M().
+
+\mbox{\Hypertarget{classslopeproject_ac7185622cd5af53751247e69a992630e}\label{classslopeproject_ac7185622cd5af53751247e69a992630e}} 
+\index{slopeproject@{slopeproject}!CreateRandomField@{CreateRandomField}}
+\index{CreateRandomField@{CreateRandomField}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{CreateRandomField()}{CreateRandomField()}}
+{\footnotesize\ttfamily void slopeproject\+::\+Create\+Random\+Field (\begin{DoxyParamCaption}\item[{string}]{namefolder }\end{DoxyParamCaption})}
+
+
+
+Definition at line 44 of file slopeproject.\+cpp.
+
+
+
+References fklgalerking, fmesh, K\+L\+Galerkin\+R\+F\+::\+Get\+Expansionorder(), K\+L\+Galerkin\+R\+F\+::\+Getftype(), K\+L\+Galerkin\+R\+F\+::\+Get\+Lx(), K\+L\+Galerkin\+R\+F\+::\+Get\+Ly(), K\+L\+Galerkin\+R\+F\+::\+Get\+Samples(), K\+L\+Galerkin\+R\+F\+::\+Get\+Sig(), Out\+Put\+Post(), and K\+L\+Galerkin\+R\+F\+::\+Solve\+Gen\+Eig\+Val\+Problem().
+
+
+
+Referenced by createrandomfield(), mainlinux(), and mainlinuxserial().
+
+\mbox{\Hypertarget{classslopeproject_aeab32b0268ae91ee1ad9b5c1eece03aa}\label{classslopeproject_aeab32b0268ae91ee1ad9b5c1eece03aa}} 
+\index{slopeproject@{slopeproject}!findbcids@{findbcids}}
+\index{findbcids@{findbcids}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{findbcids()}{findbcids()}}
+{\footnotesize\ttfamily void slopeproject\+::findbcids (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmesh}{mesh}} $\ast$}]{gmesh,  }\item[{std\+::vector$<$ std\+::vector$<$ int $>$$>$ \&}]{idsvector }\end{DoxyParamCaption})}
+
+
+
+Definition at line 132 of file slopeproject.\+cpp.
+
+
+
+References Find\+Ids\+In\+Path(), mesh\+::\+Get\+All\+Coords(), mesh\+::\+Get\+Mesh\+Topology(), and Line().
+
+
+
+Referenced by Iterative\+Process(), Iterative\+Process\+Arc\+Length\+S\+R\+M(), Iterative\+Process\+Shear\+Red(), and Iterative\+Process\+Shear\+Red2().
+
+\mbox{\Hypertarget{classslopeproject_a6f2d085451c2b75c56262a18a0849e7d}\label{classslopeproject_a6f2d085451c2b75c56262a18a0849e7d}} 
+\index{slopeproject@{slopeproject}!FindIdsInPath@{FindIdsInPath}}
+\index{FindIdsInPath@{FindIdsInPath}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{FindIdsInPath()}{FindIdsInPath()}}
+{\footnotesize\ttfamily void slopeproject\+::\+Find\+Ids\+In\+Path (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{path,  }\item[{std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&}]{allcoords,  }\item[{\mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \&}]{meshtopology,  }\item[{std\+::vector$<$ int $>$ \&}]{idpath }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1564 of file slopeproject.\+cpp.
+
+
+
+References Get\+El\+Coords(), and N\+Rmatrix$<$ T $>$\+::nrows().
+
+
+
+Referenced by findbcids().
+
+\mbox{\Hypertarget{classslopeproject_ae166e24201aae64ed2db6b0925830f4c}\label{classslopeproject_ae166e24201aae64ed2db6b0925830f4c}} 
+\index{slopeproject@{slopeproject}!GetElCoords@{GetElCoords}}
+\index{GetElCoords@{GetElCoords}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{GetElCoords()}{GetElCoords()}}
+{\footnotesize\ttfamily void slopeproject\+::\+Get\+El\+Coords (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$}]{allcoords,  }\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{el,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{elcoords }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1550 of file slopeproject.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign().
+
+
+
+Referenced by Find\+Ids\+In\+Path().
+
+\mbox{\Hypertarget{classslopeproject_ab7aa14f0f627b7cd07371da4db105762}\label{classslopeproject_ab7aa14f0f627b7cd07371da4db105762}} 
+\index{slopeproject@{slopeproject}!InserBC@{InserBC}}
+\index{InserBC@{InserBC}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{InserBC()}{InserBC()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void slopeproject\+::\+Inser\+BC (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{KG,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{R,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{F\+B\+O\+DY,  }\item[{std\+::vector$<$ int $>$}]{idsbottom,  }\item[{std\+::vector$<$ int $>$}]{idsright,  }\item[{std\+::vector$<$ int $>$}]{idsleft,  }\item[{\mbox{\hyperlink{classmaterial}{material}} $\ast$}]{mat }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1261 of file slopeproject.\+cpp.
+
+
+
+References material\+::\+Dirichlet\+B\+C().
+
+
+
+Referenced by Iterative\+Process(), Iterative\+Process\+Arc\+Length\+S\+R\+M(), Iterative\+Process\+Shear\+Red(), and Iterative\+Process\+Shear\+Red2().
+
+\mbox{\Hypertarget{classslopeproject_ac85f75bcad7288da72c61d515f8b676d}\label{classslopeproject_ac85f75bcad7288da72c61d515f8b676d}} 
+\index{slopeproject@{slopeproject}!InserBC@{InserBC}}
+\index{InserBC@{InserBC}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{InserBC()}{InserBC()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void slopeproject\+::\+Inser\+BC (\begin{DoxyParamCaption}\item[{Sparse\+Matrix$<$ double $>$ \&}]{KG,  }\item[{Vector\+Xd \&}]{R,  }\item[{Vector\+Xd \&}]{F\+B\+O\+DY,  }\item[{std\+::vector$<$ int $>$}]{idsbottom,  }\item[{std\+::vector$<$ int $>$}]{idsright,  }\item[{std\+::vector$<$ int $>$}]{idsleft,  }\item[{\mbox{\hyperlink{classmaterial}{material}} $\ast$}]{mat }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1223 of file slopeproject.\+cpp.
+
+
+
+References material\+::\+Dirichlet\+B\+C().
+
+\mbox{\Hypertarget{classslopeproject_a04a6b52a91cd6106fd5037ee0c5ddc36}\label{classslopeproject_a04a6b52a91cd6106fd5037ee0c5ddc36}} 
+\index{slopeproject@{slopeproject}!IterativeProcess@{IterativeProcess}}
+\index{IterativeProcess@{IterativeProcess}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{IterativeProcess()}{IterativeProcess()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ double $>$ $>$ slopeproject\+::\+Iterative\+Process (\begin{DoxyParamCaption}\item[{int}]{ndesi,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{dlamb0,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{alphatol,  }\item[{int}]{niter }\end{DoxyParamCaption})}
+
+
+
+Definition at line 699 of file slopeproject.\+cpp.
+
+
+
+References mesh\+::\+Assemble(), N\+Rmatrix$<$ T $>$\+::assign(), computelamda(), N\+Rmatrix$<$ T $>$\+::\+Copy\+From\+Vector(), Debug\+Stop, V\+T\+K\+Graph\+Mesh\+::\+Draw\+Solution(), findbcids(), mesh\+::fmaterial, fmesh, mesh\+::\+Get\+All\+Coords(), mesh\+::\+Get\+Mesh\+Nodes(), mesh\+::\+Get\+Mesh\+Topology(), material\+::\+Get\+Solution(), Inser\+B\+C(), N\+Rmatrix$<$ T $>$\+::\+Mult(), N\+Rmatrix$<$ T $>$\+::\+N\+Rmatrix\+Norm(), N\+Rmatrix$<$ T $>$\+::nrows(), Out\+Put\+File(), Out\+Put\+Post(), material\+::\+Post\+Process(), material\+::\+Post\+Process\+Integration\+Point\+Var(), Print\+Mathematica\+Format(), material\+::\+Reset\+Displacement(), material\+::\+Reset\+Mat(), material\+::\+Reset\+Plastic\+Strain(), Solve\+Eigen(), Solve\+Eigen2(), Solve\+Eigen\+Sparse(), N\+Rmatrix$<$ T $>$\+::\+Transpose(), material\+::\+Update\+Displacement(), and material\+::\+Update\+Plastic\+Strain().
+
+
+
+Referenced by mainlinux(), mainlinuxserial(), and Monte\+Carlo\+G\+I\+M().
+
+\mbox{\Hypertarget{classslopeproject_a6d41e9856a44706b6080878afe379f3e}\label{classslopeproject_a6d41e9856a44706b6080878afe379f3e}} 
+\index{slopeproject@{slopeproject}!IterativeProcessArcLengthSRM@{IterativeProcessArcLengthSRM}}
+\index{IterativeProcessArcLengthSRM@{IterativeProcessArcLengthSRM}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{IterativeProcessArcLengthSRM()}{IterativeProcessArcLengthSRM()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ double $>$ $>$ slopeproject\+::\+Iterative\+Process\+Arc\+Length\+S\+RM (\begin{DoxyParamCaption}\item[{int}]{ndesi,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{dlamb0,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{alphatol,  }\item[{int}]{niter }\end{DoxyParamCaption})}
+
+
+
+Definition at line 998 of file slopeproject.\+cpp.
+
+
+
+References mesh\+::\+Assemble(), N\+Rmatrix$<$ T $>$\+::assign(), computelamda(), N\+Rmatrix$<$ T $>$\+::\+Copy\+From\+Vector(), findbcids(), mesh\+::fmaterial, fmesh, mesh\+::\+Get\+All\+Coords(), material\+::\+Get\+Mat\+Constants(), mesh\+::\+Get\+Mesh\+Nodes(), mesh\+::\+Get\+Mesh\+Topology(), material\+::\+Get\+Solution(), Inser\+B\+C(), N\+Rmatrix$<$ T $>$\+::\+Mult(), N\+Rmatrix$<$ T $>$\+::\+N\+Rmatrix\+Norm(), N\+Rmatrix$<$ T $>$\+::nrows(), Out\+Put\+File(), Out\+Put\+Post(), material\+::\+Post\+Process(), material\+::\+Post\+Process\+Integration\+Point\+Var(), material\+::\+Reset\+Displacement(), material\+::\+Reset\+Mat(), material\+::\+Reset\+Plastic\+Strain(), material\+::\+Set\+Mat\+Constants(), Solve\+Eigen(), N\+Rmatrix$<$ T $>$\+::\+Transpose(), material\+::\+Update\+Displacement(), and material\+::\+Update\+Plastic\+Strain().
+
+\mbox{\Hypertarget{classslopeproject_a931b77d2f66bf8b46b1d3bf621a59cba}\label{classslopeproject_a931b77d2f66bf8b46b1d3bf621a59cba}} 
+\index{slopeproject@{slopeproject}!IterativeProcessShearRed@{IterativeProcessShearRed}}
+\index{IterativeProcessShearRed@{IterativeProcessShearRed}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{IterativeProcessShearRed()}{IterativeProcessShearRed()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ double $>$ $>$ slopeproject\+::\+Iterative\+Process\+Shear\+Red (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{fac,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{delta,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{tol }\end{DoxyParamCaption})}
+
+
+
+Definition at line 172 of file slopeproject.\+cpp.
+
+
+
+References mesh\+::\+Assemble(), N\+Rmatrix$<$ T $>$\+::assign(), N\+Rmatrix$<$ T $>$\+::\+Copy\+From\+Vector(), findbcids(), mesh\+::fmaterial, fmesh, mesh\+::\+Get\+All\+Coords(), mesh\+::\+Get\+Hhat(), material\+::\+Get\+Mat\+Constants(), mesh\+::\+Get\+Mesh\+Nodes(), mesh\+::\+Get\+Mesh\+Topology(), material\+::\+Get\+Solution(), Inser\+B\+C(), N\+Rmatrix$<$ T $>$\+::\+N\+Rmatrix\+Norm(), N\+Rmatrix$<$ T $>$\+::nrows(), Out\+Put\+File(), Out\+Put\+Post(), material\+::\+Post\+Process(), material\+::\+Post\+Process\+Integration\+Point\+Var(), material\+::\+Reset\+Mat(), mesh\+::\+Set\+Hhat(), material\+::\+Set\+Mat\+Constants(), Solve\+Eigen\+Sparse(), and material\+::\+Update\+Displacement().
+
+
+
+Referenced by mainwindows(), and Monte\+Carlo\+S\+R\+M().
+
+\mbox{\Hypertarget{classslopeproject_a5cc77e3d45398625351158add174dc73}\label{classslopeproject_a5cc77e3d45398625351158add174dc73}} 
+\index{slopeproject@{slopeproject}!IterativeProcessShearRed2@{IterativeProcessShearRed2}}
+\index{IterativeProcessShearRed2@{IterativeProcessShearRed2}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{IterativeProcessShearRed2()}{IterativeProcessShearRed2()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ double $>$ $>$ slopeproject\+::\+Iterative\+Process\+Shear\+Red2 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{fac,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{delta,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{tol }\end{DoxyParamCaption})}
+
+
+
+Definition at line 413 of file slopeproject.\+cpp.
+
+
+
+References mesh\+::\+Assemble(), N\+Rmatrix$<$ T $>$\+::\+Copy\+From\+Vector(), findbcids(), mesh\+::fmaterial, fmesh, mesh\+::\+Get\+All\+Coords(), mesh\+::\+Get\+Hhat(), material\+::\+Get\+Mat\+Constants(), mesh\+::\+Get\+Mesh\+Nodes(), mesh\+::\+Get\+Mesh\+Topology(), material\+::\+Get\+Solution(), Inser\+B\+C(), N\+Rmatrix$<$ T $>$\+::nrows(), Out\+Put\+File(), Out\+Put\+Post(), material\+::\+Post\+Process(), material\+::\+Post\+Process\+Integration\+Point\+Var(), material\+::\+Reset\+Mat(), mesh\+::\+Set\+Hhat(), material\+::\+Set\+Mat\+Constants(), Solve\+Eigen(), and material\+::\+Update\+Displacement().
+
+\mbox{\Hypertarget{classslopeproject_af0be0de9fd719d16c71ad641b64beddc}\label{classslopeproject_af0be0de9fd719d16c71ad641b64beddc}} 
+\index{slopeproject@{slopeproject}!Line@{Line}}
+\index{Line@{Line}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{Line()}{Line()}}
+{\footnotesize\ttfamily void slopeproject\+::\+Line (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_a97a3701e8aa6ca145af8d5c7c5c50d87}{Vec\+Doub}}}]{a,  }\item[{\mbox{\hyperlink{nr3_8h_a97a3701e8aa6ca145af8d5c7c5c50d87}{Vec\+Doub}}}]{b,  }\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{ndivs,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{path }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1598 of file slopeproject.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign().
+
+
+
+Referenced by findbcids().
+
+\mbox{\Hypertarget{classslopeproject_acdad233d97cb312cd8c0d203bd8c8234}\label{classslopeproject_acdad233d97cb312cd8c0d203bd8c8234}} 
+\index{slopeproject@{slopeproject}!MonteCarloGIM@{MonteCarloGIM}}
+\index{MonteCarloGIM@{MonteCarloGIM}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{MonteCarloGIM()}{MonteCarloGIM()}}
+{\footnotesize\ttfamily void slopeproject\+::\+Monte\+Carlo\+G\+IM (\begin{DoxyParamCaption}\item[{int}]{iter,  }\item[{int}]{iter2,  }\item[{bool}]{print,  }\item[{string}]{writenamefolder }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1840 of file slopeproject.\+cpp.
+
+
+
+References Assemble\+Hhationho(), N\+Rmatrix$<$ T $>$\+::\+Copy\+From\+Vector(), fklgalerking, mesh\+::fmaterial, fmesh, frandomfield, material\+::\+Get\+Body\+Force(), K\+L\+Galerkin\+R\+F\+::\+Get\+Expansionorder(), K\+L\+Galerkin\+R\+F\+::\+Getftype(), K\+L\+Galerkin\+R\+F\+::\+Get\+Lx(), K\+L\+Galerkin\+R\+F\+::\+Get\+Ly(), material\+::\+Get\+Mat\+Constants(), mesh\+::\+Get\+Mesh\+Nodes(), mesh\+::\+Get\+Mesh\+Topology(), K\+L\+Galerkin\+R\+F\+::\+Get\+Samples(), K\+L\+Galerkin\+R\+F\+::\+Get\+Sig(), Iterative\+Process(), N\+Rmatrix$<$ T $>$\+::ncols(), N\+Rmatrix$<$ T $>$\+::nrows(), Out\+Put\+File1var(), shapequad\+::pointsandweigths(), Print\+M\+C\+S(), mesh\+::\+Set\+Hhat(), material\+::\+Set\+Mat\+Constants(), material\+::\+Set\+Memory(), material\+::\+Set\+Random\+Field(), and material\+::\+Update\+Body\+Force().
+
+
+
+Referenced by main2(), mainlinux(), mainlinuxserial(), my\+Treads(), and my\+Treads2().
+
+\mbox{\Hypertarget{classslopeproject_a776d4c3b8575a030844af99137938f47}\label{classslopeproject_a776d4c3b8575a030844af99137938f47}} 
+\index{slopeproject@{slopeproject}!MonteCarloSRM@{MonteCarloSRM}}
+\index{MonteCarloSRM@{MonteCarloSRM}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{MonteCarloSRM()}{MonteCarloSRM()}}
+{\footnotesize\ttfamily void slopeproject\+::\+Monte\+Carlo\+S\+RM (\begin{DoxyParamCaption}\item[{int}]{iter,  }\item[{int}]{iter2,  }\item[{bool}]{print,  }\item[{string}]{writenamefolder }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1645 of file slopeproject.\+cpp.
+
+
+
+References Assemble\+Hhationho(), N\+Rmatrix$<$ T $>$\+::\+Copy\+From\+Vector(), mesh\+::fmaterial, fmesh, frandomfield, mesh\+::\+Get\+All\+Coords(), material\+::\+Get\+Body\+Force(), material\+::\+Get\+Mat\+Constants(), mesh\+::\+Get\+Mesh\+Nodes(), mesh\+::\+Get\+Mesh\+Topology(), material\+::\+Get\+Solution(), Iterative\+Process\+Shear\+Red(), N\+Rmatrix$<$ T $>$\+::nrows(), Out\+Put\+File1var(), Out\+Put\+Post(), shapequad\+::pointsandweigths(), material\+::\+Post\+Process(), material\+::\+Post\+Process\+Integration\+Point\+Var(), material\+::\+Reset\+Mat(), mesh\+::\+Set\+Hhat(), material\+::\+Set\+Mat\+Constants(), material\+::\+Set\+Memory(), and material\+::\+Update\+Body\+Force().
+
+
+
+Referenced by main2(), mainlinuxserial(), and my\+Treads\+S\+R\+M().
+
+\mbox{\Hypertarget{classslopeproject_a8ac6b7ca8cd0dc13afb0e9391c7aaead}\label{classslopeproject_a8ac6b7ca8cd0dc13afb0e9391c7aaead}} 
+\index{slopeproject@{slopeproject}!OutPutFile@{OutPutFile}}
+\index{OutPutFile@{OutPutFile}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{OutPutFile()}{OutPutFile()}}
+{\footnotesize\ttfamily void slopeproject\+::\+Out\+Put\+File (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{postdata,  }\item[{std\+::ofstream \&}]{file }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2097 of file slopeproject.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::nrows().
+
+
+
+Referenced by Iterative\+Process(), Iterative\+Process\+Arc\+Length\+S\+R\+M(), Iterative\+Process\+Shear\+Red(), and Iterative\+Process\+Shear\+Red2().
+
+\mbox{\Hypertarget{classslopeproject_a7892b66ffe7d3b7e81995f168e98b996}\label{classslopeproject_a7892b66ffe7d3b7e81995f168e98b996}} 
+\index{slopeproject@{slopeproject}!OutPutFile1var@{OutPutFile1var}}
+\index{OutPutFile1var@{OutPutFile1var}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{OutPutFile1var()}{OutPutFile1var()}}
+{\footnotesize\ttfamily void slopeproject\+::\+Out\+Put\+File1var (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{postdata,  }\item[{std\+::ofstream \&}]{file }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2084 of file slopeproject.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::nrows().
+
+
+
+Referenced by Monte\+Carlo\+G\+I\+M(), and Monte\+Carlo\+S\+R\+M().
+
+\mbox{\Hypertarget{classslopeproject_aa5c53a0167d4da39ce8b452c024116a9}\label{classslopeproject_aa5c53a0167d4da39ce8b452c024116a9}} 
+\index{slopeproject@{slopeproject}!OutPutFile4var@{OutPutFile4var}}
+\index{OutPutFile4var@{OutPutFile4var}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{OutPutFile4var()}{OutPutFile4var()}}
+{\footnotesize\ttfamily void slopeproject\+::\+Out\+Put\+File4var (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{postdata,  }\item[{std\+::ofstream \&}]{file }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classslopeproject_a2f860f9c2fdd514516cd5420796df04e}\label{classslopeproject_a2f860f9c2fdd514516cd5420796df04e}} 
+\index{slopeproject@{slopeproject}!OutPutPost@{OutPutPost}}
+\index{OutPutPost@{OutPutPost}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{OutPutPost()}{OutPutPost()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily void slopeproject\+::\+Out\+Put\+Post (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{postdata,  }\item[{std\+::ofstream \&}]{file }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2172 of file slopeproject.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::ncols(), and N\+Rmatrix$<$ T $>$\+::nrows().
+
+
+
+Referenced by Create\+Random\+Field(), Iterative\+Process(), Iterative\+Process\+Arc\+Length\+S\+R\+M(), Iterative\+Process\+Shear\+Red(), Iterative\+Process\+Shear\+Red2(), mainlinux(), mainlinuxserial(), Monte\+Carlo\+S\+R\+M(), and Print\+M\+C\+S().
+
+\mbox{\Hypertarget{classslopeproject_a2cd4c367a51dbf2fa231d6b9b08788bb}\label{classslopeproject_a2cd4c367a51dbf2fa231d6b9b08788bb}} 
+\index{slopeproject@{slopeproject}!OutPutPost@{OutPutPost}}
+\index{OutPutPost@{OutPutPost}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{OutPutPost()}{OutPutPost()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily void slopeproject\+::\+Out\+Put\+Post (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \&}]{postdata,  }\item[{std\+::ofstream \&}]{file }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2186 of file slopeproject.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::ncols(), and N\+Rmatrix$<$ T $>$\+::nrows().
+
+\mbox{\Hypertarget{classslopeproject_ad50de5e6b2084ebaec8bb036ca7538d4}\label{classslopeproject_ad50de5e6b2084ebaec8bb036ca7538d4}} 
+\index{slopeproject@{slopeproject}!OutPutPost@{OutPutPost}}
+\index{OutPutPost@{OutPutPost}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{OutPutPost()}{OutPutPost()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily void slopeproject\+::\+Out\+Put\+Post (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&}]{postdata,  }\item[{std\+::ofstream \&}]{file }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2153 of file slopeproject.\+cpp.
+
+\mbox{\Hypertarget{classslopeproject_a3680a8af5e33ea553cf73817ef75bcd4}\label{classslopeproject_a3680a8af5e33ea553cf73817ef75bcd4}} 
+\index{slopeproject@{slopeproject}!PrintMathematicaFormat@{PrintMathematicaFormat}}
+\index{PrintMathematicaFormat@{PrintMathematicaFormat}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{PrintMathematicaFormat()}{PrintMathematicaFormat()}}
+{\footnotesize\ttfamily void slopeproject\+::\+Print\+Mathematica\+Format (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{postdata,  }\item[{std\+::ofstream \&}]{file }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2200 of file slopeproject.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::ncols(), and N\+Rmatrix$<$ T $>$\+::nrows().
+
+
+
+Referenced by Iterative\+Process().
+
+\mbox{\Hypertarget{classslopeproject_aa35876b6c1ca427b2e8e30b37f696956}\label{classslopeproject_aa35876b6c1ca427b2e8e30b37f696956}} 
+\index{slopeproject@{slopeproject}!PrintMCS@{PrintMCS}}
+\index{PrintMCS@{PrintMCS}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{PrintMCS()}{PrintMCS()}}
+{\footnotesize\ttfamily void slopeproject\+::\+Print\+M\+CS (\begin{DoxyParamCaption}\item[{string}]{namefolder,  }\item[{int}]{imc,  }\item[{bool}]{print }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1998 of file slopeproject.\+cpp.
+
+
+
+References Assemble\+Hhationho(), mesh\+::fmaterial, fmesh, mesh\+::\+Get\+All\+Coords(), mesh\+::\+Get\+Mesh\+Nodes(), mesh\+::\+Get\+Mesh\+Topology(), material\+::\+Get\+Solution(), Out\+Put\+Post(), material\+::\+Post\+Process(), and material\+::\+Post\+Process\+Integration\+Point\+Var().
+
+
+
+Referenced by Monte\+Carlo\+G\+I\+M().
+
+\mbox{\Hypertarget{classslopeproject_a0f0de3a90a804c2a31449dc58410cffc}\label{classslopeproject_a0f0de3a90a804c2a31449dc58410cffc}} 
+\index{slopeproject@{slopeproject}!ReadMatDoub@{ReadMatDoub}}
+\index{ReadMatDoub@{ReadMatDoub}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{ReadMatDoub()}{ReadMatDoub()}}
+{\footnotesize\ttfamily void slopeproject\+::\+Read\+Mat\+Doub (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{matdoub,  }\item[{std\+::string}]{file }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1520 of file slopeproject.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::\+Copy\+From\+Vector(), and vecstr\+\_\+to\+\_\+vecdoub2().
+
+\mbox{\Hypertarget{classslopeproject_a9279855ba04f0ba72c0ee0ea3358da19}\label{classslopeproject_a9279855ba04f0ba72c0ee0ea3358da19}} 
+\index{slopeproject@{slopeproject}!ReadMesh@{ReadMesh}}
+\index{ReadMesh@{ReadMesh}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{ReadMesh()}{ReadMesh()}}
+{\footnotesize\ttfamily void slopeproject\+::\+Read\+Mesh (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&}]{allcoords,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{meshcoords,  }\item[{\mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \&}]{meshtopology,  }\item[{string}]{filenameel,  }\item[{string}]{filenamecoord }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1378 of file slopeproject.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::\+Copy\+From\+Vector(), N\+Rmatrix$<$ T $>$\+::ncols(), N\+Rmatrix$<$ T $>$\+::nrows(), N\+Rmatrix$<$ T $>$\+::\+Print(), vecstr\+\_\+to\+\_\+vecdoub(), and vecstr\+\_\+to\+\_\+vecint().
+
+\mbox{\Hypertarget{classslopeproject_a239dd06dfa65e41fe4e2210a3023d56b}\label{classslopeproject_a239dd06dfa65e41fe4e2210a3023d56b}} 
+\index{slopeproject@{slopeproject}!SolveEigen@{SolveEigen}}
+\index{SolveEigen@{SolveEigen}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{SolveEigen()}{SolveEigen()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void slopeproject\+::\+Solve\+Eigen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{A,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{b,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{x }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1321 of file slopeproject.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign(), N\+Rmatrix$<$ T $>$\+::ncols(), and N\+Rmatrix$<$ T $>$\+::nrows().
+
+\mbox{\Hypertarget{classslopeproject_a96c6da7f2854e79ecb5cb97e07206066}\label{classslopeproject_a96c6da7f2854e79ecb5cb97e07206066}} 
+\index{slopeproject@{slopeproject}!SolveEigen@{SolveEigen}}
+\index{SolveEigen@{SolveEigen}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{SolveEigen()}{SolveEigen()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void slopeproject\+::\+Solve\+Eigen (\begin{DoxyParamCaption}\item[{Sparse\+Matrix$<$ double $>$}]{A,  }\item[{Vector\+Xd}]{b,  }\item[{Vector\+Xd \&}]{x }\end{DoxyParamCaption})}
+
+time\+\_\+span = static\+\_\+cast$<$chrono\+::duration$<$double$>$$>$(end -\/ start);
+
+Definition at line 122 of file slopeproject.\+cpp.
+
+
+
+Referenced by Iterative\+Process(), Iterative\+Process\+Arc\+Length\+S\+R\+M(), and Iterative\+Process\+Shear\+Red2().
+
+\mbox{\Hypertarget{classslopeproject_a7a33ee4c8e2bb32c802fea9eac423398}\label{classslopeproject_a7a33ee4c8e2bb32c802fea9eac423398}} 
+\index{slopeproject@{slopeproject}!SolveEigen2@{SolveEigen2}}
+\index{SolveEigen2@{SolveEigen2}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{SolveEigen2()}{SolveEigen2()}}
+{\footnotesize\ttfamily void slopeproject\+::\+Solve\+Eigen2 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{A,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{b,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{x }\end{DoxyParamCaption})}
+
+
+
+Definition at line 661 of file slopeproject.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign(), N\+Rmatrix$<$ T $>$\+::ncols(), and N\+Rmatrix$<$ T $>$\+::nrows().
+
+
+
+Referenced by Iterative\+Process().
+
+\mbox{\Hypertarget{classslopeproject_a98a8d2beebb4db2766bfcd72bde6b49f}\label{classslopeproject_a98a8d2beebb4db2766bfcd72bde6b49f}} 
+\index{slopeproject@{slopeproject}!SolveEigen3@{SolveEigen3}}
+\index{SolveEigen3@{SolveEigen3}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{SolveEigen3()}{SolveEigen3()}}
+{\footnotesize\ttfamily void slopeproject\+::\+Solve\+Eigen3 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{A,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{b,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{x }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1298 of file slopeproject.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign(), N\+Rmatrix$<$ T $>$\+::ncols(), and N\+Rmatrix$<$ T $>$\+::nrows().
+
+\mbox{\Hypertarget{classslopeproject_a366de50a92352478e546026af10786ba}\label{classslopeproject_a366de50a92352478e546026af10786ba}} 
+\index{slopeproject@{slopeproject}!SolveEigenSparse@{SolveEigenSparse}}
+\index{SolveEigenSparse@{SolveEigenSparse}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{SolveEigenSparse()}{SolveEigenSparse()}}
+{\footnotesize\ttfamily void slopeproject\+::\+Solve\+Eigen\+Sparse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{A,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{b,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{x }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1342 of file slopeproject.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign(), and N\+Rmatrix$<$ T $>$\+::nrows().
+
+
+
+Referenced by Iterative\+Process(), and Iterative\+Process\+Shear\+Red().
+
+\mbox{\Hypertarget{classslopeproject_aff24fdf8c929089ab79257b90baed61b}\label{classslopeproject_aff24fdf8c929089ab79257b90baed61b}} 
+\index{slopeproject@{slopeproject}!vecstr\_to\_vec@{vecstr\_to\_vec}}
+\index{vecstr\_to\_vec@{vecstr\_to\_vec}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{vecstr\_to\_vec()}{vecstr\_to\_vec()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+std\+::vector$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ slopeproject\+::vecstr\+\_\+to\+\_\+vec (\begin{DoxyParamCaption}\item[{std\+::vector$<$ string $>$}]{vs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1507 of file slopeproject.\+cpp.
+
+\mbox{\Hypertarget{classslopeproject_a56845eafaf7e91c3c415d5b5378c6f28}\label{classslopeproject_a56845eafaf7e91c3c415d5b5378c6f28}} 
+\index{slopeproject@{slopeproject}!vecstr\_to\_vecdoub@{vecstr\_to\_vecdoub}}
+\index{vecstr\_to\_vecdoub@{vecstr\_to\_vecdoub}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{vecstr\_to\_vecdoub()}{vecstr\_to\_vecdoub()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ slopeproject\+::vecstr\+\_\+to\+\_\+vecdoub (\begin{DoxyParamCaption}\item[{std\+::vector$<$ string $>$}]{vs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1467 of file slopeproject.\+cpp.
+
+
+
+Referenced by Read\+Mesh().
+
+\mbox{\Hypertarget{classslopeproject_acd31834a5985808a32be2f3bf675599d}\label{classslopeproject_acd31834a5985808a32be2f3bf675599d}} 
+\index{slopeproject@{slopeproject}!vecstr\_to\_vecdoub2@{vecstr\_to\_vecdoub2}}
+\index{vecstr\_to\_vecdoub2@{vecstr\_to\_vecdoub2}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{vecstr\_to\_vecdoub2()}{vecstr\_to\_vecdoub2()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ slopeproject\+::vecstr\+\_\+to\+\_\+vecdoub2 (\begin{DoxyParamCaption}\item[{std\+::vector$<$ string $>$}]{vs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1493 of file slopeproject.\+cpp.
+
+
+
+Referenced by Read\+Mat\+Doub().
+
+\mbox{\Hypertarget{classslopeproject_a710511c06a293488f2a25166d7cb5378}\label{classslopeproject_a710511c06a293488f2a25166d7cb5378}} 
+\index{slopeproject@{slopeproject}!vecstr\_to\_vecint@{vecstr\_to\_vecint}}
+\index{vecstr\_to\_vecint@{vecstr\_to\_vecint}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{vecstr\_to\_vecint()}{vecstr\_to\_vecint()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} $>$ slopeproject\+::vecstr\+\_\+to\+\_\+vecint (\begin{DoxyParamCaption}\item[{std\+::vector$<$ string $>$}]{vs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1454 of file slopeproject.\+cpp.
+
+
+
+Referenced by Read\+Mesh().
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classslopeproject_a61e79297c511aa0f0cc3bf2e15c8efed}\label{classslopeproject_a61e79297c511aa0f0cc3bf2e15c8efed}} 
+\index{slopeproject@{slopeproject}!fklgalerking@{fklgalerking}}
+\index{fklgalerking@{fklgalerking}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{fklgalerking}{fklgalerking}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_k_l_galerkin_r_f}{K\+L\+Galerkin\+RF}}$\ast$ slopeproject\+::fklgalerking}
+
+
+
+Definition at line 71 of file slopeproject.\+h.
+
+
+
+Referenced by Create\+Random\+Field(), Monte\+Carlo\+G\+I\+M(), slopeproject(), and $\sim$slopeproject().
+
+\mbox{\Hypertarget{classslopeproject_a56b87fc99b669c216de663601b3da344}\label{classslopeproject_a56b87fc99b669c216de663601b3da344}} 
+\index{slopeproject@{slopeproject}!fmesh@{fmesh}}
+\index{fmesh@{fmesh}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{fmesh}{fmesh}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classmesh}{mesh}}$\ast$ slopeproject\+::fmesh}
+
+
+
+Definition at line 70 of file slopeproject.\+h.
+
+
+
+Referenced by Create\+Random\+Field(), Iterative\+Process(), Iterative\+Process\+Arc\+Length\+S\+R\+M(), Iterative\+Process\+Shear\+Red(), Iterative\+Process\+Shear\+Red2(), Monte\+Carlo\+G\+I\+M(), Monte\+Carlo\+S\+R\+M(), Print\+M\+C\+S(), slopeproject(), and $\sim$slopeproject().
+
+\mbox{\Hypertarget{classslopeproject_a54543f772cd4814b97671fbda3b04a18}\label{classslopeproject_a54543f772cd4814b97671fbda3b04a18}} 
+\index{slopeproject@{slopeproject}!frandomfield@{frandomfield}}
+\index{frandomfield@{frandomfield}!slopeproject@{slopeproject}}
+\doxysubsubsection{\texorpdfstring{frandomfield}{frandomfield}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}$>$ slopeproject\+::frandomfield}
+
+
+
+Definition at line 72 of file slopeproject.\+h.
+
+
+
+Referenced by Assemble\+Hhationho(), Monte\+Carlo\+G\+I\+M(), Monte\+Carlo\+S\+R\+M(), and slopeproject().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{slopeproject_8h}{slopeproject.\+h}}\item 
+src/\mbox{\hyperlink{slopeproject_8cpp}{slopeproject.\+cpp}}\end{DoxyCompactItemize}

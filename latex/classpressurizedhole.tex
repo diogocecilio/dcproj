@@ -1,0 +1,415 @@
+\hypertarget{classpressurizedhole}{}\doxysection{pressurizedhole Class Reference}
+\label{classpressurizedhole}\index{pressurizedhole@{pressurizedhole}}
+
+
+{\ttfamily \#include $<$pressurizedhole.\+h$>$}
+
+
+
+Collaboration diagram for pressurizedhole\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classpressurizedhole__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classpressurizedhole_a72c48a007f04ff79e0711c8f18553fd0}{pressurizedhole}} ()
+\item 
+\mbox{\hyperlink{classpressurizedhole_aded287bfd55bf95b89815db1c6c948e4}{pressurizedhole}} (\mbox{\hyperlink{classmesh}{mesh}} $\ast$inmesh)
+\item 
+\mbox{\hyperlink{classpressurizedhole_ac93411f3eca8198f0ebdf60d708f2b6c}{$\sim$pressurizedhole}} ()
+\item 
+void \mbox{\hyperlink{classpressurizedhole_a62fa8c16916e3c81e25a9bf29f1f306d}{Solve\+Elastic\+Hole}} ()
+\item 
+void \mbox{\hyperlink{classpressurizedhole_aaef3bceb77a95e316ec6285a36200e59}{Read\+Mesh}} (std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&allcoords, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&meshcoords, \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \&meshtopology, string filenameel, string filenamecoord)
+\item 
+{\footnotesize template$<$class T $>$ }\\std\+::vector$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \mbox{\hyperlink{classpressurizedhole_a85c73dab3fc7373ed80c41ed588565f9}{vecstr\+\_\+to\+\_\+vec}} (std\+::vector$<$ std\+::string $>$ vs)
+\item 
+void \mbox{\hyperlink{classpressurizedhole_a37383c218152441ef2d9f57981b2fe34}{Find\+Ids\+In\+Face}} (\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ double $>$ constcoorddata, int constcoord, std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&allcoords, \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \&meshtopology, std\+::vector$<$ int $>$ \&idsface)
+\item 
+void \mbox{\hyperlink{classpressurizedhole_a8fefe9b74df24d7e4d6f6e2daf7ccf78}{Get\+El\+Coords}} (std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ allcoords, \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} el, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&elcoords)
+\item 
+void \mbox{\hyperlink{classpressurizedhole_a79469a2b211ede7c9a679e3d9afacc54}{Solve\+Eigen\+Sparse}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} A, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} b, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&x)
+\item 
+void \mbox{\hyperlink{classpressurizedhole_a892163fe32d44ce168136d7505900170}{Solve\+Eigen}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} A, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} b, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&x)
+\item 
+void \mbox{\hyperlink{classpressurizedhole_ad1eba8792c65ccaf4fd824eb2ad55c7e}{Create\+Mat\+And\+Mesh}} (\mbox{\hyperlink{classmesh}{mesh}} \&getmesh, \mbox{\hyperlink{classmaterial}{material}} \&mat)
+\item 
+void \mbox{\hyperlink{classpressurizedhole_ace21eb3eb79d7902a699376e79eeeb89}{Iterative\+Process}} ()
+\item 
+void \mbox{\hyperlink{classpressurizedhole_a3767ec07241ee0a18a1c71d0f34b2cef}{Insert\+BC}} (\mbox{\hyperlink{classmesh}{mesh}} \&mesh0, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&K, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&F)
+\item 
+void \mbox{\hyperlink{classpressurizedhole_a2f53a76db0a8f44e749433c24c609682}{Load\+BC}} (\mbox{\hyperlink{classmesh}{mesh}} \&mesh0, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&K, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&F)
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classpressurizedhole_aa1b35ff5543699d1943cfb8274189199}{computelamda}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&dwb, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&dws, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&dw, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&l)
+\item 
+std\+::vector$<$ std\+::vector$<$ int $>$ $>$ \mbox{\hyperlink{classpressurizedhole_aa234350f3a5321eee5411e019967e3af}{Line\+Topology}} (std\+::vector$<$ int $>$ ids, \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} order)
+\item 
+void \mbox{\hyperlink{classpressurizedhole_a65af0745fd06085c35098700dd625cb8}{To\+Mat\+Int}} (std\+::vector$<$ std\+::vector$<$ int $>$$>$ in, \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \&out)
+\item 
+void \mbox{\hyperlink{classpressurizedhole_a0f05275ab25a29b77da5979ed5e69bf0}{Find\+Ids}} (\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ double $>$ constcoorddata, \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ int $>$ constcoord, std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&allcoords, \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \&meshtopology, std\+::vector$<$ int $>$ \&ids)
+\item 
+{\footnotesize template$<$class T $>$ }\\void \mbox{\hyperlink{classpressurizedhole_ad5fa8e8aa29c6eb1e4f84d317e68dad1}{Out\+Put\+Post}} (\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&postdata, std\+::ofstream \&file)
+\item 
+void \mbox{\hyperlink{classpressurizedhole_afd84c33ec393705f848387f611a1da1b}{Out\+Put\+File}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&postdata, std\+::ofstream \&file)
+\item 
+void \mbox{\hyperlink{classpressurizedhole_a1a2aa4b1cdc71dcc4dc13b53ff3ced17}{Out\+Put\+Post}} (std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&postdata, std\+::ofstream \&file)
+\item 
+{\footnotesize template$<$class T $>$ }\\std\+::vector$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \mbox{\hyperlink{classpressurizedhole_a20397ed1c39182ea20df2096f4e2c6ec}{vecstr\+\_\+to\+\_\+vec}} (std\+::vector$<$ string $>$ vs)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmesh}{mesh}} $\ast$ \mbox{\hyperlink{classpressurizedhole_ab8fbc0d76eca9283892e644060b161de}{fmesh}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 16 of file pressurizedhole.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classpressurizedhole_a72c48a007f04ff79e0711c8f18553fd0}\label{classpressurizedhole_a72c48a007f04ff79e0711c8f18553fd0}} 
+\index{pressurizedhole@{pressurizedhole}!pressurizedhole@{pressurizedhole}}
+\index{pressurizedhole@{pressurizedhole}!pressurizedhole@{pressurizedhole}}
+\doxysubsubsection{\texorpdfstring{pressurizedhole()}{pressurizedhole()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily pressurizedhole\+::pressurizedhole (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 4 of file pressurizedhole.\+cpp.
+
+\mbox{\Hypertarget{classpressurizedhole_aded287bfd55bf95b89815db1c6c948e4}\label{classpressurizedhole_aded287bfd55bf95b89815db1c6c948e4}} 
+\index{pressurizedhole@{pressurizedhole}!pressurizedhole@{pressurizedhole}}
+\index{pressurizedhole@{pressurizedhole}!pressurizedhole@{pressurizedhole}}
+\doxysubsubsection{\texorpdfstring{pressurizedhole()}{pressurizedhole()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily pressurizedhole\+::pressurizedhole (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmesh}{mesh}} $\ast$}]{inmesh }\end{DoxyParamCaption})}
+
+
+
+Definition at line 9 of file pressurizedhole.\+cpp.
+
+
+
+References fmesh.
+
+\mbox{\Hypertarget{classpressurizedhole_ac93411f3eca8198f0ebdf60d708f2b6c}\label{classpressurizedhole_ac93411f3eca8198f0ebdf60d708f2b6c}} 
+\index{pressurizedhole@{pressurizedhole}!````~pressurizedhole@{$\sim$pressurizedhole}}
+\index{````~pressurizedhole@{$\sim$pressurizedhole}!pressurizedhole@{pressurizedhole}}
+\doxysubsubsection{\texorpdfstring{$\sim$pressurizedhole()}{~pressurizedhole()}}
+{\footnotesize\ttfamily pressurizedhole\+::$\sim$pressurizedhole (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 14 of file pressurizedhole.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classpressurizedhole_aa1b35ff5543699d1943cfb8274189199}\label{classpressurizedhole_aa1b35ff5543699d1943cfb8274189199}} 
+\index{pressurizedhole@{pressurizedhole}!computelamda@{computelamda}}
+\index{computelamda@{computelamda}!pressurizedhole@{pressurizedhole}}
+\doxysubsubsection{\texorpdfstring{computelamda()}{computelamda()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} pressurizedhole\+::computelamda (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{dwb,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{dws,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{dw,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&}]{l }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpressurizedhole_ad1eba8792c65ccaf4fd824eb2ad55c7e}\label{classpressurizedhole_ad1eba8792c65ccaf4fd824eb2ad55c7e}} 
+\index{pressurizedhole@{pressurizedhole}!CreateMatAndMesh@{CreateMatAndMesh}}
+\index{CreateMatAndMesh@{CreateMatAndMesh}!pressurizedhole@{pressurizedhole}}
+\doxysubsubsection{\texorpdfstring{CreateMatAndMesh()}{CreateMatAndMesh()}}
+{\footnotesize\ttfamily void pressurizedhole\+::\+Create\+Mat\+And\+Mesh (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmesh}{mesh}} \&}]{getmesh,  }\item[{\mbox{\hyperlink{classmaterial}{material}} \&}]{mat }\end{DoxyParamCaption})}
+
+
+
+Definition at line 124 of file pressurizedhole.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign(), elastoplastic2\+D$<$ Y\+C $>$\+::f\+YC, N\+Rmatrix$<$ T $>$\+::nrows(), Out\+Put\+Post(), shapequad\+::pointsandweigths(), Read\+Mesh(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Set\+Memory(), vonmises\+::setup(), and elastoplastic2\+D$<$ Y\+C $>$\+::\+Update\+Body\+Force().
+
+
+
+Referenced by Iterative\+Process(), and Solve\+Elastic\+Hole().
+
+\mbox{\Hypertarget{classpressurizedhole_a0f05275ab25a29b77da5979ed5e69bf0}\label{classpressurizedhole_a0f05275ab25a29b77da5979ed5e69bf0}} 
+\index{pressurizedhole@{pressurizedhole}!FindIds@{FindIds}}
+\index{FindIds@{FindIds}!pressurizedhole@{pressurizedhole}}
+\doxysubsubsection{\texorpdfstring{FindIds()}{FindIds()}}
+{\footnotesize\ttfamily void pressurizedhole\+::\+Find\+Ids (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ double $>$}]{constcoorddata,  }\item[{\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ int $>$}]{constcoord,  }\item[{std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&}]{allcoords,  }\item[{\mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \&}]{meshtopology,  }\item[{std\+::vector$<$ int $>$ \&}]{ids }\end{DoxyParamCaption})}
+
+
+
+Definition at line 394 of file pressurizedhole.\+cpp.
+
+
+
+References Get\+El\+Coords(), N\+Rmatrix$<$ T $>$\+::nrows(), and N\+Rvector$<$ T $>$\+::size().
+
+
+
+Referenced by Insert\+B\+C().
+
+\mbox{\Hypertarget{classpressurizedhole_a37383c218152441ef2d9f57981b2fe34}\label{classpressurizedhole_a37383c218152441ef2d9f57981b2fe34}} 
+\index{pressurizedhole@{pressurizedhole}!FindIdsInFace@{FindIdsInFace}}
+\index{FindIdsInFace@{FindIdsInFace}!pressurizedhole@{pressurizedhole}}
+\doxysubsubsection{\texorpdfstring{FindIdsInFace()}{FindIdsInFace()}}
+{\footnotesize\ttfamily void pressurizedhole\+::\+Find\+Ids\+In\+Face (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ double $>$}]{constcoorddata,  }\item[{int}]{constcoord,  }\item[{std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&}]{allcoords,  }\item[{\mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \&}]{meshtopology,  }\item[{std\+::vector$<$ int $>$ \&}]{idsface }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpressurizedhole_a8fefe9b74df24d7e4d6f6e2daf7ccf78}\label{classpressurizedhole_a8fefe9b74df24d7e4d6f6e2daf7ccf78}} 
+\index{pressurizedhole@{pressurizedhole}!GetElCoords@{GetElCoords}}
+\index{GetElCoords@{GetElCoords}!pressurizedhole@{pressurizedhole}}
+\doxysubsubsection{\texorpdfstring{GetElCoords()}{GetElCoords()}}
+{\footnotesize\ttfamily void pressurizedhole\+::\+Get\+El\+Coords (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$}]{allcoords,  }\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{el,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{elcoords }\end{DoxyParamCaption})}
+
+
+
+Definition at line 450 of file pressurizedhole.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign().
+
+
+
+Referenced by Find\+Ids().
+
+\mbox{\Hypertarget{classpressurizedhole_a3767ec07241ee0a18a1c71d0f34b2cef}\label{classpressurizedhole_a3767ec07241ee0a18a1c71d0f34b2cef}} 
+\index{pressurizedhole@{pressurizedhole}!InsertBC@{InsertBC}}
+\index{InsertBC@{InsertBC}!pressurizedhole@{pressurizedhole}}
+\doxysubsubsection{\texorpdfstring{InsertBC()}{InsertBC()}}
+{\footnotesize\ttfamily void pressurizedhole\+::\+Insert\+BC (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmesh}{mesh}} \&}]{mesh0,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{K,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{F }\end{DoxyParamCaption})}
+
+
+
+Definition at line 197 of file pressurizedhole.\+cpp.
+
+
+
+References material\+::\+Dirichlet\+B\+C(), Find\+Ids(), mesh\+::fmaterial, mesh\+::\+Get\+All\+Coords(), and mesh\+::\+Get\+Mesh\+Topology().
+
+
+
+Referenced by Iterative\+Process(), and Solve\+Elastic\+Hole().
+
+\mbox{\Hypertarget{classpressurizedhole_ace21eb3eb79d7902a699376e79eeeb89}\label{classpressurizedhole_ace21eb3eb79d7902a699376e79eeeb89}} 
+\index{pressurizedhole@{pressurizedhole}!IterativeProcess@{IterativeProcess}}
+\index{IterativeProcess@{IterativeProcess}!pressurizedhole@{pressurizedhole}}
+\doxysubsubsection{\texorpdfstring{IterativeProcess()}{IterativeProcess()}}
+{\footnotesize\ttfamily void pressurizedhole\+::\+Iterative\+Process (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 20 of file pressurizedhole.\+cpp.
+
+
+
+References mesh\+::\+Assemble(), N\+Rmatrix$<$ T $>$\+::assign(), material\+::\+Compute\+Sol\+And\+D\+Sol(), Create\+Mat\+And\+Mesh(), V\+T\+K\+Graph\+Mesh\+::\+Draw\+Solution(), mesh\+::fmaterial, mesh\+::\+Get\+All\+Coords(), mesh\+::\+Get\+Mesh\+Nodes(), mesh\+::\+Get\+Mesh\+Topology(), Insert\+B\+C(), Load\+B\+C(), N\+Rmatrix$<$ T $>$\+::\+N\+Rmatrix\+Norm(), N\+Rmatrix$<$ T $>$\+::nrows(), Out\+Put\+File(), Out\+Put\+Post(), material\+::\+Post\+Process(), Solve\+Eigen(), material\+::\+Update\+Displacement(), and material\+::\+Update\+Plastic\+Strain().
+
+\mbox{\Hypertarget{classpressurizedhole_aa234350f3a5321eee5411e019967e3af}\label{classpressurizedhole_aa234350f3a5321eee5411e019967e3af}} 
+\index{pressurizedhole@{pressurizedhole}!LineTopology@{LineTopology}}
+\index{LineTopology@{LineTopology}!pressurizedhole@{pressurizedhole}}
+\doxysubsubsection{\texorpdfstring{LineTopology()}{LineTopology()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ int $>$ $>$ pressurizedhole\+::\+Line\+Topology (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$}]{ids,  }\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{order }\end{DoxyParamCaption})}
+
+
+
+Definition at line 465 of file pressurizedhole.\+cpp.
+
+
+
+Referenced by Load\+B\+C().
+
+\mbox{\Hypertarget{classpressurizedhole_a2f53a76db0a8f44e749433c24c609682}\label{classpressurizedhole_a2f53a76db0a8f44e749433c24c609682}} 
+\index{pressurizedhole@{pressurizedhole}!LoadBC@{LoadBC}}
+\index{LoadBC@{LoadBC}!pressurizedhole@{pressurizedhole}}
+\doxysubsubsection{\texorpdfstring{LoadBC()}{LoadBC()}}
+{\footnotesize\ttfamily void pressurizedhole\+::\+Load\+BC (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmesh}{mesh}} \&}]{mesh0,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{K,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{F }\end{DoxyParamCaption})}
+
+
+
+Definition at line 168 of file pressurizedhole.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign(), material\+::\+Contribute\+Curved\+Line(), gridmesh\+::\+Find\+Ids\+In\+Path(), mesh\+::fmaterial, mesh\+::\+Get\+All\+Coords(), mesh\+::\+Get\+Mesh\+Nodes(), mesh\+::\+Get\+Mesh\+Topology(), Line\+Topology(), and To\+Mat\+Int().
+
+
+
+Referenced by Iterative\+Process().
+
+\mbox{\Hypertarget{classpressurizedhole_afd84c33ec393705f848387f611a1da1b}\label{classpressurizedhole_afd84c33ec393705f848387f611a1da1b}} 
+\index{pressurizedhole@{pressurizedhole}!OutPutFile@{OutPutFile}}
+\index{OutPutFile@{OutPutFile}!pressurizedhole@{pressurizedhole}}
+\doxysubsubsection{\texorpdfstring{OutPutFile()}{OutPutFile()}}
+{\footnotesize\ttfamily void pressurizedhole\+::\+Out\+Put\+File (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{postdata,  }\item[{std\+::ofstream \&}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 62 of file pressurizedhole.\+h.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::nrows().
+
+
+
+Referenced by Iterative\+Process().
+
+\mbox{\Hypertarget{classpressurizedhole_ad5fa8e8aa29c6eb1e4f84d317e68dad1}\label{classpressurizedhole_ad5fa8e8aa29c6eb1e4f84d317e68dad1}} 
+\index{pressurizedhole@{pressurizedhole}!OutPutPost@{OutPutPost}}
+\index{OutPutPost@{OutPutPost}!pressurizedhole@{pressurizedhole}}
+\doxysubsubsection{\texorpdfstring{OutPutPost()}{OutPutPost()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void pressurizedhole\+::\+Out\+Put\+Post (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{postdata,  }\item[{std\+::ofstream \&}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 48 of file pressurizedhole.\+h.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::ncols(), and N\+Rmatrix$<$ T $>$\+::nrows().
+
+
+
+Referenced by Create\+Mat\+And\+Mesh(), and Iterative\+Process().
+
+\mbox{\Hypertarget{classpressurizedhole_a1a2aa4b1cdc71dcc4dc13b53ff3ced17}\label{classpressurizedhole_a1a2aa4b1cdc71dcc4dc13b53ff3ced17}} 
+\index{pressurizedhole@{pressurizedhole}!OutPutPost@{OutPutPost}}
+\index{OutPutPost@{OutPutPost}!pressurizedhole@{pressurizedhole}}
+\doxysubsubsection{\texorpdfstring{OutPutPost()}{OutPutPost()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void pressurizedhole\+::\+Out\+Put\+Post (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&}]{postdata,  }\item[{std\+::ofstream \&}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 73 of file pressurizedhole.\+h.
+
+\mbox{\Hypertarget{classpressurizedhole_aaef3bceb77a95e316ec6285a36200e59}\label{classpressurizedhole_aaef3bceb77a95e316ec6285a36200e59}} 
+\index{pressurizedhole@{pressurizedhole}!ReadMesh@{ReadMesh}}
+\index{ReadMesh@{ReadMesh}!pressurizedhole@{pressurizedhole}}
+\doxysubsubsection{\texorpdfstring{ReadMesh()}{ReadMesh()}}
+{\footnotesize\ttfamily void pressurizedhole\+::\+Read\+Mesh (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&}]{allcoords,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{meshcoords,  }\item[{\mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \&}]{meshtopology,  }\item[{string}]{filenameel,  }\item[{string}]{filenamecoord }\end{DoxyParamCaption})}
+
+
+
+Definition at line 302 of file pressurizedhole.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::\+Copy\+From\+Vector(), N\+Rmatrix$<$ T $>$\+::ncols(), and N\+Rmatrix$<$ T $>$\+::nrows().
+
+
+
+Referenced by Create\+Mat\+And\+Mesh().
+
+\mbox{\Hypertarget{classpressurizedhole_a892163fe32d44ce168136d7505900170}\label{classpressurizedhole_a892163fe32d44ce168136d7505900170}} 
+\index{pressurizedhole@{pressurizedhole}!SolveEigen@{SolveEigen}}
+\index{SolveEigen@{SolveEigen}!pressurizedhole@{pressurizedhole}}
+\doxysubsubsection{\texorpdfstring{SolveEigen()}{SolveEigen()}}
+{\footnotesize\ttfamily void pressurizedhole\+::\+Solve\+Eigen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{A,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{b,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{x }\end{DoxyParamCaption})}
+
+
+
+Definition at line 251 of file pressurizedhole.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign(), N\+Rmatrix$<$ T $>$\+::ncols(), and N\+Rmatrix$<$ T $>$\+::nrows().
+
+
+
+Referenced by Iterative\+Process(), and Solve\+Elastic\+Hole().
+
+\mbox{\Hypertarget{classpressurizedhole_a79469a2b211ede7c9a679e3d9afacc54}\label{classpressurizedhole_a79469a2b211ede7c9a679e3d9afacc54}} 
+\index{pressurizedhole@{pressurizedhole}!SolveEigenSparse@{SolveEigenSparse}}
+\index{SolveEigenSparse@{SolveEigenSparse}!pressurizedhole@{pressurizedhole}}
+\doxysubsubsection{\texorpdfstring{SolveEigenSparse()}{SolveEigenSparse()}}
+{\footnotesize\ttfamily void pressurizedhole\+::\+Solve\+Eigen\+Sparse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{A,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{b,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{x }\end{DoxyParamCaption})}
+
+
+
+Definition at line 268 of file pressurizedhole.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign(), and N\+Rmatrix$<$ T $>$\+::nrows().
+
+\mbox{\Hypertarget{classpressurizedhole_a62fa8c16916e3c81e25a9bf29f1f306d}\label{classpressurizedhole_a62fa8c16916e3c81e25a9bf29f1f306d}} 
+\index{pressurizedhole@{pressurizedhole}!SolveElasticHole@{SolveElasticHole}}
+\index{SolveElasticHole@{SolveElasticHole}!pressurizedhole@{pressurizedhole}}
+\doxysubsubsection{\texorpdfstring{SolveElasticHole()}{SolveElasticHole()}}
+{\footnotesize\ttfamily void pressurizedhole\+::\+Solve\+Elastic\+Hole (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 235 of file pressurizedhole.\+cpp.
+
+
+
+References mesh\+::\+Assemble(), Create\+Mat\+And\+Mesh(), Insert\+B\+C(), N\+Rmatrix$<$ T $>$\+::\+Print(), and Solve\+Eigen().
+
+\mbox{\Hypertarget{classpressurizedhole_a65af0745fd06085c35098700dd625cb8}\label{classpressurizedhole_a65af0745fd06085c35098700dd625cb8}} 
+\index{pressurizedhole@{pressurizedhole}!ToMatInt@{ToMatInt}}
+\index{ToMatInt@{ToMatInt}!pressurizedhole@{pressurizedhole}}
+\doxysubsubsection{\texorpdfstring{ToMatInt()}{ToMatInt()}}
+{\footnotesize\ttfamily void pressurizedhole\+::\+To\+Mat\+Int (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ int $>$$>$}]{in,  }\item[{\mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \&}]{out }\end{DoxyParamCaption})}
+
+
+
+Definition at line 483 of file pressurizedhole.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign().
+
+
+
+Referenced by Load\+B\+C().
+
+\mbox{\Hypertarget{classpressurizedhole_a85c73dab3fc7373ed80c41ed588565f9}\label{classpressurizedhole_a85c73dab3fc7373ed80c41ed588565f9}} 
+\index{pressurizedhole@{pressurizedhole}!vecstr\_to\_vec@{vecstr\_to\_vec}}
+\index{vecstr\_to\_vec@{vecstr\_to\_vec}!pressurizedhole@{pressurizedhole}}
+\doxysubsubsection{\texorpdfstring{vecstr\_to\_vec()}{vecstr\_to\_vec()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+std\+::vector$<$\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}}$>$ pressurizedhole\+::vecstr\+\_\+to\+\_\+vec (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{vs }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classpressurizedhole_a20397ed1c39182ea20df2096f4e2c6ec}\label{classpressurizedhole_a20397ed1c39182ea20df2096f4e2c6ec}} 
+\index{pressurizedhole@{pressurizedhole}!vecstr\_to\_vec@{vecstr\_to\_vec}}
+\index{vecstr\_to\_vec@{vecstr\_to\_vec}!pressurizedhole@{pressurizedhole}}
+\doxysubsubsection{\texorpdfstring{vecstr\_to\_vec()}{vecstr\_to\_vec()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+std\+::vector$<$\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}}$>$ pressurizedhole\+::vecstr\+\_\+to\+\_\+vec (\begin{DoxyParamCaption}\item[{std\+::vector$<$ string $>$}]{vs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 381 of file pressurizedhole.\+cpp.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classpressurizedhole_ab8fbc0d76eca9283892e644060b161de}\label{classpressurizedhole_ab8fbc0d76eca9283892e644060b161de}} 
+\index{pressurizedhole@{pressurizedhole}!fmesh@{fmesh}}
+\index{fmesh@{fmesh}!pressurizedhole@{pressurizedhole}}
+\doxysubsubsection{\texorpdfstring{fmesh}{fmesh}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classmesh}{mesh}}$\ast$ pressurizedhole\+::fmesh\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 90 of file pressurizedhole.\+h.
+
+
+
+Referenced by pressurizedhole().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{pressurizedhole_8h}{pressurizedhole.\+h}}\item 
+src/\mbox{\hyperlink{pressurizedhole_8cpp}{pressurizedhole.\+cpp}}\end{DoxyCompactItemize}

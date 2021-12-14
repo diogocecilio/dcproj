@@ -191,7 +191,7 @@ void elastoplastic3D<YC>::Contribute(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint
 		std::cout << "\n xi " << xi << endl;
 		std::cout << "\n eta " << eta << endl;
         std::cout << "\n zeta " << zeta << endl;
-         std::cout << "\n w " << w << endl;
+        std::cout << "\n w " << w << endl;
         Jac.Print();
 		GradPsi.Print();
 		elcoords.Print();
@@ -292,7 +292,7 @@ void elastoplastic3D<YC>::Contribute(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint
 	efbody *= w*DetJ;
 }
 template <class YC>
-void elastoplastic3D<YC>::CacStiff(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint, NRmatrix<Doub>  &efbody, const NRmatrix<Doub>   &elcoords,NRmatrix<Doub>  eldisplace)
+void elastoplastic3D<YC>::CalcStiff(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint, NRmatrix<Doub>  &efbody, const NRmatrix<Doub>   &elcoords,NRmatrix<Doub>  eldisplace)
 {
 	MatDoub ptsweigths, ekt, eftint,eftbody;
 	Doub xi, eta, w;
@@ -467,7 +467,7 @@ void elastoplastic3D<YC>::ComputeSolution(mesh * inmesh,NRmatrix<Doub>  elcoords
 }
 
 template <class YC>
-void elastoplastic3D<YC>::SolPt(const std::vector<std::vector< std::vector<Doub > > > &allcoords, const MatInt &meshtopology, const Int &el, const  NRmatrix<Doub>  &solG, const Doub &xi, const Doub &eta, NRmatrix<Doub>  &xycoords, NRmatrix<Doub>  &sol)
+void elastoplastic3D<YC>::SolPt(mesh * inmesh, const Int &el, const  NRmatrix<Doub>  &solG, const Doub &xi, const Doub &eta, NRmatrix<Doub>  &xycoords, NRmatrix<Doub>  &sol)
 {
     std::cout<< "Not Implemented." << std::endl;
     DebugStop();
@@ -501,19 +501,7 @@ void elastoplastic3D<YC>::PostProcessStrain(mesh * inmesh, NRvector<NRvector<NRt
     DebugStop();
 }
 
-template <class YC>
-void elastoplastic3D<YC>::Assemble(std::vector<std::vector< std::vector<Doub > > > allcoords, NRmatrix<Doub>  meshnodes, MatInt meshtopology, NRmatrix<Doub>  &KG, NRmatrix<Doub>  &Fint,NRmatrix<Doub>  &Fbody)
-{
-    std::cout<< "Not Implemented." << std::endl;
-    DebugStop();
-}
 
-template <class YC>
-void elastoplastic3D<YC>::Assemble(std::vector<std::vector< std::vector<Doub > > > allcoords, NRmatrix<Doub>  meshnodes, MatInt meshtopology, SparseMatrix<double>  &KG, VectorXd &Fint, VectorXd &Fbody)
-{
-    std::cout<< "Not Implemented." << std::endl;
-    DebugStop();
-}
 
 template <class YC>
 NRmatrix<Doub>  elastoplastic3D<YC>::GetSolution()

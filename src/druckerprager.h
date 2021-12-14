@@ -8,27 +8,126 @@
 #include <iostream>
 #include <Eigen/Dense>
 
+    /** @brief This class implements the Hyperbolic Drucker Prager elastoplastic model 
+    Detailed description follows here.
+    @author Diogo Cecílio
+    @date dez 2021
+    @brief Reference: <a href="https://ascelibrary.org/doi/abs/10.1061/%28ASCE%29EM.1943-7889.0001737">link text</a>
+    */
+
 //using Eigen::MatrixXd;
 using namespace Eigen;
 class druckerprager
 {
 public:
-	druckerprager(Doub young, Doub nu, Doub coesion, Doub frictionangle);
+
+    
+    
+    /**
+     * @brief Default constructor
+     */
 	druckerprager();
+    
+    /**
+	 * @brief Class constructor
+	 * @param [in] young material youngs modulus
+     * @param [in] nu material poisson ratio 
+     * @param [in] coesion  material cohesion 
+     * @param [in] frictionangle material internal friction angle
+	 */
+	druckerprager(Doub young, Doub nu, Doub coesion, Doub frictionangle);
+    
+    /**
+     * @brief Default destructor
+     */
 	~druckerprager();
 
+    /**
+	 * @brief Implements the elastoplastic decomposition whit the Closest Point Projection Method and computes the tangent operator.
+	 * @param [in] epst total strain tensor
+     * @param [in] epsp plastic strain tensor
+     * @param [out] projstress  projected stress tensor
+     * @param [out] projstrain projected strain tensor
+     * @param [out] Dep Elastoplastic tangent operator
+     * @param [out] projgamma Plastic multiplier
+	 */
 	void closestpointproj(NRtensor<Doub>  epst, NRtensor<Doub>  epsp, NRtensor<Doub>  & projstress, NRtensor<Doub>  & projstrain, NRmatrix<Doub>  & Dep, Doub & projgamma);
+    
+    /**
+     * @brief Compute the yield function
+     * @param [in] xi cylindrical coordinate xi=I1/3
+     * @param [in] rho cylindrical coordinate rho =  sqrt(2 J2)
+     * @param [out] yieldfunction 
+     */
 	Doub yield(Doub xi, Doub rho);
+    
 	NRmatrix<Doub> GetElasticMatrix();
 	NRmatrix<Doub>  GetInverseElasticMatrix();
+    
+    /**
+     * @brief Compute the cylindrical coordinates in DP plane strain match.
+     * @param [in] xi cylindrical coordinate xi=I1/3
+     * @param [in] rho cylindrical coordinate rho =  sqrt(2 J2)
+     * @param [in] beta angle
+     * @param [out] NRmatrix<Doub> {sig1,sig2,sig3} 
+     */
 	NRmatrix<Doub>  F1HWCylDruckerPragerSmoothPSMATCH(Doub xisol, Doub rho, Doub betasol);
+    
+    /**
+     * @brief Compute the cylindrical coordinates
+     * @param [in] sig principla stress
+     * @param [out] NRmatrix<Doub> {xi,rho,beta}  cylindrical coordinates
+     */
 	NRmatrix<Doub>  HW(NRmatrix<Doub>  sig);
+    
+    /**
+     * @brief Reconstruct a second order stress tensor
+     * @param [in] val eigenvalues
+     * @param [in] vec eigenvectors
+     * @param [out] fulltensor 
+     */
 	NRmatrix<Doub>  stressrecosntruction(NRmatrix<Doub>  val, NRmatrix<Doub>  vec);
+    
+        
+    /**
+     * @brief Equation 58 of the Reference. Compute the flow rule derivative with respect to the projected stress 
+     * @param [in] sigprojvoigt projected stress tensor in Voigt notation 
+     * @param [out] dadsig derivative with respect to the projected stress 
+     */
 	NRmatrix<Doub>  dadsig(NRtensor<Doub>  sigprojvoigt);
+    
+    /**
+     * @brief   \f$
+     * \boldsymbol{P}=  \left[\begin{array}{cccccc}
+     * 2/3 &  -1/3 & -1/3 & 0 & 0 & 0\\
+     * -1/3 & 2/3 & -1/3 & 0 & 0 & 0\\
+     * -1/3 & -1/3 & 2/3 & 0 & 0 & 0\\
+     * 0 & 0 & 0 & 2 & 0 & 0\\
+     * 0 & 0 & 0 & 0 & 2 & 0\\
+     * 0 & 0 & 0 & 0 & 0 & 2\\
+     * \end{array}\right]
+     * \f$
+     */
 	NRmatrix<Doub>  P();
+    /**
+     * @brief Equation 57 of the Reference. Compute the flow rule
+     * @param [in] sigprojvoigt projected stress tensor in Voigt notation 
+     * @param [out] avec yield function derivative with respect to the projected stress 
+     */
 	NRmatrix<Doub>  avec(NRtensor<Doub>  sigprojvoigt);
 
+    /**
+     * @brief Find the project xi cylindrical coordinate using a combination of Newton-Raphson and bisection.
+     * @param [in] pt trial principal stress  
+     * @param [in] xitrial trial xi cylindrical coordinate
+     */
 	Doub FindMinimum(NRmatrix<Doub>  pt,Doub xitrial,bool flag);
+    
+    /**
+     * @brief Compute  \f$ \boldsymbol{Q} =  \boldsymbol{I} + \Delta \gamma \mathbf{D}^e \frac{\boldsymbol{\partial{a}}}{\boldsymbol{\partial{\sigma}}}  \f$
+     * @param [in] pt trial principal stress  
+     * @param [in] xitrial trial xi cylindrical coordinate
+     */
 	MatDoub ComputeQ(NRmatrix<Doub>  fulltensorproj, NRmatrix<Doub>  tempepsemat, NRtensor<Doub>  & projstress, NRtensor<Doub>  & projstrain, Doub & projgamma,NRmatrix<Doub>  & nvec);
 
     Doub phi(NRtensor<Doub> epse)

@@ -1,0 +1,157 @@
+\hypertarget{classelastoplasticbase}{}\doxysection{elastoplasticbase Class Reference}
+\label{classelastoplasticbase}\index{elastoplasticbase@{elastoplasticbase}}
+
+
+{\ttfamily \#include $<$elastoplasticbase.\+h$>$}
+
+
+
+Inheritance diagram for elastoplasticbase\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=182pt]{classelastoplasticbase__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classelastoplasticbase_acdc0817735e798bd6c3698d6672716d8}{$\sim$elastoplasticbase}} ()
+\item 
+virtual void \mbox{\hyperlink{classelastoplasticbase_a30e1509d7669fa9c97bc4a2e775075b3}{closestpointproj}} (\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ epst, \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ epsp, \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&projstress, \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&projstrain, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&Dep, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&projgamma)=0
+\item 
+virtual \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \mbox{\hyperlink{classelastoplasticbase_a38e92cde35508d7c4cc467098149efc3}{Get\+Elastic\+Matrix}} ()=0
+\item 
+virtual \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \mbox{\hyperlink{classelastoplasticbase_ae4e4cf23d8d11be85fcd2bc1b98c9911}{Get\+Inverse\+Elastic\+Matrix}} ()=0
+\item 
+virtual \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \mbox{\hyperlink{classelastoplasticbase_acb9ad51d1c857ba867f5f7a08ccbfddd}{HW}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} sig)=0
+\item 
+virtual \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \mbox{\hyperlink{classelastoplasticbase_afbeefbfb66ac3cdca4787595900dfd3e}{stressrecosntruction}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} val, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} vec)=0
+\item 
+virtual \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \mbox{\hyperlink{classelastoplasticbase_a4a809480e40cd44f46b50bc06618ff76}{dadsig}} (\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ sigprojvoigt)=0
+\item 
+virtual \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \mbox{\hyperlink{classelastoplasticbase_a1a00035f3c982a517be548b6f1beeff7}{P}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classelastoplasticbase_a62e340387a939f08109c26e7d716c36f}{Get\+Mat\+Constants}} (\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&consts)=0
+\item 
+virtual void \mbox{\hyperlink{classelastoplasticbase_a23f49cb3cf26ee021834d47c7efad155}{Set\+Mat\+Constants}} (\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&consts)=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 4 of file elastoplasticbase.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classelastoplasticbase_acdc0817735e798bd6c3698d6672716d8}\label{classelastoplasticbase_acdc0817735e798bd6c3698d6672716d8}} 
+\index{elastoplasticbase@{elastoplasticbase}!````~elastoplasticbase@{$\sim$elastoplasticbase}}
+\index{````~elastoplasticbase@{$\sim$elastoplasticbase}!elastoplasticbase@{elastoplasticbase}}
+\doxysubsubsection{\texorpdfstring{$\sim$elastoplasticbase()}{~elastoplasticbase()}}
+{\footnotesize\ttfamily elastoplasticbase\+::$\sim$elastoplasticbase (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 6 of file elastoplasticbase.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classelastoplasticbase_a30e1509d7669fa9c97bc4a2e775075b3}\label{classelastoplasticbase_a30e1509d7669fa9c97bc4a2e775075b3}} 
+\index{elastoplasticbase@{elastoplasticbase}!closestpointproj@{closestpointproj}}
+\index{closestpointproj@{closestpointproj}!elastoplasticbase@{elastoplasticbase}}
+\doxysubsubsection{\texorpdfstring{closestpointproj()}{closestpointproj()}}
+{\footnotesize\ttfamily virtual void elastoplasticbase\+::closestpointproj (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$}]{epst,  }\item[{\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$}]{epsp,  }\item[{\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{projstress,  }\item[{\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{projstrain,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{Dep,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&}]{projgamma }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classvonmises_aefbf01f66a4a51f9e4bbb005e8b73d48}{vonmises}}.
+
+\mbox{\Hypertarget{classelastoplasticbase_a4a809480e40cd44f46b50bc06618ff76}\label{classelastoplasticbase_a4a809480e40cd44f46b50bc06618ff76}} 
+\index{elastoplasticbase@{elastoplasticbase}!dadsig@{dadsig}}
+\index{dadsig@{dadsig}!elastoplasticbase@{elastoplasticbase}}
+\doxysubsubsection{\texorpdfstring{dadsig()}{dadsig()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} elastoplasticbase\+::dadsig (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$}]{sigprojvoigt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classvonmises_aca2a9e377c50b41cc3c6570c4011da2c}{vonmises}}.
+
+\mbox{\Hypertarget{classelastoplasticbase_a38e92cde35508d7c4cc467098149efc3}\label{classelastoplasticbase_a38e92cde35508d7c4cc467098149efc3}} 
+\index{elastoplasticbase@{elastoplasticbase}!GetElasticMatrix@{GetElasticMatrix}}
+\index{GetElasticMatrix@{GetElasticMatrix}!elastoplasticbase@{elastoplasticbase}}
+\doxysubsubsection{\texorpdfstring{GetElasticMatrix()}{GetElasticMatrix()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} elastoplasticbase\+::\+Get\+Elastic\+Matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classvonmises_a62cbd7c02f6b5cc5586351217a5e0d0a}{vonmises}}.
+
+\mbox{\Hypertarget{classelastoplasticbase_ae4e4cf23d8d11be85fcd2bc1b98c9911}\label{classelastoplasticbase_ae4e4cf23d8d11be85fcd2bc1b98c9911}} 
+\index{elastoplasticbase@{elastoplasticbase}!GetInverseElasticMatrix@{GetInverseElasticMatrix}}
+\index{GetInverseElasticMatrix@{GetInverseElasticMatrix}!elastoplasticbase@{elastoplasticbase}}
+\doxysubsubsection{\texorpdfstring{GetInverseElasticMatrix()}{GetInverseElasticMatrix()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} elastoplasticbase\+::\+Get\+Inverse\+Elastic\+Matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classvonmises_afd8d72bf6bb0a3472d5414af3e8e1895}{vonmises}}.
+
+\mbox{\Hypertarget{classelastoplasticbase_a62e340387a939f08109c26e7d716c36f}\label{classelastoplasticbase_a62e340387a939f08109c26e7d716c36f}} 
+\index{elastoplasticbase@{elastoplasticbase}!GetMatConstants@{GetMatConstants}}
+\index{GetMatConstants@{GetMatConstants}!elastoplasticbase@{elastoplasticbase}}
+\doxysubsubsection{\texorpdfstring{GetMatConstants()}{GetMatConstants()}}
+{\footnotesize\ttfamily virtual void elastoplasticbase\+::\+Get\+Mat\+Constants (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{consts }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classvonmises_a85e346a98c53f0cd4a6060aeb488a910}{vonmises}}.
+
+\mbox{\Hypertarget{classelastoplasticbase_acb9ad51d1c857ba867f5f7a08ccbfddd}\label{classelastoplasticbase_acb9ad51d1c857ba867f5f7a08ccbfddd}} 
+\index{elastoplasticbase@{elastoplasticbase}!HW@{HW}}
+\index{HW@{HW}!elastoplasticbase@{elastoplasticbase}}
+\doxysubsubsection{\texorpdfstring{HW()}{HW()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} elastoplasticbase\+::\+HW (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{sig }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classvonmises_aa1136ccfb37c097769307af4b2ca9dc2}{vonmises}}.
+
+\mbox{\Hypertarget{classelastoplasticbase_a1a00035f3c982a517be548b6f1beeff7}\label{classelastoplasticbase_a1a00035f3c982a517be548b6f1beeff7}} 
+\index{elastoplasticbase@{elastoplasticbase}!P@{P}}
+\index{P@{P}!elastoplasticbase@{elastoplasticbase}}
+\doxysubsubsection{\texorpdfstring{P()}{P()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} elastoplasticbase\+::P (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classvonmises_a57316e7d738c6a798535d977da92f3da}{vonmises}}.
+
+\mbox{\Hypertarget{classelastoplasticbase_a23f49cb3cf26ee021834d47c7efad155}\label{classelastoplasticbase_a23f49cb3cf26ee021834d47c7efad155}} 
+\index{elastoplasticbase@{elastoplasticbase}!SetMatConstants@{SetMatConstants}}
+\index{SetMatConstants@{SetMatConstants}!elastoplasticbase@{elastoplasticbase}}
+\doxysubsubsection{\texorpdfstring{SetMatConstants()}{SetMatConstants()}}
+{\footnotesize\ttfamily virtual void elastoplasticbase\+::\+Set\+Mat\+Constants (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{consts }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classvonmises_a502733d6154734ee47d930070f8dfc19}{vonmises}}.
+
+\mbox{\Hypertarget{classelastoplasticbase_afbeefbfb66ac3cdca4787595900dfd3e}\label{classelastoplasticbase_afbeefbfb66ac3cdca4787595900dfd3e}} 
+\index{elastoplasticbase@{elastoplasticbase}!stressrecosntruction@{stressrecosntruction}}
+\index{stressrecosntruction@{stressrecosntruction}!elastoplasticbase@{elastoplasticbase}}
+\doxysubsubsection{\texorpdfstring{stressrecosntruction()}{stressrecosntruction()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} elastoplasticbase\+::stressrecosntruction (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{val,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{vec }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classvonmises_ace49d1908f08a8d0017fa425afb37eec}{vonmises}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{elastoplasticbase_8h}{elastoplasticbase.\+h}}\item 
+src/\mbox{\hyperlink{elastoplasticbase_8cpp}{elastoplasticbase.\+cpp}}\end{DoxyCompactItemize}

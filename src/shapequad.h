@@ -1,9 +1,10 @@
 #pragma once
 #include "nr3.h"
-class shapequad
-{
+#include "shape.h"
+
+class shapequad: public shape{
 public:
-	shapequad(int order, int type)
+	shapequad(int order, int type, Int dim=2)
 	{
 		forder = order;
 		ftype = type;
@@ -11,6 +12,7 @@ public:
 
 	shapequad()
 	{
+        
 	}
 	~shapequad()
 	{

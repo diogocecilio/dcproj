@@ -1,0 +1,655 @@
+\hypertarget{class_k_l_galerkin_r_f}{}\doxysection{K\+L\+Galerkin\+RF Class Reference}
+\label{class_k_l_galerkin_r_f}\index{KLGalerkinRF@{KLGalerkinRF}}
+
+
+{\ttfamily \#include $<$K\+L\+Galerkin\+R\+F.\+h$>$}
+
+
+
+Inheritance diagram for K\+L\+Galerkin\+RF\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=163pt]{class_k_l_galerkin_r_f__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for K\+L\+Galerkin\+RF\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_k_l_galerkin_r_f__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_k_l_galerkin_r_f_a20ecd396be7a3fa3be11f60ea2b86f90}{K\+L\+Galerkin\+RF}} (\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} order, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} Lx, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} Ly, \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} type, \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} samples, \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} expansionorder)
+\item 
+\mbox{\hyperlink{class_k_l_galerkin_r_f_ac5253a91dc2a7e28c9b71a390f180a49}{$\sim$\+K\+L\+Galerkin\+RF}} ()
+\item 
+void \mbox{\hyperlink{class_k_l_galerkin_r_f_a6d3ebd6ca5d959cbbff83371e4b87d3e}{ContributeB}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&BE, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} xi, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} eta, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} w, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} elcoords)
+\item 
+void \mbox{\hyperlink{class_k_l_galerkin_r_f_aac37c45d24cc3fc9ab079b3560682f71}{Cac\+StiffB}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&BE, const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&elcoords)
+\item 
+void \mbox{\hyperlink{class_k_l_galerkin_r_f_aa88399d2e205cee179aed46cde56c272}{AssembleB}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&B)
+\item 
+void \mbox{\hyperlink{class_k_l_galerkin_r_f_ad67bd4b6f039a23ea612c68dac252f84}{ContributeC}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&CE, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} psis1, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} Grad\+Psi1, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} elcoords1, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} w1, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} psis2, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} Grad\+Psi2, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} elcoords2, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} w2)
+\item 
+void \mbox{\hyperlink{class_k_l_galerkin_r_f_aaabdf838a9b3c37f73f5c4792aaf4760}{Cac\+StiffC}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&CE, const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&elcoords1, const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&elcoords2)
+\item 
+void \mbox{\hyperlink{class_k_l_galerkin_r_f_a0cfb6393e7b06bc92b161c6f8eee2053}{AssembleC}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&C)
+\item 
+void \mbox{\hyperlink{class_k_l_galerkin_r_f_a1b6e7bf4d1ea5c15116bf7f615b307d8}{Solve\+Gen\+Eig\+Val\+Problem}} (\mbox{\hyperlink{nr3_8h_a79b3433b3828171258b200b6c197f1a5}{Vec\+Complex}} \&val, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&vec, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} $>$ \&H\+H\+AT, std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&errpost)
+\item 
+void \mbox{\hyperlink{class_k_l_galerkin_r_f_a6ccbb9f2272ab9d9e80a788a31047b5f}{Generate\+Gaussin\+Random\+Field}} (\mbox{\hyperlink{nr3_8h_a79b3433b3828171258b200b6c197f1a5}{Vec\+Complex}} \&val, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&vec, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} $>$ \&H\+H\+AT, std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&errpost)
+\item 
+void \mbox{\hyperlink{class_k_l_galerkin_r_f_ae57e3c53c6685ca44b39d33177bd6ac9}{Generate\+Non\+Gaussin\+Random\+Field}} (\mbox{\hyperlink{nr3_8h_a79b3433b3828171258b200b6c197f1a5}{Vec\+Complex}} \&val, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&vec, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} $>$ \&H\+H\+AT, std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&errpost)
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{class_k_l_galerkin_r_f_a23b45afff096f56b6bd61094dee401fb}{Autocorrelation\+Func}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} x1, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} x2)
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{class_k_l_galerkin_r_f_a3effa382cc37749c3c5bff5b5bd9e048}{Perfom\+Integral\+Of\+Listconst}} (const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&Vec)
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{class_k_l_galerkin_r_f_a9daef93ee1d2a28ad441b4eb3f27f1c0}{Perfom\+Integral\+Of\+Listconst2}} (const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&Vec)
+\item 
+void \mbox{\hyperlink{class_k_l_galerkin_r_f_ae1e73c4c323eedab9911490ea49eb2bc}{Compute\+Variance\+Error}} (\mbox{\hyperlink{nr3_8h_a79b3433b3828171258b200b6c197f1a5}{Vec\+Complex}} \&val, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&vec, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&error)
+\item 
+void \mbox{\hyperlink{class_k_l_galerkin_r_f_ae157f4dab1f7a208fb85ce1e7f0a7bc1}{Out\+Put\+Post}} (std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&postdata, std\+::ofstream \&file)
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{class_k_l_galerkin_r_f_ad827bf5003a8913e138718004c8a86c5}{Get\+Lx}} ()
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{class_k_l_galerkin_r_f_a412b0c50e4d7f156469f31c1dc6bd50b}{Get\+Ly}} ()
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{class_k_l_galerkin_r_f_a31de9e0660d90378eac0a5e7293e7b88}{Get\+Sig}} ()
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{class_k_l_galerkin_r_f_aa0007f22daa8ac8b46ea7b94d01557df}{Getftype}} ()
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{class_k_l_galerkin_r_f_a78128fb205d4f6e98581349adcebbd6b}{Get\+Expansionorder}} ()
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{class_k_l_galerkin_r_f_ad72613f6c861fd770be808dc67824f24}{Get\+Samples}} ()
+\item 
+void \mbox{\hyperlink{class_k_l_galerkin_r_f_a3ed5b7414a985a9fb3c86282d9a5263a}{Set\+Mesh}} (\mbox{\hyperlink{classmesh}{mesh}} $\ast$inmesh)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{class_k_l_galerkin_r_f_a11060d41a9764ef04650e72fa9f869e7}{fyoung}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{class_k_l_galerkin_r_f_a27b458decb9936a32f6845b260b708b7}{fnu}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{class_k_l_galerkin_r_f_a76a21e08812c86aaf48ed851c0525693}{fbodyforce}}
+\item 
+\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} \mbox{\hyperlink{class_k_l_galerkin_r_f_a35d3dba61d3c24e4321598b99c0b41b6}{fplanestress}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{class_k_l_galerkin_r_f_ac01754af4ccc165392316573fae73dec}{fthickness}}
+\item 
+\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} \mbox{\hyperlink{class_k_l_galerkin_r_f_a4d90b2881e74e006a1cd94f2bb7f16b4}{f\+Order}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{class_k_l_galerkin_r_f_a7ed4912560d8eab2b2aef1c6fc372aea}{f\+Lx}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{class_k_l_galerkin_r_f_a253b100b22ce39d12bbfd841523615f7}{f\+Ly}}
+\item 
+\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} \mbox{\hyperlink{class_k_l_galerkin_r_f_ad0ffc078683b644510ec3f45119e3577}{ftype}}
+\item 
+\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} \mbox{\hyperlink{class_k_l_galerkin_r_f_abf8e250bb0d9e2f9d7a0a19918f71fe9}{fsamples}}
+\item 
+\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} \mbox{\hyperlink{class_k_l_galerkin_r_f_a29744676e37e815a4473f3c103e385d1}{fexpansionorder}}
+\item 
+\mbox{\hyperlink{classmesh}{mesh}} \mbox{\hyperlink{class_k_l_galerkin_r_f_a3dee020df67d1d878a1f7934e5a2801f}{fmesh}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 17 of file K\+L\+Galerkin\+R\+F.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_a20ecd396be7a3fa3be11f60ea2b86f90}\label{class_k_l_galerkin_r_f_a20ecd396be7a3fa3be11f60ea2b86f90}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!KLGalerkinRF@{KLGalerkinRF}}
+\index{KLGalerkinRF@{KLGalerkinRF}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{KLGalerkinRF()}{KLGalerkinRF()}}
+{\footnotesize\ttfamily K\+L\+Galerkin\+R\+F\+::\+K\+L\+Galerkin\+RF (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{order,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{Lx,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{Ly,  }\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{type,  }\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{samples,  }\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{expansionorder }\end{DoxyParamCaption})}
+
+
+
+Definition at line 7 of file K\+L\+Galerkin\+R\+F.\+cpp.
+
+
+
+References fexpansionorder, f\+Lx, f\+Ly, f\+Order, fsamples, and ftype.
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_ac5253a91dc2a7e28c9b71a390f180a49}\label{class_k_l_galerkin_r_f_ac5253a91dc2a7e28c9b71a390f180a49}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!````~KLGalerkinRF@{$\sim$KLGalerkinRF}}
+\index{````~KLGalerkinRF@{$\sim$KLGalerkinRF}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{$\sim$KLGalerkinRF()}{~KLGalerkinRF()}}
+{\footnotesize\ttfamily K\+L\+Galerkin\+R\+F\+::$\sim$\+K\+L\+Galerkin\+RF (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 24 of file K\+L\+Galerkin\+R\+F.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_aa88399d2e205cee179aed46cde56c272}\label{class_k_l_galerkin_r_f_aa88399d2e205cee179aed46cde56c272}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!AssembleB@{AssembleB}}
+\index{AssembleB@{AssembleB}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{AssembleB()}{AssembleB()}}
+{\footnotesize\ttfamily void K\+L\+Galerkin\+R\+F\+::\+AssembleB (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{B }\end{DoxyParamCaption})}
+
+
+
+Definition at line 85 of file K\+L\+Galerkin\+R\+F.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign(), Cac\+Stiff\+B(), fmesh, mesh\+::\+Get\+All\+Coords(), elastmat2\+D\+::\+Get\+El\+Coords(), mesh\+::\+Get\+Mesh\+Nodes(), mesh\+::\+Get\+Mesh\+Topology(), and N\+Rmatrix$<$ T $>$\+::nrows().
+
+
+
+Referenced by Solve\+Gen\+Eig\+Val\+Problem().
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_a0cfb6393e7b06bc92b161c6f8eee2053}\label{class_k_l_galerkin_r_f_a0cfb6393e7b06bc92b161c6f8eee2053}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!AssembleC@{AssembleC}}
+\index{AssembleC@{AssembleC}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{AssembleC()}{AssembleC()}}
+{\footnotesize\ttfamily void K\+L\+Galerkin\+R\+F\+::\+AssembleC (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{C }\end{DoxyParamCaption})}
+
+
+
+Definition at line 166 of file K\+L\+Galerkin\+R\+F.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign(), Cac\+Stiff\+C(), fmesh, mesh\+::\+Get\+All\+Coords(), elastmat2\+D\+::\+Get\+El\+Coords(), mesh\+::\+Get\+Mesh\+Nodes(), mesh\+::\+Get\+Mesh\+Topology(), and N\+Rmatrix$<$ T $>$\+::nrows().
+
+
+
+Referenced by Solve\+Gen\+Eig\+Val\+Problem().
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_a23b45afff096f56b6bd61094dee401fb}\label{class_k_l_galerkin_r_f_a23b45afff096f56b6bd61094dee401fb}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!AutocorrelationFunc@{AutocorrelationFunc}}
+\index{AutocorrelationFunc@{AutocorrelationFunc}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{AutocorrelationFunc()}{AutocorrelationFunc()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} K\+L\+Galerkin\+R\+F\+::\+Autocorrelation\+Func (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{x1,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{x2 }\end{DoxyParamCaption})}
+
+
+
+Definition at line 230 of file K\+L\+Galerkin\+R\+F.\+cpp.
+
+
+
+References f\+Lx, f\+Ly, and ftype.
+
+
+
+Referenced by Contribute\+C().
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_aac37c45d24cc3fc9ab079b3560682f71}\label{class_k_l_galerkin_r_f_aac37c45d24cc3fc9ab079b3560682f71}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!CacStiffB@{CacStiffB}}
+\index{CacStiffB@{CacStiffB}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{CacStiffB()}{CacStiffB()}}
+{\footnotesize\ttfamily void K\+L\+Galerkin\+R\+F\+::\+Cac\+StiffB (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{BE,  }\item[{const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{elcoords }\end{DoxyParamCaption})}
+
+
+
+Definition at line 61 of file K\+L\+Galerkin\+R\+F.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign(), Contribute\+B(), f\+Order, N\+Rmatrix$<$ T $>$\+::nrows(), and shapequad\+::pointsandweigths().
+
+
+
+Referenced by Assemble\+B().
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_aaabdf838a9b3c37f73f5c4792aaf4760}\label{class_k_l_galerkin_r_f_aaabdf838a9b3c37f73f5c4792aaf4760}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!CacStiffC@{CacStiffC}}
+\index{CacStiffC@{CacStiffC}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{CacStiffC()}{CacStiffC()}}
+{\footnotesize\ttfamily void K\+L\+Galerkin\+R\+F\+::\+Cac\+StiffC (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{CE,  }\item[{const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{elcoords1,  }\item[{const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{elcoords2 }\end{DoxyParamCaption})}
+
+
+
+Definition at line 137 of file K\+L\+Galerkin\+R\+F.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign(), Contribute\+C(), f\+Order, N\+Rmatrix$<$ T $>$\+::nrows(), shapequad\+::pointsandweigths(), and shapequad\+::shapes().
+
+
+
+Referenced by Assemble\+C().
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_ae1e73c4c323eedab9911490ea49eb2bc}\label{class_k_l_galerkin_r_f_ae1e73c4c323eedab9911490ea49eb2bc}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!ComputeVarianceError@{ComputeVarianceError}}
+\index{ComputeVarianceError@{ComputeVarianceError}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{ComputeVarianceError()}{ComputeVarianceError()}}
+{\footnotesize\ttfamily void K\+L\+Galerkin\+R\+F\+::\+Compute\+Variance\+Error (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_a79b3433b3828171258b200b6c197f1a5}{Vec\+Complex}} \&}]{val,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{vec,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{error }\end{DoxyParamCaption})}
+
+
+
+Definition at line 725 of file K\+L\+Galerkin\+R\+F.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign(), N\+Rmatrix$<$ T $>$\+::ncols(), and N\+Rmatrix$<$ T $>$\+::nrows().
+
+
+
+Referenced by Solve\+Gen\+Eig\+Val\+Problem().
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_a6d3ebd6ca5d959cbbff83371e4b87d3e}\label{class_k_l_galerkin_r_f_a6d3ebd6ca5d959cbbff83371e4b87d3e}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!ContributeB@{ContributeB}}
+\index{ContributeB@{ContributeB}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{ContributeB()}{ContributeB()}}
+{\footnotesize\ttfamily void K\+L\+Galerkin\+R\+F\+::\+ContributeB (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{BE,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{xi,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{eta,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{w,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{elcoords }\end{DoxyParamCaption})}
+
+
+
+Definition at line 38 of file K\+L\+Galerkin\+R\+F.\+cpp.
+
+
+
+References f\+Order, N\+Rmatrix$<$ T $>$\+::\+Mult(), N\+Rmatrix$<$ T $>$\+::nrows(), shapequad\+::shapes(), and N\+Rmatrix$<$ T $>$\+::\+Transpose().
+
+
+
+Referenced by Cac\+Stiff\+B().
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_ad67bd4b6f039a23ea612c68dac252f84}\label{class_k_l_galerkin_r_f_ad67bd4b6f039a23ea612c68dac252f84}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!ContributeC@{ContributeC}}
+\index{ContributeC@{ContributeC}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{ContributeC()}{ContributeC()}}
+{\footnotesize\ttfamily void K\+L\+Galerkin\+R\+F\+::\+ContributeC (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{CE,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{psis1,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{Grad\+Psi1,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{elcoords1,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{w1,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{psis2,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{Grad\+Psi2,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{elcoords2,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{w2 }\end{DoxyParamCaption})}
+
+
+
+Definition at line 116 of file K\+L\+Galerkin\+R\+F.\+cpp.
+
+
+
+References Autocorrelation\+Func(), N\+Rmatrix$<$ T $>$\+::\+Mult(), and N\+Rmatrix$<$ T $>$\+::\+Transpose().
+
+
+
+Referenced by Cac\+Stiff\+C().
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_a6ccbb9f2272ab9d9e80a788a31047b5f}\label{class_k_l_galerkin_r_f_a6ccbb9f2272ab9d9e80a788a31047b5f}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!GenerateGaussinRandomField@{GenerateGaussinRandomField}}
+\index{GenerateGaussinRandomField@{GenerateGaussinRandomField}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{GenerateGaussinRandomField()}{GenerateGaussinRandomField()}}
+{\footnotesize\ttfamily void K\+L\+Galerkin\+R\+F\+::\+Generate\+Gaussin\+Random\+Field (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_a79b3433b3828171258b200b6c197f1a5}{Vec\+Complex}} \&}]{val,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{vec,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} $>$ \&}]{H\+H\+AT,  }\item[{std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&}]{errpost }\end{DoxyParamCaption})}
+
+
+
+Definition at line 448 of file K\+L\+Galerkin\+R\+F.\+cpp.
+
+
+
+References fexpansionorder, fsamples, N\+Rmatrix$<$ T $>$\+::\+Mult(), N\+Rmatrix$<$ T $>$\+::ncols(), N\+Rmatrix$<$ T $>$\+::nrows(), N\+Rmatrix$<$ T $>$\+::resize(), and N\+Rmatrix$<$ T $>$\+::\+Transpose().
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_ae57e3c53c6685ca44b39d33177bd6ac9}\label{class_k_l_galerkin_r_f_ae57e3c53c6685ca44b39d33177bd6ac9}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!GenerateNonGaussinRandomField@{GenerateNonGaussinRandomField}}
+\index{GenerateNonGaussinRandomField@{GenerateNonGaussinRandomField}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{GenerateNonGaussinRandomField()}{GenerateNonGaussinRandomField()}}
+{\footnotesize\ttfamily void K\+L\+Galerkin\+R\+F\+::\+Generate\+Non\+Gaussin\+Random\+Field (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_a79b3433b3828171258b200b6c197f1a5}{Vec\+Complex}} \&}]{val,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{vec,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} $>$ \&}]{H\+H\+AT,  }\item[{std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&}]{errpost }\end{DoxyParamCaption})}
+
+
+
+Definition at line 371 of file K\+L\+Galerkin\+R\+F.\+cpp.
+
+
+
+References fexpansionorder, fsamples, N\+Rmatrix$<$ T $>$\+::\+Mult(), N\+Rmatrix$<$ T $>$\+::ncols(), N\+Rmatrix$<$ T $>$\+::nrows(), N\+Rmatrix$<$ T $>$\+::resize(), and N\+Rmatrix$<$ T $>$\+::\+Transpose().
+
+
+
+Referenced by Solve\+Gen\+Eig\+Val\+Problem().
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_a78128fb205d4f6e98581349adcebbd6b}\label{class_k_l_galerkin_r_f_a78128fb205d4f6e98581349adcebbd6b}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!GetExpansionorder@{GetExpansionorder}}
+\index{GetExpansionorder@{GetExpansionorder}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{GetExpansionorder()}{GetExpansionorder()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} K\+L\+Galerkin\+R\+F\+::\+Get\+Expansionorder (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 75 of file K\+L\+Galerkin\+R\+F.\+h.
+
+
+
+References fexpansionorder.
+
+
+
+Referenced by slopeproject\+::\+Create\+Random\+Field(), and slopeproject\+::\+Monte\+Carlo\+G\+I\+M().
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_aa0007f22daa8ac8b46ea7b94d01557df}\label{class_k_l_galerkin_r_f_aa0007f22daa8ac8b46ea7b94d01557df}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!Getftype@{Getftype}}
+\index{Getftype@{Getftype}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{Getftype()}{Getftype()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} K\+L\+Galerkin\+R\+F\+::\+Getftype (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 71 of file K\+L\+Galerkin\+R\+F.\+h.
+
+
+
+References ftype.
+
+
+
+Referenced by slopeproject\+::\+Create\+Random\+Field(), and slopeproject\+::\+Monte\+Carlo\+G\+I\+M().
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_ad827bf5003a8913e138718004c8a86c5}\label{class_k_l_galerkin_r_f_ad827bf5003a8913e138718004c8a86c5}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!GetLx@{GetLx}}
+\index{GetLx@{GetLx}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{GetLx()}{GetLx()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} K\+L\+Galerkin\+R\+F\+::\+Get\+Lx (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 59 of file K\+L\+Galerkin\+R\+F.\+h.
+
+
+
+References f\+Lx.
+
+
+
+Referenced by slopeproject\+::\+Create\+Random\+Field(), and slopeproject\+::\+Monte\+Carlo\+G\+I\+M().
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_a412b0c50e4d7f156469f31c1dc6bd50b}\label{class_k_l_galerkin_r_f_a412b0c50e4d7f156469f31c1dc6bd50b}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!GetLy@{GetLy}}
+\index{GetLy@{GetLy}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{GetLy()}{GetLy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} K\+L\+Galerkin\+R\+F\+::\+Get\+Ly (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 63 of file K\+L\+Galerkin\+R\+F.\+h.
+
+
+
+References f\+Ly.
+
+
+
+Referenced by slopeproject\+::\+Create\+Random\+Field(), and slopeproject\+::\+Monte\+Carlo\+G\+I\+M().
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_ad72613f6c861fd770be808dc67824f24}\label{class_k_l_galerkin_r_f_ad72613f6c861fd770be808dc67824f24}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!GetSamples@{GetSamples}}
+\index{GetSamples@{GetSamples}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{GetSamples()}{GetSamples()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} K\+L\+Galerkin\+R\+F\+::\+Get\+Samples (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 79 of file K\+L\+Galerkin\+R\+F.\+h.
+
+
+
+References fsamples.
+
+
+
+Referenced by slopeproject\+::\+Create\+Random\+Field(), and slopeproject\+::\+Monte\+Carlo\+G\+I\+M().
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_a31de9e0660d90378eac0a5e7293e7b88}\label{class_k_l_galerkin_r_f_a31de9e0660d90378eac0a5e7293e7b88}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!GetSig@{GetSig}}
+\index{GetSig@{GetSig}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{GetSig()}{GetSig()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} K\+L\+Galerkin\+R\+F\+::\+Get\+Sig (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 67 of file K\+L\+Galerkin\+R\+F.\+h.
+
+
+
+Referenced by slopeproject\+::\+Create\+Random\+Field(), and slopeproject\+::\+Monte\+Carlo\+G\+I\+M().
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_ae157f4dab1f7a208fb85ce1e7f0a7bc1}\label{class_k_l_galerkin_r_f_ae157f4dab1f7a208fb85ce1e7f0a7bc1}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!OutPutPost@{OutPutPost}}
+\index{OutPutPost@{OutPutPost}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{OutPutPost()}{OutPutPost()}}
+{\footnotesize\ttfamily void K\+L\+Galerkin\+R\+F\+::\+Out\+Put\+Post (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&}]{postdata,  }\item[{std\+::ofstream \&}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 45 of file K\+L\+Galerkin\+R\+F.\+h.
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_a3effa382cc37749c3c5bff5b5bd9e048}\label{class_k_l_galerkin_r_f_a3effa382cc37749c3c5bff5b5bd9e048}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!PerfomIntegralOfListconst@{PerfomIntegralOfListconst}}
+\index{PerfomIntegralOfListconst@{PerfomIntegralOfListconst}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{PerfomIntegralOfListconst()}{PerfomIntegralOfListconst()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} K\+L\+Galerkin\+R\+F\+::\+Perfom\+Integral\+Of\+Listconst (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{Vec }\end{DoxyParamCaption})}
+
+
+
+Definition at line 753 of file K\+L\+Galerkin\+R\+F.\+cpp.
+
+
+
+References fmesh, f\+Order, mesh\+::\+Get\+All\+Coords(), elastmat2\+D\+::\+Get\+El\+Coords(), mesh\+::\+Get\+Mesh\+Nodes(), mesh\+::\+Get\+Mesh\+Topology(), N\+Rmatrix$<$ T $>$\+::\+Mult(), N\+Rmatrix$<$ T $>$\+::nrows(), shapequad\+::pointsandweigths(), and shapequad\+::shapes().
+
+
+
+Referenced by Solve\+Gen\+Eig\+Val\+Problem().
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_a9daef93ee1d2a28ad441b4eb3f27f1c0}\label{class_k_l_galerkin_r_f_a9daef93ee1d2a28ad441b4eb3f27f1c0}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!PerfomIntegralOfListconst2@{PerfomIntegralOfListconst2}}
+\index{PerfomIntegralOfListconst2@{PerfomIntegralOfListconst2}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{PerfomIntegralOfListconst2()}{PerfomIntegralOfListconst2()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} K\+L\+Galerkin\+R\+F\+::\+Perfom\+Integral\+Of\+Listconst2 (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{Vec }\end{DoxyParamCaption})}
+
+
+
+Definition at line 693 of file K\+L\+Galerkin\+R\+F.\+cpp.
+
+
+
+References fmesh, mesh\+::\+Get\+All\+Coords(), mesh\+::\+Get\+Mesh\+Nodes(), mesh\+::\+Get\+Mesh\+Topology(), and elastmat2\+D\+::\+Sol\+Pt().
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_a3ed5b7414a985a9fb3c86282d9a5263a}\label{class_k_l_galerkin_r_f_a3ed5b7414a985a9fb3c86282d9a5263a}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!SetMesh@{SetMesh}}
+\index{SetMesh@{SetMesh}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{SetMesh()}{SetMesh()}}
+{\footnotesize\ttfamily void K\+L\+Galerkin\+R\+F\+::\+Set\+Mesh (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmesh}{mesh}} $\ast$}]{inmesh }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 84 of file K\+L\+Galerkin\+R\+F.\+h.
+
+
+
+References fmesh.
+
+
+
+Referenced by createrandomfield(), mainlinux(), mainlinux2(), mainlinuxserial(), and mainwindows().
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_a1b6e7bf4d1ea5c15116bf7f615b307d8}\label{class_k_l_galerkin_r_f_a1b6e7bf4d1ea5c15116bf7f615b307d8}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!SolveGenEigValProblem@{SolveGenEigValProblem}}
+\index{SolveGenEigValProblem@{SolveGenEigValProblem}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{SolveGenEigValProblem()}{SolveGenEigValProblem()}}
+{\footnotesize\ttfamily void K\+L\+Galerkin\+R\+F\+::\+Solve\+Gen\+Eig\+Val\+Problem (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_a79b3433b3828171258b200b6c197f1a5}{Vec\+Complex}} \&}]{val,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{vec,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} $>$ \&}]{H\+H\+AT,  }\item[{std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&}]{errpost }\end{DoxyParamCaption})}
+
+
+
+Definition at line 258 of file K\+L\+Galerkin\+R\+F.\+cpp.
+
+
+
+References Assemble\+B(), Assemble\+C(), N\+Rvector$<$ T $>$\+::assign(), N\+Rmatrix$<$ T $>$\+::assign(), Compute\+Variance\+Error(), fexpansionorder, fmesh, Generate\+Non\+Gaussin\+Random\+Field(), mesh\+::\+Get\+All\+Coords(), mesh\+::\+Get\+Mesh\+Nodes(), mesh\+::\+Get\+Mesh\+Topology(), Cholesky\+::inverse(), N\+Rmatrix$<$ T $>$\+::\+Mult(), N\+Rmatrix$<$ T $>$\+::nrows(), Perfom\+Integral\+Of\+Listconst(), N\+Rvector$<$ T $>$\+::\+Print(), N\+Rvector$<$ T $>$\+::size(), Unsymmeig\+::wri, and Unsymmeig\+::zz.
+
+
+
+Referenced by slopeproject\+::\+Create\+Random\+Field(), Create\+Random\+Field(), Monte\+Carlo(), and Monte\+Carlo\+Talude2().
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_a76a21e08812c86aaf48ed851c0525693}\label{class_k_l_galerkin_r_f_a76a21e08812c86aaf48ed851c0525693}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!fbodyforce@{fbodyforce}}
+\index{fbodyforce@{fbodyforce}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{fbodyforce}{fbodyforce}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} K\+L\+Galerkin\+R\+F\+::fbodyforce\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 92 of file K\+L\+Galerkin\+R\+F.\+h.
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_a29744676e37e815a4473f3c103e385d1}\label{class_k_l_galerkin_r_f_a29744676e37e815a4473f3c103e385d1}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!fexpansionorder@{fexpansionorder}}
+\index{fexpansionorder@{fexpansionorder}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{fexpansionorder}{fexpansionorder}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} K\+L\+Galerkin\+R\+F\+::fexpansionorder\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 101 of file K\+L\+Galerkin\+R\+F.\+h.
+
+
+
+Referenced by Generate\+Gaussin\+Random\+Field(), Generate\+Non\+Gaussin\+Random\+Field(), Get\+Expansionorder(), K\+L\+Galerkin\+R\+F(), and Solve\+Gen\+Eig\+Val\+Problem().
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_a7ed4912560d8eab2b2aef1c6fc372aea}\label{class_k_l_galerkin_r_f_a7ed4912560d8eab2b2aef1c6fc372aea}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!fLx@{fLx}}
+\index{fLx@{fLx}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{fLx}{fLx}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} K\+L\+Galerkin\+R\+F\+::f\+Lx\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 96 of file K\+L\+Galerkin\+R\+F.\+h.
+
+
+
+Referenced by Autocorrelation\+Func(), Get\+Lx(), and K\+L\+Galerkin\+R\+F().
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_a253b100b22ce39d12bbfd841523615f7}\label{class_k_l_galerkin_r_f_a253b100b22ce39d12bbfd841523615f7}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!fLy@{fLy}}
+\index{fLy@{fLy}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{fLy}{fLy}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} K\+L\+Galerkin\+R\+F\+::f\+Ly\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 97 of file K\+L\+Galerkin\+R\+F.\+h.
+
+
+
+Referenced by Autocorrelation\+Func(), Get\+Ly(), and K\+L\+Galerkin\+R\+F().
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_a3dee020df67d1d878a1f7934e5a2801f}\label{class_k_l_galerkin_r_f_a3dee020df67d1d878a1f7934e5a2801f}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!fmesh@{fmesh}}
+\index{fmesh@{fmesh}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{fmesh}{fmesh}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classmesh}{mesh}} K\+L\+Galerkin\+R\+F\+::fmesh\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 102 of file K\+L\+Galerkin\+R\+F.\+h.
+
+
+
+Referenced by Assemble\+B(), Assemble\+C(), Perfom\+Integral\+Of\+Listconst(), Perfom\+Integral\+Of\+Listconst2(), Set\+Mesh(), and Solve\+Gen\+Eig\+Val\+Problem().
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_a27b458decb9936a32f6845b260b708b7}\label{class_k_l_galerkin_r_f_a27b458decb9936a32f6845b260b708b7}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!fnu@{fnu}}
+\index{fnu@{fnu}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{fnu}{fnu}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} K\+L\+Galerkin\+R\+F\+::fnu\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 91 of file K\+L\+Galerkin\+R\+F.\+h.
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_a4d90b2881e74e006a1cd94f2bb7f16b4}\label{class_k_l_galerkin_r_f_a4d90b2881e74e006a1cd94f2bb7f16b4}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!fOrder@{fOrder}}
+\index{fOrder@{fOrder}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{fOrder}{fOrder}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} K\+L\+Galerkin\+R\+F\+::f\+Order\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 95 of file K\+L\+Galerkin\+R\+F.\+h.
+
+
+
+Referenced by Cac\+Stiff\+B(), Cac\+Stiff\+C(), Contribute\+B(), K\+L\+Galerkin\+R\+F(), and Perfom\+Integral\+Of\+Listconst().
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_a35d3dba61d3c24e4321598b99c0b41b6}\label{class_k_l_galerkin_r_f_a35d3dba61d3c24e4321598b99c0b41b6}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!fplanestress@{fplanestress}}
+\index{fplanestress@{fplanestress}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{fplanestress}{fplanestress}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} K\+L\+Galerkin\+R\+F\+::fplanestress\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 93 of file K\+L\+Galerkin\+R\+F.\+h.
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_abf8e250bb0d9e2f9d7a0a19918f71fe9}\label{class_k_l_galerkin_r_f_abf8e250bb0d9e2f9d7a0a19918f71fe9}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!fsamples@{fsamples}}
+\index{fsamples@{fsamples}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{fsamples}{fsamples}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} K\+L\+Galerkin\+R\+F\+::fsamples\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 100 of file K\+L\+Galerkin\+R\+F.\+h.
+
+
+
+Referenced by Generate\+Gaussin\+Random\+Field(), Generate\+Non\+Gaussin\+Random\+Field(), Get\+Samples(), and K\+L\+Galerkin\+R\+F().
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_ac01754af4ccc165392316573fae73dec}\label{class_k_l_galerkin_r_f_ac01754af4ccc165392316573fae73dec}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!fthickness@{fthickness}}
+\index{fthickness@{fthickness}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{fthickness}{fthickness}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} K\+L\+Galerkin\+R\+F\+::fthickness\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 94 of file K\+L\+Galerkin\+R\+F.\+h.
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_ad0ffc078683b644510ec3f45119e3577}\label{class_k_l_galerkin_r_f_ad0ffc078683b644510ec3f45119e3577}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!ftype@{ftype}}
+\index{ftype@{ftype}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{ftype}{ftype}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} K\+L\+Galerkin\+R\+F\+::ftype\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 99 of file K\+L\+Galerkin\+R\+F.\+h.
+
+
+
+Referenced by Autocorrelation\+Func(), Getftype(), and K\+L\+Galerkin\+R\+F().
+
+\mbox{\Hypertarget{class_k_l_galerkin_r_f_a11060d41a9764ef04650e72fa9f869e7}\label{class_k_l_galerkin_r_f_a11060d41a9764ef04650e72fa9f869e7}} 
+\index{KLGalerkinRF@{KLGalerkinRF}!fyoung@{fyoung}}
+\index{fyoung@{fyoung}!KLGalerkinRF@{KLGalerkinRF}}
+\doxysubsubsection{\texorpdfstring{fyoung}{fyoung}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} K\+L\+Galerkin\+R\+F\+::fyoung\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 90 of file K\+L\+Galerkin\+R\+F.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{_k_l_galerkin_r_f_8h}{K\+L\+Galerkin\+R\+F.\+h}}\item 
+src/\mbox{\hyperlink{_k_l_galerkin_r_f_8cpp}{K\+L\+Galerkin\+R\+F.\+cpp}}\end{DoxyCompactItemize}

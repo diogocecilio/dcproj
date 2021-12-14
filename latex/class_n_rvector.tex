@@ -1,0 +1,270 @@
+\hypertarget{class_n_rvector}{}\doxysection{N\+Rvector$<$ T $>$ Class Template Reference}
+\label{class_n_rvector}\index{NRvector$<$ T $>$@{NRvector$<$ T $>$}}
+
+
+{\ttfamily \#include $<$nr3.\+h$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \mbox{\hyperlink{class_n_rvector_af50ccd207fa2388b96a92710ac193e6b}{value\+\_\+type}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_n_rvector_a44e42554b9303a097030b5db0ae29303}{N\+Rvector}} ()
+\item 
+\mbox{\hyperlink{class_n_rvector_a635e39b25da7f11d242f976ae7db0d8b}{N\+Rvector}} (int n)
+\item 
+\mbox{\hyperlink{class_n_rvector_acc4716df5dcc64a3cb829a7356c2bc75}{N\+Rvector}} (int n, const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&a)
+\item 
+\mbox{\hyperlink{class_n_rvector_ad960e225d83564947fc13553b411d9c4}{N\+Rvector}} (int n, const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $\ast$a)
+\item 
+\mbox{\hyperlink{class_n_rvector_ae894dcf0612e092ca31c21c7c3d3ff46}{N\+Rvector}} (const \mbox{\hyperlink{class_n_rvector}{N\+Rvector}} \&rhs)
+\item 
+\mbox{\hyperlink{class_n_rvector}{N\+Rvector}} \& \mbox{\hyperlink{class_n_rvector_aa6fa8646e92600c01146afb841f59232}{operator=}} (const \mbox{\hyperlink{class_n_rvector}{N\+Rvector}} \&rhs)
+\item 
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \& \mbox{\hyperlink{class_n_rvector_a0a50082c7a316d1b464f850687ecad35}{operator\mbox{[}$\,$\mbox{]}}} (const int i)
+\item 
+const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \& \mbox{\hyperlink{class_n_rvector_acce3c1a7f5b53ca91d6028c3173b53c8}{operator\mbox{[}$\,$\mbox{]}}} (const int i) const
+\item 
+int \mbox{\hyperlink{class_n_rvector_a9490ac813eabf252ed8a7628eaf61f49}{size}} () const
+\item 
+void \mbox{\hyperlink{class_n_rvector_ac3d7adfd76892015fe43c9f20de9a9a6}{resize}} (int newn)
+\item 
+void \mbox{\hyperlink{class_n_rvector_a29ffcde653346609d9970e18094c3236}{assign}} (int newn, const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&a)
+\item 
+void \mbox{\hyperlink{class_n_rvector_a9050f74db598498291c9961a722e89d8}{Print}} ()
+\item 
+\mbox{\hyperlink{class_n_rvector_ac529e3533e353a579438c7e639f389c7}{$\sim$\+N\+Rvector}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_n_rvector_abc39837f24256d64f8ab2746dab71952}{nn}}
+\item 
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $\ast$ \mbox{\hyperlink{class_n_rvector_a0de7eafaa4046db06361d079196afde9}{v}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class N\+Rvector$<$ T $>$}
+
+
+
+Definition at line 150 of file nr3.\+h.
+
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{class_n_rvector_af50ccd207fa2388b96a92710ac193e6b}\label{class_n_rvector_af50ccd207fa2388b96a92710ac193e6b}} 
+\index{NRvector$<$ T $>$@{NRvector$<$ T $>$}!value\_type@{value\_type}}
+\index{value\_type@{value\_type}!NRvector$<$ T $>$@{NRvector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{value\_type}{value\_type}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+typedef \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::\mbox{\hyperlink{class_n_rvector_af50ccd207fa2388b96a92710ac193e6b}{value\+\_\+type}}}
+
+
+
+Definition at line 161 of file nr3.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_n_rvector_a44e42554b9303a097030b5db0ae29303}\label{class_n_rvector_a44e42554b9303a097030b5db0ae29303}} 
+\index{NRvector$<$ T $>$@{NRvector$<$ T $>$}!NRvector@{NRvector}}
+\index{NRvector@{NRvector}!NRvector$<$ T $>$@{NRvector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{NRvector()}{NRvector()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}}
+
+
+
+Definition at line 178 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rvector_a635e39b25da7f11d242f976ae7db0d8b}\label{class_n_rvector_a635e39b25da7f11d242f976ae7db0d8b}} 
+\index{NRvector$<$ T $>$@{NRvector$<$ T $>$}!NRvector@{NRvector}}
+\index{NRvector@{NRvector}!NRvector$<$ T $>$@{NRvector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{NRvector()}{NRvector()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::\mbox{\hyperlink{class_n_rvector}{N\+Rvector}} (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Definition at line 181 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rvector_acc4716df5dcc64a3cb829a7356c2bc75}\label{class_n_rvector_acc4716df5dcc64a3cb829a7356c2bc75}} 
+\index{NRvector$<$ T $>$@{NRvector$<$ T $>$}!NRvector@{NRvector}}
+\index{NRvector@{NRvector}!NRvector$<$ T $>$@{NRvector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{NRvector()}{NRvector()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::\mbox{\hyperlink{class_n_rvector}{N\+Rvector}} (\begin{DoxyParamCaption}\item[{int}]{n,  }\item[{const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&}]{a }\end{DoxyParamCaption})}
+
+
+
+Definition at line 184 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rvector_ad960e225d83564947fc13553b411d9c4}\label{class_n_rvector_ad960e225d83564947fc13553b411d9c4}} 
+\index{NRvector$<$ T $>$@{NRvector$<$ T $>$}!NRvector@{NRvector}}
+\index{NRvector@{NRvector}!NRvector$<$ T $>$@{NRvector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{NRvector()}{NRvector()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::\mbox{\hyperlink{class_n_rvector}{N\+Rvector}} (\begin{DoxyParamCaption}\item[{int}]{n,  }\item[{const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $\ast$}]{a }\end{DoxyParamCaption})}
+
+
+
+Definition at line 190 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rvector_ae894dcf0612e092ca31c21c7c3d3ff46}\label{class_n_rvector_ae894dcf0612e092ca31c21c7c3d3ff46}} 
+\index{NRvector$<$ T $>$@{NRvector$<$ T $>$}!NRvector@{NRvector}}
+\index{NRvector@{NRvector}!NRvector$<$ T $>$@{NRvector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{NRvector()}{NRvector()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::\mbox{\hyperlink{class_n_rvector}{N\+Rvector}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{rhs }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_n_rvector_ac529e3533e353a579438c7e639f389c7}\label{class_n_rvector_ac529e3533e353a579438c7e639f389c7}} 
+\index{NRvector$<$ T $>$@{NRvector$<$ T $>$}!````~NRvector@{$\sim$NRvector}}
+\index{````~NRvector@{$\sim$NRvector}!NRvector$<$ T $>$@{NRvector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$NRvector()}{~NRvector()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::$\sim$\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}}
+
+
+
+Definition at line 270 of file nr3.\+h.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_n_rvector_a29ffcde653346609d9970e18094c3236}\label{class_n_rvector_a29ffcde653346609d9970e18094c3236}} 
+\index{NRvector$<$ T $>$@{NRvector$<$ T $>$}!assign@{assign}}
+\index{assign@{assign}!NRvector$<$ T $>$@{NRvector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{assign()}{assign()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::assign (\begin{DoxyParamCaption}\item[{int}]{newn,  }\item[{const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&}]{a }\end{DoxyParamCaption})}
+
+
+
+Definition at line 259 of file nr3.\+h.
+
+
+
+Referenced by Find\+El(), vonmises\+::\+Get\+Mat\+Constants(), druckerprager\+::\+Get\+Mat\+Constants(), and K\+L\+Galerkin\+R\+F\+::\+Solve\+Gen\+Eig\+Val\+Problem().
+
+\mbox{\Hypertarget{class_n_rvector_aa6fa8646e92600c01146afb841f59232}\label{class_n_rvector_aa6fa8646e92600c01146afb841f59232}} 
+\index{NRvector$<$ T $>$@{NRvector$<$ T $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!NRvector$<$ T $>$@{NRvector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \& \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{rhs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 202 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rvector_a0a50082c7a316d1b464f850687ecad35}\label{class_n_rvector_a0a50082c7a316d1b464f850687ecad35}} 
+\index{NRvector$<$ T $>$@{NRvector$<$ T $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!NRvector$<$ T $>$@{NRvector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \& \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const int}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 221 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rvector_acce3c1a7f5b53ca91d6028c3173b53c8}\label{class_n_rvector_acce3c1a7f5b53ca91d6028c3173b53c8}} 
+\index{NRvector$<$ T $>$@{NRvector$<$ T $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!NRvector$<$ T $>$@{NRvector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \& \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const int}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 232 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rvector_a9050f74db598498291c9961a722e89d8}\label{class_n_rvector_a9050f74db598498291c9961a722e89d8}} 
+\index{NRvector$<$ T $>$@{NRvector$<$ T $>$}!Print@{Print}}
+\index{Print@{Print}!NRvector$<$ T $>$@{NRvector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Print()}{Print()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::Print}
+
+
+
+Definition at line 277 of file nr3.\+h.
+
+
+
+Referenced by mesh\+::\+Find\+Solution(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Post\+Process\+Strain(), and K\+L\+Galerkin\+R\+F\+::\+Solve\+Gen\+Eig\+Val\+Problem().
+
+\mbox{\Hypertarget{class_n_rvector_ac3d7adfd76892015fe43c9f20de9a9a6}\label{class_n_rvector_ac3d7adfd76892015fe43c9f20de9a9a6}} 
+\index{NRvector$<$ T $>$@{NRvector$<$ T $>$}!resize@{resize}}
+\index{resize@{resize}!NRvector$<$ T $>$@{NRvector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{resize()}{resize()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::resize (\begin{DoxyParamCaption}\item[{int}]{newn }\end{DoxyParamCaption})}
+
+
+
+Definition at line 249 of file nr3.\+h.
+
+
+
+Referenced by Find\+El(), Powell$<$ T $>$\+::minimize(), Frprmn$<$ T $>$\+::minimize(), mohrcoulomb\+::\+Phi(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Post\+Process\+Strain(), and zbrak().
+
+\mbox{\Hypertarget{class_n_rvector_a9490ac813eabf252ed8a7628eaf61f49}\label{class_n_rvector_a9490ac813eabf252ed8a7628eaf61f49}} 
+\index{NRvector$<$ T $>$@{NRvector$<$ T $>$}!size@{size}}
+\index{size@{size}!NRvector$<$ T $>$@{NRvector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+int \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::size\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 243 of file nr3.\+h.
+
+
+
+Referenced by N\+Rtensor$<$ Doub $>$\+::\+Eigen\+System(), Jacobi\+::eigsrt(), Cholesky\+::elmult(), Cholesky\+::elsolve(), Find\+El(), pressurizedhole\+::\+Find\+Ids(), mesh\+::\+Find\+Ids(), beam3dtools\+::\+Find\+Ids(), Linemethod$<$ T $>$\+::linmin(), Dlinemethod$<$ T $>$\+::linmin(), Monte\+Carlo(), Monte\+Carlo\+Talude2(), Cholesky\+::solve(), L\+Udcmp\+::solve(), and K\+L\+Galerkin\+R\+F\+::\+Solve\+Gen\+Eig\+Val\+Problem().
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_n_rvector_abc39837f24256d64f8ab2746dab71952}\label{class_n_rvector_abc39837f24256d64f8ab2746dab71952}} 
+\index{NRvector$<$ T $>$@{NRvector$<$ T $>$}!nn@{nn}}
+\index{nn@{nn}!NRvector$<$ T $>$@{NRvector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{nn}{nn}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+int \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::nn\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 152 of file nr3.\+h.
+
+
+
+Referenced by N\+Rvector$<$ Doub $>$\+::operator=().
+
+\mbox{\Hypertarget{class_n_rvector_a0de7eafaa4046db06361d079196afde9}\label{class_n_rvector_a0de7eafaa4046db06361d079196afde9}} 
+\index{NRvector$<$ T $>$@{NRvector$<$ T $>$}!v@{v}}
+\index{v@{v}!NRvector$<$ T $>$@{NRvector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{v}{v}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}}$\ast$ \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::v\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 153 of file nr3.\+h.
+
+
+
+Referenced by N\+Rvector$<$ Doub $>$\+::\+N\+Rvector().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{nr3_8h}{nr3.\+h}}\end{DoxyCompactItemize}

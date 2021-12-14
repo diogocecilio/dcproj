@@ -1,0 +1,754 @@
+\hypertarget{_s_f_e_m_8cpp}{}\doxysection{src/\+S\+F\+EM.cpp File Reference}
+\label{_s_f_e_m_8cpp}\index{src/SFEM.cpp@{src/SFEM.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$Eigen/\+Core$>$}\newline
+{\ttfamily \#include $<$direct.\+h$>$}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include \char`\"{}shapequad.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gridmesh.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}elastmat2\+D.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}K\+L\+Galerkin\+R\+F.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}vonmises.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}druckerprager.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}elastoplastic2\+D.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ludcmp.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}mesh.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}postprocess.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$Eigen/\+Sparse\+Cholesky$>$}\newline
+{\ttfamily \#include $<$Eigen/\+Dense$>$}\newline
+{\ttfamily \#include $<$Eigen/\+Sparse$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include \char`\"{}elastoplasticbase.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}slopeproject.\+h\char`\"{}}\newline
+Include dependency graph for S\+F\+E\+M.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_s_f_e_m_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef Eigen\+::\+Sparse\+Matrix$<$ double $>$ \mbox{\hyperlink{_s_f_e_m_8cpp_a04b63929a2578b5ce61f09f0b8b18122}{Sp\+Mat}}
+\item 
+typedef Eigen\+::\+Triplet$<$ double $>$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} $>$ \mbox{\hyperlink{_s_f_e_m_8cpp_a3e966e71f9c0965685e81b5112d6ea5d}{Find\+El}} (const std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&allcoords, const \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} meshtopology, const \mbox{\hyperlink{nr3_8h_a97a3701e8aa6ca145af8d5c7c5c50d87}{Vec\+Doub}} Vec, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} hhat)
+\item 
+void \mbox{\hyperlink{_s_f_e_m_8cpp_a9b5276c21f750e5d1f56270780f2f7e2}{Out\+Put\+File}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&postdata, std\+::ofstream \&file)
+\item 
+void \mbox{\hyperlink{_s_f_e_m_8cpp_a165331bd4e5c997351936db708acfaf6}{Out\+Put\+File1var}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&postdata, std\+::ofstream \&file)
+\item 
+void \mbox{\hyperlink{_s_f_e_m_8cpp_aad34bb59381bc41ce5fd1d71df63b7fd}{Out\+Put\+File4var}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&postdata, std\+::ofstream \&file)
+\item 
+void \mbox{\hyperlink{_s_f_e_m_8cpp_ad76a6eb4ca8cb88a3dbff9bf74c332dc}{Out\+Put\+Post}} (std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&postdata, std\+::ofstream \&file)
+\item 
+void \mbox{\hyperlink{_s_f_e_m_8cpp_ae046b294af80334dd232bb3f657f17d1}{Out\+Put\+Post}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&postdata, std\+::ofstream \&file)
+\item 
+void \mbox{\hyperlink{_s_f_e_m_8cpp_ae344428f8c950700a5372dd835302865}{Out\+Put\+Post}} (\mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \&postdata, std\+::ofstream \&file)
+\item 
+void \mbox{\hyperlink{_s_f_e_m_8cpp_a164457c251eee5c0e997e75df589b2e5}{Read\+Mesh}} (std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&allcoords, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&meshcoords, \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \&meshtopology, string filenameel, string filenamecoord)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} $>$ \mbox{\hyperlink{_s_f_e_m_8cpp_a1f07392fbd1d06a566ef4dc9f7d01808}{vecstr\+\_\+to\+\_\+vecint}} (std\+::vector$<$ string $>$ vs)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{_s_f_e_m_8cpp_ad9dc6a8fa56941b6eda6f7a32360f02c}{vecstr\+\_\+to\+\_\+vecdoub}} (std\+::vector$<$ string $>$ vs)
+\item 
+std\+::vector$<$ std\+::vector$<$ int $>$ $>$ \mbox{\hyperlink{_s_f_e_m_8cpp_ac1dfe5ce70e776891e72f0c79834a50a}{Line\+Topology}} (std\+::vector$<$ int $>$ ids, \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} order)
+\item 
+void \mbox{\hyperlink{_s_f_e_m_8cpp_aa9b2ffde657cf3834e1fa7bfb29d8a89}{To\+Mat\+Int}} (std\+::vector$<$ std\+::vector$<$ int $>$$>$ in, \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \&out)
+\item 
+{\footnotesize template$<$class T $>$ }\\std\+::vector$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \mbox{\hyperlink{_s_f_e_m_8cpp_ad343347995bfb8aea592b24ad7ae71d3}{vecstr\+\_\+to\+\_\+vec}} (std\+::vector$<$ string $>$ vs)
+\item 
+void \mbox{\hyperlink{_s_f_e_m_8cpp_a2b54485f17d31ddbb282e6436bbac968}{Monte\+Carlo\+Talude2}} ()
+\item 
+void \mbox{\hyperlink{_s_f_e_m_8cpp_a05bcca7954de527fd2db74adcefad07f}{Monte\+Carlo}} ()
+\item 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{_s_f_e_m_8cpp_a65c32920963a37c90cf169719c5481be}{Iterative\+Process}} (\mbox{\hyperlink{classmesh}{mesh}} $\ast$gmesh, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} hhatinho, \mbox{\hyperlink{classelastoplastic2_d}{elastoplastic2D}}$<$ \mbox{\hyperlink{classdruckerprager}{druckerprager}} $>$ $\ast$\mbox{\hyperlink{classmaterial}{material}}, int ndesi, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} dlamb0)
+\item 
+void \mbox{\hyperlink{_s_f_e_m_8cpp_ae907f8ff5210462f96545a82784a7850}{Read\+Mat\+Doub}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&matdoub, std\+::string file)
+\item 
+void \mbox{\hyperlink{_s_f_e_m_8cpp_a08df8f5eabc3507730df4b8667a93255}{Solve\+Eigen}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} A, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} b, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&x)
+\item 
+void \mbox{\hyperlink{_s_f_e_m_8cpp_a7c51ec5db0081a5ae7a721c8ac6dc1c8}{Solve\+N\+R3}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} A, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} b, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&x)
+\item 
+void \mbox{\hyperlink{_s_f_e_m_8cpp_a2d3bd6fadc44c0ffc39cb2b491bae65c}{Solve\+Eigen2}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} A, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} b, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&x)
+\item 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{_s_f_e_m_8cpp_abbd2445b1709a41c099e22b91e0557a5}{Iterative\+Slope\+Stability\+Eig}} (std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ allcoords, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} meshnodes, \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} meshtopology, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} hhatinho, \mbox{\hyperlink{classelastoplastic2_d}{elastoplastic2D}}$<$ \mbox{\hyperlink{classdruckerprager}{druckerprager}} $>$ $\ast$\mbox{\hyperlink{classmaterial}{material}})
+\item 
+void \mbox{\hyperlink{_s_f_e_m_8cpp_ac18a86c565372dabae07e662399d0c1d}{solvedeterm}} (string nodestr, string elsstr, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} hhatinho)
+\item 
+void \mbox{\hyperlink{_s_f_e_m_8cpp_aa541913ea8aea99cecb314ff590cf3a9}{Iterative\+Cho}} (std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ allcoords, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} meshnodes, \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} meshtopology, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} hhatinho, \mbox{\hyperlink{classelastoplastic2_d}{elastoplastic2D}}$<$ \mbox{\hyperlink{classdruckerprager}{druckerprager}} $>$ $\ast$\mbox{\hyperlink{classmaterial}{material}})
+\item 
+void \mbox{\hyperlink{_s_f_e_m_8cpp_a02fa28d25b7005d8e1e8c6c13663d437}{solvedetermtest}} (string nodestr, string elsstr, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} hhatinho, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} c, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} phi, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} gamma)
+\item 
+void \mbox{\hyperlink{_s_f_e_m_8cpp_a07cfe2ae4b5ada298824f8c3a8b92043}{Inser\+BC}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&KG, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&R, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&F\+B\+O\+DY, std\+::vector$<$ int $>$ idsbottom, std\+::vector$<$ int $>$ idsright, std\+::vector$<$ int $>$ idsleft, \mbox{\hyperlink{classmaterial}{material}} $\ast$mat)
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{_s_f_e_m_8cpp_a2333a3fdb9e9201706439c0e9823b9e0}{computelamda}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&dwb, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&dws, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&dw, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&l)
+\item 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{_s_f_e_m_8cpp_a6232ea6a57a3e9bedcfda7ecc22b8cdf}{Iterative\+Process\+Shear\+Red}} (\mbox{\hyperlink{classmesh}{mesh}} $\ast$gmesh, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} hhatinho, \mbox{\hyperlink{classelastoplastic2_d}{elastoplastic2D}}$<$ \mbox{\hyperlink{classdruckerprager}{druckerprager}} $>$ $\ast$\mbox{\hyperlink{classmaterial}{material}})
+\item 
+void \mbox{\hyperlink{_s_f_e_m_8cpp_a4b846ad4728ab7c89b8041efd45ec982}{Iterative\+Process\+Shear\+Red2}} (std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ allcoords, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} meshnodes, \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} meshtopology, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} hhatinho, \mbox{\hyperlink{classelastoplastic2_d}{elastoplastic2D}}$<$ \mbox{\hyperlink{classdruckerprager}{druckerprager}} $>$ $\ast$\mbox{\hyperlink{classmaterial}{material}})
+\item 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{_s_f_e_m_8cpp_aeda3cefe23b8a62d8e54725b0f8315a1}{Iterative\+Process\+Shear\+Red3}} (std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ allcoords, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} meshnodes, \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} meshtopology, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} hhatinho, \mbox{\hyperlink{classelastoplastic2_d}{elastoplastic2D}}$<$ \mbox{\hyperlink{classdruckerprager}{druckerprager}} $>$ $\ast$\mbox{\hyperlink{classmaterial}{material}})
+\item 
+void \mbox{\hyperlink{_s_f_e_m_8cpp_a503ba5ac1fe5e9bf7c15d46fba941dd6}{Solve\+Shear\+Red}} (string nodestr, string elsstr, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} hhatinho, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} c, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} phi, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} gamma)
+\item 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{_s_f_e_m_8cpp_a23ff8a8d0024aabac1132bd107b47ee3}{Iterative\+Process\+Shear\+Red}} (\mbox{\hyperlink{classmesh}{mesh}} $\ast$\mbox{\hyperlink{classmesh}{mesh}})
+\item 
+void \mbox{\hyperlink{_s_f_e_m_8cpp_a0ac9467cd2fbd785e8310b0a8fd12ee7}{findbcids}} (\mbox{\hyperlink{classmesh}{mesh}} $\ast$gmesh, std\+::vector$<$ std\+::vector$<$ int $>$$>$ \&idsvector)
+\item 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{_s_f_e_m_8cpp_a9935a5837c650b15f0e4bb9549165fe2}{Iterative\+Process}} (\mbox{\hyperlink{classmesh}{mesh}} $\ast$gmesh, \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} ndesi, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} dlamb0)
+\item 
+void \mbox{\hyperlink{_s_f_e_m_8cpp_ad21e769cdd9d0f871c88e1f76eecb4c4}{Create\+Random\+Field}} ()
+\item 
+void \mbox{\hyperlink{_s_f_e_m_8cpp_a50269f56c6a402af509a4f7018377538}{Execute\+Monte\+Carlo}} ()
+\item 
+int \mbox{\hyperlink{_s_f_e_m_8cpp_a0e663f52efbc8593793d628b4259ce9b}{main2}} ()
+\item 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \mbox{\hyperlink{_s_f_e_m_8cpp_ae091950d8edc91e599f90a2d3749f58f}{Iterative\+Process\+Shear\+Red}} (\mbox{\hyperlink{classmesh}{mesh}} $\ast$gmesh, \mbox{\hyperlink{classelastoplastic2_d}{elastoplastic2D}}$<$ \mbox{\hyperlink{classdruckerprager}{druckerprager}} $>$ $\ast$\mbox{\hyperlink{classmaterial}{material}})
+\item 
+std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{_s_f_e_m_8cpp_a6682a8e9673450db26188f7d57b5e8d5}{vecstr\+\_\+to\+\_\+vecdoub2}} (std\+::vector$<$ string $>$ vs)
+\item 
+void \mbox{\hyperlink{_s_f_e_m_8cpp_a211668b3209c37776b7e3885fa4385ec}{solvedeterm}} (string nodestr, string elsstr)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{_s_f_e_m_8cpp_a8b3ab54ed3e81c69863d65e4e6c424a0}{flag}}
+\item 
+int \mbox{\hyperlink{_s_f_e_m_8cpp_a49ad835791281472dbc1facf0f45643a}{cccccccc}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{_s_f_e_m_8cpp_a04b63929a2578b5ce61f09f0b8b18122}\label{_s_f_e_m_8cpp_a04b63929a2578b5ce61f09f0b8b18122}} 
+\index{SFEM.cpp@{SFEM.cpp}!SpMat@{SpMat}}
+\index{SpMat@{SpMat}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{SpMat}{SpMat}}
+{\footnotesize\ttfamily typedef Eigen\+::\+Sparse\+Matrix$<$double$>$ \mbox{\hyperlink{_s_f_e_m_8cpp_a04b63929a2578b5ce61f09f0b8b18122}{Sp\+Mat}}}
+
+
+
+Definition at line 30 of file S\+F\+E\+M.\+cpp.
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}\label{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}} 
+\index{SFEM.cpp@{SFEM.cpp}!T@{T}}
+\index{T@{T}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{T}{T}}
+{\footnotesize\ttfamily typedef Eigen\+::\+Triplet$<$double$>$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}}}
+
+
+
+Definition at line 31 of file S\+F\+E\+M.\+cpp.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_s_f_e_m_8cpp_a2333a3fdb9e9201706439c0e9823b9e0}\label{_s_f_e_m_8cpp_a2333a3fdb9e9201706439c0e9823b9e0}} 
+\index{SFEM.cpp@{SFEM.cpp}!computelamda@{computelamda}}
+\index{computelamda@{computelamda}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{computelamda()}{computelamda()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} computelamda (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{dwb,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{dws,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{dw,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&}]{l }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1403 of file S\+F\+E\+M.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::nrows().
+
+
+
+Referenced by Iterative\+Process(), and Iterative\+Process\+Shear\+Red3().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_ad21e769cdd9d0f871c88e1f76eecb4c4}\label{_s_f_e_m_8cpp_ad21e769cdd9d0f871c88e1f76eecb4c4}} 
+\index{SFEM.cpp@{SFEM.cpp}!CreateRandomField@{CreateRandomField}}
+\index{CreateRandomField@{CreateRandomField}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{CreateRandomField()}{CreateRandomField()}}
+{\footnotesize\ttfamily void Create\+Random\+Field (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 455 of file S\+F\+E\+M.\+cpp.
+
+
+
+References Out\+Put\+Post(), Read\+Mesh(), and K\+L\+Galerkin\+R\+F\+::\+Solve\+Gen\+Eig\+Val\+Problem().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_a50269f56c6a402af509a4f7018377538}\label{_s_f_e_m_8cpp_a50269f56c6a402af509a4f7018377538}} 
+\index{SFEM.cpp@{SFEM.cpp}!ExecuteMonteCarlo@{ExecuteMonteCarlo}}
+\index{ExecuteMonteCarlo@{ExecuteMonteCarlo}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{ExecuteMonteCarlo()}{ExecuteMonteCarlo()}}
+{\footnotesize\ttfamily void Execute\+Monte\+Carlo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 450 of file S\+F\+E\+M.\+cpp.
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_a0ac9467cd2fbd785e8310b0a8fd12ee7}\label{_s_f_e_m_8cpp_a0ac9467cd2fbd785e8310b0a8fd12ee7}} 
+\index{SFEM.cpp@{SFEM.cpp}!findbcids@{findbcids}}
+\index{findbcids@{findbcids}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{findbcids()}{findbcids()}}
+{\footnotesize\ttfamily void findbcids (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmesh}{mesh}} $\ast$}]{gmesh,  }\item[{std\+::vector$<$ std\+::vector$<$ int $>$$>$ \&}]{idsvector }\end{DoxyParamCaption})}
+
+
+
+Definition at line 516 of file S\+F\+E\+M.\+cpp.
+
+
+
+References gridmesh\+::\+Find\+Ids\+In\+Path(), mesh\+::\+Get\+All\+Coords(), mesh\+::\+Get\+Mesh\+Topology(), and gridmesh\+::\+Line().
+
+
+
+Referenced by Iterative\+Process(), and Iterative\+Process\+Shear\+Red().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_a3e966e71f9c0965685e81b5112d6ea5d}\label{_s_f_e_m_8cpp_a3e966e71f9c0965685e81b5112d6ea5d}} 
+\index{SFEM.cpp@{SFEM.cpp}!FindEl@{FindEl}}
+\index{FindEl@{FindEl}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{FindEl()}{FindEl()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} $>$ Find\+El (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&}]{allcoords,  }\item[{const \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}}}]{meshtopology,  }\item[{const \mbox{\hyperlink{nr3_8h_a97a3701e8aa6ca145af8d5c7c5c50d87}{Vec\+Doub}}}]{Vec,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{hhat }\end{DoxyParamCaption})}
+
+
+\begin{DoxyItemize}
+\item Matrix inversion routine. 
+\end{DoxyItemize}
+
+Definition at line 2241 of file S\+F\+E\+M.\+cpp.
+
+
+
+References N\+Rvector$<$ T $>$\+::assign(), N\+Rmatrix$<$ T $>$\+::assign(), gridmesh\+::\+Get\+El\+Coords(), N\+Rmatrix$<$ T $>$\+::\+Mult(), N\+Rmatrix$<$ T $>$\+::ncols(), N\+Rmatrix$<$ T $>$\+::nrows(), N\+Rmatrix$<$ T $>$\+::\+Print(), N\+Rvector$<$ T $>$\+::resize(), shapequad\+::shapes(), N\+Rvector$<$ T $>$\+::size(), and N\+Rmatrix$<$ T $>$\+::\+Transpose().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_a07cfe2ae4b5ada298824f8c3a8b92043}\label{_s_f_e_m_8cpp_a07cfe2ae4b5ada298824f8c3a8b92043}} 
+\index{SFEM.cpp@{SFEM.cpp}!InserBC@{InserBC}}
+\index{InserBC@{InserBC}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{InserBC()}{InserBC()}}
+{\footnotesize\ttfamily void Inser\+BC (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{KG,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{R,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{F\+B\+O\+DY,  }\item[{std\+::vector$<$ int $>$}]{idsbottom,  }\item[{std\+::vector$<$ int $>$}]{idsright,  }\item[{std\+::vector$<$ int $>$}]{idsleft,  }\item[{\mbox{\hyperlink{classmaterial}{material}} $\ast$}]{mat }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1423 of file S\+F\+E\+M.\+cpp.
+
+
+
+References material\+::\+Dirichlet\+B\+C().
+
+
+
+Referenced by Iterative\+Process(), Iterative\+Process\+Shear\+Red(), Iterative\+Process\+Shear\+Red2(), and Iterative\+Process\+Shear\+Red3().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_aa541913ea8aea99cecb314ff590cf3a9}\label{_s_f_e_m_8cpp_aa541913ea8aea99cecb314ff590cf3a9}} 
+\index{SFEM.cpp@{SFEM.cpp}!IterativeCho@{IterativeCho}}
+\index{IterativeCho@{IterativeCho}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{IterativeCho()}{IterativeCho()}}
+{\footnotesize\ttfamily void Iterative\+Cho (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$}]{allcoords,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{meshnodes,  }\item[{\mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}}}]{meshtopology,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{hhatinho,  }\item[{\mbox{\hyperlink{classelastoplastic2_d}{elastoplastic2D}}$<$ \mbox{\hyperlink{classdruckerprager}{druckerprager}} $>$ $\ast$}]{material }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2427 of file S\+F\+E\+M.\+cpp.
+
+
+
+References material\+::\+Assemble(), N\+Rmatrix$<$ T $>$\+::assign(), N\+Rmatrix$<$ T $>$\+::\+Copy\+From\+Vector(), material\+::\+Dirichlet\+B\+C(), gridmesh\+::\+Find\+Ids\+In\+Path(), gridmesh\+::\+Line(), N\+Rmatrix$<$ T $>$\+::\+Mult(), N\+Rmatrix$<$ T $>$\+::\+N\+Rmatrix\+Norm(), N\+Rmatrix$<$ T $>$\+::nrows(), Out\+Put\+File(), Out\+Put\+Post(), material\+::\+Post\+Process(), material\+::\+Post\+Process\+Integration\+Point\+Var(), N\+Rmatrix$<$ T $>$\+::\+Print(), material\+::\+Reset\+Displacement(), material\+::\+Reset\+Mat(), material\+::\+Reset\+Plastic\+Strain(), Solve\+Eigen(), N\+Rmatrix$<$ T $>$\+::\+Transpose(), material\+::\+Update\+Displacement(), and material\+::\+Update\+Plastic\+Strain().
+
+
+
+Referenced by solvedeterm().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_a9935a5837c650b15f0e4bb9549165fe2}\label{_s_f_e_m_8cpp_a9935a5837c650b15f0e4bb9549165fe2}} 
+\index{SFEM.cpp@{SFEM.cpp}!IterativeProcess@{IterativeProcess}}
+\index{IterativeProcess@{IterativeProcess}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{IterativeProcess()}{IterativeProcess()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ double $>$ $>$ Iterative\+Process (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmesh}{mesh}} $\ast$}]{gmesh,  }\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{ndesi,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{dlamb0 }\end{DoxyParamCaption})}
+
+
+
+Definition at line 924 of file S\+F\+E\+M.\+cpp.
+
+
+
+References mesh\+::\+Assemble(), N\+Rmatrix$<$ T $>$\+::assign(), cccccccc, computelamda(), N\+Rmatrix$<$ T $>$\+::\+Copy\+From\+Vector(), findbcids(), mesh\+::fmaterial, mesh\+::\+Get\+All\+Coords(), mesh\+::\+Get\+Mesh\+Nodes(), mesh\+::\+Get\+Mesh\+Topology(), material\+::\+Get\+Solution(), Inser\+B\+C(), N\+Rmatrix$<$ T $>$\+::\+Mult(), N\+Rmatrix$<$ T $>$\+::\+N\+Rmatrix\+Norm(), N\+Rmatrix$<$ T $>$\+::nrows(), Out\+Put\+File(), Out\+Put\+Post(), material\+::\+Post\+Process(), material\+::\+Post\+Process\+Integration\+Point\+Var(), material\+::\+Reset\+Displacement(), material\+::\+Reset\+Mat(), material\+::\+Reset\+Plastic\+Strain(), Solve\+Eigen(), N\+Rmatrix$<$ T $>$\+::\+Transpose(), material\+::\+Update\+Displacement(), and material\+::\+Update\+Plastic\+Strain().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_a65c32920963a37c90cf169719c5481be}\label{_s_f_e_m_8cpp_a65c32920963a37c90cf169719c5481be}} 
+\index{SFEM.cpp@{SFEM.cpp}!IterativeProcess@{IterativeProcess}}
+\index{IterativeProcess@{IterativeProcess}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{IterativeProcess()}{IterativeProcess()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ double $>$ $>$ Iterative\+Process (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmesh}{mesh}} $\ast$}]{gmesh,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{hhatinho,  }\item[{\mbox{\hyperlink{classelastoplastic2_d}{elastoplastic2D}}$<$ \mbox{\hyperlink{classdruckerprager}{druckerprager}} $>$ $\ast$}]{material,  }\item[{int}]{ndesi,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{dlamb0 }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1169 of file S\+F\+E\+M.\+cpp.
+
+
+
+References material\+::\+Assemble(), N\+Rmatrix$<$ T $>$\+::assign(), cccccccc, computelamda(), N\+Rmatrix$<$ T $>$\+::\+Copy\+From\+Vector(), findbcids(), mesh\+::\+Get\+All\+Coords(), mesh\+::\+Get\+Mesh\+Nodes(), mesh\+::\+Get\+Mesh\+Topology(), Inser\+B\+C(), N\+Rmatrix$<$ T $>$\+::\+Mult(), N\+Rmatrix$<$ T $>$\+::\+N\+Rmatrix\+Norm(), N\+Rmatrix$<$ T $>$\+::nrows(), Out\+Put\+File(), Out\+Put\+Post(), material\+::\+Post\+Process(), material\+::\+Post\+Process\+Integration\+Point\+Var(), material\+::\+Reset\+Displacement(), material\+::\+Reset\+Mat(), material\+::\+Reset\+Plastic\+Strain(), Solve\+Eigen(), N\+Rmatrix$<$ T $>$\+::\+Transpose(), material\+::\+Update\+Displacement(), and material\+::\+Update\+Plastic\+Strain().
+
+
+
+Referenced by main2(), Monte\+Carlo(), and solvedetermtest().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_ae091950d8edc91e599f90a2d3749f58f}\label{_s_f_e_m_8cpp_ae091950d8edc91e599f90a2d3749f58f}} 
+\index{SFEM.cpp@{SFEM.cpp}!IterativeProcessShearRed@{IterativeProcessShearRed}}
+\index{IterativeProcessShearRed@{IterativeProcessShearRed}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{IterativeProcessShearRed()}{IterativeProcessShearRed()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::vector$<$double$>$ $>$ Iterative\+Process\+Shear\+Red (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmesh}{mesh}} $\ast$}]{gmesh,  }\item[{\mbox{\hyperlink{classelastoplastic2_d}{elastoplastic2D}}$<$ \mbox{\hyperlink{classdruckerprager}{druckerprager}} $>$ $\ast$}]{material }\end{DoxyParamCaption})}
+
+
+
+Definition at line 591 of file S\+F\+E\+M.\+cpp.
+
+
+
+References material\+::\+Assemble(), N\+Rmatrix$<$ T $>$\+::assign(), findbcids(), mesh\+::\+Get\+All\+Coords(), mesh\+::\+Get\+Mesh\+Nodes(), mesh\+::\+Get\+Mesh\+Topology(), Inser\+B\+C(), N\+Rmatrix$<$ T $>$\+::\+N\+Rmatrix\+Norm(), N\+Rmatrix$<$ T $>$\+::nrows(), Out\+Put\+Post(), material\+::\+Post\+Process(), material\+::\+Post\+Process\+Integration\+Point\+Var(), Solve\+Eigen2(), material\+::\+Update\+Displacement(), and material\+::\+Update\+Plastic\+Strain().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_a6232ea6a57a3e9bedcfda7ecc22b8cdf}\label{_s_f_e_m_8cpp_a6232ea6a57a3e9bedcfda7ecc22b8cdf}} 
+\index{SFEM.cpp@{SFEM.cpp}!IterativeProcessShearRed@{IterativeProcessShearRed}}
+\index{IterativeProcessShearRed@{IterativeProcessShearRed}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{IterativeProcessShearRed()}{IterativeProcessShearRed()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::vector$<$double$>$ $>$ Iterative\+Process\+Shear\+Red (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmesh}{mesh}} $\ast$}]{gmesh,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{hhatinho,  }\item[{\mbox{\hyperlink{classelastoplastic2_d}{elastoplastic2D}}$<$ \mbox{\hyperlink{classdruckerprager}{druckerprager}} $>$ $\ast$}]{material }\end{DoxyParamCaption})}
+
+
+
+Referenced by main2().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_a23ff8a8d0024aabac1132bd107b47ee3}\label{_s_f_e_m_8cpp_a23ff8a8d0024aabac1132bd107b47ee3}} 
+\index{SFEM.cpp@{SFEM.cpp}!IterativeProcessShearRed@{IterativeProcessShearRed}}
+\index{IterativeProcessShearRed@{IterativeProcessShearRed}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{IterativeProcessShearRed()}{IterativeProcessShearRed()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ double $>$ $>$ Iterative\+Process\+Shear\+Red (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmesh}{mesh}} $\ast$}]{mesh }\end{DoxyParamCaption})}
+
+
+
+Definition at line 751 of file S\+F\+E\+M.\+cpp.
+
+
+
+References mesh\+::\+Assemble(), N\+Rmatrix$<$ T $>$\+::assign(), findbcids(), mesh\+::fmaterial, mesh\+::\+Get\+All\+Coords(), material\+::\+Get\+Mat\+Constants(), mesh\+::\+Get\+Mesh\+Nodes(), mesh\+::\+Get\+Mesh\+Topology(), material\+::\+Get\+Solution(), Inser\+B\+C(), N\+Rmatrix$<$ T $>$\+::\+N\+Rmatrix\+Norm(), N\+Rmatrix$<$ T $>$\+::nrows(), Out\+Put\+Post(), material\+::\+Post\+Process(), material\+::\+Post\+Process\+Integration\+Point\+Var(), material\+::\+Reset\+Mat(), material\+::\+Set\+Mat\+Constants(), Solve\+Eigen(), material\+::\+Update\+Displacement(), and material\+::\+Update\+Plastic\+Strain().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_a4b846ad4728ab7c89b8041efd45ec982}\label{_s_f_e_m_8cpp_a4b846ad4728ab7c89b8041efd45ec982}} 
+\index{SFEM.cpp@{SFEM.cpp}!IterativeProcessShearRed2@{IterativeProcessShearRed2}}
+\index{IterativeProcessShearRed2@{IterativeProcessShearRed2}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{IterativeProcessShearRed2()}{IterativeProcessShearRed2()}}
+{\footnotesize\ttfamily void Iterative\+Process\+Shear\+Red2 (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$}]{allcoords,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{meshnodes,  }\item[{\mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}}}]{meshtopology,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{hhatinho,  }\item[{\mbox{\hyperlink{classelastoplastic2_d}{elastoplastic2D}}$<$ \mbox{\hyperlink{classdruckerprager}{druckerprager}} $>$ $\ast$}]{material }\end{DoxyParamCaption})}
+
+
+
+Definition at line 3558 of file S\+F\+E\+M.\+cpp.
+
+
+
+References material\+::\+Assemble(), N\+Rmatrix$<$ T $>$\+::assign(), gridmesh\+::\+Find\+Ids\+In\+Path(), Inser\+B\+C(), gridmesh\+::\+Line(), N\+Rmatrix$<$ T $>$\+::\+N\+Rmatrix\+Norm(), N\+Rmatrix$<$ T $>$\+::nrows(), Out\+Put\+Post(), material\+::\+Post\+Process(), material\+::\+Post\+Process\+Integration\+Point\+Var(), material\+::\+Reset\+Mat(), Solve\+Eigen2(), material\+::\+Update\+Body\+Force(), material\+::\+Update\+Displacement(), and material\+::\+Update\+Plastic\+Strain().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_aeda3cefe23b8a62d8e54725b0f8315a1}\label{_s_f_e_m_8cpp_aeda3cefe23b8a62d8e54725b0f8315a1}} 
+\index{SFEM.cpp@{SFEM.cpp}!IterativeProcessShearRed3@{IterativeProcessShearRed3}}
+\index{IterativeProcessShearRed3@{IterativeProcessShearRed3}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{IterativeProcessShearRed3()}{IterativeProcessShearRed3()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ double $>$ $>$ Iterative\+Process\+Shear\+Red3 (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$}]{allcoords,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{meshnodes,  }\item[{\mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}}}]{meshtopology,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{hhatinho,  }\item[{\mbox{\hyperlink{classelastoplastic2_d}{elastoplastic2D}}$<$ \mbox{\hyperlink{classdruckerprager}{druckerprager}} $>$ $\ast$}]{material }\end{DoxyParamCaption})}
+
+
+
+Definition at line 3738 of file S\+F\+E\+M.\+cpp.
+
+
+
+References material\+::\+Assemble(), N\+Rmatrix$<$ T $>$\+::assign(), cccccccc, computelamda(), N\+Rmatrix$<$ T $>$\+::\+Copy\+From\+Vector(), gridmesh\+::\+Find\+Ids\+In\+Path(), Inser\+B\+C(), gridmesh\+::\+Line(), N\+Rmatrix$<$ T $>$\+::\+Mult(), N\+Rmatrix$<$ T $>$\+::\+N\+Rmatrix\+Norm(), N\+Rmatrix$<$ T $>$\+::nrows(), Out\+Put\+File(), Out\+Put\+Post(), material\+::\+Post\+Process(), material\+::\+Post\+Process\+Integration\+Point\+Var(), material\+::\+Reset\+Displacement(), material\+::\+Reset\+Mat(), material\+::\+Reset\+Plastic\+Strain(), Solve\+Eigen(), N\+Rmatrix$<$ T $>$\+::\+Transpose(), material\+::\+Update\+Displacement(), and material\+::\+Update\+Plastic\+Strain().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_abbd2445b1709a41c099e22b91e0557a5}\label{_s_f_e_m_8cpp_abbd2445b1709a41c099e22b91e0557a5}} 
+\index{SFEM.cpp@{SFEM.cpp}!IterativeSlopeStabilityEig@{IterativeSlopeStabilityEig}}
+\index{IterativeSlopeStabilityEig@{IterativeSlopeStabilityEig}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{IterativeSlopeStabilityEig()}{IterativeSlopeStabilityEig()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ double $>$ $>$ Iterative\+Slope\+Stability\+Eig (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$}]{allcoords,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{meshnodes,  }\item[{\mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}}}]{meshtopology,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{hhatinho,  }\item[{\mbox{\hyperlink{classelastoplastic2_d}{elastoplastic2D}}$<$ \mbox{\hyperlink{classdruckerprager}{druckerprager}} $>$ $\ast$}]{material }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2784 of file S\+F\+E\+M.\+cpp.
+
+
+
+References material\+::\+Assemble(), N\+Rmatrix$<$ T $>$\+::assign(), N\+Rmatrix$<$ T $>$\+::\+Copy\+From\+Vector(), material\+::\+Dirichlet\+B\+C(), gridmesh\+::\+Find\+Ids\+In\+Path(), gridmesh\+::\+Line(), N\+Rmatrix$<$ T $>$\+::\+Mult(), N\+Rmatrix$<$ T $>$\+::\+N\+Rmatrix\+Norm(), N\+Rmatrix$<$ T $>$\+::nrows(), Out\+Put\+File(), Out\+Put\+Post(), material\+::\+Post\+Process(), material\+::\+Post\+Process\+Integration\+Point\+Var(), N\+Rmatrix$<$ T $>$\+::\+Print(), material\+::\+Reset\+Displacement(), material\+::\+Reset\+Mat(), material\+::\+Reset\+Plastic\+Strain(), Solve\+Eigen(), N\+Rmatrix$<$ T $>$\+::\+Transpose(), material\+::\+Update\+Displacement(), and material\+::\+Update\+Plastic\+Strain().
+
+
+
+Referenced by Monte\+Carlo\+Talude2().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_ac1dfe5ce70e776891e72f0c79834a50a}\label{_s_f_e_m_8cpp_ac1dfe5ce70e776891e72f0c79834a50a}} 
+\index{SFEM.cpp@{SFEM.cpp}!LineTopology@{LineTopology}}
+\index{LineTopology@{LineTopology}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{LineTopology()}{LineTopology()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ int $>$ $>$ Line\+Topology (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$}]{ids,  }\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{order }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2401 of file S\+F\+E\+M.\+cpp.
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_a0e663f52efbc8593793d628b4259ce9b}\label{_s_f_e_m_8cpp_a0e663f52efbc8593793d628b4259ce9b}} 
+\index{SFEM.cpp@{SFEM.cpp}!main2@{main2}}
+\index{main2@{main2}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{main2()}{main2()}}
+{\footnotesize\ttfamily int main2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+string nodestr = \char`\"{}\+D\+:/\+D\+Clib/meshes/nos-\/297.\+txt\char`\"{}; string elsstr = \char`\"{}\+D\+:/\+D\+Clib/meshes/els-\/297.\+txt\char`\"{};
+
+Definition at line 83 of file S\+F\+E\+M.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::\+Copy\+From\+Vector(), elastoplastic2\+D$<$ Y\+C $>$\+::f\+YC, elastoplastic2\+D$<$ Y\+C $>$\+::\+Get\+Solution(), Iterative\+Process(), Iterative\+Process\+Shear\+Red(), slopeproject\+::\+Monte\+Carlo\+G\+I\+M(), slopeproject\+::\+Monte\+Carlo\+S\+R\+M(), N\+Rmatrix$<$ T $>$\+::nrows(), Out\+Put\+File1var(), Out\+Put\+Post(), shapequad\+::pointsandweigths(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Post\+Process(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Post\+Process\+Integration\+Point\+Var(), Read\+Mat\+Doub(), Read\+Mesh(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Reset\+Mat(), mesh\+::\+Set\+Hhat(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Set\+Memory(), druckerprager\+::setup(), and elastoplastic2\+D$<$ Y\+C $>$\+::\+Update\+Body\+Force().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_a05bcca7954de527fd2db74adcefad07f}\label{_s_f_e_m_8cpp_a05bcca7954de527fd2db74adcefad07f}} 
+\index{SFEM.cpp@{SFEM.cpp}!MonteCarlo@{MonteCarlo}}
+\index{MonteCarlo@{MonteCarlo}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{MonteCarlo()}{MonteCarlo()}}
+{\footnotesize\ttfamily void Monte\+Carlo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1459 of file S\+F\+E\+M.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::\+Copy\+From\+Vector(), mesh\+::\+Get\+Mesh\+Nodes(), mesh\+::\+Get\+Mesh\+Topology(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Get\+Solution(), Iterative\+Process(), N\+Rmatrix$<$ T $>$\+::nrows(), Out\+Put\+File1var(), Out\+Put\+Post(), shapequad\+::pointsandweigths(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Post\+Process\+Integration\+Point\+Var(), Read\+Mesh(), mesh\+::\+Set\+Hhat(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Set\+Mat\+Constants(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Set\+Memory(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Set\+Random\+Field(), N\+Rvector$<$ T $>$\+::size(), K\+L\+Galerkin\+R\+F\+::\+Solve\+Gen\+Eig\+Val\+Problem(), and elastoplastic2\+D$<$ Y\+C $>$\+::\+Update\+Body\+Force().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_a2b54485f17d31ddbb282e6436bbac968}\label{_s_f_e_m_8cpp_a2b54485f17d31ddbb282e6436bbac968}} 
+\index{SFEM.cpp@{SFEM.cpp}!MonteCarloTalude2@{MonteCarloTalude2}}
+\index{MonteCarloTalude2@{MonteCarloTalude2}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{MonteCarloTalude2()}{MonteCarloTalude2()}}
+{\footnotesize\ttfamily void Monte\+Carlo\+Talude2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+coordsvec\mbox{[}0\mbox{]} = 32.\+5;
+
+solcount\mbox{[}5\mbox{]} = diff2;
+
+Definition at line 3087 of file S\+F\+E\+M.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::\+Copy\+From\+Vector(), mesh\+::\+Get\+Mesh\+Nodes(), mesh\+::\+Get\+Mesh\+Topology(), Iterative\+Slope\+Stability\+Eig(), N\+Rmatrix$<$ T $>$\+::nrows(), Out\+Put\+File(), Out\+Put\+File1var(), Out\+Put\+Post(), shapequad\+::pointsandweigths(), material\+::\+Post\+Process(), material\+::\+Post\+Process\+Integration\+Point\+Var(), Read\+Mesh(), material\+::\+Set\+Memory(), material\+::\+Set\+Random\+Field(), N\+Rvector$<$ T $>$\+::size(), K\+L\+Galerkin\+R\+F\+::\+Solve\+Gen\+Eig\+Val\+Problem(), and material\+::\+Update\+Body\+Force().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_a9b5276c21f750e5d1f56270780f2f7e2}\label{_s_f_e_m_8cpp_a9b5276c21f750e5d1f56270780f2f7e2}} 
+\index{SFEM.cpp@{SFEM.cpp}!OutPutFile@{OutPutFile}}
+\index{OutPutFile@{OutPutFile}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{OutPutFile()}{OutPutFile()}}
+{\footnotesize\ttfamily void Out\+Put\+File (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{postdata,  }\item[{std\+::ofstream \&}]{file }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1828 of file S\+F\+E\+M.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::nrows().
+
+
+
+Referenced by Iterative\+Cho(), Iterative\+Process(), Iterative\+Process\+Shear\+Red3(), Iterative\+Slope\+Stability\+Eig(), and Monte\+Carlo\+Talude2().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_a165331bd4e5c997351936db708acfaf6}\label{_s_f_e_m_8cpp_a165331bd4e5c997351936db708acfaf6}} 
+\index{SFEM.cpp@{SFEM.cpp}!OutPutFile1var@{OutPutFile1var}}
+\index{OutPutFile1var@{OutPutFile1var}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{OutPutFile1var()}{OutPutFile1var()}}
+{\footnotesize\ttfamily void Out\+Put\+File1var (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{postdata,  }\item[{std\+::ofstream \&}]{file }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1841 of file S\+F\+E\+M.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::nrows().
+
+
+
+Referenced by main2(), Monte\+Carlo(), and Monte\+Carlo\+Talude2().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_aad34bb59381bc41ce5fd1d71df63b7fd}\label{_s_f_e_m_8cpp_aad34bb59381bc41ce5fd1d71df63b7fd}} 
+\index{SFEM.cpp@{SFEM.cpp}!OutPutFile4var@{OutPutFile4var}}
+\index{OutPutFile4var@{OutPutFile4var}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{OutPutFile4var()}{OutPutFile4var()}}
+{\footnotesize\ttfamily void Out\+Put\+File4var (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{postdata,  }\item[{std\+::ofstream \&}]{file }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1854 of file S\+F\+E\+M.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::nrows().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_ae046b294af80334dd232bb3f657f17d1}\label{_s_f_e_m_8cpp_ae046b294af80334dd232bb3f657f17d1}} 
+\index{SFEM.cpp@{SFEM.cpp}!OutPutPost@{OutPutPost}}
+\index{OutPutPost@{OutPutPost}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{OutPutPost()}{OutPutPost()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily void Out\+Put\+Post (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{postdata,  }\item[{std\+::ofstream \&}]{file }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1882 of file S\+F\+E\+M.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::ncols(), and N\+Rmatrix$<$ T $>$\+::nrows().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_ae344428f8c950700a5372dd835302865}\label{_s_f_e_m_8cpp_ae344428f8c950700a5372dd835302865}} 
+\index{SFEM.cpp@{SFEM.cpp}!OutPutPost@{OutPutPost}}
+\index{OutPutPost@{OutPutPost}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{OutPutPost()}{OutPutPost()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily void Out\+Put\+Post (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \&}]{postdata,  }\item[{std\+::ofstream \&}]{file }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1895 of file S\+F\+E\+M.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::ncols(), and N\+Rmatrix$<$ T $>$\+::nrows().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_ad76a6eb4ca8cb88a3dbff9bf74c332dc}\label{_s_f_e_m_8cpp_ad76a6eb4ca8cb88a3dbff9bf74c332dc}} 
+\index{SFEM.cpp@{SFEM.cpp}!OutPutPost@{OutPutPost}}
+\index{OutPutPost@{OutPutPost}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{OutPutPost()}{OutPutPost()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily void Out\+Put\+Post (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&}]{postdata,  }\item[{std\+::ofstream \&}]{file }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1868 of file S\+F\+E\+M.\+cpp.
+
+
+
+Referenced by Create\+Random\+Field(), Iterative\+Cho(), Iterative\+Process(), Iterative\+Process\+Shear\+Red(), Iterative\+Process\+Shear\+Red2(), Iterative\+Process\+Shear\+Red3(), Iterative\+Slope\+Stability\+Eig(), main2(), Monte\+Carlo(), Monte\+Carlo\+Talude2(), solvedeterm(), and solvedetermtest().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_ae907f8ff5210462f96545a82784a7850}\label{_s_f_e_m_8cpp_ae907f8ff5210462f96545a82784a7850}} 
+\index{SFEM.cpp@{SFEM.cpp}!ReadMatDoub@{ReadMatDoub}}
+\index{ReadMatDoub@{ReadMatDoub}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{ReadMatDoub()}{ReadMatDoub()}}
+{\footnotesize\ttfamily void Read\+Mat\+Doub (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{matdoub,  }\item[{std\+::string}]{file }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2037 of file S\+F\+E\+M.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::\+Copy\+From\+Vector(), and vecstr\+\_\+to\+\_\+vecdoub2().
+
+
+
+Referenced by main2().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_a164457c251eee5c0e997e75df589b2e5}\label{_s_f_e_m_8cpp_a164457c251eee5c0e997e75df589b2e5}} 
+\index{SFEM.cpp@{SFEM.cpp}!ReadMesh@{ReadMesh}}
+\index{ReadMesh@{ReadMesh}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{ReadMesh()}{ReadMesh()}}
+{\footnotesize\ttfamily void Read\+Mesh (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&}]{allcoords,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{meshcoords,  }\item[{\mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \&}]{meshtopology,  }\item[{string}]{filenameel,  }\item[{string}]{filenamecoord }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1909 of file S\+F\+E\+M.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::\+Copy\+From\+Vector(), N\+Rmatrix$<$ T $>$\+::ncols(), N\+Rmatrix$<$ T $>$\+::nrows(), vecstr\+\_\+to\+\_\+vecdoub(), and vecstr\+\_\+to\+\_\+vecint().
+
+
+
+Referenced by Create\+Random\+Field(), main2(), Monte\+Carlo(), Monte\+Carlo\+Talude2(), solvedeterm(), and solvedetermtest().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_a211668b3209c37776b7e3885fa4385ec}\label{_s_f_e_m_8cpp_a211668b3209c37776b7e3885fa4385ec}} 
+\index{SFEM.cpp@{SFEM.cpp}!solvedeterm@{solvedeterm}}
+\index{solvedeterm@{solvedeterm}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{solvedeterm()}{solvedeterm()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void solvedeterm (\begin{DoxyParamCaption}\item[{string}]{nodestr,  }\item[{string}]{elsstr }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2726 of file S\+F\+E\+M.\+cpp.
+
+
+
+References Iterative\+Cho(), N\+Rmatrix$<$ T $>$\+::nrows(), Out\+Put\+Post(), shapequad\+::pointsandweigths(), Read\+Mesh(), material\+::\+Set\+Memory(), and material\+::\+Update\+Body\+Force().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_ac18a86c565372dabae07e662399d0c1d}\label{_s_f_e_m_8cpp_ac18a86c565372dabae07e662399d0c1d}} 
+\index{SFEM.cpp@{SFEM.cpp}!solvedeterm@{solvedeterm}}
+\index{solvedeterm@{solvedeterm}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{solvedeterm()}{solvedeterm()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void solvedeterm (\begin{DoxyParamCaption}\item[{string}]{nodestr,  }\item[{string}]{elsstr,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{hhatinho }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_a02fa28d25b7005d8e1e8c6c13663d437}\label{_s_f_e_m_8cpp_a02fa28d25b7005d8e1e8c6c13663d437}} 
+\index{SFEM.cpp@{SFEM.cpp}!solvedetermtest@{solvedetermtest}}
+\index{solvedetermtest@{solvedetermtest}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{solvedetermtest()}{solvedetermtest()}}
+{\footnotesize\ttfamily void solvedetermtest (\begin{DoxyParamCaption}\item[{string}]{nodestr,  }\item[{string}]{elsstr,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{hhatinho,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{c,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{phi,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{gamma }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2644 of file S\+F\+E\+M.\+cpp.
+
+
+
+References mesh\+::\+Get\+Mesh\+Nodes(), mesh\+::\+Get\+Mesh\+Topology(), Iterative\+Process(), N\+Rmatrix$<$ T $>$\+::nrows(), Out\+Put\+Post(), shapequad\+::pointsandweigths(), material\+::\+Post\+Process(), material\+::\+Post\+Process\+Integration\+Point\+Var(), Read\+Mesh(), material\+::\+Set\+Memory(), and material\+::\+Update\+Body\+Force().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_a08df8f5eabc3507730df4b8667a93255}\label{_s_f_e_m_8cpp_a08df8f5eabc3507730df4b8667a93255}} 
+\index{SFEM.cpp@{SFEM.cpp}!SolveEigen@{SolveEigen}}
+\index{SolveEigen@{SolveEigen}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{SolveEigen()}{SolveEigen()}}
+{\footnotesize\ttfamily void Solve\+Eigen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{A,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{b,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{x }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2380 of file S\+F\+E\+M.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign(), N\+Rmatrix$<$ T $>$\+::ncols(), and N\+Rmatrix$<$ T $>$\+::nrows().
+
+
+
+Referenced by Iterative\+Cho(), Iterative\+Process(), Iterative\+Process\+Shear\+Red(), Iterative\+Process\+Shear\+Red3(), and Iterative\+Slope\+Stability\+Eig().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_a2d3bd6fadc44c0ffc39cb2b491bae65c}\label{_s_f_e_m_8cpp_a2d3bd6fadc44c0ffc39cb2b491bae65c}} 
+\index{SFEM.cpp@{SFEM.cpp}!SolveEigen2@{SolveEigen2}}
+\index{SolveEigen2@{SolveEigen2}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{SolveEigen2()}{SolveEigen2()}}
+{\footnotesize\ttfamily void Solve\+Eigen2 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{A,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{b,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{x }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2336 of file S\+F\+E\+M.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign(), N\+Rmatrix$<$ T $>$\+::ncols(), and N\+Rmatrix$<$ T $>$\+::nrows().
+
+
+
+Referenced by Iterative\+Process\+Shear\+Red(), and Iterative\+Process\+Shear\+Red2().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_a7c51ec5db0081a5ae7a721c8ac6dc1c8}\label{_s_f_e_m_8cpp_a7c51ec5db0081a5ae7a721c8ac6dc1c8}} 
+\index{SFEM.cpp@{SFEM.cpp}!SolveNR3@{SolveNR3}}
+\index{SolveNR3@{SolveNR3}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{SolveNR3()}{SolveNR3()}}
+{\footnotesize\ttfamily void Solve\+N\+R3 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{A,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{b,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{x }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2363 of file S\+F\+E\+M.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign(), N\+Rmatrix$<$ T $>$\+::nrows(), and Cholesky\+::solve().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_a503ba5ac1fe5e9bf7c15d46fba941dd6}\label{_s_f_e_m_8cpp_a503ba5ac1fe5e9bf7c15d46fba941dd6}} 
+\index{SFEM.cpp@{SFEM.cpp}!SolveShearRed@{SolveShearRed}}
+\index{SolveShearRed@{SolveShearRed}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{SolveShearRed()}{SolveShearRed()}}
+{\footnotesize\ttfamily void Solve\+Shear\+Red (\begin{DoxyParamCaption}\item[{string}]{nodestr,  }\item[{string}]{elsstr,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{hhatinho,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{c,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{phi,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{gamma }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_aa9b2ffde657cf3834e1fa7bfb29d8a89}\label{_s_f_e_m_8cpp_aa9b2ffde657cf3834e1fa7bfb29d8a89}} 
+\index{SFEM.cpp@{SFEM.cpp}!ToMatInt@{ToMatInt}}
+\index{ToMatInt@{ToMatInt}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{ToMatInt()}{ToMatInt()}}
+{\footnotesize\ttfamily void To\+Mat\+Int (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ int $>$$>$}]{in,  }\item[{\mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \&}]{out }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2419 of file S\+F\+E\+M.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_ad343347995bfb8aea592b24ad7ae71d3}\label{_s_f_e_m_8cpp_ad343347995bfb8aea592b24ad7ae71d3}} 
+\index{SFEM.cpp@{SFEM.cpp}!vecstr\_to\_vec@{vecstr\_to\_vec}}
+\index{vecstr\_to\_vec@{vecstr\_to\_vec}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{vecstr\_to\_vec()}{vecstr\_to\_vec()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+std\+::vector$<$\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}}$>$ vecstr\+\_\+to\+\_\+vec (\begin{DoxyParamCaption}\item[{std\+::vector$<$ string $>$}]{vs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2024 of file S\+F\+E\+M.\+cpp.
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_ad9dc6a8fa56941b6eda6f7a32360f02c}\label{_s_f_e_m_8cpp_ad9dc6a8fa56941b6eda6f7a32360f02c}} 
+\index{SFEM.cpp@{SFEM.cpp}!vecstr\_to\_vecdoub@{vecstr\_to\_vecdoub}}
+\index{vecstr\_to\_vecdoub@{vecstr\_to\_vecdoub}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{vecstr\_to\_vecdoub()}{vecstr\_to\_vecdoub()}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}$>$ vecstr\+\_\+to\+\_\+vecdoub (\begin{DoxyParamCaption}\item[{std\+::vector$<$ string $>$}]{vs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1997 of file S\+F\+E\+M.\+cpp.
+
+
+
+Referenced by Read\+Mesh().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_a6682a8e9673450db26188f7d57b5e8d5}\label{_s_f_e_m_8cpp_a6682a8e9673450db26188f7d57b5e8d5}} 
+\index{SFEM.cpp@{SFEM.cpp}!vecstr\_to\_vecdoub2@{vecstr\_to\_vecdoub2}}
+\index{vecstr\_to\_vecdoub2@{vecstr\_to\_vecdoub2}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{vecstr\_to\_vecdoub2()}{vecstr\_to\_vecdoub2()}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}$>$ vecstr\+\_\+to\+\_\+vecdoub2 (\begin{DoxyParamCaption}\item[{std\+::vector$<$ string $>$}]{vs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2010 of file S\+F\+E\+M.\+cpp.
+
+
+
+Referenced by Read\+Mat\+Doub().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_a1f07392fbd1d06a566ef4dc9f7d01808}\label{_s_f_e_m_8cpp_a1f07392fbd1d06a566ef4dc9f7d01808}} 
+\index{SFEM.cpp@{SFEM.cpp}!vecstr\_to\_vecint@{vecstr\_to\_vecint}}
+\index{vecstr\_to\_vecint@{vecstr\_to\_vecint}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{vecstr\_to\_vecint()}{vecstr\_to\_vecint()}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}$>$ vecstr\+\_\+to\+\_\+vecint (\begin{DoxyParamCaption}\item[{std\+::vector$<$ string $>$}]{vs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1984 of file S\+F\+E\+M.\+cpp.
+
+
+
+Referenced by Read\+Mesh().
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{_s_f_e_m_8cpp_a49ad835791281472dbc1facf0f45643a}\label{_s_f_e_m_8cpp_a49ad835791281472dbc1facf0f45643a}} 
+\index{SFEM.cpp@{SFEM.cpp}!cccccccc@{cccccccc}}
+\index{cccccccc@{cccccccc}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{cccccccc}{cccccccc}}
+{\footnotesize\ttfamily int cccccccc}
+
+
+
+Definition at line 513 of file S\+F\+E\+M.\+cpp.
+
+
+
+Referenced by Iterative\+Process(), and Iterative\+Process\+Shear\+Red3().
+
+\mbox{\Hypertarget{_s_f_e_m_8cpp_a8b3ab54ed3e81c69863d65e4e6c424a0}\label{_s_f_e_m_8cpp_a8b3ab54ed3e81c69863d65e4e6c424a0}} 
+\index{SFEM.cpp@{SFEM.cpp}!flag@{flag}}
+\index{flag@{flag}!SFEM.cpp@{SFEM.cpp}}
+\doxysubsubsection{\texorpdfstring{flag}{flag}}
+{\footnotesize\ttfamily bool flag}
+
+
+
+Definition at line 59 of file S\+F\+E\+M.\+cpp.
+
+
+
+Referenced by druckerprager\+::\+Find\+Minimum(), and rtsafe().
+

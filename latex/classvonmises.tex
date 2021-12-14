@@ -1,0 +1,560 @@
+\hypertarget{classvonmises}{}\doxysection{vonmises Class Reference}
+\label{classvonmises}\index{vonmises@{vonmises}}
+
+
+{\ttfamily \#include $<$vonmises.\+h$>$}
+
+
+
+Inheritance diagram for vonmises\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=182pt]{classvonmises__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for vonmises\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=182pt]{classvonmises__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classvonmises_a6e3eaa6cad57da97c48b8b61ee3b5443}{vonmises}} (\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} young, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} nu, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} sigy)
+\item 
+\mbox{\hyperlink{classvonmises_a10fdee320bda206e40adc81ebb5c863e}{vonmises}} ()
+\item 
+\mbox{\hyperlink{classvonmises_a7cf5b0a60f414eb27c6b3db8d811435d}{$\sim$vonmises}} ()
+\item 
+void \mbox{\hyperlink{classvonmises_aefbf01f66a4a51f9e4bbb005e8b73d48}{closestpointproj}} (\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ epst, \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ epsp, \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&projstress, \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&projstrain, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&Dep, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&projgamma)
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classvonmises_a3e0d0ac6938018a3f3e52b074dc4f5d3}{yield}} (\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} J2)
+\item 
+\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \mbox{\hyperlink{classvonmises_a62cbd7c02f6b5cc5586351217a5e0d0a}{Get\+Elastic\+Matrix}} ()
+\item 
+\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \mbox{\hyperlink{classvonmises_afd8d72bf6bb0a3472d5414af3e8e1895}{Get\+Inverse\+Elastic\+Matrix}} ()
+\item 
+\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \mbox{\hyperlink{classvonmises_a7f63ee6f9d9cd38dd224fdc2529ca8c6}{F1\+H\+W\+Cyl\+Von\+Mises}} (\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} xisol, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} rho, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} betasol)
+\item 
+\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \mbox{\hyperlink{classvonmises_aa1136ccfb37c097769307af4b2ca9dc2}{HW}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} sig)
+\item 
+\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \mbox{\hyperlink{classvonmises_ace49d1908f08a8d0017fa425afb37eec}{stressrecosntruction}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} val, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} vec)
+\item 
+\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \mbox{\hyperlink{classvonmises_aca2a9e377c50b41cc3c6570c4011da2c}{dadsig}} (\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ sigprojvoigt)
+\item 
+\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \mbox{\hyperlink{classvonmises_a57316e7d738c6a798535d977da92f3da}{P}} ()
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classvonmises_a345034a3d0ab02d2cf1088230f4ace05}{phi}} (\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ epse)
+\item 
+void \mbox{\hyperlink{classvonmises_af10ca1b1efd6390ed53bc0642cf499e3}{setup}} (\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} young, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} nu, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} sigy)
+\item 
+void \mbox{\hyperlink{classvonmises_aaff026fbf24b346073466f43a3e809d1}{Get\+Elastic\+Parameters}} (\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} young, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} nu, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} sigy, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} K, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} G)
+\item 
+void \mbox{\hyperlink{classvonmises_a59615e3bc503d4315bd3cd749f5981c5}{updateatributes}} (\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} $>$ mult)
+\item 
+void \mbox{\hyperlink{classvonmises_a57dab31df0a916f823a2a590adaecd38}{restoreoriginalatributes}} ()
+\item 
+void \mbox{\hyperlink{classvonmises_a85e346a98c53f0cd4a6060aeb488a910}{Get\+Mat\+Constants}} (\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&consts)
+\item 
+void \mbox{\hyperlink{classvonmises_a502733d6154734ee47d930070f8dfc19}{Set\+Mat\+Constants}} (\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&consts)
+\item 
+void \mbox{\hyperlink{classvonmises_aef1cd59dc0fa26a2206f2765710b4f62}{reset}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classvonmises_ac290b92ddacbebfb8b659d6840fb0bd1}{fyoung}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classvonmises_ac4017372bced1e52779827e9d38dc5e5}{fnu}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classvonmises_afb1816982e0ef3a404b099e7f45c78bc}{fyoung0}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classvonmises_a11ed8bd1e7db50a415c9ec2c1a957ae2}{fnu0}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classvonmises_a6baff5c99e1323a7fde48c123ae2a43f}{fsigy0}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classvonmises_a035c422277111f539502013116f3fec3}{fsigy}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classvonmises_a2866f24a2dcae9453ab736f17ce79b0c}{fK}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classvonmises_ae19aa72409bd6fcb0acb157f48d34cb4}{fG}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 8 of file vonmises.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classvonmises_a6e3eaa6cad57da97c48b8b61ee3b5443}\label{classvonmises_a6e3eaa6cad57da97c48b8b61ee3b5443}} 
+\index{vonmises@{vonmises}!vonmises@{vonmises}}
+\index{vonmises@{vonmises}!vonmises@{vonmises}}
+\doxysubsubsection{\texorpdfstring{vonmises()}{vonmises()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily vonmises\+::vonmises (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{young,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{nu,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{sigy }\end{DoxyParamCaption})}
+
+
+
+Definition at line 8 of file vonmises.\+cpp.
+
+
+
+References fG, fK, fnu, fsigy, and fyoung.
+
+\mbox{\Hypertarget{classvonmises_a10fdee320bda206e40adc81ebb5c863e}\label{classvonmises_a10fdee320bda206e40adc81ebb5c863e}} 
+\index{vonmises@{vonmises}!vonmises@{vonmises}}
+\index{vonmises@{vonmises}!vonmises@{vonmises}}
+\doxysubsubsection{\texorpdfstring{vonmises()}{vonmises()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily vonmises\+::vonmises (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 17 of file vonmises.\+cpp.
+
+\mbox{\Hypertarget{classvonmises_a7cf5b0a60f414eb27c6b3db8d811435d}\label{classvonmises_a7cf5b0a60f414eb27c6b3db8d811435d}} 
+\index{vonmises@{vonmises}!````~vonmises@{$\sim$vonmises}}
+\index{````~vonmises@{$\sim$vonmises}!vonmises@{vonmises}}
+\doxysubsubsection{\texorpdfstring{$\sim$vonmises()}{~vonmises()}}
+{\footnotesize\ttfamily vonmises\+::$\sim$vonmises (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 22 of file vonmises.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classvonmises_aefbf01f66a4a51f9e4bbb005e8b73d48}\label{classvonmises_aefbf01f66a4a51f9e4bbb005e8b73d48}} 
+\index{vonmises@{vonmises}!closestpointproj@{closestpointproj}}
+\index{closestpointproj@{closestpointproj}!vonmises@{vonmises}}
+\doxysubsubsection{\texorpdfstring{closestpointproj()}{closestpointproj()}}
+{\footnotesize\ttfamily void vonmises\+::closestpointproj (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$}]{epst,  }\item[{\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$}]{epsp,  }\item[{\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{projstress,  }\item[{\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{projstrain,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{Dep,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&}]{projgamma }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classelastoplasticbase_a30e1509d7669fa9c97bc4a2e775075b3}{elastoplasticbase}}.
+
+
+
+Definition at line 26 of file vonmises.\+cpp.
+
+
+
+References N\+Rtensor$<$ T $>$\+::\+Compute\+S(), dadsig(), N\+Rtensor$<$ T $>$\+::\+Eigen\+System(), F1\+H\+W\+Cyl\+Von\+Mises(), N\+Rmatrix$<$ T $>$\+::\+From\+Full\+To\+Voigt(), N\+Rtensor$<$ T $>$\+::\+From\+N\+Rmatrix\+To\+Tensor(), N\+Rtensor$<$ T $>$\+::\+From\+Tensor\+To\+N\+Rmatrix(), Get\+Elastic\+Matrix(), Get\+Inverse\+Elastic\+Matrix(), H\+W(), N\+Rtensor$<$ T $>$\+::\+I1(), L\+Udcmp\+::inverse(), N\+Rtensor$<$ T $>$\+::\+J2(), N\+Rmatrix$<$ T $>$\+::\+Mult(), N\+Rtensor$<$ T $>$\+::\+Norm(), N\+Rmatrix$<$ T $>$\+::nrows(), stressrecosntruction(), N\+Rmatrix$<$ T $>$\+::\+Transpose(), and yield().
+
+\mbox{\Hypertarget{classvonmises_aca2a9e377c50b41cc3c6570c4011da2c}\label{classvonmises_aca2a9e377c50b41cc3c6570c4011da2c}} 
+\index{vonmises@{vonmises}!dadsig@{dadsig}}
+\index{dadsig@{dadsig}!vonmises@{vonmises}}
+\doxysubsubsection{\texorpdfstring{dadsig()}{dadsig()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} vonmises\+::dadsig (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$}]{sigprojvoigt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classelastoplasticbase_a4a809480e40cd44f46b50bc06618ff76}{elastoplasticbase}}.
+
+
+
+Definition at line 158 of file vonmises.\+cpp.
+
+
+
+References N\+Rtensor$<$ T $>$\+::\+Compute\+S(), N\+Rtensor$<$ T $>$\+::\+From\+Tensor\+To\+N\+Rmatrix(), N\+Rtensor$<$ T $>$\+::\+I1(), N\+Rtensor$<$ T $>$\+::\+J2(), N\+Rmatrix$<$ T $>$\+::\+Mult(), P(), and N\+Rmatrix$<$ T $>$\+::\+Transpose().
+
+
+
+Referenced by closestpointproj().
+
+\mbox{\Hypertarget{classvonmises_a7f63ee6f9d9cd38dd224fdc2529ca8c6}\label{classvonmises_a7f63ee6f9d9cd38dd224fdc2529ca8c6}} 
+\index{vonmises@{vonmises}!F1HWCylVonMises@{F1HWCylVonMises}}
+\index{F1HWCylVonMises@{F1HWCylVonMises}!vonmises@{vonmises}}
+\doxysubsubsection{\texorpdfstring{F1HWCylVonMises()}{F1HWCylVonMises()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} vonmises\+::\+F1\+H\+W\+Cyl\+Von\+Mises (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{xisol,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{rho,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{betasol }\end{DoxyParamCaption})}
+
+
+
+Definition at line 241 of file vonmises.\+cpp.
+
+
+
+References fsigy.
+
+
+
+Referenced by closestpointproj().
+
+\mbox{\Hypertarget{classvonmises_a62cbd7c02f6b5cc5586351217a5e0d0a}\label{classvonmises_a62cbd7c02f6b5cc5586351217a5e0d0a}} 
+\index{vonmises@{vonmises}!GetElasticMatrix@{GetElasticMatrix}}
+\index{GetElasticMatrix@{GetElasticMatrix}!vonmises@{vonmises}}
+\doxysubsubsection{\texorpdfstring{GetElasticMatrix()}{GetElasticMatrix()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} vonmises\+::\+Get\+Elastic\+Matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classelastoplasticbase_a38e92cde35508d7c4cc467098149efc3}{elastoplasticbase}}.
+
+
+
+Definition at line 202 of file vonmises.\+cpp.
+
+
+
+References fG, and fK.
+
+
+
+Referenced by closestpointproj(), and phi().
+
+\mbox{\Hypertarget{classvonmises_aaff026fbf24b346073466f43a3e809d1}\label{classvonmises_aaff026fbf24b346073466f43a3e809d1}} 
+\index{vonmises@{vonmises}!GetElasticParameters@{GetElasticParameters}}
+\index{GetElasticParameters@{GetElasticParameters}!vonmises@{vonmises}}
+\doxysubsubsection{\texorpdfstring{GetElasticParameters()}{GetElasticParameters()}}
+{\footnotesize\ttfamily void vonmises\+::\+Get\+Elastic\+Parameters (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{young,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{nu,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{sigy,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{K,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{G }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 50 of file vonmises.\+h.
+
+
+
+References fG, fK, fnu, fsigy, and fyoung.
+
+\mbox{\Hypertarget{classvonmises_afd8d72bf6bb0a3472d5414af3e8e1895}\label{classvonmises_afd8d72bf6bb0a3472d5414af3e8e1895}} 
+\index{vonmises@{vonmises}!GetInverseElasticMatrix@{GetInverseElasticMatrix}}
+\index{GetInverseElasticMatrix@{GetInverseElasticMatrix}!vonmises@{vonmises}}
+\doxysubsubsection{\texorpdfstring{GetInverseElasticMatrix()}{GetInverseElasticMatrix()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} vonmises\+::\+Get\+Inverse\+Elastic\+Matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classelastoplasticbase_ae4e4cf23d8d11be85fcd2bc1b98c9911}{elastoplasticbase}}.
+
+
+
+Definition at line 215 of file vonmises.\+cpp.
+
+
+
+References fG, and fK.
+
+
+
+Referenced by closestpointproj().
+
+\mbox{\Hypertarget{classvonmises_a85e346a98c53f0cd4a6060aeb488a910}\label{classvonmises_a85e346a98c53f0cd4a6060aeb488a910}} 
+\index{vonmises@{vonmises}!GetMatConstants@{GetMatConstants}}
+\index{GetMatConstants@{GetMatConstants}!vonmises@{vonmises}}
+\doxysubsubsection{\texorpdfstring{GetMatConstants()}{GetMatConstants()}}
+{\footnotesize\ttfamily void vonmises\+::\+Get\+Mat\+Constants (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{consts }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classelastoplasticbase_a62e340387a939f08109c26e7d716c36f}{elastoplasticbase}}.
+
+
+
+Definition at line 71 of file vonmises.\+h.
+
+
+
+References N\+Rvector$<$ T $>$\+::assign(), fnu, fsigy, and fyoung.
+
+\mbox{\Hypertarget{classvonmises_aa1136ccfb37c097769307af4b2ca9dc2}\label{classvonmises_aa1136ccfb37c097769307af4b2ca9dc2}} 
+\index{vonmises@{vonmises}!HW@{HW}}
+\index{HW@{HW}!vonmises@{vonmises}}
+\doxysubsubsection{\texorpdfstring{HW()}{HW()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} vonmises\+::\+HW (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{sig }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classelastoplasticbase_acb9ad51d1c857ba867f5f7a08ccbfddd}{elastoplasticbase}}.
+
+
+
+Definition at line 250 of file vonmises.\+cpp.
+
+
+
+Referenced by closestpointproj().
+
+\mbox{\Hypertarget{classvonmises_a57316e7d738c6a798535d977da92f3da}\label{classvonmises_a57316e7d738c6a798535d977da92f3da}} 
+\index{vonmises@{vonmises}!P@{P}}
+\index{P@{P}!vonmises@{vonmises}}
+\doxysubsubsection{\texorpdfstring{P()}{P()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} vonmises\+::P (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classelastoplasticbase_a1a00035f3c982a517be548b6f1beeff7}{elastoplasticbase}}.
+
+
+
+Definition at line 228 of file vonmises.\+cpp.
+
+
+
+Referenced by dadsig().
+
+\mbox{\Hypertarget{classvonmises_a345034a3d0ab02d2cf1088230f4ace05}\label{classvonmises_a345034a3d0ab02d2cf1088230f4ace05}} 
+\index{vonmises@{vonmises}!phi@{phi}}
+\index{phi@{phi}!vonmises@{vonmises}}
+\doxysubsubsection{\texorpdfstring{phi()}{phi()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} vonmises\+::phi (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$}]{epse }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 25 of file vonmises.\+h.
+
+
+
+References N\+Rtensor$<$ T $>$\+::\+From\+N\+Rmatrix\+To\+Tensor(), N\+Rtensor$<$ T $>$\+::\+From\+Tensor\+To\+N\+Rmatrix(), Get\+Elastic\+Matrix(), N\+Rtensor$<$ T $>$\+::\+I1(), N\+Rtensor$<$ T $>$\+::\+J2(), N\+Rmatrix$<$ T $>$\+::\+Mult(), and yield().
+
+\mbox{\Hypertarget{classvonmises_aef1cd59dc0fa26a2206f2765710b4f62}\label{classvonmises_aef1cd59dc0fa26a2206f2765710b4f62}} 
+\index{vonmises@{vonmises}!reset@{reset}}
+\index{reset@{reset}!vonmises@{vonmises}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void vonmises\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 81 of file vonmises.\+h.
+
+
+
+References fG, fK, fnu, fnu0, fyoung, and fyoung0.
+
+\mbox{\Hypertarget{classvonmises_a57dab31df0a916f823a2a590adaecd38}\label{classvonmises_a57dab31df0a916f823a2a590adaecd38}} 
+\index{vonmises@{vonmises}!restoreoriginalatributes@{restoreoriginalatributes}}
+\index{restoreoriginalatributes@{restoreoriginalatributes}!vonmises@{vonmises}}
+\doxysubsubsection{\texorpdfstring{restoreoriginalatributes()}{restoreoriginalatributes()}}
+{\footnotesize\ttfamily void vonmises\+::restoreoriginalatributes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 66 of file vonmises.\+h.
+
+
+
+References fnu0, fsigy0, fyoung0, and setup().
+
+\mbox{\Hypertarget{classvonmises_a502733d6154734ee47d930070f8dfc19}\label{classvonmises_a502733d6154734ee47d930070f8dfc19}} 
+\index{vonmises@{vonmises}!SetMatConstants@{SetMatConstants}}
+\index{SetMatConstants@{SetMatConstants}!vonmises@{vonmises}}
+\doxysubsubsection{\texorpdfstring{SetMatConstants()}{SetMatConstants()}}
+{\footnotesize\ttfamily void vonmises\+::\+Set\+Mat\+Constants (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{consts }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classelastoplasticbase_a23f49cb3cf26ee021834d47c7efad155}{elastoplasticbase}}.
+
+
+
+Definition at line 77 of file vonmises.\+h.
+
+
+
+References setup().
+
+\mbox{\Hypertarget{classvonmises_af10ca1b1efd6390ed53bc0642cf499e3}\label{classvonmises_af10ca1b1efd6390ed53bc0642cf499e3}} 
+\index{vonmises@{vonmises}!setup@{setup}}
+\index{setup@{setup}!vonmises@{vonmises}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void vonmises\+::setup (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{young,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{nu,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{sigy }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 42 of file vonmises.\+h.
+
+
+
+References fG, fK, fnu, fsigy, and fyoung.
+
+
+
+Referenced by pressurizedhole\+::\+Create\+Mat\+And\+Mesh(), beam3dtools\+::\+Create\+Mat\+And\+Mesh(), beam3dtools\+::\+Create\+Mat\+And\+Mesh\+Cube(), restoreoriginalatributes(), Set\+Mat\+Constants(), and updateatributes().
+
+\mbox{\Hypertarget{classvonmises_ace49d1908f08a8d0017fa425afb37eec}\label{classvonmises_ace49d1908f08a8d0017fa425afb37eec}} 
+\index{vonmises@{vonmises}!stressrecosntruction@{stressrecosntruction}}
+\index{stressrecosntruction@{stressrecosntruction}!vonmises@{vonmises}}
+\doxysubsubsection{\texorpdfstring{stressrecosntruction()}{stressrecosntruction()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} vonmises\+::stressrecosntruction (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{val,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{vec }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classelastoplasticbase_afbeefbfb66ac3cdca4787595900dfd3e}{elastoplasticbase}}.
+
+
+
+Definition at line 177 of file vonmises.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::\+Transpose().
+
+
+
+Referenced by closestpointproj().
+
+\mbox{\Hypertarget{classvonmises_a59615e3bc503d4315bd3cd749f5981c5}\label{classvonmises_a59615e3bc503d4315bd3cd749f5981c5}} 
+\index{vonmises@{vonmises}!updateatributes@{updateatributes}}
+\index{updateatributes@{updateatributes}!vonmises@{vonmises}}
+\doxysubsubsection{\texorpdfstring{updateatributes()}{updateatributes()}}
+{\footnotesize\ttfamily void vonmises\+::updateatributes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} $>$}]{mult }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 58 of file vonmises.\+h.
+
+
+
+References fnu, fnu0, fsigy, fsigy0, fyoung, fyoung0, and setup().
+
+\mbox{\Hypertarget{classvonmises_a3e0d0ac6938018a3f3e52b074dc4f5d3}\label{classvonmises_a3e0d0ac6938018a3f3e52b074dc4f5d3}} 
+\index{vonmises@{vonmises}!yield@{yield}}
+\index{yield@{yield}!vonmises@{vonmises}}
+\doxysubsubsection{\texorpdfstring{yield()}{yield()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} vonmises\+::yield (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{J2 }\end{DoxyParamCaption})}
+
+
+
+Definition at line 197 of file vonmises.\+cpp.
+
+
+
+References fsigy.
+
+
+
+Referenced by closestpointproj(), and phi().
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classvonmises_ae19aa72409bd6fcb0acb157f48d34cb4}\label{classvonmises_ae19aa72409bd6fcb0acb157f48d34cb4}} 
+\index{vonmises@{vonmises}!fG@{fG}}
+\index{fG@{fG}!vonmises@{vonmises}}
+\doxysubsubsection{\texorpdfstring{fG}{fG}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} vonmises\+::fG\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 98 of file vonmises.\+h.
+
+
+
+Referenced by Get\+Elastic\+Matrix(), Get\+Elastic\+Parameters(), Get\+Inverse\+Elastic\+Matrix(), reset(), setup(), and vonmises().
+
+\mbox{\Hypertarget{classvonmises_a2866f24a2dcae9453ab736f17ce79b0c}\label{classvonmises_a2866f24a2dcae9453ab736f17ce79b0c}} 
+\index{vonmises@{vonmises}!fK@{fK}}
+\index{fK@{fK}!vonmises@{vonmises}}
+\doxysubsubsection{\texorpdfstring{fK}{fK}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} vonmises\+::fK\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 97 of file vonmises.\+h.
+
+
+
+Referenced by Get\+Elastic\+Matrix(), Get\+Elastic\+Parameters(), Get\+Inverse\+Elastic\+Matrix(), reset(), setup(), and vonmises().
+
+\mbox{\Hypertarget{classvonmises_ac4017372bced1e52779827e9d38dc5e5}\label{classvonmises_ac4017372bced1e52779827e9d38dc5e5}} 
+\index{vonmises@{vonmises}!fnu@{fnu}}
+\index{fnu@{fnu}!vonmises@{vonmises}}
+\doxysubsubsection{\texorpdfstring{fnu}{fnu}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} vonmises\+::fnu}
+
+
+
+Definition at line 91 of file vonmises.\+h.
+
+
+
+Referenced by Get\+Elastic\+Parameters(), Get\+Mat\+Constants(), reset(), setup(), updateatributes(), and vonmises().
+
+\mbox{\Hypertarget{classvonmises_a11ed8bd1e7db50a415c9ec2c1a957ae2}\label{classvonmises_a11ed8bd1e7db50a415c9ec2c1a957ae2}} 
+\index{vonmises@{vonmises}!fnu0@{fnu0}}
+\index{fnu0@{fnu0}!vonmises@{vonmises}}
+\doxysubsubsection{\texorpdfstring{fnu0}{fnu0}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} vonmises\+::fnu0}
+
+
+
+Definition at line 93 of file vonmises.\+h.
+
+
+
+Referenced by reset(), restoreoriginalatributes(), and updateatributes().
+
+\mbox{\Hypertarget{classvonmises_a035c422277111f539502013116f3fec3}\label{classvonmises_a035c422277111f539502013116f3fec3}} 
+\index{vonmises@{vonmises}!fsigy@{fsigy}}
+\index{fsigy@{fsigy}!vonmises@{vonmises}}
+\doxysubsubsection{\texorpdfstring{fsigy}{fsigy}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} vonmises\+::fsigy\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 96 of file vonmises.\+h.
+
+
+
+Referenced by F1\+H\+W\+Cyl\+Von\+Mises(), Get\+Elastic\+Parameters(), Get\+Mat\+Constants(), setup(), updateatributes(), vonmises(), and yield().
+
+\mbox{\Hypertarget{classvonmises_a6baff5c99e1323a7fde48c123ae2a43f}\label{classvonmises_a6baff5c99e1323a7fde48c123ae2a43f}} 
+\index{vonmises@{vonmises}!fsigy0@{fsigy0}}
+\index{fsigy0@{fsigy0}!vonmises@{vonmises}}
+\doxysubsubsection{\texorpdfstring{fsigy0}{fsigy0}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} vonmises\+::fsigy0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 95 of file vonmises.\+h.
+
+
+
+Referenced by restoreoriginalatributes(), and updateatributes().
+
+\mbox{\Hypertarget{classvonmises_ac290b92ddacbebfb8b659d6840fb0bd1}\label{classvonmises_ac290b92ddacbebfb8b659d6840fb0bd1}} 
+\index{vonmises@{vonmises}!fyoung@{fyoung}}
+\index{fyoung@{fyoung}!vonmises@{vonmises}}
+\doxysubsubsection{\texorpdfstring{fyoung}{fyoung}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} vonmises\+::fyoung}
+
+
+
+Definition at line 90 of file vonmises.\+h.
+
+
+
+Referenced by Get\+Elastic\+Parameters(), Get\+Mat\+Constants(), reset(), setup(), updateatributes(), and vonmises().
+
+\mbox{\Hypertarget{classvonmises_afb1816982e0ef3a404b099e7f45c78bc}\label{classvonmises_afb1816982e0ef3a404b099e7f45c78bc}} 
+\index{vonmises@{vonmises}!fyoung0@{fyoung0}}
+\index{fyoung0@{fyoung0}!vonmises@{vonmises}}
+\doxysubsubsection{\texorpdfstring{fyoung0}{fyoung0}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} vonmises\+::fyoung0}
+
+
+
+Definition at line 92 of file vonmises.\+h.
+
+
+
+Referenced by reset(), restoreoriginalatributes(), and updateatributes().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{vonmises_8h}{vonmises.\+h}}\item 
+src/\mbox{\hyperlink{vonmises_8cpp}{vonmises.\+cpp}}\end{DoxyCompactItemize}

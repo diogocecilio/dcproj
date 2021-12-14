@@ -1,0 +1,602 @@
+\hypertarget{classbeam3dtools}{}\doxysection{beam3dtools Class Reference}
+\label{classbeam3dtools}\index{beam3dtools@{beam3dtools}}
+
+
+{\ttfamily \#include $<$beam3dtools.\+h$>$}
+
+
+
+Collaboration diagram for beam3dtools\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classbeam3dtools__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbeam3dtools_a1bb8a58b00eb43164f2ca74465bdcf70}{beam3dtools}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classbeam3dtools_a308b1e583ed1882f5e3a3073f1f93646}{beam3dtools}} (\mbox{\hyperlink{classmesh}{mesh}} $\ast$inmesh)
+\begin{DoxyCompactList}\small\item\em Class constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classbeam3dtools_afccbf7636394300ec8f0ed9e3f948745}{$\sim$beam3dtools}} ()
+\item 
+void \mbox{\hyperlink{classbeam3dtools_a1117cb7a0b25bb8331f9f05337f54327}{Read\+Mesh}} (std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&allcoords, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&meshcoords, \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \&meshtopology, string filenameel, string filenamecoord)
+\begin{DoxyCompactList}\small\item\em Read a mesh from files. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class T $>$ }\\std\+::vector$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \mbox{\hyperlink{classbeam3dtools_af654e09d93d220474a3b033dc4e52d29}{vecstr\+\_\+to\+\_\+vec}} (std\+::vector$<$ std\+::string $>$ vs)
+\begin{DoxyCompactList}\small\item\em Convert a string vector to a generic type T vector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classbeam3dtools_a126ef4f7c8d96b64346363a5eea7bc34}{Get\+El\+Coords}} (std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ allcoords, \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} el, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&elcoords)
+\begin{DoxyCompactList}\small\item\em Get a specific element coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classbeam3dtools_a4cb54f2d54c0d86812d14849bfb3605d}{Solve\+Eigen\+Sparse}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} A, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} b, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&x)
+\begin{DoxyCompactList}\small\item\em Solve a sparse linear system with Eigen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classbeam3dtools_a50e47576dab4595420baa2e4f98311d7}{Solve\+Eigen}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} A, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} b, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&x)
+\begin{DoxyCompactList}\small\item\em Solve a linear system with Eigen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classbeam3dtools_a586e0c71dd6e8a571d185c46d76fe4c4}{Create\+Mat\+And\+Mesh}} (\mbox{\hyperlink{classmesh}{mesh}} \&getmesh, \mbox{\hyperlink{classmaterial}{material}} \&mat)
+\begin{DoxyCompactList}\small\item\em Creates the material and the mesh for a 3D beam. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classbeam3dtools_a8c46ae285f4dd15de6692cc1efadce5a}{Create\+Mat\+And\+Mesh\+Cube}} (\mbox{\hyperlink{classmesh}{mesh}} \&getmesh, \mbox{\hyperlink{classmaterial}{material}} \&mat)
+\begin{DoxyCompactList}\small\item\em Creates the material and the mesh for a cube. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classbeam3dtools_ad1b132619cba680da9578fa54ca92b35}{Solve\+Elastic\+Beam}} ()
+\begin{DoxyCompactList}\small\item\em Manages other methods of the class and solves a elastic beam. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classbeam3dtools_a4f5d1a196b2b3bc34750caa6a9358993}{Solve\+Elastic\+Cube}} ()
+\begin{DoxyCompactList}\small\item\em Manages other methods of the class and solves a elastic cube. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classbeam3dtools_afe533dc343aa5ef633fe1e0c83d51546}{Iterative\+Process}} ()
+\begin{DoxyCompactList}\small\item\em Manages other methods of the class and solves a elastoplastic beam. Perform the newtom method for a nonlinear material. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classbeam3dtools_af4a12827869ce23e2dbaf3d8369a47d1}{Insert\+BC}} (\mbox{\hyperlink{classmesh}{mesh}} \&mesh0, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&K, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&F)
+\begin{DoxyCompactList}\small\item\em Insert Dirichlet boundary conditions in the end of the beam (clamped in the end) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classbeam3dtools_aa9cbe4c6c5eedbac76adfcb40a0a37ad}{Insert\+Cube\+BC}} (\mbox{\hyperlink{classmesh}{mesh}} \&mesh0, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&K, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&F)
+\begin{DoxyCompactList}\small\item\em Insert boundary conditions for the cube. Clamped in the base and a uniform pressure in the top. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classbeam3dtools_ab7c088d08a1549c9d6bdba17b1c0f751}{computelamda}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&dwb, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&dws, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&dw, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&l)
+\begin{DoxyCompactList}\small\item\em Compute a arc-\/length multiplier. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classbeam3dtools_a492d0479510569f704c165c34670429b}{Find\+Ids}} (\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ double $>$ constcoorddata, \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ int $>$ constcoord, std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&allcoords, \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \&meshtopology, std\+::vector$<$ int $>$ \&ids)
+\begin{DoxyCompactList}\small\item\em Search for a point, line or face ids. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classbeam3dtools_a2e2bf4efb38b0c952bba4d26a8c94bee}{Load\+BC}} (\mbox{\hyperlink{classmesh}{mesh}} \&mesh0, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&K, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&F)
+\begin{DoxyCompactList}\small\item\em Insert boundary load B\+Cs for the beam. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classbeam3dtools_ab268ee74d8d0df0cc849f4be3574d9d5}{Out\+Put\+File}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&postdata, std\+::ofstream \&file)
+\begin{DoxyCompactList}\small\item\em Write a file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classbeam3dtools_a71080c7829c4327b1c33a60c22365f88}{Out\+Put\+Post}} (std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&postdata, std\+::ofstream \&file)
+\begin{DoxyCompactList}\small\item\em Write a file. \end{DoxyCompactList}\item 
+{\footnotesize template$<$class T $>$ }\\std\+::vector$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \mbox{\hyperlink{classbeam3dtools_a41c895dcad583a97c7f3feabc94f39d1}{vecstr\+\_\+to\+\_\+vec}} (std\+::vector$<$ string $>$ vs)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmesh}{mesh}} $\ast$ \mbox{\hyperlink{classbeam3dtools_affb00f0d3099bc0d379690e14d8e88ec}{fmesh}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 23 of file beam3dtools.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classbeam3dtools_a1bb8a58b00eb43164f2ca74465bdcf70}\label{classbeam3dtools_a1bb8a58b00eb43164f2ca74465bdcf70}} 
+\index{beam3dtools@{beam3dtools}!beam3dtools@{beam3dtools}}
+\index{beam3dtools@{beam3dtools}!beam3dtools@{beam3dtools}}
+\doxysubsubsection{\texorpdfstring{beam3dtools()}{beam3dtools()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily beam3dtools\+::beam3dtools (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+
+
+Definition at line 3 of file beam3dtools.\+cpp.
+
+\mbox{\Hypertarget{classbeam3dtools_a308b1e583ed1882f5e3a3073f1f93646}\label{classbeam3dtools_a308b1e583ed1882f5e3a3073f1f93646}} 
+\index{beam3dtools@{beam3dtools}!beam3dtools@{beam3dtools}}
+\index{beam3dtools@{beam3dtools}!beam3dtools@{beam3dtools}}
+\doxysubsubsection{\texorpdfstring{beam3dtools()}{beam3dtools()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily beam3dtools\+::beam3dtools (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmesh}{mesh}} $\ast$}]{inmesh }\end{DoxyParamCaption})}
+
+
+
+Class constructor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em mesh} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 8 of file beam3dtools.\+cpp.
+
+
+
+References fmesh.
+
+\mbox{\Hypertarget{classbeam3dtools_afccbf7636394300ec8f0ed9e3f948745}\label{classbeam3dtools_afccbf7636394300ec8f0ed9e3f948745}} 
+\index{beam3dtools@{beam3dtools}!````~beam3dtools@{$\sim$beam3dtools}}
+\index{````~beam3dtools@{$\sim$beam3dtools}!beam3dtools@{beam3dtools}}
+\doxysubsubsection{\texorpdfstring{$\sim$beam3dtools()}{~beam3dtools()}}
+{\footnotesize\ttfamily beam3dtools\+::$\sim$beam3dtools (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 13 of file beam3dtools.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classbeam3dtools_ab7c088d08a1549c9d6bdba17b1c0f751}\label{classbeam3dtools_ab7c088d08a1549c9d6bdba17b1c0f751}} 
+\index{beam3dtools@{beam3dtools}!computelamda@{computelamda}}
+\index{computelamda@{computelamda}!beam3dtools@{beam3dtools}}
+\doxysubsubsection{\texorpdfstring{computelamda()}{computelamda()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} beam3dtools\+::computelamda (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{dwb,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{dws,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{dw,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&}]{l }\end{DoxyParamCaption})}
+
+
+
+Compute a arc-\/length multiplier. 
+
+
+
+Definition at line 18 of file beam3dtools.\+cpp.
+
+
+
+References Debug\+Stop, and N\+Rmatrix$<$ T $>$\+::nrows().
+
+\mbox{\Hypertarget{classbeam3dtools_a586e0c71dd6e8a571d185c46d76fe4c4}\label{classbeam3dtools_a586e0c71dd6e8a571d185c46d76fe4c4}} 
+\index{beam3dtools@{beam3dtools}!CreateMatAndMesh@{CreateMatAndMesh}}
+\index{CreateMatAndMesh@{CreateMatAndMesh}!beam3dtools@{beam3dtools}}
+\doxysubsubsection{\texorpdfstring{CreateMatAndMesh()}{CreateMatAndMesh()}}
+{\footnotesize\ttfamily void beam3dtools\+::\+Create\+Mat\+And\+Mesh (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmesh}{mesh}} \&}]{getmesh,  }\item[{\mbox{\hyperlink{classmaterial}{material}} \&}]{mat }\end{DoxyParamCaption})}
+
+
+
+Creates the material and the mesh for a 3D beam. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em getmesh} & finite element mesh \\
+\hline
+\mbox{\texttt{ out}}  & {\em mat} & material \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 174 of file beam3dtools.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign(), elastoplastic3\+D$<$ Y\+C $>$\+::f\+YC, N\+Rmatrix$<$ T $>$\+::nrows(), shapehexahedron\+::pointsandweigths(), Read\+Mesh(), elastoplastic3\+D$<$ Y\+C $>$\+::\+Set\+Memory(), vonmises\+::setup(), and elastoplastic3\+D$<$ Y\+C $>$\+::\+Update\+Body\+Force().
+
+
+
+Referenced by Iterative\+Process(), and Solve\+Elastic\+Beam().
+
+\mbox{\Hypertarget{classbeam3dtools_a8c46ae285f4dd15de6692cc1efadce5a}\label{classbeam3dtools_a8c46ae285f4dd15de6692cc1efadce5a}} 
+\index{beam3dtools@{beam3dtools}!CreateMatAndMeshCube@{CreateMatAndMeshCube}}
+\index{CreateMatAndMeshCube@{CreateMatAndMeshCube}!beam3dtools@{beam3dtools}}
+\doxysubsubsection{\texorpdfstring{CreateMatAndMeshCube()}{CreateMatAndMeshCube()}}
+{\footnotesize\ttfamily void beam3dtools\+::\+Create\+Mat\+And\+Mesh\+Cube (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmesh}{mesh}} \&}]{getmesh,  }\item[{\mbox{\hyperlink{classmaterial}{material}} \&}]{mat }\end{DoxyParamCaption})}
+
+
+
+Creates the material and the mesh for a cube. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em getmesh} & finite element mesh \\
+\hline
+\mbox{\texttt{ out}}  & {\em mat} & material \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 137 of file beam3dtools.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign(), elastoplastic3\+D$<$ Y\+C $>$\+::f\+YC, N\+Rmatrix$<$ T $>$\+::nrows(), shapehexahedron\+::pointsandweigths(), Read\+Mesh(), elastoplastic3\+D$<$ Y\+C $>$\+::\+Set\+Memory(), vonmises\+::setup(), and elastoplastic3\+D$<$ Y\+C $>$\+::\+Update\+Body\+Force().
+
+
+
+Referenced by Solve\+Elastic\+Cube().
+
+\mbox{\Hypertarget{classbeam3dtools_a492d0479510569f704c165c34670429b}\label{classbeam3dtools_a492d0479510569f704c165c34670429b}} 
+\index{beam3dtools@{beam3dtools}!FindIds@{FindIds}}
+\index{FindIds@{FindIds}!beam3dtools@{beam3dtools}}
+\doxysubsubsection{\texorpdfstring{FindIds()}{FindIds()}}
+{\footnotesize\ttfamily void beam3dtools\+::\+Find\+Ids (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ double $>$}]{constcoorddata,  }\item[{\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ int $>$}]{constcoord,  }\item[{std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&}]{allcoords,  }\item[{\mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \&}]{meshtopology,  }\item[{std\+::vector$<$ int $>$ \&}]{ids }\end{DoxyParamCaption})}
+
+
+
+Search for a point, line or face ids. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em constcoord} & Constcoorddata vector containig info about the face you want to search for the id. If its a face, it must contain any coodinate locate in the in the face. If its a line, two coordinates must match. If its a point, tree exact coordinates must match \\
+\hline
+\mbox{\texttt{ in}}  & {\em allcoords} & object containg the element topology and nodes \\
+\hline
+\mbox{\texttt{ in}}  & {\em meshtopology} & object containg the mesh topology \\
+\hline
+\mbox{\texttt{ out}}  & {\em ids} & object(point, line or face) id or ids \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 499 of file beam3dtools.\+cpp.
+
+
+
+References Get\+El\+Coords(), N\+Rmatrix$<$ T $>$\+::nrows(), and N\+Rvector$<$ T $>$\+::size().
+
+
+
+Referenced by Insert\+B\+C(), and Insert\+Cube\+B\+C().
+
+\mbox{\Hypertarget{classbeam3dtools_a126ef4f7c8d96b64346363a5eea7bc34}\label{classbeam3dtools_a126ef4f7c8d96b64346363a5eea7bc34}} 
+\index{beam3dtools@{beam3dtools}!GetElCoords@{GetElCoords}}
+\index{GetElCoords@{GetElCoords}!beam3dtools@{beam3dtools}}
+\doxysubsubsection{\texorpdfstring{GetElCoords()}{GetElCoords()}}
+{\footnotesize\ttfamily void beam3dtools\+::\+Get\+El\+Coords (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$}]{allcoords,  }\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{el,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{elcoords }\end{DoxyParamCaption})}
+
+
+
+Get a specific element coordinates. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em allcoords} & object containg the element topology and nodes. \\
+\hline
+\mbox{\texttt{ in}}  & {\em el} & element that you want to get the coordinates \\
+\hline
+\mbox{\texttt{ out}}  & {\em elcoords} & element coordinates \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 556 of file beam3dtools.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign().
+
+
+
+Referenced by Find\+Ids().
+
+\mbox{\Hypertarget{classbeam3dtools_af4a12827869ce23e2dbaf3d8369a47d1}\label{classbeam3dtools_af4a12827869ce23e2dbaf3d8369a47d1}} 
+\index{beam3dtools@{beam3dtools}!InsertBC@{InsertBC}}
+\index{InsertBC@{InsertBC}!beam3dtools@{beam3dtools}}
+\doxysubsubsection{\texorpdfstring{InsertBC()}{InsertBC()}}
+{\footnotesize\ttfamily void beam3dtools\+::\+Insert\+BC (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmesh}{mesh}} \&}]{mesh0,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{K,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{F }\end{DoxyParamCaption})}
+
+
+
+Insert Dirichlet boundary conditions in the end of the beam (clamped in the end) 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em K} & stiffness matrix. \\
+\hline
+\mbox{\texttt{ in}}  & {\em F} & load vector \\
+\hline
+\mbox{\texttt{ in}}  & {\em mesh0} & F\+EM mesh \\
+\hline
+\mbox{\texttt{ out}}  & {\em K} & modified stiffness matrix with B\+Cs. \\
+\hline
+\mbox{\texttt{ out}}  & {\em F} & modified load vector with B\+Cs \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 215 of file beam3dtools.\+cpp.
+
+
+
+References material\+::\+Dirichlet\+B\+C(), Find\+Ids(), mesh\+::fmaterial, mesh\+::\+Get\+All\+Coords(), and mesh\+::\+Get\+Mesh\+Topology().
+
+
+
+Referenced by Iterative\+Process(), and Solve\+Elastic\+Beam().
+
+\mbox{\Hypertarget{classbeam3dtools_aa9cbe4c6c5eedbac76adfcb40a0a37ad}\label{classbeam3dtools_aa9cbe4c6c5eedbac76adfcb40a0a37ad}} 
+\index{beam3dtools@{beam3dtools}!InsertCubeBC@{InsertCubeBC}}
+\index{InsertCubeBC@{InsertCubeBC}!beam3dtools@{beam3dtools}}
+\doxysubsubsection{\texorpdfstring{InsertCubeBC()}{InsertCubeBC()}}
+{\footnotesize\ttfamily void beam3dtools\+::\+Insert\+Cube\+BC (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmesh}{mesh}} \&}]{mesh0,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{K,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{F }\end{DoxyParamCaption})}
+
+
+
+Insert boundary conditions for the cube. Clamped in the base and a uniform pressure in the top. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em K} & stiffness matrix. \\
+\hline
+\mbox{\texttt{ in}}  & {\em F} & load vector \\
+\hline
+\mbox{\texttt{ in}}  & {\em mesh0} & F\+EM mesh \\
+\hline
+\mbox{\texttt{ out}}  & {\em K} & modified stiffness matrix with B\+Cs. \\
+\hline
+\mbox{\texttt{ out}}  & {\em F} & modified load vector with B\+Cs \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 259 of file beam3dtools.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign(), material\+::\+Dirichlet\+B\+C(), Find\+Ids(), mesh\+::fmaterial, mesh\+::\+Get\+All\+Coords(), mesh\+::\+Get\+Mesh\+Topology(), and N\+Rmatrix$<$ T $>$\+::nrows().
+
+
+
+Referenced by Solve\+Elastic\+Cube().
+
+\mbox{\Hypertarget{classbeam3dtools_afe533dc343aa5ef633fe1e0c83d51546}\label{classbeam3dtools_afe533dc343aa5ef633fe1e0c83d51546}} 
+\index{beam3dtools@{beam3dtools}!IterativeProcess@{IterativeProcess}}
+\index{IterativeProcess@{IterativeProcess}!beam3dtools@{beam3dtools}}
+\doxysubsubsection{\texorpdfstring{IterativeProcess()}{IterativeProcess()}}
+{\footnotesize\ttfamily void beam3dtools\+::\+Iterative\+Process (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Manages other methods of the class and solves a elastoplastic beam. Perform the newtom method for a nonlinear material. 
+
+
+
+Definition at line 50 of file beam3dtools.\+cpp.
+
+
+
+References mesh\+::\+Assemble(), N\+Rmatrix$<$ T $>$\+::assign(), Create\+Mat\+And\+Mesh(), mesh\+::fmaterial, mesh\+::\+Get\+All\+Coords(), mesh\+::\+Get\+Mesh\+Nodes(), mesh\+::\+Get\+Mesh\+Topology(), Insert\+B\+C(), Load\+B\+C(), N\+Rmatrix$<$ T $>$\+::\+N\+Rmatrix\+Norm(), N\+Rmatrix$<$ T $>$\+::nrows(), Out\+Put\+File(), Out\+Put\+Post(), material\+::\+Post\+Process(), Solve\+Eigen(), material\+::\+Update\+Displacement(), and material\+::\+Update\+Plastic\+Strain().
+
+\mbox{\Hypertarget{classbeam3dtools_a2e2bf4efb38b0c952bba4d26a8c94bee}\label{classbeam3dtools_a2e2bf4efb38b0c952bba4d26a8c94bee}} 
+\index{beam3dtools@{beam3dtools}!LoadBC@{LoadBC}}
+\index{LoadBC@{LoadBC}!beam3dtools@{beam3dtools}}
+\doxysubsubsection{\texorpdfstring{LoadBC()}{LoadBC()}}
+{\footnotesize\ttfamily void beam3dtools\+::\+Load\+BC (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmesh}{mesh}} \&}]{mesh0,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{K,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{F }\end{DoxyParamCaption})}
+
+
+
+Insert boundary load B\+Cs for the beam. 
+
+
+
+Definition at line 252 of file beam3dtools.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign(), and N\+Rmatrix$<$ T $>$\+::nrows().
+
+
+
+Referenced by Iterative\+Process(), and Solve\+Elastic\+Beam().
+
+\mbox{\Hypertarget{classbeam3dtools_ab268ee74d8d0df0cc849f4be3574d9d5}\label{classbeam3dtools_ab268ee74d8d0df0cc849f4be3574d9d5}} 
+\index{beam3dtools@{beam3dtools}!OutPutFile@{OutPutFile}}
+\index{OutPutFile@{OutPutFile}!beam3dtools@{beam3dtools}}
+\doxysubsubsection{\texorpdfstring{OutPutFile()}{OutPutFile()}}
+{\footnotesize\ttfamily void beam3dtools\+::\+Out\+Put\+File (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{postdata,  }\item[{std\+::ofstream \&}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Write a file. 
+
+
+
+Definition at line 150 of file beam3dtools.\+h.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::nrows().
+
+
+
+Referenced by Iterative\+Process().
+
+\mbox{\Hypertarget{classbeam3dtools_a71080c7829c4327b1c33a60c22365f88}\label{classbeam3dtools_a71080c7829c4327b1c33a60c22365f88}} 
+\index{beam3dtools@{beam3dtools}!OutPutPost@{OutPutPost}}
+\index{OutPutPost@{OutPutPost}!beam3dtools@{beam3dtools}}
+\doxysubsubsection{\texorpdfstring{OutPutPost()}{OutPutPost()}}
+{\footnotesize\ttfamily void beam3dtools\+::\+Out\+Put\+Post (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&}]{postdata,  }\item[{std\+::ofstream \&}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Write a file. 
+
+
+
+Definition at line 163 of file beam3dtools.\+h.
+
+
+
+Referenced by Iterative\+Process().
+
+\mbox{\Hypertarget{classbeam3dtools_a1117cb7a0b25bb8331f9f05337f54327}\label{classbeam3dtools_a1117cb7a0b25bb8331f9f05337f54327}} 
+\index{beam3dtools@{beam3dtools}!ReadMesh@{ReadMesh}}
+\index{ReadMesh@{ReadMesh}!beam3dtools@{beam3dtools}}
+\doxysubsubsection{\texorpdfstring{ReadMesh()}{ReadMesh()}}
+{\footnotesize\ttfamily void beam3dtools\+::\+Read\+Mesh (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&}]{allcoords,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{meshcoords,  }\item[{\mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \&}]{meshtopology,  }\item[{string}]{filenameel,  }\item[{string}]{filenamecoord }\end{DoxyParamCaption})}
+
+
+
+Read a mesh from files. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em filenameel} & file containing all the elements topology. \\
+\hline
+\mbox{\texttt{ in}}  & {\em filenamecoord} & file containing all the nodes coordinates. \\
+\hline
+\mbox{\texttt{ out}}  & {\em allcoords} & object containg the element topology and nodes in the format\+: ~\newline
+ \{\{ \{x1,y1,z1\},\{x2,y2,z2\}...,\{xn,yn,zn\} \}(el 1 topology), \{ \{x1,y1,z1\},\{x2,y2,z2\}...,\{xn,yn,zn\} \}(el 2 topology),...,\{ \{x1,y1,z1\},\{x2,y2,z2\}...\{xn,yn,zn\} (el m topology)\}\} n=1 to n=nelnode \\
+\hline
+\mbox{\texttt{ out}}  & {\em meshcoords} & object containg the mesh coordinates in the format\+: \{ \{x1,y1,z1\},\{x2,y2,z2\}...,\{xn,yn,zn\} \} with n=1 to n=nmeshnodes \\
+\hline
+\mbox{\texttt{ out}}  & {\em meshtopology} & object containg the mesh topology in the format\+: \{ \{id1,id2,id3...,idn\}(el 1),\{id1,id2,id3...,idn\}(el 2)...,\{id1,id2,id3...,idn\}(el m) \} with n=1 to n=nelnode \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 407 of file beam3dtools.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::\+Copy\+From\+Vector(), N\+Rmatrix$<$ T $>$\+::ncols(), and N\+Rmatrix$<$ T $>$\+::nrows().
+
+
+
+Referenced by Create\+Mat\+And\+Mesh(), and Create\+Mat\+And\+Mesh\+Cube().
+
+\mbox{\Hypertarget{classbeam3dtools_a50e47576dab4595420baa2e4f98311d7}\label{classbeam3dtools_a50e47576dab4595420baa2e4f98311d7}} 
+\index{beam3dtools@{beam3dtools}!SolveEigen@{SolveEigen}}
+\index{SolveEigen@{SolveEigen}!beam3dtools@{beam3dtools}}
+\doxysubsubsection{\texorpdfstring{SolveEigen()}{SolveEigen()}}
+{\footnotesize\ttfamily void beam3dtools\+::\+Solve\+Eigen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{A,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{b,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{x }\end{DoxyParamCaption})}
+
+
+
+Solve a linear system with Eigen. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em A} & matrix A. \\
+\hline
+\mbox{\texttt{ in}}  & {\em b} & vector b \\
+\hline
+\mbox{\texttt{ out}}  & {\em x} & solution vector \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 351 of file beam3dtools.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign(), N\+Rmatrix$<$ T $>$\+::ncols(), and N\+Rmatrix$<$ T $>$\+::nrows().
+
+
+
+Referenced by Iterative\+Process(), Solve\+Elastic\+Beam(), and Solve\+Elastic\+Cube().
+
+\mbox{\Hypertarget{classbeam3dtools_a4cb54f2d54c0d86812d14849bfb3605d}\label{classbeam3dtools_a4cb54f2d54c0d86812d14849bfb3605d}} 
+\index{beam3dtools@{beam3dtools}!SolveEigenSparse@{SolveEigenSparse}}
+\index{SolveEigenSparse@{SolveEigenSparse}!beam3dtools@{beam3dtools}}
+\doxysubsubsection{\texorpdfstring{SolveEigenSparse()}{SolveEigenSparse()}}
+{\footnotesize\ttfamily void beam3dtools\+::\+Solve\+Eigen\+Sparse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{A,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{b,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{x }\end{DoxyParamCaption})}
+
+
+
+Solve a sparse linear system with Eigen. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em A} & matrix A. \\
+\hline
+\mbox{\texttt{ in}}  & {\em b} & vector b \\
+\hline
+\mbox{\texttt{ out}}  & {\em x} & solution vector \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 373 of file beam3dtools.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign(), and N\+Rmatrix$<$ T $>$\+::nrows().
+
+\mbox{\Hypertarget{classbeam3dtools_ad1b132619cba680da9578fa54ca92b35}\label{classbeam3dtools_ad1b132619cba680da9578fa54ca92b35}} 
+\index{beam3dtools@{beam3dtools}!SolveElasticBeam@{SolveElasticBeam}}
+\index{SolveElasticBeam@{SolveElasticBeam}!beam3dtools@{beam3dtools}}
+\doxysubsubsection{\texorpdfstring{SolveElasticBeam()}{SolveElasticBeam()}}
+{\footnotesize\ttfamily void beam3dtools\+::\+Solve\+Elastic\+Beam (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Manages other methods of the class and solves a elastic beam. 
+
+
+
+Definition at line 328 of file beam3dtools.\+cpp.
+
+
+
+References mesh\+::\+Assemble(), Create\+Mat\+And\+Mesh(), Insert\+B\+C(), Load\+B\+C(), N\+Rmatrix$<$ T $>$\+::\+Print(), and Solve\+Eigen().
+
+
+
+Referenced by main().
+
+\mbox{\Hypertarget{classbeam3dtools_a4f5d1a196b2b3bc34750caa6a9358993}\label{classbeam3dtools_a4f5d1a196b2b3bc34750caa6a9358993}} 
+\index{beam3dtools@{beam3dtools}!SolveElasticCube@{SolveElasticCube}}
+\index{SolveElasticCube@{SolveElasticCube}!beam3dtools@{beam3dtools}}
+\doxysubsubsection{\texorpdfstring{SolveElasticCube()}{SolveElasticCube()}}
+{\footnotesize\ttfamily void beam3dtools\+::\+Solve\+Elastic\+Cube (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Manages other methods of the class and solves a elastic cube. 
+
+
+
+Definition at line 305 of file beam3dtools.\+cpp.
+
+
+
+References mesh\+::\+Assemble(), Create\+Mat\+And\+Mesh\+Cube(), Insert\+Cube\+B\+C(), and Solve\+Eigen().
+
+\mbox{\Hypertarget{classbeam3dtools_af654e09d93d220474a3b033dc4e52d29}\label{classbeam3dtools_af654e09d93d220474a3b033dc4e52d29}} 
+\index{beam3dtools@{beam3dtools}!vecstr\_to\_vec@{vecstr\_to\_vec}}
+\index{vecstr\_to\_vec@{vecstr\_to\_vec}!beam3dtools@{beam3dtools}}
+\doxysubsubsection{\texorpdfstring{vecstr\_to\_vec()}{vecstr\_to\_vec()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+std\+::vector$<$\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}}$>$ beam3dtools\+::vecstr\+\_\+to\+\_\+vec (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$}]{vs }\end{DoxyParamCaption})}
+
+
+
+Convert a string vector to a generic type T vector. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em std\+::vector$<$std\+::string$>$} & string vector. \\
+\hline
+\mbox{\texttt{ out}}  & {\em std\+::vector$<$\+T$>$} & generic type T vector \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classbeam3dtools_a41c895dcad583a97c7f3feabc94f39d1}\label{classbeam3dtools_a41c895dcad583a97c7f3feabc94f39d1}} 
+\index{beam3dtools@{beam3dtools}!vecstr\_to\_vec@{vecstr\_to\_vec}}
+\index{vecstr\_to\_vec@{vecstr\_to\_vec}!beam3dtools@{beam3dtools}}
+\doxysubsubsection{\texorpdfstring{vecstr\_to\_vec()}{vecstr\_to\_vec()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+std\+::vector$<$\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}}$>$ beam3dtools\+::vecstr\+\_\+to\+\_\+vec (\begin{DoxyParamCaption}\item[{std\+::vector$<$ string $>$}]{vs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 485 of file beam3dtools.\+cpp.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classbeam3dtools_affb00f0d3099bc0d379690e14d8e88ec}\label{classbeam3dtools_affb00f0d3099bc0d379690e14d8e88ec}} 
+\index{beam3dtools@{beam3dtools}!fmesh@{fmesh}}
+\index{fmesh@{fmesh}!beam3dtools@{beam3dtools}}
+\doxysubsubsection{\texorpdfstring{fmesh}{fmesh}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classmesh}{mesh}}$\ast$ beam3dtools\+::fmesh\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 180 of file beam3dtools.\+h.
+
+
+
+Referenced by beam3dtools().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{beam3dtools_8h}{beam3dtools.\+h}}\item 
+src/\mbox{\hyperlink{beam3dtools_8cpp}{beam3dtools.\+cpp}}\end{DoxyCompactItemize}

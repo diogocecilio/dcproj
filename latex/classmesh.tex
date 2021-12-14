@@ -1,0 +1,487 @@
+\hypertarget{classmesh}{}\doxysection{mesh Class Reference}
+\label{classmesh}\index{mesh@{mesh}}
+
+
+{\ttfamily \#include $<$mesh.\+h$>$}
+
+
+
+Collaboration diagram for mesh\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmesh__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmesh_a39e54cb1f9a870ddaef05b7a80833f5d}{mesh}} (int dim, std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&allcoords, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&meshnodes, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} $>$ \&meshtopology)
+\item 
+\mbox{\hyperlink{classmesh_a74b018bd8b4ded6be0e09eb44735e5b8}{mesh}} (int dim, \mbox{\hyperlink{classmaterial}{material}} $\ast$mat, std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&allcoords, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&meshnodes, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} $>$ \&meshtopology)
+\item 
+\mbox{\hyperlink{classmesh_a0bedf1c678efdb9745e6d46a9f4dd026}{mesh}} (int dim, \mbox{\hyperlink{classmaterial}{material}} $\ast$mat, std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&allcoords, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&meshnodes, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} $>$ \&meshtopology, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} H\+H\+AT)
+\item 
+\mbox{\hyperlink{classmesh_a65fbe7be736a40cd34fb6358aebb8c60}{mesh}} (\mbox{\hyperlink{classmesh}{mesh}} \&copy)
+\item 
+\mbox{\hyperlink{classmesh_a0a5585399789fe20e2417cf9cf00d064}{mesh}} ()
+\item 
+\mbox{\hyperlink{classmesh_a56c82806c9eeb4a50972ac55f2e7abb7}{$\sim$mesh}} ()
+\item 
+void \mbox{\hyperlink{classmesh_a89a173f2b8f0abea80e3f148d6650d5c}{Get\+El\+Coords}} (std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ allcoords, \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} el, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&elcoords)
+\item 
+\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \mbox{\hyperlink{classmesh_a934e852b95f6a384b519b1f30befb2c3}{Find\+Solution}} (\mbox{\hyperlink{nr3_8h_a97a3701e8aa6ca145af8d5c7c5c50d87}{Vec\+Doub}} coord, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} datatosearch)
+\item 
+\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \mbox{\hyperlink{classmesh_ac4384ba933f28ff81be554369f9be671}{Transfer\+Solution}} (\mbox{\hyperlink{classmesh}{mesh}} \&out, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} datatosearch)
+\item 
+std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \mbox{\hyperlink{classmesh_aecde234a676428f0e69aa41bc7e8f203}{Get\+All\+Coords}} ()
+\item 
+\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \mbox{\hyperlink{classmesh_a6cf5267166add8ddbbc16d7b05e5de5a}{Get\+Mesh\+Nodes}} ()
+\item 
+\mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \mbox{\hyperlink{classmesh_a9833f3c5f11bccbbb805a6a1a0121bda}{Get\+Mesh\+Topology}} ()
+\item 
+\mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \mbox{\hyperlink{classmesh_a27555191c9d7f3d2dbeca6917c00d316}{Get\+Mesh\+Topology\+V\+TK}} ()
+\item 
+void \mbox{\hyperlink{classmesh_a4bde6b42fbdfdc7805e415dea59a35b2}{Assemble}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&KG, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&Fint, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&Fbody)
+\item 
+void \mbox{\hyperlink{classmesh_a094407e3c87ea645cc790317762d3ba0}{Assemble}} (Sparse\+Matrix$<$ double $>$ \&KG, Vector\+Xd \&Fint, Vector\+Xd \&Fbody)
+\item 
+void \mbox{\hyperlink{classmesh_a8e64da00e745eaf34c98e396ff7bed35}{Find\+Ids}} (\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ double $>$ constcoorddata, \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ int $>$ constcoord, std\+::vector$<$ int $>$ \&ids)
+\item 
+void \mbox{\hyperlink{classmesh_a4e08658f075fc0736dd713bccc4c0ee6}{Compute\+Sol\+And\+D\+Sol}} (\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&sol, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&dsol)
+\item 
+void \mbox{\hyperlink{classmesh_a1a813133f61303dc0d0f19f9afc7a786}{Set\+Hhat}} (\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ H\+H\+AT)
+\item 
+void \mbox{\hyperlink{classmesh_a389fe5bc1e507e8c54e6abbfcd05d1f2}{Get\+Hhat}} (\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&H\+H\+AT)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmaterial}{material}} $\ast$ \mbox{\hyperlink{classmesh_aae92828d6d19ae3be2d3ffc82e0eb08d}{fmaterial}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classmesh_a9aa42d679209b81116ea40b270b905cf}{fdim}}
+\item 
+std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \mbox{\hyperlink{classmesh_ae627338afa90f63add52f4b7d38430dc}{fallcoords}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \mbox{\hyperlink{classmesh_ad6b35cc104ccd74c521600316ff9540f}{fmeshnodes}}
+\item 
+\mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} \mbox{\hyperlink{classmesh_a53299c493dace487aa1cd424348da8b6}{fmeshtopology}}
+\item 
+\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{classmesh_a17b1887552562c3d9a9f39f06b30f833}{f\+H\+H\+AT}}
+\item 
+\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} $>$ \mbox{\hyperlink{classmesh_a9b1d585e8cade7336447f7f5b27e23b2}{fhhatvel}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 26 of file mesh.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classmesh_a39e54cb1f9a870ddaef05b7a80833f5d}\label{classmesh_a39e54cb1f9a870ddaef05b7a80833f5d}} 
+\index{mesh@{mesh}!mesh@{mesh}}
+\index{mesh@{mesh}!mesh@{mesh}}
+\doxysubsubsection{\texorpdfstring{mesh()}{mesh()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily mesh\+::mesh (\begin{DoxyParamCaption}\item[{int}]{dim,  }\item[{std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&}]{allcoords,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{meshnodes,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} $>$ \&}]{meshtopology }\end{DoxyParamCaption})}
+
+
+
+Definition at line 8 of file mesh.\+cpp.
+
+
+
+References fallcoords, fdim, fmeshnodes, and fmeshtopology.
+
+\mbox{\Hypertarget{classmesh_a74b018bd8b4ded6be0e09eb44735e5b8}\label{classmesh_a74b018bd8b4ded6be0e09eb44735e5b8}} 
+\index{mesh@{mesh}!mesh@{mesh}}
+\index{mesh@{mesh}!mesh@{mesh}}
+\doxysubsubsection{\texorpdfstring{mesh()}{mesh()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily mesh\+::mesh (\begin{DoxyParamCaption}\item[{int}]{dim,  }\item[{\mbox{\hyperlink{classmaterial}{material}} $\ast$}]{mat,  }\item[{std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&}]{allcoords,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{meshnodes,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} $>$ \&}]{meshtopology }\end{DoxyParamCaption})}
+
+
+
+Definition at line 16 of file mesh.\+cpp.
+
+
+
+References fallcoords, fdim, fmaterial, fmeshnodes, and fmeshtopology.
+
+\mbox{\Hypertarget{classmesh_a0bedf1c678efdb9745e6d46a9f4dd026}\label{classmesh_a0bedf1c678efdb9745e6d46a9f4dd026}} 
+\index{mesh@{mesh}!mesh@{mesh}}
+\index{mesh@{mesh}!mesh@{mesh}}
+\doxysubsubsection{\texorpdfstring{mesh()}{mesh()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily mesh\+::mesh (\begin{DoxyParamCaption}\item[{int}]{dim,  }\item[{\mbox{\hyperlink{classmaterial}{material}} $\ast$}]{mat,  }\item[{std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ \&}]{allcoords,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{meshnodes,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} $>$ \&}]{meshtopology,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{H\+H\+AT }\end{DoxyParamCaption})}
+
+
+
+Definition at line 27 of file mesh.\+cpp.
+
+
+
+References fallcoords, fdim, f\+H\+H\+AT, fmaterial, fmeshnodes, and fmeshtopology.
+
+\mbox{\Hypertarget{classmesh_a65fbe7be736a40cd34fb6358aebb8c60}\label{classmesh_a65fbe7be736a40cd34fb6358aebb8c60}} 
+\index{mesh@{mesh}!mesh@{mesh}}
+\index{mesh@{mesh}!mesh@{mesh}}
+\doxysubsubsection{\texorpdfstring{mesh()}{mesh()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily mesh\+::mesh (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmesh}{mesh}} \&}]{copy }\end{DoxyParamCaption})}
+
+
+
+Definition at line 41 of file mesh.\+cpp.
+
+
+
+References fallcoords, fdim, fmeshnodes, fmeshtopology, and mesh().
+
+\mbox{\Hypertarget{classmesh_a0a5585399789fe20e2417cf9cf00d064}\label{classmesh_a0a5585399789fe20e2417cf9cf00d064}} 
+\index{mesh@{mesh}!mesh@{mesh}}
+\index{mesh@{mesh}!mesh@{mesh}}
+\doxysubsubsection{\texorpdfstring{mesh()}{mesh()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily mesh\+::mesh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 37 of file mesh.\+cpp.
+
+
+
+Referenced by mesh().
+
+\mbox{\Hypertarget{classmesh_a56c82806c9eeb4a50972ac55f2e7abb7}\label{classmesh_a56c82806c9eeb4a50972ac55f2e7abb7}} 
+\index{mesh@{mesh}!````~mesh@{$\sim$mesh}}
+\index{````~mesh@{$\sim$mesh}!mesh@{mesh}}
+\doxysubsubsection{\texorpdfstring{$\sim$mesh()}{~mesh()}}
+{\footnotesize\ttfamily mesh\+::$\sim$mesh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 46 of file mesh.\+cpp.
+
+
+
+References fmaterial.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classmesh_a4bde6b42fbdfdc7805e415dea59a35b2}\label{classmesh_a4bde6b42fbdfdc7805e415dea59a35b2}} 
+\index{mesh@{mesh}!Assemble@{Assemble}}
+\index{Assemble@{Assemble}!mesh@{mesh}}
+\doxysubsubsection{\texorpdfstring{Assemble()}{Assemble()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void mesh\+::\+Assemble (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{KG,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{Fint,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{Fbody }\end{DoxyParamCaption})}
+
+
+
+Definition at line 304 of file mesh.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign(), material\+::\+Cac\+Stiff(), fallcoords, fdim, f\+H\+H\+AT, fhhatvel, fmaterial, fmeshnodes, fmeshtopology, Get\+El\+Coords(), material\+::\+Get\+Solution(), N\+Rmatrix$<$ T $>$\+::ncols(), N\+Rmatrix$<$ T $>$\+::nrows(), material\+::\+Reset\+Counter(), N\+Rmatrix$<$ T $>$\+::resize(), material\+::\+Set\+Random\+Field(), and material\+::\+Set\+Random\+Field\+Local().
+
+
+
+Referenced by pressurizedhole\+::\+Iterative\+Process(), slopeproject\+::\+Iterative\+Process(), beam3dtools\+::\+Iterative\+Process(), Iterative\+Process(), slopeproject\+::\+Iterative\+Process\+Arc\+Length\+S\+R\+M(), slopeproject\+::\+Iterative\+Process\+Shear\+Red(), Iterative\+Process\+Shear\+Red(), slopeproject\+::\+Iterative\+Process\+Shear\+Red2(), beam3dtools\+::\+Solve\+Elastic\+Beam(), beam3dtools\+::\+Solve\+Elastic\+Cube(), and pressurizedhole\+::\+Solve\+Elastic\+Hole().
+
+\mbox{\Hypertarget{classmesh_a094407e3c87ea645cc790317762d3ba0}\label{classmesh_a094407e3c87ea645cc790317762d3ba0}} 
+\index{mesh@{mesh}!Assemble@{Assemble}}
+\index{Assemble@{Assemble}!mesh@{mesh}}
+\doxysubsubsection{\texorpdfstring{Assemble()}{Assemble()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void mesh\+::\+Assemble (\begin{DoxyParamCaption}\item[{Sparse\+Matrix$<$ double $>$ \&}]{KG,  }\item[{Vector\+Xd \&}]{Fint,  }\item[{Vector\+Xd \&}]{Fbody }\end{DoxyParamCaption})}
+
+
+
+Definition at line 452 of file mesh.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign(), material\+::\+Cac\+Stiff(), fallcoords, f\+H\+H\+AT, fhhatvel, fmaterial, fmeshnodes, fmeshtopology, Get\+El\+Coords(), material\+::\+Get\+Solution(), N\+Rmatrix$<$ T $>$\+::ncols(), N\+Rmatrix$<$ T $>$\+::nrows(), material\+::\+Reset\+Counter(), N\+Rmatrix$<$ T $>$\+::resize(), material\+::\+Set\+Random\+Field(), and material\+::\+Set\+Random\+Field\+Local().
+
+\mbox{\Hypertarget{classmesh_a4e08658f075fc0736dd713bccc4c0ee6}\label{classmesh_a4e08658f075fc0736dd713bccc4c0ee6}} 
+\index{mesh@{mesh}!ComputeSolAndDSol@{ComputeSolAndDSol}}
+\index{ComputeSolAndDSol@{ComputeSolAndDSol}!mesh@{mesh}}
+\doxysubsubsection{\texorpdfstring{ComputeSolAndDSol()}{ComputeSolAndDSol()}}
+{\footnotesize\ttfamily void mesh\+::\+Compute\+Sol\+And\+D\+Sol (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{sol,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{dsol }\end{DoxyParamCaption})}
+
+
+
+Definition at line 399 of file mesh.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign(), fallcoords, fdim, fmaterial, fmeshnodes, fmeshtopology, Get\+El\+Coords(), material\+::\+Get\+Solution(), N\+Rmatrix$<$ T $>$\+::nrows(), and N\+Rmatrix$<$ T $>$\+::resize().
+
+\mbox{\Hypertarget{classmesh_a8e64da00e745eaf34c98e396ff7bed35}\label{classmesh_a8e64da00e745eaf34c98e396ff7bed35}} 
+\index{mesh@{mesh}!FindIds@{FindIds}}
+\index{FindIds@{FindIds}!mesh@{mesh}}
+\doxysubsubsection{\texorpdfstring{FindIds()}{FindIds()}}
+{\footnotesize\ttfamily void mesh\+::\+Find\+Ids (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ double $>$}]{constcoorddata,  }\item[{\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ int $>$}]{constcoord,  }\item[{std\+::vector$<$ int $>$ \&}]{ids }\end{DoxyParamCaption})}
+
+
+
+Definition at line 572 of file mesh.\+cpp.
+
+
+
+References fallcoords, fmeshtopology, Get\+El\+Coords(), N\+Rmatrix$<$ T $>$\+::nrows(), and N\+Rvector$<$ T $>$\+::size().
+
+\mbox{\Hypertarget{classmesh_a934e852b95f6a384b519b1f30befb2c3}\label{classmesh_a934e852b95f6a384b519b1f30befb2c3}} 
+\index{mesh@{mesh}!FindSolution@{FindSolution}}
+\index{FindSolution@{FindSolution}!mesh@{mesh}}
+\doxysubsubsection{\texorpdfstring{FindSolution()}{FindSolution()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} mesh\+::\+Find\+Solution (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_a97a3701e8aa6ca145af8d5c7c5c50d87}{Vec\+Doub}}}]{coord,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{datatosearch }\end{DoxyParamCaption})}
+
+
+
+Definition at line 85 of file mesh.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign(), fallcoords, fmeshtopology, Get\+El\+Coords(), N\+Rmatrix$<$ T $>$\+::\+Mult(), N\+Rmatrix$<$ T $>$\+::nrows(), N\+Rvector$<$ T $>$\+::\+Print(), N\+Rmatrix$<$ T $>$\+::\+Print(), Funcd\+Search\+::set(), shapequad\+::shapes(), and N\+Rmatrix$<$ T $>$\+::\+Transpose().
+
+
+
+Referenced by Transfer\+Solution().
+
+\mbox{\Hypertarget{classmesh_aecde234a676428f0e69aa41bc7e8f203}\label{classmesh_aecde234a676428f0e69aa41bc7e8f203}} 
+\index{mesh@{mesh}!GetAllCoords@{GetAllCoords}}
+\index{GetAllCoords@{GetAllCoords}!mesh@{mesh}}
+\doxysubsubsection{\texorpdfstring{GetAllCoords()}{GetAllCoords()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ mesh\+::\+Get\+All\+Coords (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 51 of file mesh.\+cpp.
+
+
+
+References fallcoords.
+
+
+
+Referenced by K\+L\+Galerkin\+R\+F\+::\+Assemble\+B(), K\+L\+Galerkin\+R\+F\+::\+Assemble\+C(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Compute\+Sol\+And\+D\+Sol(), slopeproject\+::findbcids(), findbcids(), pressurizedhole\+::\+Insert\+B\+C(), beam3dtools\+::\+Insert\+B\+C(), beam3dtools\+::\+Insert\+Cube\+B\+C(), pressurizedhole\+::\+Iterative\+Process(), slopeproject\+::\+Iterative\+Process(), beam3dtools\+::\+Iterative\+Process(), Iterative\+Process(), slopeproject\+::\+Iterative\+Process\+Arc\+Length\+S\+R\+M(), slopeproject\+::\+Iterative\+Process\+Shear\+Red(), Iterative\+Process\+Shear\+Red(), slopeproject\+::\+Iterative\+Process\+Shear\+Red2(), pressurizedhole\+::\+Load\+B\+C(), mainlinux(), mainlinuxserial(), mainwindows(), slopeproject\+::\+Monte\+Carlo\+S\+R\+M(), K\+L\+Galerkin\+R\+F\+::\+Perfom\+Integral\+Of\+Listconst(), K\+L\+Galerkin\+R\+F\+::\+Perfom\+Integral\+Of\+Listconst2(), postprocess\+::\+Post\+Process(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Post\+Process\+Strain(), slopeproject\+::\+Print\+M\+C\+S(), and K\+L\+Galerkin\+R\+F\+::\+Solve\+Gen\+Eig\+Val\+Problem().
+
+\mbox{\Hypertarget{classmesh_a89a173f2b8f0abea80e3f148d6650d5c}\label{classmesh_a89a173f2b8f0abea80e3f148d6650d5c}} 
+\index{mesh@{mesh}!GetElCoords@{GetElCoords}}
+\index{GetElCoords@{GetElCoords}!mesh@{mesh}}
+\doxysubsubsection{\texorpdfstring{GetElCoords()}{GetElCoords()}}
+{\footnotesize\ttfamily void mesh\+::\+Get\+El\+Coords (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$}]{allcoords,  }\item[{\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{el,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{elcoords }\end{DoxyParamCaption})}
+
+
+
+Definition at line 74 of file mesh.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign().
+
+
+
+Referenced by Assemble(), Compute\+Sol\+And\+D\+Sol(), Find\+Ids(), Find\+Solution(), postprocess\+::\+Post\+Process(), and Transfer\+Solution().
+
+\mbox{\Hypertarget{classmesh_a389fe5bc1e507e8c54e6abbfcd05d1f2}\label{classmesh_a389fe5bc1e507e8c54e6abbfcd05d1f2}} 
+\index{mesh@{mesh}!GetHhat@{GetHhat}}
+\index{GetHhat@{GetHhat}!mesh@{mesh}}
+\doxysubsubsection{\texorpdfstring{GetHhat()}{GetHhat()}}
+{\footnotesize\ttfamily void mesh\+::\+Get\+Hhat (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{H\+H\+AT }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 60 of file mesh.\+h.
+
+
+
+References f\+H\+H\+AT.
+
+
+
+Referenced by V\+T\+K\+Graph\+Mesh\+::\+Draw\+Solution(), slopeproject\+::\+Iterative\+Process\+Shear\+Red(), and slopeproject\+::\+Iterative\+Process\+Shear\+Red2().
+
+\mbox{\Hypertarget{classmesh_a6cf5267166add8ddbbc16d7b05e5de5a}\label{classmesh_a6cf5267166add8ddbbc16d7b05e5de5a}} 
+\index{mesh@{mesh}!GetMeshNodes@{GetMeshNodes}}
+\index{GetMeshNodes@{GetMeshNodes}!mesh@{mesh}}
+\doxysubsubsection{\texorpdfstring{GetMeshNodes()}{GetMeshNodes()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} mesh\+::\+Get\+Mesh\+Nodes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 57 of file mesh.\+cpp.
+
+
+
+References fmeshnodes.
+
+
+
+Referenced by K\+L\+Galerkin\+R\+F\+::\+Assemble\+B(), K\+L\+Galerkin\+R\+F\+::\+Assemble\+C(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Compute\+Sol\+And\+D\+Sol(), V\+T\+K\+Graph\+Mesh\+::\+Draw\+Solution(), pressurizedhole\+::\+Iterative\+Process(), slopeproject\+::\+Iterative\+Process(), beam3dtools\+::\+Iterative\+Process(), Iterative\+Process(), slopeproject\+::\+Iterative\+Process\+Arc\+Length\+S\+R\+M(), slopeproject\+::\+Iterative\+Process\+Shear\+Red(), Iterative\+Process\+Shear\+Red(), slopeproject\+::\+Iterative\+Process\+Shear\+Red2(), pressurizedhole\+::\+Load\+B\+C(), mainlinux(), mainlinuxserial(), Monte\+Carlo(), slopeproject\+::\+Monte\+Carlo\+G\+I\+M(), slopeproject\+::\+Monte\+Carlo\+S\+R\+M(), Monte\+Carlo\+Talude2(), K\+L\+Galerkin\+R\+F\+::\+Perfom\+Integral\+Of\+Listconst(), K\+L\+Galerkin\+R\+F\+::\+Perfom\+Integral\+Of\+Listconst2(), postprocess\+::\+Post\+Process(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Post\+Process\+Strain(), slopeproject\+::\+Print\+M\+C\+S(), solvedetermtest(), and K\+L\+Galerkin\+R\+F\+::\+Solve\+Gen\+Eig\+Val\+Problem().
+
+\mbox{\Hypertarget{classmesh_a9833f3c5f11bccbbb805a6a1a0121bda}\label{classmesh_a9833f3c5f11bccbbb805a6a1a0121bda}} 
+\index{mesh@{mesh}!GetMeshTopology@{GetMeshTopology}}
+\index{GetMeshTopology@{GetMeshTopology}!mesh@{mesh}}
+\doxysubsubsection{\texorpdfstring{GetMeshTopology()}{GetMeshTopology()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} mesh\+::\+Get\+Mesh\+Topology (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 62 of file mesh.\+cpp.
+
+
+
+References fmeshtopology.
+
+
+
+Referenced by K\+L\+Galerkin\+R\+F\+::\+Assemble\+B(), K\+L\+Galerkin\+R\+F\+::\+Assemble\+C(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Compute\+Sol\+And\+D\+Sol(), slopeproject\+::findbcids(), findbcids(), V\+T\+K\+Graph\+Mesh\+::\+Get\+Mesh\+Topology\+V\+T\+K(), pressurizedhole\+::\+Insert\+B\+C(), beam3dtools\+::\+Insert\+B\+C(), beam3dtools\+::\+Insert\+Cube\+B\+C(), pressurizedhole\+::\+Iterative\+Process(), slopeproject\+::\+Iterative\+Process(), beam3dtools\+::\+Iterative\+Process(), Iterative\+Process(), slopeproject\+::\+Iterative\+Process\+Arc\+Length\+S\+R\+M(), slopeproject\+::\+Iterative\+Process\+Shear\+Red(), Iterative\+Process\+Shear\+Red(), slopeproject\+::\+Iterative\+Process\+Shear\+Red2(), pressurizedhole\+::\+Load\+B\+C(), mainlinux(), mainlinuxserial(), Monte\+Carlo(), slopeproject\+::\+Monte\+Carlo\+G\+I\+M(), slopeproject\+::\+Monte\+Carlo\+S\+R\+M(), Monte\+Carlo\+Talude2(), K\+L\+Galerkin\+R\+F\+::\+Perfom\+Integral\+Of\+Listconst(), K\+L\+Galerkin\+R\+F\+::\+Perfom\+Integral\+Of\+Listconst2(), postprocess\+::\+Post\+Process(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Post\+Process\+Strain(), slopeproject\+::\+Print\+M\+C\+S(), solvedetermtest(), and K\+L\+Galerkin\+R\+F\+::\+Solve\+Gen\+Eig\+Val\+Problem().
+
+\mbox{\Hypertarget{classmesh_a27555191c9d7f3d2dbeca6917c00d316}\label{classmesh_a27555191c9d7f3d2dbeca6917c00d316}} 
+\index{mesh@{mesh}!GetMeshTopologyVTK@{GetMeshTopologyVTK}}
+\index{GetMeshTopologyVTK@{GetMeshTopologyVTK}!mesh@{mesh}}
+\doxysubsubsection{\texorpdfstring{GetMeshTopologyVTK()}{GetMeshTopologyVTK()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} mesh\+::\+Get\+Mesh\+Topology\+V\+TK (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classmesh_a1a813133f61303dc0d0f19f9afc7a786}\label{classmesh_a1a813133f61303dc0d0f19f9afc7a786}} 
+\index{mesh@{mesh}!SetHhat@{SetHhat}}
+\index{SetHhat@{SetHhat}!mesh@{mesh}}
+\doxysubsubsection{\texorpdfstring{SetHhat()}{SetHhat()}}
+{\footnotesize\ttfamily void mesh\+::\+Set\+Hhat (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$}]{H\+H\+AT }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 55 of file mesh.\+h.
+
+
+
+References f\+H\+H\+AT.
+
+
+
+Referenced by slopeproject\+::\+Iterative\+Process\+Shear\+Red(), slopeproject\+::\+Iterative\+Process\+Shear\+Red2(), main2(), mainlinux(), mainlinuxserial(), Monte\+Carlo(), slopeproject\+::\+Monte\+Carlo\+G\+I\+M(), and slopeproject\+::\+Monte\+Carlo\+S\+R\+M().
+
+\mbox{\Hypertarget{classmesh_ac4384ba933f28ff81be554369f9be671}\label{classmesh_ac4384ba933f28ff81be554369f9be671}} 
+\index{mesh@{mesh}!TransferSolution@{TransferSolution}}
+\index{TransferSolution@{TransferSolution}!mesh@{mesh}}
+\doxysubsubsection{\texorpdfstring{TransferSolution()}{TransferSolution()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} mesh\+::\+Transfer\+Solution (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classmesh}{mesh}} \&}]{out,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{datatosearch }\end{DoxyParamCaption})}
+
+
+
+Definition at line 190 of file mesh.\+cpp.
+
+
+
+References fallcoords, Find\+Solution(), fmeshnodes, fmeshtopology, Get\+El\+Coords(), and N\+Rmatrix$<$ T $>$\+::nrows().
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classmesh_ae627338afa90f63add52f4b7d38430dc}\label{classmesh_ae627338afa90f63add52f4b7d38430dc}} 
+\index{mesh@{mesh}!fallcoords@{fallcoords}}
+\index{fallcoords@{fallcoords}!mesh@{mesh}}
+\doxysubsubsection{\texorpdfstring{fallcoords}{fallcoords}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::vector$<$ std\+::vector$<$\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ $>$ $>$ mesh\+::fallcoords\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 71 of file mesh.\+h.
+
+
+
+Referenced by Assemble(), Compute\+Sol\+And\+D\+Sol(), Find\+Ids(), Find\+Solution(), Get\+All\+Coords(), mesh(), and Transfer\+Solution().
+
+\mbox{\Hypertarget{classmesh_a9aa42d679209b81116ea40b270b905cf}\label{classmesh_a9aa42d679209b81116ea40b270b905cf}} 
+\index{mesh@{mesh}!fdim@{fdim}}
+\index{fdim@{fdim}!mesh@{mesh}}
+\doxysubsubsection{\texorpdfstring{fdim}{fdim}}
+{\footnotesize\ttfamily int mesh\+::fdim\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 70 of file mesh.\+h.
+
+
+
+Referenced by Assemble(), Compute\+Sol\+And\+D\+Sol(), and mesh().
+
+\mbox{\Hypertarget{classmesh_a17b1887552562c3d9a9f39f06b30f833}\label{classmesh_a17b1887552562c3d9a9f39f06b30f833}} 
+\index{mesh@{mesh}!fHHAT@{fHHAT}}
+\index{fHHAT@{fHHAT}!mesh@{mesh}}
+\doxysubsubsection{\texorpdfstring{fHHAT}{fHHAT}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}$>$ mesh\+::f\+H\+H\+AT\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 74 of file mesh.\+h.
+
+
+
+Referenced by Assemble(), Get\+Hhat(), mesh(), and Set\+Hhat().
+
+\mbox{\Hypertarget{classmesh_a9b1d585e8cade7336447f7f5b27e23b2}\label{classmesh_a9b1d585e8cade7336447f7f5b27e23b2}} 
+\index{mesh@{mesh}!fhhatvel@{fhhatvel}}
+\index{fhhatvel@{fhhatvel}!mesh@{mesh}}
+\doxysubsubsection{\texorpdfstring{fhhatvel}{fhhatvel}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}$>$ mesh\+::fhhatvel\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 75 of file mesh.\+h.
+
+
+
+Referenced by Assemble().
+
+\mbox{\Hypertarget{classmesh_aae92828d6d19ae3be2d3ffc82e0eb08d}\label{classmesh_aae92828d6d19ae3be2d3ffc82e0eb08d}} 
+\index{mesh@{mesh}!fmaterial@{fmaterial}}
+\index{fmaterial@{fmaterial}!mesh@{mesh}}
+\doxysubsubsection{\texorpdfstring{fmaterial}{fmaterial}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classmaterial}{material}}$\ast$ mesh\+::fmaterial}
+
+
+
+Definition at line 67 of file mesh.\+h.
+
+
+
+Referenced by Assemble(), Compute\+Sol\+And\+D\+Sol(), V\+T\+K\+Graph\+Mesh\+::\+Draw\+Solution(), pressurizedhole\+::\+Insert\+B\+C(), beam3dtools\+::\+Insert\+B\+C(), beam3dtools\+::\+Insert\+Cube\+B\+C(), pressurizedhole\+::\+Iterative\+Process(), slopeproject\+::\+Iterative\+Process(), beam3dtools\+::\+Iterative\+Process(), Iterative\+Process(), slopeproject\+::\+Iterative\+Process\+Arc\+Length\+S\+R\+M(), slopeproject\+::\+Iterative\+Process\+Shear\+Red(), Iterative\+Process\+Shear\+Red(), slopeproject\+::\+Iterative\+Process\+Shear\+Red2(), pressurizedhole\+::\+Load\+B\+C(), mainlinux(), mainlinuxserial(), mesh(), slopeproject\+::\+Monte\+Carlo\+G\+I\+M(), slopeproject\+::\+Monte\+Carlo\+S\+R\+M(), slopeproject\+::\+Print\+M\+C\+S(), V\+T\+K\+Graph\+Mesh\+::\+V\+T\+K\+Graph\+Mesh(), and $\sim$mesh().
+
+\mbox{\Hypertarget{classmesh_ad6b35cc104ccd74c521600316ff9540f}\label{classmesh_ad6b35cc104ccd74c521600316ff9540f}} 
+\index{mesh@{mesh}!fmeshnodes@{fmeshnodes}}
+\index{fmeshnodes@{fmeshnodes}!mesh@{mesh}}
+\doxysubsubsection{\texorpdfstring{fmeshnodes}{fmeshnodes}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} mesh\+::fmeshnodes\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 72 of file mesh.\+h.
+
+
+
+Referenced by Assemble(), Compute\+Sol\+And\+D\+Sol(), Get\+Mesh\+Nodes(), mesh(), and Transfer\+Solution().
+
+\mbox{\Hypertarget{classmesh_a53299c493dace487aa1cd424348da8b6}\label{classmesh_a53299c493dace487aa1cd424348da8b6}} 
+\index{mesh@{mesh}!fmeshtopology@{fmeshtopology}}
+\index{fmeshtopology@{fmeshtopology}!mesh@{mesh}}
+\doxysubsubsection{\texorpdfstring{fmeshtopology}{fmeshtopology}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_a3bc1dc9e2517ecf7f3e83fa9379217b4}{Mat\+Int}} mesh\+::fmeshtopology\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 73 of file mesh.\+h.
+
+
+
+Referenced by Assemble(), Compute\+Sol\+And\+D\+Sol(), Find\+Ids(), Find\+Solution(), Get\+Mesh\+Topology(), mesh(), and Transfer\+Solution().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{mesh_8h}{mesh.\+h}}\item 
+src/\mbox{\hyperlink{mesh_8cpp}{mesh.\+cpp}}\end{DoxyCompactItemize}

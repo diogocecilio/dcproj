@@ -1,0 +1,221 @@
+\hypertarget{classshapequad}{}\doxysection{shapequad Class Reference}
+\label{classshapequad}\index{shapequad@{shapequad}}
+
+
+{\ttfamily \#include $<$shapequad.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classshapequad_a607d0b9d19deee1f8094e9f5fb85765c}{shapequad}} (int order, int type)
+\item 
+\mbox{\hyperlink{classshapequad_a756f84bc5c377472ac3419a7140e44b8}{shapequad}} ()
+\item 
+\mbox{\hyperlink{classshapequad_a0533258dc0b97cdaf0404b22113d1220}{$\sim$shapequad}} ()
+\item 
+void \mbox{\hyperlink{classshapequad_a4dbe82c2fa15fd2ab4cc7709c9f82c90}{shapes}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&psis, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&gradpsis, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} xi, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} eta)
+\item 
+void \mbox{\hyperlink{classshapequad_aa1b117871bf0370cd091cfe50b9751ec}{shapes}} (Matrix\+Xd \&psis, Matrix\+Xd \&gradpsis, double xi, double eta)
+\item 
+void \mbox{\hyperlink{classshapequad_a2212aef6dd2ac6f8191642fea1825f33}{shapes1D}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&psis, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&gradpsis, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} xi)
+\item 
+void \mbox{\hyperlink{classshapequad_ab3dfbe1ac08c031f62b7daee4301dc8b}{pointsandweigths}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&pts)
+\item 
+void \mbox{\hyperlink{classshapequad_aaefdbd17edbc116a58ea1d08859fb5c1}{pointsandweigths1D}} (\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&pts)
+\item 
+\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{classshapequad_a39f6f9328b7c4b6993c07561b3d2f561}{Get\+Base\+Nodes}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classshapequad_a4625a46e42cc60fd531ab1fab924d0dd}{forder}}
+\item 
+int \mbox{\hyperlink{classshapequad_a7a5c9c250075e08386727794a5cc755a}{ftype}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 3 of file shapequad.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classshapequad_a607d0b9d19deee1f8094e9f5fb85765c}\label{classshapequad_a607d0b9d19deee1f8094e9f5fb85765c}} 
+\index{shapequad@{shapequad}!shapequad@{shapequad}}
+\index{shapequad@{shapequad}!shapequad@{shapequad}}
+\doxysubsubsection{\texorpdfstring{shapequad()}{shapequad()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily shapequad\+::shapequad (\begin{DoxyParamCaption}\item[{int}]{order,  }\item[{int}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 6 of file shapequad.\+h.
+
+
+
+References forder, and ftype.
+
+\mbox{\Hypertarget{classshapequad_a756f84bc5c377472ac3419a7140e44b8}\label{classshapequad_a756f84bc5c377472ac3419a7140e44b8}} 
+\index{shapequad@{shapequad}!shapequad@{shapequad}}
+\index{shapequad@{shapequad}!shapequad@{shapequad}}
+\doxysubsubsection{\texorpdfstring{shapequad()}{shapequad()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily shapequad\+::shapequad (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 12 of file shapequad.\+h.
+
+\mbox{\Hypertarget{classshapequad_a0533258dc0b97cdaf0404b22113d1220}\label{classshapequad_a0533258dc0b97cdaf0404b22113d1220}} 
+\index{shapequad@{shapequad}!````~shapequad@{$\sim$shapequad}}
+\index{````~shapequad@{$\sim$shapequad}!shapequad@{shapequad}}
+\doxysubsubsection{\texorpdfstring{$\sim$shapequad()}{~shapequad()}}
+{\footnotesize\ttfamily shapequad\+::$\sim$shapequad (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 15 of file shapequad.\+h.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classshapequad_a39f6f9328b7c4b6993c07561b3d2f561}\label{classshapequad_a39f6f9328b7c4b6993c07561b3d2f561}} 
+\index{shapequad@{shapequad}!GetBaseNodes@{GetBaseNodes}}
+\index{GetBaseNodes@{GetBaseNodes}!shapequad@{shapequad}}
+\doxysubsubsection{\texorpdfstring{GetBaseNodes()}{GetBaseNodes()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}$>$ shapequad\+::\+Get\+Base\+Nodes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 293 of file shapequad.\+h.
+
+
+
+References forder.
+
+
+
+Referenced by elastoplastic2\+D$<$ Y\+C $>$\+::\+Compute\+Sol\+And\+D\+Sol(), and elastoplastic2\+D$<$ Y\+C $>$\+::\+Post\+Process\+Strain().
+
+\mbox{\Hypertarget{classshapequad_ab3dfbe1ac08c031f62b7daee4301dc8b}\label{classshapequad_ab3dfbe1ac08c031f62b7daee4301dc8b}} 
+\index{shapequad@{shapequad}!pointsandweigths@{pointsandweigths}}
+\index{pointsandweigths@{pointsandweigths}!shapequad@{shapequad}}
+\doxysubsubsection{\texorpdfstring{pointsandweigths()}{pointsandweigths()}}
+{\footnotesize\ttfamily void shapequad\+::pointsandweigths (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{pts }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 176 of file shapequad.\+h.
+
+
+
+References forder, and N\+Rmatrix$<$ T $>$\+::resize().
+
+
+
+Referenced by elastmat2\+D\+::\+Cac\+Stiff(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Cac\+Stiff(), K\+L\+Galerkin\+R\+F\+::\+Cac\+Stiff\+B(), K\+L\+Galerkin\+R\+F\+::\+Cac\+Stiff\+C(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Compute\+Sol\+And\+D\+Sol(), pressurizedhole\+::\+Create\+Mat\+And\+Mesh(), createrandomfield(), main2(), mainlinux(), mainlinux2(), mainlinuxserial(), mainwindows(), Monte\+Carlo(), slopeproject\+::\+Monte\+Carlo\+G\+I\+M(), slopeproject\+::\+Monte\+Carlo\+S\+R\+M(), Monte\+Carlo\+Talude2(), K\+L\+Galerkin\+R\+F\+::\+Perfom\+Integral\+Of\+Listconst(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Post\+Process\+Integration\+Point\+Var(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Post\+Process\+Strain(), solvedeterm(), and solvedetermtest().
+
+\mbox{\Hypertarget{classshapequad_aaefdbd17edbc116a58ea1d08859fb5c1}\label{classshapequad_aaefdbd17edbc116a58ea1d08859fb5c1}} 
+\index{shapequad@{shapequad}!pointsandweigths1D@{pointsandweigths1D}}
+\index{pointsandweigths1D@{pointsandweigths1D}!shapequad@{shapequad}}
+\doxysubsubsection{\texorpdfstring{pointsandweigths1D()}{pointsandweigths1D()}}
+{\footnotesize\ttfamily void shapequad\+::pointsandweigths1D (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{pts }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 273 of file shapequad.\+h.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::nrows(), and N\+Rmatrix$<$ T $>$\+::resize().
+
+
+
+Referenced by elastoplastic2\+D$<$ Y\+C $>$\+::\+Contribute\+Curved\+Line(), elastmat2\+D\+::\+Contribute\+Line\+Newan(), and elastoplastic2\+D$<$ Y\+C $>$\+::\+Contribute\+Line\+Newan().
+
+\mbox{\Hypertarget{classshapequad_a4dbe82c2fa15fd2ab4cc7709c9f82c90}\label{classshapequad_a4dbe82c2fa15fd2ab4cc7709c9f82c90}} 
+\index{shapequad@{shapequad}!shapes@{shapes}}
+\index{shapes@{shapes}!shapequad@{shapequad}}
+\doxysubsubsection{\texorpdfstring{shapes()}{shapes()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void shapequad\+::shapes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{psis,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{gradpsis,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{xi,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{eta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 20 of file shapequad.\+h.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::assign(), forder, and N\+Rmatrix$<$ T $>$\+::resize().
+
+
+
+Referenced by K\+L\+Galerkin\+R\+F\+::\+Cac\+Stiff\+C(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Compute\+Sol\+And\+D\+Sol(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Compute\+Solution(), elastmat2\+D\+::\+Contribute(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Contribute(), K\+L\+Galerkin\+R\+F\+::\+Contribute\+B(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Contribute\+Eig(), Find\+El(), mesh\+::\+Find\+Solution(), Funcd\+Search\+::operator()(), K\+L\+Galerkin\+R\+F\+::\+Perfom\+Integral\+Of\+Listconst(), postprocess\+::\+Post\+Process(), elastmat2\+D\+::\+Post\+Process(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Post\+Process(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Post\+Process\+Integration\+Point\+Var(), elastmat2\+D\+::\+Sol\+Pt(), and elastoplastic2\+D$<$ Y\+C $>$\+::\+Sol\+Pt().
+
+\mbox{\Hypertarget{classshapequad_aa1b117871bf0370cd091cfe50b9751ec}\label{classshapequad_aa1b117871bf0370cd091cfe50b9751ec}} 
+\index{shapequad@{shapequad}!shapes@{shapes}}
+\index{shapes@{shapes}!shapequad@{shapequad}}
+\doxysubsubsection{\texorpdfstring{shapes()}{shapes()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void shapequad\+::shapes (\begin{DoxyParamCaption}\item[{Matrix\+Xd \&}]{psis,  }\item[{Matrix\+Xd \&}]{gradpsis,  }\item[{double}]{xi,  }\item[{double}]{eta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 79 of file shapequad.\+h.
+
+
+
+References forder.
+
+\mbox{\Hypertarget{classshapequad_a2212aef6dd2ac6f8191642fea1825f33}\label{classshapequad_a2212aef6dd2ac6f8191642fea1825f33}} 
+\index{shapequad@{shapequad}!shapes1D@{shapes1D}}
+\index{shapes1D@{shapes1D}!shapequad@{shapequad}}
+\doxysubsubsection{\texorpdfstring{shapes1D()}{shapes1D()}}
+{\footnotesize\ttfamily void shapequad\+::shapes1D (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{psis,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \&}]{gradpsis,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{xi }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 139 of file shapequad.\+h.
+
+
+
+References forder, and N\+Rmatrix$<$ T $>$\+::resize().
+
+
+
+Referenced by elastoplastic2\+D$<$ Y\+C $>$\+::\+Contribute\+Curved\+Line(), elastmat2\+D\+::\+Contribute\+Line\+Newan(), and elastoplastic2\+D$<$ Y\+C $>$\+::\+Contribute\+Line\+Newan().
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classshapequad_a4625a46e42cc60fd531ab1fab924d0dd}\label{classshapequad_a4625a46e42cc60fd531ab1fab924d0dd}} 
+\index{shapequad@{shapequad}!forder@{forder}}
+\index{forder@{forder}!shapequad@{shapequad}}
+\doxysubsubsection{\texorpdfstring{forder}{forder}}
+{\footnotesize\ttfamily int shapequad\+::forder\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 339 of file shapequad.\+h.
+
+
+
+Referenced by Get\+Base\+Nodes(), pointsandweigths(), shapequad(), shapes(), and shapes1\+D().
+
+\mbox{\Hypertarget{classshapequad_a7a5c9c250075e08386727794a5cc755a}\label{classshapequad_a7a5c9c250075e08386727794a5cc755a}} 
+\index{shapequad@{shapequad}!ftype@{ftype}}
+\index{ftype@{ftype}!shapequad@{shapequad}}
+\doxysubsubsection{\texorpdfstring{ftype}{ftype}}
+{\footnotesize\ttfamily int shapequad\+::ftype\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 340 of file shapequad.\+h.
+
+
+
+Referenced by shapequad().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{shapequad_8h}{shapequad.\+h}}\end{DoxyCompactItemize}

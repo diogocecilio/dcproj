@@ -1,14 +1,16 @@
 #pragma once
 #include "nr3.h"
-class shapehexahedron
-{
+#include "shape.h"
+
+class shapehexahedron    {
 public:
-	shapehexahedron(int order, int type)
+    
+	shapehexahedron(int order, int type,Int dim=3)
 	{
 		forder = order;
 		ftype = type;
 	}
-
+	
 	shapehexahedron()
 	{
 	}
@@ -181,7 +183,6 @@ public:
             gradpsis[2][13] =  -((1 - eta)*(1 + xi)*zeta)/2.;
             gradpsis[2][14] =  -((1 + eta)*(1 + xi)*zeta)/2.;
             gradpsis[2][15] =  -((1 + eta)*(1 - xi)*zeta)/2.;
-
 
 			break;
 		}

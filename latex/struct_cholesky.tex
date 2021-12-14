@@ -1,0 +1,191 @@
+\hypertarget{struct_cholesky}{}\doxysection{Cholesky Struct Reference}
+\label{struct_cholesky}\index{Cholesky@{Cholesky}}
+
+
+{\ttfamily \#include $<$cholesky.\+h$>$}
+
+
+
+Collaboration diagram for Cholesky\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=191pt]{struct_cholesky__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_cholesky_a0adbb395108bbd59f91057a89f506255}{Cholesky}} (\mbox{\hyperlink{nr3_8h_a724773f982f11577951cbd1efadf9768}{Mat\+Doub\+\_\+I}} \&a)
+\item 
+void \mbox{\hyperlink{struct_cholesky_af83bd31318b6b4cb3b82d0d331523205}{solve}} (\mbox{\hyperlink{nr3_8h_a03f0d3bb248e15df9d42cc3c80203ea0}{Vec\+Doub\+\_\+I}} \&b, \mbox{\hyperlink{nr3_8h_a0e1e2f8eb088c9a6bef13f04075dadb7}{Vec\+Doub\+\_\+O}} \&x)
+\item 
+void \mbox{\hyperlink{struct_cholesky_ae4d9f026784da85045d21314573e47a6}{elmult}} (\mbox{\hyperlink{nr3_8h_a03f0d3bb248e15df9d42cc3c80203ea0}{Vec\+Doub\+\_\+I}} \&y, \mbox{\hyperlink{nr3_8h_a0e1e2f8eb088c9a6bef13f04075dadb7}{Vec\+Doub\+\_\+O}} \&b)
+\item 
+void \mbox{\hyperlink{struct_cholesky_adc237107a184347d3f821f7ce4cdd8f8}{elsolve}} (\mbox{\hyperlink{nr3_8h_a03f0d3bb248e15df9d42cc3c80203ea0}{Vec\+Doub\+\_\+I}} \&b, \mbox{\hyperlink{nr3_8h_a0e1e2f8eb088c9a6bef13f04075dadb7}{Vec\+Doub\+\_\+O}} \&y)
+\item 
+void \mbox{\hyperlink{struct_cholesky_a6b7a5216e32c6a6db99782169418e556}{inverse}} (\mbox{\hyperlink{nr3_8h_af78ffaeb7f0b1f76b9a101d2b2a2050b}{Mat\+Doub\+\_\+O}} \&ainv)
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{struct_cholesky_ab3d1db8b882fea93e1e0fd4e37174e44}{logdet}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} \mbox{\hyperlink{struct_cholesky_a40e30096eb5bd3fa4953204580951036}{n}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \mbox{\hyperlink{struct_cholesky_a098ea2308363f2146acbebbf37980022}{el}}
+\item 
+bool \mbox{\hyperlink{struct_cholesky_a670b8ac8a7b9556154e36658a737e72d}{fail}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 3 of file cholesky.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_cholesky_a0adbb395108bbd59f91057a89f506255}\label{struct_cholesky_a0adbb395108bbd59f91057a89f506255}} 
+\index{Cholesky@{Cholesky}!Cholesky@{Cholesky}}
+\index{Cholesky@{Cholesky}!Cholesky@{Cholesky}}
+\doxysubsubsection{\texorpdfstring{Cholesky()}{Cholesky()}}
+{\footnotesize\ttfamily Cholesky\+::\+Cholesky (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_a724773f982f11577951cbd1efadf9768}{Mat\+Doub\+\_\+I}} \&}]{a }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 7 of file cholesky.\+h.
+
+
+
+References el, n, and N\+Rmatrix$<$ T $>$\+::ncols().
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_cholesky_ae4d9f026784da85045d21314573e47a6}\label{struct_cholesky_ae4d9f026784da85045d21314573e47a6}} 
+\index{Cholesky@{Cholesky}!elmult@{elmult}}
+\index{elmult@{elmult}!Cholesky@{Cholesky}}
+\doxysubsubsection{\texorpdfstring{elmult()}{elmult()}}
+{\footnotesize\ttfamily void Cholesky\+::elmult (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_a03f0d3bb248e15df9d42cc3c80203ea0}{Vec\+Doub\+\_\+I}} \&}]{y,  }\item[{\mbox{\hyperlink{nr3_8h_a0e1e2f8eb088c9a6bef13f04075dadb7}{Vec\+Doub\+\_\+O}} \&}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 44 of file cholesky.\+h.
+
+
+
+References el, n, and N\+Rvector$<$ T $>$\+::size().
+
+\mbox{\Hypertarget{struct_cholesky_adc237107a184347d3f821f7ce4cdd8f8}\label{struct_cholesky_adc237107a184347d3f821f7ce4cdd8f8}} 
+\index{Cholesky@{Cholesky}!elsolve@{elsolve}}
+\index{elsolve@{elsolve}!Cholesky@{Cholesky}}
+\doxysubsubsection{\texorpdfstring{elsolve()}{elsolve()}}
+{\footnotesize\ttfamily void Cholesky\+::elsolve (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_a03f0d3bb248e15df9d42cc3c80203ea0}{Vec\+Doub\+\_\+I}} \&}]{b,  }\item[{\mbox{\hyperlink{nr3_8h_a0e1e2f8eb088c9a6bef13f04075dadb7}{Vec\+Doub\+\_\+O}} \&}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 52 of file cholesky.\+h.
+
+
+
+References el, n, and N\+Rvector$<$ T $>$\+::size().
+
+\mbox{\Hypertarget{struct_cholesky_a6b7a5216e32c6a6db99782169418e556}\label{struct_cholesky_a6b7a5216e32c6a6db99782169418e556}} 
+\index{Cholesky@{Cholesky}!inverse@{inverse}}
+\index{inverse@{inverse}!Cholesky@{Cholesky}}
+\doxysubsubsection{\texorpdfstring{inverse()}{inverse()}}
+{\footnotesize\ttfamily void Cholesky\+::inverse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_af78ffaeb7f0b1f76b9a101d2b2a2050b}{Mat\+Doub\+\_\+O}} \&}]{ainv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 61 of file cholesky.\+h.
+
+
+
+References el, n, and N\+Rmatrix$<$ T $>$\+::resize().
+
+
+
+Referenced by K\+L\+Galerkin\+R\+F\+::\+Solve\+Gen\+Eig\+Val\+Problem().
+
+\mbox{\Hypertarget{struct_cholesky_ab3d1db8b882fea93e1e0fd4e37174e44}\label{struct_cholesky_ab3d1db8b882fea93e1e0fd4e37174e44}} 
+\index{Cholesky@{Cholesky}!logdet@{logdet}}
+\index{logdet@{logdet}!Cholesky@{Cholesky}}
+\doxysubsubsection{\texorpdfstring{logdet()}{logdet()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} Cholesky\+::logdet (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 76 of file cholesky.\+h.
+
+
+
+References el, and n.
+
+\mbox{\Hypertarget{struct_cholesky_af83bd31318b6b4cb3b82d0d331523205}\label{struct_cholesky_af83bd31318b6b4cb3b82d0d331523205}} 
+\index{Cholesky@{Cholesky}!solve@{solve}}
+\index{solve@{solve}!Cholesky@{Cholesky}}
+\doxysubsubsection{\texorpdfstring{solve()}{solve()}}
+{\footnotesize\ttfamily void Cholesky\+::solve (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_a03f0d3bb248e15df9d42cc3c80203ea0}{Vec\+Doub\+\_\+I}} \&}]{b,  }\item[{\mbox{\hyperlink{nr3_8h_a0e1e2f8eb088c9a6bef13f04075dadb7}{Vec\+Doub\+\_\+O}} \&}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 31 of file cholesky.\+h.
+
+
+
+References el, n, and N\+Rvector$<$ T $>$\+::size().
+
+
+
+Referenced by Solve\+N\+R3().
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_cholesky_a098ea2308363f2146acbebbf37980022}\label{struct_cholesky_a098ea2308363f2146acbebbf37980022}} 
+\index{Cholesky@{Cholesky}!el@{el}}
+\index{el@{el}!Cholesky@{Cholesky}}
+\doxysubsubsection{\texorpdfstring{el}{el}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} Cholesky\+::el}
+
+
+
+Definition at line 5 of file cholesky.\+h.
+
+
+
+Referenced by Cholesky(), elmult(), elsolve(), inverse(), logdet(), and solve().
+
+\mbox{\Hypertarget{struct_cholesky_a670b8ac8a7b9556154e36658a737e72d}\label{struct_cholesky_a670b8ac8a7b9556154e36658a737e72d}} 
+\index{Cholesky@{Cholesky}!fail@{fail}}
+\index{fail@{fail}!Cholesky@{Cholesky}}
+\doxysubsubsection{\texorpdfstring{fail}{fail}}
+{\footnotesize\ttfamily bool Cholesky\+::fail}
+
+
+
+Definition at line 6 of file cholesky.\+h.
+
+\mbox{\Hypertarget{struct_cholesky_a40e30096eb5bd3fa4953204580951036}\label{struct_cholesky_a40e30096eb5bd3fa4953204580951036}} 
+\index{Cholesky@{Cholesky}!n@{n}}
+\index{n@{n}!Cholesky@{Cholesky}}
+\doxysubsubsection{\texorpdfstring{n}{n}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} Cholesky\+::n}
+
+
+
+Definition at line 4 of file cholesky.\+h.
+
+
+
+Referenced by Cholesky(), elmult(), elsolve(), inverse(), logdet(), and solve().
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{cholesky_8h}{cholesky.\+h}}\end{DoxyCompactItemize}

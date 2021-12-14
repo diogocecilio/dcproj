@@ -1,0 +1,173 @@
+\hypertarget{classelastoplastic3D}{}\doxysection{elastoplastic3D$<$ YC $>$ Class Template Reference}
+\label{classelastoplastic3D}\index{elastoplastic3D$<$ YC $>$@{elastoplastic3D$<$ YC $>$}}
+
+
+Inheritance diagram for elastoplastic3D$<$ YC $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{classelastoplastic3D__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for elastoplastic3D$<$ YC $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classelastoplastic3D__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_ae7671dce50f720e7df3de40638cfee37}\label{classelastoplastic3D_ae7671dce50f720e7df3de40638cfee37}} 
+{\bfseries elastoplastic3D} (\mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ bodyforce, Int order)
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_a2d8a723c75a28c4bcdaf68726fda5773}\label{classelastoplastic3D_a2d8a723c75a28c4bcdaf68726fda5773}} 
+{\bfseries elastoplastic3D} (\mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ bodyforce, Int order, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ H\+H\+AT)
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_aea03c69d1665280d6e5fa8a8f4355733}\label{classelastoplastic3D_aea03c69d1665280d6e5fa8a8f4355733}} 
+{\bfseries elastoplastic3D} (\mbox{\hyperlink{classelastoplastic3D}{elastoplastic3D}} \&copy)
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_a05119c2118f62a2b1399f21f1b73df43}\label{classelastoplastic3D_a05119c2118f62a2b1399f21f1b73df43}} 
+void {\bfseries Assemble} (std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ Doub $>$ $>$ $>$ allcoords, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ meshnodes, \mbox{\hyperlink{classNRmatrix}{Mat\+Int}} meshtopology, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ \&KG, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ \&Fint, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ \&Fbody)
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_ae9dff775ba101ecc0d6bec6b68bde840}\label{classelastoplastic3D_ae9dff775ba101ecc0d6bec6b68bde840}} 
+void {\bfseries Assemble} (std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ Doub $>$ $>$ $>$ allcoords, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ meshnodes, \mbox{\hyperlink{classNRmatrix}{Mat\+Int}} meshtopology, Sparse\+Matrix$<$ double $>$ \&KG, Vector\+Xd \&Fint, Vector\+Xd \&Fbody)
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_a7a652fdb6898ac48227e244e0a16edd3}\label{classelastoplastic3D_a7a652fdb6898ac48227e244e0a16edd3}} 
+void {\bfseries Dirichlet\+BC} (Sparse\+Matrix$<$ double $>$ \&KG, Vector\+Xd \&Fint, std\+::vector$<$ int $>$ ids, Int dir, Int val)
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_a9995bc49b31804f63e0c1dd7913f61b0}\label{classelastoplastic3D_a9995bc49b31804f63e0c1dd7913f61b0}} 
+void {\bfseries Contribute} (\mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ \&ek, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ \&efint, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ \&efbody, \mbox{\hyperlink{classNRvector}{N\+Rvector}}$<$ Doub $>$ intptsw, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ elcoords, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ eldisplace)
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_a1c5d4468e092b8f2a6f9028d48cd86f1}\label{classelastoplastic3D_a1c5d4468e092b8f2a6f9028d48cd86f1}} 
+void {\bfseries Cac\+Stiff} (\mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ \&ek, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ \&efint, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ \&efbody, const \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ \&elcoords, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ eldisplace)
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_a58d80f69170d8110b8f639dfefa873fe}\label{classelastoplastic3D_a58d80f69170d8110b8f639dfefa873fe}} 
+void {\bfseries assemble\+BandN} (\mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ \&B, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ \&N, const \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ \&psis, const \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ \&Grad\+Phi)
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_a068685990d091f6becf3496fb97fa693}\label{classelastoplastic3D_a068685990d091f6becf3496fb97fa693}} 
+void {\bfseries Get\+El\+Coords} (std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ Doub $>$ $>$ $>$ allcoords, Int el, \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&elcoords)
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_aa24ef8dde79019a0e8199d7f7ef66e81}\label{classelastoplastic3D_aa24ef8dde79019a0e8199d7f7ef66e81}} 
+void {\bfseries Dirichlet\+BC} (\mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ \&KG, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ \&FG, std\+::vector$<$ int $>$ ids, Int dir, Int val)
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_a12d194e3ea0297fbfd265e86cd6f827d}\label{classelastoplastic3D_a12d194e3ea0297fbfd265e86cd6f827d}} 
+void {\bfseries Contribute\+Line\+Newan} (\mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ \&KG, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ \&FG, std\+::vector$<$ int $>$ ids, Int dir, Int val)
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_a31d4764ee8f268d15dbc1a9173326762}\label{classelastoplastic3D_a31d4764ee8f268d15dbc1a9173326762}} 
+void {\bfseries Contribute\+Curved\+Line} (\mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ \&KG, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ \&FG, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ meshnodes, \mbox{\hyperlink{classNRmatrix}{Mat\+Int}} linetopology, Doub force)
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_ae2307529a7cc931292042a7e8bc8696a}\label{classelastoplastic3D_ae2307529a7cc931292042a7e8bc8696a}} 
+void {\bfseries Sol\+Pt} (const std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ Doub $>$ $>$ $>$ \&allcoords, const \mbox{\hyperlink{classNRmatrix}{Mat\+Int}} \&meshtopology, const Int \&el, const \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ \&solG, const Doub \&xi, const Doub \&eta, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ \&xycoords, \mbox{\hyperlink{classNRmatrix}{Mat\+Doub}} \&sol)
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_a23ebe68c622dbdb606be241a778587c1}\label{classelastoplastic3D_a23ebe68c622dbdb606be241a778587c1}} 
+void {\bfseries Post\+Process} (std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ Doub $>$ $>$ $>$ allcoords, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ meshnodes, \mbox{\hyperlink{classNRmatrix}{Mat\+Int}} meshtopology, const \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ \&nodalsol, std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&solx, std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&soly)
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_a664716181a56663d00e850529ebe281a}\label{classelastoplastic3D_a664716181a56663d00e850529ebe281a}} 
+void {\bfseries Post\+Process} (std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ Doub $>$ $>$ $>$ allcoords, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ meshnodes, \mbox{\hyperlink{classNRmatrix}{Mat\+Int}} meshtopology, Int var, const \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ \&nodalsol, std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&sol)
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_a89a2c337bb558b8d558b747eed247dd1}\label{classelastoplastic3D_a89a2c337bb558b8d558b747eed247dd1}} 
+void {\bfseries Post\+Process\+Strain} (\mbox{\hyperlink{classmesh}{mesh}} $\ast$inmesh, \mbox{\hyperlink{classNRvector}{N\+Rvector}}$<$ \mbox{\hyperlink{classNRvector}{N\+Rvector}}$<$ \mbox{\hyperlink{classNRtensor}{N\+Rtensor}}$<$ Doub $>$$>$$>$ \&sol)
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_acd9c953dbcf1ce0d3e889058be6a5966}\label{classelastoplastic3D_acd9c953dbcf1ce0d3e889058be6a5966}} 
+void {\bfseries Post\+Process\+Integration\+Point\+Var} (std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ Doub $>$ $>$ $>$ allcoords, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ meshnodes, \mbox{\hyperlink{classNRmatrix}{Mat\+Int}} meshtopology, const \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ \&nodalsol, std\+::vector$<$ std\+::vector$<$ double $>$$>$ \&sol)
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_a8c99ccea2ae4bb6ec4256202cc0c0680}\label{classelastoplastic3D_a8c99ccea2ae4bb6ec4256202cc0c0680}} 
+void {\bfseries Set\+Random\+Field} (\mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ hhat)
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_a4776712f526619545aad47f71b9c7876}\label{classelastoplastic3D_a4776712f526619545aad47f71b9c7876}} 
+void {\bfseries Set\+Random\+Field\+Local} (\mbox{\hyperlink{classNRvector}{N\+Rvector}}$<$ \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ $>$ hhatvel)
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_a43e43dbf38b42a577aa997c65f70cfcf}\label{classelastoplastic3D_a43e43dbf38b42a577aa997c65f70cfcf}} 
+void {\bfseries Set\+Memory} (Int ngloblapoints, Int systemsize)
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_ade7101b9d07ffc37183ed9972d46e837}\label{classelastoplastic3D_ade7101b9d07ffc37183ed9972d46e837}} 
+void {\bfseries Update\+Displacement} (\mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ displace)
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_a3a281ab0925f3f1c027af2216d69b759}\label{classelastoplastic3D_a3a281ab0925f3f1c027af2216d69b759}} 
+void {\bfseries Update\+Displacement} (Vector\+Xd displace)
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_a2bbb4b07832cd6394b7ec8a571a64d73}\label{classelastoplastic3D_a2bbb4b07832cd6394b7ec8a571a64d73}} 
+void {\bfseries Update\+Plastic\+Strain} ()
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_aaee7a0af60a8cd4dd6254b32f5dff0ea}\label{classelastoplastic3D_aaee7a0af60a8cd4dd6254b32f5dff0ea}} 
+void {\bfseries Update\+Body\+Force} (\mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ newbodyforce)
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_a6dbd29e5ec0ba9d17e5b1ba9a3a3f824}\label{classelastoplastic3D_a6dbd29e5ec0ba9d17e5b1ba9a3a3f824}} 
+void {\bfseries Reset\+Plastic\+Strain} ()
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_aaf77705bd567553b210d9971d02e7b78}\label{classelastoplastic3D_aaf77705bd567553b210d9971d02e7b78}} 
+void {\bfseries Reset\+Displacement} ()
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_a279e8403d8a1140cf16f83afd6b67fd4}\label{classelastoplastic3D_a279e8403d8a1140cf16f83afd6b67fd4}} 
+void {\bfseries Reset\+Mat} ()
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_a03d05e8931cef92f9d2788be92048865}\label{classelastoplastic3D_a03d05e8931cef92f9d2788be92048865}} 
+void {\bfseries Reset\+Memory} ()
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_a78b0a89c1b793a13934a05256600b977}\label{classelastoplastic3D_a78b0a89c1b793a13934a05256600b977}} 
+\mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ {\bfseries Get\+Solution} ()
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_a41f980b1010d4e7f278c9ed59ace89ca}\label{classelastoplastic3D_a41f980b1010d4e7f278c9ed59ace89ca}} 
+void {\bfseries Compute\+Sol\+And\+D\+Sol} (\mbox{\hyperlink{classmesh}{mesh}} $\ast$inmesh, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ \&sol, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ \&dsol)
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_a9e08239d67c9dc73931ac699a94e26ca}\label{classelastoplastic3D_a9e08239d67c9dc73931ac699a94e26ca}} 
+void {\bfseries Compute\+Sol\+And\+D\+Sol} (\mbox{\hyperlink{classmesh}{mesh}} $\ast$inmesh, \mbox{\hyperlink{classNRvector}{N\+Rvector}}$<$ \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$$>$ \&sol, \mbox{\hyperlink{classNRvector}{N\+Rvector}}$<$ \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$$>$ \&dsol)
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_a808189241d4e486bef9442887d432dee}\label{classelastoplastic3D_a808189241d4e486bef9442887d432dee}} 
+void {\bfseries Compute\+Solution} (\mbox{\hyperlink{classmesh}{mesh}} $\ast$inmesh, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ elcoords, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ eldisplace, \mbox{\hyperlink{classNRvector}{N\+Rvector}}$<$ Doub $>$ ptsw, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ \&sol, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ \&dsol)
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_a61b4bd798dcb77decdd9356dce372287}\label{classelastoplastic3D_a61b4bd798dcb77decdd9356dce372287}} 
+void {\bfseries Reset\+Counter} ()
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_a7bfcde90a0480862a08f55f7004ffff3}\label{classelastoplastic3D_a7bfcde90a0480862a08f55f7004ffff3}} 
+void {\bfseries Set\+Mat\+Constants} (\mbox{\hyperlink{classNRvector}{N\+Rvector}}$<$ Doub $>$ \&consts)
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_a09f21e40358897d71de4dd0d13930194}\label{classelastoplastic3D_a09f21e40358897d71de4dd0d13930194}} 
+void {\bfseries Get\+Mat\+Constants} (\mbox{\hyperlink{classNRvector}{N\+Rvector}}$<$ Doub $>$ \&consts)
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_ab540832b74e29269290dfec59a859ffc}\label{classelastoplastic3D_ab540832b74e29269290dfec59a859ffc}} 
+virtual void {\bfseries Get\+Material\+Data} ()
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_ac1029cf1cb6a1e947b1d9245ea4870d5}\label{classelastoplastic3D_ac1029cf1cb6a1e947b1d9245ea4870d5}} 
+\mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ {\bfseries Get\+Body\+Force} ()
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_a00b9f698da0301373cf58af81db21ae5}\label{classelastoplastic3D_a00b9f698da0301373cf58af81db21ae5}} 
+virtual \mbox{\hyperlink{classNRvector}{N\+Rvector}}$<$ \mbox{\hyperlink{classNRtensor}{N\+Rtensor}}$<$ Doub $>$ $>$ {\bfseries Get\+Plastic\+Strain} ()
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_a75528be088ddd717ea0b69587b19361f}\label{classelastoplastic3D_a75528be088ddd717ea0b69587b19361f}} 
+Doub {\bfseries Compute\+Phi} (\mbox{\hyperlink{classNRtensor}{N\+Rtensor}}$<$ Doub $>$ eps)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_a6281034506c03e1758e8de59380c03b8}\label{classelastoplastic3D_a6281034506c03e1758e8de59380c03b8}} 
+\mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ {\bfseries f\+H\+H\+AT}
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_ab36b865cf9eae43f84ce1821b0775b4f}\label{classelastoplastic3D_ab36b865cf9eae43f84ce1821b0775b4f}} 
+\mbox{\hyperlink{classNRvector}{N\+Rvector}}$<$ \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ $>$ {\bfseries fhhatvel}
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_abbcb7c1fff262cc980178450fce73b74}\label{classelastoplastic3D_abbcb7c1fff262cc980178450fce73b74}} 
+YC {\bfseries f\+YC}
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_aa11cd5a4e09a1b1b236005087876fd39}\label{classelastoplastic3D_aa11cd5a4e09a1b1b236005087876fd39}} 
+\mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ {\bfseries fdisplace}
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_a2ee8add4397d97a7301ece3926519692}\label{classelastoplastic3D_a2ee8add4397d97a7301ece3926519692}} 
+\mbox{\hyperlink{classNRvector}{N\+Rvector}}$<$ \mbox{\hyperlink{classNRtensor}{N\+Rtensor}}$<$ Doub $>$ $>$ {\bfseries fepspvec}
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_ad85482f0b0cd8b998bc5712237916461}\label{classelastoplastic3D_ad85482f0b0cd8b998bc5712237916461}} 
+\mbox{\hyperlink{classNRvector}{N\+Rvector}}$<$ \mbox{\hyperlink{classNRtensor}{N\+Rtensor}}$<$ Doub $>$ $>$ {\bfseries fepspsolitern}
+\item 
+\mbox{\Hypertarget{classelastoplastic3D_ad9361ed7054a7c1c79f4db62570f69ea}\label{classelastoplastic3D_ad9361ed7054a7c1c79f4db62570f69ea}} 
+Int {\bfseries fglobalcounter}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/elastoplastic3\+D.\+h\item 
+src/elastoplastic3\+D.\+cpp\end{DoxyCompactItemize}

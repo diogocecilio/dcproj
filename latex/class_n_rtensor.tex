@@ -1,0 +1,574 @@
+\hypertarget{class_n_rtensor}{}\doxysection{N\+Rtensor$<$ T $>$ Class Template Reference}
+\label{class_n_rtensor}\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+
+
+{\ttfamily \#include $<$nr3.\+h$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \mbox{\hyperlink{class_n_rtensor_a4df27841757a32c2f5649da51d2cdd6f}{value\+\_\+type}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_n_rtensor_ad86e738d2ac539bb834a42bd2b2b411c}{N\+Rtensor}} ()
+\item 
+\mbox{\hyperlink{class_n_rtensor_a9e5edca5e4300422032d4e261cf46337}{N\+Rtensor}} (const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&a)
+\item 
+\mbox{\hyperlink{class_n_rtensor_aaec0288408b1451c3991e03b153c895f}{N\+Rtensor}} (const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $\ast$a)
+\item 
+\mbox{\hyperlink{class_n_rtensor_a9e46b71d50b887f248f8ed60fac0db15}{N\+Rtensor}} (const \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}} \&rhs)
+\item 
+\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}} \& \mbox{\hyperlink{class_n_rtensor_afab609c8d39ece029a8756c9dcdc0766}{operator=}} (const \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}} \&rhs)
+\item 
+\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}} \& \mbox{\hyperlink{class_n_rtensor_a923f733ae0faa4fad7507a5103d97dd0}{operator+}} (const \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}} \&rhs)
+\item 
+\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}} \& \mbox{\hyperlink{class_n_rtensor_a3affe981ccb7ffb0fd4b2d2b7c1096aa}{operator-\/}} (const \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}} \&rhs)
+\item 
+\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}} \& \mbox{\hyperlink{class_n_rtensor_aa1ae6fcfa94444d6af1af411926f045b}{operator$\ast$=}} (const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&multipl)
+\item 
+\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}} \& \mbox{\hyperlink{class_n_rtensor_a33d4abdd255d20f16a7671fb5853fafc}{operator+=}} (const \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}} \&rhs)
+\item 
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \& \mbox{\hyperlink{class_n_rtensor_a5f6d5f91c5da3155cd10a059eb1d15a0}{operator\mbox{[}$\,$\mbox{]}}} (const int i)
+\item 
+const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \& \mbox{\hyperlink{class_n_rtensor_a91fd80525e6eb6f527c9d5e07200af3a}{operator\mbox{[}$\,$\mbox{]}}} (const int i) const
+\item 
+void \mbox{\hyperlink{class_n_rtensor_a84cd510732ced69c49668e560fd2931c}{assign}} (int newn, const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&a)
+\item 
+void \mbox{\hyperlink{class_n_rtensor_ae291a67110aaf2087f749c55a68cf2e6}{Print}} ()
+\item 
+\mbox{\hyperlink{class_n_rtensor_ac506975f45b42e7bd1dfccdcf64130df}{$\sim$\+N\+Rtensor}} ()
+\item 
+bool \mbox{\hyperlink{class_n_rtensor_aadea40d448e655fce77360b8d3529dd1}{isfailed}} ()
+\item 
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \& \mbox{\hyperlink{class_n_rtensor_a64887251b8e3c54b0c50e2e344c07b40}{XX}} () const
+\item 
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \& \mbox{\hyperlink{class_n_rtensor_a560fcf790987022c2cbedd914c5477fa}{XY}} () const
+\item 
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \& \mbox{\hyperlink{class_n_rtensor_a482ae664946290ae389c4dd8b68545c9}{XZ}} () const
+\item 
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \& \mbox{\hyperlink{class_n_rtensor_afa52ce370cb7f961926a255984f129bf}{YY}} () const
+\item 
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \& \mbox{\hyperlink{class_n_rtensor_aa282aa68388c2dac363fe89006c40501}{YZ}} () const
+\item 
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \& \mbox{\hyperlink{class_n_rtensor_aa3374fcb1f67640bb60a637228cd6693}{ZZ}} () const
+\item 
+void \mbox{\hyperlink{class_n_rtensor_aa5a79ac387e30a47475a8d508fea8d81}{Multiply}} (const \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ tensor, \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&resp) const
+\item 
+void \mbox{\hyperlink{class_n_rtensor_a313019fe0cd81cbdee42ff3722b0a7a5}{Deviatoric\+Diagonal}} (\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&vec) const
+\item 
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \mbox{\hyperlink{class_n_rtensor_ad667921909ea75b0bd03d6c5c30a5c58}{J2}} () const
+\item 
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \mbox{\hyperlink{class_n_rtensor_a4c1106d7194b0279f1fecac547fc4c17}{I1}} () const
+\item 
+void \mbox{\hyperlink{class_n_rtensor_ab51356298422771da67589edd6da71f4}{From\+Tensor\+To\+N\+Rmatrix}} (\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&resp)
+\item 
+void \mbox{\hyperlink{class_n_rtensor_af8e9c7913a796faa404b0c67f4eda276}{From\+Tensor\+Voigt\+To\+Full\+Tensor}} (\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&full)
+\item 
+void \mbox{\hyperlink{class_n_rtensor_ad2a1225e064688797a69a987b3ef9b42}{From\+N\+Rmatrix\+To\+Tensor}} (\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&input, \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&resp)
+\item 
+void \mbox{\hyperlink{class_n_rtensor_ac399790f784a247f38bab6165911d4e2}{Eigen\+System}} (\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&eigenvalues, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&eigenvectors)
+\item 
+void \mbox{\hyperlink{class_n_rtensor_afd372a3ecc8cf54e152d80bf48cef076}{ComputeS}} (\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&out)
+\item 
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \mbox{\hyperlink{class_n_rtensor_ae650dc4fe752e0f4741b5b1dcfb17c31}{Norm}} ()
+\item 
+void \mbox{\hyperlink{class_n_rtensor_ace304c5472fe7cf292a52a1e9218e834}{Copy\+From\+N\+Rmatrix}} (\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ source)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_n_rtensor_ae6d55c4b5ad6b57c1446712680dc1995}{fail}}
+\item 
+int \mbox{\hyperlink{class_n_rtensor_aff53e3d12e309a6e0b2c9c16b7343428}{nn}}
+\item 
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $\ast$ \mbox{\hyperlink{class_n_rtensor_a1e8db7dbe5e95cd0580049119fe50bff}{v}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class N\+Rtensor$<$ T $>$}
+
+
+
+Definition at line 932 of file nr3.\+h.
+
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{class_n_rtensor_a4df27841757a32c2f5649da51d2cdd6f}\label{class_n_rtensor_a4df27841757a32c2f5649da51d2cdd6f}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!value\_type@{value\_type}}
+\index{value\_type@{value\_type}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{value\_type}{value\_type}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+typedef \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::\mbox{\hyperlink{class_n_rtensor_a4df27841757a32c2f5649da51d2cdd6f}{value\+\_\+type}}}
+
+
+
+Definition at line 949 of file nr3.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_n_rtensor_ad86e738d2ac539bb834a42bd2b2b411c}\label{class_n_rtensor_ad86e738d2ac539bb834a42bd2b2b411c}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!NRtensor@{NRtensor}}
+\index{NRtensor@{NRtensor}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{NRtensor()}{NRtensor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}}
+
+
+
+Definition at line 1037 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rtensor_a9e5edca5e4300422032d4e261cf46337}\label{class_n_rtensor_a9e5edca5e4300422032d4e261cf46337}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!NRtensor@{NRtensor}}
+\index{NRtensor@{NRtensor}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{NRtensor()}{NRtensor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&}]{a }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1046 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rtensor_aaec0288408b1451c3991e03b153c895f}\label{class_n_rtensor_aaec0288408b1451c3991e03b153c895f}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!NRtensor@{NRtensor}}
+\index{NRtensor@{NRtensor}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{NRtensor()}{NRtensor()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $\ast$}]{a }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1052 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rtensor_a9e46b71d50b887f248f8ed60fac0db15}\label{class_n_rtensor_a9e46b71d50b887f248f8ed60fac0db15}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!NRtensor@{NRtensor}}
+\index{NRtensor@{NRtensor}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{NRtensor()}{NRtensor()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{rhs }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_n_rtensor_ac506975f45b42e7bd1dfccdcf64130df}\label{class_n_rtensor_ac506975f45b42e7bd1dfccdcf64130df}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!````~NRtensor@{$\sim$NRtensor}}
+\index{````~NRtensor@{$\sim$NRtensor}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$NRtensor()}{~NRtensor()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::$\sim$\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}}
+
+
+
+Definition at line 1169 of file nr3.\+h.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_n_rtensor_a84cd510732ced69c49668e560fd2931c}\label{class_n_rtensor_a84cd510732ced69c49668e560fd2931c}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!assign@{assign}}
+\index{assign@{assign}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{assign()}{assign()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::assign (\begin{DoxyParamCaption}\item[{int}]{newn,  }\item[{const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&}]{a }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1158 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rtensor_afd372a3ecc8cf54e152d80bf48cef076}\label{class_n_rtensor_afd372a3ecc8cf54e152d80bf48cef076}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!ComputeS@{ComputeS}}
+\index{ComputeS@{ComputeS}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{ComputeS()}{ComputeS()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::ComputeS (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{out }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1277 of file nr3.\+h.
+
+
+
+Referenced by druckerprager\+::avec(), vonmises\+::closestpointproj(), and vonmises\+::dadsig().
+
+\mbox{\Hypertarget{class_n_rtensor_ace304c5472fe7cf292a52a1e9218e834}\label{class_n_rtensor_ace304c5472fe7cf292a52a1e9218e834}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!CopyFromNRmatrix@{CopyFromNRmatrix}}
+\index{CopyFromNRmatrix@{CopyFromNRmatrix}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{CopyFromNRmatrix()}{CopyFromNRmatrix()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::Copy\+From\+N\+Rmatrix (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$}]{source }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1023 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rtensor_a313019fe0cd81cbdee42ff3722b0a7a5}\label{class_n_rtensor_a313019fe0cd81cbdee42ff3722b0a7a5}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!DeviatoricDiagonal@{DeviatoricDiagonal}}
+\index{DeviatoricDiagonal@{DeviatoricDiagonal}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{DeviatoricDiagonal()}{DeviatoricDiagonal()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::Deviatoric\+Diagonal (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{vec }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 1189 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rtensor_ac399790f784a247f38bab6165911d4e2}\label{class_n_rtensor_ac399790f784a247f38bab6165911d4e2}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!EigenSystem@{EigenSystem}}
+\index{EigenSystem@{EigenSystem}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{EigenSystem()}{EigenSystem()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::Eigen\+System (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{eigenvalues,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{eigenvectors }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1582 of file nr3.\+h.
+
+
+
+Referenced by vonmises\+::closestpointproj(), and druckerprager\+::closestpointproj().
+
+\mbox{\Hypertarget{class_n_rtensor_ad2a1225e064688797a69a987b3ef9b42}\label{class_n_rtensor_ad2a1225e064688797a69a987b3ef9b42}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!FromNRmatrixToTensor@{FromNRmatrixToTensor}}
+\index{FromNRmatrixToTensor@{FromNRmatrixToTensor}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{FromNRmatrixToTensor()}{FromNRmatrixToTensor()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::From\+N\+Rmatrix\+To\+Tensor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{input,  }\item[{\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{resp }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1248 of file nr3.\+h.
+
+
+
+Referenced by vonmises\+::closestpointproj(), druckerprager\+::closestpointproj(), druckerprager\+::\+Compute\+Q(), vonmises\+::phi(), and druckerprager\+::phi().
+
+\mbox{\Hypertarget{class_n_rtensor_ab51356298422771da67589edd6da71f4}\label{class_n_rtensor_ab51356298422771da67589edd6da71f4}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!FromTensorToNRmatrix@{FromTensorToNRmatrix}}
+\index{FromTensorToNRmatrix@{FromTensorToNRmatrix}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{FromTensorToNRmatrix()}{FromTensorToNRmatrix()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::From\+Tensor\+To\+N\+Rmatrix (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{resp }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1234 of file nr3.\+h.
+
+
+
+Referenced by druckerprager\+::avec(), vonmises\+::closestpointproj(), druckerprager\+::closestpointproj(), vonmises\+::dadsig(), vonmises\+::phi(), and druckerprager\+::phi().
+
+\mbox{\Hypertarget{class_n_rtensor_af8e9c7913a796faa404b0c67f4eda276}\label{class_n_rtensor_af8e9c7913a796faa404b0c67f4eda276}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!FromTensorVoigtToFullTensor@{FromTensorVoigtToFullTensor}}
+\index{FromTensorVoigtToFullTensor@{FromTensorVoigtToFullTensor}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{FromTensorVoigtToFullTensor()}{FromTensorVoigtToFullTensor()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::From\+Tensor\+Voigt\+To\+Full\+Tensor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{full }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1259 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rtensor_a4c1106d7194b0279f1fecac547fc4c17}\label{class_n_rtensor_a4c1106d7194b0279f1fecac547fc4c17}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!I1@{I1}}
+\index{I1@{I1}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{I1()}{I1()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::I1}
+
+
+
+Definition at line 1213 of file nr3.\+h.
+
+
+
+Referenced by druckerprager\+::avec(), vonmises\+::closestpointproj(), druckerprager\+::closestpointproj(), vonmises\+::dadsig(), vonmises\+::phi(), and druckerprager\+::phi().
+
+\mbox{\Hypertarget{class_n_rtensor_aadea40d448e655fce77360b8d3529dd1}\label{class_n_rtensor_aadea40d448e655fce77360b8d3529dd1}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!isfailed@{isfailed}}
+\index{isfailed@{isfailed}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{isfailed()}{isfailed()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::isfailed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 955 of file nr3.\+h.
+
+
+
+Referenced by druckerprager\+::closestpointproj().
+
+\mbox{\Hypertarget{class_n_rtensor_ad667921909ea75b0bd03d6c5c30a5c58}\label{class_n_rtensor_ad667921909ea75b0bd03d6c5c30a5c58}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!J2@{J2}}
+\index{J2@{J2}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{J2()}{J2()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::J2}
+
+
+
+Definition at line 1197 of file nr3.\+h.
+
+
+
+Referenced by vonmises\+::closestpointproj(), druckerprager\+::closestpointproj(), vonmises\+::dadsig(), vonmises\+::phi(), and druckerprager\+::phi().
+
+\mbox{\Hypertarget{class_n_rtensor_aa5a79ac387e30a47475a8d508fea8d81}\label{class_n_rtensor_aa5a79ac387e30a47475a8d508fea8d81}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!Multiply@{Multiply}}
+\index{Multiply@{Multiply}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Multiply()}{Multiply()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::Multiply (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$}]{tensor,  }\item[{\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{resp }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line 1218 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rtensor_ae650dc4fe752e0f4741b5b1dcfb17c31}\label{class_n_rtensor_ae650dc4fe752e0f4741b5b1dcfb17c31}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!Norm@{Norm}}
+\index{Norm@{Norm}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Norm()}{Norm()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::Norm (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 1004 of file nr3.\+h.
+
+
+
+Referenced by vonmises\+::closestpointproj(), and druckerprager\+::\+Compute\+Q().
+
+\mbox{\Hypertarget{class_n_rtensor_aa1ae6fcfa94444d6af1af411926f045b}\label{class_n_rtensor_aa1ae6fcfa94444d6af1af411926f045b}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$=()}{operator*=()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \& \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::operator$\ast$= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&}]{multipl }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1118 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rtensor_a923f733ae0faa4fad7507a5103d97dd0}\label{class_n_rtensor_a923f733ae0faa4fad7507a5103d97dd0}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!operator+@{operator+}}
+\index{operator+@{operator+}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator+()}{operator+()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \& \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::operator+ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{rhs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1079 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rtensor_a33d4abdd255d20f16a7671fb5853fafc}\label{class_n_rtensor_a33d4abdd255d20f16a7671fb5853fafc}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \& \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::operator+= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{rhs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1126 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rtensor_a3affe981ccb7ffb0fd4b2d2b7c1096aa}\label{class_n_rtensor_a3affe981ccb7ffb0fd4b2d2b7c1096aa}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/()}{operator-()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \& \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::operator-\/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{rhs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1098 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rtensor_afab609c8d39ece029a8756c9dcdc0766}\label{class_n_rtensor_afab609c8d39ece029a8756c9dcdc0766}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \& \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{rhs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1065 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rtensor_a5f6d5f91c5da3155cd10a059eb1d15a0}\label{class_n_rtensor_a5f6d5f91c5da3155cd10a059eb1d15a0}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \& \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const int}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 1133 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rtensor_a91fd80525e6eb6f527c9d5e07200af3a}\label{class_n_rtensor_a91fd80525e6eb6f527c9d5e07200af3a}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \& \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const int}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 1145 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rtensor_ae291a67110aaf2087f749c55a68cf2e6}\label{class_n_rtensor_ae291a67110aaf2087f749c55a68cf2e6}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!Print@{Print}}
+\index{Print@{Print}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Print()}{Print()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::Print}
+
+
+
+Definition at line 1176 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rtensor_a64887251b8e3c54b0c50e2e344c07b40}\label{class_n_rtensor_a64887251b8e3c54b0c50e2e344c07b40}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!XX@{XX}}
+\index{XX@{XX}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{XX()}{XX()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}}\& \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::XX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 959 of file nr3.\+h.
+
+
+
+Referenced by N\+Rtensor$<$ Doub $>$\+::\+Compute\+S(), V\+T\+K\+Graph\+Mesh\+::\+Draw\+Solution(), N\+Rtensor$<$ Doub $>$\+::\+From\+N\+Rmatrix\+To\+Tensor(), and N\+Rtensor$<$ Doub $>$\+::\+Multiply().
+
+\mbox{\Hypertarget{class_n_rtensor_a560fcf790987022c2cbedd914c5477fa}\label{class_n_rtensor_a560fcf790987022c2cbedd914c5477fa}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!XY@{XY}}
+\index{XY@{XY}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{XY()}{XY()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}}\& \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::XY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 963 of file nr3.\+h.
+
+
+
+Referenced by N\+Rtensor$<$ Doub $>$\+::\+Compute\+S(), V\+T\+K\+Graph\+Mesh\+::\+Draw\+Solution(), N\+Rtensor$<$ Doub $>$\+::\+From\+N\+Rmatrix\+To\+Tensor(), and N\+Rtensor$<$ Doub $>$\+::\+Multiply().
+
+\mbox{\Hypertarget{class_n_rtensor_a482ae664946290ae389c4dd8b68545c9}\label{class_n_rtensor_a482ae664946290ae389c4dd8b68545c9}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!XZ@{XZ}}
+\index{XZ@{XZ}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{XZ()}{XZ()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}}\& \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::XZ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 967 of file nr3.\+h.
+
+
+
+Referenced by N\+Rtensor$<$ Doub $>$\+::\+Compute\+S(), N\+Rtensor$<$ Doub $>$\+::\+From\+N\+Rmatrix\+To\+Tensor(), and N\+Rtensor$<$ Doub $>$\+::\+Multiply().
+
+\mbox{\Hypertarget{class_n_rtensor_afa52ce370cb7f961926a255984f129bf}\label{class_n_rtensor_afa52ce370cb7f961926a255984f129bf}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!YY@{YY}}
+\index{YY@{YY}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{YY()}{YY()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}}\& \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::YY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 971 of file nr3.\+h.
+
+
+
+Referenced by N\+Rtensor$<$ Doub $>$\+::\+Compute\+S(), V\+T\+K\+Graph\+Mesh\+::\+Draw\+Solution(), N\+Rtensor$<$ Doub $>$\+::\+From\+N\+Rmatrix\+To\+Tensor(), and N\+Rtensor$<$ Doub $>$\+::\+Multiply().
+
+\mbox{\Hypertarget{class_n_rtensor_aa282aa68388c2dac363fe89006c40501}\label{class_n_rtensor_aa282aa68388c2dac363fe89006c40501}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!YZ@{YZ}}
+\index{YZ@{YZ}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{YZ()}{YZ()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}}\& \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::YZ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 975 of file nr3.\+h.
+
+
+
+Referenced by N\+Rtensor$<$ Doub $>$\+::\+Compute\+S(), N\+Rtensor$<$ Doub $>$\+::\+From\+N\+Rmatrix\+To\+Tensor(), and N\+Rtensor$<$ Doub $>$\+::\+Multiply().
+
+\mbox{\Hypertarget{class_n_rtensor_aa3374fcb1f67640bb60a637228cd6693}\label{class_n_rtensor_aa3374fcb1f67640bb60a637228cd6693}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!ZZ@{ZZ}}
+\index{ZZ@{ZZ}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{ZZ()}{ZZ()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}}\& \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::ZZ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 979 of file nr3.\+h.
+
+
+
+Referenced by N\+Rtensor$<$ Doub $>$\+::\+Compute\+S(), N\+Rtensor$<$ Doub $>$\+::\+From\+N\+Rmatrix\+To\+Tensor(), and N\+Rtensor$<$ Doub $>$\+::\+Multiply().
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_n_rtensor_ae6d55c4b5ad6b57c1446712680dc1995}\label{class_n_rtensor_ae6d55c4b5ad6b57c1446712680dc1995}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!fail@{fail}}
+\index{fail@{fail}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{fail}{fail}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::fail\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 933 of file nr3.\+h.
+
+
+
+Referenced by N\+Rtensor$<$ Doub $>$\+::isfailed().
+
+\mbox{\Hypertarget{class_n_rtensor_aff53e3d12e309a6e0b2c9c16b7343428}\label{class_n_rtensor_aff53e3d12e309a6e0b2c9c16b7343428}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!nn@{nn}}
+\index{nn@{nn}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{nn}{nn}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+int \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::nn\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 936 of file nr3.\+h.
+
+
+
+Referenced by N\+Rtensor$<$ Doub $>$\+::\+N\+Rtensor(), N\+Rtensor$<$ Doub $>$\+::operator+(), and N\+Rtensor$<$ Doub $>$\+::operator-\/().
+
+\mbox{\Hypertarget{class_n_rtensor_a1e8db7dbe5e95cd0580049119fe50bff}\label{class_n_rtensor_a1e8db7dbe5e95cd0580049119fe50bff}} 
+\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}!v@{v}}
+\index{v@{v}!NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{v}{v}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}}$\ast$ \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::v\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 937 of file nr3.\+h.
+
+
+
+Referenced by N\+Rtensor$<$ Doub $>$\+::\+Multiply(), N\+Rtensor$<$ Doub $>$\+::\+Norm(), N\+Rtensor$<$ Doub $>$\+::\+N\+Rtensor(), N\+Rtensor$<$ Doub $>$\+::\+X\+X(), N\+Rtensor$<$ Doub $>$\+::\+X\+Y(), N\+Rtensor$<$ Doub $>$\+::\+X\+Z(), N\+Rtensor$<$ Doub $>$\+::\+Y\+Y(), N\+Rtensor$<$ Doub $>$\+::\+Y\+Z(), and N\+Rtensor$<$ Doub $>$\+::\+Z\+Z().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{nr3_8h}{nr3.\+h}}\end{DoxyCompactItemize}

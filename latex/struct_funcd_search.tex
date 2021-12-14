@@ -1,0 +1,188 @@
+\hypertarget{struct_funcd_search}{}\doxysection{Funcd\+Search Struct Reference}
+\label{struct_funcd_search}\index{FuncdSearch@{FuncdSearch}}
+
+
+{\ttfamily \#include $<$mesh.\+h$>$}
+
+
+
+Collaboration diagram for Funcd\+Search\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct_funcd_search__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{struct_funcd_search_a94962f18e81a42e210d7b51678225e04}{operator()}} (\mbox{\hyperlink{nr3_8h_a03f0d3bb248e15df9d42cc3c80203ea0}{Vec\+Doub\+\_\+I}} \&x)
+\item 
+void \mbox{\hyperlink{struct_funcd_search_ab0bed207750e4065dcd535636547332b}{set}} (\mbox{\hyperlink{nr3_8h_a97a3701e8aa6ca145af8d5c7c5c50d87}{Vec\+Doub}} tosearch, \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} elcoordsout)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{nr3_8h_a97a3701e8aa6ca145af8d5c7c5c50d87}{Vec\+Doub}} \mbox{\hyperlink{struct_funcd_search_ab6d54d65736fc6b5f1df7121df46a327}{co}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \mbox{\hyperlink{struct_funcd_search_a10285b24e82fd53afd925f92e862e766}{psis}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \mbox{\hyperlink{struct_funcd_search_ab6d8eb6583857e61390ebc484ed4b2b2}{Grad\+Psi}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \mbox{\hyperlink{struct_funcd_search_afe3543455c1630c9a8116a3ad2a54d67}{elcoords}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \mbox{\hyperlink{struct_funcd_search_a0fdbcf98a548c699a5529fbba18ae2fa}{psist}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \mbox{\hyperlink{struct_funcd_search_a7e96bd6bc5135a157e54ec8a5ee79ed4}{xycoords}}
+\item 
+\mbox{\hyperlink{classshapequad}{shapequad}} \mbox{\hyperlink{struct_funcd_search_a606b5dac18d9dec90463ff296aca4b20}{shape}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 81 of file mesh.\+h.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_funcd_search_a94962f18e81a42e210d7b51678225e04}\label{struct_funcd_search_a94962f18e81a42e210d7b51678225e04}} 
+\index{FuncdSearch@{FuncdSearch}!operator()@{operator()}}
+\index{operator()@{operator()}!FuncdSearch@{FuncdSearch}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} Funcd\+Search\+::operator() (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_a03f0d3bb248e15df9d42cc3c80203ea0}{Vec\+Doub\+\_\+I}} \&}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 85 of file mesh.\+h.
+
+
+
+References co, elcoords, Grad\+Psi, N\+Rmatrix$<$ T $>$\+::\+Mult(), psis, psist, shape, shapequad\+::shapes(), N\+Rmatrix$<$ T $>$\+::\+Transpose(), and xycoords.
+
+\mbox{\Hypertarget{struct_funcd_search_ab0bed207750e4065dcd535636547332b}\label{struct_funcd_search_ab0bed207750e4065dcd535636547332b}} 
+\index{FuncdSearch@{FuncdSearch}!set@{set}}
+\index{set@{set}!FuncdSearch@{FuncdSearch}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily void Funcd\+Search\+::set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_a97a3701e8aa6ca145af8d5c7c5c50d87}{Vec\+Doub}}}]{tosearch,  }\item[{\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}}}]{elcoordsout }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 98 of file mesh.\+h.
+
+
+
+References co, and elcoords.
+
+
+
+Referenced by mesh\+::\+Find\+Solution().
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_funcd_search_ab6d54d65736fc6b5f1df7121df46a327}\label{struct_funcd_search_ab6d54d65736fc6b5f1df7121df46a327}} 
+\index{FuncdSearch@{FuncdSearch}!co@{co}}
+\index{co@{co}!FuncdSearch@{FuncdSearch}}
+\doxysubsubsection{\texorpdfstring{co}{co}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_a97a3701e8aa6ca145af8d5c7c5c50d87}{Vec\+Doub}} Funcd\+Search\+::co}
+
+
+
+Definition at line 82 of file mesh.\+h.
+
+
+
+Referenced by operator()(), and set().
+
+\mbox{\Hypertarget{struct_funcd_search_afe3543455c1630c9a8116a3ad2a54d67}\label{struct_funcd_search_afe3543455c1630c9a8116a3ad2a54d67}} 
+\index{FuncdSearch@{FuncdSearch}!elcoords@{elcoords}}
+\index{elcoords@{elcoords}!FuncdSearch@{FuncdSearch}}
+\doxysubsubsection{\texorpdfstring{elcoords}{elcoords}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} Funcd\+Search\+::elcoords}
+
+
+
+Definition at line 83 of file mesh.\+h.
+
+
+
+Referenced by operator()(), and set().
+
+\mbox{\Hypertarget{struct_funcd_search_ab6d8eb6583857e61390ebc484ed4b2b2}\label{struct_funcd_search_ab6d8eb6583857e61390ebc484ed4b2b2}} 
+\index{FuncdSearch@{FuncdSearch}!GradPsi@{GradPsi}}
+\index{GradPsi@{GradPsi}!FuncdSearch@{FuncdSearch}}
+\doxysubsubsection{\texorpdfstring{GradPsi}{GradPsi}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} Funcd\+Search\+::\+Grad\+Psi}
+
+
+
+Definition at line 83 of file mesh.\+h.
+
+
+
+Referenced by operator()().
+
+\mbox{\Hypertarget{struct_funcd_search_a10285b24e82fd53afd925f92e862e766}\label{struct_funcd_search_a10285b24e82fd53afd925f92e862e766}} 
+\index{FuncdSearch@{FuncdSearch}!psis@{psis}}
+\index{psis@{psis}!FuncdSearch@{FuncdSearch}}
+\doxysubsubsection{\texorpdfstring{psis}{psis}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} Funcd\+Search\+::psis}
+
+
+
+Definition at line 83 of file mesh.\+h.
+
+
+
+Referenced by operator()().
+
+\mbox{\Hypertarget{struct_funcd_search_a0fdbcf98a548c699a5529fbba18ae2fa}\label{struct_funcd_search_a0fdbcf98a548c699a5529fbba18ae2fa}} 
+\index{FuncdSearch@{FuncdSearch}!psist@{psist}}
+\index{psist@{psist}!FuncdSearch@{FuncdSearch}}
+\doxysubsubsection{\texorpdfstring{psist}{psist}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} Funcd\+Search\+::psist}
+
+
+
+Definition at line 83 of file mesh.\+h.
+
+
+
+Referenced by operator()().
+
+\mbox{\Hypertarget{struct_funcd_search_a606b5dac18d9dec90463ff296aca4b20}\label{struct_funcd_search_a606b5dac18d9dec90463ff296aca4b20}} 
+\index{FuncdSearch@{FuncdSearch}!shape@{shape}}
+\index{shape@{shape}!FuncdSearch@{FuncdSearch}}
+\doxysubsubsection{\texorpdfstring{shape}{shape}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classshapequad}{shapequad}} Funcd\+Search\+::shape}
+
+
+
+Definition at line 84 of file mesh.\+h.
+
+
+
+Referenced by operator()().
+
+\mbox{\Hypertarget{struct_funcd_search_a7e96bd6bc5135a157e54ec8a5ee79ed4}\label{struct_funcd_search_a7e96bd6bc5135a157e54ec8a5ee79ed4}} 
+\index{FuncdSearch@{FuncdSearch}!xycoords@{xycoords}}
+\index{xycoords@{xycoords}!FuncdSearch@{FuncdSearch}}
+\doxysubsubsection{\texorpdfstring{xycoords}{xycoords}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} Funcd\+Search\+::xycoords}
+
+
+
+Definition at line 83 of file mesh.\+h.
+
+
+
+Referenced by operator()().
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{mesh_8h}{mesh.\+h}}\end{DoxyCompactItemize}

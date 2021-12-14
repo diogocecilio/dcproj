@@ -1,0 +1,106 @@
+\hypertarget{classNRtensor}{}\doxysection{N\+Rtensor$<$ T $>$ Class Template Reference}
+\label{classNRtensor}\index{NRtensor$<$ T $>$@{NRtensor$<$ T $>$}}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classNRtensor_a4df27841757a32c2f5649da51d2cdd6f}\label{classNRtensor_a4df27841757a32c2f5649da51d2cdd6f}} 
+typedef T {\bfseries value\+\_\+type}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classNRtensor_a9e5edca5e4300422032d4e261cf46337}\label{classNRtensor_a9e5edca5e4300422032d4e261cf46337}} 
+{\bfseries N\+Rtensor} (const T \&a)
+\item 
+\mbox{\Hypertarget{classNRtensor_aaec0288408b1451c3991e03b153c895f}\label{classNRtensor_aaec0288408b1451c3991e03b153c895f}} 
+{\bfseries N\+Rtensor} (const T $\ast$a)
+\item 
+\mbox{\Hypertarget{classNRtensor_a9e46b71d50b887f248f8ed60fac0db15}\label{classNRtensor_a9e46b71d50b887f248f8ed60fac0db15}} 
+{\bfseries N\+Rtensor} (const \mbox{\hyperlink{classNRtensor}{N\+Rtensor}} \&rhs)
+\item 
+\mbox{\Hypertarget{classNRtensor_afab609c8d39ece029a8756c9dcdc0766}\label{classNRtensor_afab609c8d39ece029a8756c9dcdc0766}} 
+\mbox{\hyperlink{classNRtensor}{N\+Rtensor}} \& {\bfseries operator=} (const \mbox{\hyperlink{classNRtensor}{N\+Rtensor}} \&rhs)
+\item 
+\mbox{\Hypertarget{classNRtensor_a923f733ae0faa4fad7507a5103d97dd0}\label{classNRtensor_a923f733ae0faa4fad7507a5103d97dd0}} 
+\mbox{\hyperlink{classNRtensor}{N\+Rtensor}} \& {\bfseries operator+} (const \mbox{\hyperlink{classNRtensor}{N\+Rtensor}} \&rhs)
+\item 
+\mbox{\Hypertarget{classNRtensor_a3affe981ccb7ffb0fd4b2d2b7c1096aa}\label{classNRtensor_a3affe981ccb7ffb0fd4b2d2b7c1096aa}} 
+\mbox{\hyperlink{classNRtensor}{N\+Rtensor}} \& {\bfseries operator-\/} (const \mbox{\hyperlink{classNRtensor}{N\+Rtensor}} \&rhs)
+\item 
+\mbox{\Hypertarget{classNRtensor_aa1ae6fcfa94444d6af1af411926f045b}\label{classNRtensor_aa1ae6fcfa94444d6af1af411926f045b}} 
+\mbox{\hyperlink{classNRtensor}{N\+Rtensor}} \& {\bfseries operator$\ast$=} (const T \&multipl)
+\item 
+\mbox{\Hypertarget{classNRtensor_a33d4abdd255d20f16a7671fb5853fafc}\label{classNRtensor_a33d4abdd255d20f16a7671fb5853fafc}} 
+\mbox{\hyperlink{classNRtensor}{N\+Rtensor}} \& {\bfseries operator+=} (const \mbox{\hyperlink{classNRtensor}{N\+Rtensor}} \&rhs)
+\item 
+\mbox{\Hypertarget{classNRtensor_a5f6d5f91c5da3155cd10a059eb1d15a0}\label{classNRtensor_a5f6d5f91c5da3155cd10a059eb1d15a0}} 
+T \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (const int i)
+\item 
+\mbox{\Hypertarget{classNRtensor_a91fd80525e6eb6f527c9d5e07200af3a}\label{classNRtensor_a91fd80525e6eb6f527c9d5e07200af3a}} 
+const T \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (const int i) const
+\item 
+\mbox{\Hypertarget{classNRtensor_a84cd510732ced69c49668e560fd2931c}\label{classNRtensor_a84cd510732ced69c49668e560fd2931c}} 
+void {\bfseries assign} (int newn, const T \&a)
+\item 
+\mbox{\Hypertarget{classNRtensor_ae291a67110aaf2087f749c55a68cf2e6}\label{classNRtensor_ae291a67110aaf2087f749c55a68cf2e6}} 
+void {\bfseries Print} ()
+\item 
+\mbox{\Hypertarget{classNRtensor_aadea40d448e655fce77360b8d3529dd1}\label{classNRtensor_aadea40d448e655fce77360b8d3529dd1}} 
+bool {\bfseries isfailed} ()
+\item 
+\mbox{\Hypertarget{classNRtensor_a64887251b8e3c54b0c50e2e344c07b40}\label{classNRtensor_a64887251b8e3c54b0c50e2e344c07b40}} 
+T \& {\bfseries XX} () const
+\item 
+\mbox{\Hypertarget{classNRtensor_a560fcf790987022c2cbedd914c5477fa}\label{classNRtensor_a560fcf790987022c2cbedd914c5477fa}} 
+T \& {\bfseries XY} () const
+\item 
+\mbox{\Hypertarget{classNRtensor_a482ae664946290ae389c4dd8b68545c9}\label{classNRtensor_a482ae664946290ae389c4dd8b68545c9}} 
+T \& {\bfseries XZ} () const
+\item 
+\mbox{\Hypertarget{classNRtensor_afa52ce370cb7f961926a255984f129bf}\label{classNRtensor_afa52ce370cb7f961926a255984f129bf}} 
+T \& {\bfseries YY} () const
+\item 
+\mbox{\Hypertarget{classNRtensor_aa282aa68388c2dac363fe89006c40501}\label{classNRtensor_aa282aa68388c2dac363fe89006c40501}} 
+T \& {\bfseries YZ} () const
+\item 
+\mbox{\Hypertarget{classNRtensor_aa3374fcb1f67640bb60a637228cd6693}\label{classNRtensor_aa3374fcb1f67640bb60a637228cd6693}} 
+T \& {\bfseries ZZ} () const
+\item 
+\mbox{\Hypertarget{classNRtensor_aa5a79ac387e30a47475a8d508fea8d81}\label{classNRtensor_aa5a79ac387e30a47475a8d508fea8d81}} 
+void {\bfseries Multiply} (const \mbox{\hyperlink{classNRtensor}{N\+Rtensor}}$<$ T $>$ tensor, \mbox{\hyperlink{classNRtensor}{N\+Rtensor}}$<$ T $>$ \&resp) const
+\item 
+\mbox{\Hypertarget{classNRtensor_a313019fe0cd81cbdee42ff3722b0a7a5}\label{classNRtensor_a313019fe0cd81cbdee42ff3722b0a7a5}} 
+void {\bfseries Deviatoric\+Diagonal} (\mbox{\hyperlink{classNRvector}{N\+Rvector}}$<$ T $>$ \&vec) const
+\item 
+\mbox{\Hypertarget{classNRtensor_ad667921909ea75b0bd03d6c5c30a5c58}\label{classNRtensor_ad667921909ea75b0bd03d6c5c30a5c58}} 
+T {\bfseries J2} () const
+\item 
+\mbox{\Hypertarget{classNRtensor_a4c1106d7194b0279f1fecac547fc4c17}\label{classNRtensor_a4c1106d7194b0279f1fecac547fc4c17}} 
+T {\bfseries I1} () const
+\item 
+\mbox{\Hypertarget{classNRtensor_ab51356298422771da67589edd6da71f4}\label{classNRtensor_ab51356298422771da67589edd6da71f4}} 
+void {\bfseries From\+Tensor\+To\+N\+Rmatrix} (\mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ T $>$ \&resp)
+\item 
+\mbox{\Hypertarget{classNRtensor_af8e9c7913a796faa404b0c67f4eda276}\label{classNRtensor_af8e9c7913a796faa404b0c67f4eda276}} 
+void {\bfseries From\+Tensor\+Voigt\+To\+Full\+Tensor} (\mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ T $>$ \&full)
+\item 
+\mbox{\Hypertarget{classNRtensor_ad2a1225e064688797a69a987b3ef9b42}\label{classNRtensor_ad2a1225e064688797a69a987b3ef9b42}} 
+void {\bfseries From\+N\+Rmatrix\+To\+Tensor} (\mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ T $>$ \&input, \mbox{\hyperlink{classNRtensor}{N\+Rtensor}}$<$ T $>$ \&resp)
+\item 
+\mbox{\Hypertarget{classNRtensor_ac399790f784a247f38bab6165911d4e2}\label{classNRtensor_ac399790f784a247f38bab6165911d4e2}} 
+void {\bfseries Eigen\+System} (\mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ T $>$ \&eigenvalues, \mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ T $>$ \&eigenvectors)
+\item 
+\mbox{\Hypertarget{classNRtensor_afd372a3ecc8cf54e152d80bf48cef076}\label{classNRtensor_afd372a3ecc8cf54e152d80bf48cef076}} 
+void {\bfseries ComputeS} (\mbox{\hyperlink{classNRtensor}{N\+Rtensor}}$<$ T $>$ \&out)
+\item 
+\mbox{\Hypertarget{classNRtensor_ae650dc4fe752e0f4741b5b1dcfb17c31}\label{classNRtensor_ae650dc4fe752e0f4741b5b1dcfb17c31}} 
+T {\bfseries Norm} ()
+\item 
+\mbox{\Hypertarget{classNRtensor_ace304c5472fe7cf292a52a1e9218e834}\label{classNRtensor_ace304c5472fe7cf292a52a1e9218e834}} 
+void {\bfseries Copy\+From\+N\+Rmatrix} (\mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ T $>$ source)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/nr3.\+h\end{DoxyCompactItemize}

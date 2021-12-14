@@ -1189,14 +1189,14 @@ int main(int argc, char *argv[])
 {
 
    // beam3dtools beam0bj = beam3dtools();
-  //  beam0bj.SolveElasticBeam();
+   // beam0bj.SolveElasticBeam();
     //beam0bj.IterativeProcess();
 
     //beam0bj.SolveElasticCube();
     //pressurizedhole hole0bj = pressurizedhole();
     //hole0bj.SolveElasticHole();
    //hole0bj.IterativeProcess();
-   // return 0;
+  //  return 0;
 
 #ifdef __unix__                    /* __unix__ is usually defined by compilers targeting Unix systems */
     //leakcraw();
@@ -1207,13 +1207,10 @@ int main(int argc, char *argv[])
     setNbThreads(1);
     if (argc > 3) {
         mainlinux(atoi(argv[1]),atoi(argv[2]),atoi(argv[3]));
-
-        
     }
     else
     {
         mainlinux(-1,-1,-1);
-        
         //mainlinux2(-1,-1,-1);
     }
 

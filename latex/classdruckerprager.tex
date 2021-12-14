@@ -1,0 +1,875 @@
+\hypertarget{classdruckerprager}{}\doxysection{druckerprager Class Reference}
+\label{classdruckerprager}\index{druckerprager@{druckerprager}}
+
+
+{\ttfamily \#include $<$druckerprager.\+h$>$}
+
+
+
+Inheritance diagram for druckerprager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{classdruckerprager__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdruckerprager_a8fdd27658c013ce9ccf9f8a3340cdd45}{druckerprager}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classdruckerprager_aef42fd7e4cdf4fe12cedeece8bd2a0ae}{druckerprager}} (\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} young, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} nu, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} coesion, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} frictionangle)
+\begin{DoxyCompactList}\small\item\em Class constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classdruckerprager_a75ec775d53c368ac6b6397c6585d0ca4}{$\sim$druckerprager}} ()
+\begin{DoxyCompactList}\small\item\em Default destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classdruckerprager_a2c86282a56bd5d97305f159400961f36}{closestpointproj}} (\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ epst, \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ epsp, \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&projstress, \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&projstrain, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&Dep, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&projgamma)
+\begin{DoxyCompactList}\small\item\em Implements the elastoplastic decomposition whit the Closest Point Projection Method and computes the tangent operator. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classdruckerprager_aebe8a9b027ac8cae93c0a5439fda54c7}{yield}} (\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} xi, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} rho)
+\begin{DoxyCompactList}\small\item\em Compute the yield function. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{classdruckerprager_afb80a01731db1fa0245aa760500814c5}{Get\+Elastic\+Matrix}} ()
+\item 
+\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{classdruckerprager_ac11186330f26ae43bf123faadef2f06e}{Get\+Inverse\+Elastic\+Matrix}} ()
+\item 
+\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{classdruckerprager_ac8dc52f05b7c32dfd007dfd7815d59d0}{F1\+H\+W\+Cyl\+Drucker\+Prager\+Smooth\+P\+S\+M\+A\+T\+CH}} (\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} xisol, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} rho, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} betasol)
+\begin{DoxyCompactList}\small\item\em Compute the cylindrical coordinates in DP plane strain match. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{classdruckerprager_af259ccefca4ebc192d714237e4065394}{HW}} (\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ sig)
+\begin{DoxyCompactList}\small\item\em Compute the cylindrical coordinates. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{classdruckerprager_a633f5c7fb8c70531ac85582ecb7047f9}{stressrecosntruction}} (\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ val, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ vec)
+\begin{DoxyCompactList}\small\item\em Reconstruct a second order stress tensor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{classdruckerprager_ac8180577983839297a08e0946d7cc6d6}{dadsig}} (\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ sigprojvoigt)
+\begin{DoxyCompactList}\small\item\em Equation 58 of the Reference. Compute the flow rule derivative with respect to the projected stress. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{classdruckerprager_a9c1bea4ad5b749e3b0b97e8e28b6fb88}{P}} ()
+\begin{DoxyCompactList}\small\item\em $ \boldsymbol{P}= \left[\begin{array}{cccccc} 2/3 & -1/3 & -1/3 & 0 & 0 & 0\\ -1/3 & 2/3 & -1/3 & 0 & 0 & 0\\ -1/3 & -1/3 & 2/3 & 0 & 0 & 0\\ 0 & 0 & 0 & 2 & 0 & 0\\ 0 & 0 & 0 & 0 & 2 & 0\\ 0 & 0 & 0 & 0 & 0 & 2\\ \end{array}\right] $ \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{classdruckerprager_a1b6135fe87b9b78736a112fc8973753e}{avec}} (\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ sigprojvoigt)
+\begin{DoxyCompactList}\small\item\em Equation 57 of the Reference. Compute the flow rule. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classdruckerprager_ab36ea42636e0a18353451d1a568597fe}{Find\+Minimum}} (\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ pt, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} xitrial, bool \mbox{\hyperlink{_s_f_e_m_8cpp_a8b3ab54ed3e81c69863d65e4e6c424a0}{flag}})
+\begin{DoxyCompactList}\small\item\em Find the project xi cylindrical coordinate using a combination of Newton-\/\+Raphson and bisection. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \mbox{\hyperlink{classdruckerprager_a7796f5dad56dee4a94f2d872294c3386}{ComputeQ}} (\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ fulltensorproj, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ tempepsemat, \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&projstress, \mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&projstrain, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&projgamma, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&nvec)
+\begin{DoxyCompactList}\small\item\em Compute $ \boldsymbol{Q} = \boldsymbol{I} + \Delta \gamma \mathbf{D}^e \frac{\boldsymbol{\partial{a}}}{\boldsymbol{\partial{\sigma}}} $. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classdruckerprager_a9fc07914be41ce7d22861315c99fb749}{phi}} (\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ epse)
+\item 
+void \mbox{\hyperlink{classdruckerprager_a6b9283fa90bfa0ab30e0a0471a4f36be}{setup}} (\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} young, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} nu, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} coesion, \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} frictionangle)
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classdruckerprager_a56ddc12d0061a5967c1f3cee424603d2}{Get\+Coes}} ()
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classdruckerprager_a4ac003695ad5bbe9a71b1c524b816953}{Get\+Phi}} ()
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classdruckerprager_a8dda0cf057334bbf20e7d3cc3df7cf39}{Get\+Young}} ()
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classdruckerprager_a7063a1d3b89e30adef0590d1d916e295}{Get\+Nu}} ()
+\item 
+void \mbox{\hyperlink{classdruckerprager_a4f21ae627d7a3d3d9f55c04ce3cfb3d7}{reset}} ()
+\item 
+void \mbox{\hyperlink{classdruckerprager_a93c36a7fd6a62be688d057f4edba6142}{updateatributes}} (\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} $>$ mult)
+\item 
+void \mbox{\hyperlink{classdruckerprager_a94d9360c92ce89d8de0c4efc17974888}{restoreoriginalatributes}} ()
+\item 
+void \mbox{\hyperlink{classdruckerprager_a915a30e3569e692c08cc00ad0b6724a1}{Get\+Mat\+Constants}} (\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&consts)
+\item 
+void \mbox{\hyperlink{classdruckerprager_a93467fafe2c3b85fb2736fa33272634b}{Set\+Mat\+Constants}} (\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&consts)
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classdruckerprager_a42be8c2a3cc2b66c026b2f90b1830c8a}{Det}} (\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ A)
+\item 
+\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \mbox{\hyperlink{classdruckerprager_ad3fcec0f15d398f9ea67c61d71a5420d}{Inverse}} (\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ A)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classdruckerprager_aa526e16421e74dda6d4f979a228daed7}{fyoung}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classdruckerprager_a7f0ed8f0b73382d4a959efff6414ceac}{fnu}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classdruckerprager_a27281af8625d9a6afa626ff69a87def4}{fcoesion}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classdruckerprager_a57f50481ae39a91773ecfe8336bb22c1}{fphi}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classdruckerprager_afd37806ac4b6528ea3e7ddc70ef5482a}{fcoesion0}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classdruckerprager_aee56e9dd572dd14cf883acf36bd7c18c}{fphi0}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classdruckerprager_a7dc773ab362ff1d1706fe8fc08e3af66}{fK}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classdruckerprager_a9c2fedb22bd510aee996774ed0430807}{fG}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classdruckerprager_abd9ec2807fbd23b145b4c4a74ac914ad}{ftanphi}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classdruckerprager_a8461046c6a5710f9b0aae4cd105ad31c}{fapex}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classdruckerprager_a86efbfc65a22be5350c35492dec20edd}{fa}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classdruckerprager_a4f2975d29e00188e4b3d644fb34ab275}{fb}}
+\item 
+bool \mbox{\hyperlink{classdruckerprager_ab1f4fec8ca8c504afe8ea825382c2544}{fflag}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classdruckerprager_aa5f052d3e90e89e107276024f0e90757}{fyoung0}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{classdruckerprager_abb21e7fb67dbee90a1a0a3717e5b0c3f}{fnu0}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 20 of file druckerprager.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classdruckerprager_a8fdd27658c013ce9ccf9f8a3340cdd45}\label{classdruckerprager_a8fdd27658c013ce9ccf9f8a3340cdd45}} 
+\index{druckerprager@{druckerprager}!druckerprager@{druckerprager}}
+\index{druckerprager@{druckerprager}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{druckerprager()}{druckerprager()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily druckerprager\+::druckerprager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+
+
+Definition at line 10 of file druckerprager.\+cpp.
+
+\mbox{\Hypertarget{classdruckerprager_aef42fd7e4cdf4fe12cedeece8bd2a0ae}\label{classdruckerprager_aef42fd7e4cdf4fe12cedeece8bd2a0ae}} 
+\index{druckerprager@{druckerprager}!druckerprager@{druckerprager}}
+\index{druckerprager@{druckerprager}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{druckerprager()}{druckerprager()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily druckerprager\+::druckerprager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{young,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{nu,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{coesion,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{frictionangle }\end{DoxyParamCaption})}
+
+
+
+Class constructor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em young} & material youngs modulus \\
+\hline
+\mbox{\texttt{ in}}  & {\em nu} & material poisson ratio \\
+\hline
+\mbox{\texttt{ in}}  & {\em coesion} & material cohesion \\
+\hline
+\mbox{\texttt{ in}}  & {\em frictionangle} & material internal friction angle \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 14 of file druckerprager.\+cpp.
+
+
+
+References setup().
+
+\mbox{\Hypertarget{classdruckerprager_a75ec775d53c368ac6b6397c6585d0ca4}\label{classdruckerprager_a75ec775d53c368ac6b6397c6585d0ca4}} 
+\index{druckerprager@{druckerprager}!````~druckerprager@{$\sim$druckerprager}}
+\index{````~druckerprager@{$\sim$druckerprager}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{$\sim$druckerprager()}{~druckerprager()}}
+{\footnotesize\ttfamily druckerprager\+::$\sim$druckerprager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default destructor. 
+
+
+
+Definition at line 20 of file druckerprager.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdruckerprager_a1b6135fe87b9b78736a112fc8973753e}\label{classdruckerprager_a1b6135fe87b9b78736a112fc8973753e}} 
+\index{druckerprager@{druckerprager}!avec@{avec}}
+\index{avec@{avec}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{avec()}{avec()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ druckerprager\+::avec (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$}]{sigprojvoigt }\end{DoxyParamCaption})}
+
+
+
+Equation 57 of the Reference. Compute the flow rule. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em sigprojvoigt} & projected stress tensor in Voigt notation \\
+\hline
+\mbox{\texttt{ out}}  & {\em avec} & yield function derivative with respect to the projected stress \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 288 of file druckerprager.\+cpp.
+
+
+
+References N\+Rtensor$<$ T $>$\+::\+Compute\+S(), fa, fapex, fb, N\+Rtensor$<$ T $>$\+::\+From\+Tensor\+To\+N\+Rmatrix(), and N\+Rtensor$<$ T $>$\+::\+I1().
+
+
+
+Referenced by Compute\+Q().
+
+\mbox{\Hypertarget{classdruckerprager_a2c86282a56bd5d97305f159400961f36}\label{classdruckerprager_a2c86282a56bd5d97305f159400961f36}} 
+\index{druckerprager@{druckerprager}!closestpointproj@{closestpointproj}}
+\index{closestpointproj@{closestpointproj}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{closestpointproj()}{closestpointproj()}}
+{\footnotesize\ttfamily void druckerprager\+::closestpointproj (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$}]{epst,  }\item[{\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$}]{epsp,  }\item[{\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{projstress,  }\item[{\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{projstrain,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{Dep,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&}]{projgamma }\end{DoxyParamCaption})}
+
+
+
+Implements the elastoplastic decomposition whit the Closest Point Projection Method and computes the tangent operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em epst} & total strain tensor \\
+\hline
+\mbox{\texttt{ in}}  & {\em epsp} & plastic strain tensor \\
+\hline
+\mbox{\texttt{ out}}  & {\em projstress} & projected stress tensor \\
+\hline
+\mbox{\texttt{ out}}  & {\em projstrain} & projected strain tensor \\
+\hline
+\mbox{\texttt{ out}}  & {\em Dep} & Elastoplastic tangent operator \\
+\hline
+\mbox{\texttt{ out}}  & {\em projgamma} & Plastic multiplier \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 25 of file druckerprager.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::\+Compute\+Inverse(), Compute\+Q(), N\+Rmatrix$<$ T $>$\+::\+Det\+Eig(), N\+Rtensor$<$ T $>$\+::\+Eigen\+System(), F1\+H\+W\+Cyl\+Drucker\+Prager\+Smooth\+P\+S\+M\+A\+T\+C\+H(), fflag, Find\+Minimum(), N\+Rtensor$<$ T $>$\+::\+From\+N\+Rmatrix\+To\+Tensor(), N\+Rtensor$<$ T $>$\+::\+From\+Tensor\+To\+N\+Rmatrix(), Get\+Elastic\+Matrix(), H\+W(), N\+Rtensor$<$ T $>$\+::\+I1(), N\+Rtensor$<$ T $>$\+::isfailed(), N\+Rtensor$<$ T $>$\+::\+J2(), N\+Rmatrix$<$ T $>$\+::\+Mult(), N\+Rmatrix$<$ T $>$\+::nrows(), stressrecosntruction(), N\+Rmatrix$<$ T $>$\+::\+Transpose(), and yield().
+
+\mbox{\Hypertarget{classdruckerprager_a7796f5dad56dee4a94f2d872294c3386}\label{classdruckerprager_a7796f5dad56dee4a94f2d872294c3386}} 
+\index{druckerprager@{druckerprager}!ComputeQ@{ComputeQ}}
+\index{ComputeQ@{ComputeQ}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{ComputeQ()}{ComputeQ()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ druckerprager\+::\+ComputeQ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$}]{fulltensorproj,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$}]{tempepsemat,  }\item[{\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{projstress,  }\item[{\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{projstrain,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \&}]{projgamma,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{nvec }\end{DoxyParamCaption})}
+
+
+
+Compute $ \boldsymbol{Q} = \boldsymbol{I} + \Delta \gamma \mathbf{D}^e \frac{\boldsymbol{\partial{a}}}{\boldsymbol{\partial{\sigma}}} $. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em pt} & trial principal stress ~\newline
+ \\
+\hline
+\mbox{\texttt{ in}}  & {\em xitrial} & trial xi cylindrical coordinate \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 162 of file druckerprager.\+cpp.
+
+
+
+References avec(), dadsig(), N\+Rmatrix$<$ T $>$\+::\+From\+Full\+To\+Voigt(), N\+Rtensor$<$ T $>$\+::\+From\+N\+Rmatrix\+To\+Tensor(), Get\+Elastic\+Matrix(), Get\+Inverse\+Elastic\+Matrix(), N\+Rmatrix$<$ T $>$\+::\+Mult(), N\+Rtensor$<$ T $>$\+::\+Norm(), and N\+Rmatrix$<$ T $>$\+::\+N\+Rmatrix\+Norm().
+
+
+
+Referenced by closestpointproj().
+
+\mbox{\Hypertarget{classdruckerprager_ac8180577983839297a08e0946d7cc6d6}\label{classdruckerprager_ac8180577983839297a08e0946d7cc6d6}} 
+\index{druckerprager@{druckerprager}!dadsig@{dadsig}}
+\index{dadsig@{dadsig}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{dadsig()}{dadsig()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ druckerprager\+::dadsig (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$}]{sigprojvoigt }\end{DoxyParamCaption})}
+
+
+
+Equation 58 of the Reference. Compute the flow rule derivative with respect to the projected stress. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em sigprojvoigt} & projected stress tensor in Voigt notation \\
+\hline
+\mbox{\texttt{ out}}  & {\em dadsig} & derivative with respect to the projected stress \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 274 of file druckerprager.\+cpp.
+
+
+
+References fa, fb, and P().
+
+
+
+Referenced by Compute\+Q().
+
+\mbox{\Hypertarget{classdruckerprager_a42be8c2a3cc2b66c026b2f90b1830c8a}\label{classdruckerprager_a42be8c2a3cc2b66c026b2f90b1830c8a}} 
+\index{druckerprager@{druckerprager}!Det@{Det}}
+\index{Det@{Det}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{Det()}{Det()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} druckerprager\+::\+Det (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$}]{A }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 236 of file druckerprager.\+h.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::ncols(), and N\+Rmatrix$<$ T $>$\+::nrows().
+
+\mbox{\Hypertarget{classdruckerprager_ac8dc52f05b7c32dfd007dfd7815d59d0}\label{classdruckerprager_ac8dc52f05b7c32dfd007dfd7815d59d0}} 
+\index{druckerprager@{druckerprager}!F1HWCylDruckerPragerSmoothPSMATCH@{F1HWCylDruckerPragerSmoothPSMATCH}}
+\index{F1HWCylDruckerPragerSmoothPSMATCH@{F1HWCylDruckerPragerSmoothPSMATCH}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{F1HWCylDruckerPragerSmoothPSMATCH()}{F1HWCylDruckerPragerSmoothPSMATCH()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ druckerprager\+::\+F1\+H\+W\+Cyl\+Drucker\+Prager\+Smooth\+P\+S\+M\+A\+T\+CH (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{xisol,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{rho,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{betasol }\end{DoxyParamCaption})}
+
+
+
+Compute the cylindrical coordinates in DP plane strain match. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em xi} & cylindrical coordinate xi=I1/3 \\
+\hline
+\mbox{\texttt{ in}}  & {\em rho} & cylindrical coordinate rho = sqrt(2 J2) \\
+\hline
+\mbox{\texttt{ in}}  & {\em beta} & angle \\
+\hline
+\mbox{\texttt{ out}}  & {\em \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix$<$\+Doub$>$}}} & \{sig1,sig2,sig3\} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 234 of file druckerprager.\+cpp.
+
+
+
+References fa, fapex, and fb.
+
+
+
+Referenced by closestpointproj().
+
+\mbox{\Hypertarget{classdruckerprager_ab36ea42636e0a18353451d1a568597fe}\label{classdruckerprager_ab36ea42636e0a18353451d1a568597fe}} 
+\index{druckerprager@{druckerprager}!FindMinimum@{FindMinimum}}
+\index{FindMinimum@{FindMinimum}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{FindMinimum()}{FindMinimum()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} druckerprager\+::\+Find\+Minimum (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$}]{pt,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{xitrial,  }\item[{bool}]{flag }\end{DoxyParamCaption})}
+
+
+
+Find the project xi cylindrical coordinate using a combination of Newton-\/\+Raphson and bisection. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em pt} & trial principal stress ~\newline
+ \\
+\hline
+\mbox{\texttt{ in}}  & {\em xitrial} & trial xi cylindrical coordinate \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 152 of file druckerprager.\+cpp.
+
+
+
+References fcoesion, flag, fnu, fphi, fyoung, rtsafe(), and Funcd\+::setpt().
+
+
+
+Referenced by closestpointproj().
+
+\mbox{\Hypertarget{classdruckerprager_a56ddc12d0061a5967c1f3cee424603d2}\label{classdruckerprager_a56ddc12d0061a5967c1f3cee424603d2}} 
+\index{druckerprager@{druckerprager}!GetCoes@{GetCoes}}
+\index{GetCoes@{GetCoes}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{GetCoes()}{GetCoes()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} druckerprager\+::\+Get\+Coes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 176 of file druckerprager.\+h.
+
+\mbox{\Hypertarget{classdruckerprager_afb80a01731db1fa0245aa760500814c5}\label{classdruckerprager_afb80a01731db1fa0245aa760500814c5}} 
+\index{druckerprager@{druckerprager}!GetElasticMatrix@{GetElasticMatrix}}
+\index{GetElasticMatrix@{GetElasticMatrix}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{GetElasticMatrix()}{GetElasticMatrix()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ druckerprager\+::\+Get\+Elastic\+Matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 210 of file druckerprager.\+cpp.
+
+
+
+References fG, and fK.
+
+
+
+Referenced by closestpointproj(), and Compute\+Q().
+
+\mbox{\Hypertarget{classdruckerprager_ac11186330f26ae43bf123faadef2f06e}\label{classdruckerprager_ac11186330f26ae43bf123faadef2f06e}} 
+\index{druckerprager@{druckerprager}!GetInverseElasticMatrix@{GetInverseElasticMatrix}}
+\index{GetInverseElasticMatrix@{GetInverseElasticMatrix}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{GetInverseElasticMatrix()}{GetInverseElasticMatrix()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ druckerprager\+::\+Get\+Inverse\+Elastic\+Matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 222 of file druckerprager.\+cpp.
+
+
+
+References fG, and fK.
+
+
+
+Referenced by Compute\+Q().
+
+\mbox{\Hypertarget{classdruckerprager_a915a30e3569e692c08cc00ad0b6724a1}\label{classdruckerprager_a915a30e3569e692c08cc00ad0b6724a1}} 
+\index{druckerprager@{druckerprager}!GetMatConstants@{GetMatConstants}}
+\index{GetMatConstants@{GetMatConstants}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{GetMatConstants()}{GetMatConstants()}}
+{\footnotesize\ttfamily void druckerprager\+::\+Get\+Mat\+Constants (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{consts }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 221 of file druckerprager.\+h.
+
+
+
+References N\+Rvector$<$ T $>$\+::assign().
+
+\mbox{\Hypertarget{classdruckerprager_a7063a1d3b89e30adef0590d1d916e295}\label{classdruckerprager_a7063a1d3b89e30adef0590d1d916e295}} 
+\index{druckerprager@{druckerprager}!GetNu@{GetNu}}
+\index{GetNu@{GetNu}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{GetNu()}{GetNu()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} druckerprager\+::\+Get\+Nu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 191 of file druckerprager.\+h.
+
+\mbox{\Hypertarget{classdruckerprager_a4ac003695ad5bbe9a71b1c524b816953}\label{classdruckerprager_a4ac003695ad5bbe9a71b1c524b816953}} 
+\index{druckerprager@{druckerprager}!GetPhi@{GetPhi}}
+\index{GetPhi@{GetPhi}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{GetPhi()}{GetPhi()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} druckerprager\+::\+Get\+Phi (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 181 of file druckerprager.\+h.
+
+\mbox{\Hypertarget{classdruckerprager_a8dda0cf057334bbf20e7d3cc3df7cf39}\label{classdruckerprager_a8dda0cf057334bbf20e7d3cc3df7cf39}} 
+\index{druckerprager@{druckerprager}!GetYoung@{GetYoung}}
+\index{GetYoung@{GetYoung}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{GetYoung()}{GetYoung()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} druckerprager\+::\+Get\+Young (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 186 of file druckerprager.\+h.
+
+\mbox{\Hypertarget{classdruckerprager_af259ccefca4ebc192d714237e4065394}\label{classdruckerprager_af259ccefca4ebc192d714237e4065394}} 
+\index{druckerprager@{druckerprager}!HW@{HW}}
+\index{HW@{HW}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{HW()}{HW()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ druckerprager\+::\+HW (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$}]{sig }\end{DoxyParamCaption})}
+
+
+
+Compute the cylindrical coordinates. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em sig} & principla stress \\
+\hline
+\mbox{\texttt{ out}}  & {\em \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix$<$\+Doub$>$}}} & \{xi,rho,beta\} cylindrical coordinates \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 243 of file druckerprager.\+cpp.
+
+
+
+Referenced by closestpointproj().
+
+\mbox{\Hypertarget{classdruckerprager_ad3fcec0f15d398f9ea67c61d71a5420d}\label{classdruckerprager_ad3fcec0f15d398f9ea67c61d71a5420d}} 
+\index{druckerprager@{druckerprager}!Inverse@{Inverse}}
+\index{Inverse@{Inverse}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{Inverse()}{Inverse()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}$>$ druckerprager\+::\+Inverse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$}]{A }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 251 of file druckerprager.\+h.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::ncols(), and N\+Rmatrix$<$ T $>$\+::nrows().
+
+\mbox{\Hypertarget{classdruckerprager_a9c1bea4ad5b749e3b0b97e8e28b6fb88}\label{classdruckerprager_a9c1bea4ad5b749e3b0b97e8e28b6fb88}} 
+\index{druckerprager@{druckerprager}!P@{P}}
+\index{P@{P}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{P()}{P()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ druckerprager\+::P (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+$ \boldsymbol{P}= \left[\begin{array}{cccccc} 2/3 & -1/3 & -1/3 & 0 & 0 & 0\\ -1/3 & 2/3 & -1/3 & 0 & 0 & 0\\ -1/3 & -1/3 & 2/3 & 0 & 0 & 0\\ 0 & 0 & 0 & 2 & 0 & 0\\ 0 & 0 & 0 & 0 & 2 & 0\\ 0 & 0 & 0 & 0 & 0 & 2\\ \end{array}\right] $ 
+
+
+
+Definition at line 308 of file druckerprager.\+cpp.
+
+
+
+Referenced by dadsig().
+
+\mbox{\Hypertarget{classdruckerprager_a9fc07914be41ce7d22861315c99fb749}\label{classdruckerprager_a9fc07914be41ce7d22861315c99fb749}} 
+\index{druckerprager@{druckerprager}!phi@{phi}}
+\index{phi@{phi}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{phi()}{phi()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} druckerprager\+::phi (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rtensor}{N\+Rtensor}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$}]{epse }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 133 of file druckerprager.\+h.
+
+
+
+References N\+Rtensor$<$ T $>$\+::\+From\+N\+Rmatrix\+To\+Tensor(), N\+Rtensor$<$ T $>$\+::\+From\+Tensor\+To\+N\+Rmatrix(), N\+Rtensor$<$ T $>$\+::\+I1(), N\+Rtensor$<$ T $>$\+::\+J2(), and N\+Rmatrix$<$ T $>$\+::\+Mult().
+
+\mbox{\Hypertarget{classdruckerprager_a4f21ae627d7a3d3d9f55c04ce3cfb3d7}\label{classdruckerprager_a4f21ae627d7a3d3d9f55c04ce3cfb3d7}} 
+\index{druckerprager@{druckerprager}!reset@{reset}}
+\index{reset@{reset}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void druckerprager\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 196 of file druckerprager.\+h.
+
+\mbox{\Hypertarget{classdruckerprager_a94d9360c92ce89d8de0c4efc17974888}\label{classdruckerprager_a94d9360c92ce89d8de0c4efc17974888}} 
+\index{druckerprager@{druckerprager}!restoreoriginalatributes@{restoreoriginalatributes}}
+\index{restoreoriginalatributes@{restoreoriginalatributes}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{restoreoriginalatributes()}{restoreoriginalatributes()}}
+{\footnotesize\ttfamily void druckerprager\+::restoreoriginalatributes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 215 of file druckerprager.\+h.
+
+\mbox{\Hypertarget{classdruckerprager_a93467fafe2c3b85fb2736fa33272634b}\label{classdruckerprager_a93467fafe2c3b85fb2736fa33272634b}} 
+\index{druckerprager@{druckerprager}!SetMatConstants@{SetMatConstants}}
+\index{SetMatConstants@{SetMatConstants}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{SetMatConstants()}{SetMatConstants()}}
+{\footnotesize\ttfamily void druckerprager\+::\+Set\+Mat\+Constants (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ \&}]{consts }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 230 of file druckerprager.\+h.
+
+\mbox{\Hypertarget{classdruckerprager_a6b9283fa90bfa0ab30e0a0471a4f36be}\label{classdruckerprager_a6b9283fa90bfa0ab30e0a0471a4f36be}} 
+\index{druckerprager@{druckerprager}!setup@{setup}}
+\index{setup@{setup}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void druckerprager\+::setup (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{young,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{nu,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{coesion,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{frictionangle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 162 of file druckerprager.\+h.
+
+
+
+Referenced by createrandomfield(), druckerprager(), main2(), mainlinux(), mainlinux2(), mainlinuxserial(), mainwindows(), and updateatributes().
+
+\mbox{\Hypertarget{classdruckerprager_a633f5c7fb8c70531ac85582ecb7047f9}\label{classdruckerprager_a633f5c7fb8c70531ac85582ecb7047f9}} 
+\index{druckerprager@{druckerprager}!stressrecosntruction@{stressrecosntruction}}
+\index{stressrecosntruction@{stressrecosntruction}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{stressrecosntruction()}{stressrecosntruction()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$ druckerprager\+::stressrecosntruction (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$}]{val,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} $>$}]{vec }\end{DoxyParamCaption})}
+
+
+
+Reconstruct a second order stress tensor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em val} & eigenvalues \\
+\hline
+\mbox{\texttt{ in}}  & {\em vec} & eigenvectors \\
+\hline
+\mbox{\texttt{ out}}  & {\em fulltensor} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 255 of file druckerprager.\+cpp.
+
+
+
+References N\+Rmatrix$<$ T $>$\+::\+Transpose().
+
+
+
+Referenced by closestpointproj().
+
+\mbox{\Hypertarget{classdruckerprager_a93c36a7fd6a62be688d057f4edba6142}\label{classdruckerprager_a93c36a7fd6a62be688d057f4edba6142}} 
+\index{druckerprager@{druckerprager}!updateatributes@{updateatributes}}
+\index{updateatributes@{updateatributes}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{updateatributes()}{updateatributes()}}
+{\footnotesize\ttfamily void druckerprager\+::updateatributes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} $>$}]{mult }\end{DoxyParamCaption})}
+
+
+
+Definition at line 321 of file druckerprager.\+cpp.
+
+
+
+References fcoesion, fcoesion0, fnu, fnu0, fphi, fphi0, fyoung, fyoung0, and setup().
+
+\mbox{\Hypertarget{classdruckerprager_aebe8a9b027ac8cae93c0a5439fda54c7}\label{classdruckerprager_aebe8a9b027ac8cae93c0a5439fda54c7}} 
+\index{druckerprager@{druckerprager}!yield@{yield}}
+\index{yield@{yield}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{yield()}{yield()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} druckerprager\+::yield (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{xi,  }\item[{\mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{rho }\end{DoxyParamCaption})}
+
+
+
+Compute the yield function. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em xi} & cylindrical coordinate xi=I1/3 \\
+\hline
+\mbox{\texttt{ in}}  & {\em rho} & cylindrical coordinate rho = sqrt(2 J2) \\
+\hline
+\mbox{\texttt{ out}}  & {\em yieldfunction} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 200 of file druckerprager.\+cpp.
+
+
+
+References fa, fapex, and fb.
+
+
+
+Referenced by closestpointproj().
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classdruckerprager_a86efbfc65a22be5350c35492dec20edd}\label{classdruckerprager_a86efbfc65a22be5350c35492dec20edd}} 
+\index{druckerprager@{druckerprager}!fa@{fa}}
+\index{fa@{fa}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{fa}{fa}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} druckerprager\+::fa\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 287 of file druckerprager.\+h.
+
+
+
+Referenced by avec(), dadsig(), F1\+H\+W\+Cyl\+Drucker\+Prager\+Smooth\+P\+S\+M\+A\+T\+C\+H(), and yield().
+
+\mbox{\Hypertarget{classdruckerprager_a8461046c6a5710f9b0aae4cd105ad31c}\label{classdruckerprager_a8461046c6a5710f9b0aae4cd105ad31c}} 
+\index{druckerprager@{druckerprager}!fapex@{fapex}}
+\index{fapex@{fapex}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{fapex}{fapex}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} druckerprager\+::fapex\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 286 of file druckerprager.\+h.
+
+
+
+Referenced by avec(), F1\+H\+W\+Cyl\+Drucker\+Prager\+Smooth\+P\+S\+M\+A\+T\+C\+H(), and yield().
+
+\mbox{\Hypertarget{classdruckerprager_a4f2975d29e00188e4b3d644fb34ab275}\label{classdruckerprager_a4f2975d29e00188e4b3d644fb34ab275}} 
+\index{druckerprager@{druckerprager}!fb@{fb}}
+\index{fb@{fb}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{fb}{fb}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} druckerprager\+::fb\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 287 of file druckerprager.\+h.
+
+
+
+Referenced by avec(), dadsig(), F1\+H\+W\+Cyl\+Drucker\+Prager\+Smooth\+P\+S\+M\+A\+T\+C\+H(), and yield().
+
+\mbox{\Hypertarget{classdruckerprager_a27281af8625d9a6afa626ff69a87def4}\label{classdruckerprager_a27281af8625d9a6afa626ff69a87def4}} 
+\index{druckerprager@{druckerprager}!fcoesion@{fcoesion}}
+\index{fcoesion@{fcoesion}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{fcoesion}{fcoesion}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} druckerprager\+::fcoesion\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 278 of file druckerprager.\+h.
+
+
+
+Referenced by Find\+Minimum(), and updateatributes().
+
+\mbox{\Hypertarget{classdruckerprager_afd37806ac4b6528ea3e7ddc70ef5482a}\label{classdruckerprager_afd37806ac4b6528ea3e7ddc70ef5482a}} 
+\index{druckerprager@{druckerprager}!fcoesion0@{fcoesion0}}
+\index{fcoesion0@{fcoesion0}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{fcoesion0}{fcoesion0}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} druckerprager\+::fcoesion0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 280 of file druckerprager.\+h.
+
+
+
+Referenced by updateatributes().
+
+\mbox{\Hypertarget{classdruckerprager_ab1f4fec8ca8c504afe8ea825382c2544}\label{classdruckerprager_ab1f4fec8ca8c504afe8ea825382c2544}} 
+\index{druckerprager@{druckerprager}!fflag@{fflag}}
+\index{fflag@{fflag}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{fflag}{fflag}}
+{\footnotesize\ttfamily bool druckerprager\+::fflag\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 288 of file druckerprager.\+h.
+
+
+
+Referenced by closestpointproj().
+
+\mbox{\Hypertarget{classdruckerprager_a9c2fedb22bd510aee996774ed0430807}\label{classdruckerprager_a9c2fedb22bd510aee996774ed0430807}} 
+\index{druckerprager@{druckerprager}!fG@{fG}}
+\index{fG@{fG}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{fG}{fG}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} druckerprager\+::fG\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 284 of file druckerprager.\+h.
+
+
+
+Referenced by Get\+Elastic\+Matrix(), and Get\+Inverse\+Elastic\+Matrix().
+
+\mbox{\Hypertarget{classdruckerprager_a7dc773ab362ff1d1706fe8fc08e3af66}\label{classdruckerprager_a7dc773ab362ff1d1706fe8fc08e3af66}} 
+\index{druckerprager@{druckerprager}!fK@{fK}}
+\index{fK@{fK}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{fK}{fK}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} druckerprager\+::fK\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 283 of file druckerprager.\+h.
+
+
+
+Referenced by Get\+Elastic\+Matrix(), and Get\+Inverse\+Elastic\+Matrix().
+
+\mbox{\Hypertarget{classdruckerprager_a7f0ed8f0b73382d4a959efff6414ceac}\label{classdruckerprager_a7f0ed8f0b73382d4a959efff6414ceac}} 
+\index{druckerprager@{druckerprager}!fnu@{fnu}}
+\index{fnu@{fnu}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{fnu}{fnu}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} druckerprager\+::fnu}
+
+
+
+Definition at line 275 of file druckerprager.\+h.
+
+
+
+Referenced by Find\+Minimum(), and updateatributes().
+
+\mbox{\Hypertarget{classdruckerprager_abb21e7fb67dbee90a1a0a3717e5b0c3f}\label{classdruckerprager_abb21e7fb67dbee90a1a0a3717e5b0c3f}} 
+\index{druckerprager@{druckerprager}!fnu0@{fnu0}}
+\index{fnu0@{fnu0}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{fnu0}{fnu0}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} druckerprager\+::fnu0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 291 of file druckerprager.\+h.
+
+
+
+Referenced by updateatributes().
+
+\mbox{\Hypertarget{classdruckerprager_a57f50481ae39a91773ecfe8336bb22c1}\label{classdruckerprager_a57f50481ae39a91773ecfe8336bb22c1}} 
+\index{druckerprager@{druckerprager}!fphi@{fphi}}
+\index{fphi@{fphi}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{fphi}{fphi}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} druckerprager\+::fphi\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 279 of file druckerprager.\+h.
+
+
+
+Referenced by Find\+Minimum(), and updateatributes().
+
+\mbox{\Hypertarget{classdruckerprager_aee56e9dd572dd14cf883acf36bd7c18c}\label{classdruckerprager_aee56e9dd572dd14cf883acf36bd7c18c}} 
+\index{druckerprager@{druckerprager}!fphi0@{fphi0}}
+\index{fphi0@{fphi0}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{fphi0}{fphi0}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} druckerprager\+::fphi0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 281 of file druckerprager.\+h.
+
+
+
+Referenced by updateatributes().
+
+\mbox{\Hypertarget{classdruckerprager_abd9ec2807fbd23b145b4c4a74ac914ad}\label{classdruckerprager_abd9ec2807fbd23b145b4c4a74ac914ad}} 
+\index{druckerprager@{druckerprager}!ftanphi@{ftanphi}}
+\index{ftanphi@{ftanphi}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{ftanphi}{ftanphi}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} druckerprager\+::ftanphi\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 285 of file druckerprager.\+h.
+
+\mbox{\Hypertarget{classdruckerprager_aa526e16421e74dda6d4f979a228daed7}\label{classdruckerprager_aa526e16421e74dda6d4f979a228daed7}} 
+\index{druckerprager@{druckerprager}!fyoung@{fyoung}}
+\index{fyoung@{fyoung}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{fyoung}{fyoung}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} druckerprager\+::fyoung}
+
+
+
+Definition at line 274 of file druckerprager.\+h.
+
+
+
+Referenced by Find\+Minimum(), and updateatributes().
+
+\mbox{\Hypertarget{classdruckerprager_aa5f052d3e90e89e107276024f0e90757}\label{classdruckerprager_aa5f052d3e90e89e107276024f0e90757}} 
+\index{druckerprager@{druckerprager}!fyoung0@{fyoung0}}
+\index{fyoung0@{fyoung0}!druckerprager@{druckerprager}}
+\doxysubsubsection{\texorpdfstring{fyoung0}{fyoung0}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} druckerprager\+::fyoung0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 289 of file druckerprager.\+h.
+
+
+
+Referenced by updateatributes().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{druckerprager_8h}{druckerprager.\+h}}\item 
+src/\mbox{\hyperlink{druckerprager_8cpp}{druckerprager.\+cpp}}\end{DoxyCompactItemize}

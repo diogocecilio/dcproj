@@ -1,0 +1,59 @@
+\hypertarget{classVTKGraphMesh}{}\doxysection{V\+T\+K\+Graph\+Mesh Class Reference}
+\label{classVTKGraphMesh}\index{VTKGraphMesh@{VTKGraphMesh}}
+
+
+Collaboration diagram for V\+T\+K\+Graph\+Mesh\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=261pt]{classVTKGraphMesh__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classVTKGraphMesh_a4af640621f63c454a9f2e829101062f7}\label{classVTKGraphMesh_a4af640621f63c454a9f2e829101062f7}} 
+\mbox{\hyperlink{classVTKGraphMesh_a4af640621f63c454a9f2e829101062f7}{V\+T\+K\+Graph\+Mesh}} (\mbox{\hyperlink{classmesh}{mesh}} $\ast$cmesh, int dimension, std\+::vector$<$ std\+::string $>$ \&scalnames, const std\+::vector$<$ std\+::string $>$ \&vecnames, std\+::string File\+Name)
+\begin{DoxyCompactList}\small\item\em Constructor for graphical mesh using V\+TK format with tensor variables. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classVTKGraphMesh_a3f0fdc88ae925af8b422aef7f16c95f6}\label{classVTKGraphMesh_a3f0fdc88ae925af8b422aef7f16c95f6}} 
+void {\bfseries Draw\+Nodes} ()
+\item 
+\mbox{\Hypertarget{classVTKGraphMesh_a06d006aab1128d7faa7cb6396edf4627}\label{classVTKGraphMesh_a06d006aab1128d7faa7cb6396edf4627}} 
+void {\bfseries Draw\+Connectivity} ()
+\item 
+\mbox{\Hypertarget{classVTKGraphMesh_a44271c388242a5c5346f05ffa286cb63}\label{classVTKGraphMesh_a44271c388242a5c5346f05ffa286cb63}} 
+void {\bfseries Draw\+Solution} (Int step, Doub time)
+\item 
+\mbox{\Hypertarget{classVTKGraphMesh_acb4d755e4d0e9bb0b81ecb1f598f6f9f}\label{classVTKGraphMesh_acb4d755e4d0e9bb0b81ecb1f598f6f9f}} 
+\mbox{\hyperlink{classNRmatrix}{Mat\+Int}} {\bfseries Get\+Mesh\+Topology\+V\+TK} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classVTKGraphMesh_a34dfca2d92f4a0e027d791109348d50c}\label{classVTKGraphMesh_a34dfca2d92f4a0e027d791109348d50c}} 
+std\+::ofstream {\bfseries f\+Out\+File}
+\item 
+\mbox{\Hypertarget{classVTKGraphMesh_a4d450beafb5ff3f47d0a471c78e4a32c}\label{classVTKGraphMesh_a4d450beafb5ff3f47d0a471c78e4a32c}} 
+\mbox{\hyperlink{classNRmatrix}{N\+Rmatrix}}$<$ Doub $>$ {\bfseries fdata}
+\item 
+\mbox{\Hypertarget{classVTKGraphMesh_aa4411adc7cac9ce72af370c2a5f22a3b}\label{classVTKGraphMesh_aa4411adc7cac9ce72af370c2a5f22a3b}} 
+\mbox{\hyperlink{classmesh}{mesh}} $\ast$ {\bfseries fmesh}
+\item 
+\mbox{\Hypertarget{classVTKGraphMesh_a51518ba13f2aecf883185b963ca1da12}\label{classVTKGraphMesh_a51518ba13f2aecf883185b963ca1da12}} 
+std\+::string {\bfseries f\+File\+Name}
+\item 
+\mbox{\Hypertarget{classVTKGraphMesh_ab3eb08789e14265898b998988c287cd4}\label{classVTKGraphMesh_ab3eb08789e14265898b998988c287cd4}} 
+Int {\bfseries fdim}
+\item 
+\mbox{\Hypertarget{classVTKGraphMesh_a1e9a5dc3b32bcb44b36662eb4a48866e}\label{classVTKGraphMesh_a1e9a5dc3b32bcb44b36662eb4a48866e}} 
+std\+::vector$<$ std\+::string $>$ {\bfseries f\+Vec\+Names}
+\item 
+\mbox{\Hypertarget{classVTKGraphMesh_aed8fe16416cebeb27351e94de9ed7c89}\label{classVTKGraphMesh_aed8fe16416cebeb27351e94de9ed7c89}} 
+std\+::vector$<$ std\+::string $>$ {\bfseries f\+Scal\+Names}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/vtkmesh.\+h\item 
+src/vtkmesh.\+cpp\end{DoxyCompactItemize}

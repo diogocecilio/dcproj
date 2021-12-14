@@ -1,0 +1,211 @@
+\hypertarget{struct_jacobi}{}\doxysection{Jacobi Struct Reference}
+\label{struct_jacobi}\index{Jacobi@{Jacobi}}
+
+
+{\ttfamily \#include $<$nr3.\+h$>$}
+
+
+
+Collaboration diagram for Jacobi\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=320pt]{struct_jacobi__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_jacobi_aff659648993ad4195b90b679eec203e4}{Jacobi}} (\mbox{\hyperlink{nr3_8h_a724773f982f11577951cbd1efadf9768}{Mat\+Doub\+\_\+I}} \&aa)
+\item 
+void \mbox{\hyperlink{struct_jacobi_af65178248accaa13ffd551b787700d86}{rot}} (\mbox{\hyperlink{nr3_8h_a8ce97cf9117c0661727b51f370cfc089}{Mat\+Doub\+\_\+\+IO}} \&\mbox{\hyperlink{struct_jacobi_a4fa4b0f30ddc5804098a9106275e51e7}{a}}, const \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} s, const \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} tau, const \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} i, const \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} j, const \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} k, const \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} l)
+\item 
+void \mbox{\hyperlink{struct_jacobi_a242c6a37914168c65acbb3532ce89caa}{eigsrt}} (\mbox{\hyperlink{nr3_8h_ad79288a4d07086bfad5b69c192ee07c5}{Vec\+Doub\+\_\+\+IO}} \&\mbox{\hyperlink{struct_jacobi_aa436cacc51aaa434753668085668a018}{d}}, \mbox{\hyperlink{nr3_8h_a8ce97cf9117c0661727b51f370cfc089}{Mat\+Doub\+\_\+\+IO}} $\ast$\mbox{\hyperlink{struct_jacobi_ad7c8c6b9cd946bd91a4dcd11883bf437}{v}}=N\+U\+LL)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{struct_jacobi_a33a1fc9832d58e848e6c75f6666d2744}{fail}}
+\item 
+const \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} \mbox{\hyperlink{struct_jacobi_adf24210f9c21cbc07c0ae241d4760e79}{n}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \mbox{\hyperlink{struct_jacobi_a4fa4b0f30ddc5804098a9106275e51e7}{a}}
+\item 
+\mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} \mbox{\hyperlink{struct_jacobi_ad7c8c6b9cd946bd91a4dcd11883bf437}{v}}
+\item 
+\mbox{\hyperlink{nr3_8h_a97a3701e8aa6ca145af8d5c7c5c50d87}{Vec\+Doub}} \mbox{\hyperlink{struct_jacobi_aa436cacc51aaa434753668085668a018}{d}}
+\item 
+\mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} \mbox{\hyperlink{struct_jacobi_a8a7e86eab62decd1e680fd0d822a816e}{nrot}}
+\item 
+const \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} \mbox{\hyperlink{struct_jacobi_abad65ea48348426cda67c7d5f65171a0}{E\+PS}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 1466 of file nr3.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_jacobi_aff659648993ad4195b90b679eec203e4}\label{struct_jacobi_aff659648993ad4195b90b679eec203e4}} 
+\index{Jacobi@{Jacobi}!Jacobi@{Jacobi}}
+\index{Jacobi@{Jacobi}!Jacobi@{Jacobi}}
+\doxysubsubsection{\texorpdfstring{Jacobi()}{Jacobi()}}
+{\footnotesize\ttfamily Jacobi\+::\+Jacobi (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_a724773f982f11577951cbd1efadf9768}{Mat\+Doub\+\_\+I}} \&}]{aa }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 1474 of file nr3.\+h.
+
+
+
+References a, d, eigsrt(), E\+PS, fail, n, nrot, rot(), and v.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_jacobi_a242c6a37914168c65acbb3532ce89caa}\label{struct_jacobi_a242c6a37914168c65acbb3532ce89caa}} 
+\index{Jacobi@{Jacobi}!eigsrt@{eigsrt}}
+\index{eigsrt@{eigsrt}!Jacobi@{Jacobi}}
+\doxysubsubsection{\texorpdfstring{eigsrt()}{eigsrt()}}
+{\footnotesize\ttfamily void Jacobi\+::eigsrt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_ad79288a4d07086bfad5b69c192ee07c5}{Vec\+Doub\+\_\+\+IO}} \&}]{d,  }\item[{\mbox{\hyperlink{nr3_8h_a8ce97cf9117c0661727b51f370cfc089}{Mat\+Doub\+\_\+\+IO}} $\ast$}]{v = {\ttfamily NULL} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 1557 of file nr3.\+h.
+
+
+
+References d, n, N\+Rvector$<$ T $>$\+::size(), and v.
+
+
+
+Referenced by Jacobi().
+
+\mbox{\Hypertarget{struct_jacobi_af65178248accaa13ffd551b787700d86}\label{struct_jacobi_af65178248accaa13ffd551b787700d86}} 
+\index{Jacobi@{Jacobi}!rot@{rot}}
+\index{rot@{rot}!Jacobi@{Jacobi}}
+\doxysubsubsection{\texorpdfstring{rot()}{rot()}}
+{\footnotesize\ttfamily void Jacobi\+::rot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nr3_8h_a8ce97cf9117c0661727b51f370cfc089}{Mat\+Doub\+\_\+\+IO}} \&}]{a,  }\item[{const \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{s,  }\item[{const \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}}}]{tau,  }\item[{const \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{i,  }\item[{const \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{j,  }\item[{const \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{k,  }\item[{const \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}}}]{l }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 1547 of file nr3.\+h.
+
+
+
+References a.
+
+
+
+Referenced by Jacobi().
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_jacobi_a4fa4b0f30ddc5804098a9106275e51e7}\label{struct_jacobi_a4fa4b0f30ddc5804098a9106275e51e7}} 
+\index{Jacobi@{Jacobi}!a@{a}}
+\index{a@{a}!Jacobi@{Jacobi}}
+\doxysubsubsection{\texorpdfstring{a}{a}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} Jacobi\+::a}
+
+
+
+Definition at line 1469 of file nr3.\+h.
+
+
+
+Referenced by Jacobi(), and rot().
+
+\mbox{\Hypertarget{struct_jacobi_aa436cacc51aaa434753668085668a018}\label{struct_jacobi_aa436cacc51aaa434753668085668a018}} 
+\index{Jacobi@{Jacobi}!d@{d}}
+\index{d@{d}!Jacobi@{Jacobi}}
+\doxysubsubsection{\texorpdfstring{d}{d}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_a97a3701e8aa6ca145af8d5c7c5c50d87}{Vec\+Doub}} Jacobi\+::d}
+
+
+
+Definition at line 1470 of file nr3.\+h.
+
+
+
+Referenced by N\+Rtensor$<$ Doub $>$\+::\+Eigen\+System(), eigsrt(), and Jacobi().
+
+\mbox{\Hypertarget{struct_jacobi_abad65ea48348426cda67c7d5f65171a0}\label{struct_jacobi_abad65ea48348426cda67c7d5f65171a0}} 
+\index{Jacobi@{Jacobi}!EPS@{EPS}}
+\index{EPS@{EPS}!Jacobi@{Jacobi}}
+\doxysubsubsection{\texorpdfstring{EPS}{EPS}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{nr3_8h_ad34040bfabf8ed3ead2d0d01078f27a9}{Doub}} Jacobi\+::\+E\+PS}
+
+
+
+Definition at line 1472 of file nr3.\+h.
+
+
+
+Referenced by Jacobi().
+
+\mbox{\Hypertarget{struct_jacobi_a33a1fc9832d58e848e6c75f6666d2744}\label{struct_jacobi_a33a1fc9832d58e848e6c75f6666d2744}} 
+\index{Jacobi@{Jacobi}!fail@{fail}}
+\index{fail@{fail}!Jacobi@{Jacobi}}
+\doxysubsubsection{\texorpdfstring{fail}{fail}}
+{\footnotesize\ttfamily bool Jacobi\+::fail}
+
+
+
+Definition at line 1467 of file nr3.\+h.
+
+
+
+Referenced by N\+Rtensor$<$ Doub $>$\+::\+Eigen\+System(), and Jacobi().
+
+\mbox{\Hypertarget{struct_jacobi_adf24210f9c21cbc07c0ae241d4760e79}\label{struct_jacobi_adf24210f9c21cbc07c0ae241d4760e79}} 
+\index{Jacobi@{Jacobi}!n@{n}}
+\index{n@{n}!Jacobi@{Jacobi}}
+\doxysubsubsection{\texorpdfstring{n}{n}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} Jacobi\+::n}
+
+
+
+Definition at line 1468 of file nr3.\+h.
+
+
+
+Referenced by eigsrt(), and Jacobi().
+
+\mbox{\Hypertarget{struct_jacobi_a8a7e86eab62decd1e680fd0d822a816e}\label{struct_jacobi_a8a7e86eab62decd1e680fd0d822a816e}} 
+\index{Jacobi@{Jacobi}!nrot@{nrot}}
+\index{nrot@{nrot}!Jacobi@{Jacobi}}
+\doxysubsubsection{\texorpdfstring{nrot}{nrot}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_a7cc214a236ad3bb6ad435bdcf5262a3f}{Int}} Jacobi\+::nrot}
+
+
+
+Definition at line 1471 of file nr3.\+h.
+
+
+
+Referenced by Jacobi().
+
+\mbox{\Hypertarget{struct_jacobi_ad7c8c6b9cd946bd91a4dcd11883bf437}\label{struct_jacobi_ad7c8c6b9cd946bd91a4dcd11883bf437}} 
+\index{Jacobi@{Jacobi}!v@{v}}
+\index{v@{v}!Jacobi@{Jacobi}}
+\doxysubsubsection{\texorpdfstring{v}{v}}
+{\footnotesize\ttfamily \mbox{\hyperlink{nr3_8h_ad80bce79a872a353958f95cd97ec035b}{Mat\+Doub}} Jacobi\+::v}
+
+
+
+Definition at line 1469 of file nr3.\+h.
+
+
+
+Referenced by N\+Rtensor$<$ Doub $>$\+::\+Eigen\+System(), eigsrt(), and Jacobi().
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{nr3_8h}{nr3.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,561 @@
+\hypertarget{class_n_rmatrix}{}\doxysection{N\+Rmatrix$<$ T $>$ Class Template Reference}
+\label{class_n_rmatrix}\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+
+
+{\ttfamily \#include $<$nr3.\+h$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \mbox{\hyperlink{class_n_rmatrix_a25db79ed9e2b1d6e21301d5c5fa17a02}{value\+\_\+type}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_n_rmatrix_a6233c9b700665a913572951de68731f9}{N\+Rmatrix}} ()
+\item 
+\mbox{\hyperlink{class_n_rmatrix_a5781e40c58c4ea6c3138309bf8c32547}{N\+Rmatrix}} (int n, int m)
+\item 
+\mbox{\hyperlink{class_n_rmatrix_aedb4ca538cb8041e6fe480c035d32265}{N\+Rmatrix}} (int n, int m, const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&a)
+\item 
+\mbox{\hyperlink{class_n_rmatrix_a600b995e06491510f32bcaaff9d7f054}{N\+Rmatrix}} (int n, int m, const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $\ast$a)
+\item 
+\mbox{\hyperlink{class_n_rmatrix_acea6416ee73aea178a9d6eddac9a52a8}{N\+Rmatrix}} (const \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}} \&rhs)
+\item 
+\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}} \& \mbox{\hyperlink{class_n_rmatrix_ad111392af3096947e73d1040414b8a5d}{operator=}} (const \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}} \&rhs)
+\item 
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $\ast$ \mbox{\hyperlink{class_n_rmatrix_aa93a475474f18b4cae1510debe767ea8}{operator\mbox{[}$\,$\mbox{]}}} (const int i)
+\item 
+const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $\ast$ \mbox{\hyperlink{class_n_rmatrix_a5ac6af2dc177d009292f0ec83274dede}{operator\mbox{[}$\,$\mbox{]}}} (const int i) const
+\item 
+\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}} \& \mbox{\hyperlink{class_n_rmatrix_aa6fb447bfc99c67ec14fb77c069ad254}{operator$\ast$=}} (const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&multipl)
+\item 
+\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}} \& \mbox{\hyperlink{class_n_rmatrix_a0777a705163cfd98cafaebca7cfa1de1}{operator+=}} (\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}} \&source)
+\item 
+\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}} \& \mbox{\hyperlink{class_n_rmatrix_a0a919726ee7e6c8047963cfb6cd392b0}{operator-\/=}} (\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}} \&source)
+\item 
+int \mbox{\hyperlink{class_n_rmatrix_a6ec22e0969fa8d2f97b03fda2dcb5f1a}{nrows}} () const
+\item 
+int \mbox{\hyperlink{class_n_rmatrix_a746c9ca5fc30176fae8c1f23072e6528}{ncols}} () const
+\item 
+void \mbox{\hyperlink{class_n_rmatrix_a472dd4ed406d3b41320771512168c9f6}{resize}} (int newn, int newm)
+\item 
+void \mbox{\hyperlink{class_n_rmatrix_a1407e1be0ea707f079b5519dc8075148}{assign}} (int newn, int newm, const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&a)
+\item 
+void \mbox{\hyperlink{class_n_rmatrix_ae5bebb969b54ea0c6860ec2d8b33ee45}{Print}} ()
+\item 
+void \mbox{\hyperlink{class_n_rmatrix_acdc859aa9fb31dc903b601b6ea0c1a28}{Print2}} ()
+\item 
+void \mbox{\hyperlink{class_n_rmatrix_a8d14f4edbae97dede500e540b717ae21}{Transpose}} (\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}} \&transpose)
+\item 
+void \mbox{\hyperlink{class_n_rmatrix_a8b272b4fa1531145c4f51b1f6a1cf895}{Mult}} (const \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}} \&A, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}} \&B)
+\item 
+void \mbox{\hyperlink{class_n_rmatrix_acef11836c36e7345e03dc97e8089da5d}{Dot}} (const \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}} \&A, \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}} \&B)
+\item 
+void \mbox{\hyperlink{class_n_rmatrix_a5e60b787f565ef75be32f204479a4892}{Copy\+From\+Vector}} (const std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$$>$ \&input)
+\item 
+void \mbox{\hyperlink{class_n_rmatrix_a397f0765947c97adb3af8eaeac87be11}{From\+Full\+To\+Voigt}} (\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&full)
+\item 
+\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}} \& \mbox{\hyperlink{class_n_rmatrix_a53950cd29a0fd74cb878ba7317ee3a95}{From\+Eigen}} (Vector\+Xd data)
+\item 
+void \mbox{\hyperlink{class_n_rmatrix_ac74159f1fd39f07740f9848e2c381e7a}{From\+Eigen}} (Matrix\+Xd data)
+\item 
+void \mbox{\hyperlink{class_n_rmatrix_a152c4d39df78ee0d0bef53a3ce188ccf}{To\+Eigen}} (Matrix\+Xd \&data)
+\item 
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \mbox{\hyperlink{class_n_rmatrix_a8b0f4de2e6ebc09abec5e3ef7bb45b58}{Det\+Eig}} ()
+\item 
+void \mbox{\hyperlink{class_n_rmatrix_a77b030377fbc2918655fd7cb844f5554}{Compute\+Inverse}} (\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&Inv\+Out)
+\item 
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \mbox{\hyperlink{class_n_rmatrix_afa0b84e2e2bb81ed373e0f7e8a464f73}{N\+Rmatrix\+Norm}} ()
+\item 
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \mbox{\hyperlink{class_n_rmatrix_aef9775a6a3b76eae67a2ce77b9f4e101}{Det}} ()
+\item 
+void \mbox{\hyperlink{class_n_rmatrix_aee59eb56564f9f8bee3a95c4e723d00b}{Copy\+From\+Vecdouble}} (const \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&input)
+\item 
+\mbox{\hyperlink{class_n_rmatrix_ad944c2238024c7ddd58454f6f4f73f35}{$\sim$\+N\+Rmatrix}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_n_rmatrix_a59b7651e6b37ef41496e55df76cd6335}{nn}}
+\item 
+int \mbox{\hyperlink{class_n_rmatrix_aadfca497fd7f24defe0dc4e25c2be359}{mm}}
+\item 
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $\ast$$\ast$ \mbox{\hyperlink{class_n_rmatrix_a40ebd6666223b5566cd3568de0136f63}{v}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class N\+Rmatrix$<$ T $>$}
+
+
+
+Definition at line 293 of file nr3.\+h.
+
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{class_n_rmatrix_a25db79ed9e2b1d6e21301d5c5fa17a02}\label{class_n_rmatrix_a25db79ed9e2b1d6e21301d5c5fa17a02}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!value\_type@{value\_type}}
+\index{value\_type@{value\_type}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{value\_type}{value\_type}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+typedef \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::\mbox{\hyperlink{class_n_rmatrix_a25db79ed9e2b1d6e21301d5c5fa17a02}{value\+\_\+type}}}
+
+
+
+Definition at line 306 of file nr3.\+h.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_n_rmatrix_a6233c9b700665a913572951de68731f9}\label{class_n_rmatrix_a6233c9b700665a913572951de68731f9}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!NRmatrix@{NRmatrix}}
+\index{NRmatrix@{NRmatrix}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{NRmatrix()}{NRmatrix()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}}
+
+
+
+Definition at line 635 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rmatrix_a5781e40c58c4ea6c3138309bf8c32547}\label{class_n_rmatrix_a5781e40c58c4ea6c3138309bf8c32547}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!NRmatrix@{NRmatrix}}
+\index{NRmatrix@{NRmatrix}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{NRmatrix()}{NRmatrix()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}} (\begin{DoxyParamCaption}\item[{int}]{n,  }\item[{int}]{m }\end{DoxyParamCaption})}
+
+
+
+Definition at line 638 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rmatrix_aedb4ca538cb8041e6fe480c035d32265}\label{class_n_rmatrix_aedb4ca538cb8041e6fe480c035d32265}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!NRmatrix@{NRmatrix}}
+\index{NRmatrix@{NRmatrix}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{NRmatrix()}{NRmatrix()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}} (\begin{DoxyParamCaption}\item[{int}]{n,  }\item[{int}]{m,  }\item[{const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&}]{a }\end{DoxyParamCaption})}
+
+
+
+Definition at line 646 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rmatrix_a600b995e06491510f32bcaaff9d7f054}\label{class_n_rmatrix_a600b995e06491510f32bcaaff9d7f054}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!NRmatrix@{NRmatrix}}
+\index{NRmatrix@{NRmatrix}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{NRmatrix()}{NRmatrix()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}} (\begin{DoxyParamCaption}\item[{int}]{n,  }\item[{int}]{m,  }\item[{const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $\ast$}]{a }\end{DoxyParamCaption})}
+
+
+
+Definition at line 655 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rmatrix_acea6416ee73aea178a9d6eddac9a52a8}\label{class_n_rmatrix_acea6416ee73aea178a9d6eddac9a52a8}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!NRmatrix@{NRmatrix}}
+\index{NRmatrix@{NRmatrix}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{NRmatrix()}{NRmatrix()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{rhs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 664 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rmatrix_ad944c2238024c7ddd58454f6f4f73f35}\label{class_n_rmatrix_ad944c2238024c7ddd58454f6f4f73f35}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!````~NRmatrix@{$\sim$NRmatrix}}
+\index{````~NRmatrix@{$\sim$NRmatrix}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$NRmatrix()}{~NRmatrix()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::$\sim$\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}}
+
+
+
+Definition at line 811 of file nr3.\+h.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_n_rmatrix_a1407e1be0ea707f079b5519dc8075148}\label{class_n_rmatrix_a1407e1be0ea707f079b5519dc8075148}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!assign@{assign}}
+\index{assign@{assign}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{assign()}{assign()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::assign (\begin{DoxyParamCaption}\item[{int}]{newn,  }\item[{int}]{newm,  }\item[{const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&}]{a }\end{DoxyParamCaption})}
+
+
+
+Definition at line 783 of file nr3.\+h.
+
+
+
+Referenced by elastoplastic2\+D$<$ Y\+C $>$\+::\+Assemble(), mesh\+::\+Assemble(), K\+L\+Galerkin\+R\+F\+::\+Assemble\+B(), elastmat2\+D\+::assemble\+Band\+N(), elastoplastic3\+D$<$ Y\+C $>$\+::assemble\+Band\+N(), elastoplastic2\+D$<$ Y\+C $>$\+::assemble\+Band\+N(), K\+L\+Galerkin\+R\+F\+::\+Assemble\+C(), elastmat2\+D\+::assemble\+Constitutive\+Matrix(), elastoplastic2\+D$<$ Y\+C $>$\+::assemble\+Constitutive\+Matrix(), elastmat2\+D\+::\+Cac\+Stiff(), elastoplastic3\+D$<$ Y\+C $>$\+::\+Cac\+Stiff(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Cac\+Stiff(), K\+L\+Galerkin\+R\+F\+::\+Cac\+Stiff\+B(), K\+L\+Galerkin\+R\+F\+::\+Cac\+Stiff\+C(), N\+Rmatrix$<$ Doub $>$\+::\+Compute\+Inverse(), mohrcoulomb\+::\+Compute\+Plane\+Tangent(), mesh\+::\+Compute\+Sol\+And\+D\+Sol(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Compute\+Sol\+And\+D\+Sol(), K\+L\+Galerkin\+R\+F\+::\+Compute\+Variance\+Error(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Contribute(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Contribute\+Curved\+Line(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Contribute\+Eig(), pressurizedhole\+::\+Create\+Mat\+And\+Mesh(), beam3dtools\+::\+Create\+Mat\+And\+Mesh(), beam3dtools\+::\+Create\+Mat\+And\+Mesh\+Cube(), N\+Rmatrix$<$ Doub $>$\+::\+Dot(), Find\+El(), mesh\+::\+Find\+Solution(), N\+Rmatrix$<$ Doub $>$\+::\+From\+Eigen(), N\+Rmatrix$<$ Doub $>$\+::\+From\+Full\+To\+Voigt(), N\+Rtensor$<$ Doub $>$\+::\+From\+Tensor\+To\+N\+Rmatrix(), N\+Rtensor$<$ Doub $>$\+::\+From\+Tensor\+Voigt\+To\+Full\+Tensor(), gridmesh\+::\+Get\+El\+Coords(), elastmat2\+D\+::\+Get\+El\+Coords(), pressurizedhole\+::\+Get\+El\+Coords(), elastoplastic3\+D$<$ Y\+C $>$\+::\+Get\+El\+Coords(), mesh\+::\+Get\+El\+Coords(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Get\+El\+Coords(), slopeproject\+::\+Get\+El\+Coords(), beam3dtools\+::\+Get\+El\+Coords(), beam3dtools\+::\+Insert\+Cube\+B\+C(), Iterative\+Cho(), pressurizedhole\+::\+Iterative\+Process(), slopeproject\+::\+Iterative\+Process(), beam3dtools\+::\+Iterative\+Process(), Iterative\+Process(), slopeproject\+::\+Iterative\+Process\+Arc\+Length\+S\+R\+M(), slopeproject\+::\+Iterative\+Process\+Shear\+Red(), Iterative\+Process\+Shear\+Red(), Iterative\+Process\+Shear\+Red2(), Iterative\+Process\+Shear\+Red3(), Iterative\+Slope\+Stability\+Eig(), gridmesh\+::\+Line(), slopeproject\+::\+Line(), pressurizedhole\+::\+Load\+B\+C(), beam3dtools\+::\+Load\+B\+C(), N\+Rmatrix$<$ Doub $>$\+::\+Mult(), N\+Rmatrix3\+D$<$ T $>$\+::\+N\+Rmatrix3\+D(), shapehexahedron\+::shapes(), shapequad\+::shapes(), elastmat2\+D\+::\+Sol\+Pt(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Sol\+Pt(), pressurizedhole\+::\+Solve\+Eigen(), slopeproject\+::\+Solve\+Eigen(), beam3dtools\+::\+Solve\+Eigen(), Solve\+Eigen(), slopeproject\+::\+Solve\+Eigen2(), Solve\+Eigen2(), slopeproject\+::\+Solve\+Eigen3(), pressurizedhole\+::\+Solve\+Eigen\+Sparse(), slopeproject\+::\+Solve\+Eigen\+Sparse(), beam3dtools\+::\+Solve\+Eigen\+Sparse(), K\+L\+Galerkin\+R\+F\+::\+Solve\+Gen\+Eig\+Val\+Problem(), Solve\+N\+R3(), pressurizedhole\+::\+To\+Mat\+Int(), and To\+Mat\+Int().
+
+\mbox{\Hypertarget{class_n_rmatrix_a77b030377fbc2918655fd7cb844f5554}\label{class_n_rmatrix_a77b030377fbc2918655fd7cb844f5554}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!ComputeInverse@{ComputeInverse}}
+\index{ComputeInverse@{ComputeInverse}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{ComputeInverse()}{ComputeInverse()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::Compute\+Inverse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{Inv\+Out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 363 of file nr3.\+h.
+
+
+
+Referenced by druckerprager\+::closestpointproj().
+
+\mbox{\Hypertarget{class_n_rmatrix_aee59eb56564f9f8bee3a95c4e723d00b}\label{class_n_rmatrix_aee59eb56564f9f8bee3a95c4e723d00b}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!CopyFromVecdouble@{CopyFromVecdouble}}
+\index{CopyFromVecdouble@{CopyFromVecdouble}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{CopyFromVecdouble()}{CopyFromVecdouble()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::Copy\+From\+Vecdouble (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_n_rvector}{N\+Rvector}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{input }\end{DoxyParamCaption})}
+
+
+
+Definition at line 398 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rmatrix_a5e60b787f565ef75be32f204479a4892}\label{class_n_rmatrix_a5e60b787f565ef75be32f204479a4892}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!CopyFromVector@{CopyFromVector}}
+\index{CopyFromVector@{CopyFromVector}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{CopyFromVector()}{CopyFromVector()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::Copy\+From\+Vector (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::vector$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$$>$ \&}]{input }\end{DoxyParamCaption})}
+
+
+
+Definition at line 602 of file nr3.\+h.
+
+
+
+Referenced by Iterative\+Cho(), slopeproject\+::\+Iterative\+Process(), Iterative\+Process(), slopeproject\+::\+Iterative\+Process\+Arc\+Length\+S\+R\+M(), slopeproject\+::\+Iterative\+Process\+Shear\+Red(), slopeproject\+::\+Iterative\+Process\+Shear\+Red2(), Iterative\+Process\+Shear\+Red3(), Iterative\+Slope\+Stability\+Eig(), main2(), Monte\+Carlo(), slopeproject\+::\+Monte\+Carlo\+G\+I\+M(), slopeproject\+::\+Monte\+Carlo\+S\+R\+M(), Monte\+Carlo\+Talude2(), slopeproject\+::\+Read\+Mat\+Doub(), Read\+Mat\+Doub(), pressurizedhole\+::\+Read\+Mesh(), slopeproject\+::\+Read\+Mesh(), beam3dtools\+::\+Read\+Mesh(), and Read\+Mesh().
+
+\mbox{\Hypertarget{class_n_rmatrix_aef9775a6a3b76eae67a2ce77b9f4e101}\label{class_n_rmatrix_aef9775a6a3b76eae67a2ce77b9f4e101}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!Det@{Det}}
+\index{Det@{Det}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Det()}{Det()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::Det}
+
+
+
+Definition at line 434 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rmatrix_a8b0f4de2e6ebc09abec5e3ef7bb45b58}\label{class_n_rmatrix_a8b0f4de2e6ebc09abec5e3ef7bb45b58}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!DetEig@{DetEig}}
+\index{DetEig@{DetEig}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{DetEig()}{DetEig()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::Det\+Eig (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 349 of file nr3.\+h.
+
+
+
+Referenced by druckerprager\+::closestpointproj().
+
+\mbox{\Hypertarget{class_n_rmatrix_acef11836c36e7345e03dc97e8089da5d}\label{class_n_rmatrix_acef11836c36e7345e03dc97e8089da5d}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!Dot@{Dot}}
+\index{Dot@{Dot}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Dot()}{Dot()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::Dot (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{A,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{B }\end{DoxyParamCaption})}
+
+
+
+Definition at line 578 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rmatrix_ac74159f1fd39f07740f9848e2c381e7a}\label{class_n_rmatrix_ac74159f1fd39f07740f9848e2c381e7a}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!FromEigen@{FromEigen}}
+\index{FromEigen@{FromEigen}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{FromEigen()}{FromEigen()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::From\+Eigen (\begin{DoxyParamCaption}\item[{Matrix\+Xd}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 326 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rmatrix_a53950cd29a0fd74cb878ba7317ee3a95}\label{class_n_rmatrix_a53950cd29a0fd74cb878ba7317ee3a95}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!FromEigen@{FromEigen}}
+\index{FromEigen@{FromEigen}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{FromEigen()}{FromEigen()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}\& \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::From\+Eigen (\begin{DoxyParamCaption}\item[{Vector\+Xd}]{data }\end{DoxyParamCaption})}
+
+
+
+Referenced by elastoplastic2\+D$<$ Y\+C $>$\+::\+Contribute\+Eig().
+
+\mbox{\Hypertarget{class_n_rmatrix_a397f0765947c97adb3af8eaeac87be11}\label{class_n_rmatrix_a397f0765947c97adb3af8eaeac87be11}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!FromFullToVoigt@{FromFullToVoigt}}
+\index{FromFullToVoigt@{FromFullToVoigt}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{FromFullToVoigt()}{FromFullToVoigt()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::From\+Full\+To\+Voigt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{full }\end{DoxyParamCaption})}
+
+
+
+Definition at line 408 of file nr3.\+h.
+
+
+
+Referenced by vonmises\+::closestpointproj(), and druckerprager\+::\+Compute\+Q().
+
+\mbox{\Hypertarget{class_n_rmatrix_a8b272b4fa1531145c4f51b1f6a1cf895}\label{class_n_rmatrix_a8b272b4fa1531145c4f51b1f6a1cf895}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!Mult@{Mult}}
+\index{Mult@{Mult}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Mult()}{Mult()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::Mult (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{A,  }\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{B }\end{DoxyParamCaption})}
+
+
+
+Definition at line 555 of file nr3.\+h.
+
+
+
+Referenced by vonmises\+::closestpointproj(), druckerprager\+::closestpointproj(), druckerprager\+::\+Compute\+Q(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Compute\+Sol\+And\+D\+Sol(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Compute\+Solution(), elastmat2\+D\+::\+Contribute(), elastoplastic3\+D$<$ Y\+C $>$\+::\+Contribute(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Contribute(), K\+L\+Galerkin\+R\+F\+::\+Contribute\+B(), K\+L\+Galerkin\+R\+F\+::\+Contribute\+C(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Contribute\+Curved\+Line(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Contribute\+Eig(), elastmat2\+D\+::\+Contribute\+Line\+Newan(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Contribute\+Line\+Newan(), vonmises\+::dadsig(), Find\+El(), mesh\+::\+Find\+Solution(), K\+L\+Galerkin\+R\+F\+::\+Generate\+Gaussin\+Random\+Field(), K\+L\+Galerkin\+R\+F\+::\+Generate\+Non\+Gaussin\+Random\+Field(), Iterative\+Cho(), slopeproject\+::\+Iterative\+Process(), Iterative\+Process(), slopeproject\+::\+Iterative\+Process\+Arc\+Length\+S\+R\+M(), Iterative\+Process\+Shear\+Red3(), Iterative\+Slope\+Stability\+Eig(), Funcd\+Search\+::operator()(), K\+L\+Galerkin\+R\+F\+::\+Perfom\+Integral\+Of\+Listconst(), vonmises\+::phi(), druckerprager\+::phi(), postprocess\+::\+Post\+Process(), elastmat2\+D\+::\+Post\+Process(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Post\+Process(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Post\+Process\+Integration\+Point\+Var(), elastmat2\+D\+::\+Sol\+Pt(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Sol\+Pt(), and K\+L\+Galerkin\+R\+F\+::\+Solve\+Gen\+Eig\+Val\+Problem().
+
+\mbox{\Hypertarget{class_n_rmatrix_a746c9ca5fc30176fae8c1f23072e6528}\label{class_n_rmatrix_a746c9ca5fc30176fae8c1f23072e6528}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!ncols@{ncols}}
+\index{ncols@{ncols}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{ncols()}{ncols()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+int \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::ncols\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 759 of file nr3.\+h.
+
+
+
+Referenced by mesh\+::\+Assemble(), Cholesky\+::\+Cholesky(), N\+Rmatrix$<$ Doub $>$\+::\+Compute\+Inverse(), K\+L\+Galerkin\+R\+F\+::\+Compute\+Variance\+Error(), gridmesh\+::\+Create\+Mesh(), druckerprager\+::\+Det(), N\+Rmatrix$<$ Doub $>$\+::\+Det\+Eig(), N\+Rmatrix$<$ Doub $>$\+::\+Dot(), V\+T\+K\+Graph\+Mesh\+::\+Draw\+Solution(), Find\+El(), N\+Rmatrix$<$ Doub $>$\+::\+From\+Eigen(), K\+L\+Galerkin\+R\+F\+::\+Generate\+Gaussin\+Random\+Field(), K\+L\+Galerkin\+R\+F\+::\+Generate\+Non\+Gaussin\+Random\+Field(), V\+T\+K\+Graph\+Mesh\+::\+Get\+Mesh\+Topology\+V\+T\+K(), druckerprager\+::\+Inverse(), slopeproject\+::\+Monte\+Carlo\+G\+I\+M(), N\+Rmatrix$<$ Doub $>$\+::\+Mult(), N\+Rmatrix3\+D$<$ T $>$\+::\+N\+Rmatrix3\+D(), slopeproject\+::\+Out\+Put\+Post(), pressurizedhole\+::\+Out\+Put\+Post(), Out\+Put\+Post(), gridmesh\+::\+Print\+All\+Coords(), slopeproject\+::\+Print\+Mathematica\+Format(), pressurizedhole\+::\+Read\+Mesh(), slopeproject\+::\+Read\+Mesh(), beam3dtools\+::\+Read\+Mesh(), Read\+Mesh(), L\+Udcmp\+::solve(), pressurizedhole\+::\+Solve\+Eigen(), slopeproject\+::\+Solve\+Eigen(), beam3dtools\+::\+Solve\+Eigen(), Solve\+Eigen(), slopeproject\+::\+Solve\+Eigen2(), Solve\+Eigen2(), slopeproject\+::\+Solve\+Eigen3(), and N\+Rmatrix$<$ Doub $>$\+::\+To\+Eigen().
+
+\mbox{\Hypertarget{class_n_rmatrix_afa0b84e2e2bb81ed373e0f7e8a464f73}\label{class_n_rmatrix_afa0b84e2e2bb81ed373e0f7e8a464f73}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!NRmatrixNorm@{NRmatrixNorm}}
+\index{NRmatrixNorm@{NRmatrixNorm}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{NRmatrixNorm()}{NRmatrixNorm()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::N\+Rmatrix\+Norm}
+
+
+
+Definition at line 420 of file nr3.\+h.
+
+
+
+Referenced by druckerprager\+::\+Compute\+Q(), Iterative\+Cho(), pressurizedhole\+::\+Iterative\+Process(), slopeproject\+::\+Iterative\+Process(), beam3dtools\+::\+Iterative\+Process(), Iterative\+Process(), slopeproject\+::\+Iterative\+Process\+Arc\+Length\+S\+R\+M(), slopeproject\+::\+Iterative\+Process\+Shear\+Red(), Iterative\+Process\+Shear\+Red(), Iterative\+Process\+Shear\+Red2(), Iterative\+Process\+Shear\+Red3(), and Iterative\+Slope\+Stability\+Eig().
+
+\mbox{\Hypertarget{class_n_rmatrix_a6ec22e0969fa8d2f97b03fda2dcb5f1a}\label{class_n_rmatrix_a6ec22e0969fa8d2f97b03fda2dcb5f1a}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!nrows@{nrows}}
+\index{nrows@{nrows}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{nrows()}{nrows()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+int \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::nrows\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 753 of file nr3.\+h.
+
+
+
+Referenced by elastmat2\+D\+::\+Assemble(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Assemble(), mesh\+::\+Assemble(), K\+L\+Galerkin\+R\+F\+::\+Assemble\+B(), elastmat2\+D\+::assemble\+Band\+N(), elastoplastic3\+D$<$ Y\+C $>$\+::assemble\+Band\+N(), elastoplastic2\+D$<$ Y\+C $>$\+::assemble\+Band\+N(), K\+L\+Galerkin\+R\+F\+::\+Assemble\+C(), slopeproject\+::\+Assemble\+Hhationho(), elastmat2\+D\+::\+Cac\+Stiff(), elastoplastic3\+D$<$ Y\+C $>$\+::\+Cac\+Stiff(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Cac\+Stiff(), K\+L\+Galerkin\+R\+F\+::\+Cac\+Stiff\+B(), K\+L\+Galerkin\+R\+F\+::\+Cac\+Stiff\+C(), vonmises\+::closestpointproj(), druckerprager\+::closestpointproj(), N\+Rmatrix$<$ Doub $>$\+::\+Compute\+Inverse(), slopeproject\+::computelamda(), beam3dtools\+::computelamda(), computelamda(), mesh\+::\+Compute\+Sol\+And\+D\+Sol(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Compute\+Sol\+And\+D\+Sol(), K\+L\+Galerkin\+R\+F\+::\+Compute\+Variance\+Error(), elastmat2\+D\+::\+Contribute(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Contribute(), K\+L\+Galerkin\+R\+F\+::\+Contribute\+B(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Contribute\+Curved\+Line(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Contribute\+Eig(), elastmat2\+D\+::\+Contribute\+Line\+Newan(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Contribute\+Line\+Newan(), pressurizedhole\+::\+Create\+Mat\+And\+Mesh(), beam3dtools\+::\+Create\+Mat\+And\+Mesh(), beam3dtools\+::\+Create\+Mat\+And\+Mesh\+Cube(), gridmesh\+::\+Create\+Mesh(), createrandomfield(), druckerprager\+::\+Det(), N\+Rmatrix$<$ Doub $>$\+::\+Det(), N\+Rmatrix$<$ Doub $>$\+::\+Det\+Eig(), elastmat2\+D\+::\+Dirichlet\+B\+C(), elastoplastic3\+D$<$ Y\+C $>$\+::\+Dirichlet\+B\+C(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Dirichlet\+B\+C(), N\+Rmatrix$<$ Doub $>$\+::\+Dot(), V\+T\+K\+Graph\+Mesh\+::\+Draw\+Solution(), Find\+El(), pressurizedhole\+::\+Find\+Ids(), mesh\+::\+Find\+Ids(), beam3dtools\+::\+Find\+Ids(), gridmesh\+::\+Find\+Ids\+In\+Path(), slopeproject\+::\+Find\+Ids\+In\+Path(), mesh\+::\+Find\+Solution(), N\+Rmatrix$<$ Doub $>$\+::\+From\+Eigen(), K\+L\+Galerkin\+R\+F\+::\+Generate\+Gaussin\+Random\+Field(), K\+L\+Galerkin\+R\+F\+::\+Generate\+Non\+Gaussin\+Random\+Field(), V\+T\+K\+Graph\+Mesh\+::\+Get\+Mesh\+Topology\+V\+T\+K(), beam3dtools\+::\+Insert\+Cube\+B\+C(), druckerprager\+::\+Inverse(), Iterative\+Cho(), pressurizedhole\+::\+Iterative\+Process(), slopeproject\+::\+Iterative\+Process(), beam3dtools\+::\+Iterative\+Process(), Iterative\+Process(), slopeproject\+::\+Iterative\+Process\+Arc\+Length\+S\+R\+M(), slopeproject\+::\+Iterative\+Process\+Shear\+Red(), Iterative\+Process\+Shear\+Red(), slopeproject\+::\+Iterative\+Process\+Shear\+Red2(), Iterative\+Process\+Shear\+Red2(), Iterative\+Process\+Shear\+Red3(), Iterative\+Slope\+Stability\+Eig(), beam3dtools\+::\+Load\+B\+C(), main2(), mainlinux(), mainlinux2(), mainlinuxserial(), mainwindows(), Monte\+Carlo(), slopeproject\+::\+Monte\+Carlo\+G\+I\+M(), slopeproject\+::\+Monte\+Carlo\+S\+R\+M(), Monte\+Carlo\+Talude2(), N\+Rmatrix$<$ Doub $>$\+::\+Mult(), N\+Rmatrix3\+D$<$ T $>$\+::\+N\+Rmatrix3\+D(), slopeproject\+::\+Out\+Put\+File(), pressurizedhole\+::\+Out\+Put\+File(), beam3dtools\+::\+Out\+Put\+File(), Out\+Put\+File(), slopeproject\+::\+Out\+Put\+File1var(), Out\+Put\+File1var(), Out\+Put\+File4var(), slopeproject\+::\+Out\+Put\+Post(), pressurizedhole\+::\+Out\+Put\+Post(), Out\+Put\+Post(), K\+L\+Galerkin\+R\+F\+::\+Perfom\+Integral\+Of\+Listconst(), shapequad\+::pointsandweigths1\+D(), shapehexahedron\+::pointsandweigths1\+D(), postprocess\+::\+Post\+Process(), elastmat2\+D\+::\+Post\+Process(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Post\+Process(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Post\+Process\+Integration\+Point\+Var(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Post\+Process\+Strain(), gridmesh\+::\+Print\+All\+Coords(), gridmesh\+::\+Print\+G\+Mesh\+V\+T\+K(), slopeproject\+::\+Print\+Mathematica\+Format(), pressurizedhole\+::\+Read\+Mesh(), slopeproject\+::\+Read\+Mesh(), beam3dtools\+::\+Read\+Mesh(), Read\+Mesh(), elastmat2\+D\+::\+Sol\+Pt(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Sol\+Pt(), L\+Udcmp\+::solve(), solvedeterm(), solvedetermtest(), pressurizedhole\+::\+Solve\+Eigen(), slopeproject\+::\+Solve\+Eigen(), beam3dtools\+::\+Solve\+Eigen(), Solve\+Eigen(), slopeproject\+::\+Solve\+Eigen2(), Solve\+Eigen2(), slopeproject\+::\+Solve\+Eigen3(), pressurizedhole\+::\+Solve\+Eigen\+Sparse(), slopeproject\+::\+Solve\+Eigen\+Sparse(), beam3dtools\+::\+Solve\+Eigen\+Sparse(), K\+L\+Galerkin\+R\+F\+::\+Solve\+Gen\+Eig\+Val\+Problem(), Solve\+N\+R3(), N\+Rmatrix$<$ Doub $>$\+::\+To\+Eigen(), and mesh\+::\+Transfer\+Solution().
+
+\mbox{\Hypertarget{class_n_rmatrix_aa6fb447bfc99c67ec14fb77c069ad254}\label{class_n_rmatrix_aa6fb447bfc99c67ec14fb77c069ad254}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$=()}{operator*=()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \& \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::operator$\ast$= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} \&}]{multipl }\end{DoxyParamCaption})}
+
+
+
+Definition at line 715 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rmatrix_a0777a705163cfd98cafaebca7cfa1de1}\label{class_n_rmatrix_a0777a705163cfd98cafaebca7cfa1de1}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \& \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::operator+= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{source }\end{DoxyParamCaption})}
+
+
+
+Definition at line 493 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rmatrix_a0a919726ee7e6c8047963cfb6cd392b0}\label{class_n_rmatrix_a0a919726ee7e6c8047963cfb6cd392b0}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/=()}{operator-=()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \& \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::operator-\/= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{source }\end{DoxyParamCaption})}
+
+
+
+Definition at line 480 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rmatrix_ad111392af3096947e73d1040414b8a5d}\label{class_n_rmatrix_ad111392af3096947e73d1040414b8a5d}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \& \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{rhs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 675 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rmatrix_aa93a475474f18b4cae1510debe767ea8}\label{class_n_rmatrix_aa93a475474f18b4cae1510debe767ea8}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $\ast$ \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const int}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 729 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rmatrix_a5ac6af2dc177d009292f0ec83274dede}\label{class_n_rmatrix_a5ac6af2dc177d009292f0ec83274dede}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+const \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $\ast$ \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const int}]{i }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 741 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rmatrix_ae5bebb969b54ea0c6860ec2d8b33ee45}\label{class_n_rmatrix_ae5bebb969b54ea0c6860ec2d8b33ee45}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!Print@{Print}}
+\index{Print@{Print}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Print()}{Print()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::Print}
+
+
+
+Definition at line 509 of file nr3.\+h.
+
+
+
+Referenced by elastmat2\+D\+::\+Contribute(), elastoplastic3\+D$<$ Y\+C $>$\+::\+Contribute(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Contribute(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Contribute\+Eig(), Find\+El(), mesh\+::\+Find\+Solution(), Iterative\+Cho(), Iterative\+Slope\+Stability\+Eig(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Post\+Process\+Strain(), slopeproject\+::\+Read\+Mesh(), Read\+Mesh(), beam3dtools\+::\+Solve\+Elastic\+Beam(), and pressurizedhole\+::\+Solve\+Elastic\+Hole().
+
+\mbox{\Hypertarget{class_n_rmatrix_acdc859aa9fb31dc903b601b6ea0c1a28}\label{class_n_rmatrix_acdc859aa9fb31dc903b601b6ea0c1a28}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!Print2@{Print2}}
+\index{Print2@{Print2}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Print2()}{Print2()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::Print2}
+
+
+
+Definition at line 524 of file nr3.\+h.
+
+\mbox{\Hypertarget{class_n_rmatrix_a472dd4ed406d3b41320771512168c9f6}\label{class_n_rmatrix_a472dd4ed406d3b41320771512168c9f6}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!resize@{resize}}
+\index{resize@{resize}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{resize()}{resize()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::resize (\begin{DoxyParamCaption}\item[{int}]{newn,  }\item[{int}]{newm }\end{DoxyParamCaption})}
+
+
+
+Definition at line 765 of file nr3.\+h.
+
+
+
+Referenced by elastoplastic2\+D$<$ Y\+C $>$\+::\+Assemble(), mesh\+::\+Assemble(), mesh\+::\+Compute\+Sol\+And\+D\+Sol(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Compute\+Sol\+And\+D\+Sol(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Compute\+Solution(), gridmesh\+::\+Create\+Mesh(), N\+Rtensor$<$ Doub $>$\+::\+Eigen\+System(), K\+L\+Galerkin\+R\+F\+::\+Generate\+Gaussin\+Random\+Field(), K\+L\+Galerkin\+R\+F\+::\+Generate\+Non\+Gaussin\+Random\+Field(), Cholesky\+::inverse(), L\+Udcmp\+::inverse(), shapequad\+::pointsandweigths(), shapehexahedron\+::pointsandweigths(), shapequad\+::pointsandweigths1\+D(), shapehexahedron\+::pointsandweigths1\+D(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Post\+Process\+Strain(), shapequad\+::shapes(), shapequad\+::shapes1\+D(), shapehexahedron\+::shapes1\+D(), and N\+Rmatrix$<$ Doub $>$\+::\+Transpose().
+
+\mbox{\Hypertarget{class_n_rmatrix_a152c4d39df78ee0d0bef53a3ce188ccf}\label{class_n_rmatrix_a152c4d39df78ee0d0bef53a3ce188ccf}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!ToEigen@{ToEigen}}
+\index{ToEigen@{ToEigen}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{ToEigen()}{ToEigen()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::To\+Eigen (\begin{DoxyParamCaption}\item[{Matrix\+Xd \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 337 of file nr3.\+h.
+
+
+
+Referenced by elastoplastic2\+D$<$ Y\+C $>$\+::\+Contribute\+Eig().
+
+\mbox{\Hypertarget{class_n_rmatrix_a8d14f4edbae97dede500e540b717ae21}\label{class_n_rmatrix_a8d14f4edbae97dede500e540b717ae21}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!Transpose@{Transpose}}
+\index{Transpose@{Transpose}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Transpose()}{Transpose()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::Transpose (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$ \&}]{transpose }\end{DoxyParamCaption})}
+
+
+
+Definition at line 542 of file nr3.\+h.
+
+
+
+Referenced by vonmises\+::closestpointproj(), druckerprager\+::closestpointproj(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Compute\+Sol\+And\+D\+Sol(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Compute\+Solution(), elastmat2\+D\+::\+Contribute(), elastoplastic3\+D$<$ Y\+C $>$\+::\+Contribute(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Contribute(), K\+L\+Galerkin\+R\+F\+::\+Contribute\+B(), K\+L\+Galerkin\+R\+F\+::\+Contribute\+C(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Contribute\+Curved\+Line(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Contribute\+Eig(), vonmises\+::dadsig(), Find\+El(), mesh\+::\+Find\+Solution(), K\+L\+Galerkin\+R\+F\+::\+Generate\+Gaussin\+Random\+Field(), K\+L\+Galerkin\+R\+F\+::\+Generate\+Non\+Gaussin\+Random\+Field(), Iterative\+Cho(), slopeproject\+::\+Iterative\+Process(), Iterative\+Process(), slopeproject\+::\+Iterative\+Process\+Arc\+Length\+S\+R\+M(), Iterative\+Process\+Shear\+Red3(), Iterative\+Slope\+Stability\+Eig(), Funcd\+Search\+::operator()(), postprocess\+::\+Post\+Process(), elastmat2\+D\+::\+Post\+Process(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Post\+Process(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Post\+Process\+Integration\+Point\+Var(), elastmat2\+D\+::\+Sol\+Pt(), elastoplastic2\+D$<$ Y\+C $>$\+::\+Sol\+Pt(), vonmises\+::stressrecosntruction(), and druckerprager\+::stressrecosntruction().
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_n_rmatrix_aadfca497fd7f24defe0dc4e25c2be359}\label{class_n_rmatrix_aadfca497fd7f24defe0dc4e25c2be359}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!mm@{mm}}
+\index{mm@{mm}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{mm}{mm}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+int \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::mm\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 296 of file nr3.\+h.
+
+
+
+Referenced by N\+Rmatrix$<$ Doub $>$\+::\+N\+Rmatrix(), and N\+Rmatrix$<$ Doub $>$\+::operator=().
+
+\mbox{\Hypertarget{class_n_rmatrix_a59b7651e6b37ef41496e55df76cd6335}\label{class_n_rmatrix_a59b7651e6b37ef41496e55df76cd6335}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!nn@{nn}}
+\index{nn@{nn}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{nn}{nn}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+int \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::nn\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 295 of file nr3.\+h.
+
+
+
+Referenced by N\+Rmatrix$<$ Doub $>$\+::\+N\+Rmatrix(), and N\+Rmatrix$<$ Doub $>$\+::operator=().
+
+\mbox{\Hypertarget{class_n_rmatrix_a40ebd6666223b5566cd3568de0136f63}\label{class_n_rmatrix_a40ebd6666223b5566cd3568de0136f63}} 
+\index{NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}!v@{v}}
+\index{v@{v}!NRmatrix$<$ T $>$@{NRmatrix$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{v}{v}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}}$\ast$$\ast$ \mbox{\hyperlink{class_n_rmatrix}{N\+Rmatrix}}$<$ \mbox{\hyperlink{_s_f_e_m_8cpp_af639fb96631ba0018f0b2259fc95edfb}{T}} $>$\+::v\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 297 of file nr3.\+h.
+
+
+
+Referenced by N\+Rmatrix$<$ Doub $>$\+::\+Compute\+Inverse(), N\+Rmatrix$<$ Doub $>$\+::\+Det\+Eig(), N\+Rmatrix$<$ Doub $>$\+::\+From\+Eigen(), N\+Rmatrix$<$ Doub $>$\+::\+N\+Rmatrix(), and N\+Rmatrix$<$ Doub $>$\+::\+To\+Eigen().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{nr3_8h}{nr3.\+h}}\end{DoxyCompactItemize}

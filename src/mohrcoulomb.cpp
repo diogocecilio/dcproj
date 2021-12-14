@@ -78,7 +78,7 @@ bool mohrcoulomb::ReturnMapPlane(const NRvector<T> &sigma_trial, NRvector<T> &si
     sigma_projected = eigenvalues;
     epsbarnew = epsbar;
     
-    bool check_validity_Q = (eigenvalues[0] > eigenvalues[1]|| fabs(eigenvalues[0]-eigenvalues[1])<1.e-8 && eigenvalues[1] > eigenvalues[2] || (eigenvalues[1]-eigenvalues[2])<1.e-8);
+    bool check_validity_Q = (eigenvalues[0] > eigenvalues[1]|| fabs(eigenvalues[0]-eigenvalues[1])<1.e-8 && (eigenvalues[1] > eigenvalues[2]) || (eigenvalues[1]-eigenvalues[2])<1.e-8);
     return (check_validity_Q);   
 }
 
