@@ -198,7 +198,11 @@ public:
 		return fbodyforce;
 	}
 //
-//
+    void SetTangentMatrixType(bool type)
+    {
+         fYC.SetTangentMatrixType(type);
+    }
+    
 Int getIndex(vector<int> indexvec, int inode)
 {
     Int id;

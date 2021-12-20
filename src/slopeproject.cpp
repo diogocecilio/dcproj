@@ -129,7 +129,7 @@ void slopeproject::SolveEigen(SparseMatrix<double> A, VectorXd b, VectorXd& x)
    // cout << "Operation took: " << time_span.count() << " seconds.";
 }
 
-void slopeproject::findbcids(mesh* gmesh, std::vector<std::vector<int>>& idsvector)
+/*void slopeproject::findbcids(mesh* gmesh, std::vector<std::vector<int>>& idsvector)
 {
 	Int ndivs = 100000;
 	MatDoub pathbottom, pathleft, pathright, pathdisplace;
@@ -160,10 +160,56 @@ void slopeproject::findbcids(mesh* gmesh, std::vector<std::vector<int>>& idsvect
 
 	idsvector.push_back(idsright);
 
-	a[0] = 19.99; a[1] = 19.99;
-	b[0] = 20.; b[1] = 20.;
+	//a[0] = 19.99; a[1] = 19.99;
+    a[0] = 14.99; a[1] = 19.99;
+	//b[0] = 20.; b[1] = 20.;
+    b[0] = 15.; b[1] = 20.;
 	Line(a, b, ndivs, pathdisplace);
 	FindIdsInPath(pathdisplace,ggmesh,meshtop, iddisplace);
+    
+    cout<< "ID displace = "<<iddisplace[0]<<endl;
+
+	idsvector.push_back(iddisplace);
+
+}*/
+
+void slopeproject::findbcids(mesh* gmesh, std::vector<std::vector<int>>& idsvector)
+{
+	Int ndivs = 100000;
+	MatDoub pathbottom, pathleft, pathright, pathdisplace;
+	std::vector<int>  idsbottom, idsleft, idsright, iddisplace;
+	VecDoub a(2), b(2);
+	a[0] = 0.; a[1] = 0.;
+	b[0] = 30.; b[1] = 0;
+	Line(a, b, ndivs, pathbottom);
+	
+	std::vector<std::vector<std::vector<double> > > ggmesh = gmesh->GetAllCoords();
+	
+	NRmatrix<int> meshtop = gmesh->GetMeshTopology();
+	
+	FindIdsInPath(pathbottom, ggmesh,meshtop, idsbottom);
+
+	idsvector.push_back(idsbottom);
+
+	a[0] = 0.; a[1] = 0.;
+	b[0] = 0.; b[1] = 10.;
+	Line(a, b, ndivs, pathleft);
+	FindIdsInPath(pathleft, ggmesh,meshtop, idsleft);
+
+	idsvector.push_back(idsleft);
+	a[0] = 30.; a[1] = 0.;
+	b[0] = 30.; b[1] = 5.;
+	Line(a, b, ndivs, pathright);
+	FindIdsInPath(pathright, ggmesh,meshtop, idsright);
+
+	idsvector.push_back(idsright);
+
+    a[0] = 9.99; a[1] = 9.99;
+    b[0] = 10.; b[1] = 10.;
+	Line(a, b, ndivs, pathdisplace);
+	FindIdsInPath(pathdisplace,ggmesh,meshtop, iddisplace);
+    
+    cout<< "ID displace = "<<iddisplace[0]<<endl;
 
 	idsvector.push_back(iddisplace);
 
@@ -244,8 +290,6 @@ std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed(Doub fa
 		mat->SetMatConstants(matconsts);
 	}
 
-
-
 	do
 	{
 		Int counter = 0;
@@ -255,6 +299,8 @@ std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed(Doub fa
 		norm = 1000.;
 		
 		mat->ResetMat();
+        fmesh->fmaterial->SetTangentMatrixType(false);
+        Doub tol2 = 0.01;
 		do
 		{
             chrono::steady_clock sc;
@@ -278,8 +324,8 @@ std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed(Doub fa
             
             auto end = sc.now();
             auto time_span = static_cast<chrono::duration<double>>(end - start);
-            cout << "Time: " << time_span.count();
-            
+            cout << "Iter  " << counter ;
+            cout << "| Time: " << time_span.count();
 			std::cout << " R norm = " << norm << " | phi0/phi = " << tan(phi0) / tan(phi) << " | c0/c = " << c0 / c << " | c = " << c <<" | phi = " << phi << std::endl;
 			counter++;
 			postcounter++;
@@ -288,9 +334,13 @@ std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed(Doub fa
 				std::cout << "NAN" << endl;
 				return solpost;
 			}
+			//if(counter>20)fmesh->fmaterial->SetElastic();
+			
+			//cout<< "fbody norm = "<< FBODY.NRmatrixNorm() <<endl;
+			if(counter>10)fmesh->fmaterial->SetTangentMatrixType(true);
 
-		} while (norm > 0.01 && counter <15 && norm < 5000.);
-        
+		} while (norm > tol2 && counter <20 && norm < 1000.);
+         
         if(norm<1){
 		solcount[0] = fabs(displace[2 * iddisplace[0] + 1][0]);
 		solcount[1] = FS;
@@ -308,7 +358,7 @@ std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed(Doub fa
 }
 
 		res = (fac - facn) / fac;
-		if (norm>= 1.) {
+		if (norm>= tol2) {
 			displace = displace0;
 			//R.assign(sz, 1, 0.), FBODY.assign(sz, 1, 0.), FINT.assign(sz, 1, 0.);
 			//facn = FS;
@@ -407,7 +457,6 @@ std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed(Doub fa
 	
 	return solpost;
 }
-
 
 
 std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed2(Doub fac, Doub delta,Doub tol) {
@@ -744,6 +793,7 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 	dwbt.Mult(dwb, mult);
 	l0 = sqrt(dlamb0 * dlamb0 * mult[0][0]);
 	l = l0;
+    //l=0.05;
 	dlamb = computelamda(dwb, dws, dw, l);
 	lamb = 0;
 	Doub scalar = 1.5;
@@ -811,7 +861,7 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
             auto time_span_solver = static_cast<chrono::duration<double>>(end - start);
             //SolveEigen(KG, R, dws);
 			//SolveEigen(KG, FBODY, dwb);
-			
+			Doub lastlambd = dlamb;
 			dlamb = computelamda(dwb, dws, dw, l);
 			if (isnan(dlamb) == 1) {
 				std::cout << "NAN" << endl;
@@ -993,6 +1043,258 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 	return solpost;
 
 }
+
+
+void  slopeproject::IterativeProcess2()
+{
+
+	std::vector<int>  idsbottom, idsleft, idsright, iddisplace;
+	std::vector<std::vector<int>> idsvector;
+
+	findbcids(fmesh, idsvector);
+
+	idsbottom = idsvector[0];
+	idsleft = idsvector[1];
+	idsright = idsvector[2];
+	iddisplace = idsvector[3];
+    
+    MatDoub KG,Fint,Fbody,FG;
+    
+    fmesh->Assemble(KG, Fint, Fbody);
+    
+    int sz = KG.nrows();
+
+    NRmatrix<Doub> u;
+    Doub finalload =20.;
+    u.assign(sz,1,0.);
+    Doub fac[] = {0.1,0.2,0.4,0.5,0.6,0.7,0.8,0.9,1.0,1.1,1.2,1.21,1.22,1.23,1.24,1.25,1.26,1.27,1.275,1.28,1.29,1.3,1.4};
+	Int steps = 16;
+	Int counterout = 1;
+	MatDoub solpost(1000, 2, 0.);
+	for (Int iload = 0; iload < steps; iload++)
+	{
+		std::cout << "load step = " << iload << " | fac = " <<fac[iload] << std::endl;
+		Int counter = 0, maxcount = 30;
+		Doub err1 = 10., err2 = 10., tol = 10.e-5;
+		MatDoub dw(sz, 1, 0.), res(sz, 1, 0.), FINT,FBODY, R;
+		while (counter <  maxcount && err1 > tol)
+		{
+			
+
+            fmesh->Assemble(KG, FINT, FBODY);
+           // FBODY.Print();
+            R = FBODY;
+			R *= fac[iload];
+			R -= FINT;
+            
+            InserBC(KG, R, FBODY, idsbottom, idsright, idsleft, fmesh->fmaterial);
+            //R.Print();
+            SolveEigenSparse( KG, R, dw);
+
+			u += dw;
+
+			fmesh->fmaterial->UpdateDisplacement(u);
+
+			Doub rnorm = 0., normdw = 0., normfg = 0., unorm = 0.;
+
+			rnorm = R.NRmatrixNorm();
+
+			normdw = dw.NRmatrixNorm();
+
+			normfg = FBODY.NRmatrixNorm();
+
+			unorm = u.NRmatrixNorm();
+
+			err1 = rnorm / (fac[iload] *normfg);
+
+			err2 = normdw / unorm;
+
+			std::cout << " Iteration number = " << counter << " |  |R|/|FE| = " << err1 << " | deltau/u " << err2 << std::endl;
+			counter++;
+		}
+		fmesh->fmaterial->UpdatePlasticStrain();
+		counterout++;
+		solpost[iload][0] = fabs(u[0][0]);
+		solpost[iload][1] = fabs(fac[iload] * finalload);
+        std::vector<string> scalar_names;
+        std::vector<string> vector_names;
+        //  TPZStack<std::string> scalar_names,vector_names, tensor_names;
+        vector_names.push_back("Displacement");
+        vector_names.push_back("Strain");
+        //vector_names.push_back("SqrtJ2(EPSP)");
+        //vector_names.push_back("Stress");
+        Int dim=2;
+        string slopestr="ring";
+        VTKGraphMesh vtkobj(fmesh,dim,scalar_names,vector_names,slopestr);
+        vtkobj.DrawSolution( counterout, counter);
+
+	}
+
+	std::ofstream file8("loadvsdisplacementlu.txt");
+	OutPutFile(solpost, file8);
+	std::vector<std::vector<double>> solx, soly;
+    std::vector<std::vector<std::vector<Doub>>> allcoords = fmesh->GetAllCoords();
+    MatInt meshtopology=fmesh->GetMeshTopology();
+    MatDoub meshnodes=fmesh->GetMeshNodes();
+	fmesh->fmaterial->PostProcess(allcoords,meshnodes,meshtopology, u, solx, soly);
+    NRmatrix<Doub> sol,dsol;
+    fmesh->fmaterial->ComputeSolAndDSol(fmesh,sol,dsol);
+
+	std::ofstream file("soly.txt");
+	OutPutPost(soly, file);
+
+
+}
+std::vector<std::vector<double>>    slopeproject::IterativeProcessGIMBinarySearch()
+{
+    fmesh->fmaterial->ResetPlasticStrain();
+	fmesh->fmaterial->ResetDisplacement();
+	fmesh->fmaterial->ResetMat();
+    std::vector<int>  idsbottom, idsleft, idsright, iddisplace;
+	std::vector<std::vector<int>> idsvector;
+
+	findbcids(fmesh, idsvector);
+
+	idsbottom = idsvector[0];
+	idsleft = idsvector[1];
+	idsright = idsvector[2];
+	iddisplace = idsvector[3];
+    
+    MatDoub KG,Fint,Fbody,FG;
+    
+    fmesh->Assemble(KG, Fint, Fbody);
+    
+    int sz = KG.nrows();
+
+    NRmatrix<Doub> u,u0;
+    u.assign(sz,1,0.);
+    u0.assign(sz,1,0.);
+	Int counterout = 1;
+	std::vector<std::vector<double>> solpost,solpost2;
+    std::vector<double> solcount(7, 0.), uvf(2, 0.);
+	solpost.push_back(solcount);
+    
+    Doub fac = 0.1, facmin = 0., facmax =10.;
+    
+	do
+	{
+		std::cout << "load step = " << counterout << " | fac = " <<fac  << std::endl;
+		Int counter = 0, maxcount = 10,countercheck=0;
+		Doub err1t,err1 = 10., err2 = 10., tol = 10.e-3;
+		MatDoub dw(sz, 1, 0.), res(sz, 1, 0.), FINT(sz, 1, 0.),FBODY(sz, 1, 0.), R(sz, 1, 0.);
+		while (counter <  maxcount && err1 > tol)
+		{
+			
+
+            fmesh->Assemble(KG, FINT, FBODY);
+           // FBODY.Print();
+            R = FBODY;
+			R *= fac;
+			R -= FINT;
+            
+            InserBC(KG, R, FBODY, idsbottom, idsright, idsleft, fmesh->fmaterial);
+            //R.Print();
+            SolveEigenSparse( KG, R, dw);
+
+			u += dw;
+
+			fmesh->fmaterial->UpdateDisplacement(u);
+
+			Doub rnorm = 0., normdw = 0., normfg = 0., unorm = 0.;
+
+			rnorm = R.NRmatrixNorm();
+
+			normdw = dw.NRmatrixNorm();
+
+			normfg = FBODY.NRmatrixNorm();
+
+			unorm = u.NRmatrixNorm();
+
+            err1t=err1;
+			err1 = rnorm / (fac *normfg);
+            
+
+			err2 = normdw / unorm;
+
+			std::cout << " Iteration number = " << counter << " |  |R|/|FE| = " << err1 << " | deltau/u " << err2 << "| factor = "<<fac<< std::endl;
+			counter++;
+            //if(err1>err1t)countercheck++;
+            //if(countercheck>6)break;
+		}
+		
+		
+        if (err1 > tol ||counter>=maxcount ) 
+        {
+            //cout << " No Convergence  " << " | counter = " << counter <<endl;
+            facmax = fac;
+			fac = (facmin + facmax) / 2.;
+            u=u0;
+            fmesh->fmaterial->UpdateDisplacement(u0);
+            //cout <<" | facmax = "<<facmax <<" |facmin  " << facmin << " | fac = " << fac <<endl; 
+
+		}
+		else 
+        {
+            
+
+          /*  
+           std::vector<double> sol(2);
+            sol[0]= fabs(u[2 * iddisplace[0] + 1][0]);
+            sol[1] = fac;
+            solpost.push_back(sol);
+            std::vector<string> scalar_names;
+            std::vector<string> vector_names;
+            //  TPZStack<std::string> scalar_names,vector_names, tensor_names;
+            vector_names.push_back("Displacement");
+            vector_names.push_back("Strain");
+            //vector_names.push_back("SqrtJ2(EPSP)");
+            //vector_names.push_back("Stress");
+            Int dim=2;
+            string slopestr="slope-IterativeProcessGIMBinarySearch";
+            VTKGraphMesh vtkobj(fmesh,dim,scalar_names,vector_names,slopestr);
+            vtkobj.DrawSolution( counterout, counter);
+            
+            */
+            		solcount[0] = fabs(u[2 * iddisplace[0] + 1][0]);
+		solcount[1] = fac;
+		solcount[2] = err1;
+		solcount[3] = err2;
+		solcount[4] = 0;
+		solcount[5] = 0;
+		solcount[6] = counterout;
+
+    
+
+		uvf[0] = fabs(u[2 * iddisplace[0] + 1][0]);
+		uvf[1] = fac;
+		solpost2.push_back(uvf);
+        
+		solpost.push_back(solcount);
+		
+            
+            u0=u;
+            facmin=fac;
+           // fac = 1. / ((1. / facmin + 1. / facmax) / 2.);
+            fac +=0.1;
+            fmesh->fmaterial->UpdatePlasticStrain();
+            cout <<" | facmax = "<<facmax <<" |facmin  " << facmin << " | fac = " << fac <<endl; 
+        }
+		
+        counterout++;
+    
+    
+
+    
+    
+    
+	}  while (counterout<50&& (facmax - facmin) / fac > 0.01);
+
+    std::ofstream file8("u-F.nb");
+    OutPutPost(solpost2,file8);
+    return solpost;
+}
+
+
 
 
 std::vector<std::vector<double>>   slopeproject::IterativeProcessArcLengthSRM(int ndesi, Doub dlamb0, Doub alphatol, int niter)
@@ -1229,9 +1531,9 @@ void slopeproject::InserBC(SparseMatrix<double> & KG, VectorXd& R, VectorXd& FBO
 	val = 0;
 	mat->DirichletBC(KG, R, idsbottom, dir, val);
 
-	//dir = 0;
-	//val = 0;
-	//mat->DirichletBC(KG, R, idsbottom, dir, val);
+	dir = 0;
+	val = 0;
+	mat->DirichletBC(KG, R, idsbottom, dir, val);
 
 
 	dir = 0;
@@ -1245,9 +1547,9 @@ void slopeproject::InserBC(SparseMatrix<double> & KG, VectorXd& R, VectorXd& FBO
 	dir = 1;
 	val = 0;
 	mat->DirichletBC(KG, FBODY, idsbottom, dir, val);
-	//dir = 0;
-	//val = 0;
-	//mat->DirichletBC(KG, FBODY, idsbottom, dir, val);
+	dir = 0;
+	val = 0;
+	mat->DirichletBC(KG, FBODY, idsbottom, dir, val);
 
 	dir = 0;
 	val = 0;
@@ -1266,9 +1568,9 @@ void slopeproject::InserBC(MatDoub& KG, MatDoub& R, MatDoub& FBODY, std::vector<
 	val = 0;
 	mat->DirichletBC(KG, R, idsbottom, dir, val);
 
-	//dir = 0;
-	//val = 0;
-	//mat->DirichletBC(KG, R, idsbottom, dir, val);
+	dir = 0;
+	val = 0;
+	mat->DirichletBC(KG, R, idsbottom, dir, val);
 
 
 	dir = 0;
@@ -1282,9 +1584,9 @@ void slopeproject::InserBC(MatDoub& KG, MatDoub& R, MatDoub& FBODY, std::vector<
 	dir = 1;
 	val = 0;
 	mat->DirichletBC(KG, FBODY, idsbottom, dir, val);
-	//dir = 0;
-	//val = 0;
-	//mat->DirichletBC(KG, FBODY, idsbottom, dir, val);
+	dir = 0;
+	val = 0;
+	mat->DirichletBC(KG, FBODY, idsbottom, dir, val);
 
 	dir = 0;
 	val = 0;
@@ -1927,13 +2229,13 @@ void slopeproject::MonteCarloGIM(int iter, int iter2, bool print, string writena
 		fmesh->fmaterial->SetRandomField(hhatinho);
 		fmesh->SetHhat(hhatinho);
 
-        int maxiter = 10;
+        int maxiter = 40;
 		Doub deltatol = 0.01;
-		int desirediter = 20;
-		Doub lamb0 = 0.5;
+		int desirediter = 10;
+        Doub lamb0 = 0.5;
 //soll = slopeobj0->IterativeProcess(10, 0.5, 0.01,20);
-		std::vector<std::vector<double>>  sol = IterativeProcess(desirediter, lamb0, deltatol, maxiter);//x = desloc y = loadfactor
-
+		//std::vector<std::vector<double>>  sol = IterativeProcess(desirediter, lamb0, deltatol, maxiter);//x = desloc y = loadfactor
+       std::vector<std::vector<double>>  sol = IterativeProcessGIMBinarySearch();
 
 		MatDoub solpost23;
 		solpost23.CopyFromVector(sol);
@@ -1980,6 +2282,7 @@ void slopeproject::MonteCarloGIM(int iter, int iter2, bool print, string writena
         fileinfo << "TIME in MCR = " << time_span.count() << std::endl;
 		std::cout << " ******** MC  realization  = " << imc << " | Current safety fator = " << data << " | Time: " << time_span.count() << endl;
 		solpost2[imc][0] = data;
+        std::cout << " ******** imc  sdddd = " << imc << endl;
 		//delete mat;
 		//delete mesh2;
 	}
@@ -2150,7 +2453,7 @@ ZONE T="Only Zone", I=20, J=2, K=1, F=POINT
 	file.close();
 }*/
 
-void slopeproject::OutPutPost(std::vector<std::vector<double>>& postdata, std::ofstream& file)
+/*void slopeproject::OutPutPost(std::vector<std::vector<double>>& postdata, std::ofstream& file)
 {
 	file.clear();
     file << "x coord, "<< "y coord, "<< "z coord, "<< "scalar "<< endl;
@@ -2167,7 +2470,38 @@ void slopeproject::OutPutPost(std::vector<std::vector<double>>& postdata, std::o
 		file << endl;
 	}
 	file.close();
+}*/
+
+void slopeproject::OutPutPost(std::vector<std::vector<double>>& postdata, std::ofstream& file)
+{
+	file.clear();
+    file << "data = { { 0, 0 } ";
+	for (Int i = 0; i < postdata.size(); i++)
+	{
+        file << "{";
+		for (Int j = 0; j < postdata[0].size(); j++)
+		{
+            if(j!=postdata[0].size()-1)
+            {
+                file << postdata[i][j] << "  ,";
+            }else{
+                file << postdata[i][j] ;
+            }
+		}
+            if(i!=postdata.size()-1)
+            {
+                file << "},";
+            }else{
+                file << "}";
+            }
+		
+	}
+	file << "};";
+    file << endl;
+    file <<"ListLinePlot[data,PlotRange->All,PlotMarkers->Automatic]";
+	file.close();
 }
+
 
 void slopeproject::OutPutPost(MatDoub& postdata, std::ofstream& file)
 {

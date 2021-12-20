@@ -21,7 +21,13 @@ public:
 	MatDoub stressrecosntruction(MatDoub val, MatDoub vec);
 	MatDoub dadsig(NRtensor<Doub>  sigprojvoigt);
 	MatDoub P();
-
+	void SetElastic(){
+         DebugStop();
+    }
+    void SetTangentMatrixType(bool type)
+    {
+         DebugStop();
+    }
     Doub phi(NRtensor<Doub> epse)
     {
         NRmatrix<Doub>  tempepsemat, stresstrial;

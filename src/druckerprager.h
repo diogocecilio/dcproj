@@ -269,6 +269,13 @@ public:
 		}
 		return InvOut;
 	}
+	
+	//true consistent tangent Dep
+	//false pseudo tangent R
+	void SetTangentMatrixType(bool type)
+    {
+         fsetconsistentangent = type;
+    }
 
 
 	Doub fyoung;
@@ -285,7 +292,8 @@ private:
 	Doub ftanphi;
 	Doub fapex;
 	Doub fa, fb;
-	bool fflag = true;
+	bool fflag = true;//Initialised as  consistent tangent Dep
+	bool fsetconsistentangent=true;
 	Doub fyoung0;
 
 	Doub fnu0;

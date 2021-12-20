@@ -71,31 +71,53 @@ void myTreadsSRM(int a, int b, slopeproject* slopeobj2,string namefolder3)
 }
 
 
-void mainlinux2(int simtype,int comeco,int fim)
+int main(int argc, char *argv[])
 {
-    //cout<< "simtype"<< simtype;
-	//string nodestr = "/home/diogo/projects/dcproj/nos-132-c3.txt";
-	//string elsstr = "/home/diogo/projects/dcproj/els-132-c3.txt";
+    slope2x1( );
+    return 0;
+   // beam3dtools beam0bj = beam3dtools();
+   // beam0bj.SolveElasticBeam();
+    //beam0bj.IterativeProcess();
 
-   // string nodestr = "/home/diogo/projects/dcproj/nos-cho.txt";
-	//string elsstr = "/home/diogo/projects/dcproj/els-cho.txt";
+    //beam0bj.SolveElasticCube();
+    //pressurizedhole hole0bj = pressurizedhole();
+    //hole0bj.SolveElasticHole();
+   //hole0bj.IterativeProcess();
+  //  return 0;
 
-  //  string nodestr = "/home/diogo/projects/dcproj/nos-912.txt";
-	//string elsstr = "/home/diogo/projects/dcproj/els-912.txt";
+#ifdef __unix__                    /* __unix__ is usually defined by compilers targeting Unix systems */
+    //leakcraw();
+  //  cout <<argc<<"\n";
 
-       string nodestr = "/home/diogocecilio/projects/dcproj/data/nos-287.txt";
-	string elsstr = "/home/diogocecilio/projects/dcproj/data/els-287.txt";
+   // mainlinuxserial(-1,-1,-1);
+    Eigen::initParallel();
+    setNbThreads(1);
+    if (argc > 3) {
+        //mainlinux(atoi(argv[1]),atoi(argv[2]),atoi(argv[3]));
+    }
+    else
+    {
+       // mainlinux(-1,-1,-1);
+        //mainlinux2(-1,-1,-1);
+    }
 
-  //  string nodestr = "/home/diogo/projects/dcproj/nos-381.txt";
-//	string elsstr = "/home/diogo/projects/dcproj/els-381.txt";
+
+#elif defined(_WIN32) || defined(WIN32)     /* _Win32 is usually defined by compilers targeting 32 or   64 bit Windows systems */
+	mainwindows();
+#endif
+
+	cout << "Hello CMake." << endl;
+	return 0;
+}
+
+void slope2x1( )
+{
+
+    string nodestr = "/home/diogocecilio/projects/dcproj/data/coords2x1h5.txt";
+	string elsstr = "/home/diogocecilio/projects/dcproj/data/topology2x1h5.txt";
     
-   //     string nodestr = "/home/diogocecilio/projects/dcproj/nos-381.txt";
-//	string elsstr = "/home/diogocecilio/projects/dcproj/els-381.txt";
-
-         //   string nodestr = "/home/diogo/projects/dcproj/nos-445.txt";
-	//string elsstr = "/home/diogo/projects/dcproj/els-445.txt";
-       //     string nodestr = "/home/diogocecilio/projects/dcproj/nodes-606.txt";
-	//string elsstr = "/home/diogocecilio/projects/dcproj/els-606.txt";
+      // string nodestr = "/home/diogocecilio/projects/dcproj/data/coords2x1.txt";
+	//string elsstr = "/home/diogocecilio/projects/dcproj/data/topology2x1.txt";
 
 	MatDoub hhatinho;
 	MatDoub  meshcoords, elcoords;
@@ -103,16 +125,16 @@ void mainlinux2(int simtype,int comeco,int fim)
 	std::vector<std::vector<std::vector<Doub>>> allcoords;
 	ReadMesh(allcoords, meshcoords, meshtopology, elsstr, nodestr);
 
-	std::ofstream filemesh1("meshcoords.txt");
+	std::ofstream filemesh1("meshcoords2x1.txt");
 	OutPutPost(meshcoords, filemesh1);
-	std::ofstream filemesh2("meshtopology.txt");
+	std::ofstream filemesh2("meshtopology2x1.txt");
 	OutPutPost(meshtopology, filemesh2);
 
 	//Doub c = 18.5633, phi = 20 * M_PI / 180., gamma = -20.;//1.5
-	Doub c = 10., phi = 30 * M_PI / 180., gamma = -20.;//1.5
+	Doub c = 23., phi =0.00001* M_PI / 180., gamma = -20.;//1.5
 
 	Doub thickness = 1.;
-	Doub young = 20000.;
+	Doub young = 100.;
 	Doub nu = 0.3;
 	//Doub young = 100000.;
 	//Doub nu = 0.3;
@@ -127,35 +149,188 @@ void mainlinux2(int simtype,int comeco,int fim)
 	Int npts = ptsweigths.nrows();
 	Int nglobalpts = meshtopology.nrows() * npts;
 	Int sz = 2 * meshcoords.nrows();
-    int nthreads =10;
+    int nthreads =2;
     std::vector <std::thread> threadsmat;
 
     Doub Lx = 20.;//(*Correlation length in x direction*)
 	Doub Ly = 2.;//(*Correlation length in y direction*)
-	Int nsamples = 10000, expansionorder = 150;
+	Int nsamples = 100000, expansionorder = 150;
 	Int type = 3;
+    NRmatrix<MatDoub> randomfield(2, 1);
+    Int dim =2;
+    
+    elastoplastic2D< druckerprager >* mat = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
 
+    mesh* meshs = new mesh(dim,mat, allcoords, meshcoords, meshtopology, hhatinho);
+    mat->fYC.setup(young, nu, c, phi);
+    mat->SetMemory(nglobalpts, sz);
+    mat->UpdateBodyForce(bodyforce);
+    KLGalerkinRF* objKLGalerkinRF = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
+    objKLGalerkinRF->SetMesh(meshs);
+
+    slopeproject* slopeobj = new slopeproject(meshs, objKLGalerkinRF,randomfield);
+    
+    //SRM nao bate com artigos para phi = 0, verificar norma do residuo. Para esta exemple convergencia estabiliza em 20. Proble instável.
+    //DETERMINISTC SOL
+    
+    
+    
+    if(false)
+    {
+        cout <<"\n  DETERMINISTC  " << endl;
+        slopeproject* slopeobj = new slopeproject(meshs, objKLGalerkinRF);
+		int ndesirediters = 8, niter = 50;
+		Doub dlamb0 = 0.2, alphatol = 0.0001;
+		Doub tol = 0.001;
+		std::vector<std::vector<double>> soll;
+		mat->fYC.setup(young, nu, c, phi);
+		mat->SetMemory(nglobalpts, sz);
+		mat->UpdateBodyForce(bodyforce);
+        int maxiter = 40;
+		Doub deltatol = 0.01;
+		int desirediter = 1;
+        Doub lamb0 = 0.5;
+        //10, 0.5, 0.01,20
+       // soll = slopeobj->IterativeProcess(desirediter, lamb0, deltatol,maxiter);
+        //slopeobj->IterativeProcess2( );
+       // soll = slopeobj->IterativeProcessShearRed( 0.01, 2.,0.01);
+          soll = slopeobj->IterativeProcessGIMBinarySearch();
+        
+    
+    }
+    
+    
+    if(false)
+    {
+        
+    //last filed created c =23 e phi=0
+        string filename = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh2x1";
+        filename+="/field-Lx";
+        filename+=to_string(Int(Lx));
+        filename+="-Ly";
+        filename+=to_string(Int(Ly));
+        slopeobj->CreateRandomField(filename);
+    }
+    
     MatDoub coesionrandomfield, frictionrandomfield;
-	//string filerf = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh-606/field-Lx20-Ly2/coesionfield.txt";
-    //string filerf = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh-381/field-Lx20-Ly2/coesionfield.txt";
-    string filerf = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh-287-novostestes/field-Lx20-Ly2/coesionfield.txt";
+    string filerf = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh2x1/field-Lx20-Ly2/coesionfield.txt";
 	ReadMatDoub(coesionrandomfield, filerf);
-	//string filerff = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh-606/field-Lx20-Ly2/frictionfield.txt";
-   // string filerff = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh-381/field-Lx20-Ly2/frictionfield.txt";
-    string filerff = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh-287-novostestes/field-Lx20-Ly2/frictionfield.txt";
+    string filerff = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh2x1/field-Lx20-Ly2/frictionfield.txt";
 	ReadMatDoub(frictionrandomfield, filerff);
 
-	NRmatrix<MatDoub> randomfield(2, 1);
+	
 	randomfield[0][0] = coesionrandomfield;
 	randomfield[1][0] = frictionrandomfield;
 
-    //string namefolder = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh-606/GIM-lx20-ly2";
-    //string namefolder = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh-381/gim-Lx20-Ly2";
-    string namefolder = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh-287-novostestes/gim-Lx20-Ly2";
+    string namefolder = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh2x1/gim-Lx20-Ly2";
     int delta = int(nsamples/nthreads);
     int a=0,b=delta;
-    int dim =2;
-    for(int i=0;i<nthreads;i++)
+    
+   /* 
+    cout<<"1"<<endl;
+    elastoplastic2D< druckerprager >* mat0 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
+    elastoplastic2D< druckerprager >* mat1 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
+    elastoplastic2D< druckerprager >* mat2 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
+    elastoplastic2D< druckerprager >* mat3 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
+    elastoplastic2D< druckerprager >* mat4 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
+    elastoplastic2D< druckerprager >* mat5 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
+
+
+	cout<<"2"<<endl;
+	mesh* mesh0 = new mesh(dim,mat0, allcoords, meshcoords, meshtopology, hhatinho);
+    mesh* mesh1 = new mesh(dim,mat1, allcoords, meshcoords, meshtopology, hhatinho);
+    mesh* mesh2 = new mesh(dim,mat2, allcoords, meshcoords, meshtopology, hhatinho);
+    mesh* mesh3 = new mesh(dim,mat3, allcoords, meshcoords, meshtopology, hhatinho);
+    mesh* mesh4 = new mesh(dim,mat4, allcoords, meshcoords, meshtopology, hhatinho);
+    mesh* mesh5 = new mesh(dim,mat5, allcoords, meshcoords, meshtopology, hhatinho);
+
+
+
+    cout<<"3"<<endl;
+	mat0->fYC.setup(young, nu, c, phi);
+	mat0->SetMemory(nglobalpts, sz);
+	mat0->UpdateBodyForce(bodyforce);
+    
+    mat1->fYC.setup(young, nu, c, phi);
+	mat1->SetMemory(nglobalpts, sz);
+	mat1->UpdateBodyForce(bodyforce);
+
+    mat2->fYC.setup(young, nu, c, phi);
+	mat2->SetMemory(nglobalpts, sz);
+	mat2->UpdateBodyForce(bodyforce);
+
+    mat3->fYC.setup(young, nu, c, phi);
+	mat3->SetMemory(nglobalpts, sz);
+	mat3->UpdateBodyForce(bodyforce);
+
+    mat4->fYC.setup(young, nu, c, phi);
+	mat4->SetMemory(nglobalpts, sz);
+	mat4->UpdateBodyForce(bodyforce);
+
+    mat5->fYC.setup(young, nu, c, phi);
+	mat5->SetMemory(nglobalpts, sz);
+	mat5->UpdateBodyForce(bodyforce);
+
+
+
+
+    
+cout<<"4"<<endl;
+	KLGalerkinRF* objKLGalerkinRF0 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
+    KLGalerkinRF* objKLGalerkinRF1 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
+    KLGalerkinRF* objKLGalerkinRF2 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
+    KLGalerkinRF* objKLGalerkinRF3 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
+    KLGalerkinRF* objKLGalerkinRF4 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
+    KLGalerkinRF* objKLGalerkinRF5 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
+
+    
+    cout<<"5"<<endl;
+	objKLGalerkinRF0->SetMesh(mesh0);
+    objKLGalerkinRF1->SetMesh(mesh1);
+    objKLGalerkinRF2->SetMesh(mesh2);
+    objKLGalerkinRF3->SetMesh(mesh3);
+    objKLGalerkinRF4->SetMesh(mesh4);
+    objKLGalerkinRF5->SetMesh(mesh5);
+
+
+    cout<<"6"<<endl;
+    slopeproject* slopeobj0 = new slopeproject(mesh0, objKLGalerkinRF0,randomfield);
+    cout<<"6.5"<<endl;
+    slopeproject* slopeobj1 = new slopeproject(mesh1, objKLGalerkinRF1,randomfield);
+    slopeproject* slopeobj2 = new slopeproject(mesh2, objKLGalerkinRF2,randomfield);
+    slopeproject* slopeobj3 = new slopeproject(mesh3, objKLGalerkinRF3,randomfield);
+    slopeproject* slopeobj4 = new slopeproject(mesh4, objKLGalerkinRF4,randomfield);
+    slopeproject* slopeobj5 = new slopeproject(mesh5, objKLGalerkinRF5,randomfield);
+    cout<<"6.9"<<endl;
+
+
+cout<<"7"<<endl;
+    std::thread thread0(myTreads,0,1000, slopeobj0,namefolder);
+    std::thread thread1(myTreads,1001,2000, slopeobj1,namefolder);
+    std::thread thread2(myTreads,2001,3000, slopeobj2,namefolder);
+    std::thread thread3(myTreads,3001,4000, slopeobj3,namefolder);
+    std::thread thread4(myTreads,4001,5000, slopeobj4,namefolder);
+    std::thread thread5(myTreads,5001,6000, slopeobj5,namefolder);
+
+
+cout<<"8"<<endl;
+    thread0.join();
+    thread1.join();
+    thread2.join();
+    thread3.join();
+    thread4.join();
+    thread5.join();
+
+    
+    cout<<"9"<<endl;*/
+    
+    
+    
+    
+    //slopeproject* slopeobj0 = new slopeproject(meshs, objKLGalerkinRF,randomfield);
+    //slopeobj0->MonteCarloGIM(0, 10, false, namefolder);
+    
+   for(int i=0;i<nthreads;i++)
     {
         elastoplastic2D< druckerprager >* mat = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
 
@@ -170,7 +345,8 @@ void mainlinux2(int simtype,int comeco,int fim)
         std::cout << "a = "<< a <<std::endl;
         std::cout << "b = "<< b <<std::endl;
         std::thread threadx(myTreads,a,b, slopeobj,namefolder);
-        a=b;
+        //std::thread threadx(myTreadsSRM,a,b, slopeobj,namefolder);
+        a=b+1;
         b+=delta;
 
         threadsmat.push_back(std::move(threadx));
@@ -179,6 +355,22 @@ void mainlinux2(int simtype,int comeco,int fim)
     for(auto &threadx: threadsmat )threadx.join();
 
 
+   /* for (int i=0;i<nthreads;i++)
+    {
+        elastoplastic2D< druckerprager >* mat = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
+        mesh* meshs = new mesh(dim,mat, allcoords, meshcoords, meshtopology, hhatinho);
+        mat->fYC.setup(young, nu, c, phi);
+        mat->SetMemory(nglobalpts, sz);
+        mat->UpdateBodyForce(bodyforce);
+        KLGalerkinRF* objKLGalerkinRF = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
+        objKLGalerkinRF->SetMesh(meshs);
+        slopeproject* slopeobj = new slopeproject(meshs, objKLGalerkinRF,randomfield);
+        std::cout << "a = "<< a <<std::endl;
+        std::cout << "b = "<< b <<std::endl;
+        std::thread{myTreads,a,b, slopeobj,namefolder}.detach();
+        a=b+1;
+        b+=delta;
+    }*/
 }
 
 
@@ -1185,43 +1377,7 @@ int main3()
 }
 
 
-int main(int argc, char *argv[])
-{
 
-   // beam3dtools beam0bj = beam3dtools();
-   // beam0bj.SolveElasticBeam();
-    //beam0bj.IterativeProcess();
-
-    //beam0bj.SolveElasticCube();
-    //pressurizedhole hole0bj = pressurizedhole();
-    //hole0bj.SolveElasticHole();
-   //hole0bj.IterativeProcess();
-  //  return 0;
-
-#ifdef __unix__                    /* __unix__ is usually defined by compilers targeting Unix systems */
-    //leakcraw();
-  //  cout <<argc<<"\n";
-
-   // mainlinuxserial(-1,-1,-1);
-    Eigen::initParallel();
-    setNbThreads(1);
-    if (argc > 3) {
-        mainlinux(atoi(argv[1]),atoi(argv[2]),atoi(argv[3]));
-    }
-    else
-    {
-        mainlinux(-1,-1,-1);
-        //mainlinux2(-1,-1,-1);
-    }
-
-
-#elif defined(_WIN32) || defined(WIN32)     /* _Win32 is usually defined by compilers targeting 32 or   64 bit Windows systems */
-	mainwindows();
-#endif
-
-	cout << "Hello CMake." << endl;
-	return 0;
-}
 
 template <class T>
 void OutPutPost(NRmatrix<T>& postdata, std::ofstream& file)

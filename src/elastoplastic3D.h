@@ -64,7 +64,13 @@ public:
 	{
 		fYC.GetMatConstants(consts);
 	}
+	
 
+    void SetTangentMatrixType(bool type)
+    {
+         fYC.SetTangentMatrixType(type);
+    }
+     
 	virtual void GetMaterialData()
 	{
 

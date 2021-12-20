@@ -14,6 +14,7 @@ druckerprager::druckerprager()
 druckerprager::druckerprager(Doub young, Doub nu, Doub coesion, Doub frictionangle)
 {
 	setup(young, nu,coesion,frictionangle);
+    
 }
 
 
@@ -21,7 +22,7 @@ druckerprager::~druckerprager()
 {
 
 }
-
+extern bool globalbool ;
 void druckerprager::closestpointproj(NRtensor<Doub>  epst, NRtensor<Doub>  epsp, NRtensor<Doub>  & projstress, NRtensor<Doub>  & projstrain, NRmatrix<Doub>  & Dep, Doub & projgamma)
 {
 	NRtensor<Doub>  epse = epst - epsp;
@@ -92,6 +93,7 @@ void druckerprager::closestpointproj(NRtensor<Doub>  epst, NRtensor<Doub>  epsp,
 				Dept = C;
                 Dep=Dept;
 				projgamma = 0.;
+                //fflag =false;
 				return;
 			}
 			else {
@@ -140,9 +142,20 @@ void druckerprager::closestpointproj(NRtensor<Doub>  epst, NRtensor<Doub>  epsp,
 
 					temp2 *= 1. / sum;
 					Dept -= temp2;
-                    Dep=Dept;
+                    //Dep=Dept;
+                    //Dep=R;
+                    //Dep=Dept;
+                    
+                    if(fsetconsistentangent)
+                    {
+                        Dep=Dept;
+                    }
+                    else{
+                        Dep=R;
+                    }
+                    
 					fflag = true;
-					//Dep.Print();
+
 				}
 			}
 		}

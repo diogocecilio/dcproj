@@ -7,5 +7,5 @@
 #include "slopeproject.h"
 
 
-
+void slope2x1( );
 // TODO: Reference additional headers your program requires here.

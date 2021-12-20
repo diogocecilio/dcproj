@@ -49,7 +49,9 @@ public:
 	std::vector<Int>   vecstr_to_vecint(std::vector<string> vs);
 	std::vector<std::vector<double>>   IterativeProcess(int ndesi, Doub dlamb0, Doub alphatol, int niter);
 	std::vector<std::vector<double>>   IterativeProcessArcLengthSRM(int ndesi, Doub dlamb0, Doub alphatol, int niter);
-	
+	void   IterativeProcess2();
+    std::vector<std::vector<double>>    IterativeProcessGIMBinarySearch();
+    void   IterativeProcessSRMBinarySearch();
     void SolveEigenSparse(MatDoub A, MatDoub b, MatDoub& x);
     void SolveEigen(SparseMatrix<double> A, VectorXd b, VectorXd& x);
 	void SolveEigen(MatDoub A, MatDoub b, MatDoub& x);

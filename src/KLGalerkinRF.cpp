@@ -417,16 +417,16 @@ void KLGalerkinRF::GenerateNonGaussinRandomField(VecComplex& val, MatDoub& vec, 
 	HHAT.resize(2, 1);
 	//437 x 5000
 	//em cada coluna da hhatcoes tem um random field
-	cout << " n PRECISA MUDAR AQUI!!" << endl;
+	cout << " n PRECISA MUDAR AQUIx!!" << endl;
 	//Distribuição log-normal
-	Doub mean = 10.;
+	Doub mean = 23.;
 	Doub sdev = 0.3 * mean;
 	Doub xi = sqrt(log(1 + pow((sdev / mean) ,2) ));
 	Doub lambda = log(mean) - xi * xi / 2.;
 	for (int i = 0; i < hhatcoes.nrows();i++)for (int j = 0; j < hhatcoes.ncols(); j++)hhatcoes[i][j] = exp(lambda + xi * hhatcoes[i][j]);
 
-    mean = 30.*M_PI/180.;
-	sdev = 0.2 * mean;
+    mean = 0.00001 * M_PI/180.;
+	sdev = 0. * mean;
 	xi = sqrt(log(1 + pow((sdev / mean), 2)));
 	lambda = log(mean) - xi * xi / 2.;
 	for (int i = 0; i < hhatphi.nrows(); i++)for (int j = 0; j < hhatphi.ncols(); j++)hhatphi[i][j] = exp(lambda + xi * hhatphi[i][j]);
