@@ -903,7 +903,7 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
        // diff2= fabs(lambn0- lamb);
         std::cout << " exter iter = " << counterout << "  | newton iters = " << counter  << " |  |R| = " << rnorm << " |  lamb  = " << lamb << std::endl;
         
-		if (rnorm > 0.5)
+		if (rnorm > rtol)
 		{
 
 			//std::cout << "Convergence failed. \n";
@@ -1179,7 +1179,7 @@ std::vector<std::vector<double>>    slopeproject::IterativeProcessGIMBinarySearc
 	do
 	{
 		std::cout << "load step = " << counterout << " | fac = " <<fac  << std::endl;
-		Int counter = 0, maxcount = 10,countercheck=0;
+		Int counter = 0, maxcount = 20,countercheck=0;
 		Doub err1t,err1 = 10., err2 = 10., tol = 10.e-3;
 		MatDoub dw(sz, 1, 0.), res(sz, 1, 0.), FINT(sz, 1, 0.),FBODY(sz, 1, 0.), R(sz, 1, 0.);
 		while (counter <  maxcount && err1 > tol)
@@ -1235,9 +1235,18 @@ std::vector<std::vector<double>>    slopeproject::IterativeProcessGIMBinarySearc
 		}
 		else 
         {
-            
-
-          /*  
+                auto s2 = std::to_string(counterout);
+				string filename = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh2x1";
+				std::vector<std::vector<double>> epsppost;
+				fmesh->fmaterial->PostProcessIntegrationPointVar(fmesh->GetAllCoords(), fmesh->GetMeshNodes(), fmesh->GetMeshTopology(),fmesh->fmaterial->GetSolution(), epsppost);
+				string name3 = "/plasticsqrtj2";
+				string ext3 = ".txt";
+				filename += name3;
+				filename += s2;
+				filename += ext3;
+				std::ofstream file3(filename);
+				OutPutPost2(epsppost, file3);
+           
            std::vector<double> sol(2);
             sol[0]= fabs(u[2 * iddisplace[0] + 1][0]);
             sol[1] = fac;
@@ -1254,7 +1263,7 @@ std::vector<std::vector<double>>    slopeproject::IterativeProcessGIMBinarySearc
             VTKGraphMesh vtkobj(fmesh,dim,scalar_names,vector_names,slopestr);
             vtkobj.DrawSolution( counterout, counter);
             
-            */
+            
             		solcount[0] = fabs(u[2 * iddisplace[0] + 1][0]);
 		solcount[1] = fac;
 		solcount[2] = err1;
@@ -2314,7 +2323,7 @@ void slopeproject::PrintMCS(string namefolder,int imc,bool print)
 				filename += ext;
 				fmesh->fmaterial->PostProcess(fmesh->GetAllCoords(), fmesh->GetMeshNodes(), fmesh->GetMeshTopology(), 0, hhatinho, hhatx);
 				std::ofstream file(filename);
-				OutPutPost(hhatx, file);
+				OutPutPost2(hhatx, file);
 
 
 				filename = namefolder;
@@ -2327,7 +2336,7 @@ void slopeproject::PrintMCS(string namefolder,int imc,bool print)
 				filename += ext;
 				fmesh->fmaterial->PostProcess(fmesh->GetAllCoords(), fmesh->GetMeshNodes(), fmesh->GetMeshTopology(), 1, hhatinho, hhatx2);
 				std::ofstream filesss(filename);
-				OutPutPost(hhatx2, filesss);
+				OutPutPost2(hhatx2, filesss);
 
 
 
@@ -2341,7 +2350,7 @@ void slopeproject::PrintMCS(string namefolder,int imc,bool print)
 			filename += s2;
 			filename += ext2;
 			std::ofstream file2(filename);
-			OutPutPost(soly, file2);
+			OutPutPost2(soly, file2);
 
 
 			filename = namefolder;
@@ -2352,7 +2361,7 @@ void slopeproject::PrintMCS(string namefolder,int imc,bool print)
 			filename += s2;
 			filename += ext2;
 			std::ofstream file22(filename);
-			OutPutPost(solx, file22);
+			OutPutPost2(solx, file22);
 
 
 			filename = namefolder;
@@ -2376,7 +2385,7 @@ void slopeproject::PrintMCS(string namefolder,int imc,bool print)
 			filename += s4;
 			filename += ext4;
 			std::ofstream file4(filename);
-			OutPutPost(epsppost, file4);
+			OutPutPost2(epsppost, file4);
 
             }
 
@@ -2453,7 +2462,7 @@ ZONE T="Only Zone", I=20, J=2, K=1, F=POINT
 	file.close();
 }*/
 
-/*void slopeproject::OutPutPost(std::vector<std::vector<double>>& postdata, std::ofstream& file)
+/*void slopeproject::OutPutPost2(std::vector<std::vector<double>>& postdata, std::ofstream& file)
 {
 	file.clear();
     file << "x coord, "<< "y coord, "<< "z coord, "<< "scalar "<< endl;
@@ -2471,6 +2480,20 @@ ZONE T="Only Zone", I=20, J=2, K=1, F=POINT
 	}
 	file.close();
 }*/
+
+void slopeproject::OutPutPost2(std::vector<std::vector<double>>& postdata, std::ofstream& file)
+{
+	file.clear();
+	for (Int i = 0; i < postdata.size(); i++)
+	{
+		for (Int j = 0; j < postdata[0].size(); j++)
+		{
+			file << postdata[i][j] << " ";
+		}
+		file << endl;
+	}
+	file.close();
+}
 
 void slopeproject::OutPutPost(std::vector<std::vector<double>>& postdata, std::ofstream& file)
 {

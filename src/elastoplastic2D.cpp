@@ -1134,7 +1134,7 @@ void elastoplastic2D<YC>::PostProcessIntegrationPointVar(std::vector<std::vector
 }
 
 template <class YC>
-void elastoplastic2D<YC>::ComputeSolAndDSol(mesh * inmesh,NRmatrix<Doub>&sol,NRmatrix<Doub>&dsol)
+void elastoplastic2D<YC>::ComputeSolAndDSol2(mesh * inmesh,NRmatrix<Doub>&sol,NRmatrix<Doub>&dsol)
 {
     Doub xi,eta,w;
     std::vector<std::vector< std::vector<Doub > > >  allcoords = inmesh->GetAllCoords();
@@ -1317,9 +1317,9 @@ void elastoplastic2D<YC>::ComputeSolAndDSol(mesh * inmesh,NRvector<NRmatrix<Doub
 
 }
 
-/*
+
 template <class YC>
-void elastoplastic2D<YC>::ComputeSolAndDSol(mesh * inmesh,NRvector<NRmatrix<Doub>>&sol,NRvector<NRmatrix<Doub>>&dsol)
+void elastoplastic2D<YC>::ComputeSolAndDSol(mesh * inmesh,NRmatrix<Doub>&sol,NRmatrix<Doub>&dsol)
 {
     Doub xi,eta,w;
     std::vector<std::vector< std::vector<Doub > > >  allcoords = inmesh->GetAllCoords();
@@ -1335,24 +1335,95 @@ void elastoplastic2D<YC>::ComputeSolAndDSol(mesh * inmesh,NRvector<NRmatrix<Doub
 
     shapequad objshapes(2, 1);
     NRmatrix<Doub> base=objshapes.GetBaseNodes();
-    dsol.resize(meshnodes);
-    sol.resize(meshnodes);
+    //dsol.resize(meshnodes);
+    //sol.resize(meshnodes);
+   // sol.resize(sz,2);
+   // dsol.resize(sz,2);
+    sol.assign(sz,2,0.);
+    dsol.assign(sz,2,0.);
+
 
     xi=0.;
     eta=0.;
     w=0.;
 
-    NRmatrix<Doub>  psis,psist, GradPsi;
+    NRmatrix<Doub>  psis,psist, GradPsi,elementdisplace;
     objshapes.shapes(psis, GradPsi, xi, eta);
     psis.Transpose(psist);
-
-	for (Int inode = 0;inode < meshnodes;inode++)
+    
+    Int elnodes = elcoords.nrows();
+    
+    vector<Int> indexvec;
+    NRmatrix<NRvector<Doub>> uglob;
+    uglob.resize(nels, elnodes);
+    
+    for (int i = 0; i < nels; i++)
 	{
+		for (int j = 0; j < elnodes; j++) {
+			uglob[i][j].assign(2, 0.);
+		}
+	}
+    
+    for (Int iel = 0; iel < nels; iel++)
+	{
+		for (Int node = 0; node < elnodes; node++)
+		{
+            for(int idof=0;idof<2;idof++)
+            {
+                uglob[iel][node][idof] = GetSolution()[2 * meshtopology[iel][node]+idof][0];
+            }
+		}
+	}
+
+    
+	for (Int iel = 0;iel < nels;iel++)
+	{
+        GetElCoords(allcoords, iel, elcoords);
+        elementdisplace.assign(elnodes,2,0.);
+        for (Int i = 0; i < elnodes; i++)for (Int j = 0; j < 2; j++)elementdisplace[i][j] = uglob[iel][i][j];
+        for(Int inode=0;inode<elnodes;inode++)
+        {
+            NRmatrix<Doub>  psis,GradPsi,Jac,InvJac(2,2),GradPhi,gradu;
+            xi=base[inode][0];eta=base[inode][1];
+            objshapes.shapes(psis, GradPsi, xi, eta);
+            
+            
+            GradPsi.Mult(elcoords, Jac);
+
+            Doub DetJ = -Jac[0][1] * Jac[1][0] + Jac[0][0] * Jac[1][1];
+            
+            
+            InvJac[0][0] = Jac[1][1] / DetJ;   InvJac[0][1] = -Jac[0][1] / DetJ;
+            InvJac[1][0] = -Jac[1][0] / DetJ;	InvJac[1][1] = Jac[0][0] / DetJ;
+            
+            InvJac.Mult(GradPsi, GradPhi);
+    
+            GradPhi.Mult(elementdisplace, gradu);
+            
+            
+            Int index=meshtopology[iel][inode];
+
+            sol[2 * index ][0]=  nodalsol[2 * index ][0];
+            sol[2 * index +1][0]= nodalsol[2 * index +1][0];
+
+            dsol[index * 2][0]= gradu[0][0] ;//dudx
+            dsol[index * 2 + 1][0]= gradu[1][0] ;//dwdx
+
+            dsol[index* 2][1]= gradu[0][1] ;//dudy
+            dsol[index * 2 + 1][1]= gradu[1][1] ;//dwdy
+            
+            //GradPhi é para um nó ou para o elemento?
+            //GradPhi é mat 2x8 com {{dphi1dx,dphi2dx,dphi3dx...,dphi8dx},{dphi1dy,dphi2dy,dphi3dy...,dphi8dy}}
+            //Mas GradPhi foi calculado apenas no ponto xi e eta. Como pode ter a derivada em todos os nós?
+            //dphi=sum[dphi]
+        
+            
+        }
     
     }
-
+   
 }
-*/
+
 /*
 template <class YC>
 void elastoplastic2D<YC>::ComputeSolAndDSol(mesh * inmesh,NRvector<NRmatrix<Doub>>&sol,NRvector<NRmatrix<Doub>>&dsol)

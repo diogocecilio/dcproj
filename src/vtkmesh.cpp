@@ -75,11 +75,34 @@ void VTKGraphMesh::DrawSolution(Int step, Doub time){
 
      NRvector<  NRmatrix<Doub>  > sol,dsol;
     fmesh->fmaterial->ComputeSolAndDSol(fmesh,sol,dsol);
+    
+           NRmatrix<Doub>   sol2,dsol2;
+    fmesh->fmaterial->ComputeSolAndDSol(fmesh,sol2,dsol2);
 
     fOutFile << "POINT_DATA " << nnodes << endl;
 	fOutFile << "SCALARS phi float 1" << endl;
 	fOutFile << "LOOKUP_TABLE default" << endl;
+    
+    for (Int inode = 0; inode < nnodes; inode++)
+    {
+        NRmatrix<Doub> eps,gradu,gradut;
+        NRtensor<Doub> tensor(0.);
+        Doub dudx= dsol2[inode*2][0];
+        Doub dudy= dsol2[inode*2][1];
+        Doub dwdx= dsol2[inode*2+1][0];
+        Doub dwdy= dsol2[inode*2+1][1];
+        if(fdim==3)
+        {
+        }
+        else if(fdim==2)
+        {
+            tensor.XX()=dudx;tensor.YY()=dwdy;tensor.XY()=(dudy + dwdx)/2.;
+        }
+        Doub valphi =fmesh->fmaterial->ComputePhi(tensor) ;
+        fOutFile << valphi <<   endl;//x
+    }
 
+    /*
     for (Int inode = 0; inode < nnodes; inode++)
     {
         NRmatrix<Doub> eps,gradu,gradut;
@@ -103,7 +126,7 @@ void VTKGraphMesh::DrawSolution(Int step, Doub time){
             //tensor.XX()=gradu[0][0];tensor.XY()=(gradu[1][0]+gradu[0][1]);
             //tensor.XY()=(gradu[1][0]+gradu[0][1]);tensor.YY()=gradu[1][1];
             //tensor.YY()=gradu[1][1];
-            tensor.XX()=gradu[0][0];tensor.YY()=gradu[1][1];tensor.XY()=(gradu[0][1] + gradu[1][0]);
+            tensor.XX()=gradu[0][0];tensor.YY()=gradu[1][1];tensor.XY()=(gradu[0][1] + gradu[1][0])/2.;
         }
         Doub valphi =fmesh->fmaterial->ComputePhi(tensor) ;
         fOutFile << valphi <<   endl;//x
@@ -124,7 +147,7 @@ void VTKGraphMesh::DrawSolution(Int step, Doub time){
         }
     }
 
-
+*/
 
 
     //sol[0].Print();
@@ -139,7 +162,8 @@ void VTKGraphMesh::DrawSolution(Int step, Doub time){
             for (Int inode = 0; inode < nnodes; inode++)
             {
                 //fOutFile << sol[inode][0][0] << " " << sol[inode][0][1] << " ";
-                fOutFile << sol[inode][0][0] << " " << sol[inode][0][1] << " ";
+                //fOutFile << sol[inode][0][0] << " " << sol[inode][0][1] << " ";
+                fOutFile << sol2[inode*2][0] << " " << sol2[inode*2+1][0] << " ";
                 fOutFile << 0;
                 fOutFile << std::endl;
 
@@ -150,8 +174,9 @@ void VTKGraphMesh::DrawSolution(Int step, Doub time){
         {
             NRmatrix<Doub> eps,gradu,gradut;
             //NRmatrix<Doub> eps,gradu,gradut;
-            for (Int inode = 0; inode < nnodes; inode++)
+          /*  for (Int inode = 0; inode < nnodes; inode++)
             {
+                
                 gradu=dsol[inode];
                 //gradu.Transpose(gradut);
                 //eps=gradu;
@@ -163,7 +188,18 @@ void VTKGraphMesh::DrawSolution(Int step, Doub time){
                 fOutFile << gradu[0][0] << " " << gradu[1][1] <<  " "<< (gradu[1][0] );
                 //fOutFile << gradu[0][0] << " " << gradu[0][1]<< " " << " "<< gradu[1][0];
                 fOutFile << std::endl;
+            }*/
+            
+            for (Int inode = 0; inode < nnodes; inode++)
+            {
+                Doub dudx= dsol2[inode*2][0];
+                Doub dudy= dsol2[inode*2][1];
+                Doub dwdx= dsol2[inode*2+1][0];
+                Doub dwdy= dsol2[inode*2+1][1];
+                fOutFile << dudx << " " << dwdy <<  " "<< (dudy+dwdx)/2.;
+                fOutFile << std::endl;
             }
+            
 
         }
         else if(fVecNames[ivar] =="SqrtJ2(EPSP)")

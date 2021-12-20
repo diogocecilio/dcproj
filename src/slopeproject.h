@@ -40,6 +40,7 @@ public:
 	void OutPutFile4var(MatDoub& postdata, std::ofstream& file);
     void PrintMathematicaFormat(MatDoub postdata, std::ofstream& file);
 	Doub computelamda(MatDoub& dwb, MatDoub& dws, MatDoub& dw, Doub& l);
+    void OutPutPost2(std::vector<std::vector<double>>& postdata, std::ofstream& file);
 	void ReadMesh(std::vector<std::vector< std::vector<Doub > > >& allcoords, MatDoub& meshcoords, MatInt& meshtopology, string filenameel, string filenamecoord);
 	std::vector<Doub>   vecstr_to_vecdoub2(std::vector<string> vs);
 	template <class T>

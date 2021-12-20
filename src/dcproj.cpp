@@ -60,7 +60,8 @@ private:
 //<<<<<<< HEAD
 void myTreads(int a, int b, slopeproject* slopeobj2,string namefolder3)
 {
-	slopeobj2->MonteCarloGIM(a, b, false, namefolder3);
+    bool print =  true;
+	slopeobj2->MonteCarloGIM(a, b, print, namefolder3);
     delete slopeobj2;
 }
 
@@ -125,9 +126,9 @@ void slope2x1( )
 	std::vector<std::vector<std::vector<Doub>>> allcoords;
 	ReadMesh(allcoords, meshcoords, meshtopology, elsstr, nodestr);
 
-	std::ofstream filemesh1("meshcoords2x1.txt");
+	std::ofstream filemesh1("/home/diogocecilio/Dropbox/slope-reliability/results/mesh2x1/gim-Lx20-Ly2/meshcoords2x1.txt");
 	OutPutPost(meshcoords, filemesh1);
-	std::ofstream filemesh2("meshtopology2x1.txt");
+	std::ofstream filemesh2("/home/diogocecilio/Dropbox/slope-reliability/results/mesh2x1/gim-Lx20-Ly2/meshtopology2x1.txt");
 	OutPutPost(meshtopology, filemesh2);
 
 	//Doub c = 18.5633, phi = 20 * M_PI / 180., gamma = -20.;//1.5
@@ -149,12 +150,12 @@ void slope2x1( )
 	Int npts = ptsweigths.nrows();
 	Int nglobalpts = meshtopology.nrows() * npts;
 	Int sz = 2 * meshcoords.nrows();
-    int nthreads =2;
+    int nthreads =15;
     std::vector <std::thread> threadsmat;
 
     Doub Lx = 20.;//(*Correlation length in x direction*)
 	Doub Ly = 2.;//(*Correlation length in y direction*)
-	Int nsamples = 100000, expansionorder = 150;
+	Int nsamples = 10000, expansionorder = 150;
 	Int type = 3;
     NRmatrix<MatDoub> randomfield(2, 1);
     Int dim =2;
@@ -175,7 +176,7 @@ void slope2x1( )
     
     
     
-    if(false)
+    if(true)
     {
         cout <<"\n  DETERMINISTC  " << endl;
         slopeproject* slopeobj = new slopeproject(meshs, objKLGalerkinRF);
@@ -188,14 +189,14 @@ void slope2x1( )
 		mat->UpdateBodyForce(bodyforce);
         int maxiter = 40;
 		Doub deltatol = 0.01;
-		int desirediter = 1;
-        Doub lamb0 = 0.5;
+		int desirediter = 10;
+        Doub lamb0 = 0.2;
         //10, 0.5, 0.01,20
        // soll = slopeobj->IterativeProcess(desirediter, lamb0, deltatol,maxiter);
         //slopeobj->IterativeProcess2( );
        // soll = slopeobj->IterativeProcessShearRed( 0.01, 2.,0.01);
           soll = slopeobj->IterativeProcessGIMBinarySearch();
-        
+        return;
     
     }
     
@@ -226,109 +227,7 @@ void slope2x1( )
     int delta = int(nsamples/nthreads);
     int a=0,b=delta;
     
-   /* 
-    cout<<"1"<<endl;
-    elastoplastic2D< druckerprager >* mat0 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
-    elastoplastic2D< druckerprager >* mat1 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
-    elastoplastic2D< druckerprager >* mat2 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
-    elastoplastic2D< druckerprager >* mat3 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
-    elastoplastic2D< druckerprager >* mat4 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
-    elastoplastic2D< druckerprager >* mat5 = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
 
-
-	cout<<"2"<<endl;
-	mesh* mesh0 = new mesh(dim,mat0, allcoords, meshcoords, meshtopology, hhatinho);
-    mesh* mesh1 = new mesh(dim,mat1, allcoords, meshcoords, meshtopology, hhatinho);
-    mesh* mesh2 = new mesh(dim,mat2, allcoords, meshcoords, meshtopology, hhatinho);
-    mesh* mesh3 = new mesh(dim,mat3, allcoords, meshcoords, meshtopology, hhatinho);
-    mesh* mesh4 = new mesh(dim,mat4, allcoords, meshcoords, meshtopology, hhatinho);
-    mesh* mesh5 = new mesh(dim,mat5, allcoords, meshcoords, meshtopology, hhatinho);
-
-
-
-    cout<<"3"<<endl;
-	mat0->fYC.setup(young, nu, c, phi);
-	mat0->SetMemory(nglobalpts, sz);
-	mat0->UpdateBodyForce(bodyforce);
-    
-    mat1->fYC.setup(young, nu, c, phi);
-	mat1->SetMemory(nglobalpts, sz);
-	mat1->UpdateBodyForce(bodyforce);
-
-    mat2->fYC.setup(young, nu, c, phi);
-	mat2->SetMemory(nglobalpts, sz);
-	mat2->UpdateBodyForce(bodyforce);
-
-    mat3->fYC.setup(young, nu, c, phi);
-	mat3->SetMemory(nglobalpts, sz);
-	mat3->UpdateBodyForce(bodyforce);
-
-    mat4->fYC.setup(young, nu, c, phi);
-	mat4->SetMemory(nglobalpts, sz);
-	mat4->UpdateBodyForce(bodyforce);
-
-    mat5->fYC.setup(young, nu, c, phi);
-	mat5->SetMemory(nglobalpts, sz);
-	mat5->UpdateBodyForce(bodyforce);
-
-
-
-
-    
-cout<<"4"<<endl;
-	KLGalerkinRF* objKLGalerkinRF0 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
-    KLGalerkinRF* objKLGalerkinRF1 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
-    KLGalerkinRF* objKLGalerkinRF2 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
-    KLGalerkinRF* objKLGalerkinRF3 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
-    KLGalerkinRF* objKLGalerkinRF4 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
-    KLGalerkinRF* objKLGalerkinRF5 = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
-
-    
-    cout<<"5"<<endl;
-	objKLGalerkinRF0->SetMesh(mesh0);
-    objKLGalerkinRF1->SetMesh(mesh1);
-    objKLGalerkinRF2->SetMesh(mesh2);
-    objKLGalerkinRF3->SetMesh(mesh3);
-    objKLGalerkinRF4->SetMesh(mesh4);
-    objKLGalerkinRF5->SetMesh(mesh5);
-
-
-    cout<<"6"<<endl;
-    slopeproject* slopeobj0 = new slopeproject(mesh0, objKLGalerkinRF0,randomfield);
-    cout<<"6.5"<<endl;
-    slopeproject* slopeobj1 = new slopeproject(mesh1, objKLGalerkinRF1,randomfield);
-    slopeproject* slopeobj2 = new slopeproject(mesh2, objKLGalerkinRF2,randomfield);
-    slopeproject* slopeobj3 = new slopeproject(mesh3, objKLGalerkinRF3,randomfield);
-    slopeproject* slopeobj4 = new slopeproject(mesh4, objKLGalerkinRF4,randomfield);
-    slopeproject* slopeobj5 = new slopeproject(mesh5, objKLGalerkinRF5,randomfield);
-    cout<<"6.9"<<endl;
-
-
-cout<<"7"<<endl;
-    std::thread thread0(myTreads,0,1000, slopeobj0,namefolder);
-    std::thread thread1(myTreads,1001,2000, slopeobj1,namefolder);
-    std::thread thread2(myTreads,2001,3000, slopeobj2,namefolder);
-    std::thread thread3(myTreads,3001,4000, slopeobj3,namefolder);
-    std::thread thread4(myTreads,4001,5000, slopeobj4,namefolder);
-    std::thread thread5(myTreads,5001,6000, slopeobj5,namefolder);
-
-
-cout<<"8"<<endl;
-    thread0.join();
-    thread1.join();
-    thread2.join();
-    thread3.join();
-    thread4.join();
-    thread5.join();
-
-    
-    cout<<"9"<<endl;*/
-    
-    
-    
-    
-    //slopeproject* slopeobj0 = new slopeproject(meshs, objKLGalerkinRF,randomfield);
-    //slopeobj0->MonteCarloGIM(0, 10, false, namefolder);
     
    for(int i=0;i<nthreads;i++)
     {
