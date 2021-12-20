@@ -114,8 +114,8 @@ int main(int argc, char *argv[])
 void slope2x1( )
 {
 
-    string nodestr = "/home/diogocecilio/projects/dcproj/data/coords2x1h5.txt";
-	string elsstr = "/home/diogocecilio/projects/dcproj/data/topology2x1h5.txt";
+    string nodestr = "/home/diogocecilio/projects/dcproj/data/coords2x1h5-489.txt";
+	string elsstr = "/home/diogocecilio/projects/dcproj/data/topology2x1h5-489.txt";
     
       // string nodestr = "/home/diogocecilio/projects/dcproj/data/coords2x1.txt";
 	//string elsstr = "/home/diogocecilio/projects/dcproj/data/topology2x1.txt";
@@ -150,7 +150,7 @@ void slope2x1( )
 	Int npts = ptsweigths.nrows();
 	Int nglobalpts = meshtopology.nrows() * npts;
 	Int sz = 2 * meshcoords.nrows();
-    int nthreads =15;
+    int nthreads =12;
     std::vector <std::thread> threadsmat;
 
     Doub Lx = 20.;//(*Correlation length in x direction*)
@@ -176,7 +176,7 @@ void slope2x1( )
     
     
     
-    if(true)
+    if(false)
     {
         cout <<"\n  DETERMINISTC  " << endl;
         slopeproject* slopeobj = new slopeproject(meshs, objKLGalerkinRF);
@@ -201,7 +201,7 @@ void slope2x1( )
     }
     
     
-    if(false)
+    if(true)
     {
         
     //last filed created c =23 e phi=0

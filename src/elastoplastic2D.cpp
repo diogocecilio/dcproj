@@ -1136,185 +1136,14 @@ void elastoplastic2D<YC>::PostProcessIntegrationPointVar(std::vector<std::vector
 template <class YC>
 void elastoplastic2D<YC>::ComputeSolAndDSol2(mesh * inmesh,NRmatrix<Doub>&sol,NRmatrix<Doub>&dsol)
 {
-    Doub xi,eta,w;
-    std::vector<std::vector< std::vector<Doub > > >  allcoords = inmesh->GetAllCoords();
-    NRmatrix<Int> meshtopology = inmesh->GetMeshTopology();
-    NRmatrix<Doub> nodalsol = GetSolution();
-
-	NRmatrix<Doub>  elcoords, psis, gradpsis, xycoords, psist,InvJac(2,2),Jac,gradphi,ptsweigths;
-	GetElCoords(allcoords, 0, elcoords);
-	Int nels = allcoords.size();
-    Int nvars = 2;
-    Int sz=nodalsol.nrows();
-    sol.assign(sz,1,0.),dsol.assign(sz,2,0.);
-
-    shapequad objshapes(2, 1);
-	objshapes.pointsandweigths(ptsweigths);
-    Int npts=ptsweigths.nrows();
-	for (Int iel = 0;iel < nels;iel++)
-	{
-        for(Int ipt=0;ipt<npts;ipt++)
-        {
-            xi=ptsweigths[ipt][0];
-            eta=ptsweigths[ipt][1];
-            w=ptsweigths[ipt][2];
-            objshapes.shapes(psis, gradpsis, xi, eta);
-            psis.Transpose(psist);
-            gradpsis.Mult(elcoords, Jac);
-            Doub DetJ = -Jac[0][1] * Jac[1][0] + Jac[0][0] * Jac[1][1];
-            if(DetJ<=0)
-            {
-                std::cout<< "DetJ<0 "<<std::endl;
-                DebugStop();
-            }
-
-            InvJac[0][0] = Jac[1][1] / DetJ;   InvJac[0][1] = -Jac[0][1] / DetJ;
-            InvJac[1][0] = -Jac[1][0] / DetJ;	InvJac[1][1] = Jac[0][0] / DetJ;
-            InvJac.Mult(gradpsis, gradphi);
-            for(Int ishape=0;ishape<psis.nrows();ishape++)
-            {
-               // Fbody[n * rowglob - idof+n-1][0] += efbody[n * irow- idof+n-1][0];
-                //sol[meshtopology[iel][ishape] * 2][0]+= psis[ishape][0] * nodalsol[meshtopology[iel][ishape] * 2][0];
-                //sol[meshtopology[iel][ishape] * 2 + 1][0]+= psis[ishape][0] * nodalsol[meshtopology[iel][ishape] * 2 + 1][0];
-                Int index=meshtopology[iel][ishape];
-                //sol[2 * index ][0]+= psis[ishape][0] * nodalsol[2 * index ][0];
-                //sol[2 * index +1][0]+= psis[ishape][0] * nodalsol[2 * index +1][0];
-                sol[2 * index ][0]=  nodalsol[2 * index ][0];
-                sol[2 * index +1][0]= nodalsol[2 * index +1][0];
-
-                dsol[meshtopology[iel][ishape] * 2][0]= gradphi[0][ishape] * nodalsol[meshtopology[iel][ishape] * 2][0];//dudx
-                dsol[meshtopology[iel][ishape] * 2 + 1][0]= gradphi[0][ishape]  * nodalsol[meshtopology[iel][ishape] * 2 + 1][0];//dwdx
-
-                dsol[meshtopology[iel][ishape] * 2][1]= gradphi[1][ishape] * nodalsol[meshtopology[iel][ishape] * 2][0];//dudy
-                dsol[meshtopology[iel][ishape] * 2 + 1][1]= gradphi[1][ishape]  * nodalsol[meshtopology[iel][ishape] * 2 + 1][0];//dwdy
-            }
-        }
-    }
-    //sol.Print();
-    //dsol.Print();
+    DebugStop();
 }
 
 
 template <class YC>
 void elastoplastic2D<YC>::ComputeSolAndDSol(mesh * inmesh,NRvector<NRmatrix<Doub>>&sol,NRvector<NRmatrix<Doub>>&dsol)
 {
-    Doub xi,eta,w;
-    std::vector<std::vector< std::vector<Doub > > >  allcoords = inmesh->GetAllCoords();
-    NRmatrix<Int> meshtopology = inmesh->GetMeshTopology();
-    NRmatrix<Doub> nodalsol = GetSolution();
-    Int meshnodes = inmesh->GetMeshNodes().nrows();
-
-	NRmatrix<Doub>  elcoords, psis, gradpsis, xycoords, psist,InvJac(2,2),Jac,gradphi,ptsweigths,elementdisplace,elementdisplacerow;
-	GetElCoords(allcoords, 0, elcoords);
-    elementdisplace.assign(elcoords.nrows(),2,0.);
-	Int nels = allcoords.size();
-    Int nvars = 2;
-    Int sz=nodalsol.nrows();
-    //sol.assign(sz,1,0.);
-    Int elnodes =elcoords.nrows();
-    shapequad objshapes(2, 1);
-	objshapes.pointsandweigths(ptsweigths);
-    Int npts=ptsweigths.nrows();
-    NRmatrix<Doub> base=objshapes.GetBaseNodes();
-    npts=base.nrows();
-    dsol.resize(meshnodes);
-    sol.resize(meshnodes);
-    for(Int inode=0;inode<meshnodes;inode++){
-        //sol[inode].assign(1,2,0.);
-        //dsol[inode].assign(2,2,0.);
-        sol[inode].assign(2,1,0.);
-        dsol[inode].assign(3,1,0.);
-    }
-    vector<Int> indexvec;
-    NRmatrix<NRvector<Doub>> uglob;
-    uglob.resize(nels, npts);
-    
-    for (int i = 0; i < nels; i++)
-	{
-		for (int j = 0; j < npts; j++) {
-			uglob[i][j].assign(2, 0.);
-		}
-	}
-    
-    for (Int iel = 0; iel < nels; iel++)
-	{
-		for (Int node = 0; node < npts; node++)
-		{
-            for(int idof=0;idof<2;idof++)
-            {
-                uglob[iel][node][idof] = GetSolution()[2 * meshtopology[iel][node]+idof][0];
-            }
-		}
-	}
-    
-	for (Int iel = 0;iel < nels;iel++)
-	{
-        elementdisplace.assign(npts,2,0.);
-        elementdisplacerow.assign(npts*2,1,0.);
-     /*   for(Int inode=0;inode<npts;inode++)
-        {
-            Int index=meshtopology[iel][inode];
-            elementdisplace[inode][0] = GetSolution()[2 * index +0][0];//ux
-            elementdisplace[inode][1] = GetSolution()[2 * index +1][0];//uy
-            elementdisplacerow[2*inode][0]= GetSolution()[2 * index +0][0];
-            elementdisplacerow[2*inode+1][0]= GetSolution()[2 * index +1][0];
-        }*/
-        for (Int i = 0; i < npts; i++)for (Int j = 0; j < 2; j++)elementdisplace[i][j] = uglob[iel][i][j];
-        //cout<<elementdisplacerow.nrows()<<endl;
-
-        //for(Int ipt=0;ipt<npts;ipt++)
-        for(Int ipt=0;ipt<npts;ipt++)
-        {
-
-            Doub xi,eta,w;
-           // xi=ptsweigths[ipt][0];
-           // eta=ptsweigths[ipt][1];
-           // w=ptsweigths[ipt][2];
-            xi=base[ipt][0];
-            eta=base[ipt][1];
-            int type = 1;
-
-            NRmatrix<Doub>  psis,psist, GradPsi,xycoords,Jac,InvJac(2,2),GradPhi;
-            objshapes.shapes(psis, GradPsi, xi, eta);
-            psis.Transpose(psist);
-            psist.Mult(elcoords, xycoords);
-
-            GradPsi.Mult(elcoords, Jac);
-
-            Doub DetJ = -Jac[0][1] * Jac[1][0] + Jac[0][0] * Jac[1][1];
-            if(DetJ<=0)
-            {
-                std::cout<< "DetJ<0 "<<std::endl;
-                DebugStop();
-            }
-            InvJac[0][0] = Jac[1][1] / DetJ;   InvJac[0][1] = -Jac[0][1] / DetJ;
-            InvJac[1][0] = -Jac[1][0] / DetJ;	InvJac[1][1] = Jac[0][0] / DetJ;
-            InvJac.Mult(GradPsi, GradPhi);
-
-            Int index=meshtopology[iel][ipt];
-            NRmatrix<Doub>  gradu,u,u2,gradu2;
-            psist.Mult(elementdisplace, u);
-            GradPhi.Mult(elementdisplace, gradu);
-           NRmatrix<Doub> B,N,BT,NT;
-            assembleBandN(B, N, psis, GradPhi);
-            N.Transpose(NT);
-            B.Transpose(BT);
-
-            N.Mult(elementdisplacerow,u2);
-            B.Mult(elementdisplacerow,gradu2);
-
-            //cout<< " u " << endl;
-           // u2.Print();
-            //cout<< " gradu " << endl;
-           // gradu2.Print();
-           // cout<< " elementdisplace " << endl;
-           // elementdisplacerow.Print();
-            sol[index]=u;
-            dsol[index]=gradu;
-
-        }
-    }
-
+    DebugStop();
 }
 
 
@@ -1335,10 +1164,7 @@ void elastoplastic2D<YC>::ComputeSolAndDSol(mesh * inmesh,NRmatrix<Doub>&sol,NRm
 
     shapequad objshapes(2, 1);
     NRmatrix<Doub> base=objshapes.GetBaseNodes();
-    //dsol.resize(meshnodes);
-    //sol.resize(meshnodes);
-   // sol.resize(sz,2);
-   // dsol.resize(sz,2);
+
     sol.assign(sz,2,0.);
     dsol.assign(sz,2,0.);
 
@@ -1400,7 +1226,6 @@ void elastoplastic2D<YC>::ComputeSolAndDSol(mesh * inmesh,NRmatrix<Doub>&sol,NRm
     
             GradPhi.Mult(elementdisplace, gradu);
             
-            
             Int index=meshtopology[iel][inode];
 
             sol[2 * index ][0]=  nodalsol[2 * index ][0];
@@ -1411,102 +1236,12 @@ void elastoplastic2D<YC>::ComputeSolAndDSol(mesh * inmesh,NRmatrix<Doub>&sol,NRm
 
             dsol[index* 2][1]= gradu[0][1] ;//dudy
             dsol[index * 2 + 1][1]= gradu[1][1] ;//dwdy
-            
-            //GradPhi é para um nó ou para o elemento?
-            //GradPhi é mat 2x8 com {{dphi1dx,dphi2dx,dphi3dx...,dphi8dx},{dphi1dy,dphi2dy,dphi3dy...,dphi8dy}}
-            //Mas GradPhi foi calculado apenas no ponto xi e eta. Como pode ter a derivada em todos os nós?
-            //dphi=sum[dphi]
-        
-            
         }
     
     }
    
 }
 
-/*
-template <class YC>
-void elastoplastic2D<YC>::ComputeSolAndDSol(mesh * inmesh,NRvector<NRmatrix<Doub>>&sol,NRvector<NRmatrix<Doub>>&dsol)
-{
-    Doub xi,eta,w;
-    std::vector<std::vector< std::vector<Doub > > >  allcoords = inmesh->GetAllCoords();
-    NRmatrix<Int> meshtopology = inmesh->GetMeshTopology();
-    NRmatrix<Doub> nodalsol = GetSolution();
-    Int meshnodes = inmesh->GetMeshNodes().nrows();
-
-	NRmatrix<Doub>  elcoords, psis, gradpsis, xycoords, psist,InvJac(2,2),Jac,gradphi,ptsweigths,elementdisplace;
-	GetElCoords(allcoords, 0, elcoords);
-    elementdisplace.assign(elcoords.nrows(),2,0.);
-	Int nels = allcoords.size();
-    Int nvars = 2;
-    Int sz=nodalsol.nrows();
-    //sol.assign(sz,1,0.);
-
-    shapequad objshapes(2, 1);
-	objshapes.pointsandweigths(ptsweigths);
-    Int npts=ptsweigths.nrows();
-    NRmatrix<Doub> base=objshapes.GetBaseNodes();
-    npts=base.nrows();
-    dsol.resize(meshnodes);
-    sol.resize(meshnodes);
-    for(Int inode=0;inode<meshnodes;inode++){
-        sol[inode].assign(1,2,0.);
-        dsol[inode].assign(2,2,0.);
-    }
-    Int elementnodes= elcoords.nrows();
-	for (Int iel = 0;iel < nels;iel++)
-	{
-        elementdisplace.assign(elementnodes,2,0.);
-        for(Int inode=0;inode<elementnodes;inode++)
-        {
-            Int index=meshtopology[iel][inode];
-            elementdisplace[inode][0] = GetSolution()[2 * index +0][0];//ux
-            elementdisplace[inode][1] = GetSolution()[2 * index +1][0];//uy
-        }
-
-        for(Int ielnode=0;ielnode<elementnodes;ielnode++)
-        {
-
-            Int index=meshtopology[iel][ielnode];
-            for(Int ipt=0;ipt<npts;ipt++)
-            {
-                Doub xi,eta,w;
-                xi=ptsweigths[ipt][0];
-                eta=ptsweigths[ipt][1];
-                w=ptsweigths[ipt][2];
-
-                NRmatrix<Doub>  psis,psist, GradPsi,xycoords,Jac,InvJac(2,2),GradPhi;
-                objshapes.shapes(psis, GradPsi, xi, eta);
-                psis.Transpose(psist);
-                psist.Mult(elcoords, xycoords);
-
-                GradPsi.Mult(elcoords, Jac);
-
-                Doub DetJ = -Jac[0][1] * Jac[1][0] + Jac[0][0] * Jac[1][1];
-                if(DetJ<=0)
-                {
-                    std::cout<< "DetJ<0 "<<std::endl;
-                    DebugStop();
-                }
-                InvJac[0][0] = Jac[1][1] / DetJ;   InvJac[0][1] = -Jac[0][1] / DetJ;
-                InvJac[1][0] = -Jac[1][0] / DetJ;	InvJac[1][1] = Jac[0][0] / DetJ;
-                InvJac.Mult(GradPsi, GradPhi);
-
-
-                NRmatrix<Doub>  gradu(2,2,0.),u(1,2,0.);
-                psist.Mult(elementdisplace, u);
-                GradPhi.Mult(elementdisplace, gradu);
-
-                sol[index]=u;
-                dsol[index]=gradu;
-            }
-
-        }
-    }
-    //std::cout<< "teste "<<std::endl;
-    //sol.Print();
-    //dsol.Print();
-}*/
 
 
 template <class YC>

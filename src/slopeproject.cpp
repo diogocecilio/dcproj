@@ -1174,20 +1174,33 @@ std::vector<std::vector<double>>    slopeproject::IterativeProcessGIMBinarySearc
     std::vector<double> solcount(7, 0.), uvf(2, 0.);
 	solpost.push_back(solcount);
     
-    Doub fac = 0.1, facmin = 0., facmax =10.;
+    Doub fac = 0.1, facmin = 0., facmax =10.,factemp=0.,facmaxtemp=0.,facmintemp=0.;
     
 	do
 	{
 		std::cout << "load step = " << counterout << " | fac = " <<fac  << std::endl;
-		Int counter = 0, maxcount = 20,countercheck=0;
-		Doub err1t,err1 = 10., err2 = 10., tol = 10.e-3;
+		Int counter = 0, maxcount = 15,countercheck=0;
+		Doub err1t,err1 = 10., err2 = 10., tol = 10.e-5;
 		MatDoub dw(sz, 1, 0.), res(sz, 1, 0.), FINT(sz, 1, 0.),FBODY(sz, 1, 0.), R(sz, 1, 0.);
 		while (counter <  maxcount && err1 > tol)
 		{
 			
 
+         /*   if(counter<5){
+                fmesh->fmaterial->SetTangentMatrixType(false);//put the incosistent tangent in the first steps
+            }else{
+                fmesh->fmaterial->SetTangentMatrixType(true);//set the consistent tangent for the final steps
+            }*/
             fmesh->Assemble(KG, FINT, FBODY);
-           // FBODY.Print();
+           
+            
+            if(false)
+            {
+                string matrixout = "/home/diogocecilio/projects/dcproj/matrix.dat";
+                std::ofstream matrixoutfile(matrixout);
+                PrintMathematicaFormat(KG,matrixoutfile);
+            }
+            
             R = FBODY;
 			R *= fac;
 			R -= FINT;
@@ -1222,9 +1235,12 @@ std::vector<std::vector<double>>    slopeproject::IterativeProcessGIMBinarySearc
             //if(countercheck>6)break;
 		}
 		
-		
+        factemp = fac;
+        facmaxtemp=facmax;
+        facmintemp=facmin;
         if (err1 > tol ||counter>=maxcount ) 
         {
+            cout <<" | facmax = "<<facmax <<" |facmin  " << facmin << " | fac = " << fac << " | (max-min)/fac="<<(facmax - facmin) / fac <<endl; 
             //cout << " No Convergence  " << " | counter = " << counter <<endl;
             facmax = fac;
 			fac = (facmin + facmax) / 2.;
@@ -1235,68 +1251,69 @@ std::vector<std::vector<double>>    slopeproject::IterativeProcessGIMBinarySearc
 		}
 		else 
         {
+            cout <<" | facmax = "<<facmax <<" |facmin  " << facmin << " | fac = " << fac << " | (max-min)/fac="<<(facmax - facmin) / fac <<endl; 
+           if(false)
+           {
                 auto s2 = std::to_string(counterout);
-				string filename = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh2x1";
-				std::vector<std::vector<double>> epsppost;
-				fmesh->fmaterial->PostProcessIntegrationPointVar(fmesh->GetAllCoords(), fmesh->GetMeshNodes(), fmesh->GetMeshTopology(),fmesh->fmaterial->GetSolution(), epsppost);
-				string name3 = "/plasticsqrtj2";
-				string ext3 = ".txt";
-				filename += name3;
-				filename += s2;
-				filename += ext3;
-				std::ofstream file3(filename);
-				OutPutPost2(epsppost, file3);
+                string filename = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh2x1";
+                std::vector<std::vector<double>> epsppost;
+                fmesh->fmaterial->PostProcessIntegrationPointVar(fmesh->GetAllCoords(), fmesh->GetMeshNodes(), fmesh->GetMeshTopology(),fmesh->fmaterial->GetSolution(), epsppost);
+                string name3 = "/plasticsqrtj2";
+                string ext3 = ".txt";
+                filename += name3;
+                filename += s2;
+                filename += ext3;
+                std::ofstream file3(filename);
+                OutPutPost2(epsppost, file3);
            
-           std::vector<double> sol(2);
-            sol[0]= fabs(u[2 * iddisplace[0] + 1][0]);
-            sol[1] = fac;
-            solpost.push_back(sol);
-            std::vector<string> scalar_names;
-            std::vector<string> vector_names;
-            //  TPZStack<std::string> scalar_names,vector_names, tensor_names;
-            vector_names.push_back("Displacement");
-            vector_names.push_back("Strain");
-            //vector_names.push_back("SqrtJ2(EPSP)");
-            //vector_names.push_back("Stress");
-            Int dim=2;
-            string slopestr="slope-IterativeProcessGIMBinarySearch";
-            VTKGraphMesh vtkobj(fmesh,dim,scalar_names,vector_names,slopestr);
-            vtkobj.DrawSolution( counterout, counter);
-            
-            
-            		solcount[0] = fabs(u[2 * iddisplace[0] + 1][0]);
-		solcount[1] = fac;
-		solcount[2] = err1;
-		solcount[3] = err2;
-		solcount[4] = 0;
-		solcount[5] = 0;
-		solcount[6] = counterout;
+                std::vector<double> sol(2);
+                sol[0]= fabs(u[2 * iddisplace[0] + 1][0]);
+                sol[1] = fac;
+                solpost.push_back(sol);
+                std::vector<string> scalar_names;
+                std::vector<string> vector_names;
+                //  TPZStack<std::string> scalar_names,vector_names, tensor_names;
+                vector_names.push_back("Displacement");
+                vector_names.push_back("Strain");
+                //vector_names.push_back("SqrtJ2(EPSP)");
+                //vector_names.push_back("Stress");
+                Int dim=2;
+                string slopestr="slope-IterativeProcessGIMBinarySearch";
+                VTKGraphMesh vtkobj(fmesh,dim,scalar_names,vector_names,slopestr);
+                vtkobj.DrawSolution( counterout, counter);
+           }
+            solcount[0] = fabs(u[2 * iddisplace[0] + 1][0]);
+            solcount[1] = fac;
+            solcount[2] = err1;
+            solcount[3] = err2;
+            solcount[4] = 0;
+            solcount[5] = 0;
+            solcount[6] = counterout;
 
-    
-
-		uvf[0] = fabs(u[2 * iddisplace[0] + 1][0]);
-		uvf[1] = fac;
-		solpost2.push_back(uvf);
+            uvf[0] = fabs(u[2 * iddisplace[0] + 1][0]);
+            uvf[1] = fac;
+            solpost2.push_back(uvf);
         
-		solpost.push_back(solcount);
+            solpost.push_back(solcount);
 		
-            
             u0=u;
             facmin=fac;
-           // fac = 1. / ((1. / facmin + 1. / facmax) / 2.);
-            fac +=0.1;
+            //fac = 1. / ((1. / facmin + 1. / facmax) / 2.);
+            if(fac>facmax)facmax=fac+0.02;
+            fac +=1./counter;
             fmesh->fmaterial->UpdatePlasticStrain();
-            cout <<" | facmax = "<<facmax <<" |facmin  " << facmin << " | fac = " << fac <<endl; 
+            
         }
 		
         counterout++;
     
     
 
+        
+        
     
     
-    
-	}  while (counterout<50&& (facmax - facmin) / fac > 0.01);
+	}  while (counterout<50&& (facmaxtemp - facmintemp) / factemp > 0.01);
 
     std::ofstream file8("u-F.nb");
     OutPutPost(solpost2,file8);
