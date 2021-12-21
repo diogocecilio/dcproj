@@ -176,7 +176,7 @@ YOUNG =    10000000.000000000       POISS =   0.47999999999999998       SINPHI =
     sigma.Print();
     gradient.Print();
     cout<<"calculou!"<<endl;*/
-   // return 0;
+    //return 0;
     slope2x1( );
     return 0;
    // beam3dtools beam0bj = beam3dtools();
