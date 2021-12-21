@@ -86,7 +86,10 @@ int main(int argc, char *argv[])
  MAIN PLANE
  EDGE =  F  RIGHT =  T
  APEX =  F  SUFAIL =  F  IFPLAS =  T
- S1 =    1019.3346921447446       S2 =    815.41994059374520       S3 =    679.45685075888650  */ 
+ S1 =    1019.3346921447446       S2 =    815.41994059374520       S3 =    679.45685075888650 
+ phi20
+ psi10
+ */ 
  
  /* YOUNG =    10000000.000000000       POISS =   0.47999999999999998       SINPHI =   0.34202014332566871     
  PSTRS1 =   -718.51881928971079     
@@ -99,11 +102,61 @@ int main(int argc, char *argv[])
  MAIN PLANE
  EDGE =  F  RIGHT =  F
  APEX =  F  SUFAIL =  F  IFPLAS =  T
- S1 =   -1052.8701849512349       S2 =   -2207.9502459448963       S3 =   -3547.0261607672974 
+ S1 =   -1052.8701849512349       S2 =   -2207.9502459448963       S3 =   -3547.0261607672974
+  phi20
+ psi10
  */
+ /*
+  YOUNG =    10000000.000000000       POISS =   0.47999999999999998       SINPHI =   0.34202014332566871     
+ PSTRS1 =    932268.38227570849     
+ PSTRS2 =    827809.11425439699     
+ PSTRS3 =    747438.01332967984     
+ SMCT =    759323.79111602600     
+ COHE =    490.00000000000000     
+ R2CPHI =    1.8793852415718169     
+ PHIA =    758402.89234765584     
+ MAIN PLANE
+ LEFT EDGE
+ SMCTB   619137.34927437105     
+ PHIA   758402.89234765584     
+ PHIB   618216.45050600090     
+ EDGE =  T  RIGHT =  F
+ APEX =  F  SUFAIL =  F  IFPLAS =  T
+ S1 =    432.08332485864230       S2 =    432.08332485872961       S3 =   -518.30498966656160  
+ */
+ 
+ /* 
+YOUNG =    10000000.000000000       POISS =   0.47999999999999998       SINPHI =   0.34202014332566871     
+ PSTRS1 =    32106.636889356076     
+ PSTRS2 =    30248.012701049120     
+ PSTRS3 =    25037.107135821283     
+ SMCT =    26613.841275191277     
+ COHE =    490.00000000000000     
+ R2CPHI =    1.8793852415718169     
+ PHIA =    25692.942506821088     
+ MAIN PLANE
+ LEFT EDGE
+ SMCTB   24119.530175611024     
+ PHIA   25692.942506821088     
+ PHIB   23198.631407240835     
+ EDGE =  T  RIGHT =  F
+ APEX =  F  SUFAIL =  F  IFPLAS =  T
+ S1 =   -62.505225692832028       S2 =   -62.505225692832028       S3 =   -1527.0711255381102     
+        1                      22.2582                     0.743935E+07
+ YOUNG =    10000000.000000000       POISS =   0.47999999999999998       SINPHI =   0.34202014332566871     
+ EDGE =  T  RIGHT =  F  APEX =  F
+ NHARD =            2
+ PSTRS1 =    6.9236400191666439E-310
+ PSTRS2 =    6.9530552481518686E-310
+ PSTRS3 =    6.9236399437504380E-310
+ 
+   7939433.3826912288     15870751.044256944     -1010896.2914339744     
+   15870751.044256959     32278284.944626935     -815738.50166551396     
+  -1010896.2914339754     -815738.50166551443     2754498.5888175457 
+*/
     
-    Doub Phi=20*M_PI/180.;
-    Doub Psi=10*M_PI/180.;
+/*   Doub Phi=20*M_PI/180.;
+    Doub Psi=20*M_PI/180.;
     Doub c=490.;
     Doub young=10^7;
     Doub nu=0.48;
@@ -116,15 +169,16 @@ int main(int argc, char *argv[])
     Int  m_type;
     NRmatrix<Doub>  gradient(3,3);
     
-    sigma_trial[0]=-718.51881928971079 ;
-    sigma_trial[1]= -1947.0674912107918;
-    sigma_trial[2]= -3337.8717873994369  ;
+    sigma_trial[0]=32106.636889356076;
+    sigma_trial[1]=30248.012701049120;
+    sigma_trial[2]=25037.107135821283;
     mohr->ProjectSigma( sigma_trial, k_prev, sigma, k_proj,m_type, gradient);
     sigma.Print();
-    cout<<"calculou!"<<endl;
-    return 0;
+    gradient.Print();
+    cout<<"calculou!"<<endl;*/
+   // return 0;
     slope2x1( );
-    //return 0;
+    return 0;
    // beam3dtools beam0bj = beam3dtools();
    // beam0bj.SolveElasticBeam();
     //beam0bj.IterativeProcess();
@@ -225,8 +279,20 @@ cout <<"\n  dasdasd  " << endl;
     Int dim =2;
     
     elastoplastic2D< druckerprager >* mat = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
+    
+    Doub Phi=0.001*M_PI/180.;
+    Doub Psi=0.001*M_PI/180.;
+    //Doub c=23.;
+    //Doub young=20000.;
+    //Doub nu=0.49;
+    
+    elastoplastic2D< mohrcoulomb >* matmohr = new elastoplastic2D< mohrcoulomb >( thickness, bodyforce, planestress, order, hhatinho);
+    matmohr->fYC.SetUp( Phi,  Psi,  c, young,  nu);
+    matmohr->SetMemory(nglobalpts, sz);
+    matmohr->UpdateBodyForce(bodyforce);
+    
 
-    mesh* meshs = new mesh(dim,mat, allcoords, meshcoords, meshtopology, hhatinho);
+    mesh* meshs = new mesh(dim,matmohr, allcoords, meshcoords, meshtopology, hhatinho);
     mat->fYC.setup(young, nu, c, phi);
     mat->SetMemory(nglobalpts, sz);
     mat->UpdateBodyForce(bodyforce);
@@ -251,6 +317,11 @@ cout <<"\n  dasdasd  " << endl;
 		mat->fYC.setup(young, nu, c, phi);
 		mat->SetMemory(nglobalpts, sz);
 		mat->UpdateBodyForce(bodyforce);
+        
+            matmohr->fYC.SetUp( Phi,  Psi,  c, young,  nu);
+    matmohr->SetMemory(nglobalpts, sz);
+    matmohr->UpdateBodyForce(bodyforce);
+        
         int maxiter = 40;
 		Doub deltatol = 0.001;
 		int desirediter = 10;

@@ -1,7 +1,7 @@
 #include "elastoplastic2D.h"
 #include "vonmises.h"
 #include "druckerprager.h"
-
+#include "mohrcoulomb.h"
 template <class YC>
 elastoplastic2D<YC>::elastoplastic2D(Doub thickness, NRmatrix<Doub>  bodyforce, Int planestress, Int order) 
 {
@@ -394,9 +394,14 @@ void elastoplastic2D<YC>::Contribute(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint
 
 	fYC.closestpointproj(epst,epsp,projstress,projstrain,Dept,projgamma);
     Dep.assign(3, 3, 0.);
-    Dep[0][0] = Dept[0][0];Dep[0][1] = Dept[0][1];Dep[0][2] = Dept[0][5];
-    Dep[1][0] = Dept[1][0];Dep[1][1] = Dept[1][1];Dep[1][2] = Dept[1][5];
-    Dep[2][0] = Dept[5][0];Dep[2][1] = Dept[5][1];Dep[2][2] = Dept[5][5];
+    if(Dept.nrows()==6)
+    {
+        Dep[0][0] = Dept[0][0];Dep[0][1] = Dept[0][1];Dep[0][2] = Dept[0][5];
+        Dep[1][0] = Dept[1][0];Dep[1][1] = Dept[1][1];Dep[1][2] = Dept[1][5];
+        Dep[2][0] = Dept[5][0];Dep[2][1] = Dept[5][1];Dep[2][2] = Dept[5][5];
+    }else{
+        Dep=Dept;
+    }
 	if (fhhatvel.size() != 0)
 	{
 		fYC.restoreoriginalatributes();
@@ -1289,3 +1294,4 @@ NRmatrix<Doub>  elastoplastic2D<YC>::GetSolution()
 
 template class elastoplastic2D<vonmises>;
 template class elastoplastic2D<druckerprager>;
+template class elastoplastic2D<mohrcoulomb>;

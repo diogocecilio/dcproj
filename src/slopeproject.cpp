@@ -1420,7 +1420,7 @@ std::vector<std::vector<double>>    slopeproject::IterativeProcessGIMBinarySearc
 	do
 	{
 		std::cout << "load step = " << counterout << " | fac = " <<fac  << std::endl;
-		Int counter = 0, maxcount = 15,countercheck=0;
+		Int counter = 0, maxcount = 50,countercheck=0;
 		Doub err1t,err1 = 10., err2 = 10., tol = 10.e-5;
 		MatDoub dw(sz, 1, 0.), res(sz, 1, 0.), FINT(sz, 1, 0.),FBODY(sz, 1, 0.), R(sz, 1, 0.);
 		while (counter <  maxcount && err1 > tol)
@@ -1488,6 +1488,8 @@ std::vector<std::vector<double>>    slopeproject::IterativeProcessGIMBinarySearc
             u=u0;
             fmesh->fmaterial->UpdateDisplacement(u0);
             //cout <<" | facmax = "<<facmax <<" |facmin  " << facmin << " | fac = " << fac <<endl; 
+            
+            
 
 		}
 		else 
@@ -1519,7 +1521,7 @@ std::vector<std::vector<double>>    slopeproject::IterativeProcessGIMBinarySearc
                 //  TPZStack<std::string> scalar_names,vector_names, tensor_names;
                 vector_names.push_back("Displacement");
                 vector_names.push_back("Strain");
-                //vector_names.push_back("SqrtJ2(EPSP)");
+                //vector_names.push_back("phi");
                 //vector_names.push_back("Stress");
                 Int dim=2;
                 string slopestr="slope-IterativeProcessGIMBinarySearch";

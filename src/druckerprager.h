@@ -130,7 +130,7 @@ public:
      */
 	MatDoub ComputeQ(NRmatrix<Doub>  fulltensorproj, NRmatrix<Doub>  tempepsemat, NRtensor<Doub>  & projstress, NRtensor<Doub>  & projstrain, Doub & projgamma,NRmatrix<Doub>  & nvec);
 
-    Doub phi(NRtensor<Doub> epse)
+    NRvector<Doub> phi(NRtensor<Doub> epse)
     {
         NRmatrix<Doub>  tempepsemat, stresstrial;
         NRmatrix<Doub>  C = GetElasticMatrix();
@@ -143,7 +143,8 @@ public:
         I1 = stresstrialtensor.I1();
         Doub xi = I1 / sqrt(3.);
         Doub rho = sqrt(2. * J2);
-        Doub yieldcr =-(pow(((fapex - xi / sqrt(3.)) / fa), 2) - pow(((rho / sqrt(2.)) / fb), 2) - 1);
+        NRvector<Doub> yieldcr(3,0.);
+        yieldcr[0] =-(pow(((fapex - xi / sqrt(3.)) / fa), 2) - pow(((rho / sqrt(2.)) / fb), 2) - 1);
         return yieldcr;
     }
 	

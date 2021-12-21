@@ -28,7 +28,7 @@ public:
     {
          DebugStop();
     }
-    Doub phi(NRtensor<Doub> epse)
+    NRvector<Doub> phi(NRtensor<Doub> epse)
     {
         NRmatrix<Doub>  tempepsemat, stresstrial;
         NRmatrix<Doub>  C = GetElasticMatrix();
@@ -41,7 +41,8 @@ public:
         I1 = stresstrialtensor.I1();
         Doub xi = I1 / sqrt(3.);
         Doub rho = sqrt(2. * J2);
-        Doub yieldcr = yield(J2);
+        NRvector<Doub> yieldcr(3,0.);
+        yieldcr[0] = yield(J2);
         return yieldcr;
     }
 

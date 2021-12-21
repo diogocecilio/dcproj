@@ -166,9 +166,10 @@ public:
     void ComputeSolAndDSol(mesh * inmesh,NRmatrix<Doub>&sol,NRmatrix<Doub>&dsol);
     void ComputeSolAndDSol(mesh * inmesh,NRvector<NRmatrix<Doub>>&sol,NRvector<NRmatrix<Doub>>&dsol);
     void ComputeSolAndDSol2(mesh * inmesh,NRmatrix<Doub>&sol,NRmatrix<Doub>&dsol);
-    Doub ComputePhi(NRtensor<Doub> eps)
+    
+    NRvector<Doub> ComputePhi(NRtensor<Doub> eps)
     {
-        Doub valphi=fYC.phi(eps);
+        NRvector<Doub>  valphi=fYC.phi(eps);
         return valphi;
     }
 

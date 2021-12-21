@@ -82,9 +82,9 @@ public:
 	}
 	virtual NRvector<NRtensor<Doub> > GetPlasticStrain();
 
-    Doub ComputePhi(NRtensor<Doub> eps)
+    NRvector<Doub> ComputePhi(NRtensor<Doub> eps)
     {
-        Doub valphi=fYC.phi(eps);
+        NRvector<Doub> valphi = fYC.phi(eps);
         return valphi;
     }
 //
