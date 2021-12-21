@@ -425,7 +425,7 @@ void KLGalerkinRF::GenerateNonGaussinRandomField(VecComplex& val, MatDoub& vec, 
 	Doub lambda = log(mean) - xi * xi / 2.;
 	for (int i = 0; i < hhatcoes.nrows();i++)for (int j = 0; j < hhatcoes.ncols(); j++)hhatcoes[i][j] = exp(lambda + xi * hhatcoes[i][j]);
 
-    mean = 0.00001 * M_PI/180.;
+    mean = 0.000000001 * M_PI/180.;
 	sdev = 0. * mean;
 	xi = sqrt(log(1 + pow((sdev / mean), 2)));
 	lambda = log(mean) - xi * xi / 2.;

@@ -7,6 +7,7 @@
 #include "elastoplastic3D.h"
 #include <thread>
 #include "beam3dtools.h"
+#include "mohrcoulomb.h"
 
 //#include <boost/thread.hpp>
 //using namespace boost; 
@@ -60,7 +61,7 @@ private:
 //<<<<<<< HEAD
 void myTreads(int a, int b, slopeproject* slopeobj2,string namefolder3)
 {
-    bool print =  true;
+    bool print =  false;
 	slopeobj2->MonteCarloGIM(a, b, print, namefolder3);
     delete slopeobj2;
 }
@@ -74,8 +75,56 @@ void myTreadsSRM(int a, int b, slopeproject* slopeobj2,string namefolder3)
 
 int main(int argc, char *argv[])
 {
-    slope2x1( );
+ /*YOUNG =    10000000.000000000       POISS =   0.47999999999999998       SINPHI =   0.34202014332566871     
+ PSTRS1 =    21958.207680050284     
+ PSTRS2 =    17153.295083721787     
+ PSTRS3 =    13777.823744370100     
+ SMCT =    20402.826525351044     
+ COHE =    490.00000000000000     
+ R2CPHI =    1.8793852415718169     
+ PHIA =    19481.927756980855     
+ MAIN PLANE
+ EDGE =  F  RIGHT =  T
+ APEX =  F  SUFAIL =  F  IFPLAS =  T
+ S1 =    1019.3346921447446       S2 =    815.41994059374520       S3 =    679.45685075888650  */ 
+ 
+ /* YOUNG =    10000000.000000000       POISS =   0.47999999999999998       SINPHI =   0.34202014332566871     
+ PSTRS1 =   -718.51881928971079     
+ PSTRS2 =   -1947.0674912107918     
+ PSTRS3 =   -3337.8717873994369     
+ SMCT =    1231.9856714250075     
+ COHE =    490.00000000000000     
+ R2CPHI =    1.8793852415718169     
+ PHIA =    311.08690305481718     
+ MAIN PLANE
+ EDGE =  F  RIGHT =  F
+ APEX =  F  SUFAIL =  F  IFPLAS =  T
+ S1 =   -1052.8701849512349       S2 =   -2207.9502459448963       S3 =   -3547.0261607672974 
+ */
+    
+    Doub Phi=20*M_PI/180.;
+    Doub Psi=10*M_PI/180.;
+    Doub c=490.;
+    Doub young=10^7;
+    Doub nu=0.48;
+    mohrcoulomb *mohr = new mohrcoulomb( Phi,  Psi,  c, young,  nu);
+    
+    NRvector<Doub> sigma_trial(3);
+    Doub k_prev=0.;
+    NRvector<Doub>  sigma(3);
+    Doub k_proj=0.;
+    Int  m_type;
+    NRmatrix<Doub>  gradient(3,3);
+    
+    sigma_trial[0]=-718.51881928971079 ;
+    sigma_trial[1]= -1947.0674912107918;
+    sigma_trial[2]= -3337.8717873994369  ;
+    mohr->ProjectSigma( sigma_trial, k_prev, sigma, k_proj,m_type, gradient);
+    sigma.Print();
+    cout<<"calculou!"<<endl;
     return 0;
+    slope2x1( );
+    //return 0;
    // beam3dtools beam0bj = beam3dtools();
    // beam0bj.SolveElasticBeam();
     //beam0bj.IterativeProcess();
@@ -114,11 +163,25 @@ int main(int argc, char *argv[])
 void slope2x1( )
 {
 
-    string nodestr = "/home/diogocecilio/projects/dcproj/data/coords2x1h5-489.txt";
-	string elsstr = "/home/diogocecilio/projects/dcproj/data/topology2x1h5-489.txt";
+  //  string nodestr = "/home/diogocecilio/projects/dcproj/data/coords2x1h5fine.txt";
+//	string elsstr = "/home/diogocecilio/projects/dcproj/data/topology2x1h5fine.txt";
     
       // string nodestr = "/home/diogocecilio/projects/dcproj/data/coords2x1.txt";
 	//string elsstr = "/home/diogocecilio/projects/dcproj/data/topology2x1.txt";
+    
+    
+       // string nodestr = "/home/diogocecilio/projects/dcproj/data/nodes-606.txt";
+   // string elsstr = "/home/diogocecilio/projects/dcproj/data/els-606.txt";
+    
+        //    string nodestr = "/home/diogocecilio/projects/dcproj/data/nos-287.txt";
+   // string elsstr = "/home/diogocecilio/projects/dcproj/data/els-287.txt";
+    
+    
+       // string nodestr = "/home/diogocecilio/projects/dcproj/data/nodes-2x1-2k.txt";
+	//string elsstr = "/home/diogocecilio/projects/dcproj/data/elements-2x1-2k.txt";
+    
+        string nodestr = "/home/diogocecilio/projects/dcproj/data/coords2x1h5.txt";
+	string elsstr = "/home/diogocecilio/projects/dcproj/data/topology2x1h5.txt";
 
 	MatDoub hhatinho;
 	MatDoub  meshcoords, elcoords;
@@ -126,17 +189,18 @@ void slope2x1( )
 	std::vector<std::vector<std::vector<Doub>>> allcoords;
 	ReadMesh(allcoords, meshcoords, meshtopology, elsstr, nodestr);
 
-	std::ofstream filemesh1("/home/diogocecilio/Dropbox/slope-reliability/results/mesh2x1/gim-Lx20-Ly2/meshcoords2x1.txt");
+	std::ofstream filemesh1("/home/diogocecilio/Dropbox/slope-reliability/results/mesh2x1/gim-Lx20-Ly2/meshcoords.txt");
 	OutPutPost(meshcoords, filemesh1);
-	std::ofstream filemesh2("/home/diogocecilio/Dropbox/slope-reliability/results/mesh2x1/gim-Lx20-Ly2/meshtopology2x1.txt");
+	std::ofstream filemesh2("/home/diogocecilio/Dropbox/slope-reliability/results/mesh2x1/gim-Lx20-Ly2/meshtopology.txt");
 	OutPutPost(meshtopology, filemesh2);
-
+cout <<"\n  dasdasd  " << endl;
 	//Doub c = 18.5633, phi = 20 * M_PI / 180., gamma = -20.;//1.5
-	Doub c = 23., phi =0.00001* M_PI / 180., gamma = -20.;//1.5
+	//Doub c = 23., phi =0.00001* M_PI / 180., gamma = -20.;//1.5
+	Doub c = 23., phi =0.000001* M_PI / 180., gamma = -20.;//1.5
 
 	Doub thickness = 1.;
-	Doub young = 100.;
-	Doub nu = 0.3;
+	Doub young = 20000.;
+	Doub nu = 0.4999;
 	//Doub young = 100000.;
 	//Doub nu = 0.3;
 	Int planestress = 0;
@@ -176,7 +240,7 @@ void slope2x1( )
     
     
     
-    if(false)
+    if(true)
     {
         cout <<"\n  DETERMINISTC  " << endl;
         slopeproject* slopeobj = new slopeproject(meshs, objKLGalerkinRF);
@@ -188,13 +252,13 @@ void slope2x1( )
 		mat->SetMemory(nglobalpts, sz);
 		mat->UpdateBodyForce(bodyforce);
         int maxiter = 40;
-		Doub deltatol = 0.01;
+		Doub deltatol = 0.001;
 		int desirediter = 10;
         Doub lamb0 = 0.2;
         //10, 0.5, 0.01,20
-       // soll = slopeobj->IterativeProcess(desirediter, lamb0, deltatol,maxiter);
+        //soll = slopeobj->IterativeProcess(desirediter, lamb0, deltatol,maxiter);
         //slopeobj->IterativeProcess2( );
-       // soll = slopeobj->IterativeProcessShearRed( 0.01, 2.,0.01);
+        //soll = slopeobj->IterativeProcessShearRed( 0.01, 2.,0.01);
           soll = slopeobj->IterativeProcessGIMBinarySearch();
         return;
     

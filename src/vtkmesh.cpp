@@ -67,14 +67,15 @@ void VTKGraphMesh::DrawSolution(Int step, Doub time){
         fOutFile<<std::endl;
 	}
 
+
 	(fOutFile) << "CELL_TYPES " << els <<  endl;
     for (Int iel = 0; iel < els; iel++)
 	{
         fOutFile << type <<  endl;
 	}
 
-     NRvector<  NRmatrix<Doub>  > sol,dsol;
-    fmesh->fmaterial->ComputeSolAndDSol(fmesh,sol,dsol);
+   //  NRvector<  NRmatrix<Doub>  > sol,dsol;
+  //  fmesh->fmaterial->ComputeSolAndDSol(fmesh,sol,dsol);
     
            NRmatrix<Doub>   sol2,dsol2;
     fmesh->fmaterial->ComputeSolAndDSol(fmesh,sol2,dsol2);

@@ -2,11 +2,8 @@
 #include "nr3.h"
 #include <math.h>
 #include <cmath>
-#include "elastoplasticbase.h"
-#include "roots.h"
-#include<Eigen/SparseCholesky>
 #include <iostream>
-#include <Eigen/Dense>
+
 
 
 
@@ -67,6 +64,8 @@ public:
     mohrcoulomb(Doub Phi, Doub Psi, Doub c,Doub young, Doub nu);
     mohrcoulomb(const mohrcoulomb &cp);
 
+    
+    
     void SetUp(Doub Phi, Doub Psi, Doub c,Doub young, Doub nu) {
         fPhi = Phi;
         fPsi = Psi;
@@ -90,6 +89,12 @@ public:
         fnu = nu;
     }
 
+    
+    Doub  InitialDamage(const NRvector<Doub> &stress_p)const;
+    
+    template <class T>
+    void PlasticityFunction(const T epsp, T &c, T &H) const;
+    
     template<class T>
     NRvector<T> SigmaElastPV(const NRvector<T> &deform) const;
 
@@ -123,7 +128,7 @@ public:
     void ComputeApexGradient(NRmatrix<Doub> & gradient, Doub & eps_bar_p) const;
     
 
-    void ProjectSigma(const NRvector<Doub> & sigma_trial, Doub k_prev, NRvector<Doub> & sigma, Doub &k_proj, Int & m_type, NRmatrix<Doub> * gradient = NULL);
+    void ProjectSigma(const NRvector<Doub> & sigma_trial, Doub k_prev, NRvector<Doub> & sigma, Doub &k_proj, Int & m_type, NRmatrix<Doub>  gradient );
 
 
     void Phi(NRvector<Doub> sig_vec, Doub alpha, NRvector<Doub> &phi)const;
