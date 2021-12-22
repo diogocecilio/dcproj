@@ -393,8 +393,12 @@ void elastoplastic2D<YC>::Contribute(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint
 	//cout << "\n c  = " << fYC.GetCoes() <<endl;
 
 	fYC.closestpointproj(epst,epsp,projstress,projstrain,Dept,projgamma);
+    
+    //cout << "prj stress "<< endl;
+    //projstress.Print();
+    
     Dep.assign(3, 3, 0.);
-    if(Dept.nrows()==6)
+    if(Dept.nrows()>3)
     {
         Dep[0][0] = Dept[0][0];Dep[0][1] = Dept[0][1];Dep[0][2] = Dept[0][5];
         Dep[1][0] = Dept[1][0];Dep[1][1] = Dept[1][1];Dep[1][2] = Dept[1][5];
@@ -426,6 +430,8 @@ void elastoplastic2D<YC>::Contribute(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint
 	BC.Mult(B, ek);
 
 
+
+    
 	stress[0][0] = projstress.XX();stress[1][0] = projstress.YY();stress[2][0] = projstress.XY();
 	ek *= w*DetJ*fthickness;
 	//std::cout << " stress "<< std::endl;

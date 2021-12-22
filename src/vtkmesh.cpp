@@ -84,24 +84,24 @@ void VTKGraphMesh::DrawSolution(Int step, Doub time){
 	fOutFile << "SCALARS phi float 1" << endl;
 	fOutFile << "LOOKUP_TABLE default" << endl;
     
-    for (Int inode = 0; inode < nnodes; inode++)
-    {
-        NRmatrix<Doub> eps,gradu,gradut;
-        NRtensor<Doub> tensor(0.);
-        Doub dudx= dsol2[inode*2][0];
-        Doub dudy= dsol2[inode*2][1];
-        Doub dwdx= dsol2[inode*2+1][0];
-        Doub dwdy= dsol2[inode*2+1][1];
-        if(fdim==3)
-        {
-        }
-        else if(fdim==2)
-        {
-            tensor.XX()=dudx;tensor.YY()=dwdy;tensor.XY()=(dudy + dwdx)/2.;
-        }
-        NRvector<Doub> valphi =fmesh->fmaterial->ComputePhi(tensor) ;
-        fOutFile << valphi[0]<<   endl;//x
-    }
+    //for (Int inode = 0; inode < nnodes; inode++)
+   // {
+   //     NRmatrix<Doub> eps,gradu,gradut;
+    //    NRtensor<Doub> tensor(0.);
+   //     Doub dudx= dsol2[inode*2][0];
+   //     Doub dudy= dsol2[inode*2][1];
+  //      Doub dwdx= dsol2[inode*2+1][0];
+  //      Doub dwdy= dsol2[inode*2+1][1];
+  //      if(fdim==3)
+  //      {
+  //      }
+      //  else if(fdim==2)
+  //      {
+  //         tensor.XX()=dudx;tensor.YY()=dwdy;tensor.XY()=(dudy + dwdx)/2.;
+   //     }
+        //NRvector<Doub> valphi =fmesh->fmaterial->ComputePhi(tensor) ;
+        //fOutFile << valphi[0]<<   endl;//x
+  //  }
 
 
     Int nvecnames = fVecNames.size();

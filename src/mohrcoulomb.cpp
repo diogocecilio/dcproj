@@ -37,10 +37,8 @@ Doub mohrcoulomb::InitialDamage(const NRvector<Doub> &stress_p) const{
 }
 
 void mohrcoulomb::Phi(NRvector<Doub>sig_vec, Doub alpha, NRvector<Doub> &phi)const {
-    phi.resize(3);
-    for (int i = 0; i < 3; i++) phi[i] = 0;
+    phi.assign(3,0.);
     phi[0] = PhiPlane(sig_vec);
-    phi[2] = PhiPlane(sig_vec); // Consistency with two surfaces models
 }
 
 template <class T>
@@ -127,7 +125,7 @@ bool mohrcoulomb::ReturnMapPlane(const NRvector<T> &sigma_trial, NRvector<T> &si
     //1sigma_projected.Print();
     epsbarnew = epsbar;
     
-    bool check_validity_Q = (eigenvalues[0] > eigenvalues[1]|| fabs(eigenvalues[0]-eigenvalues[1])<ftol && (eigenvalues[1] > eigenvalues[2]) || (eigenvalues[1]-eigenvalues[2])<ftol);
+    bool check_validity_Q = ( (eigenvalues[0] > eigenvalues[1]) || fabs(eigenvalues[0]-eigenvalues[1]) < ftol && (eigenvalues[1] > eigenvalues[2]) || (eigenvalues[1]-eigenvalues[2])<ftol);
     return (check_validity_Q);   
 }
 
@@ -146,7 +144,7 @@ void mohrcoulomb::ComputePlaneTangent(NRmatrix<Doub> &tang, Doub &epsbarp) const
     tang.assign(3, 3,0.);
     
     // First column
-   /* tang[0][0] = (sin_phi - 1.0) * (-3.0 * G + (G + 3.0 * K) * sin_psi) / denominator;
+    tang[0][0] = (sin_phi - 1.0) * (-3.0 * G + (G + 3.0 * K) * sin_psi) / denominator;
     tang[1][0] = (2.0 * G - 3.0 * K) * (sin_phi + 1.0) * sin_psi / denominator;
     tang[2][0] = -(sin_phi + 1.0) * (-3.0 * G + (G + 3.0 * K) * sin_psi) / denominator;
     
@@ -158,9 +156,9 @@ void mohrcoulomb::ComputePlaneTangent(NRmatrix<Doub> &tang, Doub &epsbarp) const
     // Third column
     tang[0][2] = -(sin_phi - 1.0) * (3.0 * G + (G + 3.0 * K) * sin_psi) / denominator;
     tang[1][2] = (2.0 * G - 3.0 * K) * (sin_phi - 1.0) * sin_psi / denominator;
-    tang[2][2] = (sin_phi + 1.0) * (3.0 * G + (G + 3.0 * K) * sin_psi) / denominator;*/
+    tang[2][2] = (sin_phi + 1.0) * (3.0 * G + (G + 3.0 * K) * sin_psi) / denominator;
     
-    Doub R4G =  4.*fmu;
+   /* Doub R4G =  4.*fmu;
     Doub R2G = 2. *fmu;
     Doub R1 =1.;
     Doub R2 =2.;
@@ -218,7 +216,7 @@ void mohrcoulomb::ComputePlaneTangent(NRmatrix<Doub> &tang, Doub &epsbarp) const
     
     tang[JJ][MM]=R1D3*(R3*BULK-R2G)*(R1-R2*B3*SINPHI);
     
-    tang[JJ][JJ]=R2G*(R2D3+B3*(R1-R1D3*SINPHI))+BULK*(R1-R2*B3*SINPHI);
+    tang[JJ][JJ]=R2G*(R2D3+B3*(R1-R1D3*SINPHI))+BULK*(R1-R2*B3*SINPHI);*/
     
 }
 
@@ -323,7 +321,7 @@ void mohrcoulomb::ComputeLeftEdgeTangent(NRmatrix<Doub> &tang, Doub &epsbarp) co
     PlasticityFunction(epsbar, c, H);
     
     tang.assign(3, 3,0.);
-  /* 
+   
     // First column
     tang[0][0] = (-3*b*b + 3*a*(a - 2*G*(1 + sin_phi)) -
                   2*(a*G + 2*b*G + 3*a*K - 3*b*K)*(1 + sin_phi)*sin_psi)/(3.*(a - b)*(a + b));
@@ -342,8 +340,8 @@ void mohrcoulomb::ComputeLeftEdgeTangent(NRmatrix<Doub> &tang, Doub &epsbarp) co
     tang[0][2] = (2*(-1 + sin_phi)*(G*(-3 + sin_psi) - 6*K*sin_psi))/(3.*(a + b));
     tang[1][2] = (2*(-1 + sin_phi)*(G*(-3 + sin_psi) - 6*K*sin_psi))/(3.*(a + b));
     tang[2][2] = (3*a + 3*b - 4*(-1 + sin_phi)*(G*(-3 + sin_psi) + 3*K*sin_psi))/(3.*(a + b));
-    */
-  
+    
+  /*
     Doub R4G =  4.*fmu;
     Doub R2G = 2. *fmu;
     Doub R1 =1.;
@@ -360,6 +358,10 @@ void mohrcoulomb::ComputeLeftEdgeTangent(NRmatrix<Doub> &tang, Doub &epsbarp) co
     Doub R4GD3=R4G*R1D3;
     
     Doub CONSTA=R4G*(R1+R1D3*SPHSPS)+R4*BULK*SPHSPS;
+    
+   //     cout << "CONSTB " << CONSTB <<endl;
+   //  cout << "CONSTA " << CONSTA <<endl;
+    
     Doub R2BULK = 2*fK;
     Doub FACTA=R4C2PH*H;
     Doub DRVAA=-CONSTA-FACTA;
@@ -390,7 +392,7 @@ void mohrcoulomb::ComputeLeftEdgeTangent(NRmatrix<Doub> &tang, Doub &epsbarp) co
     
     tang[JJ][MM]=BULK-R2GD3+(AUX3*(((R2BULK*(DRVAB-DRVBB-DRVAA+DRVBA)+(DRVAB-DRVAA)*R2GD3+(DRVBB-DRVBA)*R4GD3)*SINPHI)+(DRVAB-DRVAA)*R2G))*R1DDET;
             
-    tang[JJ][JJ]=BULK+R4GD3+(AUX3*(DRVAB-DRVBB-DRVAA+DRVBA)*(((R2BULK+R2GD3)*SINPHI)-R2G))*R1DDET;
+    tang[JJ][JJ]=BULK+R4GD3+(AUX3*(DRVAB-DRVBB-DRVAA+DRVBA)*(((R2BULK+R2GD3)*SINPHI)-R2G))*R1DDET;*/
 }
 
 template<class T>
@@ -504,7 +506,7 @@ void mohrcoulomb::ComputeRightEdgeTangent(NRmatrix<Doub> &tang, Doub &epsbarp) c
     tang.assign(3, 3,0.);
     
     // First column
-   /* tang[0][0] = (3.0*a + 3.0*b - 4.0*(1.0 + sin_phi)*(3.0*K*sin_psi + G*(3.0 + sin_psi)))/(3.*(a + b));
+   tang[0][0] = (3.0*a + 3.0*b - 4.0*(1.0 + sin_phi)*(3.0*K*sin_psi + G*(3.0 + sin_psi)))/(3.*(a + b));
     tang[1][0] = (2.0*(1.0 + sin_phi)*(-6.0*K*sin_psi + G*(3.0 + sin_psi)))/(3.*(a + b));
     tang[2][0] = (2.0*(1.0 + sin_phi)*(-6.0*K*sin_psi + G*(3.0 + sin_psi)))/(3.*(a + b));
     
@@ -520,8 +522,8 @@ void mohrcoulomb::ComputeRightEdgeTangent(NRmatrix<Doub> &tang, Doub &epsbarp) c
     tang[1][2] = (2*(-1 + sin_phi)*(b*G*(-3 + sin_psi) + a*(2*G - 3*K)*sin_psi + 3*b*K*sin_psi))/
     (3.*(a*a - b*b));
     tang[2][2] = (-3*b*b + 3*a*(a + 2*G*(-1 + sin_phi)) -
-                  2*(a*G + 2*b*G + 3*a*K - 3*b*K)*(-1 + sin_phi)*sin_psi)/(3.*(a - b)*(a + b));*/
-                  
+                  2*(a*G + 2*b*G + 3*a*K - 3*b*K)*(-1 + sin_phi)*sin_psi)/(3.*(a - b)*(a + b));
+      /*            
                   
     Doub R4G =  4.*fmu;
     Doub R2G = 2. *fmu;
@@ -539,6 +541,9 @@ void mohrcoulomb::ComputeRightEdgeTangent(NRmatrix<Doub> &tang, Doub &epsbarp) c
     Doub R4GD3=R4G*R1D3;
     
     Doub CONSTA=R4G*(R1+R1D3*SPHSPS)+R4*BULK*SPHSPS;
+    
+    cout << "CONSTB " << CONSTB <<endl;
+     cout << "CONSTA " << CONSTA <<endl;
     Doub R2BULK = 2*fK;
     Doub FACTA=R4C2PH*H;
     Doub DRVAA=-CONSTA-FACTA;
@@ -572,7 +577,7 @@ void mohrcoulomb::ComputeRightEdgeTangent(NRmatrix<Doub> &tang, Doub &epsbarp) c
     tang[JJ][MM]=BULK-R2GD3+(AUX2*(((R2BULK*(DRVBA-DRVAA)-(DRVBA*R4GD3+DRVAA*R2GD3))*SINPHI)+DRVAA*R2G)+AUX3*(((R2BULK*(DRVAB-DRVBB)+(DRVAB*R2GD3+DRVBB*R4GD3))*SINPHI)-DRVAB*R2G))*R1DDET;
     
     tang[JJ][JJ]=BULK+R4GD3+(AUX2*(((R2BULK*(DRVBA-DRVAA)+(DRVAA*R4GD3+DRVBA*R2GD3))*SINPHI)-DRVBA*R2G)+AUX3*(((R2BULK*(DRVAB-DRVBB)-(DRVAB*R4GD3+DRVBB*R2GD3))*SINPHI)+DRVBB*R2G))*R1DDET;
-                  
+      */            
 }
 
 template<class T>
@@ -649,7 +654,7 @@ void mohrcoulomb::ComputeApexGradient(NRmatrix<Doub> & gradient, Doub & eps_bar_
         }
     }
     
-    Doub R4G =  4.*fmu;
+  /*  Doub R4G =  4.*fmu;
     Doub R2G = 2. *fmu;
     Doub R1 =1.;
 
@@ -673,12 +678,14 @@ void mohrcoulomb::ComputeApexGradient(NRmatrix<Doub> & gradient, Doub & eps_bar_
         gradient[JJ][II]=DSIDEJ;
         gradient[JJ][MM]=DSIDEJ;
         gradient[JJ][JJ]=DSIDEJ;
+        */
 }
     
 
 void mohrcoulomb::ProjectSigma(const NRvector<Doub> & sigma_trial, Doub k_prev, NRvector<Doub> & sigma, Doub &k_proj, Int & m_type, NRmatrix<Doub>  &gradient)
 {
 
+ //   cout << "BULK "<<fK <<endl;
     gradient.assign(3,3,0.);
     TComputeSequence memory;
     this->SetEpsBar(k_prev);
@@ -755,6 +762,11 @@ void mohrcoulomb::ProjectSigma(const NRvector<Doub> & sigma_trial, Doub k_prev, 
         this->SetEpsBar(k_proj);
         sigma = sigma_projected;
     }
+    
+        NRmatrix<Doub> C = GetElasticMatrix();
+        gradient[0][0] = C[0][0];gradient[0][1] = C[0][1];gradient[0][2] = C[0][5];
+        gradient[1][0] = C[1][0];gradient[1][1] = C[1][1];gradient[1][2] = C[1][5];
+        gradient[2][0] = C[5][0];gradient[2][1] = C[5][1];gradient[2][2] = C[5][5];
 }
 
 void mohrcoulomb::updateatributes(NRvector<MatDoub> mult)
@@ -804,5 +816,14 @@ void mohrcoulomb::closestpointproj(NRtensor<Doub>  epst, NRtensor<Doub>  epsp, N
     Doub k_proj=0.;
     Int  m_type;
     ProjectSigma( sigma_trial, k_prev, sigma, k_proj,m_type, Dep);
+    NRmatrix<Doub>  fulltensorproj = stressrecosntruction(sigma, vec);
+    
+    
+    NRmatrix<Doub>  projVoigtMat, invCe = GetInverseElasticMatrix(), epsemat;
+	fulltensorproj.FromFullToVoigt(projVoigtMat);
 
+	NRtensor<Doub>  voigtProjTensor;
+	voigtProjTensor.FromNRmatrixToTensor(projVoigtMat, voigtProjTensor);
+	projstress = voigtProjTensor;
+    
 }

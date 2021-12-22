@@ -30,7 +30,7 @@ private:
 	Doub fc0;
 	Doub fPhi0;
     Doub fPsi0 ;
-    Doub ftol=1.e-5;
+    Doub ftol=1.e-8;
     bool fsetconsistentangent=true;
 
 
@@ -73,7 +73,38 @@ public:
     mohrcoulomb(Doub Phi, Doub Psi, Doub c,Doub young, Doub nu);
     mohrcoulomb(const mohrcoulomb &cp);
 
+    NRmatrix<Doub>  stressrecosntruction(NRvector<Doub>  val, NRmatrix<Doub>  vec)
+    {
+        NRmatrix<Doub>  sol(3, 3, 0.);
+        for (Int i = 0;i < 3;i++)
+        {
+            MatDoub colvec(3, 1, 0.), colvect, temp;
+            for (Int j = 0;j < 3;j++)
+            {
+                colvec[j][0] = vec[j][i];
+            }
+
+            colvec.Transpose(colvect);
+            colvec.Mult(colvect, temp);
+            temp *= val[i];
+            sol += temp;
+        }
+        //sol.Print();
+        return sol;
+    }
     
+    NRmatrix<Doub>  HW(NRmatrix<Doub>  sig)
+{
+	MatDoub sol(3, 1);
+	Doub xi, rho, beta;
+	xi = sig[0][0];
+	rho = sig[1][0];
+	beta = sig[2][0];
+	sol[0][0] = xi / sqrt(3.) + sqrt(2. / 3.)*rho*cos(beta);
+	sol[1][0] = xi / sqrt(3.) + sqrt(2. / 3.)*rho*cos(beta - 2. *  M_PI / 3.);
+	sol[2][0] = xi / sqrt(3.) + sqrt(2. / 3.)*rho*cos(beta + 2. *  M_PI / 3.);
+	return sol;
+}
     
     
     void SetUp(Doub Phi, Doub Psi, Doub c,Doub young, Doub nu) {
@@ -84,6 +115,8 @@ public:
         fnu = nu;
         fmu = fyoung/(2. * (1. + fnu));
         flambda = fyoung*fnu/((1. + fnu)* (1. - 2.* fnu));
+        //cout << "YOUNG = " << fyoung << endl;
+        //cout << "fnu" << fnu << endl;
         fK = fyoung / (3.* (1. - 2.* fnu));
     }
 
@@ -164,7 +197,7 @@ public:
         sig_vec[0] = pt[0][0];
         sig_vec[1] =  pt[0][1];
         sig_vec[2] = pt[0][2];
-        Doub alpha;
+        Doub alpha=0;
         
         Phi(sig_vec, alpha, phiv);
         

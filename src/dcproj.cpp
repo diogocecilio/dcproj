@@ -154,28 +154,86 @@ YOUNG =    10000000.000000000       POISS =   0.47999999999999998       SINPHI =
    15870751.044256959     32278284.944626935     -815738.50166551396     
   -1010896.2914339754     -815738.50166551443     2754498.5888175457 
 */
+ 
+/* YOUNG =    10000000.000000000       POISS =   0.47999999999999998     
+  SINPHI =   0.34202014332566871      SINPSI =   0.34202014332566871       EPBAR =    4.9406564584124654E-324
+ EDGE =  T  RIGHT =  F  APEX =  F
+ NHARD =            2
+ PSTRA =    7.1741652264991832E-005
+ PSTRA =   -1.5068743976243829E-004
+ PSTRA =    7.1741652264990666E-005
+ PSTRS =   -99.378179219441762     
+ PSTRS =   -1602.2774496750505     
+ PSTRS =   -99.378179219449521     
+ R2G =    6756756.7567567565     
+ R1 =    1.0000000000000000     
+ R1D3 =   0.33333333333333331     
+ SPHSPS =   0.11697777844051097     
+ R4 =    4.0000000000000000     
+ BULK =    83333333.333333254     
+ CONSTB =    40863992.276579015     
+ FACTA =    0.0000000000000000     
+   32254875.598446336     
+   15847866.278098786     
+   840658.41619093088     
+   15847866.278098771     
+   8008612.2611881811     
+   1271496.1830109116     
+   840658.41619093250     
+   1271496.1830109130     
+   3340846.9881579177     
+ YOUNG =    10000000.000000000       POISS =   0.47999999999999998     
+  SINPHI =   0.34202014332566871      SINPSI =   0.34202014332566871       EPBAR =    4.9406564584124654E-324
+ EDGE =  T  RIGHT =  F  APEX =  F
+ NHARD =            2
+ PSTRA =    7.0017125645323129E-005
+ PSTRA =   -1.4663130688041118E-004
+ PSTRA =    7.0017125645322032E-005
+ PSTRS =   -61.807712377507471     
+ PSTRS =   -1525.6484726865226     
+ PSTRS =   -61.807712377514690     
+ R2G =    6756756.7567567565     
+ R1 =    1.0000000000000000     
+ R1D3 =   0.33333333333333331     
+ SPHSPS =   0.11697777844051097     
+ R4 =    4.0000000000000000     
+ BULK =    83333333.333333254     
+ CONSTB =    40863992.276579015     
+ FACTA =    0.0000000000000000     
+   32381336.469352044     
+   15880539.537920766     
+   301434.90448203590     
+   15880539.537920751     
+   7816804.8706385158     
+   458476.49811555160     
+   301434.90448203636     
+   458476.49811555212     
+   3373520.2479798943 
+   */
     
-/*   Doub Phi=20*M_PI/180.;
+   Doub Phi=20*M_PI/180.;
     Doub Psi=20*M_PI/180.;
     Doub c=490.;
-    Doub young=10^7;
+    Doub young=10e7;
     Doub nu=0.48;
     mohrcoulomb *mohr = new mohrcoulomb( Phi,  Psi,  c, young,  nu);
     
+    
+    mohr->SetUp( Phi,  Psi,  c, young,  nu);
     NRvector<Doub> sigma_trial(3);
     Doub k_prev=0.;
     NRvector<Doub>  sigma(3);
     Doub k_proj=0.;
     Int  m_type;
     NRmatrix<Doub>  gradient(3,3);
-    
-    sigma_trial[0]=32106.636889356076;
-    sigma_trial[1]=30248.012701049120;
-    sigma_trial[2]=25037.107135821283;
+    sigma_trial[0]=-61.807712377507471 ;
+    sigma_trial[1]=-61.807712377514690;
+    sigma_trial[2]= -1525.6484726865226 ;
     mohr->ProjectSigma( sigma_trial, k_prev, sigma, k_proj,m_type, gradient);
+    cout <<"m_type " << m_type <<endl;
     sigma.Print();
     gradient.Print();
-    cout<<"calculou!"<<endl;*/
+    cout<<"calculou!"<<endl;
     //return 0;
     slope2x1( );
     return 0;
@@ -217,8 +275,8 @@ YOUNG =    10000000.000000000       POISS =   0.47999999999999998       SINPHI =
 void slope2x1( )
 {
 
-  //  string nodestr = "/home/diogocecilio/projects/dcproj/data/coords2x1h5fine.txt";
-//	string elsstr = "/home/diogocecilio/projects/dcproj/data/topology2x1h5fine.txt";
+    string nodestr = "/home/diogocecilio/projects/dcproj/data/coords2x1h5fine.txt";
+	string elsstr = "/home/diogocecilio/projects/dcproj/data/topology2x1h5fine.txt";
     
       // string nodestr = "/home/diogocecilio/projects/dcproj/data/coords2x1.txt";
 	//string elsstr = "/home/diogocecilio/projects/dcproj/data/topology2x1.txt";
@@ -234,8 +292,8 @@ void slope2x1( )
        // string nodestr = "/home/diogocecilio/projects/dcproj/data/nodes-2x1-2k.txt";
 	//string elsstr = "/home/diogocecilio/projects/dcproj/data/elements-2x1-2k.txt";
     
-        string nodestr = "/home/diogocecilio/projects/dcproj/data/coords2x1h5.txt";
-	string elsstr = "/home/diogocecilio/projects/dcproj/data/topology2x1h5.txt";
+     //   string nodestr = "/home/diogocecilio/projects/dcproj/data/coords2x1h5.txt";
+	//string elsstr = "/home/diogocecilio/projects/dcproj/data/topology2x1h5.txt";
 
 	MatDoub hhatinho;
 	MatDoub  meshcoords, elcoords;

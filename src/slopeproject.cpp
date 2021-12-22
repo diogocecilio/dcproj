@@ -1467,7 +1467,9 @@ std::vector<std::vector<double>>    slopeproject::IterativeProcessGIMBinarySearc
             err1t=err1;
 			err1 = rnorm / (fac *normfg);
             
-
+           // cout << "rnorm" << rnorm << endl;
+           // cout << "normfg" << normfg << endl;
+          //  cout << "normF|I" << FINT.NRmatrixNorm() << endl;
 			err2 = normdw / unorm;
 
 			std::cout << " Iteration number = " << counter << " |  |R|/|FE| = " << err1 << " | deltau/u " << err2 << "| factor = "<<fac<< std::endl;
@@ -1498,7 +1500,7 @@ std::vector<std::vector<double>>    slopeproject::IterativeProcessGIMBinarySearc
            if(true)
            { 
                
-                auto s2 = std::to_string(counterout);
+                /*auto s2 = std::to_string(counterout);
                 string filename = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh-287-v2";
                 std::vector<std::vector<double>> epsppost;
                 fmesh->fmaterial->PostProcessIntegrationPointVar(fmesh->GetAllCoords(), fmesh->GetMeshNodes(), fmesh->GetMeshTopology(),fmesh->fmaterial->GetSolution(), epsppost);
@@ -1508,7 +1510,7 @@ std::vector<std::vector<double>>    slopeproject::IterativeProcessGIMBinarySearc
                 filename += s2;
                 filename += ext3;
                 std::ofstream file3(filename);
-                OutPutPost2(epsppost, file3);
+                OutPutPost2(epsppost, file3);*/
            
                  
                 std::vector<double> sol(2);
