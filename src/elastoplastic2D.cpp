@@ -405,6 +405,7 @@ void elastoplastic2D<YC>::Contribute(NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint
         Dep[2][0] = Dept[5][0];Dep[2][1] = Dept[5][1];Dep[2][2] = Dept[5][5];
     }else{
         Dep=Dept;
+		//Dep.Print();
     }
 	if (fhhatvel.size() != 0)
 	{

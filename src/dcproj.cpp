@@ -210,11 +210,60 @@ YOUNG =    10000000.000000000       POISS =   0.47999999999999998       SINPHI =
    458476.49811555212     
    3373520.2479798943 
    */
-    
+
+/*-SUMC-main
+ P STRS(1)   68385.698475*308236     
+  PSTRS(2)   61904.627358172584     
+   PSTRS(3)   79812.413542423470     
+    S1   164.57634206677903     
+     S2  -70.163248082011705     
+      S3  -1063.9140318670761  */
+
+/*-SUMC-left
+ PSTRS(1)   1581231.2846511574     
+  PSTRS(2)   1260779.1423591645     
+   PSTRS(3)   1386811.4832000851     
+    S1   227.17847148021974     
+     S2   227.17847148013243     
+      S3  -936.23030745494179     
+       sai do ponto material*/
+      
+
+/*-SUMC-apex
+ PSTRS(1)   99910.225864483131     
+  PSTRS(2)   86150.625798210880     
+   PSTRS(3)   105974.02009807664     
+    S1   12.941144330150564     
+     S2   12.941144330143288     
+      S3  -1373.1902015484229     
+       sai do ponto material
+       */
+
+/*
+ *  PSTRS(1)   65458.862204443278     
+ * PSTRS(2)   55234.436856099062     
+ * PSTRS(3)   77286.267443695440     
+ * S1  -3576.7994562411332     
+ * S2  -4041.4672559343671     
+ * S3  -8694.8492864178043     
+ * sai do ponto material
+ * 
+ */
+
+/*-SUMC-
+ PSTRS(1)   209997.98246106916     
+  PSTRS(2)   167711.40654714682     
+   PSTRS(3)   189175.14955792800     
+    S1  -507.48507358042480     
+     S2  -507.48507358040661     
+      S3  -2434.6550176308374     
+       sai do ponto material
+       */
+      
    Doub Phi=20*M_PI/180.;
     Doub Psi=20*M_PI/180.;
     Doub c=490.;
-    Doub young=10e7;
+    Doub young=10.e6;
     Doub nu=0.48;
     mohrcoulomb *mohr = new mohrcoulomb( Phi,  Psi,  c, young,  nu);
     
@@ -225,17 +274,110 @@ YOUNG =    10000000.000000000       POISS =   0.47999999999999998       SINPHI =
     NRvector<Doub>  sigma(3);
     Doub k_proj=0.;
     Int  m_type;
-    NRmatrix<Doub>  gradient(3,3);
-    sigma_trial[0]=-61.807712377507471 ;
-    sigma_trial[1]=-61.807712377514690;
-    sigma_trial[2]= -1525.6484726865226 ;
-    mohr->ProjectSigma( sigma_trial, k_prev, sigma, k_proj,m_type, gradient);
-    cout <<"m_type " << m_type <<endl;
-    sigma.Print();
-    gradient.Print();
-    cout<<"calculou!"<<endl;
+    NRmatrix<Doub>  gradient(3,3),vec;
+	sigma_trial[0]=209997.98246106916 ;//3
+		sigma_trial[1]=189175.14955792800;//1
+			sigma_trial[2]=167711.40654714682;//2
+	NRvector<Int> order(3);
+	order[0]=0;
+	order[1]=1;
+	order[2]=2;
+   // mohr->ProjectSigma( sigma_trial, k_prev, sigma, k_proj,m_type, gradient,order,vec,);
+   // cout <<"m_type " << m_type <<endl;
+    //sigma.Print();
+    //gradient.Print();
+	
+/*	-SUMC-
+	            
+
+STRAT(1)xx  -9.2299616122518157E-004
+ STRAT(2)yy   3.6101399878573409E-005
+  STRAT(3)xy  -1.3917205303761122E-005
+     STRAT(4)zz   1.7273057237631743E-003  */
+   
+
+	
+	Doub fmu = young/(2. * (1. + nu));
+
+	Doub fK = young / (3.* (1. - 2.* nu));
+	
+	MatDoub C(6, 6, 0.);
+	Doub G = fmu, K = fK;
+	C[0][0] = (G + 3 * K) / (9.*G*K);    C[0][1] = -1 / (6.*G) + 1 / (9.*K);C[0][2] = -1 / (6.*G) + 1 / (9.*K);C[0][3] = 0.;C[0][4] = 0.;C[0][5] = 0.;
+	C[1][0] = -1 / (6.*G) + 1 / (9.*K);  C[1][1] = (G + 3 * K) / (9.*G*K);  C[1][2] = -1 / (6.*G) + 1 / (9.*K);C[1][3] = 0.;C[1][4] = 0.;C[1][5] = 0.;
+	C[2][0] = -1 / (6.*G) + 1 / (9.*K);  C[2][1] = -1 / (6.*G) + 1 / (9.*K);C[2][2] = (G + 3 * K) / (9.*G*K);  C[2][3] = 0.;C[2][4] = 0.;C[2][5] = 0.;
+	C[3][0] = 0;                         C[3][1] = 0;                       C[3][2] = 0;                       C[3][3] = 1. / G;C[3][4] = 0.;C[3][5] = 0.;
+	C[4][0] = 0;                         C[4][1] = 0;                       C[4][2] = 0;                       C[4][3] = 0.;C[4][4] = 1. / G;C[4][5] = 0.;
+	C[5][0] = 0;                         C[5][1] = 0;                       C[5][2] = 0;                       C[5][3] = 0.;C[5][4] = 0.;C[5][5] = 1. / G;
+	
+	//= {{-2272.38, 535.1481, 0}, {535.1481, -669.75, 0}, {0, 0, -507.4850}}
+	//Doub sxx=-1365.47,sxy=-103.1437,sxz=0.,syy=5.2231,syz=0.,szz=12.9411;
+	Doub sxx=-1365.4721783903917 ,sxy=-103.14372598287557,sxz=0.,syy=5.2231187181352698 ,syz=0.;
+	Doub szz= 12.941143522832135 ;
+	NRmatrix<Doub> stress(3,3,0.),eps(3,3,0.),stressvoigth;
+	stress[0][0] =sxx; stress[0][1] =sxy;stress[0][2] = sxz;
+	stress[1][0] = sxy;stress[1][1] =syy; stress[1][2] = syz;
+	stress[2][0] = sxz;       stress[2][1] =syz;       stress[2][2] = szz;
+	stress.FromFullToVoigt(stressvoigth);
+	C.Mult(stressvoigth,eps);
+//	Doub exx=   1.8429768718804975E-004;
+//	Doub eyy=  -1.3277278158382731E-003;
+//    Doub exy=  -5.9986508116503881E-005;
+//    Doub  ezz=   1.9353484000827939E-003;
+//	Doub exz=0,eyz=0.;
+
+/*	   	   	Doub exx=   -9.2299616122518157E-004;
+			Doub eyy=  3.6101399878573409E-005;
+			Doub exy=  -1.3917205303761122E-005;
+			Doub  ezz=   1.7273057237631743E-003;
+	Doub exz=0,eyz=0.;*/
+	
+
+
+	
+	//STRAT(1)xx  -2.8458935398124073E-002
+	// STRAT(2)yy   5.8954131775991299E-002
+	//  STRAT(3)xy   3.5854826650106683E-002
+	//   STRAT(4)zz   2.5209055103071337E-003
+	   
+	   
+	Doub exx=   -2.8458935398124073E-002;
+	Doub eyy=  5.8954131775991299E-002;
+	Doub exy=  3.5854826650106683E-002;
+	Doub  ezz=  2.5209055103071337E-003;
+	Doub exz=0,eyz=0.;
+	
+	//Doub exx=-9.2299616122518157E-004 ,exy=-1.3917205303761122E-005,exz=0.,eyy=3.6101399878573409E-005 ,eyz=0.;
+	//Doub ezz= 1.7273057237631743E-003  ;
+	eps[0][0] =exx;eps[0][1] =exy;eps[0][2] = exz;
+	eps[1][0] =exy;eps[1][1] =eyy;eps[1][2] = eyz;
+	eps[2][0] =exz;eps[2][1] =eyz;eps[2][2] = ezz;
+	
+	
+	NRtensor<Doub> epst,epsp,projstress,projstrain;
+	epst.XX()=exx;epst.XY()=exy;epst.XZ()=exz;
+	epst.YY()=eyy;epst.YZ()=eyz;epst.ZZ()=ezz;
+	//closestpointproj(epstensor,epsp, projstress, projstrain,  Dep,  projgamma);
+	
+	//epst.Print();
+	
+	NRmatrix<Doub>   Dep;
+	Doub projgamma;
+	mohr->closestpointproj(epst, epsp, projstress, projstrain, Dep ,projgamma );
+	//projstrain.Print();
+	//projstress.Print();
+	
+	//mohr->ComputeNumericalDep(epst, epsp,projstress, projstrain,Dep);
+	
+	//mohr->closestpointproj(epst, epsp, projstress, projstrain);
+	
+	projstress.Print();
+	
+	Dep.Print();
+	
+   // cout<<"calculou!"<<endl;
     //return 0;
-    slope2x1( );
+   slope2x1( );
     return 0;
    // beam3dtools beam0bj = beam3dtools();
    // beam0bj.SolveElasticBeam();
@@ -275,15 +417,15 @@ YOUNG =    10000000.000000000       POISS =   0.47999999999999998       SINPHI =
 void slope2x1( )
 {
 
-    string nodestr = "/home/diogocecilio/projects/dcproj/data/coords2x1h5fine.txt";
-	string elsstr = "/home/diogocecilio/projects/dcproj/data/topology2x1h5fine.txt";
+    //string nodestr = "/home/diogo/projects/dcproj/data/coords2x1h5.txt";
+	// string elsstr = "/home/diogo/projects/dcproj/data/topology2x1h5.txt";
     
       // string nodestr = "/home/diogocecilio/projects/dcproj/data/coords2x1.txt";
 	//string elsstr = "/home/diogocecilio/projects/dcproj/data/topology2x1.txt";
     
     
-       // string nodestr = "/home/diogocecilio/projects/dcproj/data/nodes-606.txt";
-   // string elsstr = "/home/diogocecilio/projects/dcproj/data/els-606.txt";
+        string nodestr = "/home/diogo/projects/dcproj/data/nodes-606.txt";
+    string elsstr = "/home/diogo/projects/dcproj/data/els-606.txt";
     
         //    string nodestr = "/home/diogocecilio/projects/dcproj/data/nos-287.txt";
    // string elsstr = "/home/diogocecilio/projects/dcproj/data/els-287.txt";
@@ -308,11 +450,11 @@ void slope2x1( )
 cout <<"\n  dasdasd  " << endl;
 	//Doub c = 18.5633, phi = 20 * M_PI / 180., gamma = -20.;//1.5
 	//Doub c = 23., phi =0.00001* M_PI / 180., gamma = -20.;//1.5
-	Doub c = 23., phi =0.000001* M_PI / 180., gamma = -20.;//1.5
+	Doub c = 50., phi =20.* M_PI / 180., gamma = -20.;//1.5
 
 	Doub thickness = 1.;
 	Doub young = 20000.;
-	Doub nu = 0.4999;
+	Doub nu = 0.49;
 	//Doub young = 100000.;
 	//Doub nu = 0.3;
 	Int planestress = 0;
@@ -338,8 +480,8 @@ cout <<"\n  dasdasd  " << endl;
     
     elastoplastic2D< druckerprager >* mat = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
     
-    Doub Phi=0.001*M_PI/180.;
-    Doub Psi=0.001*M_PI/180.;
+    Doub Phi=20.*M_PI/180.;
+    Doub Psi=20.*M_PI/180.;
     //Doub c=23.;
     //Doub young=20000.;
     //Doub nu=0.49;
@@ -351,9 +493,9 @@ cout <<"\n  dasdasd  " << endl;
     
 
     mesh* meshs = new mesh(dim,matmohr, allcoords, meshcoords, meshtopology, hhatinho);
-    mat->fYC.setup(young, nu, c, phi);
-    mat->SetMemory(nglobalpts, sz);
-    mat->UpdateBodyForce(bodyforce);
+    //mat->fYC.setup(young, nu, c, phi);
+   // mat->SetMemory(nglobalpts, sz);
+    //mat->UpdateBodyForce(bodyforce);
     KLGalerkinRF* objKLGalerkinRF = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
     objKLGalerkinRF->SetMesh(meshs);
 
@@ -385,10 +527,10 @@ cout <<"\n  dasdasd  " << endl;
 		int desirediter = 10;
         Doub lamb0 = 0.2;
         //10, 0.5, 0.01,20
-        //soll = slopeobj->IterativeProcess(desirediter, lamb0, deltatol,maxiter);
-        //slopeobj->IterativeProcess2( );
+       //soll = slopeobj->IterativeProcess(desirediter, lamb0, deltatol,maxiter);
+       // slopeobj->IterativeProcess2( );
         //soll = slopeobj->IterativeProcessShearRed( 0.01, 2.,0.01);
-          soll = slopeobj->IterativeProcessGIMBinarySearch();
+         soll = slopeobj->IterativeProcessGIMBinarySearch();
         return;
     
     }

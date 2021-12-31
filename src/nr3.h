@@ -946,6 +946,7 @@ public:
 	NRtensor & operator-(const NRtensor &rhs);	//assignment
 	NRtensor & operator*=(const T &multipl);
     NRtensor& operator+=(const NRtensor &rhs);
+	NRtensor& operator-=(const NRtensor &rhs);
 	typedef T value_type; // make T available externally
 	inline T & operator[](const int i);	//i'th element
 	inline const T & operator[](const int i) const;
@@ -987,6 +988,10 @@ public:
 	T J2() const;
 
 	T I1() const;
+	T I2() const;
+	T I3() const;
+	
+	void EigenValue(NRvector<T> &eigenval)const;
 
 
 	void  FromTensorToNRmatrix(NRmatrix<T> & resp);
@@ -1130,6 +1135,13 @@ NRtensor<T> & NRtensor<T>::operator+=(const NRtensor<T> &rhs) {
 }
 
 template <class T>
+NRtensor<T> & NRtensor<T>::operator-=(const NRtensor<T> &rhs) {
+	int i;
+	for (i = 0; i < 6; i++)v[i] -= rhs[i];
+	return *this;
+}
+
+template <class T>
 inline T & NRtensor<T>::operator[](const int i)	//subscripting
 {
 #ifdef _CHECKBOUNDS_
@@ -1213,6 +1225,65 @@ template < class T >
 T NRtensor<T>::I1() const {
 	return v[_XX_] + v[_YY_] + v[_ZZ_];
 }
+
+
+template < class T >
+T NRtensor<T>::I2() const {
+	return -(v[_XY_] * v[_XY_] +v[_XZ_] * v[_XZ_] +v[_YZ_] * v[_YZ_])+ (v[_XX_] * v[_YY_] +v[_YY_] * v[_ZZ_] +v[_XX_] * v[_ZZ_]);
+}
+
+template < class T >
+T NRtensor<T>::I3() const {
+	return v[_XX_] * v[_YY_] * v[_ZZ_]
+	            +(v[_XY_] * v[_XZ_] * v[_YZ_]) * 2.
+	                        - (v[_XX_] * v[_YZ_] * v[_YZ_] +
+	                                    v[_YY_] * v[_XZ_] * v[_XZ_] +
+	                                                v[_ZZ_] * v[_XY_] * v[_XY_]);
+}
+
+template <class T>
+void NRtensor<T>::EigenValue(NRvector<T> &eigenval)const {
+    const T I1(this->I1()),
+            I2(this->I2()),
+            I3(this->I3());
+
+			
+	eigenval.resize(3);
+	
+    const T R((T(-2.)*(I1 * I1 * I1) + T(9.) * I1 * I2 - T(27.) * I3) / T(54.));
+    const T Q(((I1 * I1) - (T(3.) * I2)) / T(9.));
+
+    T theta(0.);
+    if (fabs(Q)< 1e-6) {
+        if (fabs(R)< 1e-6) {
+            theta = M_PI_2;
+        } else {
+            DebugStop();
+        }
+    } else {
+        if (Q < 0.) DebugStop();
+        T val(R * pow(Q, T(-1.5))); // i.e. R/sqrt(Q*Q*Q);
+        if (val > +1.) val = +1.;
+        if (val < -1.) val = -1.;
+        theta = acos(val);
+    }
+    T sqrtQ(0.);
+    if (Q < 0.) {
+        if (fabs(Q)<1.e-6) {
+            sqrtQ = T(0.);
+        } else {
+            DebugStop();
+        }
+    } else {
+        sqrtQ = sqrt(Q);
+    }
+
+    eigenval[0] = T(-2.) * sqrtQ * cos(theta / T(3.)) + I1 / T(3.);
+	eigenval[1] = T(-2.) * sqrtQ * cos((theta + T(2. * M_PI)) / T(3.)) + I1 / T(3.);
+	eigenval[2] = T(-2.) * sqrtQ * cos((theta - T(2. * M_PI)) / T(3.)) + I1 / T(3.);
+}
+
+
 
 template < class T >
 void NRtensor<T>::Multiply(const NRtensor<T> tensor, NRtensor<T> & resp) const {
