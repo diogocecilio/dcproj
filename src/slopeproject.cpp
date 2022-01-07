@@ -172,8 +172,8 @@ void slopeproject::findbcids(mesh* gmesh, std::vector<std::vector<int>>& idsvect
 	idsvector.push_back(iddisplace);
 
 }
-/*
-void slopeproject::findbcids(mesh* gmesh, std::vector<std::vector<int>>& idsvector)
+
+/*void slopeproject::findbcids(mesh* gmesh, std::vector<std::vector<int>>& idsvector)
 {
 	Int ndivs = 100000;
 	MatDoub pathbottom, pathleft, pathright, pathdisplace;
@@ -544,7 +544,7 @@ std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed(Doub fa
 		
 		mat->ResetMat();
         fmesh->fmaterial->SetTangentMatrixType(false);
-        Doub tol2 = 0.001;
+        Doub tol2 = 1.;
 		do
 		{
             chrono::steady_clock sc;
@@ -583,7 +583,7 @@ std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed(Doub fa
 			//cout<< "fbody norm = "<< FBODY.NRmatrixNorm() <<endl;
 			if(counter>10)fmesh->fmaterial->SetTangentMatrixType(true);
 
-		} while (norm > tol2 && counter <100 && norm < 1000.);
+		} while (norm > tol2 && counter <100 && norm < 3000.);
          
         if(norm<1){
 		solcount[0] = fabs(displace[2 * iddisplace[0] + 1][0]);
@@ -1107,12 +1107,14 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 			//SolveEigen(KG, FBODY, dwb);
 			Doub lastlambd = dlamb;
 			dlamb = computelamda(dwb, dws, dw, l);
-			if (isnan(dlamb) == 1) {
+			lamb += dlamb;
+			if (isnan(dlamb) == 1 || lamb<0) {
 				std::cout << "NAN" << endl;
 				std::cout << dlamb << endl;
+				//fmesh->fmaterial->SetTangentMatrixType(false);
 				break;
 			}
-			lamb += dlamb;
+			
 			dww = dwb;
 			dww *= dlamb;
 			dww += dws;
@@ -1138,7 +1140,7 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 			counter++;
             //meantime+=time_span;
 			rtemp = rnorm;
-			if (counter == 1 || counter==0)rnorm = 10;
+			//if (counter == 1 || counter==0)rnorm = 10;
 
 
 		} while (counter < maxcount && rnorm > rtol);
@@ -1198,6 +1200,23 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
 			if (l > 10.)l = 10.;
 			diff2 = fabs(lambn0 - lamb);
 			fmesh->fmaterial->UpdatePlasticStrain();
+			
+			std::vector<double> sol(2);
+			sol[0]= fabs(displace[2 * iddisplace[0] + 1][0]);
+			sol[1] = lamb;
+			//solpost.push_back(sol);
+			std::vector<string> scalar_names;
+			std::vector<string> vector_names;
+			
+			//  TPZStack<std::string> scalar_names,vector_names, tensor_names;
+			vector_names.push_back("Displacement");
+			vector_names.push_back("Strain");
+			//vector_names.push_back("phi");
+			//vector_names.push_back("Stress");
+			Int dim=2;
+			string slopestr="slope-IterativeProcessGIMArc";
+			VTKGraphMesh vtkobj(fmesh,dim,scalar_names,vector_names,slopestr);
+			vtkobj.DrawSolution( counterout, counter);
 
 		}
 
@@ -1227,7 +1246,7 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess( int ndesi, Do
         //vector_names.push_back("SqrtJ2(EPSP)");
         //vector_names.push_back("Stress");
     Int dim=2;
-    string slopestr="/home/diogocecilio/projects/dcproj/data/slope-saida-fina";
+    string slopestr="/home/diogo/projects/dcproj/data/slope-saida-fina";
     VTKGraphMesh vtkobj(fmesh,dim,scalar_names,vector_names,slopestr);
     vtkobj.DrawSolution( counterout, counter);
 
@@ -1359,17 +1378,24 @@ void  slopeproject::IterativeProcess2()
 		counterout++;
 		solpost[iload][0] = fabs(u[0][0]);
 		solpost[iload][1] = fabs(fac[iload] * finalload);
-        std::vector<string> scalar_names;
-        std::vector<string> vector_names;
-        //  TPZStack<std::string> scalar_names,vector_names, tensor_names;
-        vector_names.push_back("Displacement");
-        vector_names.push_back("Strain");
-        //vector_names.push_back("SqrtJ2(EPSP)");
-        //vector_names.push_back("Stress");
-        Int dim=2;
-        string slopestr="ring";
-        VTKGraphMesh vtkobj(fmesh,dim,scalar_names,vector_names,slopestr);
-        vtkobj.DrawSolution( counterout, counter);
+
+		
+		std::vector<double> sol(2);
+		sol[0]= fabs(u[2 * iddisplace[0] + 1][0]);
+		sol[1] = fabs(fac[iload] * finalload);
+		//solpost.push_back(sol);
+		std::vector<string> scalar_names;
+		std::vector<string> vector_names;
+		
+		//  TPZStack<std::string> scalar_names,vector_names, tensor_names;
+		vector_names.push_back("Displacement");
+		vector_names.push_back("Strain");
+		//vector_names.push_back("phi");
+		//vector_names.push_back("Stress");
+		Int dim=2;
+		string slopestr="slope-IterativeProcessGIMArc";
+		VTKGraphMesh vtkobj(fmesh,dim,scalar_names,vector_names,slopestr);
+		vtkobj.DrawSolution( counterout, counter);
 
 	}
 
@@ -1417,23 +1443,20 @@ std::vector<std::vector<double>>    slopeproject::IterativeProcessGIMBinarySearc
     std::vector<double> solcount(7, 0.), uvf(2, 0.);
 	solpost.push_back(solcount);
     
-    Doub fac = 0.1, facmin = 0., facmax =10.,factemp=0.,facmaxtemp=0.,facmintemp=0.;
+    Doub fac = 0.1, facmin = 0., facmax =5.,factemp=0.,facmaxtemp=0.,facmintemp=0.;
 	Int count2=0;
 	do
 	{
 		std::cout << "load step x= " << counterout << " | fac = " <<fac  << std::endl;
-		Int counter = 0, maxcount = 20,countercheck=0;
-		Doub err1t=20.,err1 = 10., err2 = 10., tol = 1.e-6,rnorm=10.,unorm=10.;
+		Int counter = 0, maxcount = 30,countercheck=0;
+		Doub err1t=20.,err1 = 10., err2 = 10., tol = 1.e-6;
 		MatDoub dw(sz, 1, 0.), res(sz, 1, 0.), FINT(sz, 1, 0.),FBODY(sz, 1, 0.), R(sz, 1, 0.);
+		KG.assign(sz,sz,0.);
 		//fmesh->fmaterial->SetTangentMatrixType(true);
 		while (counter <  maxcount && err1 > tol)
 		{
 			
-			if(counter<2 ){
-				fmesh->fmaterial->SetTangentMatrixType(false);
-            }else  {
-                fmesh->fmaterial->SetTangentMatrixType(true);//set the consistent tangent
-            }
+
             
        
             fmesh->Assemble(KG, FINT, FBODY);
@@ -1454,13 +1477,15 @@ std::vector<std::vector<double>>    slopeproject::IterativeProcessGIMBinarySearc
             
             InserBC(KG, R, FBODY, idsbottom, idsright, idsleft, fmesh->fmaterial);
             //R.Print();
-            SolveEigenSparse( KG, R, dw);
-
+            //SolveEigenSparse( KG, R, dw);
+			//SolveEigenSparse( KG, R, dw);
+			SolveEigen( KG, R, dw);
+			
 			u += dw;
 
 			fmesh->fmaterial->UpdateDisplacement(u);
 
-			Doub  normdw = 0., normfg = 0.;
+			Doub  normdw = 0., normfg = 0.,rnorm=0.,unorm=0.;
 
 			rnorm = R.NRmatrixNorm();
 
@@ -1478,11 +1503,16 @@ std::vector<std::vector<double>>    slopeproject::IterativeProcessGIMBinarySearc
           //  cout << "normF|I" << FINT.NRmatrixNorm() << endl;
 			err2 = normdw / unorm;
 
-			std::cout << " Iteration number = " << counter << " | rnorm "<<rnorm << " |  |R|/|FE| = " << err1 << " | deltau/u " << err2 << "| factor = "<<fac<< std::endl;
+			std::cout << " Iteration number = " << counter << " | rnorm "<<rnorm << " | unorm = "<<unorm <<" | dwnorm = "<<normdw << " |  |R|/|FE| = " << err1 << " | deltau/u " << err2 << "| factor = "<<fac<< std::endl;
 			counter++;
             //if(err1>err1t)countercheck++;
             //if(countercheck>6)break;
 			if(rnorm>1000)break;
+			if( rnorm>100){
+				fmesh->fmaterial->SetTangentMatrixType(true);
+			}else  {
+				fmesh->fmaterial->SetTangentMatrixType(true);//set the consistent tangent
+			}
 			
 		}
 		
@@ -1504,7 +1534,7 @@ std::vector<std::vector<double>>    slopeproject::IterativeProcessGIMBinarySearc
 		}
 		else 
         {
-            cout <<" | facmax = "<<facmax <<" |facmin  " << facmin << " | fac = " << fac << " | (max-min)/fac="<<(facmax - facmin) / fac <<endl; 
+            cout <<"---CONV "<<" | facmax = "<<facmax <<" |facmin  " << facmin << " | fac = " << fac << " | (max-min)/fac="<<(facmax - facmin) / fac <<endl; 
            if(true)
            { 
                
@@ -1556,7 +1586,7 @@ std::vector<std::vector<double>>    slopeproject::IterativeProcessGIMBinarySearc
             u0=u;
             facmin=fac;
             fac = 1. / ((1. / facmin + 1. / facmax) / 2.);
-            if(fac>facmax)facmax=fac+0.1;
+            if(fac>facmax)facmax=fac+0.5;
             //if(facmax<=facmin)facmax=facmax+0.1;
             //fac +=0.5;
             fmesh->fmaterial->UpdatePlasticStrain();
@@ -1571,7 +1601,7 @@ std::vector<std::vector<double>>    slopeproject::IterativeProcessGIMBinarySearc
         
     
     
-	}  while (counterout<20&& (facmax  - facmin ) / fac  > 0.001);
+	}  while (counterout<50&& (facmax  - facmin ) / fac  > 0.001);
 
     std::ofstream file8("u-Fx.nb");
     OutPutPost(solpost2,file8);
@@ -1942,7 +1972,7 @@ void slopeproject::SolveEigenSparse(MatDoub A, MatDoub b, MatDoub& x)
 	{
 		for (int j = 0; j < sz; j++)
 		{
-            if(fabs(A[i][j])>1.e-12)
+            if(fabs(A[i][j])>0.)
             {
                 tripletList.push_back(T(i,j,A[i][j]));
             }
@@ -1954,6 +1984,7 @@ void slopeproject::SolveEigenSparse(MatDoub A, MatDoub b, MatDoub& x)
 
     AA.makeCompressed();
     SimplicialLLT< SparseMatrix<double> > solver;
+//	SimplicialCholeskyLLT< SparseMatrix<double> > solver;
     VectorXd xx = solver.compute(AA).solve(bbb);
     for(int i=0;i<sz;i++)x[i][0]=xx(i);
 }

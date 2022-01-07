@@ -326,11 +326,11 @@ STRAT(1)xx  -9.2299616122518157E-004
 //    Doub  ezz=   1.9353484000827939E-003;
 //	Doub exz=0,eyz=0.;
 
-/*	   	   	Doub exx=   -9.2299616122518157E-004;
+	   	   	Doub exx=   -9.2299616122518157E-004;
 			Doub eyy=  3.6101399878573409E-005;
 			Doub exy=  -1.3917205303761122E-005;
 			Doub  ezz=   1.7273057237631743E-003;
-	Doub exz=0,eyz=0.;*/
+	Doub exz=0,eyz=0.;
 	
 
 
@@ -341,12 +341,12 @@ STRAT(1)xx  -9.2299616122518157E-004
 	//   STRAT(4)zz   2.5209055103071337E-003
 	   
 	   
-	Doub exx=   -2.8458935398124073E-002;
+/*	Doub exx=   -2.8458935398124073E-002;
 	Doub eyy=  5.8954131775991299E-002;
 	Doub exy=  3.5854826650106683E-002;
 	Doub  ezz=  2.5209055103071337E-003;
 	Doub exz=0,eyz=0.;
-	
+	*/
 	//Doub exx=-9.2299616122518157E-004 ,exy=-1.3917205303761122E-005,exz=0.,eyy=3.6101399878573409E-005 ,eyz=0.;
 	//Doub ezz= 1.7273057237631743E-003  ;
 	eps[0][0] =exx;eps[0][1] =exy;eps[0][2] = exz;
@@ -417,25 +417,25 @@ STRAT(1)xx  -9.2299616122518157E-004
 void slope2x1( )
 {
 
-    //string nodestr = "/home/diogo/projects/dcproj/data/coords2x1h5.txt";
-	// string elsstr = "/home/diogo/projects/dcproj/data/topology2x1h5.txt";
+//    string nodestr = "/home/diogo/projects/dcproj/data/coords2x1h5.txt";
+//	 string elsstr = "/home/diogo/projects/dcproj/data/topology2x1h5.txt";
     
-      // string nodestr = "/home/diogocecilio/projects/dcproj/data/coords2x1.txt";
-	//string elsstr = "/home/diogocecilio/projects/dcproj/data/topology2x1.txt";
+      // string nodestr = "/home/diogo/projects/dcproj/data/coords2x1.txt";
+	//string elsstr = "/home/diogo/projects/dcproj/data/topology2x1.txt";
     
     
         string nodestr = "/home/diogo/projects/dcproj/data/nodes-606.txt";
     string elsstr = "/home/diogo/projects/dcproj/data/els-606.txt";
     
-        //    string nodestr = "/home/diogocecilio/projects/dcproj/data/nos-287.txt";
-   // string elsstr = "/home/diogocecilio/projects/dcproj/data/els-287.txt";
+       //     string nodestr = "/home/diogo/projects/dcproj/data/nos-287.txt";
+    //string elsstr = "/home/diogo/projects/dcproj/data/els-287.txt";
     
     
-       // string nodestr = "/home/diogocecilio/projects/dcproj/data/nodes-2x1-2k.txt";
-	//string elsstr = "/home/diogocecilio/projects/dcproj/data/elements-2x1-2k.txt";
+   //     string nodestr = "/home/diogo/projects/dcproj/data/nodes-2x1-2k.txt";
+	//string elsstr = "/home/diogo/projects/dcproj/data/elements-2x1-2k.txt";
     
-     //   string nodestr = "/home/diogocecilio/projects/dcproj/data/coords2x1h5.txt";
-	//string elsstr = "/home/diogocecilio/projects/dcproj/data/topology2x1h5.txt";
+      //  string nodestr = "/home/diogo/projects/dcproj/data/coords2x1h5fine.txt";
+	//string elsstr = "/home/diogo/projects/dcproj/data/topology2x1h5fine.txt";
 
 	MatDoub hhatinho;
 	MatDoub  meshcoords, elcoords;
@@ -448,9 +448,9 @@ void slope2x1( )
 	std::ofstream filemesh2("/home/diogocecilio/Dropbox/slope-reliability/results/mesh2x1/gim-Lx20-Ly2/meshtopology.txt");
 	OutPutPost(meshtopology, filemesh2);
 cout <<"\n  dasdasd  " << endl;
-	//Doub c = 18.5633, phi = 20 * M_PI / 180., gamma = -20.;//1.5
-	//Doub c = 23., phi =0.00001* M_PI / 180., gamma = -20.;//1.5
-	Doub c = 50., phi =20.* M_PI / 180., gamma = -20.;//1.5
+	 //Doub c = 50., phi = 20 * M_PI / 180., gamma = -20.;//1.5
+	Doub c = 23., phi =0.00001* M_PI / 180., gamma = -20.;//1.5
+	//Doub c = 10., phi =30.* M_PI / 180., gamma = -20.;//1.5
 
 	Doub thickness = 1.;
 	Doub young = 20000.;
@@ -480,8 +480,8 @@ cout <<"\n  dasdasd  " << endl;
     
     elastoplastic2D< druckerprager >* mat = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
     
-    Doub Phi=20.*M_PI/180.;
-    Doub Psi=20.*M_PI/180.;
+    Doub Phi=1*M_PI/180.;
+    Doub Psi=1*M_PI/180.;
     //Doub c=23.;
     //Doub young=20000.;
     //Doub nu=0.49;
@@ -518,19 +518,19 @@ cout <<"\n  dasdasd  " << endl;
 		mat->SetMemory(nglobalpts, sz);
 		mat->UpdateBodyForce(bodyforce);
         
-            matmohr->fYC.SetUp( Phi,  Psi,  c, young,  nu);
-    matmohr->SetMemory(nglobalpts, sz);
-    matmohr->UpdateBodyForce(bodyforce);
+        matmohr->fYC.SetUp( Phi,  Psi,  c, young,  nu);
+	    matmohr->SetMemory(nglobalpts, sz);
+	    matmohr->UpdateBodyForce(bodyforce);
         
         int maxiter = 40;
-		Doub deltatol = 0.001;
+		Doub deltatol = 0.01;
 		int desirediter = 10;
-        Doub lamb0 = 0.2;
+        Doub lamb0 = 0.1;
         //10, 0.5, 0.01,20
        //soll = slopeobj->IterativeProcess(desirediter, lamb0, deltatol,maxiter);
        // slopeobj->IterativeProcess2( );
-        //soll = slopeobj->IterativeProcessShearRed( 0.01, 2.,0.01);
-         soll = slopeobj->IterativeProcessGIMBinarySearch();
+        soll = slopeobj->IterativeProcessShearRed( 0.1, 2.,0.01);
+       //  soll = slopeobj->IterativeProcessGIMBinarySearch();
         return;
     
     }
@@ -1656,7 +1656,7 @@ void ReadMesh(std::vector<std::vector< std::vector<Doub > > >& allcoords, MatDou
 	else std::cout << "Unable to open file";
 
 	meshtopology.CopyFromVector(topol);
-	meshtopology.Print();
+	//meshtopology.Print();
 
 	std::vector<std::vector<Doub>> coords;
 	string line2, temp2;
@@ -1684,7 +1684,7 @@ void ReadMesh(std::vector<std::vector< std::vector<Doub > > >& allcoords, MatDou
 	else std::cout << "Unable to open file";
 
 	meshcoords.CopyFromVector(coords);
-	meshcoords.Print();
+	//meshcoords.Print();
 
 
 	std::vector<Doub> temp33(3);

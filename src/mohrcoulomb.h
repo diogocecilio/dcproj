@@ -30,7 +30,7 @@ private:
 	Doub fc0;
 	Doub fPhi0;
     Doub fPsi0 ;
-    Doub ftol=1.e-8;
+    Doub ftol=1.e-6;
     bool fsetconsistentangent=true;
 
 
@@ -232,13 +232,13 @@ public:
 	 */
 	bool closestpointproj(NRtensor<Doub>  epst, NRtensor<Doub>  epsp, NRtensor<Doub>  & projstress, NRtensor<Doub>  & projstrain);
 	
-	void closestpointproj(NRtensor<Doub>  epst, NRtensor<Doub>  epsp,NRtensor<Doub> &projstress, NRtensor<Doub> &projstrain,NRmatrix<Doub> &Dep2, Doub & projgamma)
+	/*void closestpointproj(NRtensor<Doub>  epst, NRtensor<Doub>  epsp,NRtensor<Doub> &projstress, NRtensor<Doub> &projstrain,NRmatrix<Doub> &Dep2, Doub & projgamma)
 	{
 		projgamma=0;
 		Dep2.assign(3,3,0.);
 		NRmatrix<Doub>Dep(6,6,0.);
 		srand((unsigned int)time(NULL));
-		float a = 1.e-8;
+		float a = 1.e-6;
 		for(Int i=0;i<6;i++)
 		{
 			//if(fabs(epst[i])<1.e-20)epst[i]=1.e-20;
@@ -247,6 +247,11 @@ public:
 		NRtensor<Doub> epstpertub(epst);
 		
 		bool iselastic = closestpointproj(epst, epsp, projstress, projstrain);
+		if(fsetconsistentangent==false)
+		{
+			iselastic=true;
+		}
+		//iselastic=true;
 		if(iselastic==false)
 		{
 			NRvector<NRtensor<Doub>> vecprojperturbstress(6),vecprojperturbstrain(6);
@@ -283,9 +288,60 @@ public:
 		Dep2[1][0] = Dep[1][0];Dep2[1][1] = Dep[1][1];Dep2[1][2] = Dep[1][5];
 		Dep2[2][0] = Dep[5][0];Dep2[2][1] = Dep[5][1];Dep2[2][2] = Dep[5][5];
 	
+	}*/
+	
+	void closestpointproj(NRtensor<Doub>  epst, NRtensor<Doub>  epsp,NRtensor<Doub> &projstress, NRtensor<Doub> &projstrain,NRmatrix<Doub> &Dep2, Doub & projgamma)
+	{
+		projgamma=0;
+		Dep2.assign(3,3,0.);
+		NRmatrix<Doub>Dep(6,6,0.);
+		Doub a = 1.e-6;
+		
+		NRtensor<Doub> epstpertub(epst);
+		
+		bool iselastic = closestpointproj(epst, epsp, projstress, projstrain);
+		if(fsetconsistentangent==false)
+		{
+			iselastic=true;
+		}
+		//iselastic=true;
+		if(iselastic==false)
+		{
+			NRvector<Int> Index(3);
+			Index[0]=0;
+			Index[1]=1;
+			Index[2]=5;
+			NRvector<NRtensor<Doub>> vecprojperturbstress(6),vecprojperturbstrain(6);
+			for(Int iperturb=0;iperturb<3;iperturb++)
+			{
+				Int iit=Index[iperturb];
+				NRtensor<Doub> epstpertub(epst), projstressperturb, projstrainperturb;
+				epstpertub[iit]+=epst[iit]*a;
+				//closestpointproj(epst, epsp, projstress, projstrain);
+				closestpointproj(epstpertub, epsp, projstressperturb, projstrainperturb);
+
+				NRtensor<Doub> dsig(projstressperturb),deps(epstpertub);
+			
+				dsig-=projstress;
+				deps-=epst;
+			
+				for(Int ivar=0;ivar<3;ivar++)
+				{
+					Int jjt=Index[ivar];
+					Dep2[ivar][iperturb]=dsig[jjt]/deps[iit];
+				}
+			
+			}
+		}else{
+				Dep = GetElasticMatrix();
+				Dep2[0][0] = Dep[0][0];Dep2[0][1] = Dep[0][1];Dep2[0][2] = Dep[0][5];
+				Dep2[1][0] = Dep[1][0];Dep2[1][1] = Dep[1][1];Dep2[1][2] = Dep[1][5];
+				Dep2[2][0] = Dep[5][0];Dep2[2][1] = Dep[5][1];Dep2[2][2] = Dep[5][5];
+			}
+			
+		
+	
 	}
-	
-	
 	
 	void ComputeNumericalDep2(NRtensor<Doub>  epst, NRtensor<Doub>  epsp,NRtensor<Doub> &projstress, NRtensor<Doub> &projstrain,NRmatrix<Doub> &Dep)
 	{
