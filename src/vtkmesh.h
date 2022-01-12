@@ -5,39 +5,32 @@
 
 //enum eltype {Ehexa =25, Equad =8};
 
-class VTKGraphMesh {
+class VTKGraphMesh
+{
 
 public:
 
     /** @brief Constructor for graphical mesh using VTK format with tensor variables */
-    VTKGraphMesh(mesh *cmesh, int dimension,std::vector<std::string> &scalnames, const std::vector<std::string> &vecnames, std::string FileName);
+    VTKGraphMesh ( mesh *cmesh, int dimension,std::vector<std::string> &scalnames, const std::vector<std::string> &vecnames, std::string FileName );
 
     void DrawNodes();
     void DrawConnectivity();
-    void DrawSolution(Int step, Doub time);
+    void DrawSolution ( Int step, Doub time );
 
     MatInt GetMeshTopologyVTK()
     {
         NRmatrix<Int> meshtopology = fmesh->GetMeshTopology();
         Int els = meshtopology.nrows();
         Int elnodes =  meshtopology.ncols();
-        NRmatrix<Int> vtktopol(els,elnodes);
-        if(elnodes==8 && fdim==2)//quad 8 noded
-        {
+        NRmatrix<Int> vtktopol ( els,elnodes );
+        if ( elnodes==8 && fdim==2 ) { //quad 8 noded
             vtktopol=meshtopology;
-        }
-        else if(elnodes==4 && fdim==2)//quad 4 noded
-        {
+        } else if ( elnodes==4 && fdim==2 ) { //quad 4 noded
             vtktopol=meshtopology;
-        }
-        else if(elnodes==8 && fdim==3)//cube 8 noded
-        {
+        } else if ( elnodes==8 && fdim==3 ) { //cube 8 noded
             vtktopol=meshtopology;
-        }
-        else if(elnodes==20 && fdim==3)//cube 20 noded
-        {
-            for (Int iel = 0; iel < els; iel++)
-            {
+        } else if ( elnodes==20 && fdim==3 ) { //cube 20 noded
+            for ( Int iel = 0; iel < els; iel++ ) {
 
                 vtktopol[iel][0]=meshtopology[iel][0];
                 vtktopol[iel][1]=meshtopology[iel][1];
@@ -64,11 +57,11 @@ public:
                 vtktopol[iel][18]=meshtopology[iel][14];
                 vtktopol[iel][19]=meshtopology[iel][15];
 
-        }
+            }
 
+        }
+        return vtktopol;
     }
-	return vtktopol;
-}
 
 
 

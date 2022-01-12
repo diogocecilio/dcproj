@@ -27,79 +27,79 @@ class mesh
 {
 public:
 
-	mesh(int dim,std::vector<std::vector< std::vector<Doub > > > &allcoords, NRmatrix<Doub> &meshnodes, NRmatrix<Int> &meshtopology);
+    mesh ( int dim,std::vector<std::vector< std::vector<Doub > > > &allcoords, NRmatrix<Doub> &meshnodes, NRmatrix<Int> &meshtopology );
 
-	mesh(int dim, material * mat , std::vector<std::vector< std::vector<Doub > > >& allcoords, NRmatrix<Doub>& meshnodes, NRmatrix<Int>& meshtopology);
+    mesh ( int dim, material * mat, std::vector<std::vector< std::vector<Doub > > >& allcoords, NRmatrix<Doub>& meshnodes, NRmatrix<Int>& meshtopology );
 
-	mesh(int dim, material* mat, std::vector<std::vector< std::vector<Doub > > >& allcoords, NRmatrix<Doub>& meshnodes, NRmatrix<Int>& meshtopology,MatDoub  HHAT );
+    mesh ( int dim, material* mat, std::vector<std::vector< std::vector<Doub > > >& allcoords, NRmatrix<Doub>& meshnodes, NRmatrix<Int>& meshtopology,MatDoub  HHAT );
 
-	mesh(mesh &copy);
+    mesh ( mesh &copy );
 
-	mesh();
+    mesh();
 
-	~mesh();
+    ~mesh();
 
-    void GetElCoords(std::vector<std::vector< std::vector<Doub > > > allcoords, Int el, MatDoub & elcoords);
-	MatDoub FindSolution(VecDoub coord, MatDoub datatosearch);
-	MatDoub  TransferSolution( mesh &out, MatDoub datatosearch);
-	std::vector<std::vector< std::vector<Doub > > >  GetAllCoords();
-	MatDoub GetMeshNodes();
-	MatInt GetMeshTopology();
+    void GetElCoords ( std::vector<std::vector< std::vector<Doub > > > allcoords, Int el, MatDoub & elcoords );
+    MatDoub FindSolution ( VecDoub coord, MatDoub datatosearch );
+    MatDoub  TransferSolution ( mesh &out, MatDoub datatosearch );
+    std::vector<std::vector< std::vector<Doub > > >  GetAllCoords();
+    MatDoub GetMeshNodes();
+    MatInt GetMeshTopology();
     MatInt GetMeshTopologyVTK();
-	void Assemble(MatDoub& KG, MatDoub& Fint, MatDoub& Fbody);
-    void Assemble(SparseMatrix<double>  &KG, VectorXd &Fint, VectorXd &Fbody);
-    void  FindIds(NRvector<double> constcoorddata,NRvector<int> constcoord, std::vector<int>& ids);
+    void Assemble ( MatDoub& KG, MatDoub& Fint, MatDoub& Fbody );
+    void Assemble ( SparseMatrix<double>  &KG, VectorXd &Fint, VectorXd &Fbody );
+    void  FindIds ( NRvector<double> constcoorddata,NRvector<int> constcoord, std::vector<int>& ids );
 
-    void ComputeSolAndDSol(NRmatrix<Doub> &sol, NRmatrix<Doub> &dsol);
+    void ComputeSolAndDSol ( NRmatrix<Doub> &sol, NRmatrix<Doub> &dsol );
 
-	inline void SetHhat(NRmatrix<Doub> HHAT)
-	{
-		fHHAT = HHAT;
-	}
+    inline void SetHhat ( NRmatrix<Doub> HHAT )
+    {
+        fHHAT = HHAT;
+    }
 
-	inline void GetHhat(NRmatrix<Doub> &HHAT)
-	{
-		 HHAT=fHHAT;
-	}
-	//material GetMaterial();
+    inline void GetHhat ( NRmatrix<Doub> &HHAT )
+    {
+        HHAT=fHHAT;
+    }
+    //material GetMaterial();
 
 
-	material* fmaterial;
+    material* fmaterial;
 private:
 
-	 int fdim;
-	 std::vector<std::vector< std::vector<Doub > > > fallcoords;
-	 MatDoub fmeshnodes;
-	 MatInt fmeshtopology;
-	 NRmatrix<Doub> fHHAT;
-	 NRvector<MatDoub> fhhatvel;
-	
+    int fdim;
+    std::vector<std::vector< std::vector<Doub > > > fallcoords;
+    MatDoub fmeshnodes;
+    MatInt fmeshtopology;
+    NRmatrix<Doub> fHHAT;
+    NRvector<MatDoub> fhhatvel;
+
 };
 
 // Generic functor
 
 struct FuncdSearch {
-	VecDoub co;
-	MatDoub psis, GradPsi, elcoords, psist,xycoords;
-	shapequad shape = shapequad(2, 1);
-	Doub operator() (VecDoub_I &x)
-	{
-		Doub xi = x[0];
-		Doub eta = x[1];
-		shape.shapes(psis, GradPsi, xi, eta);
-		psis.Transpose(psist);
-		psist.Mult(elcoords, xycoords);
-		Doub dx = xycoords[0][0] - co[0];
-		Doub dy = xycoords[0][1] - co[1];
-		Doub dist = sqrt(dx*dx + dy*dy);
-		return dist;
-	}
+    VecDoub co;
+    MatDoub psis, GradPsi, elcoords, psist,xycoords;
+    shapequad shape = shapequad ( 2, 1 );
+    Doub operator() ( VecDoub_I &x )
+    {
+        Doub xi = x[0];
+        Doub eta = x[1];
+        shape.shapes ( psis, GradPsi, xi, eta );
+        psis.Transpose ( psist );
+        psist.Mult ( elcoords, xycoords );
+        Doub dx = xycoords[0][0] - co[0];
+        Doub dy = xycoords[0][1] - co[1];
+        Doub dist = sqrt ( dx*dx + dy*dy );
+        return dist;
+    }
 
-	void set(VecDoub tosearch,MatDoub elcoordsout)
-	{
-		co = tosearch;
-		elcoords = elcoordsout;
-	}
+    void set ( VecDoub tosearch,MatDoub elcoordsout )
+    {
+        co = tosearch;
+        elcoords = elcoordsout;
+    }
 };
 
 

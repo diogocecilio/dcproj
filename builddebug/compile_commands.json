@@ -1,0 +1,112 @@
+[
+{
+  "directory": "/home/diogo/projects/dcproj/builddebug",
+  "command": "/usr/bin/c++   -I\"/home/diogo/projects/dcproj/'src'\" -I/usr/include/eigen3 -I/home/diogo/projects/dcproj -I/home/diogo/projects/dcproj/src -I/home/diogo/projects/dcproj/eigen -I/home/diogo/projects/dcproj/eigen-3.3.9  -g   -pthread -o CMakeFiles/dcproj.dir/src/beam3dtools.cpp.o -c /home/diogo/projects/dcproj/src/beam3dtools.cpp",
+  "file": "/home/diogo/projects/dcproj/src/beam3dtools.cpp"
+},
+{
+  "directory": "/home/diogo/projects/dcproj/builddebug",
+  "command": "/usr/bin/c++   -I\"/home/diogo/projects/dcproj/'src'\" -I/usr/include/eigen3 -I/home/diogo/projects/dcproj -I/home/diogo/projects/dcproj/src -I/home/diogo/projects/dcproj/eigen -I/home/diogo/projects/dcproj/eigen-3.3.9  -g   -pthread -o CMakeFiles/dcproj.dir/src/dcproj.cpp.o -c /home/diogo/projects/dcproj/src/dcproj.cpp",
+  "file": "/home/diogo/projects/dcproj/src/dcproj.cpp"
+},
+{
+  "directory": "/home/diogo/projects/dcproj/builddebug",
+  "command": "/usr/bin/c++   -I\"/home/diogo/projects/dcproj/'src'\" -I/usr/include/eigen3 -I/home/diogo/projects/dcproj -I/home/diogo/projects/dcproj/src -I/home/diogo/projects/dcproj/eigen -I/home/diogo/projects/dcproj/eigen-3.3.9  -g   -pthread -o CMakeFiles/dcproj.dir/src/mesh.cpp.o -c /home/diogo/projects/dcproj/src/mesh.cpp",
+  "file": "/home/diogo/projects/dcproj/src/mesh.cpp"
+},
+{
+  "directory": "/home/diogo/projects/dcproj/builddebug",
+  "command": "/usr/bin/c++   -I\"/home/diogo/projects/dcproj/'src'\" -I/usr/include/eigen3 -I/home/diogo/projects/dcproj -I/home/diogo/projects/dcproj/src -I/home/diogo/projects/dcproj/eigen -I/home/diogo/projects/dcproj/eigen-3.3.9  -g   -pthread -o CMakeFiles/dcproj.dir/src/shapequad.cpp.o -c /home/diogo/projects/dcproj/src/shapequad.cpp",
+  "file": "/home/diogo/projects/dcproj/src/shapequad.cpp"
+},
+{
+  "directory": "/home/diogo/projects/dcproj/builddebug",
+  "command": "/usr/bin/c++   -I\"/home/diogo/projects/dcproj/'src'\" -I/usr/include/eigen3 -I/home/diogo/projects/dcproj -I/home/diogo/projects/dcproj/src -I/home/diogo/projects/dcproj/eigen -I/home/diogo/projects/dcproj/eigen-3.3.9  -g   -pthread -o CMakeFiles/dcproj.dir/src/shapehexahedron.cpp.o -c /home/diogo/projects/dcproj/src/shapehexahedron.cpp",
+  "file": "/home/diogo/projects/dcproj/src/shapehexahedron.cpp"
+},
+{
+  "directory": "/home/diogo/projects/dcproj/builddebug",
+  "command": "/usr/bin/c++   -I\"/home/diogo/projects/dcproj/'src'\" -I/usr/include/eigen3 -I/home/diogo/projects/dcproj -I/home/diogo/projects/dcproj/src -I/home/diogo/projects/dcproj/eigen -I/home/diogo/projects/dcproj/eigen-3.3.9  -g   -pthread -o CMakeFiles/dcproj.dir/src/slopeproject.cpp.o -c /home/diogo/projects/dcproj/src/slopeproject.cpp",
+  "file": "/home/diogo/projects/dcproj/src/slopeproject.cpp"
+},
+{
+  "directory": "/home/diogo/projects/dcproj/builddebug",
+  "command": "/usr/bin/c++   -I\"/home/diogo/projects/dcproj/'src'\" -I/usr/include/eigen3 -I/home/diogo/projects/dcproj -I/home/diogo/projects/dcproj/src -I/home/diogo/projects/dcproj/eigen -I/home/diogo/projects/dcproj/eigen-3.3.9  -g   -pthread -o CMakeFiles/dcproj.dir/src/vonmises.cpp.o -c /home/diogo/projects/dcproj/src/vonmises.cpp",
+  "file": "/home/diogo/projects/dcproj/src/vonmises.cpp"
+},
+{
+  "directory": "/home/diogo/projects/dcproj/builddebug",
+  "command": "/usr/bin/c++   -I\"/home/diogo/projects/dcproj/'src'\" -I/usr/include/eigen3 -I/home/diogo/projects/dcproj -I/home/diogo/projects/dcproj/src -I/home/diogo/projects/dcproj/eigen -I/home/diogo/projects/dcproj/eigen-3.3.9  -g   -pthread -o CMakeFiles/dcproj.dir/src/druckerprager.cpp.o -c /home/diogo/projects/dcproj/src/druckerprager.cpp",
+  "file": "/home/diogo/projects/dcproj/src/druckerprager.cpp"
+},
+{
+  "directory": "/home/diogo/projects/dcproj/builddebug",
+  "command": "/usr/bin/c++   -I\"/home/diogo/projects/dcproj/'src'\" -I/usr/include/eigen3 -I/home/diogo/projects/dcproj -I/home/diogo/projects/dcproj/src -I/home/diogo/projects/dcproj/eigen -I/home/diogo/projects/dcproj/eigen-3.3.9  -g   -pthread -o CMakeFiles/dcproj.dir/src/mohrcoulomb.cpp.o -c /home/diogo/projects/dcproj/src/mohrcoulomb.cpp",
+  "file": "/home/diogo/projects/dcproj/src/mohrcoulomb.cpp"
+},
+{
+  "directory": "/home/diogo/projects/dcproj/builddebug",
+  "command": "/usr/bin/c++   -I\"/home/diogo/projects/dcproj/'src'\" -I/usr/include/eigen3 -I/home/diogo/projects/dcproj -I/home/diogo/projects/dcproj/src -I/home/diogo/projects/dcproj/eigen -I/home/diogo/projects/dcproj/eigen-3.3.9  -g   -pthread -o CMakeFiles/dcproj.dir/src/postprocess.cpp.o -c /home/diogo/projects/dcproj/src/postprocess.cpp",
+  "file": "/home/diogo/projects/dcproj/src/postprocess.cpp"
+},
+{
+  "directory": "/home/diogo/projects/dcproj/builddebug",
+  "command": "/usr/bin/c++   -I\"/home/diogo/projects/dcproj/'src'\" -I/usr/include/eigen3 -I/home/diogo/projects/dcproj -I/home/diogo/projects/dcproj/src -I/home/diogo/projects/dcproj/eigen -I/home/diogo/projects/dcproj/eigen-3.3.9  -g   -pthread -o CMakeFiles/dcproj.dir/src/material.cpp.o -c /home/diogo/projects/dcproj/src/material.cpp",
+  "file": "/home/diogo/projects/dcproj/src/material.cpp"
+},
+{
+  "directory": "/home/diogo/projects/dcproj/builddebug",
+  "command": "/usr/bin/c++   -I\"/home/diogo/projects/dcproj/'src'\" -I/usr/include/eigen3 -I/home/diogo/projects/dcproj -I/home/diogo/projects/dcproj/src -I/home/diogo/projects/dcproj/eigen -I/home/diogo/projects/dcproj/eigen-3.3.9  -g   -pthread -o CMakeFiles/dcproj.dir/src/KLGalerkinRF.cpp.o -c /home/diogo/projects/dcproj/src/KLGalerkinRF.cpp",
+  "file": "/home/diogo/projects/dcproj/src/KLGalerkinRF.cpp"
+},
+{
+  "directory": "/home/diogo/projects/dcproj/builddebug",
+  "command": "/usr/bin/c++   -I\"/home/diogo/projects/dcproj/'src'\" -I/usr/include/eigen3 -I/home/diogo/projects/dcproj -I/home/diogo/projects/dcproj/src -I/home/diogo/projects/dcproj/eigen -I/home/diogo/projects/dcproj/eigen-3.3.9  -g   -pthread -o CMakeFiles/dcproj.dir/src/gridmesh.cpp.o -c /home/diogo/projects/dcproj/src/gridmesh.cpp",
+  "file": "/home/diogo/projects/dcproj/src/gridmesh.cpp"
+},
+{
+  "directory": "/home/diogo/projects/dcproj/builddebug",
+  "command": "/usr/bin/c++   -I\"/home/diogo/projects/dcproj/'src'\" -I/usr/include/eigen3 -I/home/diogo/projects/dcproj -I/home/diogo/projects/dcproj/src -I/home/diogo/projects/dcproj/eigen -I/home/diogo/projects/dcproj/eigen-3.3.9  -g   -pthread -o CMakeFiles/dcproj.dir/src/elastoplasticbase.cpp.o -c /home/diogo/projects/dcproj/src/elastoplasticbase.cpp",
+  "file": "/home/diogo/projects/dcproj/src/elastoplasticbase.cpp"
+},
+{
+  "directory": "/home/diogo/projects/dcproj/builddebug",
+  "command": "/usr/bin/c++   -I\"/home/diogo/projects/dcproj/'src'\" -I/usr/include/eigen3 -I/home/diogo/projects/dcproj -I/home/diogo/projects/dcproj/src -I/home/diogo/projects/dcproj/eigen -I/home/diogo/projects/dcproj/eigen-3.3.9  -g   -pthread -o CMakeFiles/dcproj.dir/src/elastoplastic2D.cpp.o -c /home/diogo/projects/dcproj/src/elastoplastic2D.cpp",
+  "file": "/home/diogo/projects/dcproj/src/elastoplastic2D.cpp"
+},
+{
+  "directory": "/home/diogo/projects/dcproj/builddebug",
+  "command": "/usr/bin/c++   -I\"/home/diogo/projects/dcproj/'src'\" -I/usr/include/eigen3 -I/home/diogo/projects/dcproj -I/home/diogo/projects/dcproj/src -I/home/diogo/projects/dcproj/eigen -I/home/diogo/projects/dcproj/eigen-3.3.9  -g   -pthread -o CMakeFiles/dcproj.dir/src/elastoplastic3D.cpp.o -c /home/diogo/projects/dcproj/src/elastoplastic3D.cpp",
+  "file": "/home/diogo/projects/dcproj/src/elastoplastic3D.cpp"
+},
+{
+  "directory": "/home/diogo/projects/dcproj/builddebug",
+  "command": "/usr/bin/c++   -I\"/home/diogo/projects/dcproj/'src'\" -I/usr/include/eigen3 -I/home/diogo/projects/dcproj -I/home/diogo/projects/dcproj/src -I/home/diogo/projects/dcproj/eigen -I/home/diogo/projects/dcproj/eigen-3.3.9  -g   -pthread -o CMakeFiles/dcproj.dir/src/elastmat2D.cpp.o -c /home/diogo/projects/dcproj/src/elastmat2D.cpp",
+  "file": "/home/diogo/projects/dcproj/src/elastmat2D.cpp"
+},
+{
+  "directory": "/home/diogo/projects/dcproj/builddebug",
+  "command": "/usr/bin/c++   -I\"/home/diogo/projects/dcproj/'src'\" -I/usr/include/eigen3 -I/home/diogo/projects/dcproj -I/home/diogo/projects/dcproj/src -I/home/diogo/projects/dcproj/eigen -I/home/diogo/projects/dcproj/eigen-3.3.9  -g   -pthread -o CMakeFiles/dcproj.dir/src/eigen_unsym.cpp.o -c /home/diogo/projects/dcproj/src/eigen_unsym.cpp",
+  "file": "/home/diogo/projects/dcproj/src/eigen_unsym.cpp"
+},
+{
+  "directory": "/home/diogo/projects/dcproj/builddebug",
+  "command": "/usr/bin/c++   -I\"/home/diogo/projects/dcproj/'src'\" -I/usr/include/eigen3 -I/home/diogo/projects/dcproj -I/home/diogo/projects/dcproj/src -I/home/diogo/projects/dcproj/eigen -I/home/diogo/projects/dcproj/eigen-3.3.9  -g   -pthread -o CMakeFiles/dcproj.dir/src/error.cpp.o -c /home/diogo/projects/dcproj/src/error.cpp",
+  "file": "/home/diogo/projects/dcproj/src/error.cpp"
+},
+{
+  "directory": "/home/diogo/projects/dcproj/builddebug",
+  "command": "/usr/bin/c++   -I\"/home/diogo/projects/dcproj/'src'\" -I/usr/include/eigen3 -I/home/diogo/projects/dcproj -I/home/diogo/projects/dcproj/src -I/home/diogo/projects/dcproj/eigen -I/home/diogo/projects/dcproj/eigen-3.3.9  -g   -pthread -o CMakeFiles/dcproj.dir/src/pressurizedhole.cpp.o -c /home/diogo/projects/dcproj/src/pressurizedhole.cpp",
+  "file": "/home/diogo/projects/dcproj/src/pressurizedhole.cpp"
+},
+{
+  "directory": "/home/diogo/projects/dcproj/builddebug",
+  "command": "/usr/bin/c++   -I\"/home/diogo/projects/dcproj/'src'\" -I/usr/include/eigen3 -I/home/diogo/projects/dcproj -I/home/diogo/projects/dcproj/src -I/home/diogo/projects/dcproj/eigen -I/home/diogo/projects/dcproj/eigen-3.3.9  -g   -pthread -o CMakeFiles/dcproj.dir/src/vtkmesh.cpp.o -c /home/diogo/projects/dcproj/src/vtkmesh.cpp",
+  "file": "/home/diogo/projects/dcproj/src/vtkmesh.cpp"
+},
+{
+  "directory": "/home/diogo/projects/dcproj/builddebug",
+  "command": "/usr/bin/c++   -I\"/home/diogo/projects/dcproj/'src'\" -I/usr/include/eigen3 -I/home/diogo/projects/dcproj -I/home/diogo/projects/dcproj/src -I/home/diogo/projects/dcproj/eigen -I/home/diogo/projects/dcproj/eigen-3.3.9  -g   -pthread -o CMakeFiles/dcproj.dir/src/shape.cpp.o -c /home/diogo/projects/dcproj/src/shape.cpp",
+  "file": "/home/diogo/projects/dcproj/src/shape.cpp"
+}
+]

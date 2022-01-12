@@ -1,0 +1,2 @@
+data = { { 0, 0 } {0.00443815  ,0.1},{0.0178061  ,0.4},{0.0268614  ,0.6},{0.0360317  ,0.8},{0.045309  ,1}};
+ListLinePlot[data,PlotRange->All,PlotMarkers->Automatic]

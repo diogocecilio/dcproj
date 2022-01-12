@@ -1,0 +1,3 @@
+/home/diogo/projects/dcproj/buildrelease/CMakeFiles/rebuild_cache.dir
+/home/diogo/projects/dcproj/buildrelease/CMakeFiles/edit_cache.dir
+/home/diogo/projects/dcproj/buildrelease/CMakeFiles/dcproj.dir

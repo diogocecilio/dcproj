@@ -6,7 +6,7 @@ Build Directory Count=2
 Current Build Directory Index-Host System=0
 
 [CMake][CMake Build Directory 0]
-Build Directory Path=/home/diogocecilio/projects/dcproj-build-release
+Build Directory Path=/home/diogo/projects/dcproj/buildrelease
 Build Type=Release\n
 CMake Binary=/usr/bin/cmake
 CMake Executable=/usr/bin/cmake
@@ -16,7 +16,7 @@ Install Directory=/usr/local
 Runtime=Host System
 
 [CMake][CMake Build Directory 1]
-Build Directory Path=/home/diogocecilio/projects/dcproj-build-debug
+Build Directory Path=/home/diogo/projects/dcproj/builddebug
 Build Type=Debug
 CMake Binary=/usr/bin/cmake
 CMake Executable=/usr/bin/cmake
@@ -39,11 +39,11 @@ Arguments=
 Dependencies=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x00)
 Dependency Action=Install
 EnvironmentGroup=
-Executable=file:///home/diogocecilio/projects/dcproj-build-release/dcproj
+Executable=file:///home/diogo/projects/dcproj/buildrelease/dcproj
 External Terminal=konsole --noclose --workdir %workdir -e %exe
 Project Target=dcproj,dcproj
 Use External Terminal=false
-Working Directory=file:///home/diogocecilio/projects/dcproj/
+Working Directory=file:///home/diogo/projects/dcproj
 isExecutable=true
 
 [Launch][Launch Configuration 1]
@@ -57,11 +57,11 @@ Arguments=
 Dependencies=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x00)
 Dependency Action=Install
 EnvironmentGroup=
-Executable=file:///home/diogocecilio/projects/dcproj-build-debug/dcproj
+Executable=file:///home/diogo/projects/dcproj/builddebug/dcproj
 External Terminal=konsole --noclose --workdir %workdir -e %exe
 Project Target=dcproj,dcproj
 Use External Terminal=false
-Working Directory=file:///home/diogocecilio/projects/dcproj/
+Working Directory=file:///home/diogo/projects/dcproj/
 isExecutable=true
 
 [Project]
