@@ -330,6 +330,10 @@ public:
     void  FromFullToVoigt ( NRmatrix<T> & full );
     NRmatrix & FromEigen ( VectorXd data );
 	
+	//multiplica matriz de quarta ordem por tensor
+	//void MultMatrixTensor (const NRtensor<double> &source, const NRtensor<double> &out );
+	
+	
 	void IdentityMatrix(int n);
 	
     inline void FromEigen ( MatrixXd  data )
@@ -966,6 +970,9 @@ public:
     }
 
     void Multiply ( const NRtensor<T> tensor, NRtensor<T> & resp ) const;
+	
+	
+
 
     void  DeviatoricDiagonal ( NRvector<T> & vec ) const;
 
@@ -1203,18 +1210,10 @@ void NRtensor<T>::DeviatoricDiagonal ( NRvector<T> & vec ) const
 template < class T >
 T NRtensor<T>::J2() const
 {
-    //NRvector<T> s(3);
-  //  DeviatoricDiagonal(s);
-  //  T value = -s[0] * s[1] - s[0] * s[2] - s[1] * s[2] + v[_XY_] * v[_XY_] + v[_XZ_] * v[_XZ_] + v[_YZ_] * v[_YZ_];
 
     T value = ( pow ( v[_XX_], 2 ) + 3 * pow ( v[_XY_], 2 ) + 3 * pow ( v[_XZ_], 2 ) + pow ( v[_YY_], 2 ) + 3 * pow ( v[_YZ_], 2 ) - v[_YY_] * v[_ZZ_] +
                 pow ( v[_ZZ_], 2 ) - v[_XX_] * ( v[_YY_] + v[_ZZ_] ) ) / 3.;
 	
-  
-// 	T sxx = v[_XX_],syy=v[_YY_],szz=v[_ZZ_],sxy=v[_XY_],sxz=v[_XZ_],syz=v[_YZ_];
-// 	T value =(pow(sxx,2.) + 3.*pow(sxy,2.) + 3.*pow(sxz,2.) + pow(syy,2.) + 3.*pow(syz,2.) - 
-//      syy*szz + pow(szz,2.) - sxx*(syy + szz))/3.;
-
     if ( value < 0 ) {
 		cout<< "J2<0" <<endl;
         DebugStop();
@@ -1282,8 +1281,7 @@ NRtensor<T> NRtensor<T>::dJ2() const{
     s.XZ() = 2*sxz;
     s.YZ() = 2*syz;
     s.XY() = 2*sxy;
-	
-		return s;
+	return s;
 }
 template < class T >
 NRtensor<T> NRtensor<T>::dJ3() const

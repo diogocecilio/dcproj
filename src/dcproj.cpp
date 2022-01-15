@@ -8,7 +8,7 @@
 #include <thread>
 #include "beam3dtools.h"
 #include "mohrcoulomb.h"
-
+#include "shapetri.h"
 //#include <boost/thread.hpp>
 //using namespace boost;
 //#define EIGEN_USE_MKL_ALL
@@ -68,6 +68,8 @@ void myTreads ( int a, int b, slopeproject* slopeobj2,string namefolder3 )
 {
     bool print =  false;
     slopeobj2->MonteCarloGIM ( a, b, print, namefolder3 );
+
+	
     delete slopeobj2;
 }
 
@@ -105,9 +107,9 @@ int main ( int argc, char *argv[] )
     Doub c=490.;
     Doub young=0.1e8;
     Doub nu=0.48;
-    mohrcoulomb *mohr = new mohrcoulomb ( Phi,  Psi,  c, young,  nu );
+    mohrcoulomb *mohr = new mohrcoulomb ( young,  nu, c ,Phi,Psi );
 
-    mohr->SetUp ( Phi,  Psi,  c, young,  nu );
+    mohr->SetUp ( young,  nu, c ,Phi,Psi );
 
     Doub exx=-1.2560424036224354E-003 ,exy=-3.0306513266847217E-004,exz=0.,eyy=7.5770078874204600E-004 ,eyz=0.;
     Doub ezz= 1.6664811388913960E-003  ;
@@ -170,26 +172,89 @@ int main ( int argc, char *argv[] )
 void slope2x1( )
 {
 
- //   string nodestr = "/home/diogo/projects/dcproj/data/coords2x1h5.txt";
-//	 string elsstr = "/home/diogo/projects/dcproj/data/topology2x1h5.txt";
+	//2x1 meshes
+  // string nodestr = "/home/diogo/projects/dcproj/data/coords2x1h5.txt";
+  // string elsstr = "/home/diogo/projects/dcproj/data/topology2x1h5.txt";
+   
+     // string nodestr = "/home/diogo/projects/dcproj/data/nodes-995.txt";
+  // string elsstr = "/home/diogo/projects/dcproj/data/els-995.txt";
+   
+  //string nodestr = "/home/diogo/projects/dcproj/data/nodes-2422.txt";
+   //string elsstr = "/home/diogo/projects/dcproj/data/els-2422.txt";
 
-    // string nodestr = "/home/diogo/projects/dcproj/data/coords2x1.txt";
-    //string elsstr = "/home/diogo/projects/dcproj/data/topology2x1.txt";
 
 
-    string nodestr = "/home/diogo/projects/dcproj/data/nodes-606.txt";
-    string elsstr = "/home/diogo/projects/dcproj/data/els-606.txt";
+   //1x1 meshes
+ //   string nodestr = "/home/diogo/projects/dcproj/data/nodes-606.txt";
+//    string elsstr = "/home/diogo/projects/dcproj/data/els-606.txt";
 
     //     string nodestr = "/home/diogo/projects/dcproj/data/nos-287.txt";
-    //string elsstr = "/home/diogo/projects/dcproj/data/els-287.txt";
+   // string elsstr = "/home/diogo/projects/dcproj/data/els-287.txt";
+   
+   
+   //2x1 fat 38x19
+   //  string nodestr = "/home/diogo/projects/dcproj/data/fat-404-nodes.txt";
+  // string elsstr = "/home/diogo/projects/dcproj/data/fat-404-els.txt";
 
+   
+    //    string nodestr = "/home/diogo/projects/dcproj/data/fat-894-nodes.txt";
+  // string elsstr = "/home/diogo/projects/dcproj/data/fat-894-els.txt";
+	
+	   //     string nodestr = "/home/diogo/projects/dcproj/data/fat-2k-nodes.txt";
+  // string elsstr = "/home/diogo/projects/dcproj/data/fat-2k-els.txt";
+   
+   
+   //2x1 fat 50x22
+   
+ //  string nodestr = "/home/diogo/projects/dcproj/data/fat-2x1-50x22-645-nodes.txt";
+ //  string elsstr = "/home/diogo/projects/dcproj/data/fat-2x1-50x22-645-els.txt";
+   
+      //        string nodestr = "/home/diogo/projects/dcproj/data/fat-2x1-50x22-900-nodes.txt";
+  // string elsstr = "/home/diogo/projects/dcproj/data/fat-2x1-50x22-900-els.txt";
+   
+	
+	//SN
+ //     string nodestr = "/home/diogo/projects/dcproj/data/nos-slope-sn";
+  // string elsstr = "/home/diogo/projects/dcproj/data/els-slope-sn";
+	
+		//	    string nodestr = "/home/diogo/projects/dcproj/data/nodes-sz-gid-276.txt";
+    //string elsstr = "/home/diogo/projects/dcproj/data/els-sz-gid-276.txt";
+	
+		 //   string nodestr = "/home/diogo/projects/dcproj/data/nodes-sz-gid.txt";
+   // string elsstr = "/home/diogo/projects/dcproj/data/els-sz-gid.txt";
+	
+	  //  string nodestr = "/home/diogo/projects/dcproj/data/nodes-sz-gid-605.txt";
+    //string elsstr = "/home/diogo/projects/dcproj/data/els-sz-gid-605.txt";
+	
+	//	    string nodestr = "/home/diogo/projects/dcproj/data/nodes-sz-gid-900.txt";
+   // string elsstr = "/home/diogo/projects/dcproj/data/els-sz-gid-900.txt";
+	
+		//	    string nodestr = "/home/diogo/projects/dcproj/data/nos-sz-gid-1k.txt";
+   // string elsstr = "/home/diogo/projects/dcproj/data/els-sz-gid-1k.txt";
+	
+				 //   string nodestr = "/home/diogo/projects/dcproj/data/tri-nodes.txt";
+   // string elsstr = "/home/diogo/projects/dcproj/data/tri-els.txt";
+	
+		//			    string nodestr = "/home/diogo/projects/dcproj/data/tri-nodes-722.txt";
+  //  string elsstr = "/home/diogo/projects/dcproj/data/tri-els-722.txt";
+	
+		//				    string nodestr = "/home/diogo/projects/dcproj/data/tri-nodes-2k.txt";
+    //string elsstr = "/home/diogo/projects/dcproj/data/tri-els-2k.txt";
+	
+							  // string nodestr = "/home/diogo/projects/dcproj/data/tri-nodes-381.txt";
+    //string elsstr = "/home/diogo/projects/dcproj/data/tri-els-381.txt";
+	
+		//    string nodestr = "/home/diogo/projects/dcproj/data/triumdoido-nodes.txt";
+   // string elsstr = "/home/diogo/projects/dcproj/data/triumdoido-els.txt";
+	
+			//    string nodestr = "/home/diogo/projects/dcproj/data/triumdoido-502-nodes.txt";
+  //  string elsstr = "/home/diogo/projects/dcproj/data/triumdoido-502-els.txt";
+				    string nodestr = "/home/diogo/projects/dcproj/data/triumdoido-558-nodes.txt";
+    string elsstr = "/home/diogo/projects/dcproj/data/triumdoido-558-els.txt";
 
-    //     string nodestr = "/home/diogo/projects/dcproj/data/nodes-2x1-2k.txt";
-    //string elsstr = "/home/diogo/projects/dcproj/data/elements-2x1-2k.txt";
-
-   //   string nodestr = "/home/diogo/projects/dcproj/data/coords2x1h5fine.txt";
-  //  string elsstr = "/home/diogo/projects/dcproj/data/topology2x1h5fine.txt";
-
+   //el padroa 9 sn 10
+   //no padrao 4 sn 3
+   
      MatDoub hhatinho;
     MatDoub  meshcoords, elcoords;
     MatInt meshtopology;
@@ -203,33 +268,20 @@ void slope2x1( )
     cout <<"\n  dasdasd  " << endl;
 	Doub thickness = 1.;
 	//malha 1x1
-    Doub c = 50., phi = 20. * M_PI / 180., gamma = -20.;
-	//eps=10e-5
-	//llt nao converge
-	//shear red mohr coulomb converge sempre ate SF >9 com pisson 0.49?
-	//solver lu shear red mohr coulomb  mudando poisson para 0.3 e young=20000 ...FS=2.64
-	//solver lu shear red mohr coulomb  mudando poisson para 0.3 e young=100000 ...FS=nao converge
-	//solver lu shear red mohr coulomb  mudando poisson para 0.3 e young=1 ...FS=6.8????
+   // Doub c = 50., phi = 20. * M_PI / 180., gamma = -20.;
 	
-	//eps=10e-6*normstrain
-	//llt nao converge
-	//shear red mohr coulomb com  young=20000 com poisson 0.49..FS=3.6
-	//solver lu shear red mohr coulomb  mudando poisson para 0.3 e young=20000 ...FS=2.6
-	//solver lu shear red mohr coulomb  mudando poisson para 0.3 e young=100000 ...nao calcula nada
-	//solver lu shear red mohr coulomb  mudando poisson para 0.3 e young=1 ...FS=6.94????
-	//solver lu shear red mohr coulomb  mudando poisson para 0.3 e young=40000 ...FS=nao para de crescer
-	//solver lu shear red mohr coulomb  mudando poisson para 0.3 e young=60000 ...FS=...nao calcula nadar
-	//solver lu shear red mohr coulomb  mudando poisson para 0.3 e young=10000 ...FS=...nao calcula nadar
-	// Doub c = 10., phi =30.* M_PI / 180., gamma = -20.;//1.5
-	
-	//eps=10e-3*normstrain
-	//llt nao converge
-	//solver lu shear red mohr coulomb  mudando poisson para 0.3 e young=100000 ...nao calcula nada
-
 	
 	// Doub c = 10., phi =30.* M_PI / 180., gamma = -20.;//1.5
 	
-   // Doub c = 23., phi =0.0001* M_PI / 180., gamma = -20.;//1.5
+    //Doub c = 23., phi =0.000000001* M_PI / 180., gamma = -20.;//1.5
+    
+    //Doub c = 5., phi =20.* M_PI / 180., gamma = -20.;//1.5
+    
+    //Doub c = 36.1664, phi =0.00001* M_PI / 180., gamma = -20.;//1.5, phi =20.* M_PI / 180., gamma = -20.;//1.5
+	
+	
+	//para 45 graus LE preve FS =1.2 com NS=5.53
+	Doub c = 30., phi = 10. * M_PI / 180., gamma = -20.;
    
     Doub Phi=phi;
     Doub Psi=phi;
@@ -246,17 +298,18 @@ void slope2x1( )
     bodyforce[1][0] = gamma;
     MatDoub ptsweigths;
     int order = 2;
-    shapequad shape = shapequad ( order, 1 );
-    shape.pointsandweigths ( ptsweigths );
+    //shape* shapelocal = new shapequad ( order, 1 );
+	shape* shapelocal = new shapetri ( order, 1 );
+    shapelocal->pointsandweigths ( ptsweigths );
     Int npts = ptsweigths.nrows();
     Int nglobalpts = meshtopology.nrows() * npts;
     Int sz = 2 * meshcoords.nrows();
-    int nthreads =12;
+    int nthreads =4;
     std::vector <std::thread> threadsmat;
 
-    Doub Lx = 20.;//(*Correlation length in x direction*)
-    Doub Ly = 2.;//(*Correlation length in y direction*)
-    Int nsamples = 10000, expansionorder = 150;
+    Doub Lx = 40.;//(*Correlation length in x direction*)
+    Doub Ly = 4.;//(*Correlation length in y direction*)
+    Int nsamples = 1000, expansionorder = 150;
     Int type = 3;
     NRmatrix<MatDoub> randomfield ( 2, 1 );
     Int dim =2;
@@ -267,7 +320,7 @@ void slope2x1( )
     mat->UpdateBodyForce ( bodyforce );
 
     elastoplastic2D< mohrcoulomb >* matmohr = new elastoplastic2D< mohrcoulomb > ( thickness, bodyforce, planestress, order, hhatinho );
-    matmohr->fYC.SetUp ( Phi,  Psi,  c, young,  nu );
+    matmohr->fYC.SetUp (  young, nu,c,Phi,Psi );
     matmohr->SetMemory ( nglobalpts, sz );
     matmohr->UpdateBodyForce ( bodyforce );
 	
@@ -278,7 +331,7 @@ void slope2x1( )
 
 	//mesh* meshs = new mesh ( dim,matvon, allcoords, meshcoords, meshtopology, hhatinho );
     mesh* meshs = new mesh ( dim,matmohr, allcoords, meshcoords, meshtopology, hhatinho );
-    //mesh* meshs = new mesh(dim,mat, allcoords, meshcoords, meshtopology, hhatinho);
+    ///mesh* meshs = new mesh(dim,mat, allcoords, meshcoords, meshtopology, hhatinho);
 
     KLGalerkinRF* objKLGalerkinRF = new KLGalerkinRF ( order, Lx, Ly, type, nsamples, expansionorder );
     objKLGalerkinRF->SetMesh ( meshs );
@@ -287,9 +340,10 @@ void slope2x1( )
 
     //SRM nao bate com artigos para phi = 0, verificar norma do residuo. Para esta exemple convergencia estabiliza em 20. Proble instável.
     //DETERMINISTC SOL. Phi=0 aproxima tresca?
+	
+    //SRM  com tangente numerica converge no MC e com tangente analitica nao.
 
-
-    if ( true ) {
+    if ( false ) {
         cout <<"\n  DETERMINISTC  " << endl;
         slopeproject* slopeobj = new slopeproject ( meshs, objKLGalerkinRF );
 
@@ -299,7 +353,7 @@ void slope2x1( )
         mat->SetMemory ( nglobalpts, sz );
         mat->UpdateBodyForce ( bodyforce );
 
-        matmohr->fYC.SetUp ( Phi,  Psi,  c, young,  nu );
+        matmohr->fYC.SetUp (young,  nu,c,Phi,Psi );
         matmohr->SetMemory ( nglobalpts, sz );
         matmohr->UpdateBodyForce ( bodyforce );
 
@@ -308,12 +362,13 @@ void slope2x1( )
 		matvon->UpdateBodyForce ( bodyforce );
 
         int desirediter = 10;
-        Doub dlamb0 =0.5;
+        Doub dlamb0 =0.25;
+		Doub maxlfac=2;
         //10, 0.5, 0.01,20
-        slopeobj->IterativeProcessNew ( desirediter, dlamb0);
+        slopeobj->IterativeProcessNew ( desirediter, dlamb0,maxlfac);
        // slopeobj->IterativeProcess2( );
-       // soll = slopeobj->IterativeProcessShearRed( 1., 2.,0.01);
-		cout <<"\n  exit  " << endl;
+       // soll = slopeobj->IterativeProcessShearRed( 0.1, 2,0.01);
+		//cout <<"\n  exit  " << endl;
       //  soll = slopeobj->IterativeProcessGIMBinarySearch();
         return;
 
@@ -323,40 +378,52 @@ void slope2x1( )
     if ( true ) {
 
         //last filed created c =23 e phi=0
-        string filename = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh2x1";
+        string filename = "/home/diogo/Dropbox/slope-reliability/results/mesh-secondexample";
         filename+="/field-Lx";
         filename+=to_string ( Int ( Lx ) );
         filename+="-Ly";
         filename+=to_string ( Int ( Ly ) );
         slopeobj->CreateRandomField ( filename );
+		
     }
 
+    std::cout << "lendo fields = "<<std::endl;
     MatDoub coesionrandomfield, frictionrandomfield;
-    string filerf = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh2x1/field-Lx20-Ly2/coesionfield.txt";
+    string filerf = "/home/diogo/Dropbox/slope-reliability/results/mesh-secondexample/field-Lx20-Ly2/coesionfield.txt";
     ReadMatDoub ( coesionrandomfield, filerf );
-    string filerff = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh2x1/field-Lx20-Ly2/frictionfield.txt";
+    string filerff = "/home/diogo/Dropbox/slope-reliability/results/mesh-secondexample/field-Lx20-Ly2/frictionfield.txt";
     ReadMatDoub ( frictionrandomfield, filerff );
 
 
     randomfield[0][0] = coesionrandomfield;
     randomfield[1][0] = frictionrandomfield;
 
-    string namefolder = "/home/diogocecilio/Dropbox/slope-reliability/results/mesh2x1/gim-Lx20-Ly2";
+    string namefolder = "/home/diogo/Dropbox/slope-reliability/results/mesh-secondexample/gim-Lx20-Ly2";
     int delta = int ( nsamples/nthreads );
     int a=0,b=delta;
 
-
+	std::cout << "entrando nas threds "<<std::endl;
 
     for ( int i=0; i<nthreads; i++ ) {
-        elastoplastic2D< druckerprager >* mat = new elastoplastic2D< druckerprager > ( thickness, bodyforce, planestress, order, hhatinho );
+      //  elastoplastic2D< druckerprager >* mat = new elastoplastic2D< druckerprager > ( thickness, bodyforce, planestress, order, hhatinho );
+std::cout << "criando malha "<<std::endl;
 
-        mesh* meshs = new mesh ( dim,mat, allcoords, meshcoords, meshtopology, hhatinho );
-        //  mesh* mesh0 = new mesh(dim,mat0, allcoords, meshcoords, meshtopology, hhatinho);
-        mat->fYC.setup ( young, nu, c, phi );
-        mat->SetMemory ( nglobalpts, sz );
-        mat->UpdateBodyForce ( bodyforce );
+    elastoplastic2D< mohrcoulomb >* matmohr = new elastoplastic2D< mohrcoulomb > ( thickness, bodyforce, planestress, order, hhatinho );
+
+
+        mesh* meshs = new mesh ( dim,matmohr, allcoords, meshcoords, meshtopology, hhatinho );
+       //   mesh* mesh0 = new mesh(dim,mat, allcoords, meshcoords, meshtopology, hhatinho);
+       // mat->fYC.setup ( young, nu, c, phi );
+       // mat->SetMemory ( nglobalpts, sz );
+       // mat->UpdateBodyForce ( bodyforce );
+		std::cout << "criando KLGalerkinRF "<<std::endl;
+		
+    matmohr->fYC.SetUp (  young, nu,c,Phi,Psi );
+    matmohr->SetMemory ( nglobalpts, sz );
+    matmohr->UpdateBodyForce ( bodyforce );
         KLGalerkinRF* objKLGalerkinRF = new KLGalerkinRF ( order, Lx, Ly, type, nsamples, expansionorder );
         objKLGalerkinRF->SetMesh ( meshs );
+		std::cout << "criando slopeproject "<<std::endl;
         slopeproject* slopeobj = new slopeproject ( meshs, objKLGalerkinRF,randomfield );
         std::cout << "a = "<< a <<std::endl;
         std::cout << "b = "<< b <<std::endl;
@@ -419,11 +486,14 @@ void mainlinux ( int simtype,int comeco,int fim )
     //string nodestr = "/home/diogocecilio/projects/dcproj/nodes-2k.txt";
     //string elsstr = "/home/diogocecilio/projects/dcproj/els-2k.txt";
 
-    string nodestr = "/home/diogocecilio/projects/dcproj/data/nos-287.txt";
-    string elsstr = "/home/diogocecilio/projects/dcproj/data/els-287.txt";
+    //string nodestr = "/home/diogocecilio/projects/dcproj/data/nos-287.txt";
+    //string elsstr = "/home/diogocecilio/projects/dcproj/data/els-287.txt";
 
     //string nodestr = "/home/diogocecilio/projects/dcproj/nos-381.txt";
     //string elsstr = "/home/diogocecilio/projects/dcproj/els-381.txt";
+	
+	    string nodestr = "/home/diogocecilio/projects/dcproj/data/triumdoido-nodes.txt";
+    string elsstr = "/home/diogocecilio/projects/dcproj/data/triumdoido-els.txt";
 
     // string nodestr = "/home/diogocecilio/projects/dcproj/nodes-606.txt";
     //string elsstr = "/home/diogocecilio/projects/dcproj/els-606.txt";
@@ -1414,7 +1484,7 @@ void ReadMesh ( std::vector<std::vector< std::vector<Doub > > >& allcoords, MatD
     } else std::cout << "Unable to open file";
 
     meshtopology.CopyFromVector ( topol );
-    //meshtopology.Print();
+    meshtopology.Print();
 
     std::vector<std::vector<Doub>> coords;
     string line2, temp2;
@@ -1439,7 +1509,7 @@ void ReadMesh ( std::vector<std::vector< std::vector<Doub > > >& allcoords, MatD
     } else std::cout << "Unable to open file";
 
     meshcoords.CopyFromVector ( coords );
-    //meshcoords.Print();
+    meshcoords.Print();
 
 
     std::vector<Doub> temp33 ( 3 );
@@ -1455,8 +1525,8 @@ void ReadMesh ( std::vector<std::vector< std::vector<Doub > > >& allcoords, MatD
         allcoords.push_back ( temp22 );
     }
 
-
-
+  //  cout << "leu"<<endl;
+   // DebugStop();
 }
 std::vector<Int> vecstr_to_vecint ( std::vector<string> vs )
 {
@@ -1469,6 +1539,17 @@ std::vector<Int> vecstr_to_vecint ( std::vector<string> vs )
     }
     return ret;
 }
+// std::vector<Int> vecstr_to_vecint ( std::vector<string> vs )
+// {
+//     std::vector<Int> ret;
+//     for ( std::vector<string>::iterator it = vs.begin() + 2; it != vs.end(); ++it ) {
+//         istringstream iss ( *it );
+//         Int temp;
+//         iss >> temp;
+//         ret.push_back ( temp );
+//     }
+//     return ret;
+// }
 
 std::vector<Doub> vecstr_to_vecdoub ( std::vector<string> vs )
 {
@@ -1479,6 +1560,7 @@ std::vector<Doub> vecstr_to_vecdoub ( std::vector<string> vs )
         iss >> temp;
         ret.push_back ( temp );
     }
+    //ret.push_back(0.);
     return ret;
 }
 

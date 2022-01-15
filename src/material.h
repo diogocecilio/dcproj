@@ -3,7 +3,7 @@
 #include "vonmises.h"
 #include "druckerprager.h"
 #include "elastoplasticbase.h"
-//#include "mesh.h"
+#include "shape.h"
 class mesh;
 
 class material

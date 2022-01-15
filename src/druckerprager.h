@@ -383,12 +383,14 @@ struct Funcstruct:druckerprager {
         ftanphi = ( 3.*tan ( fphi ) ) / sqrt ( 9. + 12.* tan ( fphi ) *tan ( fphi ) );
         fapex = fcoesion * 1. / tan ( fphi );
 
-
+		
         //fa= (3.*tan(fphi)) / sqrt(9. + 12.* tan(fphi) *tan(fphi));
         //fb = (3.) / sqrt(9. + 12.* tan(fphi) *tan(fphi));
+		//outer inner
         //fa = (6.*sin(fphi)) / ( sqrt(3.)*(3 + sin(fphi)) );
         //fb = (6.*cos(fphi)) / (sqrt(3.)*(3 + sin(fphi)));
 
+		//outer
         //fa = (6.*sin(fphi)) / (sqrt(3.)*(3 - sin(fphi)));//1.10
         //fb = (6.*cos(fphi)) / (sqrt(3.)*(3 - sin(fphi)));
 

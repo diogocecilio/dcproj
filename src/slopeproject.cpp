@@ -8,6 +8,7 @@
 #include <direct.h>
 #endif
 //#include "vtkmesh.h"
+#include "shapetri.h"
 slopeproject::slopeproject()
 {
 
@@ -130,10 +131,10 @@ void slopeproject::SolveEigen ( SparseMatrix<double> A, VectorXd b, VectorXd& x 
     // cout << "Operation took: " << time_span.count() << " seconds.";
 }
 
-void slopeproject::findbcids ( mesh* gmesh, std::vector<std::vector<int>>& idsvector )
+void slopeproject::findbcids45 ( mesh* gmesh, std::vector<std::vector<int>>& idsvector )
 {
-	//malha 606
-	//50x20
+    //malha 606
+    //50x20
     Int ndivs = 100000;
     MatDoub pathbottom, pathleft, pathright, pathdisplace;
     std::vector<int>  idsbottom, idsleft, idsright, iddisplace;
@@ -184,57 +185,216 @@ void slopeproject::findbcids ( mesh* gmesh, std::vector<std::vector<int>>& idsve
 
 }
 
-// void slopeproject::findbcids ( mesh* gmesh, std::vector<std::vector<int>>& idsvector )
-// {
-// 	//30x10
-// 	////mesh 2x1h5
-//     Int ndivs = 100000;
-//     MatDoub pathbottom, pathleft, pathright, pathdisplace;
-//     std::vector<int>  idsbottom, idsleft, idsright, iddisplace;
-//     VecDoub a ( 2 ), b ( 2 );
-//     a[0] = 0.;
-//     a[1] = 0.;
-//     b[0] = 30.;
-//     b[1] = 0;
-//     Line ( a, b, ndivs, pathbottom );
-// 
-//     std::vector<std::vector<std::vector<double> > > ggmesh = gmesh->GetAllCoords();
-// 
-//     NRmatrix<int> meshtop = gmesh->GetMeshTopology();
-// 
-//     FindIdsInPath ( pathbottom, ggmesh,meshtop, idsbottom );
-// 
-//     idsvector.push_back ( idsbottom );
-// 
-//     a[0] = 0.;
-//     a[1] = 0.;
-//     b[0] = 0.;
-//     b[1] = 10.;
-//     Line ( a, b, ndivs, pathleft );
-//     FindIdsInPath ( pathleft, ggmesh,meshtop, idsleft );
-// 
-//     idsvector.push_back ( idsleft );
-//     a[0] = 30.;
-//     a[1] = 0.;
-//     b[0] = 30.;
-//     b[1] = 5.;
-//     Line ( a, b, ndivs, pathright );
-//     FindIdsInPath ( pathright, ggmesh,meshtop, idsright );
-// 
-//     idsvector.push_back ( idsright );
-// 
-//     a[0] = 9.99;
-//     a[1] = 9.99;
-//     b[0] = 10.;
-//     b[1] = 10.;
-//     Line ( a, b, ndivs, pathdisplace );
-//     FindIdsInPath ( pathdisplace,ggmesh,meshtop, iddisplace );
-// 
-//     cout<< "ID displace = "<<iddisplace[0]<<endl;
-// 
-//     idsvector.push_back ( iddisplace );
-// 
-// }
+void slopeproject::findbcids ( mesh* gmesh, std::vector<std::vector<int>>& idsvector )
+{
+    //30x10
+    ////mesh 2x1h5
+    Int ndivs = 100000;
+    MatDoub pathbottom, pathleft, pathright, pathdisplace;
+    std::vector<int>  idsbottom, idsleft, idsright, iddisplace;
+    VecDoub a ( 2 ), b ( 2 );
+    a[0] = 0.;
+    a[1] = 0.;
+    b[0] = 30.;
+    b[1] = 0;
+    Line ( a, b, ndivs, pathbottom );
+
+    std::vector<std::vector<std::vector<double> > > ggmesh = gmesh->GetAllCoords();
+
+    NRmatrix<int> meshtop = gmesh->GetMeshTopology();
+
+    FindIdsInPath ( pathbottom, ggmesh,meshtop, idsbottom );
+
+    idsvector.push_back ( idsbottom );
+
+    a[0] = 0.;
+    a[1] = 0.;
+    b[0] = 0.;
+    b[1] = 10.;
+    Line ( a, b, ndivs, pathleft );
+    FindIdsInPath ( pathleft, ggmesh,meshtop, idsleft );
+
+    idsvector.push_back ( idsleft );
+    a[0] = 30.;
+    a[1] = 0.;
+    b[0] = 30.;
+    b[1] = 5.;
+    Line ( a, b, ndivs, pathright );
+    FindIdsInPath ( pathright, ggmesh,meshtop, idsright );
+
+    idsvector.push_back ( idsright );
+
+    a[0] = 9.99;
+    a[1] = 9.99;
+    b[0] = 10.;
+    b[1] = 10.;
+    Line ( a, b, ndivs, pathdisplace );
+    FindIdsInPath ( pathdisplace,ggmesh,meshtop, iddisplace );
+
+    cout<< "ID displace = "<<iddisplace[0]<<endl;
+
+    idsvector.push_back ( iddisplace );
+
+}
+
+
+void slopeproject::findbcidsfat5022 ( mesh* gmesh, std::vector<std::vector<int>>& idsvector )
+{
+    //30x10
+    ////mesh 2x1h5
+    Int ndivs = 100000;
+    MatDoub pathbottom, pathleft, pathright, pathdisplace;
+    std::vector<int>  idsbottom, idsleft, idsright, iddisplace;
+    VecDoub a ( 2 ), b ( 2 );
+    a[0] = 0.;
+    a[1] = 0.;
+    b[0] = 50.;
+    b[1] = 0;
+    Line ( a, b, ndivs, pathbottom );
+
+    std::vector<std::vector<std::vector<double> > > ggmesh = gmesh->GetAllCoords();
+
+    NRmatrix<int> meshtop = gmesh->GetMeshTopology();
+
+    FindIdsInPath ( pathbottom, ggmesh,meshtop, idsbottom );
+
+    idsvector.push_back ( idsbottom );
+
+    a[0] = 0.;
+    a[1] = 0.;
+    b[0] = 0.;
+    b[1] = 22.;
+    Line ( a, b, ndivs, pathleft );
+    FindIdsInPath ( pathleft, ggmesh,meshtop, idsleft );
+
+    idsvector.push_back ( idsleft );
+    a[0] = 50.;
+    a[1] = 0.;
+    b[0] = 50.;
+    b[1] = 17.;
+    Line ( a, b, ndivs, pathright );
+    FindIdsInPath ( pathright, ggmesh,meshtop, idsright );
+
+    idsvector.push_back ( idsright );
+
+    a[0] = 19.99;
+    a[1] = 21.99;
+    b[0] = 20.;
+    b[1] = 22.;
+    Line ( a, b, ndivs, pathdisplace );
+    FindIdsInPath ( pathdisplace,ggmesh,meshtop, iddisplace );
+
+    cout<< "ID displace = "<<iddisplace[0]<<endl;
+
+    idsvector.push_back ( iddisplace );
+
+}
+
+void slopeproject::findbcidsfatsn ( mesh* gmesh, std::vector<std::vector<int>>& idsvector )
+{
+    //30x10
+    ////mesh 2x1h5
+    Int ndivs = 100000;
+    MatDoub pathbottom, pathleft, pathright, pathdisplace;
+    std::vector<int>  idsbottom, idsleft, idsright, iddisplace;
+    VecDoub a ( 2 ), b ( 2 );
+    a[0] = 0.;
+    a[1] = 0.;
+    b[0] = 75.;
+    b[1] = 0;
+    Line ( a, b, ndivs, pathbottom );
+
+    std::vector<std::vector<std::vector<double> > > ggmesh = gmesh->GetAllCoords();
+
+    NRmatrix<int> meshtop = gmesh->GetMeshTopology();
+
+    FindIdsInPath ( pathbottom, ggmesh,meshtop, idsbottom );
+
+    idsvector.push_back ( idsbottom );
+
+    a[0] = 0.;
+    a[1] = 0.;
+    b[0] = 0.;
+    b[1] = 40.;
+    Line ( a, b, ndivs, pathleft );
+    FindIdsInPath ( pathleft, ggmesh,meshtop, idsleft );
+
+    idsvector.push_back ( idsleft );
+    a[0] = 75.;
+    a[1] = 0.;
+    b[0] = 75.;
+    b[1] = 30.;
+    Line ( a, b, ndivs, pathright );
+    FindIdsInPath ( pathright, ggmesh,meshtop, idsright );
+
+    idsvector.push_back ( idsright );
+
+    a[0] = 34.99;
+    a[1] = 39.99;
+    b[0] = 35.;
+    b[1] = 40.;
+    Line ( a, b, ndivs, pathdisplace );
+    FindIdsInPath ( pathdisplace,ggmesh,meshtop, iddisplace );
+
+    cout<< "ID displace = "<<iddisplace[0]<<endl;
+
+    idsvector.push_back ( iddisplace );
+
+}
+
+void slopeproject::findbcidsfat ( mesh* gmesh, std::vector<std::vector<int>>& idsvector )
+{
+    //30x10
+    ////mesh 2x1h5
+    Int ndivs = 100000;
+    MatDoub pathbottom, pathleft, pathright, pathdisplace;
+    std::vector<int>  idsbottom, idsleft, idsright, iddisplace;
+    VecDoub a ( 2 ), b ( 2 );
+    a[0] = 0.;
+    a[1] = 0.;
+    b[0] = 38.;
+    b[1] = 0;
+    Line ( a, b, ndivs, pathbottom );
+
+    std::vector<std::vector<std::vector<double> > > ggmesh = gmesh->GetAllCoords();
+
+    NRmatrix<int> meshtop = gmesh->GetMeshTopology();
+
+    FindIdsInPath ( pathbottom, ggmesh,meshtop, idsbottom );
+
+    idsvector.push_back ( idsbottom );
+
+    a[0] = 0.;
+    a[1] = 0.;
+    b[0] = 0.;
+    b[1] = 19.;
+    Line ( a, b, ndivs, pathleft );
+    FindIdsInPath ( pathleft, ggmesh,meshtop, idsleft );
+
+    idsvector.push_back ( idsleft );
+    a[0] = 38.;
+    a[1] = 0.;
+    b[0] = 38.;
+    b[1] = 14.;
+    Line ( a, b, ndivs, pathright );
+    FindIdsInPath ( pathright, ggmesh,meshtop, idsright );
+
+    idsvector.push_back ( idsright );
+
+    a[0] = 15.99;
+    a[1] = 18.99;
+    b[0] = 16.;
+    b[1] = 19.;
+    Line ( a, b, ndivs, pathdisplace );
+    FindIdsInPath ( pathdisplace,ggmesh,meshtop, iddisplace );
+
+    cout<< "ID displace = "<<iddisplace[0]<<endl;
+
+    idsvector.push_back ( iddisplace );
+
+}
+
+
 /*
 std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed(Doub fac, Doub delta,Doub tol) {
 
@@ -483,30 +643,46 @@ std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed(Doub fa
 std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed ( Doub fac, Doub delta,Doub tol )
 {
 
-    mesh* meshint = fmesh;
+    std::ofstream file8 ( "uxf-srm-mc2x1.nb" );
     std::vector<int>  idsbottom, idsleft, idsright, iddisplace;
     std::vector<std::vector<int>> idsvector;
 
-    findbcids ( meshint, idsvector );
-
-    material* mat = meshint->fmaterial;
-
+    //findbcids ( fmesh, idsvector );
+    findbcidsfatsn ( fmesh, idsvector );
+//findbcidsfat5022( fmesh, idsvector );
     idsbottom = idsvector[0];
     idsleft = idsvector[1];
     idsright = idsvector[2];
     iddisplace = idsvector[3];
 
-    mat->ResetMat();
-    Int sz = 2 * meshint->GetMeshNodes().nrows();
+    Int sz = 2 * fmesh->GetMeshNodes().nrows();
     MatDoub KG ( sz, sz, 0. ), FBODY ( sz, 1, 0. ), FINT ( sz, 1, 0. ), ptsweigths;
-    Doub rtemp = 10.;
 
-    MatDoub displace, displace0, R, sol;
+
+
+
+    fmesh->fmaterial->ResetPlasticStrain();
+    fmesh->fmaterial->ResetDisplacement();
+    fmesh->fmaterial->ResetMat();
+
+
+    MatDoub dws ( sz, 1, 0. ), dwb ( sz, 1, 0. ), dww ( sz, 1, 0. ), dw ( sz, 1, 0. ), R ( sz,1,0. ),displace ( sz,1,0. ),displace0 ( sz,1,0. );
+
+    Doub diff2 =10.;
+    Int counterout=0;
+
+    fmesh->Assemble ( KG, FINT, FBODY );
+    InserBC ( KG, R, FBODY, idsbottom, idsright, idsleft, fmesh->fmaterial );
+    Int type=1;
+    SolveEigenSparse ( type,KG, FBODY, dwb );
+
+
+    MatDoub  sol;
     displace.assign ( sz, 1, 0. );
     displace0.assign ( sz, 1, 0. );
 
-    Doub l = 0, l0 = 0, lamb = 1., lambn = 0, dlamb = 0., lamb3, diff = 100, diff2 = 100;
-    Int counterout = 0, maxcountout = 80;
+    Doub  l0 = 0, lambn = 0,  lamb3, diff = 100;
+
     std::vector<double> solcount ( 7, 0. ), uvf ( 2, 0. );
     std::vector<std::vector<double>> solpost, solpost2;
     solpost.push_back ( solcount );
@@ -514,12 +690,19 @@ std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed ( Doub 
     Int niter = 500;
     Int postcounter = 0;
 
+
     NRvector<Doub> matconsts ( 4, 0. );
-    mat->GetMatConstants ( matconsts );
+    fmesh->fmaterial->GetMatConstants ( matconsts );
     Doub  young = matconsts[0];
     Doub nu = matconsts[1];
     Doub c = matconsts[2];
     Doub phi = matconsts[3];
+
+    //       consts[0] = fyoung;
+    //    consts[1] = fnu;
+    //    consts[2] = fc ;
+    //    consts[3] = fPhi;
+    //    consts[4] = fPsi;
 
     Doub res = 10, facn = 0, FS = fac, FSmin = 0, FSmax =10000;
     Doub norm = 100000.;
@@ -529,39 +712,42 @@ std::vector<std::vector<double>>  slopeproject::IterativeProcessShearRed ( Doub 
     Doub phi0 = phi;
 
     NRmatrix<Doub> hhat0;
-    meshint->GetHhat ( hhat0 );
+    fmesh->GetHhat ( hhat0 );
     NRmatrix<Doub> hhatcopy  = hhat0;
 
 //    NRvector<Doub> matconsts2 ( 3 );
 //    bool vonmises=true;
 
 //     if ( vonmises ) {
-// 
+//
 //         c = c0 / FS;
 //         matconsts2[2] = c;
 //         mat->SetMatConstants ( matconsts2 );
 //     } else {
 
-        if ( hhat0.nrows() != 0 ) {
-            for ( int irow = 0; irow < hhat0.nrows(); irow++ ) {
-                hhatcopy[irow][0] = hhat0[irow][0] / FS;
-                hhatcopy[irow][1] = atan ( tan ( hhat0[irow][1] ) / FS );
-            }
-            meshint->SetHhat ( hhatcopy );
-            c = c0 / FS;
-            phi = atan ( tan ( phi0 ) / FS );
-            matconsts[2] = c;
-            matconsts[3] = phi;
-            mat->SetMatConstants ( matconsts );
-        } else {
-            c = c0 / FS;
-            phi = atan ( tan ( phi0 ) / FS );
-            matconsts[2] = c;
-            matconsts[3] = phi;
-            mat->SetMatConstants ( matconsts );
+    if ( hhat0.nrows() != 0 ) {
+        for ( int irow = 0; irow < hhat0.nrows(); irow++ ) {
+            hhatcopy[irow][0] = hhat0[irow][0] / FS;
+            hhatcopy[irow][1] = atan ( tan ( hhat0[irow][1] ) / FS );
         }
+        fmesh->SetHhat ( hhatcopy );
+        c = c0 / FS;
+        phi = atan ( tan ( phi0 ) / FS );
+        matconsts[2] = c;
+        matconsts[3] = phi;
+        fmesh->fmaterial->SetMatConstants ( matconsts );
+    } else {
+        c = c0 / FS;
+        phi = atan ( tan ( phi0 ) / FS );
+        matconsts[2] = c;
+        matconsts[3] = phi;
+        fmesh->fmaterial->SetMatConstants ( matconsts );
+    }
+
+
+
 //    }
-std::cout << " iter = " << counterout << " | FS= " << FS << " | FSmax " << FSmax << " | FSmin = " << FSmin << std::endl;
+    std::cout << " iter = " << counterout << " | FS= " << FS << " | FSmax " << FSmax << " | FSmin = " << FSmin << std::endl;
     do {
         Int counter = 0;
         //displace.assign(sz, 1, 0.);
@@ -569,29 +755,27 @@ std::cout << " iter = " << counterout << " | FS= " << FS << " | FSmax " << FSmax
         sol.assign ( sz, 1, 0. );
         norm = 1000.;
 
-        mat->ResetMat();
-         fmesh->fmaterial->SetTangentMatrixType ( false );
-        Doub tol2 = 1.e-3;
+        fmesh->fmaterial->ResetMat();
+        // fmesh->fmaterial->SetTangentMatrixType ( false );
+        Doub tol2 = 1;
         do {
             chrono::steady_clock sc;
             auto start = sc.now();
 
             FINT.assign ( sz, 1, 0. );
-            meshint->Assemble ( KG, FINT, FBODY );
+            fmesh->Assemble ( KG, FINT, FBODY );
             R = FBODY;
             //R *= fac;
             R -= FINT;
 
-            InserBC ( KG, R, FBODY, idsbottom, idsright, idsleft, mat );
+            InserBC ( KG, R, FBODY, idsbottom, idsright, idsleft, fmesh->fmaterial );
 
-            Int llt=0,lu=1,cg=2;
-            Int type =lu;
             SolveEigenSparse ( type,KG, R, sol );
-            //SolveEigen3(KG, R, sol);
+            // SolveEigen3(KG, R, sol);
 
             displace += sol;
             Doub u = fabs ( displace[2 * iddisplace[0] + 1][0] );
-            mat->UpdateDisplacement ( displace );
+            fmesh->fmaterial->UpdateDisplacement ( displace );
             norm = R.NRmatrixNorm();
 
             auto end = sc.now();
@@ -658,38 +842,27 @@ std::cout << " iter = " << counterout << " | FS= " << FS << " | FSmax " << FSmax
             }
 
         }
-
-
-//         if ( vonmises ) {
-// 
-//             c = c0 / FS;
-//             matconsts2[2] = c;
-//             mat->SetMatConstants ( matconsts2 );
-//         } else {
-
-
-            //Caso tenha random field a reducao da resistencia tem que ser aplicada a todos os pontos
-            if ( hhat0.nrows() != 0 ) {
-                for ( int irow = 0; irow < hhat0.nrows(); irow++ ) {
-                    hhatcopy[irow][0] = hhat0[irow][0] / FS;
-                    hhatcopy[irow][1] = atan ( tan ( hhat0[irow][1] ) / FS );
-                }
-                meshint->SetHhat ( hhatcopy );
-                c = c0 / FS;
-                phi = atan ( tan ( phi0 ) / FS );
-                matconsts[2] = c;
-                matconsts[3] = phi;
-                mat->SetMatConstants ( matconsts );
-            } else {
-                c = c0 / FS;
-                phi = atan ( tan ( phi0 ) / FS );
-                matconsts[2] = c;
-                matconsts[3] = phi;
-                mat->SetMatConstants ( matconsts );
+        //Caso tenha random field a reducao da resistencia tem que ser aplicada a todos os pontos
+        if ( hhat0.nrows() != 0 ) {
+            for ( int irow = 0; irow < hhat0.nrows(); irow++ ) {
+                hhatcopy[irow][0] = hhat0[irow][0] / FS;
+                hhatcopy[irow][1] = atan ( tan ( hhat0[irow][1] ) / FS );
             }
-//        }
+            fmesh->SetHhat ( hhatcopy );
+            c = c0 / FS;
+            phi = atan ( tan ( phi0 ) / FS );
+            matconsts[2] = c;
+            matconsts[3] = phi;
+            fmesh->fmaterial->SetMatConstants ( matconsts );
+        } else {
+            c = c0 / FS;
+            phi = atan ( tan ( phi0 ) / FS );
+            matconsts[2] = c;
+            matconsts[3] = phi;
+            fmesh->fmaterial->SetMatConstants ( matconsts );
+        }
 
-
+        fmesh->fmaterial->ResetMat();
         counterout++;
 
         std::cout << " iter = " << counterout << " | FS= " << FS << " | FSmax " << FSmax << " | FSmin = " << FSmin << std::endl;
@@ -699,34 +872,6 @@ std::cout << " iter = " << counterout << " | FS= " << FS << " | FSmax " << FSmax
     }  while ( ( FSmax - FSmin ) / FS > tol ); //while ((FSmax - FSmin) / FS > tol && ( norm <1.e20));
     //std::cout << "FOS eeeeee = " << FS << std::endl;
 
-    if ( true ) {
-        std::cout << "FOS eeeeee = " << FS << std::endl;
-        MatDoub solpost23;
-        solpost23.CopyFromVector ( solpost2 );
-        string names = "loadvsdisplacementSRM.dat";
-        std::ofstream file8 ( names );
-        OutPutFile ( solpost23, file8 );
-
-        std::vector<std::vector<double>> epsppost;
-        mat->PostProcessIntegrationPointVar ( meshint->GetAllCoords(), meshint->GetMeshNodes(), meshint->GetMeshTopology(), mat->GetSolution(), epsppost );
-        //string name3 = "/home/diogocecilio/Dropbox/slope-reliability/results/mathematicas-new/sqrtJ2SRM-Cho-Determ";
-        //string ext3 = ".dat";
-        string name3 = "sqrtJ2SRM-Cho-Determ.dat";
-        //string ext3 = ".dat";
-        //name3 += ext3;
-        std::ofstream file3 ( name3 );
-        OutPutPost ( epsppost, file3 );
-
-        string filename;
-        std::vector<std::vector<double>> solx, soly;
-        mat->PostProcess ( meshint->GetAllCoords(), meshint->GetMeshNodes(), meshint->GetMeshTopology(), mat->GetSolution(), solx, soly );
-        filename = "/home/diogocecilio/Dropbox/slope-reliability/results/mathematicas-new/solySRM.dat";
-        std::ofstream file2 ( filename );
-        OutPutPost ( soly, file2 );
-        filename = "/home/diogocecilio/Dropbox/slope-reliability/results/mathematicas-new/solxSRM.dat";
-        std::ofstream file22 ( filename );
-        OutPutPost ( solx, file22 );
-    }
 
     return solpost;
 }
@@ -1318,14 +1463,22 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess ( int ndesi, D
 
 }
 
-void slopeproject::IterativeProcessNew ( Int  ndesi, Doub dlamb0 )
+
+std::vector<std::vector<double>> slopeproject::IterativeProcessNew ( Int  ndesi, Doub dlamb0, Doub maxlfac )
 {
-    std::ofstream file8 ( "uxf-newarclength-mc2x1.nb" );
+    std::vector<double> solcount ( 7, 0. ), uvf ( 2, 0. );
+    std::vector<std::vector<double>> solpost, solpost2;
+    solpost.push_back ( solcount );
+
+    bool print = false;
+    std::ofstream file8 ( "slope-GIM-45-MC.nb" );
     std::vector<int>  idsbottom, idsleft, idsright, iddisplace;
     std::vector<std::vector<int>> idsvector;
 
-    findbcids ( fmesh, idsvector );
-
+    //findbcids45 ( fmesh, idsvector );
+    findbcidsfatsn ( fmesh, idsvector );
+    //findbcidsfat ( fmesh, idsvector );
+    //findbcidsfat5022 ( fmesh, idsvector );
     idsbottom = idsvector[0];
     idsleft = idsvector[1];
     idsright = idsvector[2];
@@ -1343,12 +1496,11 @@ void slopeproject::IterativeProcessNew ( Int  ndesi, Doub dlamb0 )
 
 
 
-    std::vector<std::vector<double>> solpost2;
 
     MatDoub dws ( sz, 1, 0. ), dwb ( sz, 1, 0. ), dww ( sz, 1, 0. ), dw ( sz, 1, 0. ), R ( sz,1,0. ),displace ( sz,1,0. ),displace0 ( sz,1,0. );
 
-    Doub rtol = 1.e-3;//tol newton
-    Doub tol = 0.01;//tol arc length
+    Doub rtol = 1.e-6;//tol newton
+    Doub tol = 0.001;//tol arc length
     Doub rnorm = 10.;
     Doub lambn0 = 0.;
     //lambda  = load factor
@@ -1359,27 +1511,29 @@ void slopeproject::IterativeProcessNew ( Int  ndesi, Doub dlamb0 )
     Doub l=0.;
     Int counter = 0;
     Int maxcount = 20;
-    Int maxniter =40;
+    Int maxniter =60;
     Int counterout=0;
 
     fmesh->Assemble ( KG, FINT, FBODY );
     InserBC ( KG, R, FBODY, idsbottom, idsright, idsleft, fmesh->fmaterial );
-     Int type=1;
+    Int type=1;
     SolveEigenSparse ( type,KG, FBODY, dwb );
-	
-	//initial length solution
-	NRmatrix<Doub> dwbt,inner;
-	dwb.Transpose(dwbt);
-	dwbt.Mult(dwb,inner);
-	Doub l0=sqrt(dlamb0*dlamb0*inner[0][0]);
-	Doub maxl =2.*l0;
-	l=l0;
+
+    //initial length solution
+    NRmatrix<Doub> dwbt,inner;
+    dwb.Transpose ( dwbt );
+    dwbt.Mult ( dwb,inner );
+    Doub l0=sqrt ( dlamb0*dlamb0*inner[0][0] );
+    Doub maxl =maxlfac*l0;
+    l=l0;
     dlamb = dlamb0;
-    cout << "l0 = " << l0 <<endl;
-	cout << "dlamb = " << dlamb <<endl;
+    chrono::steady_clock sc;
+    auto start = sc.now();
+
+    cout << "| l0 = " << l0 << " | dlamb = " << dlamb << " | maxl = " << maxl <<endl;
     do {
         displace0 = displace;
-        dws.assign ( sz, 1, 0. ), dwb.assign ( sz, 1, 0. ), dww.assign ( sz, 1, 0. ), R.assign ( sz, 1, 0. ), dw.assign ( sz, 1, 0. ), R.assign ( sz, 1, 0. ), FBODY.assign ( sz, 1, 0. ), FINT.assign ( sz, 1, 0. ),KG.assign(sz,sz,0.);
+        dws.assign ( sz, 1, 0. ), dwb.assign ( sz, 1, 0. ), dww.assign ( sz, 1, 0. ), R.assign ( sz, 1, 0. ), dw.assign ( sz, 1, 0. ), R.assign ( sz, 1, 0. ), FBODY.assign ( sz, 1, 0. ), FINT.assign ( sz, 1, 0. ),KG.assign ( sz,sz,0. );
         counter = 0;
         Doub err1=10.,err2=10.;
         rnorm=10.;
@@ -1391,23 +1545,23 @@ void slopeproject::IterativeProcessNew ( Int  ndesi, Doub dlamb0 )
             R -= FINT;
 
             InserBC ( KG, R, FBODY, idsbottom, idsright, idsleft, fmesh->fmaterial );
-			//NRmatrix<Doub> KGcp=KG;
-            Int type=0;
+            //NRmatrix<Doub> KGcp=KG;
+            Int type=1;
             SolveEigenSparse ( type,KG, R, dws );
-			//KG=KGcp;
+            //KG=KGcp;
             SolveEigenSparse ( type,KG, FBODY, dwb );
             //SolveEigen ( KG, R, dws );
             //SolveEigen ( KG, FBODY, dwb );
 
-            if ( counter==0 && counterout!=0) {
-                dlamb = computelamda0(dwb,  dw, l);
+            if ( counter==0 && counterout!=0 ) {
+                dlamb = computelamda0 ( dwb,  dw, l );
                 //dlamb = computelamda ( dwb, dws, dw, l );
-                std::cout << "l = "<< l << " | dlamb = "<< dlamb << " | lamb = "<< lamb  <<endl;
+                //std::cout << "l = "<< l << " | dlamb = "<< dlamb << " | lamb = "<< lamb  <<endl;
             } else {
                 dlamb = computelamda ( dwb, dws, dw, l );
             }
 
-    
+
             if ( isnan ( dlamb ) == 1 ) {
                 std::cout << "isnan(dlamb)" << endl;
                 std::cout << dlamb << endl;
@@ -1418,12 +1572,12 @@ void slopeproject::IterativeProcessNew ( Int  ndesi, Doub dlamb0 )
             dww *= dlamb;
             dww += dws;
             dw += dww;
-			//dw delta maiusculo u
-			//dww = delta minusculo u
-			//dwb delta minusculo barra
-			//dws delta minusculo star
-			
-			
+            //dw delta maiusculo u
+            //dww = delta minusculo u
+            //dwb delta minusculo barra
+            //dws delta minusculo star
+
+
 
             displace += dww;
             fmesh->fmaterial->UpdateDisplacement ( displace );
@@ -1435,19 +1589,19 @@ void slopeproject::IterativeProcessNew ( Int  ndesi, Doub dlamb0 )
             err1 = rnorm / FBODY.NRmatrixNorm();
             err2 = normdw / unorm;
 
-            std::cout << " Iteration number = " << counter << " |  |R| = " << rnorm <<" | lamb  = " << lamb << " | dlamb = "<< dlamb << std::endl;
+            std::cout << " Iteration number = " << counter << " |  |R| = " << rnorm <<" | lamb  = " << lamb << " | dlamb = "<< dlamb  << "l = "<< l<< std::endl;
 
             counter++;
             //dlamb = computelamda0(dwb, dws, dw, l,lamb0);
-            if ( rnorm>1000000 ) {
+            if ( rnorm>1000000 || lamb<0 ) {
                 break;
             }
 
-        } while ( counter < maxcount && rnorm > rtol );
+        } while ( counter < maxcount && err1 > rtol );
 
 
 
-        if ( rnorm > rtol || counter >= maxcount ) {
+        if ( err1 > rtol || counter >= maxcount ) {
             std::cout << "  reducing l and restoring last converged displacement... " << endl;
             // displace.assign(sz,1,0.);
             displace = displace0;
@@ -1462,8 +1616,8 @@ void slopeproject::IterativeProcessNew ( Int  ndesi, Doub dlamb0 )
 //             std::cout << "  lamb =  "<< lamb << endl;
             if ( l<1.e-3 ) {
                 std::cout << " exiting....  " <<endl;
-                OutPutPost ( solpost2,file8 );
-                return;
+                //OutPutPost ( solpost2,file8 );
+                return solpost;
             }
 
         } else {
@@ -1482,8 +1636,23 @@ void slopeproject::IterativeProcessNew ( Int  ndesi, Doub dlamb0 )
             //l*=1.1;
             lambn0 = lamb;
 
-            PostVtk ( iddisplace[0], counter,  counterout,   lamb, 20., displace, solpost2 );
+            if ( print==false ) {
+                PostVtk ( iddisplace[0], counter,  counterout,   lamb, 20., displace, solpost2 );
+            }
+            vector<Doub> uvf ( 2 );
+            solcount[0] = fabs ( displace[2 * iddisplace[0] + 1][0] );
+            solcount[1] = lamb;
+            solcount[2] = err1;
+            solcount[3] = rnorm;
+            solcount[4] = 0;
+            solcount[5] = diff2;
+            solcount[6] = counterout;
 
+            uvf[0] = fabs ( displace[2 * iddisplace[0] + 1][0] );
+            uvf[1] = lamb;
+
+            solpost2.push_back ( uvf );
+            solpost.push_back ( solcount );
         }
 
         std::cout << " exter iter = " << counterout << "  | newton iters = " << counter  << " |  |R| = " << rnorm << " |  lamb  = " << lamb << "| l = "<< l  << "| fabs(lambn0 - lamb) "<<diff2 <<std::endl;
@@ -1493,9 +1662,14 @@ void slopeproject::IterativeProcessNew ( Int  ndesi, Doub dlamb0 )
     } while ( counterout <= maxniter && fabs ( diff2 ) > tol ); // while (counterout <= maxcountout && fabs(diff2) > 0.05);
 
 
-    std::cout << " exiting outloop....  " <<endl;
-    OutPutPost ( solpost2,file8 );
-    return;
+    auto end = sc.now();
+    auto time_span = static_cast<chrono::duration<double>> ( end - start );
+    cout << "| Total time taken " << time_span.count();
+    std::cout << " Exiting...  " <<endl;
+    if ( print==false ) {
+        OutPutPost ( solpost2,file8 );
+    }
+    return solpost;
 }
 
 void slopeproject::PostVtk ( Int iddisplace,Int counter, Int counterout, Doub  fac,Doub finalload,NRmatrix<Doub> u, std::vector<std::vector<double>> &solpost2 )
@@ -1520,7 +1694,7 @@ void slopeproject::PostVtk ( Int iddisplace,Int counter, Int counterout, Doub  f
     //vector_names.push_back("phi");
     //vector_names.push_back("Stress");
     Int dim=2;
-    string slopestr="slope-IterativeProcessGIMArc2x1mc";
+    string slopestr="slope-GIM-45-MC";
     VTKGraphMesh vtkobj ( fmesh,dim,scalar_names,vector_names,slopestr );
     vtkobj.DrawSolution ( counterout, counter );
 }
@@ -1549,8 +1723,8 @@ void  slopeproject::IterativeProcess2()
     NRmatrix<Doub> u;
     Doub finalload =20.;
     u.assign ( sz,1,0. );
-   // vector<double> fac = {0.1,1.,2.,3.,3.6,3.8,3.90,3.95,3.99,4.0};
-	vector<double> fac = {0.1,0.4,0.6,0.8,1.};
+    // vector<double> fac = {0.1,1.,2.,3.,3.6,3.8,3.90,3.95,3.99,4.0};
+    vector<double> fac = {0.1,0.4,0.6,0.8,1.};
     Int steps = 25;
     Int counterout = 1;
     MatDoub solpost ( 1000, 2, 0. );
@@ -1577,8 +1751,8 @@ void  slopeproject::IterativeProcess2()
 
             InserBC ( KG, R, FBODY, idsbottom, idsright, idsleft, fmesh->fmaterial );
             //R.Print();
-           //bool llt=true;
-			Int lu=1;
+            //bool llt=true;
+            Int lu=1;
             SolveEigenSparse ( lu, KG, R, dw );
             //SolveEigen( KG, R, dw);
             u += dw;
@@ -2035,7 +2209,7 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcessArcLengthSRM ( 
 
 }
 
-Doub  slopeproject::computelamda0 (  MatDoub& dwb,  MatDoub& dw, Doub& l)
+Doub  slopeproject::computelamda0 ( MatDoub& dwb,  MatDoub& dw, Doub& l )
 {
     Doub tempsign;
     MatDoub dwt,solsig;
@@ -2263,7 +2437,7 @@ void slopeproject::SolveEigen3 ( MatDoub A, MatDoub b, MatDoub& x )
     //VectorXd xxx = AA.fullPivHouseholderQr().solve(bbb);
     //VectorXd xxx = AA.fullPivLu().solve(bbb);
     //VectorXd xxx = AA.ldlt().solve(bbb);
-    VectorXd xxx = AA.lu().solve(bbb);
+    VectorXd xxx = AA.lu().solve ( bbb );
     for ( int i = 0; i < A.nrows(); i++ ) {
         x[i][0] = xxx ( i );
     }
@@ -2320,6 +2494,7 @@ void slopeproject::SolveEigenSparse ( int type, MatDoub A, MatDoub b, MatDoub& x
     VectorXd xx;
     if ( type==0 ) {
         SimplicialLLT< SparseMatrix<double> > solver;
+        solver.factorize ( AA );
         xx = solver.compute ( AA ).solve ( bbb );
     } else if ( type==1 ) {
         SparseLU< SparseMatrix<double> > solver2;
@@ -2590,6 +2765,7 @@ MatDoub slopeproject::AssembleHhationho ( Int i )
             posttest[isample][0] = hhatinho[isample][ivar];
         }
     }
+
     return hhatinho;
 }
 
@@ -2791,7 +2967,8 @@ void slopeproject::MonteCarloGIM ( int iter, int iter2, bool print, string write
 
     MatDoub ptsweigths;
     int order = 2;
-    shapequad shape = shapequad ( order, 1 );
+    //shapequad shape = shapequad ( order, 1 );
+	     shapetri shape = shapetri ( order, 1 );
     shape.pointsandweigths ( ptsweigths );
     Int npts = ptsweigths.nrows();
     Int nglobalpts = fmesh->GetMeshTopology().nrows() * npts;
@@ -2872,14 +3049,17 @@ void slopeproject::MonteCarloGIM ( int iter, int iter2, bool print, string write
         fmesh->fmaterial->UpdateBodyForce ( bodyforce );
         fmesh->fmaterial->SetRandomField ( hhatinho );
         fmesh->SetHhat ( hhatinho );
-
-        int maxiter = 40;
-        Doub deltatol = 0.01;
-        int desirediter = 10;
-        Doub lamb0 = 0.5;
+                     cout << "set mat= " << std::endl;
+        int desirediter = 5;
+ 
 //soll = slopeobj0->IterativeProcess(10, 0.5, 0.01,20);
         //std::vector<std::vector<double>>  sol = IterativeProcess(desirediter, lamb0, deltatol, maxiter);//x = desloc y = loadfactor
-        std::vector<std::vector<double>>  sol = IterativeProcessGIMBinarySearch();
+  
+        Doub dlamb0 =0.1;
+        Doub maxlfac=2;
+        //10, 0.5, 0.01,20
+        std::vector<std::vector<double>>  sol = IterativeProcessNew ( desirediter, dlamb0,maxlfac );
+        // std::vector<std::vector<double>>  sol = IterativeProcessGIMBinarySearch();
 
         MatDoub solpost23;
         solpost23.CopyFromVector ( sol );

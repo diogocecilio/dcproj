@@ -9,6 +9,8 @@ elastoplastic2D<YC>::elastoplastic2D ( Doub thickness, NRmatrix<Doub>  bodyforce
     fplanestress = planestress;
     fthickness = thickness;
     fOrder = order;
+	//fshape = new shapequad(2,1);
+	fshape = new shapetri(2,1);
 //	fHHAT = HHAT;
     //fmesh = inmesh;
 
@@ -34,6 +36,8 @@ elastoplastic2D<YC>::elastoplastic2D ( Doub thickness, NRmatrix<Doub>  bodyforce
     fthickness = thickness;
     fOrder = order;
     fHHAT = HHAT;
+	//fshape = new shapequad(2,1);
+	fshape = new shapetri(2,1);
 }
 
 template <class YC>
@@ -316,10 +320,11 @@ void elastoplastic2D<YC>::Contribute ( NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efi
     eta=ptsw[1];
     w=ptsw[2];
     int type = 1;
-    shapequad objshapes ( fOrder, type );
+    //shapequad objshapes ( fOrder, type );
+	shape *objshapes = fshape;
 
     NRmatrix<Doub>  psis, GradPsi, elcoordst, xycoords, Jac, InvJac ( 2, 2 ), GradPhi, B, BT, N, NT, psist, C, BC, BCS, stress ( 3, 1, 0. ), temp, CS, KSt;
-    objshapes.shapes ( psis, GradPsi, xi, eta );
+    objshapes->shapes ( psis, GradPsi, xi, eta );
     psis.Transpose ( psist );
     psist.Mult ( elcoords, xycoords );
     NRvector<NRmatrix<Doub> > hhat ( fhhatvel.size() );
@@ -348,7 +353,7 @@ void elastoplastic2D<YC>::Contribute ( NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efi
 
         psis.Print();
 
-        objshapes.shapes ( psis, GradPsi, xi, eta );
+        objshapes->shapes ( psis, GradPsi, xi, eta );
         std::cout << "\n Det < 0 " <<std::endl;
         DebugStop();
     }
@@ -457,8 +462,9 @@ void elastoplastic2D<YC>::CalcStiff ( NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efin
     ek.assign ( nnodes * 2, nnodes * 2, 0. );
     efint.assign ( nnodes * 2, 1, 0. );
     efbody.assign ( nnodes * 2, 1, 0. );
-    shapequad shape = shapequad ( fOrder, 1 );
-    shape.pointsandweigths ( ptsweigths );
+   // shapequad shape = shapequad ( fOrder, 1 );
+
+    fshape->pointsandweigths ( ptsweigths );
     Int npts = ptsweigths.nrows();
 
     NRvector<Doub> ptsw ( 3 );
@@ -825,22 +831,22 @@ void elastoplastic2D<YC>::DirichletBC ( NRmatrix<Doub>  &KG, NRmatrix<Doub>  & F
 {
     Int nodes = ids.size();
     Int sz = KG.nrows();
-    Int fu = 0, cu = 0;
+
     for ( Int i = 0; i < nodes; i++ ) {
         Int pso = ids[i];
         if ( dir == 0 ) {
             for ( Int j = 0; j < sz; j++ ) {
-                KG[2 * pso][j] = 0;
-                KG[j][2 * pso] = 0;
+                KG[2 * pso][j] = 0.;
+                KG[j][2 * pso] = 0.;
             }
-            KG[2 * pso][2 * pso] = 1;
+            KG[2 * pso][2 * pso] = 1.;
             FG[2 * pso][0] = val;
         } else {
             for ( Int j = 0; j < sz; j++ ) {
-                KG[2 * pso + 1][j] = 0;
-                KG[j][2 * pso + 1] = 0;
+                KG[2 * pso + 1][j] = 0.;
+                KG[j][2 * pso + 1] = 0.;
             }
-            KG[2 * pso + 1][2 * pso + 1] = 1;
+            KG[2 * pso + 1][2 * pso + 1] = 1.;
             FG[2 * pso + 1][0] = val;
         }
 
@@ -883,9 +889,10 @@ void elastoplastic2D<YC>::ContributeLineNewan ( NRmatrix<Doub>  &KG, NRmatrix<Do
     NRmatrix<Doub>  psis, gradpsis, ptsws;
 
     int type = 1;
-    shapequad objshapes ( fOrder, type );
+    //shapequad objshapes ( fOrder, type );
 
-    objshapes.pointsandweigths1D ( ptsws );
+	shape * objshapes = fshape;
+    objshapes->pointsandweigths1D ( ptsws );
     Int npts = ptsws.nrows();
 
     Doub xi, w;
@@ -894,7 +901,7 @@ void elastoplastic2D<YC>::ContributeLineNewan ( NRmatrix<Doub>  &KG, NRmatrix<Do
     for ( Int ipt = 0; ipt < npts; ipt++ ) {
         xi = ptsws[ipt][0];
         w = ptsws[ipt][2];
-        objshapes.shapes1D ( psis, gradpsis, xi );
+        objshapes->shapes1D ( psis, gradpsis, xi );
         psis.Mult ( gradpsis, DetJ );
 
     }
@@ -905,13 +912,14 @@ template <class YC>
 void elastoplastic2D<YC>::ContributeCurvedLine ( NRmatrix<Doub>  &KG, NRmatrix<Doub>  &FG, NRmatrix<Doub>  meshnodes, MatInt linetopology,Doub force )
 {
     int type = 1;
-    shapequad objshapes ( fOrder, type );
+    //shapequad objshapes ( fOrder, type );
+	shape * objshapes = fshape;
     Int sz = 2*meshnodes.nrows();
     FG.assign ( sz, 1, 0. );
     //std::cout << "sz = " << sz << std::endl;
     MatDoub psis, gradpsis, ptsws, DetJ, psist;
 
-    objshapes.pointsandweigths1D ( ptsws );
+    objshapes->pointsandweigths1D ( ptsws );
 
     Int npts = 1000,els=linetopology.nrows(),nodes= fOrder+1;
     Doub xi, w;
@@ -927,7 +935,7 @@ void elastoplastic2D<YC>::ContributeCurvedLine ( NRmatrix<Doub>  &KG, NRmatrix<D
         Doub delta = 2. / npts;
         xi = -1.;
         for ( Int ipt = 0; ipt <= npts+1; ipt++ ) {
-            objshapes.shapes1D ( psis, gradpsis, xi );
+            objshapes->shapes1D ( psis, gradpsis, xi );
             psis.Transpose ( psist );
             temp = xycoords;
             psist.Mult ( elcoords, xycoords );
@@ -945,7 +953,7 @@ void elastoplastic2D<YC>::ContributeCurvedLine ( NRmatrix<Doub>  &KG, NRmatrix<D
             for ( Int ipt = 0; ipt < npts; ipt++ ) {
                 xi = ptsws[ipt][0];
                 w = ptsws[ipt][1];
-                objshapes.shapes1D ( psis, gradpsis, xi );
+                objshapes->shapes1D ( psis, gradpsis, xi );
                 integral[inode][0] += psis[inode][0] * force*jac*w;
 
             }
@@ -977,9 +985,9 @@ void elastoplastic2D<YC>::SolPt ( mesh * inmesh, const Int &el, const  NRmatrix<
     GetElCoords ( allcoords, el, elcoords );
 
     int type = 1;
-    shapequad objshapes ( fOrder, type );
+    //shapequad objshapes ( fOrder, type );
 
-    objshapes.shapes ( psis, GradPsi, xi, eta );
+    fshape->shapes ( psis, GradPsi, xi, eta );
     Int nodes = psis.nrows();
     Int nstatevars = 1;
     solel.assign ( nodes, 1, 0 );
@@ -997,7 +1005,7 @@ template <class YC>
 void elastoplastic2D<YC>::PostProcess ( std::vector<std::vector< std::vector<Doub > > > allcoords, NRmatrix<Doub>  meshnode, MatInt meshtopology, const NRmatrix<Doub>  & nodalsol, std::vector<std::vector<double>> &solx, std::vector<std::vector<double>> &soly )
 {
     int type = 1;
-    shapequad objshapes ( fOrder, type );
+    //shapequad objshapes ( fOrder, type );
     //std::vector<std::vector< std::vector<Doub > > > allcoords = inmesh.GetAllCoords();
     //MatDoub meshnodes = inmesh.GetMeshNodes();
     //MatInt meshtopology = inmesh.GetMeshTopology();
@@ -1014,7 +1022,7 @@ void elastoplastic2D<YC>::PostProcess ( std::vector<std::vector< std::vector<Dou
             std::vector<double> sol ( 3 );
             for ( Doub eta = -1.; eta < 1 - refine; eta += refine ) {
                 Doub approx = 0., approy = 0.;
-                objshapes.shapes ( psis, gradpsis, xi, eta );
+               fshape->shapes ( psis, gradpsis, xi, eta );
                 psis.Transpose ( psist );
                 psist.Mult ( elcoords, xycoords );
                 sol[0] = xycoords[0][0];
@@ -1037,7 +1045,7 @@ template <class YC>
 void elastoplastic2D<YC>::PostProcess ( std::vector<std::vector< std::vector<Doub > > > allcoords, NRmatrix<Doub>  meshnode, MatInt meshtopology, Int var, const NRmatrix<Doub>  & nodalsol, std::vector<std::vector<double>> &sol )
 {
     int type = 1;
-    shapequad objshapes ( fOrder, type );
+   // shapequad objshapes ( fOrder, type );
     //std::vector<std::vector< std::vector<Doub > > > allcoords = inmesh.GetAllCoords();
     //MatDoub meshnodes = inmesh.GetMeshNodes();
     //MatInt meshtopology = inmesh.GetMeshTopology();
@@ -1054,7 +1062,7 @@ void elastoplastic2D<YC>::PostProcess ( std::vector<std::vector< std::vector<Dou
             std::vector<double> soli ( 3 );
             for ( Doub eta = -1.; eta < 1 - refine; eta += refine ) {
                 Doub approx = 0., approy = 0.;
-                objshapes.shapes ( psis, gradpsis, xi, eta );
+                fshape->shapes ( psis, gradpsis, xi, eta );
                 psis.Transpose ( psist );
                 psist.Mult ( elcoords, xycoords );
                 soli[0] = xycoords[0][0];
@@ -1079,12 +1087,12 @@ void elastoplastic2D<YC>::PostProcessIntegrationPointVar ( std::vector<std::vect
 //	MatDoub meshnodes = inmesh.GetMeshNodes();
 //	MatInt meshtopology = inmesh.GetMeshTopology();
     int type = 1;
-    shapequad objshapes ( fOrder, type );
+    //shapequad objshapes ( fOrder, type );
 
     NRmatrix<Doub>  ptsweigths,psis,psist,GradPsi,xycoords;
     Doub xi, eta;
-    shapequad shape = shapequad ( fOrder, 1 );
-    shape.pointsandweigths ( ptsweigths );
+   // shapequad shape = shapequad ( fOrder, 1 );
+    fshape->pointsandweigths ( ptsweigths );
     Int npts = ptsweigths.nrows();
     Int nels = meshtopology.nrows();
     NRmatrix<Doub>  elcoords;
@@ -1096,7 +1104,7 @@ void elastoplastic2D<YC>::PostProcessIntegrationPointVar ( std::vector<std::vect
             xi = ptsweigths[ipt][0];
             eta = ptsweigths[ipt][1];
 
-            objshapes.shapes ( psis, GradPsi, xi, eta );
+            fshape->shapes ( psis, GradPsi, xi, eta );
             psis.Transpose ( psist );
             psist.Mult ( elcoords, xycoords );
             Doub plasticj2 = fepspvec[counter].J2();
@@ -1139,8 +1147,8 @@ void elastoplastic2D<YC>::ComputeSolAndDSol ( mesh * inmesh,NRmatrix<Doub>&sol,N
     Int nvars = 2;
     Int sz=nodalsol.nrows();
 
-    shapequad objshapes ( 2, 1 );
-    NRmatrix<Doub> base=objshapes.GetBaseNodes();
+    //shapequad objshapes ( 2, 1 );
+    NRmatrix<Doub> base=fshape->GetBaseNodes();
 
     sol.assign ( sz,2,0. );
     dsol.assign ( sz,2,0. );
@@ -1151,7 +1159,7 @@ void elastoplastic2D<YC>::ComputeSolAndDSol ( mesh * inmesh,NRmatrix<Doub>&sol,N
     w=0.;
 
     NRmatrix<Doub>  psis,psist, GradPsi,elementdisplace;
-    objshapes.shapes ( psis, GradPsi, xi, eta );
+    fshape->shapes ( psis, GradPsi, xi, eta );
     psis.Transpose ( psist );
 
     Int elnodes = elcoords.nrows();
@@ -1183,7 +1191,7 @@ void elastoplastic2D<YC>::ComputeSolAndDSol ( mesh * inmesh,NRmatrix<Doub>&sol,N
             NRmatrix<Doub>  psis,GradPsi,Jac,InvJac ( 2,2 ),GradPhi,gradu;
             xi=base[inode][0];
             eta=base[inode][1];
-            objshapes.shapes ( psis, GradPsi, xi, eta );
+            fshape->shapes ( psis, GradPsi, xi, eta );
 
 
             GradPsi.Mult ( elcoords, Jac );
@@ -1228,10 +1236,10 @@ void elastoplastic2D<YC>::ComputeSolution ( mesh * inmesh,NRmatrix<Doub>  elcoor
     eta=ptsw[1];
     w=ptsw[2];
     int type = 1;
-    shapequad objshapes ( fOrder, type );
+    //shapequad objshapes ( fOrder, type );
 
     NRmatrix<Doub>  psis,psist, GradPsi,xycoords,Jac,InvJac ( 2,2 ),GradPhi;
-    objshapes.shapes ( psis, GradPsi, xi, eta );
+    fshape->shapes ( psis, GradPsi, xi, eta );
     psis.Transpose ( psist );
     psist.Mult ( elcoords, xycoords );
 

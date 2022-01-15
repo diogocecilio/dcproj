@@ -29,7 +29,11 @@ public:
             vtktopol=meshtopology;
         } else if ( elnodes==8 && fdim==3 ) { //cube 8 noded
             vtktopol=meshtopology;
-        } else if ( elnodes==20 && fdim==3 ) { //cube 20 noded
+        } else if ( elnodes==6 && fdim==2 ) { //cube 8 noded
+            vtktopol=meshtopology;
+        } else if ( elnodes==3 && fdim==2 ) { //cube 8 noded
+            vtktopol=meshtopology;
+        }else if ( elnodes==20 && fdim==3 ) { //cube 20 noded
             for ( Int iel = 0; iel < els; iel++ ) {
 
                 vtktopol[iel][0]=meshtopology[iel][0];

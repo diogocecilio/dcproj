@@ -1,5 +1,6 @@
 #include "KLGalerkinRF.h"
 #include "shapequad.h"
+#include "shapetri.h"
 #include <ctime>
 #include <chrono>
 #include <random>
@@ -18,6 +19,8 @@ KLGalerkinRF::KLGalerkinRF ( Int order, Doub Lx, Doub Ly,  Int type, Int samples
     ftype = type;
     fsamples = samples;
     fexpansionorder = expansionorder;
+	//fshape = new shapequad(2,1);
+	fshape = new shapetri(2,1);
     //cout << "sz = " << fmesh.fallcoords[0].size() << endl;
 }
 
@@ -41,9 +44,9 @@ void KLGalerkinRF::ContributeB ( MatDoub &BE, Doub xi, Doub eta, Doub w, MatDoub
     MatDoub psis, GradPsi, Jac, GradPhi, N, NT, psist, xycoords;
 
     int type = 1;
-    shapequad objshapes ( fOrder, type );
+    //shapequad objshapes ( fOrder, type );
 
-    objshapes.shapes ( psis, GradPsi, xi, eta );
+    fshape->shapes ( psis, GradPsi, xi, eta );
     psis.Transpose ( psist );
     psist.Mult ( elcoords, xycoords );
     GradPsi.Mult ( elcoords, Jac );
@@ -66,9 +69,9 @@ void KLGalerkinRF::CacStiffB ( MatDoub &BE, const MatDoub  &elcoords )
     BE.assign ( nnodes, nnodes, 0. );
 
     int type = 1;
-    shapequad objshapes ( fOrder, type );
+    //shapequad objshapes ( fOrder, type );
 
-    objshapes.pointsandweigths ( ptsweigths );
+    fshape->pointsandweigths ( ptsweigths );
     Int npts = ptsweigths.nrows();
 
     for ( Int ipt = 0; ipt < npts; ipt++ ) {
@@ -132,10 +135,10 @@ void KLGalerkinRF::ContributeC ( MatDoub &CE, MatDoub psis1, MatDoub GradPsi1, M
 void KLGalerkinRF::CacStiffC ( MatDoub &CE, const MatDoub  &elcoords1, const MatDoub  &elcoords2 )
 {
     int type = 1;
-    shapequad objshapes ( fOrder, type );
+    //shapequad objshapes ( fOrder, type );
     MatDoub intrule, psis1, psis2, GradPsi1, GradPsi2, CEt;
     Int nnodes = elcoords1.nrows();
-    objshapes.pointsandweigths ( intrule );
+    fshape->pointsandweigths ( intrule );
     Doub xi1, eta1, w1;
     Doub xi2, eta2, w2;
     CE.assign ( nnodes, nnodes, 0. );
@@ -145,12 +148,12 @@ void KLGalerkinRF::CacStiffC ( MatDoub &CE, const MatDoub  &elcoords1, const Mat
         xi1 = intrule[ipt][0];
         eta1 = intrule[ipt][1];
         w1 = intrule[ipt][2];
-        objshapes.shapes ( psis1, GradPsi1, xi1, eta1 );
+        fshape->shapes ( psis1, GradPsi1, xi1, eta1 );
         for ( Int jpt = 0; jpt < npts; jpt++ ) {
             xi2 = intrule[jpt][0];
             eta2 = intrule[jpt][1];
             w2 = intrule[jpt][2];
-            objshapes.shapes ( psis2, GradPsi2, xi2, eta2 );
+            fshape->shapes ( psis2, GradPsi2, xi2, eta2 );
             ContributeC ( CEt, psis1, GradPsi1, elcoords1, w1, psis2, GradPsi2, elcoords2, w2 );
             CE += CEt;
         }
@@ -398,14 +401,14 @@ void KLGalerkinRF::GenerateNonGaussinRandomField ( VecComplex& val, MatDoub& vec
     //em cada coluna da hhatcoes tem um random field
     cout << " n PRECISA MUDAR AQUIx!!" << endl;
     //Distribui��o log-normal
-    Doub mean = 23.;
-    Doub sdev = 0.3 * mean;
+    Doub mean = 30.;
+    Doub sdev = 0.2 * mean;
     Doub xi = sqrt ( log ( 1 + pow ( ( sdev / mean ),2 ) ) );
     Doub lambda = log ( mean ) - xi * xi / 2.;
     for ( int i = 0; i < hhatcoes.nrows(); i++ ) for ( int j = 0; j < hhatcoes.ncols(); j++ ) hhatcoes[i][j] = exp ( lambda + xi * hhatcoes[i][j] );
 
-    mean = 0.000000001 * M_PI/180.;
-    sdev = 0. * mean;
+    mean = 10. * M_PI/180.;
+    sdev = 0.2 * mean;
     xi = sqrt ( log ( 1 + pow ( ( sdev / mean ), 2 ) ) );
     lambda = log ( mean ) - xi * xi / 2.;
     for ( int i = 0; i < hhatphi.nrows(); i++ ) for ( int j = 0; j < hhatphi.ncols(); j++ ) hhatphi[i][j] = exp ( lambda + xi * hhatphi[i][j] );
@@ -731,10 +734,10 @@ Doub KLGalerkinRF::PerfomIntegralOfListconst ( const MatDoub &Vec )
     MatDoub xycoords1, xycoords2, sol1, sol2, intrule, psis, elcoords, GradPsi, Jac;
     Doub  sum = 0., solu, xi, eta, w;
     int type = 1;
-    shapequad objshapes ( fOrder, type );
+    //shapequad objshapes ( fOrder, type );
 
 
-    objshapes.pointsandweigths ( intrule );
+    fshape->pointsandweigths ( intrule );
     Int nels = allcoords.size(), iel;
     for ( iel = 0; iel < nels; iel++ ) {
         Int npts = intrule.nrows();
@@ -742,7 +745,7 @@ Doub KLGalerkinRF::PerfomIntegralOfListconst ( const MatDoub &Vec )
             xi = intrule[ipt][0];
             eta = intrule[ipt][1];
             w = intrule[ipt][2];
-            objshapes.shapes ( psis, GradPsi, xi, eta );
+            fshape->shapes ( psis, GradPsi, xi, eta );
             GetElCoords ( allcoords, iel, elcoords );
             GradPsi.Mult ( elcoords, Jac );
             Doub DetJ = -Jac[0][1] * Jac[1][0] + Jac[0][0] * Jac[1][1];

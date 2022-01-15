@@ -3,7 +3,7 @@
 #include "shape.h"
 #include "mesh.h"
 #include "error.h"
-
+#include "shapetri.h"
 /** @brief This class implements an elastoplastic material and store the hardening variables and strain state.
 Detailed description follows here.
 @author Diogo Cecílio
@@ -237,6 +237,8 @@ private:
     //mesh fmesh;
 
 
+	shape *fshape;
+	
 
 public:
     NRmatrix<Doub>  fHHAT;

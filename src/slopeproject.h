@@ -50,7 +50,7 @@ public:
     void  ReadMatDoub ( MatDoub& matdoub, std::string  file );
     std::vector<Doub>   vecstr_to_vecdoub ( std::vector<string> vs );
     std::vector<Int>   vecstr_to_vecint ( std::vector<string> vs );
-    void IterativeProcessNew ( Int ndesi, Doub dlamb0 );
+    std::vector<std::vector<double>> IterativeProcessNew ( Int ndesi, Doub dlamb0, Doub maxlfac );
     std::vector<std::vector<double>> IterativeProcess ( int ndesi, Doub dlamb0, Doub alphatol, int niter );
     std::vector<std::vector<double>> IterativeProcessArcLengthSRM ( int ndesi, Doub dlamb0, Doub alphatol, int niter );
     void   IterativeProcess2();
@@ -68,6 +68,10 @@ public:
     void Line ( VecDoub a, VecDoub b, Int ndivs, MatDoub& path );
 
     void findbcids ( mesh* gmesh, std::vector<std::vector<int>>& idsvector );
+	void findbcidsfat ( mesh* gmesh, std::vector<std::vector<int>>& idsvector );
+	void findbcidsfat5022 ( mesh* gmesh, std::vector<std::vector<int>>& idsvector );
+	void findbcids45( mesh* gmesh, std::vector<std::vector<int>>& idsvector );
+	void findbcidsfatsn ( mesh* gmesh, std::vector<std::vector<int>>& idsvector );
     MatDoub  AssembleHhationho ( Int i );
     std::vector<std::vector<double>>  IterativeProcessShearRed ( Doub fac, Doub delta,Doub tol );
     std::vector<std::vector<double>>  IterativeProcessShearRed2 ( Doub fac, Doub delta,Doub tol );

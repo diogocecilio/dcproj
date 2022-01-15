@@ -76,6 +76,63 @@ public:
         }
 
     }
+ /*   
+        void shapes( MatDoub&psis, MatDoub &gradpsis, Doub xi, Doub eta )
+    {
+        switch ( forder ) {
+        case 1:
+            psis.resize ( 4, 1 );
+            gradpsis.resize ( 2, 4 );
+            psis[0][0] = ( ( 1 - eta ) * ( 1 - xi ) ) / 4.;
+            psis[1][0] = ( ( 1 - eta ) * ( 1 + xi ) ) / 4.;
+            psis[2][0] = ( ( 1 + eta ) * ( 1 + xi ) ) / 4.;
+            psis[3][0] = ( ( 1 + eta ) * ( 1 - xi ) ) / 4.;
+
+            gradpsis[0][0] = 1. / 4. * ( -1. + eta );
+            gradpsis[0][1] = ( 1. - eta ) / 4.;
+            gradpsis[0][2] = ( 1. + eta ) / 4.;
+            gradpsis[0][3] = 1. / 4. * ( -1. - eta );
+
+            gradpsis[1][0] = 1. / 4. * ( -1. + xi );
+            gradpsis[1][1] = 1. / 4. * ( -1. - xi );
+            gradpsis[1][2] = ( 1. + xi ) / 4.;
+            gradpsis[1][3] = ( 1. - xi ) / 4.;
+            break;
+        case 2:
+            psis.assign ( 8, 1, 0.0000 );
+            gradpsis.assign ( 2, 8, 0.000 );
+
+            psis[0][0] =-((-1 + eta)*(-1 + xi)*(1 + eta + xi))/4.;
+            psis[1][0] =((-1 + eta)*(-1 + pow(xi,2)))/2.;
+            psis[2][0] =((-1 + eta)*(1 + eta - xi)*(1 + xi))/4.;
+            psis[3][0] =-((-1 + pow(eta,2))*(1 + xi))/2.;
+            psis[4][0] =  ((1 + eta)*(1 + xi)*(-1 + eta + xi))/4.;
+            psis[5][0] = -((1 + eta)*(-1 + pow(xi,2)))/2.;
+            psis[6][0] = ((-1 + xi)*(1 - pow(eta,2) + xi + eta*xi))/4.;
+            psis[7][0] =((-1 + pow(eta,2))*(-1 + xi))/2.;
+
+
+            gradpsis[0][0] =-((-1 + eta)*(-1 + xi))/4. - ((-1 + eta)*(1 + eta + xi))/4.;
+            gradpsis[0][1] =(-1 + eta)*xi ;
+            gradpsis[0][2] = ((-1 + eta)*(1 + eta - xi))/4. - ((-1 + eta)*(1 + xi))/4.;
+            gradpsis[0][3] = (1 - pow(eta,2))/2.;
+            gradpsis[0][4] =  ((1 + eta)*(1 + xi))/4. + ((1 + eta)*(-1 + eta + xi))/4.;
+            gradpsis[0][5] = -((1 + eta)*xi);
+            gradpsis[0][6] = ((1 + eta)*(-1 + xi))/4. + (1 - pow(eta,2) + xi + eta*xi)/4.;
+            gradpsis[0][7] = (-1 + pow(eta,2))/2.;
+
+            gradpsis[1][0] = -((-1 + eta)*(-1 + xi))/4. - ((-1 + xi)*(1 + eta + xi))/4.;
+            gradpsis[1][1] =  (-1 + pow(xi,2))/2.;
+            gradpsis[1][2] =  ((-1 + eta)*(1 + xi))/4. + ((1 + eta - xi)*(1 + xi))/4.;
+            gradpsis[1][3] =  -(eta*(1 + xi));
+            gradpsis[1][4] =  ((1 + eta)*(1 + xi))/4. + ((1 + xi)*(-1 + eta + xi))/4.;
+            gradpsis[1][5] =  (1 - pow(xi,2))/2.;
+            gradpsis[1][6] =  ((-1 + xi)*(-2*eta + xi))/4.;
+            gradpsis[1][7] = eta*(-1 + xi);
+            break;
+        }
+
+    }*/
 
 
     void shapes ( MatrixXd &psis, MatrixXd &gradpsis, double xi, double eta )

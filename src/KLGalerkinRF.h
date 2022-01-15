@@ -99,5 +99,6 @@ private:
     Int fsamples;
     Int fexpansionorder;
     mesh fmesh;
+	shape *fshape;
 };
 
