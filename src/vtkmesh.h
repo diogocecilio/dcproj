@@ -15,7 +15,7 @@ public:
 
     void DrawNodes();
     void DrawConnectivity();
-    void DrawSolution ( Int step, Doub time );
+    void DrawSolution ( Int step );
 
     MatInt GetMeshTopologyVTK()
     {

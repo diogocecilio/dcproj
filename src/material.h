@@ -18,9 +18,10 @@ public:
     //	~elastmat2D();
     //
     virtual void Contribute ( MatDoub& ek, MatDoub& efint, MatDoub& efbody,NRvector<Doub> ptsw, MatDoub elcoords, MatDoub eldisplace ) =0;
+	//virtual void Contribute ( MatDoub &ek, MatDoub &ef, Doub xi, Doub eta, Doub w, MatDoub elcoords )=0;
     virtual void CalcStiff ( MatDoub& ek, MatDoub& efint, MatDoub& efbody, const MatDoub& elcoords, MatDoub eldisplace ) =0;
     virtual  void SetTangentMatrixType ( bool type ) =0;
-
+	virtual void CalcStiff ( MatDoub &ek, MatDoub &ef, const MatDoub  &elcoords )=0;
     //virtual void Assemble(std::vector<std::vector< std::vector<Doub > > > allcoords, MatDoub meshnodes, MatInt meshtopology, MatDoub& KG, MatDoub& Fint, MatDoub& Fbody)=0;
     //virtual void Assemble(MatDoub &KG, MatDoub &Fint, MatDoub &Fbody)=0;
     virtual void assembleBandN ( MatDoub& B, MatDoub& N, const MatDoub& psis, const MatDoub& GradPhi ) =0;

@@ -45,7 +45,6 @@ slopeproject::slopeproject ( slopeproject& copy )
 void slopeproject::CreateRandomField ( string namefolder )
 {
 
-    mesh* localmesh = fmesh;
     KLGalerkinRF* objKLGalerkinRF = fklgalerking;
 
     int check;
@@ -1376,7 +1375,7 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess ( int ndesi, D
             Int dim=2;
             string slopestr="slope-IterativeProcessGIMArc";
             VTKGraphMesh vtkobj ( fmesh,dim,scalar_names,vector_names,slopestr );
-            vtkobj.DrawSolution ( counterout, counter );
+            vtkobj.DrawSolution ( counterout );
 
         }
 
@@ -1408,7 +1407,7 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess ( int ndesi, D
         Int dim=2;
         string slopestr="/home/diogo/projects/dcproj/data/slope-saida-fina";
         VTKGraphMesh vtkobj ( fmesh,dim,scalar_names,vector_names,slopestr );
-        vtkobj.DrawSolution ( counterout, counter );
+        vtkobj.DrawSolution ( counterout );
 
     } while ( counterout <= niter && fabs ( diff2 ) > alphatol ); // while (counterout <= maxcountout && fabs(diff2) > 0.05);
 
@@ -1464,14 +1463,19 @@ std::vector<std::vector<double>>   slopeproject::IterativeProcess ( int ndesi, D
 }
 
 
-std::vector<std::vector<double>> slopeproject::IterativeProcessNew ( Int  ndesi, Doub dlamb0, Doub maxlfac )
+std::vector<std::vector<double>> slopeproject::IterativeProcessNew ( Int  ndesi, Doub dlamb0, Doub maxlfac, Int imc )
 {
     std::vector<double> solcount ( 7, 0. ), uvf ( 2, 0. );
     std::vector<std::vector<double>> solpost, solpost2;
     solpost.push_back ( solcount );
 
+	
+	auto s = std::to_string ( imc );
+	string filename = "/home/diogo/projects/dcproj/output/load-vs-displacement";
+	filename += s;
+	filename+=".nb";
     bool print = false;
-    std::ofstream file8 ( "slope-GIM-45-MC.nb" );
+    std::ofstream file8 ( filename);
     std::vector<int>  idsbottom, idsleft, idsright, iddisplace;
     std::vector<std::vector<int>> idsvector;
 
@@ -1500,7 +1504,7 @@ std::vector<std::vector<double>> slopeproject::IterativeProcessNew ( Int  ndesi,
     MatDoub dws ( sz, 1, 0. ), dwb ( sz, 1, 0. ), dww ( sz, 1, 0. ), dw ( sz, 1, 0. ), R ( sz,1,0. ),displace ( sz,1,0. ),displace0 ( sz,1,0. );
 
     Doub rtol = 1.e-6;//tol newton
-    Doub tol = 0.001;//tol arc length
+    Doub tol = 0.01;//tol arc length
     Doub rnorm = 10.;
     Doub lambn0 = 0.;
     //lambda  = load factor
@@ -1511,7 +1515,7 @@ std::vector<std::vector<double>> slopeproject::IterativeProcessNew ( Int  ndesi,
     Doub l=0.;
     Int counter = 0;
     Int maxcount = 20;
-    Int maxniter =60;
+    Int maxniter =20;
     Int counterout=0;
 
     fmesh->Assemble ( KG, FINT, FBODY );
@@ -1537,9 +1541,10 @@ std::vector<std::vector<double>> slopeproject::IterativeProcessNew ( Int  ndesi,
         counter = 0;
         Doub err1=10.,err2=10.;
         rnorm=10.;
-
+		//fmesh->Assemble ( KG, FINT, FBODY );
         do {
-            fmesh->Assemble ( KG, FINT, FBODY );
+            //fmesh->Assemble ( FINT, FBODY );
+			fmesh->Assemble ( KG, FINT, FBODY );
             R = FBODY;
             R *= lamb;
             R -= FINT;
@@ -1636,8 +1641,8 @@ std::vector<std::vector<double>> slopeproject::IterativeProcessNew ( Int  ndesi,
             //l*=1.1;
             lambn0 = lamb;
 
-            if ( print==false ) {
-                PostVtk ( iddisplace[0], counter,  counterout,   lamb, 20., displace, solpost2 );
+            if ( print==true ) {
+                PostVtk ( counter );
             }
             vector<Doub> uvf ( 2 );
             solcount[0] = fabs ( displace[2 * iddisplace[0] + 1][0] );
@@ -1672,19 +1677,9 @@ std::vector<std::vector<double>> slopeproject::IterativeProcessNew ( Int  ndesi,
     return solpost;
 }
 
-void slopeproject::PostVtk ( Int iddisplace,Int counter, Int counterout, Doub  fac,Doub finalload,NRmatrix<Doub> u, std::vector<std::vector<double>> &solpost2 )
+void slopeproject::PostVtk ( Int step )
 {
 
-    vector<double> uvf ( 2 );
-    uvf[0] = fabs ( u[2 * iddisplace + 1][0] );
-    uvf[1] = fac ;
-    solpost2.push_back ( uvf );
-
-
-    std::vector<double> sol ( 2 );
-    sol[0]= fabs ( u[2 * iddisplace + 1][0] );
-    sol[1] = fabs ( fac * finalload );
-    //solpost.push_back(sol);
     std::vector<string> scalar_names;
     std::vector<string> vector_names;
 
@@ -1694,9 +1689,9 @@ void slopeproject::PostVtk ( Int iddisplace,Int counter, Int counterout, Doub  f
     //vector_names.push_back("phi");
     //vector_names.push_back("Stress");
     Int dim=2;
-    string slopestr="slope-GIM-45-MC";
+    string slopestr="/home/diogo/projects/dcproj/output/slope-gim-mc-tri";
     VTKGraphMesh vtkobj ( fmesh,dim,scalar_names,vector_names,slopestr );
-    vtkobj.DrawSolution ( counterout, counter );
+    vtkobj.DrawSolution ( step);
 }
 
 void  slopeproject::IterativeProcess2()
@@ -1803,7 +1798,7 @@ void  slopeproject::IterativeProcess2()
         Int dim=2;
         string slopestr="slope-IterativeProcessGIMArc";
         VTKGraphMesh vtkobj ( fmesh,dim,scalar_names,vector_names,slopestr );
-        vtkobj.DrawSolution ( counterout, counter );
+        vtkobj.DrawSolution ( counterout );
 
     }
 
@@ -1959,7 +1954,7 @@ std::vector<std::vector<double>>    slopeproject::IterativeProcessGIMBinarySearc
                 Int dim=2;
                 string slopestr="slope-IterativeProcessGIMBinarySearch";
                 VTKGraphMesh vtkobj ( fmesh,dim,scalar_names,vector_names,slopestr );
-                vtkobj.DrawSolution ( counterout, counter );
+                vtkobj.DrawSolution ( counterout );
 
             }
             solcount[0] = fabs ( u[2 * iddisplace[0] + 1][0] );
@@ -2963,18 +2958,39 @@ void slopeproject::MonteCarloSRM ( int iter,int iter2, bool print, string writen
 void slopeproject::MonteCarloGIM ( int iter, int iter2, bool print, string writenamefolder )
 {
 
-    //mesh* finemesh = fmesh;
 
     MatDoub ptsweigths;
-    int order = 2;
-    //shapequad shape = shapequad ( order, 1 );
-	     shapetri shape = shapetri ( order, 1 );
-    shape.pointsandweigths ( ptsweigths );
+
+	Int order;
+	Int elnodes =fmesh->GetMeshTopology().ncols();
+	if(elnodes==3)
+ 	{
+	  order=1;
+	  shapetri shape = shapetri ( order, 1 );
+	  shape.pointsandweigths ( ptsweigths );
+	}
+	if(elnodes  ==4)
+ 	{
+	  order=1;
+	  shapequad shape = shapequad ( order, 1 );
+	  shape.pointsandweigths ( ptsweigths );
+	}
+	if(elnodes==6)
+ 	{
+	  order=2;
+	  shapetri shape = shapetri ( order, 1 );
+	  shape.pointsandweigths ( ptsweigths );
+	}
+	if(elnodes==8)
+ 	{
+	  order=2;
+	  shapequad shape = shapequad ( order, 1 );
+	  shape.pointsandweigths ( ptsweigths );
+	}
+
     Int npts = ptsweigths.nrows();
     Int nglobalpts = fmesh->GetMeshTopology().nrows() * npts;
     Int sz = 2 * fmesh->GetMeshNodes().nrows();
-
-
     //material* materialdp = finemesh->fmaterial;
 
     NRvector<Doub> matconsts ( 4, 0. );
@@ -3058,9 +3074,9 @@ void slopeproject::MonteCarloGIM ( int iter, int iter2, bool print, string write
         Doub dlamb0 =0.1;
         Doub maxlfac=2;
         //10, 0.5, 0.01,20
-        std::vector<std::vector<double>>  sol = IterativeProcessNew ( desirediter, dlamb0,maxlfac );
+        std::vector<std::vector<double>>  sol = IterativeProcessNew ( desirediter, dlamb0,maxlfac,imc );
         // std::vector<std::vector<double>>  sol = IterativeProcessGIMBinarySearch();
-
+		PostVtk ( imc );
         MatDoub solpost23;
         solpost23.CopyFromVector ( sol );
         Int last = solpost23.nrows() - 1;
@@ -3088,6 +3104,7 @@ void slopeproject::MonteCarloGIM ( int iter, int iter2, bool print, string write
         fileinfo << "counterout = " << solpost23[last][6] << std::endl;
 
 
+		
         PrintMCS ( namefolder, imc, print );
 
         //string filename2 = namefolder;
@@ -3126,6 +3143,9 @@ void slopeproject::PrintMCS ( string namefolder,int imc,bool print )
 
 
     if ( print ) {
+		
+		
+		
         string filename = namefolder;
         std::vector<std::vector<double>> hhatx;
         string name = "/Coesao";

@@ -50,7 +50,7 @@ public:
     void  ReadMatDoub ( MatDoub& matdoub, std::string  file );
     std::vector<Doub>   vecstr_to_vecdoub ( std::vector<string> vs );
     std::vector<Int>   vecstr_to_vecint ( std::vector<string> vs );
-    std::vector<std::vector<double>> IterativeProcessNew ( Int ndesi, Doub dlamb0, Doub maxlfac );
+    std::vector<std::vector<double>> IterativeProcessNew ( Int ndesi, Doub dlamb0, Doub maxlfac, Int imc );
     std::vector<std::vector<double>> IterativeProcess ( int ndesi, Doub dlamb0, Doub alphatol, int niter );
     std::vector<std::vector<double>> IterativeProcessArcLengthSRM ( int ndesi, Doub dlamb0, Doub alphatol, int niter );
     void   IterativeProcess2();
@@ -81,7 +81,7 @@ public:
     KLGalerkinRF* fklgalerking;
     NRmatrix<MatDoub> frandomfield;
 
-    void PostVtk ( Int iddisplace,Int counter, Int counterout, Doub  fac,Doub finalload,NRmatrix<Doub> u, std::vector<std::vector<double>> &solpost2 );
+    void PostVtk (  Int step  );
 
     template <class T>
     Doub rtsafe ( T &funcd, const Doub x1, const Doub x2, const Doub xacc )

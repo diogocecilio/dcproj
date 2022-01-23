@@ -25,7 +25,7 @@ public:
      * @param [in] order interpolation order
      * @param [in] HHAT random field
      */
-    elastoplastic2D ( Doub thickness, NRmatrix<Doub>  bodyforce, Int planestress, Int order, NRmatrix<Doub>   HHAT );
+    elastoplastic2D ( Doub thickness, NRmatrix<Doub>  bodyforce, Int planestress, Int elnodes, NRmatrix<Doub>   HHAT );
     /**
     * @brief Class constructor
      * @param [in] thickness
@@ -33,7 +33,7 @@ public:
        * @param [in] planestress  plane stress = 1 and plane strain = 0
        * @param [in] order interpolation order
      */
-    elastoplastic2D ( Doub thickness, NRmatrix<Doub>  bodyforce, Int planestress, Int order );
+    elastoplastic2D ( Doub thickness, NRmatrix<Doub>  bodyforce, Int planestress, Int elnodes );
 
     /**
      * @brief Copy constructor
@@ -56,6 +56,14 @@ public:
      * @param [in] eldisplace  element nodal displacement
      */
     void Contribute ( NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint, NRmatrix<Doub>  &efbody,NRvector<Doub> ptsw, NRmatrix<Doub>  elcoords,NRmatrix<Doub>  eldisplace );
+	
+    /**
+     * @brief    It computes a contribution to the stiffness matrix and load vector at one integration point.
+     * @param [in] ptsw integration point and weigth
+     * @param [in] elcoords element nodal coordinates
+     * @param [in] eldisplace  element nodal displacement
+     */
+	void Contribute (  NRmatrix<Doub>  &efint, NRmatrix<Doub>  &efbody,NRvector<Doub> ptsw, NRmatrix<Doub>  elcoords,NRmatrix<Doub>  eldisplace );
 
     /**
     	 * @brief Computes the element stiffness matrix and right hand side
@@ -66,6 +74,15 @@ public:
          * @param [out] efbody element right hand side body forces
     	 */
     void CalcStiff ( NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint, NRmatrix<Doub>  &efbody, const NRmatrix<Doub>   &elcoords, NRmatrix<Doub>  eldisplace );
+	
+    /**
+    	 * @brief Computes the element stiffness matrix and right hand side
+         * @param [in] elcoords element nodal coordinates
+         * @param [in] eldisplace  element nodal displacement
+    	 * @param [out] efint element right hand side internal forces
+         * @param [out] efbody element right hand side body forces
+    	 */
+	void CalcStiff ( NRmatrix<Doub>  &efint, NRmatrix<Doub>  &efbody, const NRmatrix<Doub>   &elcoords,NRmatrix<Doub>  eldisplace );
 
     /**
      * @brief Assemble the displacement matrix B and the shape matrix N
@@ -167,7 +184,7 @@ public:
     void ComputeSolAndDSol ( mesh * inmesh,NRmatrix<Doub>&sol,NRmatrix<Doub>&dsol );
     void ComputeSolAndDSol ( mesh * inmesh,NRvector<NRmatrix<Doub>>&sol,NRvector<NRmatrix<Doub>>&dsol );
     void ComputeSolAndDSol2 ( mesh * inmesh,NRmatrix<Doub>&sol,NRmatrix<Doub>&dsol );
-
+	virtual void CalcStiff ( MatDoub &ek, MatDoub &ef, const MatDoub  &elcoords ){DebugStop();}
     NRvector<Doub> ComputePhi ( NRtensor<Doub> eps )
     {
         NRvector<Doub>  valphi=fYC.phi ( eps );

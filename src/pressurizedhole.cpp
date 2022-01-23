@@ -98,7 +98,7 @@ void  pressurizedhole::IterativeProcess()
         Int dim=2;
         string slopestr="ring";
         VTKGraphMesh vtkobj ( &mesh0,dim,scalar_names,vector_names,slopestr );
-        vtkobj.DrawSolution ( counterout, counter );
+        vtkobj.DrawSolution ( counterout );
 
     }
 

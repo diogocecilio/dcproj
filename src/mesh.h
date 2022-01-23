@@ -48,6 +48,9 @@ public:
     MatInt GetMeshTopologyVTK();
     void Assemble ( MatDoub& KG, MatDoub& Fint, MatDoub& Fbody );
     void Assemble ( SparseMatrix<double>  &KG, VectorXd &Fint, VectorXd &Fbody );
+	void Assemble ( MatDoub& Fint, MatDoub& Fbody );
+	void AssembleLinear ( MatDoub& KG, MatDoub& F );
+	//void AssembleExternalLoadVector( MatDoub& KG, MatDoub& F );
     void  FindIds ( NRvector<double> constcoorddata,NRvector<int> constcoord, std::vector<int>& ids );
 
     void ComputeSolAndDSol ( NRmatrix<Doub> &sol, NRmatrix<Doub> &dsol );

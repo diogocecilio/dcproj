@@ -1,7 +1,7 @@
 ﻿
 // dcproj.cpp : Defines the entry point for the application.
 //
-
+#include "readgidmesh.h"
 #include "dcproj.h"
 #include "mesh.h"
 #include "elastoplastic3D.h"
@@ -19,6 +19,7 @@
 #define EIGEN_USE_MKL_ALL
 //#include <lapacke.h>
 #include "pressurizedhole.h"
+#include "readgidmesh.h"
 using namespace std;
 
 void ReadMatDoub ( MatDoub& matdoub, std::string  file );
@@ -72,16 +73,30 @@ void myTreads ( int a, int b, slopeproject* slopeobj2,string namefolder3 )
 	
     delete slopeobj2;
 }
-
+void  PrintMathematicaFormat ( MatDoub postdata, std::ofstream& file )
+{
+    file.clear();
+    for ( Int i = 0; i < postdata.nrows(); i++ ) {
+        for ( Int j = 0; j < postdata.ncols(); j++ ) {
+            file << postdata[i][j] << " " ;
+        }
+        file << endl;
+    }
+    file.close();
+}
 void myTreadsSRM ( int a, int b, slopeproject* slopeobj2,string namefolder3 )
 {
     slopeobj2->MonteCarloSRM ( a, b, false, namefolder3 );
     delete slopeobj2;
 }
 
-
+void solvequd();
 int main ( int argc, char *argv[] )
 {
+	//string file ="/home/diogo/Desktop/mesh.msh";
+	//readgidmesh read = readgidmesh(file);
+	//read.ReadMesh();
+	//return 0;
 
 //     STRAT(1)xx  -9.2299616122518157E-004
 //      STRAT(2)yy   3.6101399878573409E-005
@@ -134,7 +149,9 @@ int main ( int argc, char *argv[] )
 	
     // cout<<"calculou!"<<endl;
     //return 0;
+	//solvequd();
    slope2x1( );
+	cout << "Hello CMake." << endl;
     return 0;
     // beam3dtools beam0bj = beam3dtools();
     // beam0bj.SolveElasticBeam();
@@ -168,89 +185,12 @@ int main ( int argc, char *argv[] )
     cout << "Hello CMake." << endl;
     return 0;
 }
+ 
+
 
 void slope2x1( )
 {
 
-	//2x1 meshes
-  // string nodestr = "/home/diogo/projects/dcproj/data/coords2x1h5.txt";
-  // string elsstr = "/home/diogo/projects/dcproj/data/topology2x1h5.txt";
-   
-     // string nodestr = "/home/diogo/projects/dcproj/data/nodes-995.txt";
-  // string elsstr = "/home/diogo/projects/dcproj/data/els-995.txt";
-   
-  //string nodestr = "/home/diogo/projects/dcproj/data/nodes-2422.txt";
-   //string elsstr = "/home/diogo/projects/dcproj/data/els-2422.txt";
-
-
-
-   //1x1 meshes
- //   string nodestr = "/home/diogo/projects/dcproj/data/nodes-606.txt";
-//    string elsstr = "/home/diogo/projects/dcproj/data/els-606.txt";
-
-    //     string nodestr = "/home/diogo/projects/dcproj/data/nos-287.txt";
-   // string elsstr = "/home/diogo/projects/dcproj/data/els-287.txt";
-   
-   
-   //2x1 fat 38x19
-   //  string nodestr = "/home/diogo/projects/dcproj/data/fat-404-nodes.txt";
-  // string elsstr = "/home/diogo/projects/dcproj/data/fat-404-els.txt";
-
-   
-    //    string nodestr = "/home/diogo/projects/dcproj/data/fat-894-nodes.txt";
-  // string elsstr = "/home/diogo/projects/dcproj/data/fat-894-els.txt";
-	
-	   //     string nodestr = "/home/diogo/projects/dcproj/data/fat-2k-nodes.txt";
-  // string elsstr = "/home/diogo/projects/dcproj/data/fat-2k-els.txt";
-   
-   
-   //2x1 fat 50x22
-   
- //  string nodestr = "/home/diogo/projects/dcproj/data/fat-2x1-50x22-645-nodes.txt";
- //  string elsstr = "/home/diogo/projects/dcproj/data/fat-2x1-50x22-645-els.txt";
-   
-      //        string nodestr = "/home/diogo/projects/dcproj/data/fat-2x1-50x22-900-nodes.txt";
-  // string elsstr = "/home/diogo/projects/dcproj/data/fat-2x1-50x22-900-els.txt";
-   
-	
-	//SN
- //     string nodestr = "/home/diogo/projects/dcproj/data/nos-slope-sn";
-  // string elsstr = "/home/diogo/projects/dcproj/data/els-slope-sn";
-	
-		//	    string nodestr = "/home/diogo/projects/dcproj/data/nodes-sz-gid-276.txt";
-    //string elsstr = "/home/diogo/projects/dcproj/data/els-sz-gid-276.txt";
-	
-		 //   string nodestr = "/home/diogo/projects/dcproj/data/nodes-sz-gid.txt";
-   // string elsstr = "/home/diogo/projects/dcproj/data/els-sz-gid.txt";
-	
-	  //  string nodestr = "/home/diogo/projects/dcproj/data/nodes-sz-gid-605.txt";
-    //string elsstr = "/home/diogo/projects/dcproj/data/els-sz-gid-605.txt";
-	
-	//	    string nodestr = "/home/diogo/projects/dcproj/data/nodes-sz-gid-900.txt";
-   // string elsstr = "/home/diogo/projects/dcproj/data/els-sz-gid-900.txt";
-	
-		//	    string nodestr = "/home/diogo/projects/dcproj/data/nos-sz-gid-1k.txt";
-   // string elsstr = "/home/diogo/projects/dcproj/data/els-sz-gid-1k.txt";
-	
-				 //   string nodestr = "/home/diogo/projects/dcproj/data/tri-nodes.txt";
-   // string elsstr = "/home/diogo/projects/dcproj/data/tri-els.txt";
-	
-		//			    string nodestr = "/home/diogo/projects/dcproj/data/tri-nodes-722.txt";
-  //  string elsstr = "/home/diogo/projects/dcproj/data/tri-els-722.txt";
-	
-		//				    string nodestr = "/home/diogo/projects/dcproj/data/tri-nodes-2k.txt";
-    //string elsstr = "/home/diogo/projects/dcproj/data/tri-els-2k.txt";
-	
-							  // string nodestr = "/home/diogo/projects/dcproj/data/tri-nodes-381.txt";
-    //string elsstr = "/home/diogo/projects/dcproj/data/tri-els-381.txt";
-	
-		//    string nodestr = "/home/diogo/projects/dcproj/data/triumdoido-nodes.txt";
-   // string elsstr = "/home/diogo/projects/dcproj/data/triumdoido-els.txt";
-	
-			//    string nodestr = "/home/diogo/projects/dcproj/data/triumdoido-502-nodes.txt";
-  //  string elsstr = "/home/diogo/projects/dcproj/data/triumdoido-502-els.txt";
-				    string nodestr = "/home/diogo/projects/dcproj/data/triumdoido-558-nodes.txt";
-    string elsstr = "/home/diogo/projects/dcproj/data/triumdoido-558-els.txt";
 
    //el padroa 9 sn 10
    //no padrao 4 sn 3
@@ -259,13 +199,29 @@ void slope2x1( )
     MatDoub  meshcoords, elcoords;
     MatInt meshtopology;
     std::vector<std::vector<std::vector<Doub>>> allcoords;
-    ReadMesh ( allcoords, meshcoords, meshtopology, elsstr, nodestr );
+	string file ="/home/diogo/projects/dcproj/data/mesh-el952-no2k.msh";//GIM 1.40 22.4s   com 7 pts
+	//string file ="/home/diogo/projects/dcproj/data/mesh-el890-no1k.msh";//GIM 1.39 18s 20 s com 7 pts
+	//string file ="/home/diogo/projects/dcproj/data/mesh-el816-no1k.msh";//GIM 1.39 18.34 com 7 pts
+//	string file ="/home/diogo/projects/dcproj/data/mesh-el558-no1k.msh";//GIM 1.39 7.75 s 9.4s com 7 pts
+//	string file ="/home/diogo/projects/dcproj/data/mesh-el1k-no650.msh";//GIM 1.54
+	//string file ="/home/diogo/projects/dcproj/data/mesh-el558-no314.msh";//GIM 1.59 2.7s
+	//string file ="/home/diogo/projects/dcproj/data/mesh-el6k-no3k.msh";
+	//string file ="/home/diogo/projects/dcproj/data/mesh-el1k-no980.msh";//GIM 1.58
+	//string file ="/home/diogo/projects/dcproj/data/mesh-el3k-no6k-p2.msh";//GIM 1.43
+	//string file ="/home/diogo/projects/dcproj/data/mesh-el1k-no3k-quad.msh";
+	//string file ="/home/diogo/projects/dcproj/data/mesh-el138-no467.msh";
+	//string file ="/home/diogo/projects/dcproj/data/mesh-el551-no1k.msh";//GIM 1.44, 
+	//string file ="/home/diogo/projects/dcproj/data/mesh-el1k-no3k.msh";//SRM 1.23
+	//string file ="/home/diogo/projects/dcproj/data/mesh-el1k-no3k-b.msh";//GIM 1.44
+	//string file ="/home/diogo/projects/dcproj/data/quad.msh";//SRM 1.23
+	readgidmesh read = readgidmesh(file);
+	read.ReadMesh();
+	meshtopology = read.GetTopology();
+	meshcoords = read.GetCoords();
+	allcoords = read.GetAllCoords();
+    //ReadMesh ( allcoords, meshcoords, meshtopology, elsstr, nodestr );
 
-    std::ofstream filemesh1 ( "/home/diogocecilio/Dropbox/slope-reliability/results/mesh2x1/gim-Lx20-Ly2/meshcoords.txt" );
-    OutPutPost ( meshcoords, filemesh1 );
-    std::ofstream filemesh2 ( "/home/diogocecilio/Dropbox/slope-reliability/results/mesh2x1/gim-Lx20-Ly2/meshtopology.txt" );
-    OutPutPost ( meshtopology, filemesh2 );
-    cout <<"\n  dasdasd  " << endl;
+
 	Doub thickness = 1.;
 	//malha 1x1
    // Doub c = 50., phi = 20. * M_PI / 180., gamma = -20.;
@@ -297,43 +253,80 @@ void slope2x1( )
     MatDoub bodyforce ( 2, 1, 0. ), newbodyforce;
     bodyforce[1][0] = gamma;
     MatDoub ptsweigths;
-    int order = 2;
-    //shape* shapelocal = new shapequad ( order, 1 );
-	shape* shapelocal = new shapetri ( order, 1 );
-    shapelocal->pointsandweigths ( ptsweigths );
+	int order;
+	Int elnodes = meshtopology.ncols();
+	cout << "elnodes"<<endl;
+	cout << elnodes << endl;
+	if(elnodes==3)
+ 	{
+	  order=1;
+	  shape* shapelocal = new shapetri(order,1);
+	  shapelocal->pointsandweigths ( ptsweigths );
+	}
+	if(elnodes  ==4)
+ 	{
+	  order=1;
+	  shape* shapelocal = new shapequad(order,1);
+	  shapelocal->pointsandweigths ( ptsweigths );
+	}
+	if(elnodes==6)
+ 	{
+	  order=2;
+	  shape* shapelocal = new shapetri(order,1);
+	  shapelocal->pointsandweigths ( ptsweigths );
+	}
+	if(elnodes==8)
+ 	{
+	  order=2;
+	  shape* shapelocal = new shapequad(order,1);
+	  shapelocal->pointsandweigths ( ptsweigths );
+	}
+
+	cout << "order = "<< order << endl;
+	
     Int npts = ptsweigths.nrows();
     Int nglobalpts = meshtopology.nrows() * npts;
     Int sz = 2 * meshcoords.nrows();
-    int nthreads =4;
+    int nthreads =10;
     std::vector <std::thread> threadsmat;
 
-    Doub Lx = 40.;//(*Correlation length in x direction*)
-    Doub Ly = 4.;//(*Correlation length in y direction*)
+    Doub Lx = 20.;//(*Correlation length in x direction*)
+    Doub Ly = 2.;//(*Correlation length in y direction*)
     Int nsamples = 1000, expansionorder = 150;
     Int type = 3;
     NRmatrix<MatDoub> randomfield ( 2, 1 );
     Int dim =2;
 
-    elastoplastic2D< druckerprager >* mat = new elastoplastic2D< druckerprager > ( thickness, bodyforce, planestress, order, hhatinho );
+    elastoplastic2D< druckerprager >* mat = new elastoplastic2D< druckerprager > ( thickness, bodyforce, planestress, elnodes, hhatinho );
     mat->fYC.setup ( young, nu, c, phi );
     mat->SetMemory ( nglobalpts, sz );
     mat->UpdateBodyForce ( bodyforce );
 
-    elastoplastic2D< mohrcoulomb >* matmohr = new elastoplastic2D< mohrcoulomb > ( thickness, bodyforce, planestress, order, hhatinho );
+    elastoplastic2D< mohrcoulomb >* matmohr = new elastoplastic2D< mohrcoulomb > ( thickness, bodyforce, planestress, elnodes, hhatinho );
     matmohr->fYC.SetUp (  young, nu,c,Phi,Psi );
     matmohr->SetMemory ( nglobalpts, sz );
     matmohr->UpdateBodyForce ( bodyforce );
 	
-	elastoplastic2D< vonmises >* matvon = new elastoplastic2D< vonmises > ( thickness, bodyforce, planestress, order, hhatinho );
-	matvon->fYC.setup( young,  nu ,c);
+// 	bodyforce.assign(2,1,0.);
+// 	thickness=1.;
+// 	planestress=1;
+// 	young = 10000.;
+// 	nu = 0.3;
+ 	Doub sigy=10000.;
+	elastoplastic2D< vonmises >* matvon = new elastoplastic2D< vonmises > ( thickness, bodyforce, planestress, elnodes, hhatinho );
+	matvon->fYC.setup( young,  nu ,sigy);
     matvon->SetMemory ( nglobalpts, sz );
     matvon->UpdateBodyForce ( bodyforce );
 
-	//mesh* meshs = new mesh ( dim,matvon, allcoords, meshcoords, meshtopology, hhatinho );
-    mesh* meshs = new mesh ( dim,matmohr, allcoords, meshcoords, meshtopology, hhatinho );
-    ///mesh* meshs = new mesh(dim,mat, allcoords, meshcoords, meshtopology, hhatinho);
+ 	mesh* meshs = new mesh ( dim,matmohr, allcoords, meshcoords, meshtopology, hhatinho );
+//     //mesh* meshs = new mesh ( dim,matmohr, allcoords, meshcoords, meshtopology, hhatinho );
+//     ///mesh* meshs = new mesh(dim,mat, allcoords, meshcoords, meshtopology, hhatinho);
+// 	NRmatrix<Doub> KG,FINT,FBODY;
+// 	meshs->Assemble ( KG, FINT, FBODY );
+// 	KG.Print();
+// 	return ;
 
-    KLGalerkinRF* objKLGalerkinRF = new KLGalerkinRF ( order, Lx, Ly, type, nsamples, expansionorder );
+    KLGalerkinRF* objKLGalerkinRF = new KLGalerkinRF ( elnodes, Lx, Ly, type, nsamples, expansionorder );
     objKLGalerkinRF->SetMesh ( meshs );
 
     slopeproject* slopeobj = new slopeproject ( meshs, objKLGalerkinRF,randomfield );
@@ -362,15 +355,15 @@ void slope2x1( )
 		matvon->UpdateBodyForce ( bodyforce );
 
         int desirediter = 10;
-        Doub dlamb0 =0.25;
-		Doub maxlfac=2;
+        Doub dlamb0 =0.1;
+		Doub maxlfac=3;
         //10, 0.5, 0.01,20
-        slopeobj->IterativeProcessNew ( desirediter, dlamb0,maxlfac);
+        slopeobj->IterativeProcessNew ( desirediter, dlamb0,maxlfac,0);
        // slopeobj->IterativeProcess2( );
-       // soll = slopeobj->IterativeProcessShearRed( 0.1, 2,0.01);
+        //soll = slopeobj->IterativeProcessShearRed( 0.1, 1,0.01);
 		//cout <<"\n  exit  " << endl;
       //  soll = slopeobj->IterativeProcessGIMBinarySearch();
-        return;
+       // return;
 
     }
 
@@ -378,7 +371,7 @@ void slope2x1( )
     if ( true ) {
 
         //last filed created c =23 e phi=0
-        string filename = "/home/diogo/Dropbox/slope-reliability/results/mesh-secondexample";
+        string filename = "mesh-secondexample";
         filename+="/field-Lx";
         filename+=to_string ( Int ( Lx ) );
         filename+="-Ly";
@@ -389,16 +382,16 @@ void slope2x1( )
 
     std::cout << "lendo fields = "<<std::endl;
     MatDoub coesionrandomfield, frictionrandomfield;
-    string filerf = "/home/diogo/Dropbox/slope-reliability/results/mesh-secondexample/field-Lx20-Ly2/coesionfield.txt";
+    string filerf = "mesh-secondexample/field-Lx20-Ly2/coesionfield.txt";
     ReadMatDoub ( coesionrandomfield, filerf );
-    string filerff = "/home/diogo/Dropbox/slope-reliability/results/mesh-secondexample/field-Lx20-Ly2/frictionfield.txt";
+    string filerff = "mesh-secondexample/field-Lx20-Ly2/frictionfield.txt";
     ReadMatDoub ( frictionrandomfield, filerff );
 
 
     randomfield[0][0] = coesionrandomfield;
     randomfield[1][0] = frictionrandomfield;
 
-    string namefolder = "/home/diogo/Dropbox/slope-reliability/results/mesh-secondexample/gim-Lx20-Ly2";
+    string namefolder = "mesh-secondexample/gim-Lx20-Ly2";
     int delta = int ( nsamples/nthreads );
     int a=0,b=delta;
 
@@ -408,20 +401,20 @@ void slope2x1( )
       //  elastoplastic2D< druckerprager >* mat = new elastoplastic2D< druckerprager > ( thickness, bodyforce, planestress, order, hhatinho );
 std::cout << "criando malha "<<std::endl;
 
-    elastoplastic2D< mohrcoulomb >* matmohr = new elastoplastic2D< mohrcoulomb > ( thickness, bodyforce, planestress, order, hhatinho );
+    elastoplastic2D< mohrcoulomb >* matmohr = new elastoplastic2D< mohrcoulomb > ( thickness, bodyforce, planestress, elnodes, hhatinho );
 
 
-        mesh* meshs = new mesh ( dim,matmohr, allcoords, meshcoords, meshtopology, hhatinho );
-       //   mesh* mesh0 = new mesh(dim,mat, allcoords, meshcoords, meshtopology, hhatinho);
-       // mat->fYC.setup ( young, nu, c, phi );
-       // mat->SetMemory ( nglobalpts, sz );
-       // mat->UpdateBodyForce ( bodyforce );
+       // mesh* meshs = new mesh ( dim,matmohr, allcoords, meshcoords, meshtopology, hhatinho );
+          mesh* meshs = new mesh(dim,mat, allcoords, meshcoords, meshtopology, hhatinho);
+        mat->fYC.setup ( young, nu, c, phi );
+        mat->SetMemory ( nglobalpts, sz );
+        mat->UpdateBodyForce ( bodyforce );
 		std::cout << "criando KLGalerkinRF "<<std::endl;
 		
     matmohr->fYC.SetUp (  young, nu,c,Phi,Psi );
     matmohr->SetMemory ( nglobalpts, sz );
     matmohr->UpdateBodyForce ( bodyforce );
-        KLGalerkinRF* objKLGalerkinRF = new KLGalerkinRF ( order, Lx, Ly, type, nsamples, expansionorder );
+        KLGalerkinRF* objKLGalerkinRF = new KLGalerkinRF ( elnodes, Lx, Ly, type, nsamples, expansionorder );
         objKLGalerkinRF->SetMesh ( meshs );
 		std::cout << "criando slopeproject "<<std::endl;
         slopeproject* slopeobj = new slopeproject ( meshs, objKLGalerkinRF,randomfield );
@@ -438,22 +431,7 @@ std::cout << "criando malha "<<std::endl;
     for ( auto &threadx: threadsmat ) threadx.join();
 
 
-    /* for (int i=0;i<nthreads;i++)
-     {
-         elastoplastic2D< druckerprager >* mat = new elastoplastic2D< druckerprager >(thickness, bodyforce, planestress, order, hhatinho);
-         mesh* meshs = new mesh(dim,mat, allcoords, meshcoords, meshtopology, hhatinho);
-         mat->fYC.setup(young, nu, c, phi);
-         mat->SetMemory(nglobalpts, sz);
-         mat->UpdateBodyForce(bodyforce);
-         KLGalerkinRF* objKLGalerkinRF = new KLGalerkinRF(order, Lx, Ly, type, nsamples, expansionorder);
-         objKLGalerkinRF->SetMesh(meshs);
-         slopeproject* slopeobj = new slopeproject(meshs, objKLGalerkinRF,randomfield);
-         std::cout << "a = "<< a <<std::endl;
-         std::cout << "b = "<< b <<std::endl;
-         std::thread{myTreads,a,b, slopeobj,namefolder}.detach();
-         a=b+1;
-         b+=delta;
-     }*/
+
 }
 
 
@@ -492,7 +470,7 @@ void mainlinux ( int simtype,int comeco,int fim )
     //string nodestr = "/home/diogocecilio/projects/dcproj/nos-381.txt";
     //string elsstr = "/home/diogocecilio/projects/dcproj/els-381.txt";
 	
-	    string nodestr = "/home/diogocecilio/projects/dcproj/data/triumdoido-nodes.txt";
+	   string nodestr = "/home/diogocecilio/projects/dcproj/data/triumdoido-nodes.txt";
     string elsstr = "/home/diogocecilio/projects/dcproj/data/triumdoido-els.txt";
 
     // string nodestr = "/home/diogocecilio/projects/dcproj/nodes-606.txt";
@@ -1615,4 +1593,117 @@ void ReadMatDoub ( MatDoub& matdoub, std::string  file )
     //	cout << endl;
     //}
     matdoub.CopyFromVector ( coords );
+}
+
+void solvequd()
+{
+	string file ="/home/diogo/projects/dcproj/data/tri-p2.msh";//SRM 1.23
+	readgidmesh read = readgidmesh(file);
+	read.ReadMesh();
+	MatInt meshtopology = read.GetTopology();
+	MatDoub meshcoords = read.GetCoords();
+	std::vector<std::vector<std::vector<Doub>>>  allcoords = read.GetAllCoords();
+	//Uma coordenada em cima da linha. Qualquer coordenada
+	NRvector<double> constcoorddata ( 3,0. );
+    constcoorddata[0]=0.;
+    constcoorddata[1]=0.;
+    constcoorddata[2]=0.;
+    std::vector<int> idsline;
+	//Direcao a buscar. 0 significa que o algoritmo e livre para buscar naquela direcao e 1 que dizer que é fixo.
+    NRvector<int>constcoord2 ( 3 );
+    constcoord2[0]=0;//livre
+    constcoord2[1]=1;//fixo
+    constcoord2[2]=1;//fixo
+	read.FindIds(constcoorddata,constcoord2,idsline);
+	 cout << "idsline[i] "<< endl;
+	for(Int i=0;i<idsline.size();i++)cout << idsline[i] << endl;
+	//Coordenada do ponto
+    constcoorddata[0]=10.;
+    constcoorddata[1]=10.;
+    constcoorddata[2]=0.;
+    std::vector<int> idspoint;
+	//Direcao a buscar. 0 significa que o algoritmo e livre para buscar naquela direcao e 1 que dizer que é fixo.
+    constcoord2[0]=1;//livre
+    constcoord2[1]=1;//fixo
+    constcoord2[2]=1;//fixo
+	read.FindIds(constcoorddata,constcoord2,idspoint);
+	
+	
+	//Uma coordenada em cima da linha. Qualquer coordenada
+    constcoorddata[0]=10.;
+    constcoorddata[1]=10.;
+    constcoorddata[2]=0.;
+    std::vector<int> idslinetop;
+	//Direcao a buscar. 0 significa que o algoritmo e livre para buscar naquela direcao e 1 que dizer que é fixo.
+    constcoord2[0]=0;//livre
+    constcoord2[1]=1;//fixo
+    constcoord2[2]=1;//fixo
+	read.FindIds(constcoorddata,constcoord2,idslinetop);
+
+	 cout << "idslinetop[i] "<< endl;
+	for(Int i=0;i<idslinetop.size();i++)cout << idslinetop[i] << endl;
+	cout << "end "<< endl;
+	//elastmat2D::elastmat2D (Doub young, Doub nu, Doub thickness, Doub bodyforce, Int planestress, Int order )
+	Doub young=10000.,  nu=0.3,  thickness=1.,bodyforce=0.;
+	Int planestress=1;
+
+	Int elnodes = meshtopology.ncols();
+	elastmat2D * mat = new elastmat2D ( young,  nu,  thickness,  bodyforce,  planestress,  elnodes );
+	Int dim =2;
+	mesh* meshs = new mesh( dim, mat, allcoords, meshcoords, meshtopology);
+	NRmatrix<Doub> KG,F,Kinv,sol;
+ 	meshs->AssembleLinear(KG,F);
+	KG.Print();
+	//Aplica forca em x no no (10,10)
+
+	
+	Int dir, val;
+    dir = 1;
+    val = 0;
+    mat->DirichletBC ( KG, F, idsline, dir, val );
+	dir = 0;
+    mat->DirichletBC ( KG, F, idsline, dir, val );
+	KG.Print();
+//     LUdcmp* lu = new LUdcmp ( KG );
+//     lu->inverse ( Kinv );
+	string matrixout = "/home/diogo/projects/dcproj/matrix.dat";
+	std::ofstream matrixoutfile ( matrixout );
+	PrintMathematicaFormat ( KG,matrixoutfile );
+ 
+	NRmatrix<Int> toplinetopol ;
+	//toplinetopol[0][1]=2;
+ 	std::vector<std::vector<int>> topolline=read.LineTopology(idslinetop);
+ 	for(Int i=0;i<topolline.size();i++)cout << topolline[i][0] << endl;
+ 	read.ToMatInt(topolline,toplinetopol);
+	toplinetopol.Print();
+	Doub force;
+	force=1.;
+	mat->AssembleLoadvector ( KG,  F, meshcoords,toplinetopol,  force );
+	F.Print();
+	matrixout = "/home/diogo/projects/dcproj/f.dat";
+	std::ofstream foutfile ( matrixout );
+	PrintMathematicaFormat ( F,foutfile );
+	
+	//F[2*2][0]=10.;
+	F.Print();
+	KG.ComputeInverse(Kinv);
+	Kinv.Mult(F,sol);
+	NRmatrix<Doub> temp;
+	KG.Mult(sol,temp);
+	temp-=F;
+	cout << "residual"<<endl;
+	temp.Print();
+	cout << "sol"<<endl;
+	sol.Print();
+	
+	meshs->fmaterial->UpdateDisplacement(sol);
+	
+	std::vector<string> scalar_names;
+    std::vector<string> vector_names;
+    vector_names.push_back ( "Displacement" );
+    vector_names.push_back ( "Strain" );
+    string slopestr="/home/diogo/projects/dcproj/output/quad";
+    VTKGraphMesh vtkobj ( meshs,dim,scalar_names,vector_names,slopestr );
+    vtkobj.DrawSolution ( 0);
+	
 }

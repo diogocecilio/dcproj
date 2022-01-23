@@ -2,25 +2,63 @@
 #include "gridmesh.h"
 
 using namespace std;
-elastmat2D::elastmat2D ( mesh &inmesh, Doub young, Doub nu, Doub thickness, Doub bodyforce, Int planestress, Int order )
+elastmat2D::elastmat2D (Doub young, Doub nu, Doub thickness, Doub bodyforce, Int planestress, Int elnodes )
 {
     fyoung = young;
     fnu = nu;
     fbodyforce = bodyforce;
     fplanestress = planestress;
     fthickness = thickness;
-    fOrder = order;
-    fmesh = inmesh;
+	if(elnodes==3)
+ 	{
+	  fOrder=1;
+	  fshape = new shapetri(fOrder,1);
+	}
+	if(elnodes  ==4)
+ 	{
+	  fOrder=1;
+	  fshape = new shapequad(fOrder,1);
+	}
+	if(elnodes==6)
+ 	{
+	  fOrder=2;
+	  fshape = new shapetri(fOrder,1);
+	}
+	if(elnodes==8)
+ 	{
+	  fOrder=2;
+	  fshape = new shapequad(fOrder,1);
+	}
+
 }
 
-elastmat2D::elastmat2D ( Doub young, Doub nu, Doub thickness, Doub bodyforce, Int planestress, Int order, MatDoub  HHAT )
+elastmat2D::elastmat2D ( Doub young, Doub nu, Doub thickness, Doub bodyforce, Int planestress, Int elnodes, MatDoub  HHAT )
 {
     fyoung = young;
     fnu = nu;
     fbodyforce = bodyforce;
     fplanestress = planestress;
     fthickness = thickness;
-    fOrder = order;
+	if(elnodes==3)
+ 	{
+	  fOrder=1;
+	  fshape = new shapetri(fOrder,1);
+	}
+	if(elnodes  ==4)
+ 	{
+	  fOrder=1;
+	  fshape = new shapequad(fOrder,1);
+	}
+	if(elnodes==6)
+ 	{
+	  fOrder=2;
+	  fshape = new shapetri(fOrder,1);
+	}
+	if(elnodes==8)
+ 	{
+	  fOrder=2;
+	  fshape = new shapequad(fOrder,1);
+	}
     fHHAT = HHAT;
 }
 
@@ -35,54 +73,7 @@ elastmat2D::~elastmat2D()
 
 }
 
-/*
-void elastmat2D::Assemble(MatDoub &KG, MatDoub &FG, const std::vector<std::vector< std::vector<Doub > > > &allcoords, const MatDoub &meshnodes, const MatInt meshtopology)
-{
-	MatDoub ek, ef, elcoords, eltopology;
-	std::vector<std::vector< std::vector<Doub > > > alco = fmesh.GetAllCoords();
-	GetElCoords(alco, 0, elcoords);
-	Int rows = elcoords.nrows();
-	Int sz = 2 * meshnodes.nrows();
-	Int cols = rows;
-	//KG.assign(sz, sz, 0.);
-	//FG.assign(sz, 1, 0.);
-	Int nels = allcoords.size();
 
-	Int fu = 0;
-
-	for (Int iel = 0;iel < nels;iel++)
-	{
-		if (fHHAT.nrows() != 0)
-		{
-			fhhatvel.assign(rows, 1, 0.);
-			for (Int inode = 0;inode < rows;inode++)
-			{
-				fhhatvel[inode][0] = fHHAT[meshtopology[iel][inode]][0];
-			}
-		}
-
-		GetElCoords(alco, iel, elcoords);
-		CacStiff(ek, ef, elcoords);
-		for (Int irow = 0;irow < rows;irow++)
-		{
-			Int rowglob = meshtopology[iel][irow];
-			for (Int icol = 0;icol < cols;icol++)
-			{
-				Int colglob = meshtopology[iel][icol];
-				KG[2 * rowglob + fu][2 * colglob + fu] += ek[2 * irow + fu][2 * icol + fu];
-				KG[2 * rowglob + fu][2 * colglob + 1 + fu] += ek[2 * irow + fu][2 * icol + 1 + fu];
-				KG[2 * rowglob + 1 + fu][2 * colglob + fu] += ek[2 * irow + 1 + fu][2 * icol + fu];
-				KG[2 * rowglob + 1 + fu][2 * colglob + 1 + fu] += ek[2 * irow + 1 + fu][2 * icol + 1 + fu];
-
-			}
-			FG[2 * rowglob + fu][0] += ef[2 * irow + fu][0];
-			FG[2 * rowglob + 1 + fu][0] += ef[2 * irow + 1 + fu][0];
-		}
-
-	}
-
-}
-*/
 void elastmat2D::CalcStiff ( MatDoub &ek, MatDoub &ef, const MatDoub  &elcoords )
 {
 
@@ -91,8 +82,8 @@ void elastmat2D::CalcStiff ( MatDoub &ek, MatDoub &ef, const MatDoub  &elcoords 
     Int nnodes = elcoords.nrows();
     ek.assign ( nnodes * 2, nnodes * 2, 0. );
     ef.assign ( nnodes * 2, 1, 0. );
-    shapequad shape = shapequad ( fOrder, 1 );
-    shape.pointsandweigths ( ptsweigths );
+    //shapequad shape = shapequad ( fOrder, 1 );
+    fshape->pointsandweigths ( ptsweigths );
     Int npts = ptsweigths.nrows();
 
     for ( Int ipt = 0; ipt < npts; ipt++ ) {
@@ -106,6 +97,7 @@ void elastmat2D::CalcStiff ( MatDoub &ek, MatDoub &ef, const MatDoub  &elcoords 
 
 }
 
+
 void elastmat2D::Contribute ( MatDoub &ek, MatDoub &ef, Doub xi, Doub eta, Doub w, MatDoub elcoords )
 {
     MatDoub psis, GradPsi, elcoordst, xycoords, Jac, InvJac ( 2, 2 ), GradPhi, B, BT, N, NT, psist, C, BC, BCS, stress ( 3, 1, 0. ), bodyforce ( 2, 1 ), temp, CS, KSt;
@@ -113,9 +105,9 @@ void elastmat2D::Contribute ( MatDoub &ek, MatDoub &ef, Doub xi, Doub eta, Doub 
     bodyforce[1][0] = -fbodyforce;
 
     int type = 1;
-    shapequad objshapes ( fOrder, type );
+    //shapequad objshapes ( fOrder, type );
 
-    objshapes.shapes ( psis, GradPsi, xi, eta );
+    fshape->shapes ( psis, GradPsi, xi, eta );
     psis.Transpose ( psist );
     psist.Mult ( elcoords, xycoords );
     MatDoub hhat;
@@ -138,7 +130,7 @@ void elastmat2D::Contribute ( MatDoub &ek, MatDoub &ef, Doub xi, Doub eta, Doub 
 
         psis.Print();
 
-        objshapes.shapes ( psis, GradPsi, xi, eta );
+        fshape->shapes ( psis, GradPsi, xi, eta );
         return;
     }
     InvJac[0][0] = Jac[1][1] / DetJ;
@@ -147,21 +139,18 @@ void elastmat2D::Contribute ( MatDoub &ek, MatDoub &ef, Doub xi, Doub eta, Doub 
     InvJac[1][1] = Jac[0][0] / DetJ;
     InvJac.Mult ( GradPsi, GradPhi );
     assembleBandN ( B, N, psis, GradPhi );
+	cout << "elcoords,psis,gradps,Jac,xycords"<<endl;
+	elcoords.Print();
+	 psis.Print();
+	 GradPsi.Print();
+	 Jac.Print();
+	 xycoords.Print();
     N.Transpose ( NT );
     B.Transpose ( BT );
-    assembleConstitutiveMatrix ( C, 1. );
+    assembleConstitutiveMatrix ( C);
     BT.Mult ( C, BC );
     BC.Mult ( B, ek );
 
-    if ( fhhatvel.nrows() != 0 ) {
-        Doub mult = hhat[0][0];
-        assembleConstitutiveMatrix ( CS, mult );
-        BT.Mult ( CS, BCS );
-        BCS.Mult ( B, KSt );
-        ek += KSt;
-    } else {
-
-    }
 
     ek *= w*DetJ*fthickness;
     BT.Mult ( stress, ef );
@@ -169,6 +158,8 @@ void elastmat2D::Contribute ( MatDoub &ek, MatDoub &ef, Doub xi, Doub eta, Doub 
     ef -= temp;
     ef *= w*DetJ;
 }
+
+
 
 void elastmat2D::assembleBandN ( MatDoub &B, MatDoub &N, const MatDoub &psis, const MatDoub &GradPhi )
 {
@@ -198,33 +189,33 @@ void elastmat2D::assembleBandN ( MatDoub &B, MatDoub &N, const MatDoub &psis, co
 
     }
 }
-void elastmat2D::assembleConstitutiveMatrix ( MatDoub &C, Doub mult )
+void elastmat2D::assembleConstitutiveMatrix ( MatDoub &ce )
 {
+    //plane stress
     Doub nusqr = fnu*fnu;
-    Doub young = mult*fyoung, nu = fnu;
-    C.assign ( 3, 3, 0. );
-    C[0][0] = young / ( 1 - nusqr );
-    C[0][1] = nu*young / ( 1 - nusqr );
-    C[0][2] = 0.;
-    C[1][0] = nu*young / ( 1 - nusqr );
-    C[1][1] = young / ( 1 - nusqr );
-    C[1][2] = 0.;
-    C[2][0] = 0.;
-    C[2][1] = 0.;
-    C[2][2] = young / ( 2 * ( 1 + nu ) );
-}
+    Doub young = fyoung, nu = fnu;
+    if ( fplanestress ==0) {
 
-void elastmat2D::GetElCoords ( std::vector<std::vector< std::vector<Doub > > > &allcoords, Int el, MatDoub & elcoords )
-{
+        ce.assign ( 3, 3, 0. );
+        ce[0][0] = young / ( 1 - nusqr );ce[0][1] = nu*young / ( 1 - nusqr );ce[0][2] = 0.;
+        ce[1][0] = nu*young / ( 1 - nusqr );ce[1][1] = young / ( 1 - nusqr );ce[1][2] = 0.;
+        ce[2][0] = 0.;ce[2][1] = 0.;ce[2][2] = young / ( 1 - nusqr ) * ( 1-nu ) /2.;
+    } else {
 
-    elcoords.assign ( allcoords[el].size(), 2, 0. );
-    for ( Int j = 0; j < allcoords[el].size(); j++ ) {
-        Doub x = allcoords[el][j][0];
-        Doub y = allcoords[el][j][1];
-        elcoords[j][0] = x;
-        elcoords[j][1] = y;
+        Doub temp = young/ ( ( 1.+nu ) * ( 1.-2.*nu ) );
+        ce.assign ( 3, 3, 0. );
+        ce[0][0] = 1.-nu;ce[0][1] = nu;ce[0][2] = 0.;
+        ce[1][0] = nu;ce[1][1] = 1.-nu;ce[1][2] = 0.;
+        ce[2][0] = 0.;ce[2][1] = 0.;ce[2][2] = ( 1.-2.*nu ) /2.;
+        ce*=temp;
+
     }
+
+	
+
 }
+
+
 
 void elastmat2D::DirichletBC ( MatDoub &KG, MatDoub & FG, std::vector<int> ids, Int  dir, Int val )
 {
@@ -257,10 +248,10 @@ void elastmat2D::ContributeLineNewan ( MatDoub &KG, MatDoub & FG, std::vector<in
 {
     MatDoub psis, gradpsis, ptsws;
 
-    int type = 1;
-    shapequad objshapes ( fOrder, type );
+   // int type = 1;
+    //shapequad objshapes ( fOrder, type );
 
-    objshapes.pointsandweigths1D ( ptsws );
+    fshape->pointsandweigths1D ( ptsws );
     Int npts = ptsws.nrows();
 
     Doub xi, w;
@@ -268,103 +259,190 @@ void elastmat2D::ContributeLineNewan ( MatDoub &KG, MatDoub & FG, std::vector<in
     for ( Int ipt = 0; ipt < npts; ipt++ ) {
         xi = ptsws[ipt][0];
         w = ptsws[ipt][2];
-        objshapes.shapes1D ( psis, gradpsis, xi );
+        fshape->shapes1D ( psis, gradpsis, xi );
         psis.Mult ( gradpsis, DetJ );
 
     }
 
 }
 
-void elastmat2D::SolPt ( const Int &el, const  MatDoub &solG, const Doub &xi, const Doub &eta, MatDoub &xycoords, MatDoub &sol )
+
+// void elastmat2D::ComputeLoadVector( MatDoub &KG, MatDoub & FG, std::vector<int> ids,MatDoub & force )
+// {
+//     MatDoub psis, gradpsis, ptsws;
+// 
+//    // int type = 1;
+//     //shapequad objshapes ( fOrder, type );
+// 
+//     fshape->pointsandweigths1D ( ptsws );
+//     Int npts = ptsws.nrows();
+// 
+//     Doub xi, w;
+//     MatDoub DetJ;
+//     for ( Int ipt = 0; ipt < npts; ipt++ ) {
+//         xi = ptsws[ipt][0];
+//         w = ptsws[ipt][2];
+//         fshape->shapes1D ( psis, gradpsis, xi );
+//         psis.Mult ( gradpsis, DetJ );
+// 
+//     }
+// 
+// }
+
+
+void elastmat2D::AssembleLoadvector ( NRmatrix<Doub>  &KG, NRmatrix<Doub>  &FG, NRmatrix<Doub>  meshnodes, MatInt linetopology,Doub force )
 {
     int type = 1;
-    shapequad objshapes ( fOrder, type );
-    MatDoub psis, GradPsi, elcoords, psist, solel;
-    std::vector<std::vector< std::vector<Doub > > > alco = fmesh.GetAllCoords();
-    GetElCoords ( alco, el, elcoords );
-    objshapes.shapes ( psis, GradPsi, xi, eta );
-    Int nodes = psis.nrows();
-    Int nstatevars = 1;
-    solel.assign ( nodes, 1, 0 );
+    //shapequad objshapes ( fOrder, type );
+	shape * objshapes = fshape;
+    Int sz = 2*meshnodes.nrows();
+    FG.assign ( sz, 1, 0. );
+    //std::cout << "sz = " << sz << std::endl;
+    MatDoub psis, gradpsis, ptsws, DetJ, psist;
+
+    objshapes->pointsandweigths1D ( ptsws );
+
+    Int  els=linetopology.nrows(),nodes= fOrder+1;
+    Doub xi, w;
+    for ( Int iel = 0; iel < els; iel++ ) {
+        MatDoub xy ( 1, 2, 0. ),elcoords ( nodes,2,0. ), diff ( 1,2,0. ),temp ( 1, 2, 0. ), temp2 ( 1, 2, 0. ), xycoords ( 1, 2, 0. );
+        Doub x=0., y=0.;
+        for ( Int inode = 0; inode < nodes; inode++ ) {
+            Doub xmesh = meshnodes[linetopology[iel][inode]][0];
+            Doub ymesh = meshnodes[linetopology[iel][inode]][1];
+            elcoords[inode][0] = xmesh;
+            elcoords[inode][1] = ymesh;
+        }
+        NRvector<Doub> vec(2,0.),normal(2,0.);
+		vec[0]=elcoords[nodes-1][0]-elcoords[0][0];
+		vec[1]=elcoords[nodes-1][1]-elcoords[0][1];
+		Doub elsize = sqrt(pow(vec[0],2)+pow(vec[1],2));
+		normal[0]=-vec[1]/elsize;
+		normal[1]=vec[0]/elsize;
+		cout << " normal " <<endl;
+		cout <<  normal[0] <<endl;
+		cout << normal[1] <<endl;
+
+		
+		Doub jac=elsize/2.;
+		cout << " jac " <<endl;
+		cout << jac <<endl;
+        Int npts = ptsws.nrows();
+        MatDoub integral ( fOrder+1, 1, 0. ) ;
+        for ( Int inode = 0; inode < fOrder + 1; inode++ ) {
+			
+			
+			
+            for ( Int ipt = 0; ipt < npts; ipt++ ) {
+                xi = ptsws[ipt][0];
+                w = ptsws[ipt][1];
+                objshapes->shapes1D ( psis, gradpsis, xi );
+                //integral[inode][0] += psis[inode][0] * jac*w;
+				FG[ linetopology[iel][inode] * 2 ][0] += psis[inode][0]*force*normal[0]* jac*w ;
+            	FG[ linetopology[iel][inode] * 2 + 1 ][0] += psis[inode][0] * force*normal[1]*jac*w ;
+
+            }
+
+            //FG[ linetopology[iel][inode] * 2 ][0] += integral[inode][0]*force*normal[0] ;
+           // FG[ linetopology[iel][inode] * 2 + 1 ][0] += integral[inode][0]*force*normal[1] ;
+        }
+
+    }
+
+    //FG.Print();
+}
+
+
+void elastmat2D::ComputeSolAndDSol ( mesh * inmesh,NRmatrix<Doub>&sol,NRmatrix<Doub>&dsol )
+{
+    Doub xi,eta,w;
+    std::vector<std::vector< std::vector<Doub > > >  allcoords = inmesh->GetAllCoords();
+    NRmatrix<Int> meshtopology = inmesh->GetMeshTopology();
+    NRmatrix<Doub> nodalsol = GetSolution();
+    Int meshnodes = inmesh->GetMeshNodes().nrows();
+
+    NRmatrix<Doub>  elcoords, gradpsis;
+    GetElCoords ( allcoords, 0, elcoords );
+    Int nels = allcoords.size();
+    Int nvars = 2;
+    Int sz=nodalsol.nrows();
+
+    //shapequad objshapes ( 2, 1 );
+    NRmatrix<Doub> base=fshape->GetBaseNodes();
+
+    sol.assign ( sz,2,0. );
+    dsol.assign ( sz,2,0. );
+
+
+    xi=0.;
+    eta=0.;
+    w=0.;
+
+    NRmatrix<Doub>  psis,psist, GradPsi,elementdisplace;
+    fshape->shapes ( psis, GradPsi, xi, eta );
     psis.Transpose ( psist );
-    psist.Mult ( elcoords, xycoords );
 
-    for ( Int inode = 0; inode < nodes; inode++ ) {
-        solel[inode][0] = solG[fmesh.GetMeshTopology() [el][inode]][0];
+    Int elnodes = elcoords.nrows();
+
+    vector<Int> indexvec;
+    NRmatrix<NRvector<Doub>> uglob;
+    uglob.resize ( nels, elnodes );
+
+    for ( int i = 0; i < nels; i++ ) {
+        for ( int j = 0; j < elnodes; j++ ) {
+            uglob[i][j].assign ( 2, 0. );
+        }
     }
-    psist.Mult ( solel, sol );
-
-}
-
-
-
-void elastmat2D::PostProcess ( const MatDoub & nodalsol, std::vector<std::vector<double>> &solx, std::vector<std::vector<double>> &soly )
-{
-    int type = 1;
-    shapequad objshapes ( fOrder, type );
-    std::vector<std::vector< std::vector<Doub > > > alco = fmesh.GetAllCoords();
-    MatDoub elcoords, eltopology, psis, gradpsis, xycoords, psist;
-    GetElCoords ( alco, 0, elcoords );
-    Int rows = elcoords.nrows();
-    Int cols = rows;
-    Int nels = fmesh.GetAllCoords().size();
-    Doub refine = 0.1;
 
     for ( Int iel = 0; iel < nels; iel++ ) {
-        GetElCoords ( alco, iel, elcoords );
-        for ( Doub xi = -1.; xi < 1 - refine; xi += refine ) {
-            std::vector<double> sol ( 3 );
-            for ( Doub eta = -1.; eta < 1 - refine; eta += refine ) {
-                Doub approx = 0., approy = 0.;
-                objshapes.shapes ( psis, gradpsis, xi, eta );
-                psis.Transpose ( psist );
-                psist.Mult ( elcoords, xycoords );
-                sol[0] = xycoords[0][0];
-                sol[1] = xycoords[0][1];
-                for ( Int inode = 0; inode < elcoords.nrows(); inode++ ) {
-                    approx += psis[inode][0] * nodalsol[fmesh.GetMeshTopology() [iel][inode] * 2][0];
-                    approy += psis[inode][0] * nodalsol[fmesh.GetMeshTopology() [iel][inode] * 2 + 1][0];
-                }
-                sol[2] = approx;
-                solx.push_back ( sol );
-                sol[2] = approy;
-                soly.push_back ( sol );
-
+        for ( Int node = 0; node < elnodes; node++ ) {
+            for ( int idof=0; idof<2; idof++ ) {
+                uglob[iel][node][idof] = GetSolution() [2 * meshtopology[iel][node]+idof][0];
             }
         }
     }
-}
 
-void elastmat2D::PostProcess ( const MatDoub & nodalsol, std::vector<std::vector<double>> &sol )
-{
-    int type = 1;
-    shapequad objshapes ( fOrder, type );
-    std::vector<std::vector< std::vector<Doub > > > alco = fmesh.GetAllCoords();
-    MatDoub elcoords, eltopology, psis, gradpsis, xycoords, psist;
-    GetElCoords ( alco, 0, elcoords );
-    Int rows = elcoords.nrows();
-    Int cols = rows;
-    Int nels = fmesh.GetAllCoords().size();
-    Doub refine = 0.05;
 
     for ( Int iel = 0; iel < nels; iel++ ) {
-        GetElCoords ( alco, iel, elcoords );
-        for ( Doub xi = -1.; xi < 1 - refine; xi += refine ) {
-            std::vector<double> soli ( 3 );
-            for ( Doub eta = -1.; eta < 1 - refine; eta += refine ) {
-                Doub approx = 0., approy = 0.;
-                objshapes.shapes ( psis, gradpsis, xi, eta );
-                psis.Transpose ( psist );
-                psist.Mult ( elcoords, xycoords );
-                soli[0] = xycoords[0][0];
-                soli[1] = xycoords[0][1];
-                for ( Int inode = 0; inode < elcoords.nrows(); inode++ ) {
-                    approx += psis[inode][0] * nodalsol[fmesh.GetMeshTopology() [iel][inode]][0];
-                }
-                soli[2] = approx;
-                sol.push_back ( soli );
+        GetElCoords ( allcoords, iel, elcoords );
+        elementdisplace.assign ( elnodes,2,0. );
+        for ( Int i = 0; i < elnodes; i++ ) for ( Int j = 0; j < 2; j++ ) elementdisplace[i][j] = uglob[iel][i][j];
+        for ( Int inode=0; inode<elnodes; inode++ ) {
+            NRmatrix<Doub>  psis,GradPsi,Jac,InvJac ( 2,2 ),GradPhi,gradu;
+            xi=base[inode][0];
+            eta=base[inode][1];
+            fshape->shapes ( psis, GradPsi, xi, eta );
 
-            }
+
+            GradPsi.Mult ( elcoords, Jac );
+
+            Doub DetJ = -Jac[0][1] * Jac[1][0] + Jac[0][0] * Jac[1][1];
+
+
+            InvJac[0][0] = Jac[1][1] / DetJ;
+            InvJac[0][1] = -Jac[0][1] / DetJ;
+            InvJac[1][0] = -Jac[1][0] / DetJ;
+            InvJac[1][1] = Jac[0][0] / DetJ;
+
+            InvJac.Mult ( GradPsi, GradPhi );
+
+            GradPhi.Mult ( elementdisplace, gradu );
+
+            Int index=meshtopology[iel][inode];
+
+            sol[2 * index ][0]=  nodalsol[2 * index ][0];
+            sol[2 * index +1][0]= nodalsol[2 * index +1][0];
+
+            dsol[index * 2][0]= gradu[0][0] ;//dudx
+            dsol[index * 2 + 1][0]= gradu[1][0] ;//dwdx
+
+            dsol[index* 2][1]= gradu[0][1] ;//dudy
+            dsol[index * 2 + 1][1]= gradu[1][1] ;//dwdy
         }
+
     }
+
 }
+
+
+

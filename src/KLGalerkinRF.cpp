@@ -4,24 +4,38 @@
 #include <ctime>
 #include <chrono>
 #include <random>
-
-KLGalerkinRF::KLGalerkinRF ( Int order, Doub Lx, Doub Ly,  Int type, Int samples, Int expansionorder )
+#include "ludcmp.h"
+#include <Eigen/LU>
+KLGalerkinRF::KLGalerkinRF ( Int elnodes, Doub Lx, Doub Ly,  Int type, Int samples, Int expansionorder )
 {
-//	fyoung = young;
-//	fnu = nu;
-//	fbodyforce = bodyforce;
-//	fplanestress = planestress;
-//	fthickness = thickness;
-    fOrder = order;
+
     fLx = Lx;
     fLy = Ly;
     //fsig = sig;
     ftype = type;
     fsamples = samples;
     fexpansionorder = expansionorder;
-	//fshape = new shapequad(2,1);
-	fshape = new shapetri(2,1);
-    //cout << "sz = " << fmesh.fallcoords[0].size() << endl;
+
+	if(elnodes==3)
+ 	{
+	  fOrder=1;
+	  fshape = new shapetri(fOrder,1);
+	}
+	if(elnodes  ==4)
+ 	{
+	  fOrder=1;
+	  fshape = new shapequad(fOrder,1);
+	}
+	if(elnodes==6)
+ 	{
+	  fOrder=2;
+	  fshape = new shapetri(fOrder,1);
+	}
+	if(elnodes==8)
+ 	{
+	  fOrder=2;
+	  fshape = new shapequad(fOrder,1);
+	}
 }
 
 
@@ -43,7 +57,7 @@ void KLGalerkinRF::ContributeB ( MatDoub &BE, Doub xi, Doub eta, Doub w, MatDoub
 {
     MatDoub psis, GradPsi, Jac, GradPhi, N, NT, psist, xycoords;
 
-    int type = 1;
+    //int type = 1;
     //shapequad objshapes ( fOrder, type );
 
     fshape->shapes ( psis, GradPsi, xi, eta );
@@ -68,7 +82,7 @@ void KLGalerkinRF::CacStiffB ( MatDoub &BE, const MatDoub  &elcoords )
     Int nnodes = elcoords.nrows();
     BE.assign ( nnodes, nnodes, 0. );
 
-    int type = 1;
+    //int type = 1;
     //shapequad objshapes ( fOrder, type );
 
     fshape->pointsandweigths ( ptsweigths );
@@ -84,6 +98,7 @@ void KLGalerkinRF::CacStiffB ( MatDoub &BE, const MatDoub  &elcoords )
 
 
 }
+
 void KLGalerkinRF::AssembleB ( MatDoub &B )
 {
     std::vector<std::vector< std::vector<Doub > > > allcoords = fmesh.GetAllCoords();
@@ -97,7 +112,7 @@ void KLGalerkinRF::AssembleB ( MatDoub &B )
     Int cols = rows;
     B.assign ( sz, sz, 0. );
     Int nels = allcoords.size();
-    Int fu = 0;
+
     for ( Int iel = 0; iel < nels; iel++ ) {
         GetElCoords ( allcoords, iel, elcoords );
         CacStiffB ( BE, elcoords );
@@ -129,6 +144,7 @@ void KLGalerkinRF::ContributeC ( MatDoub &CE, MatDoub psis1, MatDoub GradPsi1, M
         return;
     }
     Doub CXX = AutocorrelationFunc ( xycoords1, xycoords2 );
+	
     psis1.Mult ( psis2t, CE );
     CE *= CXX*DetJ1*DetJ2*w1*w2;
 }
@@ -189,7 +205,17 @@ void KLGalerkinRF::AssembleC ( MatDoub &C )
     }
 
 }
+void KLGalerkinRF::GetElCoords ( std::vector<std::vector< std::vector<Doub > > > &allcoords, Int el, MatDoub & elcoords )
+{
 
+    elcoords.assign ( allcoords[el].size(), 2, 0. );
+    for ( Int j = 0; j < allcoords[el].size(); j++ ) {
+        Doub x = allcoords[el][j][0];
+        Doub y = allcoords[el][j][1];
+        elcoords[j][0] = x;
+        elcoords[j][1] = y;
+    }
+}
 //Doub KLGalerkinRF::AutocorrelationFunc(MatDoub  x1, MatDoub  x2)
 //{
 //	Doub val = 0, xx1, xx2, yy1, yy2, dist;
@@ -242,7 +268,19 @@ Doub KLGalerkinRF::AutocorrelationFunc ( MatDoub  x1, MatDoub  x2 )
         val = exp ( -fabs ( xx1 - xx2 ) / ( fLx )-fabs ( yy1 - yy2 ) / ( fLy ) );
         break;
     }
+        if ( val>1 ) {
 
+			//The AutocorrelationFunc cant be larger than 1
+			DebugStop();
+    }
+    
+    if ( isinf ( val ) ==1 ) {
+
+        cout << "1/0"   << 1./0. <<endl;
+        cout << "val"   << val <<endl;
+    }
+    
+    
     return val;
 }
 
@@ -260,31 +298,38 @@ void KLGalerkinRF::SolveGenEigValProblem ( VecComplex & val, MatDoub & vec, NRma
 
     std::cout << "\n Assembling the correlation matrix (C) and the deformation matrix (B)" << endl;
     start = std::clock();
-    MatDoub C, B, vect, internaleigenvectors;
+    MatDoub C, B, vect, internaleigenvectors,ibvBC,invB,Inr3 ;
     AssembleC ( C );
     AssembleB ( B );
-
-    duration = ( std::clock() - start ) / ( double ) CLOCKS_PER_SEC;
-
-    std::cout << "\n time assembling  =  " << duration << '\n';
-
-    std::cout << "\n Solving the generalized eigenvalue prolem" << endl;
-    start = std::clock();
-    MatDoub invB, ibvBC, PHIt, PHI;
-    Cholesky* chol = new Cholesky ( B );
-    chol->inverse ( invB );
-    delete chol;
-    invB.Mult ( C, ibvBC );
-
-    //Jacobi* Jaco = new Jacobi(ibvBC);
-    //VecDoub val1 =Jaco->d;
+	
+	//C.Print();
+	MatrixXd Ceig,Beig,invBeig,ibvBCeig,I;
+	C.ToEigen(Ceig);
+	B.ToEigen(Beig);
+	invBeig = Beig.inverse();
+	//I=invBeig*Beig;
+	//cout << I << endl;
+	ibvBCeig=invBeig*Ceig;
+	ibvBC.FromEigen(ibvBCeig);
+	
 
     Unsymmeig* Hessenberg = new Unsymmeig ( ibvBC );
+	
+    if ( true ) {
+		string matrixout0 = "/home/diogo/projects/dcproj/ibvBC.dat";
+        std::ofstream matrixoutfile0 ( matrixout0 );
+        PrintMathematicaFormat ( ibvBC,matrixoutfile0 );
+        string matrixout = "/home/diogo/projects/dcproj/B.dat";
+        std::ofstream matrixoutfile ( matrixout );
+        PrintMathematicaFormat ( B,matrixoutfile );
+		string matrixout2 = "/home/diogo/projects/dcproj/C.dat";
+        std::ofstream matrixoutfile2 ( matrixout2 );
+        PrintMathematicaFormat ( C,matrixoutfile2 );
+    }
 
-    VecComplex internaleigenvalues;
-
+    VecComplex internaleigenvalues;    
     internaleigenvalues = Hessenberg->wri;
-
+    internaleigenvalues.Print();
 
     duration = ( std::clock() - start ) / ( double ) CLOCKS_PER_SEC;
 
@@ -298,6 +343,8 @@ void KLGalerkinRF::SolveGenEigValProblem ( VecComplex & val, MatDoub & vec, NRma
 
     //autovettores nas colunas
     internaleigenvectors = Hessenberg->zz;
+	
+//internaleigenvectors=internaleigenvectors2.real();
 
     Int degreesfredom = internaleigenvectors.nrows();
 
@@ -346,7 +393,7 @@ void KLGalerkinRF::SolveGenEigValProblem ( VecComplex & val, MatDoub & vec, NRma
 
     MatDoub error;
     ComputeVarianceError ( val, vec, error );
-    //GenerateGaussinRandomField(val, vec, HHAT, errpost);
+   // GenerateGaussinRandomField(val, vec, HHAT, errpost);
     GenerateNonGaussinRandomField ( val, vec, HHAT, errpost );
 
 }
@@ -402,17 +449,37 @@ void KLGalerkinRF::GenerateNonGaussinRandomField ( VecComplex& val, MatDoub& vec
     cout << " n PRECISA MUDAR AQUIx!!" << endl;
     //Distribui��o log-normal
     Doub mean = 30.;
-    Doub sdev = 0.2 * mean;
+    Doub sdev = 0.3 * mean;
     Doub xi = sqrt ( log ( 1 + pow ( ( sdev / mean ),2 ) ) );
     Doub lambda = log ( mean ) - xi * xi / 2.;
-    for ( int i = 0; i < hhatcoes.nrows(); i++ ) for ( int j = 0; j < hhatcoes.ncols(); j++ ) hhatcoes[i][j] = exp ( lambda + xi * hhatcoes[i][j] );
+
+    for ( int i = 0; i < hhatcoes.nrows(); i++ ) {
+        for ( int j = 0; j < hhatcoes.ncols(); j++ ) {
+            if ( hhatcoes[i][j]>100 ) {
+                hhatcoes[i][j] =100;
+            } else {
+                hhatcoes[i][j] = exp ( lambda + xi * hhatcoes[i][j] );
+            }
+
+        }
+
+    }
 
     mean = 10. * M_PI/180.;
-    sdev = 0.2 * mean;
+    sdev = 0.3 * mean;
     xi = sqrt ( log ( 1 + pow ( ( sdev / mean ), 2 ) ) );
     lambda = log ( mean ) - xi * xi / 2.;
-    for ( int i = 0; i < hhatphi.nrows(); i++ ) for ( int j = 0; j < hhatphi.ncols(); j++ ) hhatphi[i][j] = exp ( lambda + xi * hhatphi[i][j] );
+    for ( int i = 0; i < hhatphi.nrows(); i++ ) {
+        for ( int j = 0; j < hhatphi.ncols(); j++ ) {
+            if ( hhatphi[i][j]>1 ) {
+                hhatphi[i][j] =1;
+            } else {
+                hhatphi[i][j] = exp ( lambda + xi * hhatphi[i][j] );
+            }
 
+        }
+
+    }
     //Distribui��o normal
     //Doub meanphi = 20.*M_PI/180.;
     //Doub sdevphi = 0.3 * meanphi;
@@ -474,13 +541,32 @@ void KLGalerkinRF::GenerateGaussinRandomField ( VecComplex& val, MatDoub& vec, N
     //437 x 5000
     //em cada coluna da hhatcoes tem um random field
 
-    Doub mean = 18.5633;
+    Doub mean = 30.;
     Doub sdev = 0.3 * mean;
-    for ( int i = 0; i < hhatcoes.nrows(); i++ ) for ( int j = 0; j < hhatcoes.ncols(); j++ ) hhatcoes[i][j] = mean + sdev * hhatcoes[i][j];
-    Doub meanphi = 20. * M_PI / 180.;
-    Doub sdevphi =0.3* meanphi;
-    for ( int i = 0; i < hhatphi.nrows(); i++ ) for ( int j = 0; j < hhatphi.ncols(); j++ ) hhatphi[i][j] = meanphi + sdevphi * hhatphi[i][j];
+    for ( int i = 0; i < hhatcoes.nrows(); i++ ) {
+        for ( int j = 0; j < hhatcoes.ncols(); j++ ) {
+            if ( hhatcoes[i][j]>100 ) {
+                hhatcoes[i][j] =100;
+            } else {
+                hhatcoes[i][j] = mean + sdev * hhatcoes[i][j];
+            }
 
+        }
+
+    }
+    Doub meanphi = 10. * M_PI / 180.;
+    Doub sdevphi =0.3* meanphi;
+	    for ( int i = 0; i < hhatphi.nrows(); i++ ) {
+        for ( int j = 0; j < hhatphi.ncols(); j++ ) {
+            if ( hhatphi[i][j]>1 ) {
+                hhatphi[i][j] =1;
+            } else {
+                hhatphi[i][j] = meanphi + sdevphi * hhatphi[i][j];
+            }
+
+        }
+
+    }
     HHAT[0][0] = hhatcoes;
     HHAT[1][0] = hhatphi;
 
@@ -669,7 +755,26 @@ void KLGalerkinRF::GenerateGaussinRandomField ( VecComplex& val, MatDoub& vec, N
 //
 //}
 
+void KLGalerkinRF::SolPt ( const Int &el, const  MatDoub &solG, const Doub &xi, const Doub &eta, MatDoub &xycoords, MatDoub &sol )
+{
+    int type = 1;
+    shapequad objshapes ( fOrder, type );
+    MatDoub psis, GradPsi, elcoords, psist, solel;
+    std::vector<std::vector< std::vector<Doub > > > alco = fmesh.GetAllCoords();
+    GetElCoords ( alco, el, elcoords );
+    objshapes.shapes ( psis, GradPsi, xi, eta );
+    Int nodes = psis.nrows();
+    Int nstatevars = 1;
+    solel.assign ( nodes, 1, 0 );
+    psis.Transpose ( psist );
+    psist.Mult ( elcoords, xycoords );
 
+    for ( Int inode = 0; inode < nodes; inode++ ) {
+        solel[inode][0] = solG[fmesh.GetMeshTopology() [el][inode]][0];
+    }
+    psist.Mult ( solel, sol );
+
+}
 Doub KLGalerkinRF::PerfomIntegralOfListconst2 ( const MatDoub &Vec )
 {
     std::vector<std::vector< std::vector<Doub > > > allcoords = fmesh.GetAllCoords();
@@ -719,7 +824,7 @@ void KLGalerkinRF::ComputeVarianceError ( VecComplex &val, MatDoub &vec, MatDoub
         err += fabs ( val[i].real() ) ;
     }
     //std::cout << " err / (fsig * fsig) = " <<err / (fsig * fsig) << std::endl;
-    std::cout << "mean error do 50x20 mesh = " <<1. - 1./ ( 50.*20.- ( 30.+20. ) *10./2. ) *  err << std::endl;
+    std::cout << "mean error do 75x40 mesh = " <<1. - 1./ ( 75.*40.- ( 40.+30. ) *10./2. ) *  err << std::endl;
 
 }
 

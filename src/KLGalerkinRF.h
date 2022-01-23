@@ -1,5 +1,5 @@
 #pragma once
-#include "elastmat2D.h"
+//#include "elastmat2D.h"
 #include "shapequad.h"
 
 #include "eigen_sym.h"
@@ -14,10 +14,10 @@
 #include "mesh.h"
 #include "shapequad.h"
 
-class KLGalerkinRF : public elastmat2D
+class KLGalerkinRF 
 {
 public:
-    KLGalerkinRF ( Int order, Doub Lx, Doub Ly, Int type, Int samples, Int expansionorder );
+    KLGalerkinRF ( Int elnodes, Doub Lx, Doub Ly, Int type, Int samples, Int expansionorder );
     ~KLGalerkinRF();
 
     void ContributeB ( MatDoub &BE, Doub xi, Doub eta, Doub w, MatDoub elcoords );
@@ -39,10 +39,11 @@ public:
     Doub PerfomIntegralOfListconst ( const MatDoub &Vec );
 
     Doub PerfomIntegralOfListconst2 ( const MatDoub &Vec );
-
+	
+	void  SolPt ( const Int &el, const  MatDoub &solG, const Doub &xi, const Doub &eta, MatDoub &xycoords, MatDoub &sol );
 
     void ComputeVarianceError ( VecComplex &val, MatDoub &vec, MatDoub &error );
-
+ void GetElCoords ( std::vector<std::vector< std::vector<Doub > > > &allcoords, Int el, MatDoub & elcoords );
     void OutPutPost ( std::vector<std::vector<double>> & postdata, std::ofstream &file )
     {
         file.clear();
@@ -84,6 +85,18 @@ public:
     {
         fmesh = *inmesh;
     }
+    
+    inline void PrintMathematicaFormat ( MatDoub postdata, std::ofstream& file )
+{
+    file.clear();
+    for ( Int i = 0; i < postdata.nrows(); i++ ) {
+        for ( Int j = 0; j < postdata.ncols(); j++ ) {
+            file << postdata[i][j] << " " ;
+        }
+        file << endl;
+    }
+    file.close();
+}
 
 private:
     Doub fyoung;

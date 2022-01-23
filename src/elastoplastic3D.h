@@ -22,7 +22,7 @@ public:
     void Contribute ( NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint, NRmatrix<Doub>  &efbody, NRvector<Doub> intptsw, NRmatrix<Doub>  elcoords, NRmatrix<Doub>  eldisplace );
 
     void CalcStiff ( NRmatrix<Doub>  &ek, NRmatrix<Doub>  &efint, NRmatrix<Doub>  &efbody, const NRmatrix<Doub>   &elcoords, NRmatrix<Doub>  eldisplace );
-
+virtual void CalcStiff ( MatDoub &ek, MatDoub &ef, const MatDoub  &elcoords ){DebugStop();}
     void assembleBandN ( NRmatrix<Doub>  &B, NRmatrix<Doub>  &N, const NRmatrix<Doub>  &psis, const NRmatrix<Doub>  &GradPhi );
     void GetElCoords ( std::vector<std::vector< std::vector<Doub > > > allcoords, Int el, MatDoub & elcoords );
     void DirichletBC ( NRmatrix<Doub>  &KG, NRmatrix<Doub>  & FG, std::vector<int> ids, Int  dir, Int val );

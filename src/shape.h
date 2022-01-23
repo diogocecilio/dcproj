@@ -17,6 +17,7 @@ public:
     virtual void pointsandweigths ( MatDoub & pts ) =0;
     virtual void pointsandweigths1D ( MatDoub & pts ) =0;
     virtual NRmatrix<Doub> GetBaseNodes() =0;
+	
 };
 
 

@@ -13,7 +13,7 @@ VTKGraphMesh::VTKGraphMesh ( mesh *cmesh, int dimension,std::vector<std::string>
     fScalNames=scalnames;
 }
 
-void VTKGraphMesh::DrawSolution ( Int step, Doub time )
+void VTKGraphMesh::DrawSolution ( Int step )
 {
 
     NRmatrix<Int> meshtopol=GetMeshTopologyVTK();
@@ -51,9 +51,13 @@ void VTKGraphMesh::DrawSolution ( Int step, Doub time )
         type = 23;
     } else if ( elnodes==20 ) {
         type =25;
-    }else if(elnodes==6){
-			type =22;
-	}
+    } else if ( elnodes==6 ) {
+        type =22;
+    } else if ( elnodes==3 ) {
+        type =5;
+    } else if ( elnodes==4 ) {
+        type=9;
+    }
 	
     ( fOutFile ) << "CELLS " << els << " "<< els*elnodes+els <<  endl;
     for ( Int iel = 0; iel < els; iel++ ) {
