@@ -81,49 +81,41 @@ void VTKGraphMesh::DrawSolution ( Int step )
     fmesh->fmaterial->ComputeSolAndDSol ( fmesh,sol2,dsol2 );
 
     fOutFile << "POINT_DATA " << nnodes << endl;
-    fOutFile << "SCALARS phi float 1" << endl;
-    fOutFile << "LOOKUP_TABLE default" << endl;
 
-    for ( Int inode = 0; inode < nnodes; inode++ ) {
-        NRmatrix<Doub> eps,gradu,gradut;
-        NRtensor<Doub> straintensor ( 0. );
 
-        if ( fdim==3 ) {
-			DebugStop();
-        } else if ( fdim==2 ) {
-            Doub dudx= dsol2[inode*2][0];
-            Doub dudy= dsol2[inode*2][1];
-            Doub dwdx= dsol2[inode*2+1][0];
-            Doub dwdy= dsol2[inode*2+1][1];
-			straintensor.XX()=dudx;straintensor.XY()=(dwdx+dudy)/2.;
-			straintensor.YY()=dwdy;
-        }
-        NRvector<Doub> valphi =fmesh->fmaterial->ComputePhi ( straintensor ) ;
-        fOutFile << valphi[0]<<   endl;//x
-    }
-    
-    
+//     for ( Int inode = 0; inode < nnodes; inode++ ) {
+//         NRmatrix<Doub> eps,gradu,gradut;
+//         NRtensor<Doub> straintensor ( 0. );
+// 
+//         if ( fdim==3 ) {
+// 			DebugStop();
+//         } else if ( fdim==2 ) {
+//             Doub dudx= dsol2[inode*2][0];
+//             Doub dudy= dsol2[inode*2][1];
+//             Doub dwdx= dsol2[inode*2+1][0];
+//             Doub dwdy= dsol2[inode*2+1][1];
+// 			straintensor.XX()=dudx;straintensor.XY()=(dwdx+dudy)/2.;
+// 			straintensor.YY()=dwdy;
+//         }
+//         NRvector<Doub> valphi =fmesh->fmaterial->ComputePhi ( straintensor ) ;
+//         fOutFile << valphi[0]<<   endl;//x
+//     }
     NRmatrix<Doub> HHAT;
-    fmesh->GetHhat(HHAT);
-    if(HHAT.nrows()!=0)
-    {
+    fmesh->GetHhat ( HHAT );
+    if ( HHAT.nrows() !=0 ) {
         fOutFile << "SCALARS cohesion float 1" << endl;
         fOutFile << "LOOKUP_TABLE default" << endl;
-        for (Int inode = 0; inode < nnodes; inode++)
-        {
-            fOutFile << HHAT[inode][0] <<   endl;//x
+        for ( Int inode = 0; inode < nnodes; inode++ ) {
+            fOutFile << HHAT[inode][0] << std::endl;
+        }
+		fOutFile << "SCALARS friction float 1" << endl;
+        fOutFile << "LOOKUP_TABLE default" << endl;
+		for ( Int inode = 0; inode < nnodes; inode++ ) {
+			fOutFile << (HHAT[inode][1]*180/M_PI) << std::endl;
         }
     }
 
-	if(HHAT.nrows()!=0)
-    {
-        fOutFile << "SCALARS friction angle float 1" << endl;
-        fOutFile << "LOOKUP_TABLE default" << endl;
-        for (Int inode = 0; inode < nnodes; inode++)
-        {
-            fOutFile << HHAT[inode][1] <<   endl;//x
-        }
-    }
+    
 
 
     Int nvecnames = fVecNames.size();
@@ -148,30 +140,7 @@ void VTKGraphMesh::DrawSolution ( Int step )
                 fOutFile << std::endl;
             }
 
-        } else if ( fVecNames[ivar] =="asd" ) {
-            /* for (Int inode = 0; inode < nnodes; inode++)
-             {
-
-                 NRmatrix<Doub> eps,gradu,gradut;
-                 NRtensor<Doub> tensor(0.);
-                 Doub dudx= dsol2[inode*2][0];
-                 Doub dudy= dsol2[inode*2][1];
-                 Doub dwdx= dsol2[inode*2+1][0];
-                 Doub dwdy= dsol2[inode*2+1][1];
-                 if(fdim==3)
-                 {
-                 }
-                 else if(fdim==2)
-                 {
-                     tensor.XX()=dudx;tensor.YY()=dwdy;tensor.XY()=(dudy + dwdx)/2.;
-                 }
-                 NRvector<Doub> valphi =fmesh->fmaterial->ComputePhi(tensor) ;
-                     for(Int ifunc=0;ifunc<valphi.size();ifunc++)
-                     {
-                         fOutFile << valphi[ifunc] << " ";
-                     }
-                 fOutFile << std::endl;
-             }*/
+        } else if ( fVecNames[ivar] =="sas" ) {
 
         } else if ( fVecNames[ivar] =="Stress" ) {
 

@@ -1,0 +1,8 @@
+Monte Carlo Sample = 793
+Safety Factor = 1.50461
+r/normr = 3.34023e-07
+u/normu = 0.00159708
+diff= 0
+diff2 = 0.0043313
+counterout = 17
+TIME in MCR = 216.939

@@ -206,7 +206,7 @@ void slope2x1( )
 	//string file ="/home/diogo/projects/dcproj/data/mesh-el816-no1k.msh";//GIM 1.39 18.34 com 7 pts
 //	string file ="/home/diogo/projects/dcproj/data/mesh-el558-no1k.msh";//GIM 1.39 7.75 s 9.4s com 7 pts
 //	string file ="/home/diogo/projects/dcproj/data/mesh-el1k-no650.msh";//GIM 1.54
-	//string file ="/home/diogo/projects/dcproj/data/mesh-el558-no314.msh";//GIM 1.59 2.7s
+//	string file ="/home/diogo/projects/dcproj/data/mesh-el558-no314.msh";//GIM 1.59 2.7s
 	//string file ="/home/diogo/projects/dcproj/data/mesh-el6k-no3k.msh";
 	//string file ="/home/diogo/projects/dcproj/data/mesh-el1k-no980.msh";//GIM 1.58
 	//string file ="/home/diogo/projects/dcproj/data/mesh-el3k-no6k-p2.msh";//GIM 1.43
@@ -338,7 +338,7 @@ void slope2x1( )
 	
     //SRM  com tangente numerica converge no MC e com tangente analitica nao.
 
-    if ( true ) {
+    if ( false ) {
         cout <<"\n  DETERMINISTC  " << endl;
         slopeproject* slopeobj = new slopeproject ( meshs, objKLGalerkinRF );
 

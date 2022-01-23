@@ -1686,6 +1686,7 @@ void slopeproject::PostVtk ( Int step )
     //  TPZStack<std::string> scalar_names,vector_names, tensor_names;
     vector_names.push_back ( "Displacement" );
     vector_names.push_back ( "Strain" );
+
     //vector_names.push_back("phi");
     //vector_names.push_back("Stress");
     Int dim=2;
