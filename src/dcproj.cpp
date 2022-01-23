@@ -199,7 +199,9 @@ void slope2x1( )
     MatDoub  meshcoords, elcoords;
     MatInt meshtopology;
     std::vector<std::vector<std::vector<Doub>>> allcoords;
-	string file ="/home/diogo/projects/dcproj/data/mesh-el952-no2k.msh";//GIM 1.40 22.4s   com 7 pts
+	//string file ="/home/diogo/projects/dcproj/data/mesh-el952-no2k.msh";//GIM 1.40 22.4s   com 7 pts
+	//string file ="/home/diogo/projects/dcproj/data/meshtri-el1k-no3k.msh";//GIM 1.40 22.4s   com 7 pts
+	string file ="/home/diogo/projects/dcproj/data/meshtri-el1k-no2k.msh";
 	//string file ="/home/diogo/projects/dcproj/data/mesh-el890-no1k.msh";//GIM 1.39 18s 20 s com 7 pts
 	//string file ="/home/diogo/projects/dcproj/data/mesh-el816-no1k.msh";//GIM 1.39 18.34 com 7 pts
 //	string file ="/home/diogo/projects/dcproj/data/mesh-el558-no1k.msh";//GIM 1.39 7.75 s 9.4s com 7 pts
@@ -287,12 +289,12 @@ void slope2x1( )
     Int npts = ptsweigths.nrows();
     Int nglobalpts = meshtopology.nrows() * npts;
     Int sz = 2 * meshcoords.nrows();
-    int nthreads =10;
+    int nthreads =15;
     std::vector <std::thread> threadsmat;
 
     Doub Lx = 20.;//(*Correlation length in x direction*)
     Doub Ly = 2.;//(*Correlation length in y direction*)
-    Int nsamples = 1000, expansionorder = 150;
+    Int nsamples = 1000, expansionorder = 250;
     Int type = 3;
     NRmatrix<MatDoub> randomfield ( 2, 1 );
     Int dim =2;
@@ -336,7 +338,7 @@ void slope2x1( )
 	
     //SRM  com tangente numerica converge no MC e com tangente analitica nao.
 
-    if ( false ) {
+    if ( true ) {
         cout <<"\n  DETERMINISTC  " << endl;
         slopeproject* slopeobj = new slopeproject ( meshs, objKLGalerkinRF );
 
@@ -402,18 +404,10 @@ void slope2x1( )
 std::cout << "criando malha "<<std::endl;
 
     elastoplastic2D< mohrcoulomb >* matmohr = new elastoplastic2D< mohrcoulomb > ( thickness, bodyforce, planestress, elnodes, hhatinho );
-
-
-       // mesh* meshs = new mesh ( dim,matmohr, allcoords, meshcoords, meshtopology, hhatinho );
-          mesh* meshs = new mesh(dim,mat, allcoords, meshcoords, meshtopology, hhatinho);
-        mat->fYC.setup ( young, nu, c, phi );
-        mat->SetMemory ( nglobalpts, sz );
-        mat->UpdateBodyForce ( bodyforce );
-		std::cout << "criando KLGalerkinRF "<<std::endl;
-		
-    matmohr->fYC.SetUp (  young, nu,c,Phi,Psi );
-    matmohr->SetMemory ( nglobalpts, sz );
-    matmohr->UpdateBodyForce ( bodyforce );
+		mesh* meshs = new mesh(dim,matmohr, allcoords, meshcoords, meshtopology, hhatinho);
+    	matmohr->fYC.SetUp (  young, nu,c,Phi,Psi );
+    	matmohr->SetMemory ( nglobalpts, sz );
+   		 matmohr->UpdateBodyForce ( bodyforce );
         KLGalerkinRF* objKLGalerkinRF = new KLGalerkinRF ( elnodes, Lx, Ly, type, nsamples, expansionorder );
         objKLGalerkinRF->SetMesh ( meshs );
 		std::cout << "criando slopeproject "<<std::endl;

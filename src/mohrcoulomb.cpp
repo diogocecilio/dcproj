@@ -517,7 +517,7 @@ void mohrcoulomb::updateatributes ( NRvector<MatDoub> mult )
 
     newcoesion = mult[0][0][0];
     newphi = mult[1][0][0];
-    SetUp ( fyoung,fnu, fc,fPhi, fPsi );
+    SetUp ( fyoung,fnu, newcoesion,newphi, newphi );
 }
 
 bool  mohrcoulomb::ProjectSigma ( NRvector<Doub> &sigma_trial, Doub &k_prev,NRvector<Doub> &sigma,Doub &k_proj, Int & whatphi )

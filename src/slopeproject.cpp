@@ -3066,13 +3066,13 @@ void slopeproject::MonteCarloGIM ( int iter, int iter2, bool print, string write
         fmesh->fmaterial->SetRandomField ( hhatinho );
         fmesh->SetHhat ( hhatinho );
                      cout << "set mat= " << std::endl;
-        int desirediter = 5;
+        int desirediter = 10;
  
 //soll = slopeobj0->IterativeProcess(10, 0.5, 0.01,20);
         //std::vector<std::vector<double>>  sol = IterativeProcess(desirediter, lamb0, deltatol, maxiter);//x = desloc y = loadfactor
   
         Doub dlamb0 =0.1;
-        Doub maxlfac=2;
+        Doub maxlfac=1;
         //10, 0.5, 0.01,20
         std::vector<std::vector<double>>  sol = IterativeProcessNew ( desirediter, dlamb0,maxlfac,imc );
         // std::vector<std::vector<double>>  sol = IterativeProcessGIMBinarySearch();

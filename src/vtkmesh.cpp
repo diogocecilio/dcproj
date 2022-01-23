@@ -115,7 +115,15 @@ void VTKGraphMesh::DrawSolution ( Int step )
         }
     }
 
-    
+	if(HHAT.nrows()!=0)
+    {
+        fOutFile << "SCALARS friction angle float 1" << endl;
+        fOutFile << "LOOKUP_TABLE default" << endl;
+        for (Int inode = 0; inode < nnodes; inode++)
+        {
+            fOutFile << HHAT[inode][1] <<   endl;//x
+        }
+    }
 
 
     Int nvecnames = fVecNames.size();
