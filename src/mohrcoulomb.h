@@ -767,6 +767,7 @@ public:
         NRmatrix<Doub>Dep ( 6,6,0. );
         Doub a = epst.Norm();
         a*=1.e-6;
+
         // a=1.e-5;
         NRtensor<Doub> epstpertub ( epst );
 
@@ -785,7 +786,7 @@ public:
         bool iselastic = closestpointproj ( epst, epsp, projstress, projstrain,whatphi );
         Doub phiinvars=PhiInvars ( stresstrialtensor );
         if ( fsetconsistentangent==false ) {
-            iselastic=true;
+            //iselastic=true;
         }
         //iselastic=true;
         //iselastic=true;

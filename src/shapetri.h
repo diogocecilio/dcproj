@@ -40,45 +40,45 @@ public:
             gradpsis[1][0] =-1.;
             gradpsis[1][1] = 0.;
             gradpsis[1][2] = 1.;
-			
-			
+
+
 // 			psis[0][0] = eta;
 //             psis[1][0] = xi;
 //             psis[2][0] = 1 - eta - xi;
-// 
+//
 //             gradpsis[0][0] = 0;
 //             gradpsis[0][1] = 1.;
 //             gradpsis[0][2] = -1.;
-// 
+//
 //             gradpsis[1][0] =1.;
 //             gradpsis[1][1] = 0.;
 //             gradpsis[1][2] = -1.;
-			
+
 // 			psis[0][0] = xi;
 //             psis[1][0] = eta;
 //             psis[2][0] = 1 - eta - xi;
-// 
+//
 //             gradpsis[0][0] = 1.;
 //             gradpsis[0][1] = 0.;
 //             gradpsis[0][2] = -1.;
-// 
+//
 //             gradpsis[1][0] =0.;
 //             gradpsis[1][1] = 1.;
 //             gradpsis[1][2] = -1.;
-			
-/*			
-			psis[0][0] = xi;
-            psis[1][0] = 1 - eta - xi;
-            psis[2][0] = eta;
 
-            gradpsis[0][0] = 1.;
-            gradpsis[0][1] = -1.;
-            gradpsis[0][2] = 0.;
+            /*
+            			psis[0][0] = xi;
+                        psis[1][0] = 1 - eta - xi;
+                        psis[2][0] = eta;
 
-            gradpsis[1][0] =0.;
-            gradpsis[1][1] = -1.;
-            gradpsis[1][2] = 1.;*/
-			
+                        gradpsis[0][0] = 1.;
+                        gradpsis[0][1] = -1.;
+                        gradpsis[0][2] = 0.;
+
+                        gradpsis[1][0] =0.;
+                        gradpsis[1][1] = -1.;
+                        gradpsis[1][2] = 1.;*/
+
 
             break;
 
@@ -87,8 +87,8 @@ public:
             gradpsis.assign ( 2, 6, 0.000 );
 
 
-			
-			psis[0][0] = (-1. + eta + xi)*(-1. + 2.*eta + 2.*xi);
+
+            psis[0][0] = (-1. + eta + xi)*(-1. + 2.*eta + 2.*xi);
             psis[1][0] =xi*(-1. + 2.*xi);
             psis[2][0] = eta*(-1. + 2.*eta);
             psis[3][0] = -4.*xi*(-1. + eta + xi);
@@ -103,37 +103,37 @@ public:
             gradpsis[0][4] = 4.*eta;
             gradpsis[0][5] = -4.*eta;
 
-			
-			gradpsis[1][0] = -3. + 4.*eta + 4.*xi;
+
+            gradpsis[1][0] = -3. + 4.*eta + 4.*xi;
             gradpsis[1][1] = 0.;
             gradpsis[1][2] =-1. + 4.*eta;
             gradpsis[1][3] =-4.*xi;
             gradpsis[1][4] = 4.*xi;
             gradpsis[1][5] = -4.*(-1. + 2.*eta + xi);
-			
+
 // 			psis[2][0] = (-1. + eta + xi)*(-1. + 2.*eta + 2.*xi);
 //             psis[1][0] =xi*(-1. + 2.*xi);
 //             psis[0][0] = eta*(-1. + 2.*eta);
 //             psis[5][0] = -4.*xi*(-1. + eta + xi);
 //             psis[4][0] = 4.*eta*xi;
 //             psis[3][0] =-4.*eta*(-1. + eta + xi);
-// 
-// 
+//
+//
 //             gradpsis[0][2] =-3. + 4.*eta + 4.*xi;
 //             gradpsis[0][1] = -1. + 4.*xi;
 //             gradpsis[0][0] = 0.;
 //             gradpsis[0][5] = -4.*(-1. + eta + 2.*xi);
 //             gradpsis[0][4] = 4.*eta;
 //             gradpsis[0][3] = -4.*eta;
-// 
-// 			
+//
+//
 // 			gradpsis[1][2] = -3. + 4.*eta + 4.*xi;
 //             gradpsis[1][1] = 0.;
 //             gradpsis[1][0] =-1. + 4.*eta;
 //             gradpsis[1][5] =-4.*xi;
 //             gradpsis[1][4] = 4.*xi;
 //             gradpsis[1][3] = -4.*(-1. + 2.*eta + xi);
-			
+
 
 
             break;
@@ -201,24 +201,24 @@ public:
                         pts[i][j] = co[i][j];
                     }
                 }
-                
+
 
             } else {
 
-//                 double co[3][3] = {{1./6., 1./6., 1./2. *1./3.}, {2./3., 1./6., 1./2. *1./3.}, {1./6., 2./3., 1./2. *1./3.}};
-// 
-//                 pts.resize ( 3, 3 );
-//                 for ( Int i = 0; i < 3; i++ ) {
-//                     for ( Int j = 0; j < 3; j++ ) {
-//                         pts[i][j] = co[i][j];
-//                     }
-//                 }
-                
+                double co[3][3] = {{1./6., 1./6., 1./2. *1./3.}, {2./3., 1./6., 1./2. *1./3.}, {1./6., 2./3., 1./2. *1./3.}};
+
+                pts.resize ( 3, 3 );
+                for ( Int i = 0; i < 3; i++ ) {
+                    for ( Int j = 0; j < 3; j++ ) {
+                        pts[i][j] = co[i][j];
+                    }
+                }
 
 
-//                 double co[4][3] ={{1./3., 1./3., -27./48.*1./2.}, {1./5., 1./5., 25./48.* 1./2.}, {1./5., 3./5., 
+
+//                 double co[4][3] ={{1./3., 1./3., -27./48.*1./2.}, {1./5., 1./5., 25./48.* 1./2.}, {1./5., 3./5.,
 //  25./48.* 1./2.}, {3./5., 1./5., 25./48.* 1./2.}};
-// 
+//
 //                 pts.resize ( 4, 3 );
 //                 for ( Int i = 0; i < 4; i++ ) {
 //                     for ( Int j = 0; j < 3; j++ ) {
@@ -226,42 +226,44 @@ public:
 //                     }
 //                 }
 
-Doub r1=0.1012865073235;
-Doub r2=0.7974269853531;
-Doub r3=r1;
-Doub r4=0.4701420641051;
-Doub r5=r4;
-Doub r6=0.0597158717898;
-Doub r7=1./3.;
-Doub s1=r1;
-Doub s2=r1;
-Doub s3=r2;
-Doub s4=r6;
-Doub s5=r4;
-Doub s6=r4;
-Doub s7 = r7;
-Doub w1=0.1259391805448;
-Doub w2=w1;
-Doub w3=w1;
-Doub w4=0.1323941527885;
-Doub w5=w4;
-Doub w6=w4;
-Doub w7=0.225;
-                 double co[7][3] ={
-					 {r1,s1, w1}, 
-					 {r2,s2, w2},
-					 {r3,s3, w3},
-					 {r4, s4, w4},
-					 {r5, s5, w5},
-					 {r6, s6, w6},
-					 {r7, s7, w7}};
-                pts.resize ( 7, 3 );
-                for ( Int i = 0; i < 7; i++ ) {
-                    for ( Int j = 0; j < 3; j++ ) {
-                        pts[i][j] = co[i][j];
-                    }
-                }
-            }
+// Doub r1=0.1012865073235;
+// Doub r2=0.7974269853531;
+// Doub r3=r1;
+// Doub r4=0.4701420641051;
+// Doub r5=r4;
+// Doub r6=0.0597158717898;
+// Doub r7=1./3.;
+// Doub s1=r1;
+// Doub s2=r1;
+// Doub s3=r2;
+// Doub s4=r6;
+// Doub s5=r4;
+// Doub s6=r4;
+// Doub s7 = r7;
+// Doub w1=0.1259391805448;
+// Doub w2=w1;
+// Doub w3=w1;
+// Doub w4=0.1323941527885;
+// Doub w5=w4;
+// Doub w6=w4;
+// Doub w7=0.225;
+//                  double co[7][3] ={
+// 					 {r1,s1, w1},
+// 					 {r2,s2, w2},
+// 					 {r3,s3, w3},
+// 					 {r4, s4, w4},
+// 					 {r5, s5, w5},
+// 					 {r6, s6, w6},
+// 					 {r7, s7, w7}};
+//                 pts.resize ( 7, 3 );
+//                 for ( Int i = 0; i < 7; i++ ) {
+//                     for ( Int j = 0; j < 3; j++ ) {
+//                         pts[i][j] = co[i][j];
+//                     }
+//                 }
+
+
+             }
 
 
         }
@@ -270,7 +272,7 @@ Doub w7=0.225;
 
     void pointsandweigths1D ( MatDoub & pts )
     {
-        //double co[4][2] = { { -0.861136, 0.347855 },{ -0.339981, 0.652145 },{ 
+        //double co[4][2] = { { -0.861136, 0.347855 },{ -0.339981, 0.652145 },{
 //0.339981,
         //		0.652145 },{ 0.861136, 0.347855 } };
 

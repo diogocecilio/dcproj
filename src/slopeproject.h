@@ -80,7 +80,7 @@ public:
     mesh* fmesh;
     KLGalerkinRF* fklgalerking;
     NRmatrix<MatDoub> frandomfield;
-
+	std::vector<std::vector<int>> fidsvector;
     void PostVtk (  Int step  );
 
     template <class T>

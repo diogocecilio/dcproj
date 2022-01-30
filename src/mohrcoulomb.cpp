@@ -868,9 +868,9 @@ void mohrcoulomb::closestpointproj ( NRtensor<Doub>  epst, NRtensor<Doub>  epsp,
 // 	cout << "gamma 4444" << endl;
 // 	cout << gamma4  << endl;
 // 	cout << gamma2  << endl;
-	
-	
-	    
+
+
+
 
     if ( iselastic==true ) {
         //cout << "elastic"  << endl;
@@ -887,51 +887,75 @@ void mohrcoulomb::closestpointproj ( NRtensor<Doub>  epst, NRtensor<Doub>  epsp,
         return;
     }
 
-    if ( m_type==1 || m_type==2 ) {
-        //cout << "corner"  << endl;
-        ComputeConsistentEdgeTangent ( projstress, stresstrialtensor, Dep,m_type );
-        Dep2[0][0] = Dep[0][0];
-        Dep2[0][1] = Dep[0][1];
-        Dep2[0][2] = Dep[0][5];
-        Dep2[1][0] = Dep[1][0];
-        Dep2[1][1] = Dep[1][1];
-        Dep2[1][2] = Dep[1][5];
-        Dep2[2][0] = Dep[5][0];
-        Dep2[2][1] = Dep[5][1];
-        Dep2[2][2] = Dep[5][5];
-	//closestpointproj3 (  epst,  epsp,projstress,projstrain,Dep2, projgamma );
+    if ( fsetconsistentangent==false ) {
+
+        if ( m_type==3 ) {
+            Dep2[0][0] = C[0][0];
+            Dep2[0][1] = C[0][1];
+            Dep2[0][2] = C[0][5];
+            Dep2[1][0] = C[1][0];
+            Dep2[1][1] = C[1][1];
+            Dep2[1][2] = C[1][5];
+            Dep2[2][0] = C[5][0];
+            Dep2[2][1] = C[5][1];
+            Dep2[2][2] = C[5][5];
+			Dep2*=1.e-3;
+			//closestpointproj3 ( epst,  epsp,projstress,projstrain,Dep2, projgamma );
+        } else {
+            closestpointproj3 ( epst,  epsp,projstress,projstrain,Dep2, projgamma );
+
+        }
         return;
-    } else if ( m_type==0 ) {
-        //cout << "plane"  << endl;
-        ComputeConsistentPlaneTangent ( projstress, stresstrialtensor, Dep );
-        Dep2[0][0] = Dep[0][0];
-        Dep2[0][1] = Dep[0][1];
-        Dep2[0][2] = Dep[0][5];
-        Dep2[1][0] = Dep[1][0];
-        Dep2[1][1] = Dep[1][1];
-        Dep2[1][2] = Dep[1][5];
-        Dep2[2][0] = Dep[5][0];
-        Dep2[2][1] = Dep[5][1];
-        Dep2[2][2] = Dep[5][5];
-		//closestpointproj3 (  epst,  epsp,projstress,projstrain,Dep2, projgamma );
-        return;
-    } else if ( m_type==3 ) { //Apex
-        //cout << "apex"  << endl;
-		//closestpointproj3 (  epst,  epsp,projstress,projstrain,Dep2, projgamma );
-        Dep2[0][0] =1.e-12;
-        Dep2[0][1] = 1.e-12;
-        Dep2[0][2] = 1.e-12;
-        Dep2[1][0] = 1.e-12;
-        Dep2[1][1] = 1.e-12;
-        Dep2[1][2] = 1.e-12;
-        Dep2[2][0] =1.e-12;
-        Dep2[2][1] = 1.e-12;
-        Dep2[2][2] = 1.e-12;
-//closestpointproj3 (  epst,  epsp,projstress,projstrain,Dep2, projgamma );
-// 				Dep2[0][0] = C[0][0];Dep2[0][1] = C[0][1];Dep2[0][2] = C[0][5];
-// 		Dep2[1][0] = C[1][0];Dep2[1][1] = C[1][1];Dep2[1][2] = C[1][5];
-// 		Dep2[2][0] = C[5][0];Dep2[2][1] = C[5][1];Dep2[2][2] = C[5][5];
-        return;
+
+    } else {
+
+
+
+        if ( m_type==1 || m_type==2 ) {
+            //cout << "corner"  << endl;
+
+            ComputeConsistentEdgeTangent ( projstress, stresstrialtensor, Dep,m_type );
+
+            Dep2[0][0] = Dep[0][0];
+            Dep2[0][1] = Dep[0][1];
+            Dep2[0][2] = Dep[0][5];
+            Dep2[1][0] = Dep[1][0];
+            Dep2[1][1] = Dep[1][1];
+            Dep2[1][2] = Dep[1][5];
+            Dep2[2][0] = Dep[5][0];
+            Dep2[2][1] = Dep[5][1];
+            Dep2[2][2] = Dep[5][5];
+            return;
+        } else if ( m_type==0 ) {
+            //cout << "plane"  << endl;
+
+            ComputeConsistentPlaneTangent ( projstress, stresstrialtensor, Dep );
+
+            Dep2[0][0] = Dep[0][0];
+            Dep2[0][1] = Dep[0][1];
+            Dep2[0][2] = Dep[0][5];
+            Dep2[1][0] = Dep[1][0];
+            Dep2[1][1] = Dep[1][1];
+            Dep2[1][2] = Dep[1][5];
+            Dep2[2][0] = Dep[5][0];
+            Dep2[2][1] = Dep[5][1];
+            Dep2[2][2] = Dep[5][5];
+            return;
+        } else if ( m_type==3 ) { //Apex
+
+            Dep2[0][0] = C[0][0];
+            Dep2[0][1] = C[0][1];
+            Dep2[0][2] = C[0][5];
+            Dep2[1][0] = C[1][0];
+            Dep2[1][1] = C[1][1];
+            Dep2[1][2] = C[1][5];
+            Dep2[2][0] = C[5][0];
+            Dep2[2][1] = C[5][1];
+            Dep2[2][2] = C[5][5];
+			Dep2*=1.e-12;
+
+            return;
+        }
     }
 
 
@@ -963,10 +987,10 @@ void mohrcoulomb::ComputeConsistentPlaneTangent ( NRtensor<Doub> & projstress, N
     NRmatrix<Doub> E=GetElasticMatrix();
     NRmatrix<Doub> atemp,denom;
     Doub phiinvars=PhiInvars ( trialstress );
-	//Doub phiinvars=Yields(trialstress)[0];
+    //Doub phiinvars=Yields(trialstress)[0];
     NRmatrix<Doub> a,at;
-	a=avec ( trialstress );
-	//a =N(trialstress)[0];
+    a=avec ( trialstress );
+    //a =N(trialstress)[0];
     a.Transpose ( at );
     at.Mult ( E,atemp );
     atemp.Mult ( a,denom );

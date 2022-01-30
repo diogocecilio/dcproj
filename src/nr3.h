@@ -1216,7 +1216,8 @@ T NRtensor<T>::J2() const
 	
     if ( value < 0 ) {
 		cout<< "J2<0" <<endl;
-        DebugStop();
+		value=1.e-6;
+       // DebugStop();
     }
     return fabs ( value );
 }

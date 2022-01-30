@@ -448,7 +448,7 @@ void KLGalerkinRF::GenerateNonGaussinRandomField ( VecComplex& val, MatDoub& vec
     //em cada coluna da hhatcoes tem um random field
     cout << " n PRECISA MUDAR AQUIx!!" << endl;
     //Distribui��o log-normal
-    Doub mean = 30.;
+    Doub mean = 10.;
     Doub sdev = 0.3 * mean;
     Doub xi = sqrt ( log ( 1 + pow ( ( sdev / mean ),2 ) ) );
     Doub lambda = log ( mean ) - xi * xi / 2.;
@@ -460,8 +460,8 @@ void KLGalerkinRF::GenerateNonGaussinRandomField ( VecComplex& val, MatDoub& vec
 
     }
 
-    mean = 10. * M_PI/180.;
-    sdev = 0.3 * mean;
+    mean = 30. * M_PI/180.;
+    sdev = 0.2 * mean;
     xi = sqrt ( log ( 1 + pow ( ( sdev / mean ), 2 ) ) );
     lambda = log ( mean ) - xi * xi / 2.;
     for ( int i = 0; i < hhatphi.nrows(); i++ ) {
@@ -484,86 +484,86 @@ void KLGalerkinRF::GenerateNonGaussinRandomField ( VecComplex& val, MatDoub& vec
 }
 
 
-void KLGalerkinRF::GenerateGaussinRandomField ( VecComplex& val, MatDoub& vec, NRmatrix<MatDoub>& HHAT, std::vector<std::vector<double>>& errpost )
-{
-    //	std::vector<std::vector<double>> errpost;
-//	PostProcess( error, errpost);
-//	std::ofstream file("error.txt");
-//	OutPutPost(errpost, file);
-    Int M = fexpansionorder;
-    MatDoub  PHIt, PHI, vect;
-    vec.Transpose ( vect );
-
-    MatDoub I ( M, M, 0. );
-    for ( Int i = 0; i < M; i++ ) I[i][i] = sqrt ( fabs ( val[i].real() ) );
-
-    I.Mult ( vect, PHI );
-
-    PHI.Transpose ( PHIt );
-
-
-    //unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-    //std::default_random_engine generator(seed);
-
-    std::random_device rd{};
-    std::mt19937 generator{ rd() };
-
-    std::normal_distribution<Doub> distribution ( 0., 1. );
-
-    Int nsamples = fsamples;
-    MatDoub THETA ( M, nsamples, 0. ), THETA2 ( M, nsamples, 0. );
-    Doub correlation = -0.5;
-    for ( int n = 0; n < nsamples; n++ ) {
-        for ( Int iexp = 0; iexp < M; iexp++ ) {
-            Doub xic = distribution ( generator );
-            Doub xiphi = distribution ( generator );
-            THETA[iexp][n] = xic;
-            THETA2[iexp][n] = xic * correlation + xiphi * sqrt ( 1 - correlation * correlation );
-        }
-    }
-
-    MatDoub hhatphi, hhatcoes;
-
-    PHIt.Mult ( THETA, hhatcoes );
-    PHIt.Mult ( THETA2, hhatphi );
-
-    HHAT.resize ( 2, 1 );
-    //437 x 5000
-    //em cada coluna da hhatcoes tem um random field
-
-    Doub mean = 30.;
-    Doub sdev = 0.3 * mean;
-    for ( int i = 0; i < hhatcoes.nrows(); i++ ) {
-        for ( int j = 0; j < hhatcoes.ncols(); j++ ) {
-            if ( hhatcoes[i][j]>100 ) {
-                hhatcoes[i][j] =100;
-            } else {
-                hhatcoes[i][j] = mean + sdev * hhatcoes[i][j];
-            }
-
-        }
-
-    }
-    Doub meanphi = 10. * M_PI / 180.;
-    Doub sdevphi =0.3* meanphi;
-	    for ( int i = 0; i < hhatphi.nrows(); i++ ) {
-        for ( int j = 0; j < hhatphi.ncols(); j++ ) {
-            if ( hhatphi[i][j]>1 ) {
-                hhatphi[i][j] =1;
-            } else {
-                hhatphi[i][j] = meanphi + sdevphi * hhatphi[i][j];
-            }
-
-        }
-
-    }
-    HHAT[0][0] = hhatcoes;
-    HHAT[1][0] = hhatphi;
-
-
-
-    std::cout << "\n Exiting  generalized eigenvalue prolem" << endl;
-}
+// void KLGalerkinRF::GenerateGaussinRandomField ( VecComplex& val, MatDoub& vec, NRmatrix<MatDoub>& HHAT, std::vector<std::vector<double>>& errpost )
+// {
+//     //	std::vector<std::vector<double>> errpost;
+// //	PostProcess( error, errpost);
+// //	std::ofstream file("error.txt");
+// //	OutPutPost(errpost, file);
+//     Int M = fexpansionorder;
+//     MatDoub  PHIt, PHI, vect;
+//     vec.Transpose ( vect );
+// 
+//     MatDoub I ( M, M, 0. );
+//     for ( Int i = 0; i < M; i++ ) I[i][i] = sqrt ( fabs ( val[i].real() ) );
+// 
+//     I.Mult ( vect, PHI );
+// 
+//     PHI.Transpose ( PHIt );
+// 
+// 
+//     //unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+//     //std::default_random_engine generator(seed);
+// 
+//     std::random_device rd{};
+//     std::mt19937 generator{ rd() };
+// 
+//     std::normal_distribution<Doub> distribution ( 0., 1. );
+// 
+//     Int nsamples = fsamples;
+//     MatDoub THETA ( M, nsamples, 0. ), THETA2 ( M, nsamples, 0. );
+//     Doub correlation = -0.5;
+//     for ( int n = 0; n < nsamples; n++ ) {
+//         for ( Int iexp = 0; iexp < M; iexp++ ) {
+//             Doub xic = distribution ( generator );
+//             Doub xiphi = distribution ( generator );
+//             THETA[iexp][n] = xic;
+//             THETA2[iexp][n] = xic * correlation + xiphi * sqrt ( 1 - correlation * correlation );
+//         }
+//     }
+// 
+//     MatDoub hhatphi, hhatcoes;
+// 
+//     PHIt.Mult ( THETA, hhatcoes );
+//     PHIt.Mult ( THETA2, hhatphi );
+// 
+//     HHAT.resize ( 2, 1 );
+//     //437 x 5000
+//     //em cada coluna da hhatcoes tem um random field
+// 
+//     Doub mean = 30.;
+//     Doub sdev = 0.3 * mean;
+//     for ( int i = 0; i < hhatcoes.nrows(); i++ ) {
+//         for ( int j = 0; j < hhatcoes.ncols(); j++ ) {
+//             if ( hhatcoes[i][j]>100 ) {
+//                 hhatcoes[i][j] =100;
+//             } else {
+//                 hhatcoes[i][j] = mean + sdev * hhatcoes[i][j];
+//             }
+// 
+//         }
+// 
+//     }
+//     Doub meanphi = 10.* M_PI / 180.;
+//     Doub sdevphi =0.3* meanphi;
+// 	    for ( int i = 0; i < hhatphi.nrows(); i++ ) {
+//         for ( int j = 0; j < hhatphi.ncols(); j++ ) {
+//             if ( hhatphi[i][j]>1 ) {
+//                 hhatphi[i][j] =1;
+//             } else {
+//                 hhatphi[i][j] = meanphi + sdevphi * hhatphi[i][j];
+//             }
+// 
+//         }
+// 
+//     }
+//     HHAT[0][0] = hhatcoes;
+//     HHAT[1][0] = hhatphi;
+// 
+// 
+// 
+//     std::cout << "\n Exiting  generalized eigenvalue prolem" << endl;
+// }
 
 
 //void KLGalerkinRF::SolveGenEigValProblem(VecComplex& val, MatDoub& vec, NRmatrix<MatDoub>& HHAT, std::vector<std::vector<double>>& errpost)

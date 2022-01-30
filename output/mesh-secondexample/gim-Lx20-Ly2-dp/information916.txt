@@ -1,0 +1,7 @@
+Monte Carlo Sample = 916
+Safety Factor = 2.51858
+r/normr = 4.66128e-07
+u/normu = 0.00200002
+diff= 0
+diff2 = 0.00823816
+counterout = 14

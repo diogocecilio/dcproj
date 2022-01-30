@@ -67,7 +67,7 @@ private:
 //<<<<<<< HEAD
 void myTreads ( int a, int b, slopeproject* slopeobj2,string namefolder3 )
 {
-    bool print =  false;
+    bool print =  true;
     slopeobj2->MonteCarloGIM ( a, b, print, namefolder3 );
 
 	
@@ -201,12 +201,12 @@ void slope2x1( )
     std::vector<std::vector<std::vector<Doub>>> allcoords;
 	//string file ="/home/diogo/projects/dcproj/data/mesh-el952-no2k.msh";//GIM 1.40 22.4s   com 7 pts
 	//string file ="/home/diogo/projects/dcproj/data/meshtri-el1k-no3k.msh";//GIM 1.40 22.4s   com 7 pts
-	string file ="/home/diogo/projects/dcproj/data/meshtri-el1k-no2k.msh";
+//	string file ="/home/diogo/projects/dcproj/data/meshtri-el1k-no2k.msh";//GIM 1.40 30s   com 7 pts
 	//string file ="/home/diogo/projects/dcproj/data/mesh-el890-no1k.msh";//GIM 1.39 18s 20 s com 7 pts
 	//string file ="/home/diogo/projects/dcproj/data/mesh-el816-no1k.msh";//GIM 1.39 18.34 com 7 pts
-//	string file ="/home/diogo/projects/dcproj/data/mesh-el558-no1k.msh";//GIM 1.39 7.75 s 9.4s com 7 pts
-//	string file ="/home/diogo/projects/dcproj/data/mesh-el1k-no650.msh";//GIM 1.54
-//	string file ="/home/diogo/projects/dcproj/data/mesh-el558-no314.msh";//GIM 1.59 2.7s
+	//string file ="/home/diogo/projects/dcproj/data/mesh-el558-no1k.msh";//GIM 1.39 7.75 s 9.4s com 7 pts
+	//string file ="/home/diogo/projects/dcproj/data/mesh-el1k-no650.msh";//GIM 1.54
+	//string file ="/home/diogo/projects/dcproj/data/mesh-el558-no314.msh";//GIM 1.59 2.7s
 	//string file ="/home/diogo/projects/dcproj/data/mesh-el6k-no3k.msh";
 	//string file ="/home/diogo/projects/dcproj/data/mesh-el1k-no980.msh";//GIM 1.58
 	//string file ="/home/diogo/projects/dcproj/data/mesh-el3k-no6k-p2.msh";//GIM 1.43
@@ -216,6 +216,15 @@ void slope2x1( )
 	//string file ="/home/diogo/projects/dcproj/data/mesh-el1k-no3k.msh";//SRM 1.23
 	//string file ="/home/diogo/projects/dcproj/data/mesh-el1k-no3k-b.msh";//GIM 1.44
 	//string file ="/home/diogo/projects/dcproj/data/quad.msh";//SRM 1.23
+	string file ="/home/diogo/projects/dcproj/data/mesh-el287-no922.msh";
+	//string file ="/home/diogo/projects/dcproj/data/mesh-el606-no1k.msh";
+	//string file ="/home/diogo/projects/dcproj/data/snmesh-3knodes-1kels.msh";
+	//string file ="/home/diogo/projects/dcproj/data/snmesh-2knodes-725els.msh";
+	//string file ="/home/diogo/projects/dcproj/data/snmesh-1knodes-360els.msh";
+	//string file ="/home/diogo/projects/dcproj/data/mesh-el1k-no2k-renumber.msh";
+	//string file ="/home/diogo/projects/dcproj/data/snmesh-tri-1knodes-900els.msh";
+	//string file ="/home/diogo/projects/dcproj/data/snmesh-tri-2knodes-1kels-dir.msh";
+	//string file ="/home/diogo/projects/dcproj/data/quad.msh";
 	readgidmesh read = readgidmesh(file);
 	read.ReadMesh();
 	meshtopology = read.GetTopology();
@@ -229,7 +238,7 @@ void slope2x1( )
    // Doub c = 50., phi = 20. * M_PI / 180., gamma = -20.;
 	
 	
-	// Doub c = 10., phi =30.* M_PI / 180., gamma = -20.;//1.5
+	 Doub c = 10., phi =30.* M_PI / 180., gamma = -20.;//1.5
 	
     //Doub c = 23., phi =0.000000001* M_PI / 180., gamma = -20.;//1.5
     
@@ -239,7 +248,9 @@ void slope2x1( )
 	
 	
 	//para 45 graus LE preve FS =1.2 com NS=5.53
-	Doub c = 30., phi = 10. * M_PI / 180., gamma = -20.;
+	//Doub c = 30., phi = 10. * M_PI / 180., gamma = -20.;
+	
+	//Doub c = 10., phi = 30. * M_PI / 180., gamma = -20.;
    
     Doub Phi=phi;
     Doub Psi=phi;
@@ -284,7 +295,7 @@ void slope2x1( )
 	  shapelocal->pointsandweigths ( ptsweigths );
 	}
 
-	cout << "order = "<< order << endl;
+	cout << "order  = "<< order << endl;
 	
     Int npts = ptsweigths.nrows();
     Int nglobalpts = meshtopology.nrows() * npts;
@@ -294,7 +305,7 @@ void slope2x1( )
 
     Doub Lx = 20.;//(*Correlation length in x direction*)
     Doub Ly = 2.;//(*Correlation length in y direction*)
-    Int nsamples = 1000, expansionorder = 250;
+    Int nsamples = 2000, expansionorder = 300;
     Int type = 3;
     NRmatrix<MatDoub> randomfield ( 2, 1 );
     Int dim =2;
@@ -320,9 +331,10 @@ void slope2x1( )
     matvon->SetMemory ( nglobalpts, sz );
     matvon->UpdateBodyForce ( bodyforce );
 
- 	mesh* meshs = new mesh ( dim,matmohr, allcoords, meshcoords, meshtopology, hhatinho );
-//     //mesh* meshs = new mesh ( dim,matmohr, allcoords, meshcoords, meshtopology, hhatinho );
-//     ///mesh* meshs = new mesh(dim,mat, allcoords, meshcoords, meshtopology, hhatinho);
+ //	mesh* meshs = new mesh ( dim,matmohr, allcoords, meshcoords, meshtopology, hhatinho );
+     mesh* meshs = new mesh ( dim,mat , allcoords, meshcoords, meshtopology, hhatinho );
+
+//	mesh* meshs = new mesh(dim,mat, allcoords, meshcoords, meshtopology, hhatinho);
 // 	NRmatrix<Doub> KG,FINT,FBODY;
 // 	meshs->Assemble ( KG, FINT, FBODY );
 // 	KG.Print();
@@ -337,9 +349,37 @@ void slope2x1( )
     //DETERMINISTC SOL. Phi=0 aproxima tresca?
 	
     //SRM  com tangente numerica converge no MC e com tangente analitica nao.
+	
+	if (false ) {
+
+        //last filed created c =23 e phi=0
+        string filename = "mesh-secondexample";
+        filename+="/field-Lx";
+        filename+=to_string ( Int ( Lx ) );
+        filename+="-Ly";
+        filename+=to_string ( Int ( Ly ) );
+        slopeobj->CreateRandomField ( filename );
+		
+		return;
+		
+    }
+
+
+
+
+//     randomfield[0][0] = coesionrandomfield;
+//     randomfield[1][0] = frictionrandomfield;
+// 	slopeproject* slopeobj0 = new slopeproject ( meshs, objKLGalerkinRF,randomfield );
+// 	MatDoub hhatinho2 = slopeobj0->AssembleHhationho ( 1003 ); //pior Lx =20, Ly =4
+// 	//MatDoub hhatinho2 = slopeobj0->AssembleHhationho(1055);//melhor Lx =20, Ly =4
+// 	meshs->SetHhat ( hhatinho2 );
 
     if ( false ) {
         cout <<"\n  DETERMINISTC  " << endl;
+		
+
+		
+		
         slopeproject* slopeobj = new slopeproject ( meshs, objKLGalerkinRF );
 
    
@@ -355,32 +395,38 @@ void slope2x1( )
 		matvon->fYC.setup( young,  nu ,c);
 		matvon->SetMemory ( nglobalpts, sz );
 		matvon->UpdateBodyForce ( bodyforce );
+		//24 s
+		//int desirediter = 10;
+       // Doub dlamb0 =0.25;
+		//Doub maxlfac=2;
+		//28.4 s
+       // int desirediter = 10;
+      //  Doub dlamb0 =0.25;
+		//Doub maxlfac=1.5;
+		//22.72 s
+		//int desirediter = 7;
+        //Doub dlamb0 =0.25;
+		//Doub maxlfac=2;
 
-        int desirediter = 10;
-        Doub dlamb0 =0.1;
-		Doub maxlfac=3;
-        //10, 0.5, 0.01,20
+		//18.48 s
+		//int desirediter = 9;
+      //  Doub dlamb0 =0.6;
+	//	Doub maxlfac=0.9;
+		
+		int desirediter = 10;
+        Doub dlamb0 =0.6;
+		Doub maxlfac=0.9;
+		
         slopeobj->IterativeProcessNew ( desirediter, dlamb0,maxlfac,0);
+		//slopeobj->PostVtk(0);
        // slopeobj->IterativeProcess2( );
-        //soll = slopeobj->IterativeProcessShearRed( 0.1, 1,0.01);
+        //soll = slopeobj->IterativeProcessShearRed( 0.1, 2.,0.01);
 		//cout <<"\n  exit  " << endl;
       //  soll = slopeobj->IterativeProcessGIMBinarySearch();
-       // return;
+        return;
 
     }
 
-
-    if ( true ) {
-
-        //last filed created c =23 e phi=0
-        string filename = "mesh-secondexample";
-        filename+="/field-Lx";
-        filename+=to_string ( Int ( Lx ) );
-        filename+="-Ly";
-        filename+=to_string ( Int ( Ly ) );
-        slopeobj->CreateRandomField ( filename );
-		
-    }
 
     std::cout << "lendo fields = "<<std::endl;
     MatDoub coesionrandomfield, frictionrandomfield;
@@ -389,33 +435,43 @@ void slope2x1( )
     string filerff = "mesh-secondexample/field-Lx20-Ly2/frictionfield.txt";
     ReadMatDoub ( frictionrandomfield, filerff );
 
-
-    randomfield[0][0] = coesionrandomfield;
+	randomfield[0][0] = coesionrandomfield;
     randomfield[1][0] = frictionrandomfield;
-
-    string namefolder = "mesh-secondexample/gim-Lx20-Ly2";
-    int delta = int ( nsamples/nthreads );
+	//slopeproject* slopeobj0 = new slopeproject ( meshs, objKLGalerkinRF,randomfield );
+	
+    string namefolder = "mesh-secondexample/gim-Lx20-Ly2-dp";
+    //int delta = int ( nsamples/nthreads );
+	int delta = 100;
     int a=0,b=delta;
 
-	std::cout << "entrando nas threds "<<std::endl;
 
     for ( int i=0; i<nthreads; i++ ) {
-      //  elastoplastic2D< druckerprager >* mat = new elastoplastic2D< druckerprager > ( thickness, bodyforce, planestress, order, hhatinho );
-std::cout << "criando malha "<<std::endl;
+//	for ( int i=0; i<1; i++ ) {
+      //    elastoplastic2D< druckerprager >* mat = new elastoplastic2D< druckerprager > ( thickness, bodyforce, planestress, order, hhatinho );
+        std::cout << "criando malha "<<std::endl;
 
-    elastoplastic2D< mohrcoulomb >* matmohr = new elastoplastic2D< mohrcoulomb > ( thickness, bodyforce, planestress, elnodes, hhatinho );
-		mesh* meshs = new mesh(dim,matmohr, allcoords, meshcoords, meshtopology, hhatinho);
-    	matmohr->fYC.SetUp (  young, nu,c,Phi,Psi );
-    	matmohr->SetMemory ( nglobalpts, sz );
-   		 matmohr->UpdateBodyForce ( bodyforce );
+        //elastoplastic2D< mohrcoulomb >* matmohr = new elastoplastic2D< mohrcoulomb > ( thickness, bodyforce, planestress, elnodes, hhatinho );
+		elastoplastic2D< druckerprager >* mat = new elastoplastic2D< druckerprager > ( thickness, bodyforce, planestress, elnodes, hhatinho );
+        mesh* meshs = new mesh ( dim,mat, allcoords, meshcoords, meshtopology, hhatinho );
+		
+       // matmohr->fYC.SetUp ( young, nu,c,Phi,Psi );
+      // matmohr->SetMemory ( nglobalpts, sz );
+      //  matmohr->UpdateBodyForce ( bodyforce );
+		
+		
+		mat->fYC.setup ( young, nu, c, phi );
+        mat->SetMemory ( nglobalpts, sz );
+       mat->UpdateBodyForce ( bodyforce );
+		
         KLGalerkinRF* objKLGalerkinRF = new KLGalerkinRF ( elnodes, Lx, Ly, type, nsamples, expansionorder );
         objKLGalerkinRF->SetMesh ( meshs );
-		std::cout << "criando slopeproject "<<std::endl;
+        std::cout << "criando slopeproject "<<std::endl;
         slopeproject* slopeobj = new slopeproject ( meshs, objKLGalerkinRF,randomfield );
         std::cout << "a = "<< a <<std::endl;
         std::cout << "b = "<< b <<std::endl;
         std::thread threadx ( myTreads,a,b, slopeobj,namefolder );
-        //std::thread threadx(myTreadsSRM,a,b, slopeobj,namefolder);
+		//slopeobj->MonteCarloSRM ( a, b, false, namefolder );
+    //   std::thread threadx(myTreadsSRM,a,b, slopeobj,namefolder);
         a=b+1;
         b+=delta;
 
